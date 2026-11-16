@@ -1,0 +1,870 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Countries & world geography",
+  "description": "Practical vocabulary for countries & world geography.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-f0e9521611bb290d",
+      "hanzi": "中国",
+      "pinyin": "zhōng guó",
+      "english": "China",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-58857e5318f3090b",
+      "hanzi": "美国",
+      "pinyin": "měi guó",
+      "english": "United States",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d055c3998f13e70e",
+      "hanzi": "英国",
+      "pinyin": "yīng guó",
+      "english": "United Kingdom",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6930e3f7dd59ab4d",
+      "hanzi": "加拿大",
+      "pinyin": "jiā ná dà",
+      "english": "Canada",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b1001a02c971a01",
+      "hanzi": "澳大利亚",
+      "pinyin": "ào dà lì yà",
+      "english": "Australia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-14c7289f304b9152",
+      "hanzi": "新西兰",
+      "pinyin": "xīn xī lán",
+      "english": "New Zealand",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cf2abf0c5be326cb",
+      "hanzi": "日本",
+      "pinyin": "rì běn",
+      "english": "Japan",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-963cd73004547f84",
+      "hanzi": "韩国",
+      "pinyin": "hán guó",
+      "english": "South Korea",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8c2021079f63830b",
+      "hanzi": "朝鲜",
+      "pinyin": "cháo xiǎn",
+      "english": "North Korea; Korea in historical contexts",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76cd2947978b090c",
+      "hanzi": "蒙古",
+      "pinyin": "měng gǔ",
+      "english": "Mongolia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d8fcbae05f79fb85",
+      "hanzi": "俄罗斯",
+      "pinyin": "é luó sī",
+      "english": "Russia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fd41ccf562904e20",
+      "hanzi": "印度",
+      "pinyin": "yìn dù",
+      "english": "India",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ae6df4762bc1de1",
+      "hanzi": "巴基斯坦",
+      "pinyin": "bā jī sī tǎn",
+      "english": "Pakistan",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-391c8b512df34945",
+      "hanzi": "孟加拉国",
+      "pinyin": "mèng jiā lā guó",
+      "english": "Bangladesh",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5fde37fd6c46b218",
+      "hanzi": "尼泊尔",
+      "pinyin": "ní bó ěr",
+      "english": "Nepal",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8773a04b5cab753a",
+      "hanzi": "斯里兰卡",
+      "pinyin": "sī lǐ lán kǎ",
+      "english": "Sri Lanka",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f6ee8c64166eba0",
+      "hanzi": "泰国",
+      "pinyin": "tài guó",
+      "english": "Thailand",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-193e6ef53d649254",
+      "hanzi": "越南",
+      "pinyin": "yuè nán",
+      "english": "Vietnam",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e273aaab1f7d6d09",
+      "hanzi": "老挝",
+      "pinyin": "lǎo wō",
+      "english": "Laos",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6ff6d750de02e32",
+      "hanzi": "柬埔寨",
+      "pinyin": "jiǎn pǔ zhài",
+      "english": "Cambodia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-de19f7861f745822",
+      "hanzi": "缅甸",
+      "pinyin": "miǎn diàn",
+      "english": "Myanmar",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3320aa9c0948089",
+      "hanzi": "马来西亚",
+      "pinyin": "mǎ lái xī yà",
+      "english": "Malaysia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f98b2fc82a45eadf",
+      "hanzi": "新加坡",
+      "pinyin": "xīn jiā pō",
+      "english": "Singapore",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-027121b0528b6bdb",
+      "hanzi": "印度尼西亚",
+      "pinyin": "yìn dù ní xī yà",
+      "english": "Indonesia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f1e3c16bbd633ea4",
+      "hanzi": "菲律宾",
+      "pinyin": "fēi lǜ bīn",
+      "english": "Philippines",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81678972842d4663",
+      "hanzi": "法国",
+      "pinyin": "fǎ guó",
+      "english": "France",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a7e404732db8f48",
+      "hanzi": "德国",
+      "pinyin": "dé guó",
+      "english": "Germany",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7d3566712e910adc",
+      "hanzi": "意大利",
+      "pinyin": "yì dà lì",
+      "english": "Italy",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bde5cc5b7e1a7eb4",
+      "hanzi": "西班牙",
+      "pinyin": "xī bān yá",
+      "english": "Spain",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-44a06f03dbb06498",
+      "hanzi": "葡萄牙",
+      "pinyin": "pú táo yá",
+      "english": "Portugal",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8e1849a68722af8b",
+      "hanzi": "荷兰",
+      "pinyin": "hé lán",
+      "english": "Netherlands",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4f09d2e86c63eb0f",
+      "hanzi": "比利时",
+      "pinyin": "bǐ lì shí",
+      "english": "Belgium",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0344bcb449f5b8ae",
+      "hanzi": "瑞士",
+      "pinyin": "ruì shì",
+      "english": "Switzerland",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-205ca5ebee147c08",
+      "hanzi": "奥地利",
+      "pinyin": "ào dì lì",
+      "english": "Austria",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af02be73f1a847f8",
+      "hanzi": "瑞典",
+      "pinyin": "ruì diǎn",
+      "english": "Sweden",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3942b5dce9fd2fe0",
+      "hanzi": "挪威",
+      "pinyin": "nuó wēi",
+      "english": "Norway",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81bb2b7732cea586",
+      "hanzi": "丹麦",
+      "pinyin": "dān mài",
+      "english": "Denmark",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-07e125b9356ff254",
+      "hanzi": "芬兰",
+      "pinyin": "fēn lán",
+      "english": "Finland",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5343a979a17677f4",
+      "hanzi": "冰岛",
+      "pinyin": "bīng dǎo",
+      "english": "Iceland",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6f8eab9a291791e8",
+      "hanzi": "爱尔兰",
+      "pinyin": "ài ěr lán",
+      "english": "Ireland",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-07d67d424576d5ea",
+      "hanzi": "波兰",
+      "pinyin": "bō lán",
+      "english": "Poland",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-572b2e8c04dd11f0",
+      "hanzi": "捷克",
+      "pinyin": "jié kè",
+      "english": "Czechia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8bc42950fd150ce3",
+      "hanzi": "匈牙利",
+      "pinyin": "xiōng yá lì",
+      "english": "Hungary",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc2c8c31225942f6",
+      "hanzi": "希腊",
+      "pinyin": "xī là",
+      "english": "Greece",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f60603b48764ce21",
+      "hanzi": "土耳其",
+      "pinyin": "tǔ ěr qí",
+      "english": "Türkiye; Turkey",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2929408da741b632",
+      "hanzi": "乌克兰",
+      "pinyin": "wū kè lán",
+      "english": "Ukraine",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f5b984831b2d99e5",
+      "hanzi": "墨西哥",
+      "pinyin": "mò xī gē",
+      "english": "Mexico",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c733bdf600026d8c",
+      "hanzi": "巴西",
+      "pinyin": "bā xī",
+      "english": "Brazil",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-37eb14e4da69fc27",
+      "hanzi": "阿根廷",
+      "pinyin": "ā gēn tíng",
+      "english": "Argentina",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a2de65cab78c146b",
+      "hanzi": "智利",
+      "pinyin": "zhì lì",
+      "english": "Chile",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-260f152fa262697b",
+      "hanzi": "秘鲁",
+      "pinyin": "bì lǔ",
+      "english": "Peru",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4e0c49de814f4a6f",
+      "hanzi": "哥伦比亚",
+      "pinyin": "gē lún bǐ yà",
+      "english": "Colombia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-54fc2b6c3b9bf718",
+      "hanzi": "南非",
+      "pinyin": "nán fēi",
+      "english": "South Africa",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-75fb1f4a2a987290",
+      "hanzi": "埃及",
+      "pinyin": "āi jí",
+      "english": "Egypt",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2966709e8e38080d",
+      "hanzi": "摩洛哥",
+      "pinyin": "mó luò gē",
+      "english": "Morocco",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b51895bad134ad5",
+      "hanzi": "肯尼亚",
+      "pinyin": "kěn ní yà",
+      "english": "Kenya",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f29d378e0e565012",
+      "hanzi": "尼日利亚",
+      "pinyin": "ní rì lì yà",
+      "english": "Nigeria",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8fa333c1964a0c4a",
+      "hanzi": "沙特阿拉伯",
+      "pinyin": "shā tè ā lā bó",
+      "english": "Saudi Arabia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-20e2113f5d9b94c3",
+      "hanzi": "阿联酋",
+      "pinyin": "ā lián qiú",
+      "english": "United Arab Emirates (abbreviation)",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-73f571f3c7372611",
+      "hanzi": "伊朗",
+      "pinyin": "yī lǎng",
+      "english": "Iran",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-294eb34fe0a1ee1a",
+      "hanzi": "以色列",
+      "pinyin": "yǐ sè liè",
+      "english": "Israel",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d6b5711fea6d4530",
+      "hanzi": "亚洲",
+      "pinyin": "yà zhōu",
+      "english": "Asia",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8ef85828ff9c38e9",
+      "hanzi": "欧洲",
+      "pinyin": "ōu zhōu",
+      "english": "Europe",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2d5b98b7b92a0e60",
+      "hanzi": "非洲",
+      "pinyin": "fēi zhōu",
+      "english": "Africa",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29646cf76f9a39e6",
+      "hanzi": "北美洲",
+      "pinyin": "běi měi zhōu",
+      "english": "North America",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-356ec8f97f024702",
+      "hanzi": "南美洲",
+      "pinyin": "nán měi zhōu",
+      "english": "South America",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3fda2b8c1af8d644",
+      "hanzi": "大洋洲",
+      "pinyin": "dà yáng zhōu",
+      "english": "Oceania",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c89d90c1a647d0f3",
+      "hanzi": "南极洲",
+      "pinyin": "nán jí zhōu",
+      "english": "Antarctica",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0cc659a9f57c2493",
+      "hanzi": "国家",
+      "pinyin": "guó jiā",
+      "english": "Country; state",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3da5ab9c1b9f5d83",
+      "hanzi": "首都",
+      "pinyin": "shǒu dū",
+      "english": "Capital city",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ed84a1665f79b6ca",
+      "hanzi": "城市",
+      "pinyin": "chéng shì",
+      "english": "City",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

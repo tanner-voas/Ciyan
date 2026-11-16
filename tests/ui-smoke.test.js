@@ -16,7 +16,7 @@ function mockBrowser() {
   const fakeDb={
     objectStoreNames:{contains:()=>true},
     transaction(){
-      const tx={oncomplete:null,onerror:null,onabort:null};
+      const tx={oncomplete:null,onerror:null,onabort:null,abort(){queueMicrotask(()=>tx.onabort?.());}};
       tx.objectStore=()=>({
         get(key){const request={onsuccess:null,onerror:null,result:data.get(key)};queueMicrotask(()=>request.onsuccess?.());return request;},
         put(value,key){data.set(key,structuredClone(value));queueMicrotask(()=>tx.oncomplete?.());}
@@ -33,7 +33,7 @@ function mockBrowser() {
   Object.defineProperty(globalThis,'navigator',{value:{},configurable:true});
   globalThis.window={scrollTo(){},confirm:()=>true};
   globalThis.location={protocol:'file:'};
-  return {shell,listeners,data};
+  return {shell,listeners,data,browseNodes,toast};
 }
 
 test('UI renders, reviews persist, session finishes with backup reminder',async()=>{
@@ -118,4 +118,44 @@ test('tone enforcement prevents Easy and records an incorrect tone answer',async
   await click('grade',{grade:'3'});
   assert.equal(mock.data.get('main').history.length,1);
   assert.equal(mock.data.get('main').history[0].toneResult.correct,false);
+});
+
+
+test('optional deck UI imports additively, paginates, filters and studies a topic',async()=>{
+  const mock=mockBrowser();
+  const fs=await import('node:fs');
+  globalThis.fetch=async path=>({ok:true,json:async()=>JSON.parse(fs.readFileSync(new URL('../'+path.replace('./',''),import.meta.url)))});
+  await import('../app.js?smoke=decks');await delay(25);
+  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+  await click('navigate',{page:'decks'});assert.match(mock.shell.innerHTML,/Pick your/);
+  await click('load-deck',{deck:'all-decks'});
+  const total=mock.data.get('main').cards.length;assert.ok(total>=1580);
+  await click('load-deck',{deck:'all-decks'});assert.equal(mock.data.get('main').cards.length,total);
+  await click('navigate',{page:'browse'});
+  assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,80);
+  await click('more-words');assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,160);
+  await click('cycle-tag',{kind:'words',tag:'climbing'});
+  assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,76);
+  await click('study-filtered');
+  const saved=mock.data.get('main');assert.ok(saved.activeSession.queue.every(id=>saved.cards.find(c=>c.id===id).tags.includes('climbing')));
+});
+
+test('stale tab cannot overwrite a newer revision or advance its review queue',async()=>{
+  const mock=mockBrowser();await import('../app.js?smoke=conflict');await delay(25);
+  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+  await click('start');const before=structuredClone(mock.data.get('main'));
+  const other=structuredClone(before);other.revision+=1;other.cards[0].english='Edited in another tab';mock.data.set('main',other);
+  await click('reveal');await click('grade',{grade:'3'});
+  assert.deepEqual(mock.data.get('main'),other);assert.match(mock.toast.textContent,/another tab/);
+  assert.match(mock.shell.innerHTML,/review-card/);
+});
+
+test('grammar detail escapes imported distractor text',async()=>{
+  const mock=mockBrowser();const {defaultState}=await import('../storage.js');const source=defaultState();
+  source.grammar[0].distractors=[{index:1,word:'<img src=x onerror=alert(1)>'}];mock.data.set('main',source);
+  let modalContent='';document.body.append=node=>{modalContent=node.innerHTML;};
+  await import('../app.js?smoke=escape');await delay(25);
+  const el={dataset:{action:'grammar-detail',id:source.grammar[0].id}};
+  await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});
+  assert.ok(!modalContent.includes('<img'));assert.ok(modalContent.includes('&lt;img'));
 });

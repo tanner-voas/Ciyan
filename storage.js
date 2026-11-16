@@ -25,19 +25,29 @@ export async function loadState(){const db=await database();return new Promise((
   r.onsuccess=()=>resolve(r.result||null);
   r.onerror=()=>reject(r.error||new Error('Cannot read saved data'));
 });}
-export async function saveState(state){const db=await database();return new Promise((resolve,reject)=>{
-  const tx=db.transaction(STORE,'readwrite');tx.objectStore(STORE).put(state,'main');
+export async function saveState(state,expectedRevision=null){const db=await database();return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,'readwrite'),store=tx.objectStore(STORE);
+  if(expectedRevision===null)store.put(state,'main');
+  else {const read=store.get('main');read.onsuccess=()=>{
+    if(read.result && read.result.revision!==expectedRevision){
+      reject(new Error('Data changed in another tab. Reload before continuing.'));tx.abort();return;
+    }
+    store.put(state,'main');
+  };}
+
   tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('Cannot save progress'));
   tx.onabort=()=>reject(tx.error||new Error('Save was interrupted'));
 });}
 const string=(x,max)=>String(x??'').trim().slice(0,max);
 export function normalizeCard(source,fallbackId=null){
   if(!source||typeof source!=='object')throw new Error('Invalid word card');
+  const id=string(source.id||fallbackId||crypto.randomUUID(),120);
+  if(id==='prototype'||Object.hasOwn(Object.prototype,id))throw new Error('Reserved card ID');
   const hanzi=string(source.hanzi,120),english=string(source.english,500);
   if(!hanzi||!english)throw new Error('Every word needs Chinese and English');
   const rawTags=Array.isArray(source.tags)?source.tags:String(source.tags||'').split(',');
   const tags=[...new Set(rawTags.map(t=>string(t,36).toLowerCase()).filter(Boolean))].slice(0,24);
-  return {id:string(source.id||fallbackId||crypto.randomUUID(),120),hanzi,pinyin:string(source.pinyin,160),english,tags,
+  return {id,hanzi,pinyin:string(source.pinyin,160),english,tags,
     source:string(source.source||'My cards',80),createdAt:string(source.createdAt||new Date().toISOString(),80)};
 }
 function legacySentenceMarkup(sentence,cards){
@@ -54,7 +64,8 @@ function legacySentenceMarkup(sentence,cards){
 }
 export function migrateState(input){
   if(!input||typeof input!=='object')throw new Error('Stored data is not a Cíyán database');
-  if((input.schemaVersion||1)>=2){
+  if((input.schemaVersion||1)>2)throw new Error('This database needs a newer version of Cíyán');
+  if((input.schemaVersion||1)===2){
     return {...input,grammar:Array.isArray(input.grammar)?input.grammar:[],
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
@@ -87,7 +98,8 @@ export function parseBackup(data){
   const grammarIds=new Set();const grammar=source.grammar.map(g=>{const entry=normalizeGrammar(g);if(grammarIds.has(entry.id))throw new Error('Duplicate grammar ID');grammarIds.add(entry.id);return entry;});
   const schedules={};
   for(const [id,s] of Object.entries(source.schedules||{}))if(ids.has(id)&&s&&validDate(s.dueAt)&&validDate(s.lastReviewedAt)){
-    schedules[id]={...s,reps:Math.max(0,Number(s.reps)||0),lapses:Math.max(0,Number(s.lapses)||0)};
+    if(!Number.isFinite(s.stability)||s.stability<=0||s.stability>36500||!Number.isFinite(s.difficulty)||s.difficulty<1||s.difficulty>10||![1,2,3,4].includes(s.lastRating)||!Number.isSafeInteger(s.reps)||s.reps<1)throw new Error('Invalid memory schedule in backup');
+    Object.defineProperty(schedules,id,{value:{...s,reps:s.reps,lapses:Math.max(0,Number(s.lapses)||0)},enumerable:true,writable:true,configurable:true});
   }
   const history=source.history.filter(h=>h&&ids.has(h.cardId)&&[1,2,3,4].includes(h.grade)&&validDate(h.at));
   const sessions=source.sessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
@@ -114,6 +126,8 @@ export function makeDeck(state){return {format:'ciyan-deck',version:2,records:fa
 function normalizeCardForDeck(c){return {...c};}
 // Decks are deliberately non-destructive: match by *Chinese text*, not just ID.
 export function mergeDeck(current,content){
+  if(content?.format && !['ciyan-deck','ciyan-backup'].includes(content.format))throw new Error('Unsupported deck format');
+  if(content?.version && ![1,2].includes(content.version))throw new Error('Unsupported deck version');
   const source=Array.isArray(content)?{cards:content}:content?.format==='ciyan-backup'?(content.version===1?migrateState(content.state):content.state):content;
   if(!source||(!Array.isArray(source.cards)&&!Array.isArray(source.grammar)))throw new Error('Expected vocabulary and/or grammar arrays');
   const words=(source.cards||[]).map(c=>normalizeCard(c));
@@ -139,6 +153,7 @@ export function mergeDeck(current,content){
     if(grammarIds.has(g.id))g.id=crypto.randomUUID();
     sentences.add(g.markup);grammarIds.add(g.id);draft.grammar.push(g);addedGrammar++;
   }
+  if(draft.cards.length>20000||draft.grammar.length>20000)throw new Error('Combined collection exceeds 20,000 entries');
   return {draft,addedWords,addedGrammar,tagsUpdated};
 }
 export function clearLearningRecords(d){

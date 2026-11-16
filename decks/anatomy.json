@@ -1,0 +1,863 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Body, muscles & recovery",
+  "description": "Practical vocabulary for body, muscles & recovery.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-4729deedde2a0710",
+      "hanzi": "身体",
+      "pinyin": "shēn tǐ",
+      "english": "Body",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9869870868f981e",
+      "hanzi": "肌肉",
+      "pinyin": "jī ròu",
+      "english": "Muscle",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ca3c3637d8979e0",
+      "hanzi": "骨头",
+      "pinyin": "gǔ tou",
+      "english": "Bone",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-630e5531ed0ec1db",
+      "hanzi": "关节",
+      "pinyin": "guān jié",
+      "english": "Joint",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ccc1b51f07c0c78c",
+      "hanzi": "肌腱",
+      "pinyin": "jī jiàn",
+      "english": "Tendon",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-31722dfd1623e9fc",
+      "hanzi": "韧带",
+      "pinyin": "rèn dài",
+      "english": "Ligament",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc0d7cf23b548352",
+      "hanzi": "皮肤",
+      "pinyin": "pí fū",
+      "english": "Skin",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f64ab008929fdb5",
+      "hanzi": "头",
+      "pinyin": "tóu",
+      "english": "Head",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e3b1367eddea9efd",
+      "hanzi": "脖子",
+      "pinyin": "bó zi",
+      "english": "Neck",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-80ff1b1d0851270f",
+      "hanzi": "肩膀",
+      "pinyin": "jiān bǎng",
+      "english": "Shoulder",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d9539d2b8db9926",
+      "hanzi": "肩胛骨",
+      "pinyin": "jiān jiǎ gǔ",
+      "english": "Shoulder blade",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-86d15422543b8387",
+      "hanzi": "胸",
+      "pinyin": "xiōng",
+      "english": "Chest",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eb686da0c82dcbeb",
+      "hanzi": "背",
+      "pinyin": "bèi",
+      "english": "Back (body part)",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-91c0cdf842c84eca",
+      "hanzi": "腰",
+      "pinyin": "yāo",
+      "english": "Waist; lower back",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a7220bdaaaff1fd2",
+      "hanzi": "腹部",
+      "pinyin": "fù bù",
+      "english": "Abdomen",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9629f0ba611b20d7",
+      "hanzi": "臀部",
+      "pinyin": "tún bù",
+      "english": "Buttocks; gluteal region",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-01d3e28a19e3e51a",
+      "hanzi": "髋关节",
+      "pinyin": "kuān guān jié",
+      "english": "Hip joint",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a79a7755dc467357",
+      "hanzi": "手臂",
+      "pinyin": "shǒu bì",
+      "english": "Arm",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dc3062b3dd760b3b",
+      "hanzi": "上臂",
+      "pinyin": "shàng bì",
+      "english": "Upper arm",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3842417fcb3c589e",
+      "hanzi": "前臂",
+      "pinyin": "qián bì",
+      "english": "Forearm",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a433fa5a77157d7c",
+      "hanzi": "肘部",
+      "pinyin": "zhǒu bù",
+      "english": "Elbow region",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b836e6bc52d4f063",
+      "hanzi": "手腕",
+      "pinyin": "shǒu wàn",
+      "english": "Wrist",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-17e494945d93e1a2",
+      "hanzi": "手掌",
+      "pinyin": "shǒu zhǎng",
+      "english": "Palm",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d2855d3c6ad90497",
+      "hanzi": "手指",
+      "pinyin": "shǒu zhǐ",
+      "english": "Finger",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ebc8af1629d2314c",
+      "hanzi": "拇指",
+      "pinyin": "mǔ zhǐ",
+      "english": "Thumb",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-064f028be04f90dd",
+      "hanzi": "食指",
+      "pinyin": "shí zhǐ",
+      "english": "Index finger",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-917c990a11206d2c",
+      "hanzi": "中指",
+      "pinyin": "zhōng zhǐ",
+      "english": "Middle finger",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df3193e2bedbbc34",
+      "hanzi": "无名指",
+      "pinyin": "wú míng zhǐ",
+      "english": "Ring finger",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-12b642bcf43e9297",
+      "hanzi": "小指",
+      "pinyin": "xiǎo zhǐ",
+      "english": "Little finger",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-25fcd9ad4aea450c",
+      "hanzi": "指尖",
+      "pinyin": "zhǐ jiān",
+      "english": "Fingertip",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2cfe7d392b02e32f",
+      "hanzi": "指甲",
+      "pinyin": "zhǐ jia",
+      "english": "Fingernail; toenail",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6fda657f199f4985",
+      "hanzi": "腿",
+      "pinyin": "tuǐ",
+      "english": "Leg",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c71861762dcaf0bf",
+      "hanzi": "大腿",
+      "pinyin": "dà tuǐ",
+      "english": "Thigh",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e097251fbf7345a7",
+      "hanzi": "小腿",
+      "pinyin": "xiǎo tuǐ",
+      "english": "Lower leg; calf region",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90d87bd6730729fc",
+      "hanzi": "膝盖",
+      "pinyin": "xī gài",
+      "english": "Knee",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ba18e7b5ce36a4e5",
+      "hanzi": "脚踝",
+      "pinyin": "jiǎo huái",
+      "english": "Ankle",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-94bf1ba00c1b0cfa",
+      "hanzi": "脚",
+      "pinyin": "jiǎo",
+      "english": "Foot",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-35b5739d500ceb8d",
+      "hanzi": "脚趾",
+      "pinyin": "jiǎo zhǐ",
+      "english": "Toe",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-84406e0eca5360f7",
+      "hanzi": "脚跟",
+      "pinyin": "jiǎo gēn",
+      "english": "Heel",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8458cb4778fddac4",
+      "hanzi": "脚尖",
+      "pinyin": "jiǎo jiān",
+      "english": "Tip of the foot; toes",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a8a88ddbea1594b7",
+      "hanzi": "核心",
+      "pinyin": "hé xīn",
+      "english": "Core; central part",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-24cb3448deda7b13",
+      "hanzi": "腹肌",
+      "pinyin": "fù jī",
+      "english": "Abdominal muscles",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-83247251a64dc377",
+      "hanzi": "胸肌",
+      "pinyin": "xiōng jī",
+      "english": "Pectoral muscles",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c4f6a172de7c6d25",
+      "hanzi": "背阔肌",
+      "pinyin": "bèi kuò jī",
+      "english": "Latissimus dorsi; lats",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0be276ff3e6df4ca",
+      "hanzi": "斜方肌",
+      "pinyin": "xié fāng jī",
+      "english": "Trapezius; traps",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cba6a42dbf5f1b39",
+      "hanzi": "三角肌",
+      "pinyin": "sān jiǎo jī",
+      "english": "Deltoid",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e35978231a0821fe",
+      "hanzi": "肱二头肌",
+      "pinyin": "gōng èr tóu jī",
+      "english": "Biceps brachii",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4444b69f8e2654f2",
+      "hanzi": "肱三头肌",
+      "pinyin": "gōng sān tóu jī",
+      "english": "Triceps brachii",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a7d662f52c53b20a",
+      "hanzi": "臀大肌",
+      "pinyin": "tún dà jī",
+      "english": "Gluteus maximus",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8d1add8a6cf59532",
+      "hanzi": "股四头肌",
+      "pinyin": "gǔ sì tóu jī",
+      "english": "Quadriceps",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8fde1dafb1d55142",
+      "hanzi": "腘绳肌",
+      "pinyin": "guó shéng jī",
+      "english": "Hamstrings",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-922070cb4439262e",
+      "hanzi": "腓肠肌",
+      "pinyin": "féi cháng jī",
+      "english": "Gastrocnemius; major calf muscle",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3c89637c4421705a",
+      "hanzi": "比目鱼肌",
+      "pinyin": "bǐ mù yú jī",
+      "english": "Soleus",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f96bbc783e900a35",
+      "hanzi": "握力",
+      "pinyin": "wò lì",
+      "english": "Grip strength",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e799997ba2cfc18b",
+      "hanzi": "酸痛",
+      "pinyin": "suān tòng",
+      "english": "Soreness; aching",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b1e179f5622eeea5",
+      "hanzi": "疼",
+      "pinyin": "téng",
+      "english": "Hurt; painful",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3e1523afb5479b15",
+      "hanzi": "痛",
+      "pinyin": "tòng",
+      "english": "Pain; painful",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d15e59749f17c37c",
+      "hanzi": "受伤",
+      "pinyin": "shòu shāng",
+      "english": "Get injured",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-77b89a5cf92a3b0b",
+      "hanzi": "拉伤",
+      "pinyin": "lā shāng",
+      "english": "Muscle or tendon strain",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2248b77af11714dd",
+      "hanzi": "扭伤",
+      "pinyin": "niǔ shāng",
+      "english": "Sprain",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-32a7373fd3e5cb8f",
+      "hanzi": "肿",
+      "pinyin": "zhǒng",
+      "english": "Swollen",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f68a1e1e22e942a9",
+      "hanzi": "抽筋",
+      "pinyin": "chōu jīn",
+      "english": "Muscle cramp",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-44fc3424192d717f",
+      "hanzi": "僵硬",
+      "pinyin": "jiāng yìng",
+      "english": "Stiff",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9211f0637f2eb233",
+      "hanzi": "疲劳",
+      "pinyin": "pí láo",
+      "english": "Fatigue",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7443fd3337729478",
+      "hanzi": "康复",
+      "pinyin": "kāng fù",
+      "english": "Rehabilitation; recover",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4b834145b28a06e6",
+      "hanzi": "按摩",
+      "pinyin": "àn mó",
+      "english": "Massage",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-181be140188fcb43",
+      "hanzi": "冰敷",
+      "pinyin": "bīng fū",
+      "english": "Apply a cold compress",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ccd647c358733a97",
+      "hanzi": "热敷",
+      "pinyin": "rè fū",
+      "english": "Apply a warm compress",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1bba79344fe5fcf0",
+      "hanzi": "护腕",
+      "pinyin": "hù wàn",
+      "english": "Wrist support",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7fafe8ed718db88",
+      "hanzi": "护膝",
+      "pinyin": "hù xī",
+      "english": "Knee support",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

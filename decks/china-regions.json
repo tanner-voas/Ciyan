@@ -1,0 +1,470 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "China: provinces & major regions",
+  "description": "Practical vocabulary for china: provinces & major regions.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-f5dcf19da3033e42",
+      "hanzi": "省",
+      "pinyin": "shěng",
+      "english": "Province",
+      "tags": [
+        "places",
+        "china-regions",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-767c596dbfefebd1",
+      "hanzi": "市",
+      "pinyin": "shì",
+      "english": "City; municipality",
+      "tags": [
+        "places",
+        "china-regions",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f34acd06fc859374",
+      "hanzi": "自治区",
+      "pinyin": "zì zhì qū",
+      "english": "Autonomous region",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-05bf5dcfb4b418ae",
+      "hanzi": "特别行政区",
+      "pinyin": "tè bié xíng zhèng qū",
+      "english": "Special administrative region",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a88467ba68eb2b5e",
+      "hanzi": "安徽",
+      "pinyin": "ān huī",
+      "english": "Anhui",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7b14a21bfa3f9759",
+      "hanzi": "福建",
+      "pinyin": "fú jiàn",
+      "english": "Fujian",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f997569e6f5c48bb",
+      "hanzi": "甘肃",
+      "pinyin": "gān sù",
+      "english": "Gansu",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2d3b0fd944ccc36b",
+      "hanzi": "广东",
+      "pinyin": "guǎng dōng",
+      "english": "Guangdong",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e91f2cf85217cdd8",
+      "hanzi": "贵州",
+      "pinyin": "guì zhōu",
+      "english": "Guizhou",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2760bbeb3a88f507",
+      "hanzi": "海南",
+      "pinyin": "hǎi nán",
+      "english": "Hainan",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-674ca7d76508275a",
+      "hanzi": "河北",
+      "pinyin": "hé běi",
+      "english": "Hebei",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c4b2e6f9cc01e1d4",
+      "hanzi": "河南",
+      "pinyin": "hé nán",
+      "english": "Henan",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e1327c0d56ccd344",
+      "hanzi": "黑龙江",
+      "pinyin": "hēi lóng jiāng",
+      "english": "Heilongjiang",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-57ffa94bb2133e08",
+      "hanzi": "湖北",
+      "pinyin": "hú běi",
+      "english": "Hubei",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-08f480473cbda4cc",
+      "hanzi": "湖南",
+      "pinyin": "hú nán",
+      "english": "Hunan",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b0e4b710ea8442e",
+      "hanzi": "吉林",
+      "pinyin": "jí lín",
+      "english": "Jilin",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eee4f90829f0c985",
+      "hanzi": "江苏",
+      "pinyin": "jiāng sū",
+      "english": "Jiangsu",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0882a98a00d21589",
+      "hanzi": "江西",
+      "pinyin": "jiāng xī",
+      "english": "Jiangxi",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d6174302066e0b6e",
+      "hanzi": "辽宁",
+      "pinyin": "liáo níng",
+      "english": "Liaoning",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e5414441a2ad4d88",
+      "hanzi": "青海",
+      "pinyin": "qīng hǎi",
+      "english": "Qinghai",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a9b01d90ceb1bb6d",
+      "hanzi": "山东",
+      "pinyin": "shān dōng",
+      "english": "Shandong",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ccea2d1993dd2fa",
+      "hanzi": "山西",
+      "pinyin": "shān xī",
+      "english": "Shanxi",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7049339bb48df0e4",
+      "hanzi": "陕西",
+      "pinyin": "shǎn xī",
+      "english": "Shaanxi",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-981aae92d74e28dd",
+      "hanzi": "四川",
+      "pinyin": "sì chuān",
+      "english": "Sichuan",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ce00a1a5ac507381",
+      "hanzi": "云南",
+      "pinyin": "yún nán",
+      "english": "Yunnan",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8631ef491b6a9786",
+      "hanzi": "浙江",
+      "pinyin": "zhè jiāng",
+      "english": "Zhejiang",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33db161daa042c42",
+      "hanzi": "台湾",
+      "pinyin": "tái wān",
+      "english": "Taiwan",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c49971d086f41666",
+      "hanzi": "广西",
+      "pinyin": "guǎng xī",
+      "english": "Guangxi",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fa95f0b79740504",
+      "hanzi": "内蒙古",
+      "pinyin": "nèi měng gǔ",
+      "english": "Inner Mongolia",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b65a0dfa774607d8",
+      "hanzi": "宁夏",
+      "pinyin": "níng xià",
+      "english": "Ningxia",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-62151de038412798",
+      "hanzi": "西藏",
+      "pinyin": "xī zàng",
+      "english": "Tibet; Xizang",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8e3e42b6347b0b7f",
+      "hanzi": "新疆",
+      "pinyin": "xīn jiāng",
+      "english": "Xinjiang",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-68c77e155132565e",
+      "hanzi": "北京",
+      "pinyin": "běi jīng",
+      "english": "Beijing",
+      "tags": [
+        "places",
+        "china-regions",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4906a49adc5c472b",
+      "hanzi": "上海",
+      "pinyin": "shàng hǎi",
+      "english": "Shanghai",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b965a03d91286e78",
+      "hanzi": "天津",
+      "pinyin": "tiān jīn",
+      "english": "Tianjin",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ea31f4d6d27dd76d",
+      "hanzi": "重庆",
+      "pinyin": "chóng qìng",
+      "english": "Chongqing",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d448d143c4e04eb6",
+      "hanzi": "香港",
+      "pinyin": "xiāng gǎng",
+      "english": "Hong Kong",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7f73b538e7793541",
+      "hanzi": "澳门",
+      "pinyin": "ào mén",
+      "english": "Macao; Macau",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

@@ -1,0 +1,779 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Cities in China & abroad",
+  "description": "Practical vocabulary for cities in china & abroad.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-85da183b0683e5f7",
+      "hanzi": "广州",
+      "pinyin": "guǎng zhōu",
+      "english": "Guangzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1bb5e3986433569c",
+      "hanzi": "深圳",
+      "pinyin": "shēn zhèn",
+      "english": "Shenzhen",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d222587118255cbd",
+      "hanzi": "成都",
+      "pinyin": "chéng dū",
+      "english": "Chengdu",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a8027f71a8e38bcb",
+      "hanzi": "杭州",
+      "pinyin": "háng zhōu",
+      "english": "Hangzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c690fe6240419c66",
+      "hanzi": "南京",
+      "pinyin": "nán jīng",
+      "english": "Nanjing",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a66e82e6953383b1",
+      "hanzi": "苏州",
+      "pinyin": "sū zhōu",
+      "english": "Suzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-48afd8d3b9269706",
+      "hanzi": "武汉",
+      "pinyin": "wǔ hàn",
+      "english": "Wuhan",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e2d11378ac1898de",
+      "hanzi": "西安",
+      "pinyin": "xī ān",
+      "english": "Xi'an",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-65ba77fdcc270873",
+      "hanzi": "长沙",
+      "pinyin": "cháng shā",
+      "english": "Changsha",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-71fd04518615fc28",
+      "hanzi": "郑州",
+      "pinyin": "zhèng zhōu",
+      "english": "Zhengzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-62556b2433e3564a",
+      "hanzi": "济南",
+      "pinyin": "jǐ nán",
+      "english": "Jinan",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6e12544f3406f535",
+      "hanzi": "青岛",
+      "pinyin": "qīng dǎo",
+      "english": "Qingdao",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0188599324c9b315",
+      "hanzi": "大连",
+      "pinyin": "dà lián",
+      "english": "Dalian",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-85888112127c390d",
+      "hanzi": "沈阳",
+      "pinyin": "shěn yáng",
+      "english": "Shenyang",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-941a59c2d0b07eca",
+      "hanzi": "哈尔滨",
+      "pinyin": "hā ěr bīn",
+      "english": "Harbin",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dee9499373a60a3b",
+      "hanzi": "长春",
+      "pinyin": "cháng chūn",
+      "english": "Changchun",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fa637322597c0c74",
+      "hanzi": "昆明",
+      "pinyin": "kūn míng",
+      "english": "Kunming",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-286554f051391c33",
+      "hanzi": "贵阳",
+      "pinyin": "guì yáng",
+      "english": "Guiyang",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-229da405c8a2c756",
+      "hanzi": "南宁",
+      "pinyin": "nán níng",
+      "english": "Nanning",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b263d78fa5e4433",
+      "hanzi": "桂林",
+      "pinyin": "guì lín",
+      "english": "Guilin",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eddaecde23264be7",
+      "hanzi": "阳朔",
+      "pinyin": "yáng shuò",
+      "english": "Yangshuo",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d3c9fca77d7a9d8c",
+      "hanzi": "福州",
+      "pinyin": "fú zhōu",
+      "english": "Fuzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-606a45e0a989094c",
+      "hanzi": "厦门",
+      "pinyin": "xià mén",
+      "english": "Xiamen",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9457b11a06702874",
+      "hanzi": "泉州",
+      "pinyin": "quán zhōu",
+      "english": "Quanzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a02251f7201578b1",
+      "hanzi": "南昌",
+      "pinyin": "nán chāng",
+      "english": "Nanchang",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-170423a23ba79cc8",
+      "hanzi": "合肥",
+      "pinyin": "hé féi",
+      "english": "Hefei",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ca468f50ff8883b",
+      "hanzi": "太原",
+      "pinyin": "tài yuán",
+      "english": "Taiyuan",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e8a39cd5fac13589",
+      "hanzi": "石家庄",
+      "pinyin": "shí jiā zhuāng",
+      "english": "Shijiazhuang",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-28575b2e37b82c49",
+      "hanzi": "兰州",
+      "pinyin": "lán zhōu",
+      "english": "Lanzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-35a122f57378efbe",
+      "hanzi": "西宁",
+      "pinyin": "xī níng",
+      "english": "Xining",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-16d9b001db74b5fd",
+      "hanzi": "银川",
+      "pinyin": "yín chuān",
+      "english": "Yinchuan",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b08dc37d649cf0a",
+      "hanzi": "乌鲁木齐",
+      "pinyin": "wū lǔ mù qí",
+      "english": "Urumqi",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-11ee20b42eb8b7a0",
+      "hanzi": "拉萨",
+      "pinyin": "lā sà",
+      "english": "Lhasa",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9014872a00fd8d32",
+      "hanzi": "呼和浩特",
+      "pinyin": "hū hé hào tè",
+      "english": "Hohhot",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-88ba446ffa5b8cad",
+      "hanzi": "海口",
+      "pinyin": "hǎi kǒu",
+      "english": "Haikou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dedd318f77a2e576",
+      "hanzi": "三亚",
+      "pinyin": "sān yà",
+      "english": "Sanya",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1fcfa2f2bc2df3dd",
+      "hanzi": "宁波",
+      "pinyin": "níng bō",
+      "english": "Ningbo",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76e42093f9b91c96",
+      "hanzi": "无锡",
+      "pinyin": "wú xī",
+      "english": "Wuxi",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5681e864d514603d",
+      "hanzi": "温州",
+      "pinyin": "wēn zhōu",
+      "english": "Wenzhou",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b4415237de7351a0",
+      "hanzi": "台北",
+      "pinyin": "tái běi",
+      "english": "Taipei",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ab78353b67a3451",
+      "hanzi": "浦东",
+      "pinyin": "pǔ dōng",
+      "english": "Pudong",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-94326612be0de4e2",
+      "hanzi": "浦西",
+      "pinyin": "pǔ xī",
+      "english": "Puxi",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a6c0db788b589b10",
+      "hanzi": "伦敦",
+      "pinyin": "lún dūn",
+      "english": "London",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-089dd4929e658cdb",
+      "hanzi": "巴黎",
+      "pinyin": "bā lí",
+      "english": "Paris",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-21f9f830edf15d42",
+      "hanzi": "纽约",
+      "pinyin": "niǔ yuē",
+      "english": "New York",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bd12e7ddfed2b630",
+      "hanzi": "洛杉矶",
+      "pinyin": "luò shān jī",
+      "english": "Los Angeles",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9d0fe47598dfbd14",
+      "hanzi": "旧金山",
+      "pinyin": "jiù jīn shān",
+      "english": "San Francisco",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-724fff5b77359617",
+      "hanzi": "华盛顿",
+      "pinyin": "huá shèng dùn",
+      "english": "Washington",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-95b3ec132e6e5bfc",
+      "hanzi": "东京",
+      "pinyin": "dōng jīng",
+      "english": "Tokyo",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6df977461d522f10",
+      "hanzi": "大阪",
+      "pinyin": "dà bǎn",
+      "english": "Osaka",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76f872eea127e057",
+      "hanzi": "首尔",
+      "pinyin": "shǒu ěr",
+      "english": "Seoul",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6790c32cc11b02bf",
+      "hanzi": "曼谷",
+      "pinyin": "màn gǔ",
+      "english": "Bangkok",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-84b88ef1d2538b5b",
+      "hanzi": "河内",
+      "pinyin": "hé nèi",
+      "english": "Hanoi",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baa672710078887f",
+      "hanzi": "吉隆坡",
+      "pinyin": "jí lóng pō",
+      "english": "Kuala Lumpur",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-71a281aebfa4b227",
+      "hanzi": "雅加达",
+      "pinyin": "yǎ jiā dá",
+      "english": "Jakarta",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-40a5bd6e30cb7f9b",
+      "hanzi": "悉尼",
+      "pinyin": "xī ní",
+      "english": "Sydney",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-17655b5246c53181",
+      "hanzi": "墨尔本",
+      "pinyin": "mò ěr běn",
+      "english": "Melbourne",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ab9fe034bfc74288",
+      "hanzi": "温哥华",
+      "pinyin": "wēn gē huá",
+      "english": "Vancouver",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1cf17b6614b5befe",
+      "hanzi": "多伦多",
+      "pinyin": "duō lún duō",
+      "english": "Toronto",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-665d26b506d82648",
+      "hanzi": "柏林",
+      "pinyin": "bó lín",
+      "english": "Berlin",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3b54664e8163d36a",
+      "hanzi": "罗马",
+      "pinyin": "luó mǎ",
+      "english": "Rome",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b77d1845765c5d8b",
+      "hanzi": "马德里",
+      "pinyin": "mǎ dé lǐ",
+      "english": "Madrid",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-09fdb8c909a83ac7",
+      "hanzi": "莫斯科",
+      "pinyin": "mò sī kē",
+      "english": "Moscow",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6555034669361e02",
+      "hanzi": "迪拜",
+      "pinyin": "dí bài",
+      "english": "Dubai",
+      "tags": [
+        "places",
+        "cities"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

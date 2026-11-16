@@ -1,0 +1,1353 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Ingredients, vegetables & fruit",
+  "description": "Practical vocabulary for ingredients, vegetables & fruit.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-98fe6354d015ccb6",
+      "hanzi": "猪肉",
+      "pinyin": "zhū ròu",
+      "english": "Pork",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-70099ea01925d3da",
+      "hanzi": "牛肉",
+      "pinyin": "niú ròu",
+      "english": "Beef",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e2fd6979c0a125f8",
+      "hanzi": "羊肉",
+      "pinyin": "yáng ròu",
+      "english": "Lamb or mutton",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d564e7d1c8e63e77",
+      "hanzi": "鸡肉",
+      "pinyin": "jī ròu",
+      "english": "Chicken meat",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5dd8f72742349ce7",
+      "hanzi": "鸭肉",
+      "pinyin": "yā ròu",
+      "english": "Duck meat",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5e7120bf23740d37",
+      "hanzi": "排骨",
+      "pinyin": "pái gǔ",
+      "english": "Ribs",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-251048880651b727",
+      "hanzi": "五花肉",
+      "pinyin": "wǔ huā ròu",
+      "english": "Pork belly",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e83b28e02089cd6a",
+      "hanzi": "里脊",
+      "pinyin": "lǐ jǐ",
+      "english": "Tenderloin",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-83968404ee14c1dd",
+      "hanzi": "肉末",
+      "pinyin": "ròu mò",
+      "english": "Minced meat",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8fa7820b4c667210",
+      "hanzi": "香肠",
+      "pinyin": "xiāng cháng",
+      "english": "Sausage",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b399c827c559aeeb",
+      "hanzi": "火腿",
+      "pinyin": "huǒ tuǐ",
+      "english": "Ham",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-06930b2fa5f101d8",
+      "hanzi": "培根",
+      "pinyin": "péi gēn",
+      "english": "Bacon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ac3069de682490ac",
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "english": "Fish",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-86902fa0e945aac8",
+      "hanzi": "虾",
+      "pinyin": "xiā",
+      "english": "Shrimp; prawns",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3efc0d87f78ee263",
+      "hanzi": "螃蟹",
+      "pinyin": "páng xiè",
+      "english": "Crab",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-981d925bbe20ecef",
+      "hanzi": "贝类",
+      "pinyin": "bèi lèi",
+      "english": "Shellfish",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-195f7932237eb030",
+      "hanzi": "蛤蜊",
+      "pinyin": "gé lí",
+      "english": "Clams",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6e80048a5ad8672c",
+      "hanzi": "鱿鱼",
+      "pinyin": "yóu yú",
+      "english": "Squid",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d32ca84c89cb56f3",
+      "hanzi": "三文鱼",
+      "pinyin": "sān wén yú",
+      "english": "Salmon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e4a7291f4d30c1da",
+      "hanzi": "金枪鱼",
+      "pinyin": "jīn qiāng yú",
+      "english": "Tuna",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-db596f12194a643a",
+      "hanzi": "海鲜",
+      "pinyin": "hǎi xiān",
+      "english": "Seafood",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9f5b71a472d27bb",
+      "hanzi": "鸡蛋",
+      "pinyin": "jī dàn",
+      "english": "Chicken egg",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4e422119400c2ace",
+      "hanzi": "鸭蛋",
+      "pinyin": "yā dàn",
+      "english": "Duck egg",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8100d441c862673a",
+      "hanzi": "皮蛋",
+      "pinyin": "pí dàn",
+      "english": "Preserved century egg",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bc24a64b6ec03258",
+      "hanzi": "咸蛋",
+      "pinyin": "xián dàn",
+      "english": "Salted egg",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fc10d8f397780f3",
+      "hanzi": "豆腐",
+      "pinyin": "dòu fu",
+      "english": "Tofu",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dbba9688f97fec82",
+      "hanzi": "豆干",
+      "pinyin": "dòu gān",
+      "english": "Firm pressed tofu",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-957674c584287925",
+      "hanzi": "腐竹",
+      "pinyin": "fǔ zhú",
+      "english": "Dried tofu-skin sticks",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-571f79710d252094",
+      "hanzi": "黄豆",
+      "pinyin": "huáng dòu",
+      "english": "Soybeans",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a20942cfb4ce796",
+      "hanzi": "绿豆",
+      "pinyin": "lǜ dòu",
+      "english": "Mung beans",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9e73aa2dd8c70bc",
+      "hanzi": "红豆",
+      "pinyin": "hóng dòu",
+      "english": "Adzuki beans",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a620962e36d0ece2",
+      "hanzi": "毛豆",
+      "pinyin": "máo dòu",
+      "english": "Edamame; young soybeans",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7739ff2ac7a8c5f7",
+      "hanzi": "花生",
+      "pinyin": "huā shēng",
+      "english": "Peanuts",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e0df14af49c71df3",
+      "hanzi": "芝麻",
+      "pinyin": "zhī ma",
+      "english": "Sesame",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c7a897444f3d6363",
+      "hanzi": "核桃",
+      "pinyin": "hé tao",
+      "english": "Walnut",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-423d45adea4b94b6",
+      "hanzi": "杏仁",
+      "pinyin": "xìng rén",
+      "english": "Almond or apricot kernel, depending on product",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29ffcbc62ecbe3ec",
+      "hanzi": "腰果",
+      "pinyin": "yāo guǒ",
+      "english": "Cashew",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9c4b23d6a0b97bfc",
+      "hanzi": "大米",
+      "pinyin": "dà mǐ",
+      "english": "Uncooked rice",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-be5e4cd867092013",
+      "hanzi": "糯米",
+      "pinyin": "nuò mǐ",
+      "english": "Glutinous rice",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-21eaff4331362c33",
+      "hanzi": "面粉",
+      "pinyin": "miàn fěn",
+      "english": "Wheat flour",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ab4489e89e7aa18",
+      "hanzi": "淀粉",
+      "pinyin": "diàn fěn",
+      "english": "Starch",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f45d561296963c4a",
+      "hanzi": "燕麦",
+      "pinyin": "yàn mài",
+      "english": "Oats",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfa4670a83c67131",
+      "hanzi": "玉米",
+      "pinyin": "yù mǐ",
+      "english": "Corn",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a64a92c865302906",
+      "hanzi": "土豆",
+      "pinyin": "tǔ dòu",
+      "english": "Potato",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-acf383cef37613dc",
+      "hanzi": "红薯",
+      "pinyin": "hóng shǔ",
+      "english": "Sweet potato",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a25211ce5c812248",
+      "hanzi": "芋头",
+      "pinyin": "yù tou",
+      "english": "Taro",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-714304a5fe9d6555",
+      "hanzi": "山药",
+      "pinyin": "shān yao",
+      "english": "Chinese yam",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-74a93f5f0f9518d3",
+      "hanzi": "莲藕",
+      "pinyin": "lián ǒu",
+      "english": "Lotus root",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dd1a68cb2c35fb78",
+      "hanzi": "胡萝卜",
+      "pinyin": "hú luó bo",
+      "english": "Carrot",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e343a434416e3369",
+      "hanzi": "白萝卜",
+      "pinyin": "bái luó bo",
+      "english": "White radish; daikon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e1337e15ca73d20d",
+      "hanzi": "黄瓜",
+      "pinyin": "huáng guā",
+      "english": "Cucumber",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-516f6a50c4a8e39c",
+      "hanzi": "番茄",
+      "pinyin": "fān qié",
+      "english": "Tomato",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bb6da11cdcdf24ad",
+      "hanzi": "西红柿",
+      "pinyin": "xī hóng shì",
+      "english": "Tomato (another common name)",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8ac7c1f48e3134b0",
+      "hanzi": "茄子",
+      "pinyin": "qié zi",
+      "english": "Eggplant",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-85bc0873e2450c0b",
+      "hanzi": "南瓜",
+      "pinyin": "nán guā",
+      "english": "Pumpkin; squash",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4404ea8981d2fc02",
+      "hanzi": "冬瓜",
+      "pinyin": "dōng guā",
+      "english": "Winter melon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e98e8e75431f7273",
+      "hanzi": "丝瓜",
+      "pinyin": "sī guā",
+      "english": "Loofah gourd",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e45e538515ff56d6",
+      "hanzi": "苦瓜",
+      "pinyin": "kǔ guā",
+      "english": "Bitter melon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9666eb42587baa2",
+      "hanzi": "西葫芦",
+      "pinyin": "xī hú lu",
+      "english": "Zucchini; courgette",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9b8bc1b61d692685",
+      "hanzi": "白菜",
+      "pinyin": "bái cài",
+      "english": "Chinese cabbage",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a540f6b31df5ec9c",
+      "hanzi": "青菜",
+      "pinyin": "qīng cài",
+      "english": "Leafy greens; often bok choy locally",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2babb323b7140a33",
+      "hanzi": "菠菜",
+      "pinyin": "bō cài",
+      "english": "Spinach",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9a5267bf4b3a8a82",
+      "hanzi": "生菜",
+      "pinyin": "shēng cài",
+      "english": "Lettuce",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c1755c51d3a23946",
+      "hanzi": "芹菜",
+      "pinyin": "qín cài",
+      "english": "Celery",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-42a2a51c9c828059",
+      "hanzi": "韭菜",
+      "pinyin": "jiǔ cài",
+      "english": "Chinese chives",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a6f353d104357ee4",
+      "hanzi": "空心菜",
+      "pinyin": "kōng xīn cài",
+      "english": "Water spinach",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1fdb83f31be268d5",
+      "hanzi": "西兰花",
+      "pinyin": "xī lán huā",
+      "english": "Broccoli",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-467c55eef5229d4d",
+      "hanzi": "花菜",
+      "pinyin": "huā cài",
+      "english": "Cauliflower",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-468ebeb79e77a3f0",
+      "hanzi": "豆芽",
+      "pinyin": "dòu yá",
+      "english": "Bean sprouts",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-548ec06f22c55d5b",
+      "hanzi": "四季豆",
+      "pinyin": "sì jì dòu",
+      "english": "Green beans",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d6229ff65c65d97",
+      "hanzi": "豌豆",
+      "pinyin": "wān dòu",
+      "english": "Peas",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9519349f65a7addd",
+      "hanzi": "蘑菇",
+      "pinyin": "mó gu",
+      "english": "Mushroom",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2d7fe74d093b5907",
+      "hanzi": "香菇",
+      "pinyin": "xiāng gū",
+      "english": "Shiitake mushroom",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af4bcb71c8d35584",
+      "hanzi": "金针菇",
+      "pinyin": "jīn zhēn gū",
+      "english": "Enoki mushroom",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-deb9acd8cdce75ec",
+      "hanzi": "木耳",
+      "pinyin": "mù ěr",
+      "english": "Wood-ear fungus",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d03091e423547f4",
+      "hanzi": "海带",
+      "pinyin": "hǎi dài",
+      "english": "Kelp",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7445f15a4c18dca1",
+      "hanzi": "紫菜",
+      "pinyin": "zǐ cài",
+      "english": "Edible laver seaweed",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-edc855182ce2f997",
+      "hanzi": "洋葱",
+      "pinyin": "yáng cōng",
+      "english": "Onion",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-16e853fdba34b3a7",
+      "hanzi": "葱",
+      "pinyin": "cōng",
+      "english": "Scallion; spring onion",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-02f183bb91331006",
+      "hanzi": "姜",
+      "pinyin": "jiāng",
+      "english": "Ginger",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ad335111628f08a1",
+      "hanzi": "蒜",
+      "pinyin": "suàn",
+      "english": "Garlic",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9d1e11e8cba926ec",
+      "hanzi": "香菜",
+      "pinyin": "xiāng cài",
+      "english": "Cilantro; coriander leaves",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc12e809f6355354",
+      "hanzi": "辣椒",
+      "pinyin": "là jiāo",
+      "english": "Chili pepper",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ca90ce4930a1fb8e",
+      "hanzi": "青椒",
+      "pinyin": "qīng jiāo",
+      "english": "Green pepper",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a5d0316d191cf783",
+      "hanzi": "花椒",
+      "pinyin": "huā jiāo",
+      "english": "Sichuan pepper",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-50537dab76505dfc",
+      "hanzi": "苹果",
+      "pinyin": "píng guǒ",
+      "english": "Apple",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dbf9f9c94fc90b7c",
+      "hanzi": "香蕉",
+      "pinyin": "xiāng jiāo",
+      "english": "Banana",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8d3209aaa4aaf12",
+      "hanzi": "橙子",
+      "pinyin": "chéng zi",
+      "english": "Orange",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d8816dfefa548859",
+      "hanzi": "橘子",
+      "pinyin": "jú zi",
+      "english": "Mandarin orange",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9ef8346f7304ffdf",
+      "hanzi": "柚子",
+      "pinyin": "yòu zi",
+      "english": "Pomelo",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2e2eadd9e41c4e05",
+      "hanzi": "柠檬",
+      "pinyin": "níng méng",
+      "english": "Lemon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a5a79a17f934dde7",
+      "hanzi": "梨",
+      "pinyin": "lí",
+      "english": "Pear",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0fe9ed3a6b78600f",
+      "hanzi": "桃子",
+      "pinyin": "táo zi",
+      "english": "Peach",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ae86f9a1daef052f",
+      "hanzi": "葡萄",
+      "pinyin": "pú tao",
+      "english": "Grapes",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c76f6a79f6dbcf63",
+      "hanzi": "草莓",
+      "pinyin": "cǎo méi",
+      "english": "Strawberry",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d23250b7c80a03ce",
+      "hanzi": "蓝莓",
+      "pinyin": "lán méi",
+      "english": "Blueberry",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3e3f03caa0435a00",
+      "hanzi": "西瓜",
+      "pinyin": "xī guā",
+      "english": "Watermelon",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e8205f1a2e89c1d9",
+      "hanzi": "哈密瓜",
+      "pinyin": "hā mì guā",
+      "english": "Hami melon; cantaloupe-type melon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b8246e4fd8938af7",
+      "hanzi": "芒果",
+      "pinyin": "máng guǒ",
+      "english": "Mango",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1e93a661562a8926",
+      "hanzi": "菠萝",
+      "pinyin": "bō luó",
+      "english": "Pineapple",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6743bd96fb2dc0d3",
+      "hanzi": "猕猴桃",
+      "pinyin": "mí hóu táo",
+      "english": "Kiwifruit",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6c4d7161654bd6d2",
+      "hanzi": "火龙果",
+      "pinyin": "huǒ lóng guǒ",
+      "english": "Dragon fruit",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eb680c32dd8ab6d1",
+      "hanzi": "榴莲",
+      "pinyin": "liú lián",
+      "english": "Durian",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-517ee6dc6a29dea8",
+      "hanzi": "荔枝",
+      "pinyin": "lì zhī",
+      "english": "Lychee",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ac0b6e8ac0a9149",
+      "hanzi": "龙眼",
+      "pinyin": "lóng yǎn",
+      "english": "Longan",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-95b143e58a98d6e6",
+      "hanzi": "山竹",
+      "pinyin": "shān zhú",
+      "english": "Mangosteen",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e29ba7e06c2ccf9",
+      "hanzi": "椰子",
+      "pinyin": "yē zi",
+      "english": "Coconut",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-09f00a522e023e1d",
+      "hanzi": "牛油果",
+      "pinyin": "niú yóu guǒ",
+      "english": "Avocado",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-64e861c0b886f036",
+      "hanzi": "石榴",
+      "pinyin": "shí liu",
+      "english": "Pomegranate",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-41ecfe1ee941b2cc",
+      "hanzi": "柿子",
+      "pinyin": "shì zi",
+      "english": "Persimmon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8363de2c30ed4bdb",
+      "hanzi": "枣",
+      "pinyin": "zǎo",
+      "english": "Jujube; Chinese date",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

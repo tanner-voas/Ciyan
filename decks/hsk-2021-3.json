@@ -1,0 +1,1955 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "HSK 3.0 (2021): selected level 3",
+  "description": "160 useful entries at level 3 of GF 0025–2021. Selective, not the complete syllabus. Level membership is checked against the reference list.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-47cc8021ca224d8d",
+      "hanzi": "被",
+      "pinyin": "bèi",
+      "english": "Passive construction marker",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-88aa006eb3d80a05",
+      "hanzi": "就是",
+      "pinyin": "jiù shì",
+      "english": "Precisely; exactly; simply; just",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c9e9a062f5d588f3",
+      "hanzi": "需要",
+      "pinyin": "xū yào",
+      "english": "Need",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d2bb025a2e51c410",
+      "hanzi": "开始",
+      "pinyin": "kāi shǐ",
+      "english": "to begin; beginning; to start",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcf21a24c89f2c1e",
+      "hanzi": "所",
+      "pinyin": "suǒ",
+      "english": "Place; classifier for buildings; nominalizing particle",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-586af0c5092c7ad8",
+      "hanzi": "死",
+      "pinyin": "sǐ",
+      "english": "Die; dead",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-352df4d7086fcdb1",
+      "hanzi": "希望",
+      "pinyin": "xī wàng",
+      "english": "to hope; a hope; a wish",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9dea2d989fd76041",
+      "hanzi": "发生",
+      "pinyin": "fā shēng",
+      "english": "to happen; to occur; to take place; to break out",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2ed64c1d92371de1",
+      "hanzi": "为了",
+      "pinyin": "wèi le",
+      "english": "for; for the purpose of; in order to",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3fb2673f8e43a434",
+      "hanzi": "只是",
+      "pinyin": "zhǐ shì",
+      "english": "merely; only; just; nothing but; simply; but; however",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33650a369521ec29",
+      "hanzi": "世界",
+      "pinyin": "shì jiè",
+      "english": "world",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-461d2dabe42580d5",
+      "hanzi": "情况",
+      "pinyin": "qíng kuàng",
+      "english": "circumstances; state of affairs; situation",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7595b4b87e468f45",
+      "hanzi": "比赛",
+      "pinyin": "bǐ sài",
+      "english": "Competition; match",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7c9691192f1b7340",
+      "hanzi": "继续",
+      "pinyin": "jì xù",
+      "english": "to continue; to proceed with; to go on with",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-082c4ae74277798e",
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "english": "Heart; mind",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a3b445efc48f2835",
+      "hanzi": "已",
+      "pinyin": "yǐ",
+      "english": "Already (often written)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-253aaff19a394621",
+      "hanzi": "关系",
+      "pinyin": "guān xi",
+      "english": "Relationship; connection",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2126ce9c100bff0",
+      "hanzi": "内",
+      "pinyin": "nèi",
+      "english": "inside; inner; internal",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a2fdeab4826b7625",
+      "hanzi": "总",
+      "pinyin": "zǒng",
+      "english": "Always; total; overall",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d8b82d5765fa2fb4",
+      "hanzi": "每",
+      "pinyin": "měi",
+      "english": "each; every",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f44b862142d99d49",
+      "hanzi": "一切",
+      "pinyin": "yī qiè",
+      "english": "everything; every; all",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-708712e581234a94",
+      "hanzi": "由",
+      "pinyin": "yóu",
+      "english": "From; by; because of",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e798a2a5d0561b4",
+      "hanzi": "任何",
+      "pinyin": "rèn hé",
+      "english": "any; whatever; whichever",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f4aafaba3be7ad87",
+      "hanzi": "决定",
+      "pinyin": "jué dìng",
+      "english": "to decide (to do something); to resolve; decision",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ba8bd7c8c9747b95",
+      "hanzi": "只有",
+      "pinyin": "zhǐ yǒu",
+      "english": "Only; only if (paired with 才)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f4e084b26fd95ae4",
+      "hanzi": "如何",
+      "pinyin": "rú hé",
+      "english": "how; what way; what",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9bef45c39d8fb02",
+      "hanzi": "受",
+      "pinyin": "shòu",
+      "english": "to receive; to accept; to suffer",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-22c95798a9323bb5",
+      "hanzi": "使",
+      "pinyin": "shǐ",
+      "english": "to make; to cause; to enable",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8293a25840ecee05",
+      "hanzi": "其实",
+      "pinyin": "qí shí",
+      "english": "actually; in fact; really",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0002e2d87fe9c9ab",
+      "hanzi": "当然",
+      "pinyin": "dāng rán",
+      "english": "only natural; as it should be; certainly",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1ecd10d4a775e7b9",
+      "hanzi": "部",
+      "pinyin": "bù",
+      "english": "Department; part; classifier for films or machines",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4da199fae933d4fa",
+      "hanzi": "消息",
+      "pinyin": "xiāo xi",
+      "english": "Message; news",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a959cfbf97c5455e",
+      "hanzi": "表现",
+      "pinyin": "biǎo xiàn",
+      "english": "Show; performance; behavior",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5516eb8280b50ab4",
+      "hanzi": "解决",
+      "pinyin": "jiě jué",
+      "english": "to solve; to resolve; to settle (a problem); to eliminate; to wipe out (an enemy, bandits etc)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-053461ce86d26572",
+      "hanzi": "成功",
+      "pinyin": "chéng gōng",
+      "english": "Succeed; success; successful",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c7b24e7997e96eaa",
+      "hanzi": "结束",
+      "pinyin": "jié shù",
+      "english": "termination; to finish; to end",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5618dc0903030d38",
+      "hanzi": "者",
+      "pinyin": "zhě",
+      "english": "Person who...; -er (suffix)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cd69d24f7b529097",
+      "hanzi": "调查",
+      "pinyin": "diào chá",
+      "english": "investigation; inquiry; to investigate",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-91697a026c35d9c0",
+      "hanzi": "方式",
+      "pinyin": "fāng shì",
+      "english": "way; manner; style; mode; pattern",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dcdd3b5c450b3787",
+      "hanzi": "美元",
+      "pinyin": "měi yuán",
+      "english": "American dollar; US dollar",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e99a6717b6917534",
+      "hanzi": "处理",
+      "pinyin": "chǔ lǐ",
+      "english": "to handle; to deal with; to punish; to treat sth by a special process; to process",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5c5374dd958bcb79",
+      "hanzi": "能力",
+      "pinyin": "néng lì",
+      "english": "capability; ability",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f810a7901cf0422",
+      "hanzi": "保护",
+      "pinyin": "bǎo hù",
+      "english": "Belay; protect",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d93373f81363e3cc",
+      "hanzi": "支持",
+      "pinyin": "zhī chí",
+      "english": "to be in favor of; to support; to back",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ffef8f3113a3a11",
+      "hanzi": "注意",
+      "pinyin": "zhù yì",
+      "english": "to take note of; to pay attention to",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-84cbd30181dc14f7",
+      "hanzi": "活",
+      "pinyin": "huó",
+      "english": "to live; alive; living",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a23c93546acced8c",
+      "hanzi": "拍",
+      "pinyin": "pāi",
+      "english": "to pat; to clap; to slap",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ce8da94b6fd2872d",
+      "hanzi": "整个",
+      "pinyin": "zhěng gè",
+      "english": "whole; entire; total",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-daaabc55e143c624",
+      "hanzi": "极了",
+      "pinyin": "jí le",
+      "english": "extremely; exceedingly",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fe1970e6a50a0440",
+      "hanzi": "保证",
+      "pinyin": "bǎo zhèng",
+      "english": "guarantee; to guarantee; to ensure",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aaa72224040c7491",
+      "hanzi": "根本",
+      "pinyin": "gēn běn",
+      "english": "fundamental; basic; root",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ed84a1665f79b6ca",
+      "hanzi": "城市",
+      "pinyin": "chéng shì",
+      "english": "City",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-847c5f681ce955a0",
+      "hanzi": "游戏",
+      "pinyin": "yóu xì",
+      "english": "game; to play",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-937f63a4fb51ec9e",
+      "hanzi": "目前",
+      "pinyin": "mù qián",
+      "english": "at the present time; currently",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fb8791a7645ec8e3",
+      "hanzi": "比较",
+      "pinyin": "bǐ jiào",
+      "english": "to compare; to contrast; comparatively",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4a558371f938b01d",
+      "hanzi": "存在",
+      "pinyin": "cún zài",
+      "english": "to exist; to be; existence",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7bebbcc443f83248",
+      "hanzi": "终于",
+      "pinyin": "zhōng yú",
+      "english": "at last; in the end; finally",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-edadda6b37008e3b",
+      "hanzi": "现场",
+      "pinyin": "xiàn chǎng",
+      "english": "the scene (of a crime, accident etc); (on) the spot; (at) the site",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dd30687a430070b3",
+      "hanzi": "下来",
+      "pinyin": "xià lái",
+      "english": "Come down",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-15dec507959ec950",
+      "hanzi": "个人",
+      "pinyin": "gè rén",
+      "english": "Individual; personal",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d325d8445bd7783",
+      "hanzi": "总是",
+      "pinyin": "zǒng shì",
+      "english": "always",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-322272e54a20981c",
+      "hanzi": "除了",
+      "pinyin": "chú le",
+      "english": "besides; apart from (... also...); in addition to",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0c806d3c7818c5a1",
+      "hanzi": "指",
+      "pinyin": "zhǐ",
+      "english": "Point to; refer to; finger",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9db6b1dec8d8e815",
+      "hanzi": "代表",
+      "pinyin": "dài biǎo",
+      "english": "representative; delegate; to represent",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9fdbd574134bba19",
+      "hanzi": "保持",
+      "pinyin": "bǎo chí",
+      "english": "to keep; to maintain; to hold",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f8f93b58e2c33d3",
+      "hanzi": "突然",
+      "pinyin": "tū rán",
+      "english": "sudden; abrupt; unexpected",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0111930eba211e33",
+      "hanzi": "里面",
+      "pinyin": "lǐ miàn",
+      "english": "Inside",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fac2a67ad87807c4",
+      "hanzi": "确定",
+      "pinyin": "què dìng",
+      "english": "Determine; confirm; certain",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-57060c88a36bf3d0",
+      "hanzi": "目标",
+      "pinyin": "mù biāo",
+      "english": "target; goal; objective",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5253040db8643c85",
+      "hanzi": "任务",
+      "pinyin": "rèn wu",
+      "english": "mission; assignment; task; duty; role",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2d945fb37d9aeb26",
+      "hanzi": "容易",
+      "pinyin": "róng yì",
+      "english": "easy; straightforward; likely; liable to; apt to",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-54af4ede4ca009cc",
+      "hanzi": "合作",
+      "pinyin": "hé zuò",
+      "english": "to cooperate; to collaborate; to work together",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a07bd3196be556cf",
+      "hanzi": "因此",
+      "pinyin": "yīn cǐ",
+      "english": "thus; consequently; as a result",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-06fea8eab68db0ad",
+      "hanzi": "人员",
+      "pinyin": "rén yuán",
+      "english": "staff; crew; personnel",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eea50f4175bf5349",
+      "hanzi": "按",
+      "pinyin": "àn",
+      "english": "to press; to push; to leave aside or shelve",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1e8ddd10bafe5127",
+      "hanzi": "报告",
+      "pinyin": "bào gào",
+      "english": "to inform; to report; to make known",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-45bc77bc1c58d044",
+      "hanzi": "生命",
+      "pinyin": "shēng mìng",
+      "english": "life (as the characteristic of living beings); living being; creature",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9b73fe330c676e25",
+      "hanzi": "明显",
+      "pinyin": "míng xiǎn",
+      "english": "clear; distinct; obvious",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ad95a9daf4e020fa",
+      "hanzi": "伤",
+      "pinyin": "shāng",
+      "english": "to injure; injury; wound",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b6fbb6f6352be7a",
+      "hanzi": "曾经",
+      "pinyin": "céng jīng",
+      "english": "Once; at some time in the past",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d90e73b89041c62",
+      "hanzi": "另外",
+      "pinyin": "lìng wài",
+      "english": "additional; in addition; besides",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-01805727314e4def",
+      "hanzi": "简单",
+      "pinyin": "jiǎn dān",
+      "english": "simple; not complicated",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d9e29a5341ef7319",
+      "hanzi": "到底",
+      "pinyin": "dào dǐ",
+      "english": "After all; in the end; on earth (in emphatic questions)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8ff9256ba5788cea",
+      "hanzi": "绝对",
+      "pinyin": "jué duì",
+      "english": "absolute; unconditional",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b0acee7c4f23a3a",
+      "hanzi": "坚持",
+      "pinyin": "jiān chí",
+      "english": "to persevere with; to persist in; to insist on",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1a7b61344813fef1",
+      "hanzi": "派",
+      "pinyin": "pài",
+      "english": "Send; assign; group; school of thought",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e17ff9efa32e2234",
+      "hanzi": "好好",
+      "pinyin": "hǎo hǎo",
+      "english": "Properly; carefully; well",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4aa1a3c6743f7d8e",
+      "hanzi": "技术",
+      "pinyin": "jì shù",
+      "english": "Technique; skill",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-56c255e1985892c0",
+      "hanzi": "设计",
+      "pinyin": "shè jì",
+      "english": "to design; to plan; design; plan",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-43c09e9166602d39",
+      "hanzi": "利用",
+      "pinyin": "lì yòng",
+      "english": "to exploit; to make use of; to use",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d72ff0b58a399c5c",
+      "hanzi": "性",
+      "pinyin": "xìng",
+      "english": "Nature; property; sex; -ity (suffix)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-abee4974732afaf5",
+      "hanzi": "建议",
+      "pinyin": "jiàn yì",
+      "english": "to propose; to suggest; to recommend; proposal; suggestion; recommendation",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bff00c186541a618",
+      "hanzi": "各位",
+      "pinyin": "gè wèi",
+      "english": "everybody; all (guests, colleagues etc); all of you",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67d04ffaf62e23cf",
+      "hanzi": "抓",
+      "pinyin": "zhuā",
+      "english": "Grab; grip",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bf728630db0bf67c",
+      "hanzi": "光",
+      "pinyin": "guāng",
+      "english": "light; ray; bright; shiny; only; merely",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c2181e0ce0d178d7",
+      "hanzi": "意义",
+      "pinyin": "yì yì",
+      "english": "sense; meaning; significance",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8913b8b6e1ef81dc",
+      "hanzi": "并且",
+      "pinyin": "bìng qiě",
+      "english": "and; besides; moreover",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3c1e31a193cda379",
+      "hanzi": "金",
+      "pinyin": "jīn",
+      "english": "Gold; metal",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e8643de5960e57cd",
+      "hanzi": "社会",
+      "pinyin": "shè huì",
+      "english": "society",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a8091eb7937e6ba",
+      "hanzi": "下去",
+      "pinyin": "xià qù",
+      "english": "to go down; to descend; to go on",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90b793146f059076",
+      "hanzi": "证明",
+      "pinyin": "zhèng míng",
+      "english": "Prove; proof; certificate",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5df8707c1e58ee5d",
+      "hanzi": "记者",
+      "pinyin": "jì zhě",
+      "english": "reporter; journalist",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-685db88e869d8020",
+      "hanzi": "确实",
+      "pinyin": "què shí",
+      "english": "indeed; really; reliable",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1f4d721b63588760",
+      "hanzi": "发展",
+      "pinyin": "fā zhǎn",
+      "english": "development; growth; to develop",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ef93a55e5a12905",
+      "hanzi": "至少",
+      "pinyin": "zhì shǎo",
+      "english": "at least; (to say the) least",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fb0d48c882b8ac69",
+      "hanzi": "负责",
+      "pinyin": "fù zé",
+      "english": "to be in charge of; to take responsibility for; to be to blame",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-01dd96a3885b84a2",
+      "hanzi": "首先",
+      "pinyin": "shǒu xiān",
+      "english": "first (of all); in the first place",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-919ddbbd91c0c5c9",
+      "hanzi": "交易",
+      "pinyin": "jiāo yì",
+      "english": "to deal; to trade; to transact; transaction; deal",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5cb53e3de202ecbb",
+      "hanzi": "理解",
+      "pinyin": "lǐ jiě",
+      "english": "to comprehend; to understand",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-40975ceed8df55bb",
+      "hanzi": "报道",
+      "pinyin": "bào dào",
+      "english": "to report (news); report",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-37042cdb90ebde28",
+      "hanzi": "父母",
+      "pinyin": "fù mǔ",
+      "english": "Parents",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76f47004cc1240c6",
+      "hanzi": "城",
+      "pinyin": "chéng",
+      "english": "city walls; city; town",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-16b7568de4799d09",
+      "hanzi": "力量",
+      "pinyin": "lì liang",
+      "english": "Strength; force",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ad924a1c328e13c",
+      "hanzi": "安排",
+      "pinyin": "ān pái",
+      "english": "to arrange; to plan; to set up",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5df21fed9331105b",
+      "hanzi": "敢",
+      "pinyin": "gǎn",
+      "english": "to dare; daring; (polite) may I venture",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c6e95f74f98ddac1",
+      "hanzi": "造成",
+      "pinyin": "zào chéng",
+      "english": "to bring about; to create; to cause",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f5300aad911ea3b8",
+      "hanzi": "某",
+      "pinyin": "mǒu",
+      "english": "some; a certain; sb or sth indefinite",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-030ba66ab280f68b",
+      "hanzi": "人生",
+      "pinyin": "rén shēng",
+      "english": "life (one's time on earth)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-63d30f1a037d0771",
+      "hanzi": "会议",
+      "pinyin": "huì yì",
+      "english": "meeting; conference",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-454a13a5b5ecdb49",
+      "hanzi": "幸福",
+      "pinyin": "xìng fú",
+      "english": "happiness; happy; blessed",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4f12408398369b19",
+      "hanzi": "自然",
+      "pinyin": "zì rán",
+      "english": "nature; natural; naturally",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3704ea84af43ddb",
+      "hanzi": "责任",
+      "pinyin": "zé rèn",
+      "english": "responsibility; blame; duty",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9411e29e6d44bb68",
+      "hanzi": "失去",
+      "pinyin": "shī qù",
+      "english": "to lose",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c6ebb240162851a6",
+      "hanzi": "赢",
+      "pinyin": "yíng",
+      "english": "to beat; to win; to profit",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-23cca6eff9b446f5",
+      "hanzi": "报",
+      "pinyin": "bào",
+      "english": "to announce; to inform; report",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0cfe1b3c1bb2914b",
+      "hanzi": "人民",
+      "pinyin": "rén mín",
+      "english": "the people",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c560201b331c5443",
+      "hanzi": "事件",
+      "pinyin": "shì jiàn",
+      "english": "event; happening; incident",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-56f90b8b5400fef5",
+      "hanzi": "面对",
+      "pinyin": "miàn duì",
+      "english": "to face; to confront",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-30fe3f304c987528",
+      "hanzi": "压力",
+      "pinyin": "yā lì",
+      "english": "pressure",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8de8fb6cc124775",
+      "hanzi": "由于",
+      "pinyin": "yóu yú",
+      "english": "due to; as a result of; thanks to",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ed7486a07a29fff1",
+      "hanzi": "结婚",
+      "pinyin": "jié hūn",
+      "english": "to marry; to get married",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-905819e2e3a059a0",
+      "hanzi": "同意",
+      "pinyin": "tóng yì",
+      "english": "to agree; to consent; to approve",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a29c0de140769391",
+      "hanzi": "训练",
+      "pinyin": "xùn liàn",
+      "english": "Training; train",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f128cdf1dae21223",
+      "hanzi": "部门",
+      "pinyin": "bù mén",
+      "english": "department; branch; section",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-15b18a0a2ad92165",
+      "hanzi": "过程",
+      "pinyin": "guò chéng",
+      "english": "course of events; process",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4bc81e480383760f",
+      "hanzi": "各",
+      "pinyin": "gè",
+      "english": "each; every",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f70b76a87b8c322f",
+      "hanzi": "选手",
+      "pinyin": "xuǎn shǒu",
+      "english": "athlete; contestant",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d7f3bed050a94a99",
+      "hanzi": "仍然",
+      "pinyin": "réng rán",
+      "english": "still; as before; yet",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4e1449e7d5e50593",
+      "hanzi": "显示",
+      "pinyin": "xiǎn shì",
+      "english": "to show; to illustrate; to display",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-541d9758ac8d8031",
+      "hanzi": "属于",
+      "pinyin": "shǔ yú",
+      "english": "to be classified as; to belong to; to be part of",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-322923f56dd8c9d2",
+      "hanzi": "值得",
+      "pinyin": "zhí de",
+      "english": "to be worth; to deserve",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d1414ba6890233e3",
+      "hanzi": "人类",
+      "pinyin": "rén lèi",
+      "english": "humanity; human race; mankind",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-714f7fe31634bbdd",
+      "hanzi": "经历",
+      "pinyin": "jīng lì",
+      "english": "experience; to experience; to go through",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4b6fc59c7de5ef01",
+      "hanzi": "仍",
+      "pinyin": "réng",
+      "english": "still; yet; to remain",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-313c224671ff5c9e",
+      "hanzi": "紧张",
+      "pinyin": "jǐn zhāng",
+      "english": "nervous; keyed up; intense",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8c8e27463551919c",
+      "hanzi": "仅",
+      "pinyin": "jǐn",
+      "english": "barely; only; merely",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-be0d338c85789389",
+      "hanzi": "事实",
+      "pinyin": "shì shí",
+      "english": "fact",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-69bd9b9670866a78",
+      "hanzi": "挂",
+      "pinyin": "guà",
+      "english": "Hang; hang up (the phone)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0c75d89282e0f00f",
+      "hanzi": "本来",
+      "pinyin": "běn lái",
+      "english": "original; originally; at first",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-25c2fd632ab205de",
+      "hanzi": "基本",
+      "pinyin": "jī běn",
+      "english": "basic; fundamental; main",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c3a73c5eecea42a3",
+      "hanzi": "专家",
+      "pinyin": "zhuān jiā",
+      "english": "expert; specialist",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fb249b9d7ac3469",
+      "hanzi": "类",
+      "pinyin": "lèi",
+      "english": "kind; type; class",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d659bfa6d8a4095d",
+      "hanzi": "跳",
+      "pinyin": "tiào",
+      "english": "to jump; to hop; to skip over",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4302da3d1fe8e554",
+      "hanzi": "久",
+      "pinyin": "jiǔ",
+      "english": "(long) time; (long) duration of time",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a46dac0a68062fb1",
+      "hanzi": "以来",
+      "pinyin": "yǐ lái",
+      "english": "since (a previous event)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ccc8f432673e974d",
+      "hanzi": "反应",
+      "pinyin": "fǎn yìng",
+      "english": "to react; to respond; reaction",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b5daa927681e863",
+      "hanzi": "地区",
+      "pinyin": "dì qū",
+      "english": "local; regional; district (not necessarily formal administrative unit)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eb137dee4c0aafcc",
+      "hanzi": "关注",
+      "pinyin": "guān zhù",
+      "english": "to pay attention to; to follow sth closely; to follow (on social media)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1596ad4e4e5c2c82",
+      "hanzi": "表演",
+      "pinyin": "biǎo yǎn",
+      "english": "Perform; performance",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-910a3de487b5956f",
+      "hanzi": "警察",
+      "pinyin": "jǐng chá",
+      "english": "police; police officer",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

@@ -51,8 +51,8 @@ export function normalizeGrammar(source,fallbackId=null) {
 }
 export function initialGrammar(){return STARTER_GRAMMAR.map(g=>normalizeGrammar({...g,source:'Starter Mandarin',createdAt:'2026-11-16T00:00:00.000Z'}));}
 export function linkedWords(grammar,cards) {
-  const text=plainSentence(grammar.markup);
-  return cards.filter(c=>text.includes(c.hanzi));
+  const terms=new Set(grammarTokens(grammar));
+  return cards.filter(c=>terms.has(c.hanzi));
 }
 export function grammarTags(grammar,cards) {
   return [...new Set(linkedWords(grammar,cards).flatMap(c=>c.tags||[]))].sort();
@@ -89,6 +89,12 @@ export function toneTargets(hanzi,pinyin) {
   const chars=[...String(hanzi)].filter(ch=>/\p{Script=Han}/u.test(ch));
   if(!chars.length)return [];
   const accented=String(pinyin||'').toLowerCase().normalize('NFC');
+  // Respect explicit syllable boundaries; never move an accent to another character.
+  const separated=accented.split(/[\s'’·-]+/).filter(Boolean);
+  if(separated.length===chars.length && separated.every(s=>/^[a-züāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]+[0-5]?$/.test(s))){
+    return separated.map(s=>/[0-5]$/.test(s)?Number(s.slice(-1))%5:Math.max(0,...[...s].map(accentTone)));
+  }
+  if(/[0-9]/.test(accented))return null; // Don't silently discard numeric tones.
   const letters=[...accented].filter(ch=>/[a-züāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]/u.test(ch));
   const raw=letters.join('');
   const norm=[...raw].map(ch=>{const i=marked.indexOf(ch);return i<0?ch:plain[i];}).join('');
@@ -102,6 +108,7 @@ export function toneTargets(hanzi,pinyin) {
     for(let end=pos+1;end<=Math.min(norm.length,pos+7);end++){
       const part=norm.slice(pos,end);
       if(!syllables.has(part))continue;
+      if(letters.slice(pos,end).filter(ch=>accentTone(ch)>0).length>1)continue;
       const rest=solve(end,num+1);if(!rest)continue;
       const partOriginal=letters.slice(pos,end);
       const tone=Math.max(0,...partOriginal.map(accentTone));
@@ -112,4 +119,11 @@ export function toneTargets(hanzi,pinyin) {
   };
   const solved=solve(0,0);
   return solved?.tones?.length===chars.length?solved.tones:null;
+}
+
+// Identical tiles are interchangeable: evaluate visible words, never tile identity.
+export function grammarMistakes(grammar,picks){
+  const tokens=grammarTokens(grammar);
+  const bank=Object.fromEntries([...tokens.map((word,i)=>['t'+i,word]),...grammar.distractors.map((d,i)=>['d'+i,d.word])]);
+  return tokens.flatMap((word,i)=>bank[picks[i]]===word?[]:[i]);
 }

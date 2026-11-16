@@ -1,0 +1,943 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Climbing: gym, movement & equipment",
+  "description": "Practical vocabulary for climbing: gym, movement & equipment.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-ae9049c6f5aff8a9",
+      "hanzi": "攀岩",
+      "pinyin": "pān yán",
+      "english": "Rock climbing",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5bc9595c8731403c",
+      "hanzi": "抱石",
+      "pinyin": "bào shí",
+      "english": "Bouldering",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f48e96d3715305eb",
+      "hanzi": "攀岩馆",
+      "pinyin": "pān yán guǎn",
+      "english": "Climbing gym",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5c117738a4b7957e",
+      "hanzi": "岩壁",
+      "pinyin": "yán bì",
+      "english": "Rock face; climbing wall",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-63a10a4fb3ee551b",
+      "hanzi": "岩点",
+      "pinyin": "yán diǎn",
+      "english": "Climbing hold",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c45f2fb78deb7785",
+      "hanzi": "手点",
+      "pinyin": "shǒu diǎn",
+      "english": "Handhold",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-92b90cb01c8b638c",
+      "hanzi": "脚点",
+      "pinyin": "jiǎo diǎn",
+      "english": "Foothold",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-223b24b821cc4fbf",
+      "hanzi": "线路",
+      "pinyin": "xiàn lù",
+      "english": "Climbing route; route",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6456101f76922dd6",
+      "hanzi": "定线",
+      "pinyin": "dìng xiàn",
+      "english": "Set climbing routes",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-63182b0e4da00546",
+      "hanzi": "定线员",
+      "pinyin": "dìng xiàn yuán",
+      "english": "Route setter",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-87b1bf8b511bb13c",
+      "hanzi": "难度",
+      "pinyin": "nán dù",
+      "english": "Difficulty",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d9d02e83d396eb7",
+      "hanzi": "级别",
+      "pinyin": "jí bié",
+      "english": "Grade; level",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5491701e1c3a8cfd",
+      "hanzi": "起点",
+      "pinyin": "qǐ diǎn",
+      "english": "Starting point",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-129b7f6241e038cc",
+      "hanzi": "终点",
+      "pinyin": "zhōng diǎn",
+      "english": "Finish; endpoint",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4068eec2dd1ecef7",
+      "hanzi": "完攀",
+      "pinyin": "wán pān",
+      "english": "Complete a climb",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-58a823852f8a9b10",
+      "hanzi": "尝试",
+      "pinyin": "cháng shì",
+      "english": "Attempt; try",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aa78cdcbea405e19",
+      "hanzi": "热身线",
+      "pinyin": "rè shēn xiàn",
+      "english": "Warm-up route",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-331af86e70575c37",
+      "hanzi": "攀岩鞋",
+      "pinyin": "pān yán xié",
+      "english": "Climbing shoes",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7fd724b4f4eda336",
+      "hanzi": "镁粉",
+      "pinyin": "měi fěn",
+      "english": "Climbing chalk (literally magnesium powder)",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6fdeb12132246f85",
+      "hanzi": "粉袋",
+      "pinyin": "fěn dài",
+      "english": "Chalk bag",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d0a1749898048e5e",
+      "hanzi": "刷子",
+      "pinyin": "shuā zi",
+      "english": "Brush",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-09bd39e5843a02e2",
+      "hanzi": "指力板",
+      "pinyin": "zhǐ lì bǎn",
+      "english": "Hangboard; fingerboard",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7183af6ddc85a890",
+      "hanzi": "抱石垫",
+      "pinyin": "bào shí diàn",
+      "english": "Bouldering crash pad",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-18d8ab054b71ebb3",
+      "hanzi": "安全带",
+      "pinyin": "ān quán dài",
+      "english": "Harness; safety belt",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-730da70298b5adff",
+      "hanzi": "头盔",
+      "pinyin": "tóu kuī",
+      "english": "Helmet",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3c3507a91fe2f7bf",
+      "hanzi": "动力绳",
+      "pinyin": "dòng lì shéng",
+      "english": "Dynamic climbing rope",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a5a36a1cc8d9f68c",
+      "hanzi": "保护器",
+      "pinyin": "bǎo hù qì",
+      "english": "Belay device",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7f511c8b22701483",
+      "hanzi": "快挂",
+      "pinyin": "kuài guà",
+      "english": "Quickdraw",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5a25d42483a34437",
+      "hanzi": "主锁",
+      "pinyin": "zhǔ suǒ",
+      "english": "Locking carabiner",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c5a18f0a1fbf9e75",
+      "hanzi": "挂片",
+      "pinyin": "guà piàn",
+      "english": "Bolt hanger",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0088fe9483e3d260",
+      "hanzi": "扁带",
+      "pinyin": "biǎn dài",
+      "english": "Webbing; sling",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6756763c9724ba61",
+      "hanzi": "八字结",
+      "pinyin": "bā zì jié",
+      "english": "Figure-eight knot",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f810a7901cf0422",
+      "hanzi": "保护",
+      "pinyin": "bǎo hù",
+      "english": "Belay; protect",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a5047cb907ee665c",
+      "hanzi": "保护员",
+      "pinyin": "bǎo hù yuán",
+      "english": "Belayer",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-92a5519c088d2ff0",
+      "hanzi": "顶绳",
+      "pinyin": "dǐng shéng",
+      "english": "Top rope; top-roping",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-62f6173a3347ec53",
+      "hanzi": "先锋攀登",
+      "pinyin": "xiān fēng pān dēng",
+      "english": "Lead climbing",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-00c161e4ee292b88",
+      "hanzi": "挂绳",
+      "pinyin": "guà shéng",
+      "english": "Clip the rope",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1612c541ce82640a",
+      "hanzi": "收绳",
+      "pinyin": "shōu shéng",
+      "english": "Take in rope",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f4150f92526135f0",
+      "hanzi": "放绳",
+      "pinyin": "fàng shéng",
+      "english": "Pay out rope; give slack",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2b1f270ff8f5e404",
+      "hanzi": "下降",
+      "pinyin": "xià jiàng",
+      "english": "Descend; descent",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aba25622e08fe488",
+      "hanzi": "坠落",
+      "pinyin": "zhuì luò",
+      "english": "Fall",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ae2b22c2b9a5aaac",
+      "hanzi": "脱落",
+      "pinyin": "tuō luò",
+      "english": "Come off; fall off",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33afc4103402a1f8",
+      "hanzi": "落地",
+      "pinyin": "luò dì",
+      "english": "Land; reach the ground",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b9bc4485fba1fb4",
+      "hanzi": "垫子",
+      "pinyin": "diàn zi",
+      "english": "Mat; pad",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-089f4b1be50d0dce",
+      "hanzi": "踩点",
+      "pinyin": "cǎi diǎn",
+      "english": "Place a foot on a hold",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8e28d1b0eece9325",
+      "hanzi": "换脚",
+      "pinyin": "huàn jiǎo",
+      "english": "Switch feet",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f13841ccf04a1d0d",
+      "hanzi": "换手",
+      "pinyin": "huàn shǒu",
+      "english": "Switch hands",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5e642bf7b0a3e69c",
+      "hanzi": "并手",
+      "pinyin": "bìng shǒu",
+      "english": "Match hands on a hold",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dae1c060d0ad0854",
+      "hanzi": "重心",
+      "pinyin": "zhòng xīn",
+      "english": "Center of gravity",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c782b991a221c2cd",
+      "hanzi": "发力",
+      "pinyin": "fā lì",
+      "english": "Apply force; generate power",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a7dca75c80a3745b",
+      "hanzi": "蹬",
+      "pinyin": "dēng",
+      "english": "Push with the legs; step forcefully",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f48ed2bf98a06eca",
+      "hanzi": "拉",
+      "pinyin": "lā",
+      "english": "Pull",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e92752bff47baf3",
+      "hanzi": "推",
+      "pinyin": "tuī",
+      "english": "Push",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67d04ffaf62e23cf",
+      "hanzi": "抓",
+      "pinyin": "zhuā",
+      "english": "Grab; grip",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d114d446dbcfc7fb",
+      "hanzi": "捏",
+      "pinyin": "niē",
+      "english": "Pinch",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3418bb61ac9c7a42",
+      "hanzi": "勾",
+      "pinyin": "gōu",
+      "english": "Hook",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ff9872a023e3a8aa",
+      "hanzi": "锁定",
+      "pinyin": "suǒ dìng",
+      "english": "Lock off; lock in place",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-780353e5a5b8f4a8",
+      "hanzi": "动态",
+      "pinyin": "dòng tài",
+      "english": "Dynamic movement; dynamic",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-be98c07b13ac0281",
+      "hanzi": "静态",
+      "pinyin": "jìng tài",
+      "english": "Static; controlled movement",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-482a1b570a2882b1",
+      "hanzi": "横移",
+      "pinyin": "héng yí",
+      "english": "Traverse; move sideways",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c7959e166ea5f775",
+      "hanzi": "仰角",
+      "pinyin": "yǎng jiǎo",
+      "english": "Overhanging angle (climbing context)",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4966afecd7ef2bf4",
+      "hanzi": "斜板",
+      "pinyin": "xié bǎn",
+      "english": "Slab; inclined wall",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fb6b9364901108b0",
+      "hanzi": "摩擦力",
+      "pinyin": "mó cā lì",
+      "english": "Friction",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-75a206a3e9d08a44",
+      "hanzi": "指力",
+      "pinyin": "zhǐ lì",
+      "english": "Finger strength",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4aa1a3c6743f7d8e",
+      "hanzi": "技术",
+      "pinyin": "jì shù",
+      "english": "Technique; skill",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-be37d84119d6b71f",
+      "hanzi": "动作",
+      "pinyin": "dòng zuò",
+      "english": "Movement; move",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-19f48756db897b74",
+      "hanzi": "节奏",
+      "pinyin": "jié zòu",
+      "english": "Rhythm; pacing",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0703d09573c26a2f",
+      "hanzi": "保护站",
+      "pinyin": "bǎo hù zhàn",
+      "english": "Belay anchor station",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-978e275133d14c1c",
+      "hanzi": "检查",
+      "pinyin": "jiǎn chá",
+      "english": "Check; inspect",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5cf5379d108113f4",
+      "hanzi": "系紧",
+      "pinyin": "jì jǐn",
+      "english": "Fasten tightly; tie securely",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fb82c376e9fbaa5b",
+      "hanzi": "松",
+      "pinyin": "sōng",
+      "english": "Loose; loosen",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29df79834accb04f",
+      "hanzi": "紧",
+      "pinyin": "jǐn",
+      "english": "Tight",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-890cf29801d2afcb",
+      "hanzi": "加油",
+      "pinyin": "jiā yóu",
+      "english": "Come on! Keep going!",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2aeaf82e4a273ed",
+      "hanzi": "稳住",
+      "pinyin": "wěn zhù",
+      "english": "Stay steady; hold it",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dd30687a430070b3",
+      "hanzi": "下来",
+      "pinyin": "xià lái",
+      "english": "Come down",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-adf092bb4f10af68",
+      "hanzi": "休息一下",
+      "pinyin": "xiū xi yī xià",
+      "english": "Rest for a moment",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

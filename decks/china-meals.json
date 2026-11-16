@@ -1,0 +1,782 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "China: meals & street food",
+  "description": "Practical vocabulary for china: meals & street food.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-e233a13a49e51106",
+      "hanzi": "米饭",
+      "pinyin": "mǐ fàn",
+      "english": "Cooked rice",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b5480e007c777a7",
+      "hanzi": "面条",
+      "pinyin": "miàn tiáo",
+      "english": "Noodles",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a3fb9bc3abb90f1f",
+      "hanzi": "炒饭",
+      "pinyin": "chǎo fàn",
+      "english": "Fried rice",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e598e83a1b6cfae",
+      "hanzi": "炒面",
+      "pinyin": "chǎo miàn",
+      "english": "Stir-fried noodles",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b91ff716555c2529",
+      "hanzi": "汤面",
+      "pinyin": "tāng miàn",
+      "english": "Noodles in soup",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-30ada3076b7477d7",
+      "hanzi": "拌面",
+      "pinyin": "bàn miàn",
+      "english": "Noodles mixed with sauce",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c4647dac196c870e",
+      "hanzi": "拉面",
+      "pinyin": "lā miàn",
+      "english": "Hand-pulled noodles",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-15a71f8f61b33c4c",
+      "hanzi": "刀削面",
+      "pinyin": "dāo xiāo miàn",
+      "english": "Knife-cut noodles",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4a9fd6fedd322c3b",
+      "hanzi": "米粉",
+      "pinyin": "mǐ fěn",
+      "english": "Rice noodles; rice flour",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-261c51c9f1cd2baf",
+      "hanzi": "粉丝",
+      "pinyin": "fěn sī",
+      "english": "Glass noodles; also fans of a person",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bab141eca02874cb",
+      "hanzi": "河粉",
+      "pinyin": "hé fěn",
+      "english": "Wide flat rice noodles",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3f06acf98756021",
+      "hanzi": "凉皮",
+      "pinyin": "liáng pí",
+      "english": "Cold wheat or rice starch noodles",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1c65a345cedb9907",
+      "hanzi": "馄饨",
+      "pinyin": "hún tun",
+      "english": "Wontons",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f00ffdf5cd1b6828",
+      "hanzi": "饺子",
+      "pinyin": "jiǎo zi",
+      "english": "Dumplings",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-00d1b954b13b4ce9",
+      "hanzi": "水饺",
+      "pinyin": "shuǐ jiǎo",
+      "english": "Boiled dumplings",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7dc1714658668752",
+      "hanzi": "蒸饺",
+      "pinyin": "zhēng jiǎo",
+      "english": "Steamed dumplings",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-510dd67ce7ceedef",
+      "hanzi": "锅贴",
+      "pinyin": "guō tiē",
+      "english": "Pan-fried dumplings",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-787d89bb2ba8a2c6",
+      "hanzi": "包子",
+      "pinyin": "bāo zi",
+      "english": "Filled steamed buns",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-04e9839104379d3b",
+      "hanzi": "馒头",
+      "pinyin": "mán tou",
+      "english": "Plain steamed buns",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cba7c9df1efc2f15",
+      "hanzi": "小笼包",
+      "pinyin": "xiǎo lóng bāo",
+      "english": "Small soup-filled steamed buns",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0fd5c3f50831ed2f",
+      "hanzi": "生煎包",
+      "pinyin": "shēng jiān bāo",
+      "english": "Pan-fried soup buns",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b4f50bdb2cc22463",
+      "hanzi": "烧卖",
+      "pinyin": "shāo mài",
+      "english": "Open-topped steamed dumplings",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1c21b306263d2cfd",
+      "hanzi": "油条",
+      "pinyin": "yóu tiáo",
+      "english": "Fried dough sticks",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9c61c36d4df7f909",
+      "hanzi": "豆浆",
+      "pinyin": "dòu jiāng",
+      "english": "Soy milk",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0e2b05499caabb9",
+      "hanzi": "豆腐脑",
+      "pinyin": "dòu fu nǎo",
+      "english": "Soft tofu pudding",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-db52a7d37b7ebb35",
+      "hanzi": "煎饼",
+      "pinyin": "jiān bǐng",
+      "english": "Chinese griddle pancake or crepe",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f1b2de748a7d89f0",
+      "hanzi": "葱油饼",
+      "pinyin": "cōng yóu bǐng",
+      "english": "Scallion pancake",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e15aaa529276b2ad",
+      "hanzi": "手抓饼",
+      "pinyin": "shǒu zhuā bǐng",
+      "english": "Flaky griddle flatbread",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d27156330f6559c4",
+      "hanzi": "肉夹馍",
+      "pinyin": "ròu jiā mó",
+      "english": "Meat-filled flatbread",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f89b12a0cc0e4bf",
+      "hanzi": "粥",
+      "pinyin": "zhōu",
+      "english": "Congee; rice porridge",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2b852710c64b77c3",
+      "hanzi": "八宝粥",
+      "pinyin": "bā bǎo zhōu",
+      "english": "Mixed-grain sweet porridge",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d50a0dad88f865b0",
+      "hanzi": "茶叶蛋",
+      "pinyin": "chá yè dàn",
+      "english": "Tea egg",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-87ba8cbb50fabc4e",
+      "hanzi": "粽子",
+      "pinyin": "zòng zi",
+      "english": "Leaf-wrapped sticky rice dumpling",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-80ab3590f6610e7d",
+      "hanzi": "汤圆",
+      "pinyin": "tāng yuán",
+      "english": "Glutinous rice balls, often filled",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dae9a3d28e2962dc",
+      "hanzi": "月饼",
+      "pinyin": "yuè bǐng",
+      "english": "Mooncake",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f751e1a8bbd4704",
+      "hanzi": "麻辣烫",
+      "pinyin": "má là tàng",
+      "english": "Ingredients cooked in a spicy broth",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-44e0fa5ae2aeba9c",
+      "hanzi": "麻辣香锅",
+      "pinyin": "má là xiāng guō",
+      "english": "Spicy dry-pot stir-fry",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8d56ca5e36ec8d4f",
+      "hanzi": "火锅",
+      "pinyin": "huǒ guō",
+      "english": "Hot pot",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3489763e620ac7ff",
+      "hanzi": "冒菜",
+      "pinyin": "mào cài",
+      "english": "Sichuan ingredients cooked in seasoned broth",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-909ea2ab741648e4",
+      "hanzi": "烤串",
+      "pinyin": "kǎo chuàn",
+      "english": "Grilled skewers",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5691a276aac242e7",
+      "hanzi": "烧烤",
+      "pinyin": "shāo kǎo",
+      "english": "Barbecue; grilled food",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9e164898da0e7705",
+      "hanzi": "烤鸭",
+      "pinyin": "kǎo yā",
+      "english": "Roast duck",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-292a5cf58dc0cf3f",
+      "hanzi": "白切鸡",
+      "pinyin": "bái qiē jī",
+      "english": "Poached chicken served sliced",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-583474f5b6ac473e",
+      "hanzi": "红烧肉",
+      "pinyin": "hóng shāo ròu",
+      "english": "Red-braised pork",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f38ec9030ed9fc5e",
+      "hanzi": "回锅肉",
+      "pinyin": "huí guō ròu",
+      "english": "Twice-cooked pork",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9d1f81d92d7bcdb5",
+      "hanzi": "宫保鸡丁",
+      "pinyin": "gōng bǎo jī dīng",
+      "english": "Kung pao chicken",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c636ca5551ddeac6",
+      "hanzi": "鱼香肉丝",
+      "pinyin": "yú xiāng ròu sī",
+      "english": "Shredded pork in Sichuan fish-fragrant sauce",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-46c61010c72129fa",
+      "hanzi": "麻婆豆腐",
+      "pinyin": "má pó dòu fu",
+      "english": "Mapo tofu",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e87830279f678826",
+      "hanzi": "番茄炒蛋",
+      "pinyin": "fān qié chǎo dàn",
+      "english": "Stir-fried tomato and egg",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f13dfb1edf4f6d3d",
+      "hanzi": "酸菜鱼",
+      "pinyin": "suān cài yú",
+      "english": "Fish with pickled mustard greens",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e68fcfeb0a76c950",
+      "hanzi": "水煮鱼",
+      "pinyin": "shuǐ zhǔ yú",
+      "english": "Sichuan fish in a chili-oil broth",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8272d85600655917",
+      "hanzi": "糖醋里脊",
+      "pinyin": "táng cù lǐ jǐ",
+      "english": "Sweet-and-sour pork tenderloin",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af80dea44df26963",
+      "hanzi": "炸酱面",
+      "pinyin": "zhá jiàng miàn",
+      "english": "Noodles with fried bean sauce",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9a97568a7a98b3e",
+      "hanzi": "牛肉面",
+      "pinyin": "niú ròu miàn",
+      "english": "Beef noodle soup",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-748c76a3e05c9e1e",
+      "hanzi": "螺蛳粉",
+      "pinyin": "luó sī fěn",
+      "english": "Liuzhou rice noodles in river-snail broth",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cd6dd7eb2369aa42",
+      "hanzi": "肠粉",
+      "pinyin": "cháng fěn",
+      "english": "Steamed rice noodle rolls",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a1b346847cc1d495",
+      "hanzi": "叉烧",
+      "pinyin": "chā shāo",
+      "english": "Cantonese barbecued pork",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-49cba8c0904dd147",
+      "hanzi": "腊肉",
+      "pinyin": "là ròu",
+      "english": "Cured pork",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e625d35c81efbeb",
+      "hanzi": "臭豆腐",
+      "pinyin": "chòu dòu fu",
+      "english": "Fermented stinky tofu",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fd254848320a5b2e",
+      "hanzi": "卤味",
+      "pinyin": "lǔ wèi",
+      "english": "Foods braised in seasoned master stock",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9658fe9662be7ec6",
+      "hanzi": "盖浇饭",
+      "pinyin": "gài jiāo fàn",
+      "english": "Rice topped with a cooked dish",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-12242da73c746cbd",
+      "hanzi": "盒饭",
+      "pinyin": "hé fàn",
+      "english": "Boxed meal",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5427af184bbae7fb",
+      "hanzi": "便当",
+      "pinyin": "biàn dāng",
+      "english": "Packed lunch; bento",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-900c4109781b447f",
+      "hanzi": "自助餐",
+      "pinyin": "zì zhù cān",
+      "english": "Buffet",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

@@ -1,4 +1,4 @@
-# Cíyán (词言) — Mandarin SRS PWA, v0.2
+# Cíyán (词言) — Mandarin SRS PWA, v0.3
 
 A dependency-free, offline-first Mandarin flashcard PWA for iPhone. Two independent card types: **vocabulary words** and **grammar sentence puzzles**. Review records, FSRS scheduling, settings, vocabulary and grammar all live in the device's IndexedDB database. You export an independent JSON backup to the iPhone **Files** app after every study session.
 
@@ -14,7 +14,17 @@ python3 package.py
 
 This regenerates **`dist/ciyan/`**, including `index.html` at its root. The entire `dist/` directory is Git-ignored. You can upload the folder to **Cloudflare Pages → Direct Upload**, or zip the contents of `dist/ciyan/` (not the `ciyan` parent directory) and upload that ZIP. No Node modules, bundler or Python packages are required for production.
 
-**Existing v0.1 users:** export a full progress backup from v0.1 **before** deploying v0.2. Deploy v0.2 to the **same Cloudflare Pages origin/URL** so its local IndexedDB is accessible. It migrates existing words, schedules, review history and settings, converts every existing word example into an independent grammar sentence, and adds the new starter grammar vocabulary without overwriting any existing words. Reopen the site online and refresh once if the old service-worker-cached version is initially still visible. Check that v0.2 appears in Settings before studying. Avoid changing deployment URL or clearing website data until after exporting a v0.2 backup.
+**Upgrading:** Export a full backup before deployment. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. Version v0.3 should appear in Settings. The new worker waits for old windows to close so a release does not swap scripts mid-session. Existing v0.1 migration remains supported; v0.2 data uses the same schema and database name. Optional decks are never added automatically.
+
+## New in v0.3
+
+There are **1,580 unique optional vocabulary entries**, **24 grammar cards**, and **17 individual decks** plus an all-in-one import. Topics include Chinese meals, ingredients, ordering, global food, activities/sports, muscles/body/recovery, climbing, provinces/regions, cities, countries and everyday life. Four selected HSK decks contain 180 / 180 / 160 / 140 entries respectively, verified against the **2021 HSK 3.0 grading standard**, not the later exam syllabus.
+
+Use **Home → Explore optional decks** or the same button in Settings. You can load any topic directly, download its JSON, or use the separate decks ZIP. Imports preserve existing words and progress. On Words, set tag filters and use **Study matching words** for focused new/due reviews. Large word collections initially show 80 rows, with a Show More button.
+
+Audit fixes: identical grammar tiles now grade by visible text; grammar links match complete tokens; imported distractors are HTML-escaped; explicit pinyin syllable boundaries and numeric tones are honored; invalid numeric memory states are rejected on restore; stale tabs cannot overwrite newer revisions; offline caches are scoped to this app. See `AUDIT_v0.3.md` for evidence and limitations, and `decks/README.md` for deck counts, conventions and attribution.
+
+Deck source content and licenses are checked in under `content/`. To edit/rebuild deck content, run `python3 build_decks.py`, then `python3 package.py`. Normal deployment needs only `package.py`; generated decks are already checked in.
 
 ## Install on iPhone
 
@@ -23,7 +33,7 @@ This regenerates **`dist/ciyan/`**, including `index.html` at its root. The enti
 3. Tap **Share → Add to Home Screen → Open as Web App → Add**.
 4. Launch Cíyán from its Home Screen icon. After online installation and caching, it works offline.
 
-## What's new in v0.2
+## Core features (introduced in v0.2)
 
 - **Words** contain only Hanzi, pinyin, English, tags and metadata. Grammar sentences live separately.
 - **Grammar** cards contain Chinese token markup, pinyin, English, and optional indexed distractors. Linked word tags are calculated automatically from words that occur in the sentence. Tapping a word shows all matching grammar sentences sorted by combined score.

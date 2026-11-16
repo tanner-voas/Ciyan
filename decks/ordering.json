@@ -1,0 +1,886 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Ordering, flavors & cooking",
+  "description": "Practical vocabulary for ordering, flavors & cooking.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-4ce4cafdd0561280",
+      "hanzi": "菜单",
+      "pinyin": "cài dān",
+      "english": "Menu",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-111bb0cd52189d59",
+      "hanzi": "点菜",
+      "pinyin": "diǎn cài",
+      "english": "Order dishes",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-811fe0719f385336",
+      "hanzi": "买单",
+      "pinyin": "mǎi dān",
+      "english": "Pay the bill",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-374775c3c812f406",
+      "hanzi": "结账",
+      "pinyin": "jié zhàng",
+      "english": "Settle the bill",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a9a49c817394f8e9",
+      "hanzi": "打包",
+      "pinyin": "dǎ bāo",
+      "english": "Pack to take away",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f42db5493d75fdb3",
+      "hanzi": "外卖",
+      "pinyin": "wài mài",
+      "english": "Food delivery; takeaway",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2016927e720e3ff5",
+      "hanzi": "堂食",
+      "pinyin": "táng shí",
+      "english": "Dine in",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fa3ab12d8b2cebe9",
+      "hanzi": "餐具",
+      "pinyin": "cān jù",
+      "english": "Tableware",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-399893f69b9b91c9",
+      "hanzi": "筷子",
+      "pinyin": "kuài zi",
+      "english": "Chopsticks",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-72407ec665b596b8",
+      "hanzi": "勺子",
+      "pinyin": "sháo zi",
+      "english": "Spoon",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c2d259d7c66746ff",
+      "hanzi": "叉子",
+      "pinyin": "chā zi",
+      "english": "Fork",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7bff9ed8550c861",
+      "hanzi": "刀",
+      "pinyin": "dāo",
+      "english": "Knife",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-41bb76350c7ec2d8",
+      "hanzi": "碗",
+      "pinyin": "wǎn",
+      "english": "Bowl",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f13de7aaabf88374",
+      "hanzi": "盘子",
+      "pinyin": "pán zi",
+      "english": "Plate",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-95f9e8e79208082d",
+      "hanzi": "杯子",
+      "pinyin": "bēi zi",
+      "english": "Cup; glass",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6f11ed20eb709140",
+      "hanzi": "吸管",
+      "pinyin": "xī guǎn",
+      "english": "Drinking straw",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1b07c1415d206fd4",
+      "hanzi": "纸巾",
+      "pinyin": "zhǐ jīn",
+      "english": "Tissue; napkin",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0066134b36c48ded",
+      "hanzi": "份",
+      "pinyin": "fèn",
+      "english": "Portion; measure word for servings",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0327c611964cd050",
+      "hanzi": "瓶",
+      "pinyin": "píng",
+      "english": "Bottle; measure word for bottles",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d339b9296386947",
+      "hanzi": "辣",
+      "pinyin": "là",
+      "english": "Spicy; hot",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2461475506683975",
+      "hanzi": "麻",
+      "pinyin": "má",
+      "english": "Numbing; tingling",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-10fe8c1b5c227472",
+      "hanzi": "甜",
+      "pinyin": "tián",
+      "english": "Sweet",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9f8c9685ea0178b6",
+      "hanzi": "咸",
+      "pinyin": "xián",
+      "english": "Salty",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-859ba3e78006453c",
+      "hanzi": "酸",
+      "pinyin": "suān",
+      "english": "Sour",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0e63c34d213f6f60",
+      "hanzi": "苦",
+      "pinyin": "kǔ",
+      "english": "Bitter",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-acefcc8eba9c833e",
+      "hanzi": "清淡",
+      "pinyin": "qīng dàn",
+      "english": "Lightly seasoned",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9042ade1d569e24",
+      "hanzi": "油腻",
+      "pinyin": "yóu nì",
+      "english": "Greasy; oily",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-773d6bfc831da6fb",
+      "hanzi": "新鲜",
+      "pinyin": "xīn xiān",
+      "english": "Fresh",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c5921e8441bcf405",
+      "hanzi": "生",
+      "pinyin": "shēng",
+      "english": "Raw; uncooked",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-69ea969866d15c55",
+      "hanzi": "熟",
+      "pinyin": "shú",
+      "english": "Cooked; ripe",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3780a2cf226dc518",
+      "hanzi": "脆",
+      "pinyin": "cuì",
+      "english": "Crisp; crunchy",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-960ee891fbcd2ad5",
+      "hanzi": "软",
+      "pinyin": "ruǎn",
+      "english": "Soft",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-459c995ae50ffca2",
+      "hanzi": "嫩",
+      "pinyin": "nèn",
+      "english": "Tender",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ad12ba0d6ecd87c",
+      "hanzi": "烫",
+      "pinyin": "tàng",
+      "english": "Scalding hot",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81813e0d8303da4d",
+      "hanzi": "微辣",
+      "pinyin": "wēi là",
+      "english": "Mildly spicy",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b4bb7bc684aa91a",
+      "hanzi": "中辣",
+      "pinyin": "zhōng là",
+      "english": "Medium spicy",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8eec82c0f3ff1f94",
+      "hanzi": "特辣",
+      "pinyin": "tè là",
+      "english": "Extra spicy",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d503bc49ea40a8b",
+      "hanzi": "少辣",
+      "pinyin": "shǎo là",
+      "english": "Less chili; less spicy",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bb26daf5ee9f50ad",
+      "hanzi": "免辣",
+      "pinyin": "miǎn là",
+      "english": "No chili (menu option)",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ec6e5e3d01b28b7",
+      "hanzi": "少冰",
+      "pinyin": "shǎo bīng",
+      "english": "Less ice",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8a34401a3072f25a",
+      "hanzi": "去冰",
+      "pinyin": "qù bīng",
+      "english": "No ice",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9f66215f40220a69",
+      "hanzi": "常温",
+      "pinyin": "cháng wēn",
+      "english": "Room temperature",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33e934d5eab50d6a",
+      "hanzi": "无糖",
+      "pinyin": "wú táng",
+      "english": "Sugar-free; no sugar",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8a1d04b0e6bd0ae6",
+      "hanzi": "半糖",
+      "pinyin": "bàn táng",
+      "english": "Half sugar",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a37e871663985f82",
+      "hanzi": "过敏",
+      "pinyin": "guò mǐn",
+      "english": "Be allergic; allergy",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1f88337baf2604f1",
+      "hanzi": "素食",
+      "pinyin": "sù shí",
+      "english": "Vegetarian food or diet",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c1f721dad88698bf",
+      "hanzi": "纯素",
+      "pinyin": "chún sù",
+      "english": "Vegan",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-06f2f61aced38ba2",
+      "hanzi": "忌口",
+      "pinyin": "jì kǒu",
+      "english": "Dietary restrictions; avoid particular foods",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-afabf88f5c614160",
+      "hanzi": "酱油",
+      "pinyin": "jiàng yóu",
+      "english": "Soy sauce",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-56796b44de6a25a8",
+      "hanzi": "醋",
+      "pinyin": "cù",
+      "english": "Vinegar",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9e3e97236c4ecaf2",
+      "hanzi": "盐",
+      "pinyin": "yán",
+      "english": "Salt",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c86bc88f26043273",
+      "hanzi": "糖",
+      "pinyin": "táng",
+      "english": "Sugar",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d07cd4b0a23b3a37",
+      "hanzi": "油",
+      "pinyin": "yóu",
+      "english": "Oil",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c580d41a6a859cea",
+      "hanzi": "辣椒油",
+      "pinyin": "là jiāo yóu",
+      "english": "Chili oil",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2bc381c79e86f7fe",
+      "hanzi": "蚝油",
+      "pinyin": "háo yóu",
+      "english": "Oyster sauce",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af71bd516e55e280",
+      "hanzi": "番茄酱",
+      "pinyin": "fān qié jiàng",
+      "english": "Ketchup; tomato sauce",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6931e16f7c196307",
+      "hanzi": "沙拉酱",
+      "pinyin": "shā lā jiàng",
+      "english": "Salad dressing",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b8dca68e725d658",
+      "hanzi": "蒸",
+      "pinyin": "zhēng",
+      "english": "Steam",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b606bf981ff8f416",
+      "hanzi": "煮",
+      "pinyin": "zhǔ",
+      "english": "Boil; cook in liquid",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-470282cc335411b7",
+      "hanzi": "炒",
+      "pinyin": "chǎo",
+      "english": "Stir-fry",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-19f180e4410ecedf",
+      "hanzi": "煎",
+      "pinyin": "jiān",
+      "english": "Pan-fry",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-34c5155a43fbfd7a",
+      "hanzi": "炸",
+      "pinyin": "zhá",
+      "english": "Deep-fry",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f5a8e63b6f63b48e",
+      "hanzi": "烤",
+      "pinyin": "kǎo",
+      "english": "Roast; bake; grill",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-34b6d3f72de36b7e",
+      "hanzi": "炖",
+      "pinyin": "dùn",
+      "english": "Stew; simmer",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9756f408bb0aedff",
+      "hanzi": "拌",
+      "pinyin": "bàn",
+      "english": "Mix; toss",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ecade35371c924e",
+      "hanzi": "切",
+      "pinyin": "qiē",
+      "english": "Cut; slice",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3b821da9380b626d",
+      "hanzi": "加热",
+      "pinyin": "jiā rè",
+      "english": "Heat up",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-94cb8480bd78e2e6",
+      "hanzi": "冷藏",
+      "pinyin": "lěng cáng",
+      "english": "Refrigerate",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d79ec370a92c8c1",
+      "hanzi": "冷冻",
+      "pinyin": "lěng dòng",
+      "english": "Freeze; frozen",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-062fffe72d605fee",
+      "hanzi": "保质期",
+      "pinyin": "bǎo zhì qī",
+      "english": "Shelf life",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7aea651853f6ac80",
+      "hanzi": "配料",
+      "pinyin": "pèi liào",
+      "english": "Ingredients",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

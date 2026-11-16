@@ -1,6 +1,7 @@
+import {DECKS} from './deck-catalog.js';
 import {MODEL,scheduleReview,retrievability,dueLabel,previewIntervals} from './fsrs.js';
 import {loadState,saveState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords} from './storage.js';
-import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets} from './grammar.js';
+import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
 const app=$('#app'),toastNode=$('#toast');
@@ -58,7 +59,7 @@ async function change(mutator,shouldRender=true){
   if(saving)return false;
   saving=true;
   const draft=structuredClone(state);
-  try{mutator(draft);draft.revision=(draft.revision||0)+1;await saveState(draft);state=draft;if(shouldRender)render();return true;}
+  try{mutator(draft);draft.revision=(draft.revision||0)+1;await saveState(draft,state.revision);state=draft;if(shouldRender)render();return true;}
   catch(error){toast(`Not saved: ${error.message}`);return false;}
   finally{saving=false;}
 }
@@ -85,7 +86,7 @@ function renderHome(){
     <div class="metrics"><div class="metric">${icon('clock')}<div class="num">${due}</div><div class="label">Due now</div></div>
       <div class="metric">${icon('book')}<div class="num">${learned}</div><div class="label">Words seen</div></div>
       <div class="metric">${icon('flame')}<div class="num">${today}</div><div class="label">Reviews today</div></div></div>
-    ${backupBanner()}
+    ${backupBanner()}<button class="btn btn-secondary btn-full" data-action="navigate" data-page="decks">Explore optional decks</button>
     <div class="section-row"><h2 class="section-title">Learn in context</h2><button class="text-link" data-action="navigate" data-page="grammar">Explore grammar ${icon('right')}</button></div>
     <div class="panel stack"><div class="row"><div><strong>${countReadyGrammar()} of ${state.grammar.length} grammar examples unlocked</strong><div class="subtle" style="margin-top:5px">New examples unlock once their words and distractors are familiar.</div></div><span class="tag alt">${percent(state.grammar.length?countReadyGrammar()/state.grammar.length:0)}</span></div>
       <button class="btn btn-secondary btn-full" data-action="start" data-mode="grammar">${icon('layers')}Study sentence order</button></div>
@@ -105,7 +106,7 @@ function availableWordQueue(){
   return [...new Set(mix.map(c=>c.id))].slice(0,size);
 }
 async function startSession(mode='words'){
-  if(state.activeSession||state.activeGrammarSession){studyMode=state.activeGrammarSession?'grammar':'words';page='study';revealed=false;render();return;}
+  if(state.activeSession||state.activeGrammarSession){studyMode=state.activeGrammarSession?'grammar':'words';page='study';revealed=false;toneSelections=[];render();return;}
   if(mode==='grammar'){
     const ready=state.grammar.filter(g=>scoreGrammar(g).ready);
     if(!ready.length){studyMode='grammar';page='study';render();toast('Review the sentence words first to unlock grammar practice.');return;}
@@ -209,7 +210,7 @@ function buildSentence(grammar,picks,feedback=false){
     if(seg.type==='fixed')return `<span class="sentence-punct">${esc(seg.text)}</span>`;
     const id=picks[seg.index]||'',bank=[...parseSegments(grammar.markup).filter(s=>s.type==='token').map(s=>({id:`t${s.index}`,word:s.text})),...grammar.distractors.map((d,i)=>({id:`d${i}`,word:d.word}))];
     const value=bank.find(x=>x.id===id)?.word||'';
-    const wrong=feedback&&id!==`t${seg.index}`;
+    const wrong=feedback&&grammarMistakes(grammar,picks).includes(seg.index);
     return `<button class="sentence-slot ${id?'filled':''} ${wrong?'incorrect':''}" data-action="grammar-slot" data-slot="${seg.index}" data-drop-slot="${seg.index}" ${feedback?'disabled':''} draggable="${!!id&&!feedback}" aria-label="Word slot ${seg.index+1}${value?': '+value:''}">${value?esc(value):`<span>${seg.index+1}</span>`}</button>`;
   }).join('');
 }
@@ -217,7 +218,7 @@ function renderGrammarStudy(){
   if(grammarFeedback){
     const f=grammarFeedback,g=f.grammar;
     return `<div class="eyebrow" style="margin-top:25px">SENTENCE RESULT</div><h1 class="h1">${f.correct?'Nicely assembled.':'One to revisit.'}</h1>
-      <p class="lead">${f.correct?'Correct ordering and word choice.':'Review the highlighted mistakes before moving on.'}</p>
+      <p class="lead">${f.correct?'Correct ordering and word choice.':'Compare the highlighted words with the target sentence. Other natural Chinese word orders may exist.'}</p>
       <div class="panel stack" style="margin:22px 0"><div class="eyebrow">YOUR ANSWER</div><div class="grammar-sentence">${buildSentence(g,f.picks,true)}</div>
         <div class="eyebrow">CORRECT SENTENCE</div><div class="grammar-sentence sentence-answer">${esc(plainSentence(g.markup))}</div>
         <div class="subtle">${esc(g.pinyin)}</div><strong>${esc(g.english)}</strong></div>
@@ -236,7 +237,7 @@ function renderGrammarStudy(){
       <div class="grammar-bank">${bank.map(tile=>`<button class="bank-tile ${chosen.has(tile.id)?'used':''}" data-action="grammar-pick" data-tile="${esc(tile.id)}" draggable="${!chosen.has(tile.id)}" ${chosen.has(tile.id)?'disabled':''}>${esc(tile.word)}</button>`).join('')}</div>
     </div><button class="btn btn-primary btn-full" data-action="grammar-check" ${picks.filter(Boolean).length!==tokens.length?'disabled':''}>Check sentence ${icon('check')}</button>
     <div class="study-actions"><span class="subtle">${countReadyGrammar()} unlocked grammar cards</span><button class="text-link" data-action="finish-prompt">Finish early</button></div>
-    <p class="study-captions">Choose carefully: similar-looking words may be incorrect here.</p>`;
+    <p class="study-captions">Choose carefully: similar-looking words may be incorrect here. This mode checks the card’s target word order.</p>`;
 }
 function renderStudy(){
   if(state.activeGrammarSession||grammarFeedback)return renderGrammarStudy();
@@ -284,10 +285,12 @@ function renderCollection(kind){
        `<p class="subtle">Again, Hard, Good, and Easy are review ratings, not linear learning stages. Filtering compares each word's <strong>most recent rating</strong>; Unseen is 0.</p>`}
     <div class="row" style="margin:15px 0 12px"><div id="browse-count" class="filter-count"></div>
       <button class="text-link" data-action="new-entry" data-kind="${kind}">${icon('plus')} Add ${grammar?'sentence':'word'}</button></div>
-    <div id="collection-list"></div>${backupBanner()}`;
+    ${!grammar?'<button class="btn btn-secondary btn-full" data-action="study-filtered">Study matching words</button>':''}<div id="collection-list"></div>${backupBanner()}`;
 }
 function matchesTags(entryTags,filtersMap){return Object.entries(filtersMap).every(([tag,value])=>value===0||(value===1?entryTags.includes(tag):!entryTags.includes(tag)));}
-function updateCollection(){
+let visibleWords=80;
+function updateCollection(keepPage=false){
+  if(!keepPage)visibleWords=80;
   const kind=page==='grammar'?'grammar':'words',f=filters[kind],tags=tagsFor(kind);
   const positives=tags.filter(t=>f.tags[t]===1),negatives=tags.filter(t=>f.tags[t]===-1),active=[...positives,...negatives];
   const activeNode=$('#active-tag-filter'),availableNode=$('#tag-filter');if(!activeNode||!availableNode)return;
@@ -300,12 +303,12 @@ function updateCollection(){
       (f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&
       (!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q)));
     $('#browse-count').textContent=`${results.length} of ${state.cards.length} words`;
-    $('#collection-list').innerHTML=results.length?results.map(c=>{
+    $('#collection-list').innerHTML=results.length?results.slice(0,visibleWords).map(c=>{
       const schedule=state.schedules[c.id];
       return `<button class="list-card" data-action="card-detail" data-id="${esc(c.id)}"><div class="list-hanzi">${esc(c.hanzi)}<small>${esc(c.pinyin)}</small></div>
        <div class="list-detail"><strong>${esc(c.english)}</strong><small>${esc(c.tags.slice(0,3).map(x=>'#'+x).join('  '))} · ${esc(dueLabel(schedule))}</small></div>
        <div class="list-meta"><strong>${percent(scoreWord(c))}</strong><small>${schedule?ratingLabels[schedule.lastRating]:'New'}</small></div>${icon('right')}</button>`;
-    }).join(''):'<div class="empty"><strong>No matching words</strong>Adjust a filter or add a new word.</div>';
+    }).join('')+(results.length>visibleWords?'<button class="btn btn-secondary btn-full" data-action="more-words">Show more words</button>':''):'<div class="empty"><strong>No matching words</strong>Adjust a filter or add a new word.</div>';
   }else{
     const results=state.grammar.map(g=>({g,score:scoreGrammar(g),tags:grammarTags(g,state.cards)}))
       .filter(({g,score,tags})=>matchesTags(tags,f.tags)&&compare(Math.round(score.knowledge*100),f.knowledgeOp,Number(f.knowledgeValue))&&
@@ -356,6 +359,7 @@ function renderSettings(){const s=state.settings;
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
+   <div class="section-row"><h2 class="section-title">Optional decks</h2></div><div class="panel stack"><p>Load topics when you want them. Existing words and review history are preserved.</p><button class="btn btn-primary btn-full" data-action="navigate" data-page="decks">Browse available decks</button></div>
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
      <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Export full progress backup</button>
@@ -369,12 +373,12 @@ function renderSettings(){const s=state.settings;
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.2 · Offline-first, local-only, ${MODEL} vocabulary reviews. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.3 · Offline-first, local-only, ${MODEL} vocabulary reviews. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk is reserved at 0% until its future scoring model is designed.</p></div>`;
 }
-function render(){if(!state)return;const views={home:renderHome,study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
+function render(){if(!state)return;const views={home:renderHome,study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings,decks:renderDecks};
   app.innerHTML=shell((views[page]||renderHome)());if(['browse','grammar'].includes(page))updateCollection();}
-function navigate(dest){if(!['home','study','browse','grammar','stats','settings','complete'].includes(dest))return;
+function navigate(dest){if(!['home','study','browse','grammar','stats','settings','complete','decks'].includes(dest))return;
   page=dest;revealed=false;render();window.scrollTo({top:0,behavior:'instant'});}
 function modal(title,contents){closeModal();currentModal=document.createElement('div');currentModal.className='modal-backdrop';
   currentModal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${icon('x')}</button></div><div class="modal-scroll">${contents}</div></div>`;
@@ -411,7 +415,7 @@ function grammarDetails(id){const g=grammarById(id);if(!g)return;const scores=sc
     <div class="panel stack" style="margin-bottom:15px"><strong>${scores.ready?'Ready for grammar study':'Not yet unlocked'}</strong>
       <p class="subtle">Words and distractors must each reach 75% knowledge; missing or unfamiliar words:</p>
       <div class="tags-wrap">${scores.weak.map(x=>`<span class="tag alt">${esc(x.word)}${x.card?'':' (not in words)'}</span>`).join('')||'<span class="subtle">None</span>'}</div>
-      <div class="subtle">Distractors (1-based answer token): ${g.distractors.map(d=>`${d.index}: [${d.word}]`).join(', ')||'none'}</div></div>
+      <div class="subtle">Distractors (1-based answer token): ${esc(g.distractors.map(d=>`${d.index}: [${d.word}]`).join(', ')||'none')}</div></div>
     <div class="modal-actions"><button class="btn btn-secondary" data-action="edit-grammar" data-id="${esc(id)}">${icon('edit')}Edit</button>
      <button class="btn btn-danger" data-action="delete-grammar" data-id="${esc(id)}">${icon('trash')}Delete</button></div>`);
 }
@@ -496,9 +500,9 @@ async function exportBackup(mode){const file=backupFile(),revision=state.revisio
       <button class="btn btn-soft btn-full" style="margin-top:10px" data-action="confirm-backup">${icon('check')}I saved this file in Files</button>`;
   }catch(e){if(e.name!=='AbortError')toast(`Backup failed: ${e.message}`);}
 }
-async function confirmBackup(){if(pendingBackupRevision===null)return;
+async function confirmBackup(){if(pendingBackupRevision===null||saving)return;
   const candidate=structuredClone(state);candidate.backedUpRevision=Math.max(candidate.backedUpRevision,Math.min(candidate.revision,pendingBackupRevision));candidate.lastBackupAt=new Date().toISOString();
-  try{await saveState(candidate);state=candidate;pendingBackupRevision=null;closeModal();render();toast('Export confirmed. Keep that JSON file safe.');}
+  try{await saveState(candidate,state.revision);state=candidate;pendingBackupRevision=null;closeModal();render();toast('Export confirmed. Keep that JSON file safe.');}
   catch(e){toast(`Could not save backup status: ${e.message}`);}
 }
 async function readJsonFile(file){if(!file)return null;if(file.size>40*1024*1024)throw new Error('JSON file exceeds 40 MB');
@@ -506,9 +510,9 @@ async function readJsonFile(file){if(!file)return null;if(file.size>40*1024*1024
 function requestFile(kind){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.className='fileinput';document.body.append(input);
   input.addEventListener('change',async()=>{try{const content=await readJsonFile(input.files?.[0]);if(content){if(kind==='restore')await restoreBackup(content);else await importDeck(content);}}
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
-async function restoreBackup(content){const parsed=parseBackup(content);
+async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`REPLACE your entire current database with this backup? It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{await saveState(parsed);state=parsed;page='home';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
+  try{parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;page='home';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){const result=mergeDeck(state,content);
@@ -519,11 +523,11 @@ async function importDeck(content){const result=mergeDeck(state,content);
   if(done){closeModal();toast(`Imported ${addedWords} words, ${addedGrammar} sentences, ${tagsUpdated} tag updates`);}
 }
 function exportDeck(){const data=makeDeck(state);
-  downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-deck-v0.2.json');toast('Record-free deck JSON prepared');}
+  downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-deck-v0.3.json');toast('Record-free deck JSON prepared');}
 function downloadTemplate(){const sample={format:'ciyan-deck',version:2,records:false,
   cards:[{id:'deck-coffee',hanzi:'咖啡',pinyin:'kāfēi',english:'Coffee',tags:['food']}],
-  grammar:[{id:'deck-sentence-001',markup:'{我}{想}{喝}{咖啡}。',pinyin:'Wǒ xiǎng hē kāfēi.',english:'I want to drink coffee.',distractors:[{index:1,word:'要'}]}]};
-  downloadFile(new Blob([JSON.stringify(sample,null,2)],{type:'application/json'}),'ciyan-deck-template-v0.2.json');}
+  grammar:[{id:'deck-sentence-001',markup:'{我}{想}{喝}{咖啡}。',pinyin:'Wǒ xiǎng hē kāfēi.',english:'I want to drink coffee.',distractors:[{index:2,word:'要'}]}]};
+  downloadFile(new Blob([JSON.stringify(sample,null,2)],{type:'application/json'}),'ciyan-deck-template-v0.3.json');}
 function finishPrompt(){modal('Finish this session?',`<p class="lead" style="font-size:14px;margin-bottom:20px">Answered cards are already stored locally. Finish and back up your progress, or keep studying.</p>
   <div class="stack"><button class="btn btn-primary btn-full" data-action="end-session">Finish and see summary</button>
     <button class="btn btn-secondary btn-full" data-action="close-modal">Continue studying</button></div>`);}
@@ -549,7 +553,7 @@ async function checkGrammar(){if(saving||!state.activeGrammarSession||grammarFee
   const s=state.activeGrammarSession,g=grammarById(s.queue[0]);if(!g)return;
   const count=parseSegments(g.markup).filter(x=>x.type==='token').length,picks=s.picks||[];
   if(picks.filter(Boolean).length!==count){toast('Place all words before checking.');return;}
-  const mistakes=Array.from({length:count},(_,i)=>i).filter(i=>picks[i]!==`t${i}`);
+  const mistakes=grammarMistakes(g,picks);
   const correct=mistakes.length===0,completed=s.queue.length<=1,now=new Date().toISOString();
   const done=await change(d=>{const active=d.activeGrammarSession;
     const entry={id:crypto.randomUUID(),grammarId:g.id,at:now,correct,mistakes,selectedTiles:[...picks]};
@@ -631,6 +635,9 @@ document.addEventListener('click',async event=>{
     case 'download-backup':await exportBackup('download');break;
     case 'confirm-backup':await confirmBackup();break;
     case 'restore':requestFile('restore');break;
+    case 'load-deck':await loadBundledDeck(element.dataset.deck);break;
+    case 'more-words':visibleWords+=80;updateCollection(true);break;
+    case 'study-filtered':await startFilteredSession();break;
     case 'import-deck':requestFile('deck');break;
     case 'export-deck':exportDeck();break;
     case 'template':downloadTemplate();break;
@@ -682,3 +689,27 @@ async function boot(){try{
   <h2>Local storage unavailable</h2><p>${esc(error.message)}</p><p>Use Safari or the installed Home Screen app, not a private tab or file preview. No data was reset.</p>
   <button class="btn btn-secondary" onclick="location.reload()">Try again</button></div>`;}}
 boot();
+
+function renderDecks(){
+  const names=new Set(state.cards.map(c=>c.hanzi));
+  return `<div class="page-heading"><div class="eyebrow">GROW YOUR COLLECTION</div><h1 class="h1">Pick your<br>next topic.</h1><p class="lead">Optional decks. Load only what you want to study.</p></div>
+  <div class="notice">HSK decks are selective lists from the 2021 HSK 3.0 standard (GF 0025–2021), not the later exam syllabus. Grammar includes its required words and distractors.</div>
+  <p class="subtle">Importing adds words and tags without changing existing cards or progress. Reimporting is safe. All decks are included in the offline app download.</p>
+  ${DECKS.map(d=>{const present=d.words.filter(w=>names.has(w)).length;return `<section class="panel stack" style="margin-top:14px"><div class="row"><h2 class="section-title">${esc(d.title)}</h2><span class="tag">${d.wordCount} words</span></div><p>${esc(d.description)}</p><div class="subtle">${present} words already in your collection${d.grammarCount?' · '+d.grammarCount+' grammar cards':''}</div><button class="btn btn-primary btn-full" data-action="load-deck" data-deck="${esc(d.id)}">Load / merge deck</button><a class="text-link" href="./decks/${esc(d.id)}.json" download>Download JSON</a></section>`;}).join('')}
+  <p class="subtle"><a href="./decks/README.md">Deck guide and sources</a> · <a href="./decks/ATTRIBUTION.md">Data attribution</a></p>`;
+}
+async function loadBundledDeck(id){
+  if(!DECKS.some(d=>d.id===id)||saving)return;
+  try{const response=await fetch('./decks/'+encodeURIComponent(id)+'.json');if(!response.ok)throw new Error('Deck unavailable. Reopen online to cache the latest app.');await importDeck(await response.json());}
+  catch(e){toast(e.message);}
+}
+async function startFilteredSession(){
+  if(state.activeSession||state.activeGrammarSession){await startSession();return;}
+  const f=filters.words,q=f.search.trim().toLowerCase();
+  const matches=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&(f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&(!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q)));
+  const due=matches.filter(c=>isDue(c.id)).sort((a,b)=>Date.parse(state.schedules[a.id].dueAt)-Date.parse(state.schedules[b.id].dueAt));
+  const queue=[...due,...matches.filter(c=>!state.schedules[c.id])].slice(0,state.settings.sessionSize).map(c=>c.id);
+  if(!queue.length){toast('No new or due words match these filters.');return;}
+  const session={id:crypto.randomUUID(),startedAt:new Date().toISOString(),queue,initialTotal:queue.length,results:[],newWords:0,correct:0};
+  if(await change(d=>{d.activeSession=session;},false)){studyMode='words';page='study';revealed=false;toneSelections=[];render();}
+}

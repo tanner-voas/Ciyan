@@ -1,0 +1,1044 @@
+# china-meals|China: meals & street food|food,china-food
+米饭|mǐ fàn|Cooked rice
+面条|miàn tiáo|Noodles
+炒饭|chǎo fàn|Fried rice
+炒面|chǎo miàn|Stir-fried noodles
+汤面|tāng miàn|Noodles in soup
+拌面|bàn miàn|Noodles mixed with sauce
+拉面|lā miàn|Hand-pulled noodles
+刀削面|dāo xiāo miàn|Knife-cut noodles
+米粉|mǐ fěn|Rice noodles; rice flour
+粉丝|fěn sī|Glass noodles; also fans of a person
+河粉|hé fěn|Wide flat rice noodles
+凉皮|liáng pí|Cold wheat or rice starch noodles
+馄饨|hún tun|Wontons
+饺子|jiǎo zi|Dumplings
+水饺|shuǐ jiǎo|Boiled dumplings
+蒸饺|zhēng jiǎo|Steamed dumplings
+锅贴|guō tiē|Pan-fried dumplings
+包子|bāo zi|Filled steamed buns
+馒头|mán tou|Plain steamed buns
+小笼包|xiǎo lóng bāo|Small soup-filled steamed buns
+生煎包|shēng jiān bāo|Pan-fried soup buns
+烧卖|shāo mài|Open-topped steamed dumplings
+油条|yóu tiáo|Fried dough sticks
+豆浆|dòu jiāng|Soy milk
+豆腐脑|dòu fu nǎo|Soft tofu pudding
+煎饼|jiān bǐng|Chinese griddle pancake or crepe
+葱油饼|cōng yóu bǐng|Scallion pancake
+手抓饼|shǒu zhuā bǐng|Flaky griddle flatbread
+肉夹馍|ròu jiā mó|Meat-filled flatbread
+粥|zhōu|Congee; rice porridge
+八宝粥|bā bǎo zhōu|Mixed-grain sweet porridge
+茶叶蛋|chá yè dàn|Tea egg
+粽子|zòng zi|Leaf-wrapped sticky rice dumpling
+汤圆|tāng yuán|Glutinous rice balls, often filled
+月饼|yuè bǐng|Mooncake
+麻辣烫|má là tàng|Ingredients cooked in a spicy broth
+麻辣香锅|má là xiāng guō|Spicy dry-pot stir-fry
+火锅|huǒ guō|Hot pot
+冒菜|mào cài|Sichuan ingredients cooked in seasoned broth
+烤串|kǎo chuàn|Grilled skewers
+烧烤|shāo kǎo|Barbecue; grilled food
+烤鸭|kǎo yā|Roast duck
+白切鸡|bái qiē jī|Poached chicken served sliced
+红烧肉|hóng shāo ròu|Red-braised pork
+回锅肉|huí guō ròu|Twice-cooked pork
+宫保鸡丁|gōng bǎo jī dīng|Kung pao chicken
+鱼香肉丝|yú xiāng ròu sī|Shredded pork in Sichuan fish-fragrant sauce
+麻婆豆腐|má pó dòu fu|Mapo tofu
+番茄炒蛋|fān qié chǎo dàn|Stir-fried tomato and egg
+酸菜鱼|suān cài yú|Fish with pickled mustard greens
+水煮鱼|shuǐ zhǔ yú|Sichuan fish in a chili-oil broth
+糖醋里脊|táng cù lǐ jǐ|Sweet-and-sour pork tenderloin
+炸酱面|zhá jiàng miàn|Noodles with fried bean sauce
+牛肉面|niú ròu miàn|Beef noodle soup
+螺蛳粉|luó sī fěn|Liuzhou rice noodles in river-snail broth
+肠粉|cháng fěn|Steamed rice noodle rolls
+叉烧|chā shāo|Cantonese barbecued pork
+腊肉|là ròu|Cured pork
+臭豆腐|chòu dòu fu|Fermented stinky tofu
+卤味|lǔ wèi|Foods braised in seasoned master stock
+盖浇饭|gài jiāo fàn|Rice topped with a cooked dish
+盒饭|hé fàn|Boxed meal
+便当|biàn dāng|Packed lunch; bento
+自助餐|zì zhù cān|Buffet
+# ingredients|Ingredients, vegetables & fruit|food,ingredients
+猪肉|zhū ròu|Pork
+牛肉|niú ròu|Beef
+羊肉|yáng ròu|Lamb or mutton
+鸡肉|jī ròu|Chicken meat
+鸭肉|yā ròu|Duck meat
+排骨|pái gǔ|Ribs
+五花肉|wǔ huā ròu|Pork belly
+里脊|lǐ jǐ|Tenderloin
+肉末|ròu mò|Minced meat
+香肠|xiāng cháng|Sausage
+火腿|huǒ tuǐ|Ham
+培根|péi gēn|Bacon
+鱼|yú|Fish
+虾|xiā|Shrimp; prawns
+螃蟹|páng xiè|Crab
+贝类|bèi lèi|Shellfish
+蛤蜊|gé lí|Clams
+鱿鱼|yóu yú|Squid
+三文鱼|sān wén yú|Salmon
+金枪鱼|jīn qiāng yú|Tuna
+海鲜|hǎi xiān|Seafood
+鸡蛋|jī dàn|Chicken egg
+鸭蛋|yā dàn|Duck egg
+皮蛋|pí dàn|Preserved century egg
+咸蛋|xián dàn|Salted egg
+豆腐|dòu fu|Tofu
+豆干|dòu gān|Firm pressed tofu
+腐竹|fǔ zhú|Dried tofu-skin sticks
+黄豆|huáng dòu|Soybeans
+绿豆|lǜ dòu|Mung beans
+红豆|hóng dòu|Adzuki beans
+毛豆|máo dòu|Edamame; young soybeans
+花生|huā shēng|Peanuts
+芝麻|zhī ma|Sesame
+核桃|hé tao|Walnut
+杏仁|xìng rén|Almond or apricot kernel, depending on product
+腰果|yāo guǒ|Cashew
+大米|dà mǐ|Uncooked rice
+糯米|nuò mǐ|Glutinous rice
+面粉|miàn fěn|Wheat flour
+淀粉|diàn fěn|Starch
+燕麦|yàn mài|Oats
+玉米|yù mǐ|Corn
+土豆|tǔ dòu|Potato
+红薯|hóng shǔ|Sweet potato
+芋头|yù tou|Taro
+山药|shān yao|Chinese yam
+莲藕|lián ǒu|Lotus root
+胡萝卜|hú luó bo|Carrot
+白萝卜|bái luó bo|White radish; daikon
+黄瓜|huáng guā|Cucumber
+番茄|fān qié|Tomato
+西红柿|xī hóng shì|Tomato (another common name)
+茄子|qié zi|Eggplant
+南瓜|nán guā|Pumpkin; squash
+冬瓜|dōng guā|Winter melon
+丝瓜|sī guā|Loofah gourd
+苦瓜|kǔ guā|Bitter melon
+西葫芦|xī hú lu|Zucchini; courgette
+白菜|bái cài|Chinese cabbage
+青菜|qīng cài|Leafy greens; often bok choy locally
+菠菜|bō cài|Spinach
+生菜|shēng cài|Lettuce
+芹菜|qín cài|Celery
+韭菜|jiǔ cài|Chinese chives
+空心菜|kōng xīn cài|Water spinach
+西兰花|xī lán huā|Broccoli
+花菜|huā cài|Cauliflower
+豆芽|dòu yá|Bean sprouts
+四季豆|sì jì dòu|Green beans
+豌豆|wān dòu|Peas
+蘑菇|mó gu|Mushroom
+香菇|xiāng gū|Shiitake mushroom
+金针菇|jīn zhēn gū|Enoki mushroom
+木耳|mù ěr|Wood-ear fungus
+海带|hǎi dài|Kelp
+紫菜|zǐ cài|Edible laver seaweed
+洋葱|yáng cōng|Onion
+葱|cōng|Scallion; spring onion
+姜|jiāng|Ginger
+蒜|suàn|Garlic
+香菜|xiāng cài|Cilantro; coriander leaves
+辣椒|là jiāo|Chili pepper
+青椒|qīng jiāo|Green pepper
+花椒|huā jiāo|Sichuan pepper
+苹果|píng guǒ|Apple
+香蕉|xiāng jiāo|Banana
+橙子|chéng zi|Orange
+橘子|jú zi|Mandarin orange
+柚子|yòu zi|Pomelo
+柠檬|níng méng|Lemon
+梨|lí|Pear
+桃子|táo zi|Peach
+葡萄|pú tao|Grapes
+草莓|cǎo méi|Strawberry
+蓝莓|lán méi|Blueberry
+西瓜|xī guā|Watermelon
+哈密瓜|hā mì guā|Hami melon; cantaloupe-type melon
+芒果|máng guǒ|Mango
+菠萝|bō luó|Pineapple
+猕猴桃|mí hóu táo|Kiwifruit
+火龙果|huǒ lóng guǒ|Dragon fruit
+榴莲|liú lián|Durian
+荔枝|lì zhī|Lychee
+龙眼|lóng yǎn|Longan
+山竹|shān zhú|Mangosteen
+椰子|yē zi|Coconut
+牛油果|niú yóu guǒ|Avocado
+石榴|shí liu|Pomegranate
+柿子|shì zi|Persimmon
+枣|zǎo|Jujube; Chinese date
+# ordering|Ordering, flavors & cooking|food,ordering
+菜单|cài dān|Menu
+点菜|diǎn cài|Order dishes
+买单|mǎi dān|Pay the bill
+结账|jié zhàng|Settle the bill
+打包|dǎ bāo|Pack to take away
+外卖|wài mài|Food delivery; takeaway
+堂食|táng shí|Dine in
+餐具|cān jù|Tableware
+筷子|kuài zi|Chopsticks
+勺子|sháo zi|Spoon
+叉子|chā zi|Fork
+刀|dāo|Knife
+碗|wǎn|Bowl
+盘子|pán zi|Plate
+杯子|bēi zi|Cup; glass
+吸管|xī guǎn|Drinking straw
+纸巾|zhǐ jīn|Tissue; napkin
+份|fèn|Portion; measure word for servings
+瓶|píng|Bottle; measure word for bottles
+辣|là|Spicy; hot
+麻|má|Numbing; tingling
+甜|tián|Sweet
+咸|xián|Salty
+酸|suān|Sour
+苦|kǔ|Bitter
+清淡|qīng dàn|Lightly seasoned
+油腻|yóu nì|Greasy; oily
+新鲜|xīn xiān|Fresh
+生|shēng|Raw; uncooked
+熟|shú|Cooked; ripe
+脆|cuì|Crisp; crunchy
+软|ruǎn|Soft
+嫩|nèn|Tender
+烫|tàng|Scalding hot
+微辣|wēi là|Mildly spicy
+中辣|zhōng là|Medium spicy
+特辣|tè là|Extra spicy
+少辣|shǎo là|Less chili; less spicy
+免辣|miǎn là|No chili (menu option)
+少冰|shǎo bīng|Less ice
+去冰|qù bīng|No ice
+常温|cháng wēn|Room temperature
+无糖|wú táng|Sugar-free; no sugar
+半糖|bàn táng|Half sugar
+过敏|guò mǐn|Be allergic; allergy
+素食|sù shí|Vegetarian food or diet
+纯素|chún sù|Vegan
+忌口|jì kǒu|Dietary restrictions; avoid particular foods
+酱油|jiàng yóu|Soy sauce
+醋|cù|Vinegar
+盐|yán|Salt
+糖|táng|Sugar
+油|yóu|Oil
+辣椒油|là jiāo yóu|Chili oil
+蚝油|háo yóu|Oyster sauce
+番茄酱|fān qié jiàng|Ketchup; tomato sauce
+沙拉酱|shā lā jiàng|Salad dressing
+蒸|zhēng|Steam
+煮|zhǔ|Boil; cook in liquid
+炒|chǎo|Stir-fry
+煎|jiān|Pan-fry
+炸|zhá|Deep-fry
+烤|kǎo|Roast; bake; grill
+炖|dùn|Stew; simmer
+拌|bàn|Mix; toss
+切|qiē|Cut; slice
+加热|jiā rè|Heat up
+冷藏|lěng cáng|Refrigerate
+冷冻|lěng dòng|Freeze; frozen
+保质期|bǎo zhì qī|Shelf life
+配料|pèi liào|Ingredients
+# global-food|Global foods & drinks|food,global-food
+面包|miàn bāo|Bread
+吐司|tǔ sī|Toast; sliced bread
+三明治|sān míng zhì|Sandwich
+汉堡|hàn bǎo|Burger
+披萨|pī sà|Pizza
+意大利面|yì dà lì miàn|Pasta
+牛排|niú pái|Steak
+薯条|shǔ tiáo|French fries; chips
+炸鸡|zhá jī|Fried chicken
+沙拉|shā lā|Salad
+咖喱|gā lí|Curry
+寿司|shòu sī|Sushi
+刺身|cì shēn|Sashimi
+天妇罗|tiān fù luó|Tempura
+乌冬面|wū dōng miàn|Udon noodles
+泡菜|pào cài|Pickled vegetables; often kimchi in Korean-food contexts
+石锅拌饭|shí guō bàn fàn|Hot-stone bibimbap
+越南河粉|yuè nán hé fěn|Vietnamese pho
+春卷|chūn juǎn|Spring rolls
+墨西哥卷饼|mò xī gē juǎn bǐng|Burrito; Mexican wrap
+鹰嘴豆|yīng zuǐ dòu|Chickpea
+扁豆|biǎn dòu|Hyacinth bean; also lentil in some translated food labels
+藜麦|lí mài|Quinoa
+奶酪|nǎi lào|Cheese
+芝士|zhī shì|Cheese (loanword)
+黄油|huáng yóu|Butter
+奶油|nǎi yóu|Cream
+酸奶|suān nǎi|Yogurt
+牛奶|niú nǎi|Milk
+全脂牛奶|quán zhī niú nǎi|Whole milk
+脱脂牛奶|tuō zhī niú nǎi|Skim milk
+燕麦奶|yàn mài nǎi|Oat milk
+蛋白粉|dàn bái fěn|Protein powder
+蛋白质|dàn bái zhì|Protein
+碳水化合物|tàn shuǐ huà hé wù|Carbohydrates
+脂肪|zhī fáng|Fat
+热量|rè liàng|Energy; calories in food contexts
+蛋糕|dàn gāo|Cake
+饼干|bǐng gān|Cookies; biscuits
+巧克力|qiǎo kè lì|Chocolate
+冰淇淋|bīng qí lín|Ice cream
+布丁|bù dīng|Pudding
+甜甜圈|tián tián quān|Doughnut
+可颂|kě sòng|Croissant
+咖啡|kā fēi|Coffee
+美式咖啡|měi shì kā fēi|Americano
+拿铁|ná tiě|Latte
+浓缩咖啡|nóng suō kā fēi|Espresso
+红茶|hóng chá|Black tea
+绿茶|lǜ chá|Green tea
+乌龙茶|wū lóng chá|Oolong tea
+奶茶|nǎi chá|Milk tea
+珍珠奶茶|zhēn zhū nǎi chá|Bubble tea with tapioca pearls
+果汁|guǒ zhī|Fruit juice
+矿泉水|kuàng quán shuǐ|Mineral water
+气泡水|qì pào shuǐ|Sparkling water
+可乐|kě lè|Cola
+啤酒|pí jiǔ|Beer
+葡萄酒|pú tao jiǔ|Wine
+白酒|bái jiǔ|Chinese distilled liquor
+# activities|Activities, sports & exercise|activities,sports
+运动|yùn dòng|Exercise; sport
+锻炼|duàn liàn|Work out; train
+健身|jiàn shēn|Fitness; work out
+健身房|jiàn shēn fáng|Gym
+训练|xùn liàn|Training; train
+热身|rè shēn|Warm up
+拉伸|lā shēn|Stretch; stretching
+放松|fàng sōng|Relax; loosen up
+恢复|huī fù|Recover; recovery
+休息|xiū xi|Rest
+跑步|pǎo bù|Run; running
+慢跑|màn pǎo|Jog
+散步|sàn bù|Take a walk
+徒步|tú bù|Hike; travel on foot
+爬山|pá shān|Hike up a mountain
+登山|dēng shān|Mountaineering; mountain climbing
+骑车|qí chē|Ride a bicycle
+骑行|qí xíng|Cycling
+游泳|yóu yǒng|Swim
+潜水|qián shuǐ|Dive; diving
+冲浪|chōng làng|Surf
+滑雪|huá xuě|Ski; snow sports
+滑冰|huá bīng|Ice skate
+滑板|huá bǎn|Skateboard
+篮球|lán qiú|Basketball
+足球|zú qiú|Soccer; football
+羽毛球|yǔ máo qiú|Badminton
+乒乓球|pīng pāng qiú|Table tennis
+网球|wǎng qiú|Tennis
+排球|pái qiú|Volleyball
+棒球|bàng qiú|Baseball
+高尔夫|gāo ěr fū|Golf
+拳击|quán jī|Boxing
+武术|wǔ shù|Chinese martial arts
+瑜伽|yú jiā|Yoga
+普拉提|pǔ lā tí|Pilates
+跳舞|tiào wǔ|Dance
+跳绳|tiào shéng|Jump rope
+举重|jǔ zhòng|Weightlifting
+俯卧撑|fǔ wò chēng|Push-up
+引体向上|yǐn tǐ xiàng shàng|Pull-up
+深蹲|shēn dūn|Squat
+硬拉|yìng lā|Deadlift
+卧推|wò tuī|Bench press
+平板支撑|píng bǎn zhī chēng|Plank exercise
+哑铃|yǎ líng|Dumbbell
+杠铃|gàng líng|Barbell
+跑步机|pǎo bù jī|Treadmill
+弹力带|tán lì dài|Resistance band
+组|zǔ|Set; group
+次数|cì shù|Number of repetitions or times
+重量|zhòng liàng|Weight
+力量|lì liang|Strength; force
+耐力|nài lì|Endurance
+爆发力|bào fā lì|Explosive power
+柔韧性|róu rèn xìng|Flexibility
+平衡|píng héng|Balance
+协调|xié tiáo|Coordination; coordinate
+有氧运动|yǒu yǎng yùn dòng|Aerobic exercise
+无氧运动|wú yǎng yùn dòng|Anaerobic exercise
+心率|xīn lǜ|Heart rate
+呼吸|hū xī|Breathe; breathing
+出汗|chū hàn|Sweat
+教练|jiào liàn|Coach
+队友|duì yǒu|Teammate
+比赛|bǐ sài|Competition; match
+报名|bào míng|Sign up
+预约|yù yuē|Make a reservation; appointment
+露营|lù yíng|Camp; camping
+野餐|yě cān|Picnic
+摄影|shè yǐng|Photography
+拍照|pāi zhào|Take photos
+旅行|lǚ xíng|Travel
+看电影|kàn diàn yǐng|Watch a movie
+看书|kàn shū|Read a book
+玩游戏|wán yóu xì|Play games
+做饭|zuò fàn|Cook a meal
+逛街|guàng jiē|Browse shops; go shopping
+唱歌|chàng gē|Sing
+乐器|yuè qì|Musical instrument
+吉他|jí tā|Guitar
+钢琴|gāng qín|Piano
+# anatomy|Body, muscles & recovery|body,fitness
+身体|shēn tǐ|Body
+肌肉|jī ròu|Muscle
+骨头|gǔ tou|Bone
+关节|guān jié|Joint
+肌腱|jī jiàn|Tendon
+韧带|rèn dài|Ligament
+皮肤|pí fū|Skin
+头|tóu|Head
+脖子|bó zi|Neck
+肩膀|jiān bǎng|Shoulder
+肩胛骨|jiān jiǎ gǔ|Shoulder blade
+胸|xiōng|Chest
+背|bèi|Back (body part)
+腰|yāo|Waist; lower back
+腹部|fù bù|Abdomen
+臀部|tún bù|Buttocks; gluteal region
+髋关节|kuān guān jié|Hip joint
+手臂|shǒu bì|Arm
+上臂|shàng bì|Upper arm
+前臂|qián bì|Forearm
+肘部|zhǒu bù|Elbow region
+手腕|shǒu wàn|Wrist
+手掌|shǒu zhǎng|Palm
+手指|shǒu zhǐ|Finger
+拇指|mǔ zhǐ|Thumb
+食指|shí zhǐ|Index finger
+中指|zhōng zhǐ|Middle finger
+无名指|wú míng zhǐ|Ring finger
+小指|xiǎo zhǐ|Little finger
+指尖|zhǐ jiān|Fingertip
+指甲|zhǐ jia|Fingernail; toenail
+腿|tuǐ|Leg
+大腿|dà tuǐ|Thigh
+小腿|xiǎo tuǐ|Lower leg; calf region
+膝盖|xī gài|Knee
+脚踝|jiǎo huái|Ankle
+脚|jiǎo|Foot
+脚趾|jiǎo zhǐ|Toe
+脚跟|jiǎo gēn|Heel
+脚尖|jiǎo jiān|Tip of the foot; toes
+核心|hé xīn|Core; central part
+腹肌|fù jī|Abdominal muscles
+胸肌|xiōng jī|Pectoral muscles
+背阔肌|bèi kuò jī|Latissimus dorsi; lats
+斜方肌|xié fāng jī|Trapezius; traps
+三角肌|sān jiǎo jī|Deltoid
+肱二头肌|gōng èr tóu jī|Biceps brachii
+肱三头肌|gōng sān tóu jī|Triceps brachii
+臀大肌|tún dà jī|Gluteus maximus
+股四头肌|gǔ sì tóu jī|Quadriceps
+腘绳肌|guó shéng jī|Hamstrings
+腓肠肌|féi cháng jī|Gastrocnemius; major calf muscle
+比目鱼肌|bǐ mù yú jī|Soleus
+握力|wò lì|Grip strength
+酸痛|suān tòng|Soreness; aching
+疼|téng|Hurt; painful
+痛|tòng|Pain; painful
+受伤|shòu shāng|Get injured
+拉伤|lā shāng|Muscle or tendon strain
+扭伤|niǔ shāng|Sprain
+肿|zhǒng|Swollen
+抽筋|chōu jīn|Muscle cramp
+僵硬|jiāng yìng|Stiff
+疲劳|pí láo|Fatigue
+康复|kāng fù|Rehabilitation; recover
+按摩|àn mó|Massage
+冰敷|bīng fū|Apply a cold compress
+热敷|rè fū|Apply a warm compress
+护腕|hù wàn|Wrist support
+护膝|hù xī|Knee support
+# climbing|Climbing: gym, movement & equipment|climbing,sports
+攀岩|pān yán|Rock climbing
+抱石|bào shí|Bouldering
+攀岩馆|pān yán guǎn|Climbing gym
+岩壁|yán bì|Rock face; climbing wall
+岩点|yán diǎn|Climbing hold
+手点|shǒu diǎn|Handhold
+脚点|jiǎo diǎn|Foothold
+线路|xiàn lù|Climbing route; route
+定线|dìng xiàn|Set climbing routes
+定线员|dìng xiàn yuán|Route setter
+难度|nán dù|Difficulty
+级别|jí bié|Grade; level
+起点|qǐ diǎn|Starting point
+终点|zhōng diǎn|Finish; endpoint
+完攀|wán pān|Complete a climb
+尝试|cháng shì|Attempt; try
+热身线|rè shēn xiàn|Warm-up route
+攀岩鞋|pān yán xié|Climbing shoes
+镁粉|měi fěn|Climbing chalk (literally magnesium powder)
+粉袋|fěn dài|Chalk bag
+刷子|shuā zi|Brush
+指力板|zhǐ lì bǎn|Hangboard; fingerboard
+抱石垫|bào shí diàn|Bouldering crash pad
+安全带|ān quán dài|Harness; safety belt
+头盔|tóu kuī|Helmet
+动力绳|dòng lì shéng|Dynamic climbing rope
+保护器|bǎo hù qì|Belay device
+快挂|kuài guà|Quickdraw
+主锁|zhǔ suǒ|Locking carabiner
+挂片|guà piàn|Bolt hanger
+扁带|biǎn dài|Webbing; sling
+八字结|bā zì jié|Figure-eight knot
+保护|bǎo hù|Belay; protect
+保护员|bǎo hù yuán|Belayer
+顶绳|dǐng shéng|Top rope; top-roping
+先锋攀登|xiān fēng pān dēng|Lead climbing
+挂绳|guà shéng|Clip the rope
+收绳|shōu shéng|Take in rope
+放绳|fàng shéng|Pay out rope; give slack
+下降|xià jiàng|Descend; descent
+坠落|zhuì luò|Fall
+脱落|tuō luò|Come off; fall off
+落地|luò dì|Land; reach the ground
+垫子|diàn zi|Mat; pad
+踩点|cǎi diǎn|Place a foot on a hold
+换脚|huàn jiǎo|Switch feet
+换手|huàn shǒu|Switch hands
+并手|bìng shǒu|Match hands on a hold
+重心|zhòng xīn|Center of gravity
+发力|fā lì|Apply force; generate power
+蹬|dēng|Push with the legs; step forcefully
+拉|lā|Pull
+推|tuī|Push
+抓|zhuā|Grab; grip
+捏|niē|Pinch
+勾|gōu|Hook
+锁定|suǒ dìng|Lock off; lock in place
+动态|dòng tài|Dynamic movement; dynamic
+静态|jìng tài|Static; controlled movement
+横移|héng yí|Traverse; move sideways
+仰角|yǎng jiǎo|Overhanging angle (climbing context)
+斜板|xié bǎn|Slab; inclined wall
+摩擦力|mó cā lì|Friction
+指力|zhǐ lì|Finger strength
+技术|jì shù|Technique; skill
+动作|dòng zuò|Movement; move
+节奏|jié zòu|Rhythm; pacing
+保护站|bǎo hù zhàn|Belay anchor station
+检查|jiǎn chá|Check; inspect
+系紧|jì jǐn|Fasten tightly; tie securely
+松|sōng|Loose; loosen
+紧|jǐn|Tight
+加油|jiā yóu|Come on! Keep going!
+稳住|wěn zhù|Stay steady; hold it
+下来|xià lái|Come down
+休息一下|xiū xi yī xià|Rest for a moment
+# china-regions|China: provinces & major regions|places,china-regions
+省|shěng|Province
+市|shì|City; municipality
+自治区|zì zhì qū|Autonomous region
+特别行政区|tè bié xíng zhèng qū|Special administrative region
+安徽|ān huī|Anhui
+福建|fú jiàn|Fujian
+甘肃|gān sù|Gansu
+广东|guǎng dōng|Guangdong
+贵州|guì zhōu|Guizhou
+海南|hǎi nán|Hainan
+河北|hé běi|Hebei
+河南|hé nán|Henan
+黑龙江|hēi lóng jiāng|Heilongjiang
+湖北|hú běi|Hubei
+湖南|hú nán|Hunan
+吉林|jí lín|Jilin
+江苏|jiāng sū|Jiangsu
+江西|jiāng xī|Jiangxi
+辽宁|liáo níng|Liaoning
+青海|qīng hǎi|Qinghai
+山东|shān dōng|Shandong
+山西|shān xī|Shanxi
+陕西|shǎn xī|Shaanxi
+四川|sì chuān|Sichuan
+云南|yún nán|Yunnan
+浙江|zhè jiāng|Zhejiang
+台湾|tái wān|Taiwan
+广西|guǎng xī|Guangxi
+内蒙古|nèi měng gǔ|Inner Mongolia
+宁夏|níng xià|Ningxia
+西藏|xī zàng|Tibet; Xizang
+新疆|xīn jiāng|Xinjiang
+北京|běi jīng|Beijing
+上海|shàng hǎi|Shanghai
+天津|tiān jīn|Tianjin
+重庆|chóng qìng|Chongqing
+香港|xiāng gǎng|Hong Kong
+澳门|ào mén|Macao; Macau
+# cities|Cities in China & abroad|places,cities
+广州|guǎng zhōu|Guangzhou
+深圳|shēn zhèn|Shenzhen
+成都|chéng dū|Chengdu
+杭州|háng zhōu|Hangzhou
+南京|nán jīng|Nanjing
+苏州|sū zhōu|Suzhou
+武汉|wǔ hàn|Wuhan
+西安|xī ān|Xi'an
+长沙|cháng shā|Changsha
+郑州|zhèng zhōu|Zhengzhou
+济南|jǐ nán|Jinan
+青岛|qīng dǎo|Qingdao
+大连|dà lián|Dalian
+沈阳|shěn yáng|Shenyang
+哈尔滨|hā ěr bīn|Harbin
+长春|cháng chūn|Changchun
+昆明|kūn míng|Kunming
+贵阳|guì yáng|Guiyang
+南宁|nán níng|Nanning
+桂林|guì lín|Guilin
+阳朔|yáng shuò|Yangshuo
+福州|fú zhōu|Fuzhou
+厦门|xià mén|Xiamen
+泉州|quán zhōu|Quanzhou
+南昌|nán chāng|Nanchang
+合肥|hé féi|Hefei
+太原|tài yuán|Taiyuan
+石家庄|shí jiā zhuāng|Shijiazhuang
+兰州|lán zhōu|Lanzhou
+西宁|xī níng|Xining
+银川|yín chuān|Yinchuan
+乌鲁木齐|wū lǔ mù qí|Urumqi
+拉萨|lā sà|Lhasa
+呼和浩特|hū hé hào tè|Hohhot
+海口|hǎi kǒu|Haikou
+三亚|sān yà|Sanya
+宁波|níng bō|Ningbo
+无锡|wú xī|Wuxi
+温州|wēn zhōu|Wenzhou
+台北|tái běi|Taipei
+浦东|pǔ dōng|Pudong
+浦西|pǔ xī|Puxi
+伦敦|lún dūn|London
+巴黎|bā lí|Paris
+纽约|niǔ yuē|New York
+洛杉矶|luò shān jī|Los Angeles
+旧金山|jiù jīn shān|San Francisco
+华盛顿|huá shèng dùn|Washington
+东京|dōng jīng|Tokyo
+大阪|dà bǎn|Osaka
+首尔|shǒu ěr|Seoul
+曼谷|màn gǔ|Bangkok
+河内|hé nèi|Hanoi
+吉隆坡|jí lóng pō|Kuala Lumpur
+雅加达|yǎ jiā dá|Jakarta
+悉尼|xī ní|Sydney
+墨尔本|mò ěr běn|Melbourne
+温哥华|wēn gē huá|Vancouver
+多伦多|duō lún duō|Toronto
+柏林|bó lín|Berlin
+罗马|luó mǎ|Rome
+马德里|mǎ dé lǐ|Madrid
+莫斯科|mò sī kē|Moscow
+迪拜|dí bài|Dubai
+# countries|Countries & world geography|places,countries
+中国|zhōng guó|China
+美国|měi guó|United States
+英国|yīng guó|United Kingdom
+加拿大|jiā ná dà|Canada
+澳大利亚|ào dà lì yà|Australia
+新西兰|xīn xī lán|New Zealand
+日本|rì běn|Japan
+韩国|hán guó|South Korea
+朝鲜|cháo xiǎn|North Korea; Korea in historical contexts
+蒙古|měng gǔ|Mongolia
+俄罗斯|é luó sī|Russia
+印度|yìn dù|India
+巴基斯坦|bā jī sī tǎn|Pakistan
+孟加拉国|mèng jiā lā guó|Bangladesh
+尼泊尔|ní bó ěr|Nepal
+斯里兰卡|sī lǐ lán kǎ|Sri Lanka
+泰国|tài guó|Thailand
+越南|yuè nán|Vietnam
+老挝|lǎo wō|Laos
+柬埔寨|jiǎn pǔ zhài|Cambodia
+缅甸|miǎn diàn|Myanmar
+马来西亚|mǎ lái xī yà|Malaysia
+新加坡|xīn jiā pō|Singapore
+印度尼西亚|yìn dù ní xī yà|Indonesia
+菲律宾|fēi lǜ bīn|Philippines
+法国|fǎ guó|France
+德国|dé guó|Germany
+意大利|yì dà lì|Italy
+西班牙|xī bān yá|Spain
+葡萄牙|pú táo yá|Portugal
+荷兰|hé lán|Netherlands
+比利时|bǐ lì shí|Belgium
+瑞士|ruì shì|Switzerland
+奥地利|ào dì lì|Austria
+瑞典|ruì diǎn|Sweden
+挪威|nuó wēi|Norway
+丹麦|dān mài|Denmark
+芬兰|fēn lán|Finland
+冰岛|bīng dǎo|Iceland
+爱尔兰|ài ěr lán|Ireland
+波兰|bō lán|Poland
+捷克|jié kè|Czechia
+匈牙利|xiōng yá lì|Hungary
+希腊|xī là|Greece
+土耳其|tǔ ěr qí|Türkiye; Turkey
+乌克兰|wū kè lán|Ukraine
+墨西哥|mò xī gē|Mexico
+巴西|bā xī|Brazil
+阿根廷|ā gēn tíng|Argentina
+智利|zhì lì|Chile
+秘鲁|bì lǔ|Peru
+哥伦比亚|gē lún bǐ yà|Colombia
+南非|nán fēi|South Africa
+埃及|āi jí|Egypt
+摩洛哥|mó luò gē|Morocco
+肯尼亚|kěn ní yà|Kenya
+尼日利亚|ní rì lì yà|Nigeria
+沙特阿拉伯|shā tè ā lā bó|Saudi Arabia
+阿联酋|ā lián qiú|United Arab Emirates (abbreviation)
+伊朗|yī lǎng|Iran
+以色列|yǐ sè liè|Israel
+亚洲|yà zhōu|Asia
+欧洲|ōu zhōu|Europe
+非洲|fēi zhōu|Africa
+北美洲|běi měi zhōu|North America
+南美洲|nán měi zhōu|South America
+大洋洲|dà yáng zhōu|Oceania
+南极洲|nán jí zhōu|Antarctica
+国家|guó jiā|Country; state
+首都|shǒu dū|Capital city
+城市|chéng shì|City
+# daily|Daily life, errands & conversation|daily,practical
+你好|nǐ hǎo|Hello
+谢谢|xiè xie|Thank you
+不客气|bù kè qi|You're welcome
+对不起|duì bu qǐ|Sorry
+没关系|méi guān xi|It doesn't matter; that's okay
+不好意思|bù hǎo yì si|Excuse me; sorry; feel embarrassed
+麻烦|má fan|Trouble; bother someone
+请问|qǐng wèn|May I ask; excuse me
+帮忙|bāng máng|Help; lend a hand
+随便|suí biàn|Anything is fine; casual; as one wishes
+都|dōu|All; both; in every case
+多|duō|Many; much; more
+时间|shí jiān|Time; time available
+时候|shí hou|Time; occasion; when
+现在|xiàn zài|Now
+今天|jīn tiān|Today
+明天|míng tiān|Tomorrow
+昨天|zuó tiān|Yesterday
+周末|zhōu mò|Weekend
+平时|píng shí|Usually; in everyday life
+最近|zuì jìn|Recently; lately
+刚才|gāng cái|Just now
+马上|mǎ shàng|Right away
+等一下|děng yī xià|Wait a moment
+一会儿|yī huì r|A little while
+有空|yǒu kòng|Have free time
+方便|fāng biàn|Convenient
+没空|méi kòng|Not have time; be busy
+可能|kě néng|Possible; may; might
+应该|yīng gāi|Should; ought to
+需要|xū yào|Need
+可以|kě yǐ|Can; may; be allowed to
+能|néng|Can; be able to
+会|huì|Know how to; will; be likely to
+想|xiǎng|Want to; think; miss someone
+要|yào|Want; need; be going to
+已经|yǐ jīng|Already
+还|hái|Still; also; yet
+再|zài|Again; then, for a future action
+又|yòu|Again; also, often for a repeated event
+就|jiù|Then; right away; precisely (context dependent)
+才|cái|Only then; not until; only (context dependent)
+但是|dàn shì|But; however
+因为|yīn wèi|Because
+所以|suǒ yǐ|So; therefore
+虽然|suī rán|Although
+如果|rú guǒ|If
+或者|huò zhě|Or (usually in statements)
+还是|hái shi|Or (in choices/questions); still
+一起|yī qǐ|Together
+觉得|jué de|Feel; think; find
+知道|zhī dào|Know information
+认识|rèn shi|Know a person; recognize
+明白|míng bai|Understand; clear
+听懂|tīng dǒng|Understand what one hears
+听不懂|tīng bù dǒng|Cannot understand what one hears
+意思|yì si|Meaning; idea
+怎么|zěn me|How
+为什么|wèi shén me|Why
+多少|duō shao|How many; how much
+哪里|nǎ lǐ|Where
+什么|shén me|What
+哪个|nǎ ge|Which one
+这个|zhè ge|This one
+那个|nà ge|That one
+这样|zhè yàng|Like this; this way
+那样|nà yàng|Like that; that way
+上班|shàng bān|Go to work; be at work
+下班|xià bān|Finish work
+加班|jiā bān|Work overtime
+开会|kāi huì|Have a meeting
+同事|tóng shì|Colleague
+老板|lǎo bǎn|Boss; shop owner
+工资|gōng zī|Salary; wages
+请假|qǐng jià|Ask for leave
+消息|xiāo xi|Message; news
+回复|huí fù|Reply
+发邮件|fā yóu jiàn|Send an email
+文件|wén jiàn|Document; file
+电脑|diàn nǎo|Computer
+手机|shǒu jī|Mobile phone
+充电|chōng diàn|Charge a battery
+充电器|chōng diàn qì|Charger
+充电宝|chōng diàn bǎo|Power bank
+网络|wǎng luò|Network; internet
+密码|mì mǎ|Password
+信号|xìn hào|Signal
+扫码|sǎo mǎ|Scan a code
+二维码|èr wéi mǎ|QR code
+付款|fù kuǎn|Make a payment
+收款|shōu kuǎn|Receive payment
+转账|zhuǎn zhàng|Transfer money
+现金|xiàn jīn|Cash
+银行卡|yín háng kǎ|Bank card
+发票|fā piào|Official invoice; tax receipt
+收据|shōu jù|Receipt
+快递|kuài dì|Express delivery; parcel
+取件|qǔ jiàn|Collect a parcel
+地址|dì zhǐ|Address
+小区|xiǎo qū|Residential complex
+物业|wù yè|Property management; property
+房东|fáng dōng|Landlord
+租房|zū fáng|Rent a home
+房租|fáng zū|Rent
+押金|yā jīn|Security deposit
+合同|hé tong|Contract
+钥匙|yào shi|Key
+电梯|diàn tī|Elevator; lift
+楼梯|lóu tī|Stairs
+空调|kōng tiáo|Air conditioner
+冰箱|bīng xiāng|Refrigerator
+洗衣机|xǐ yī jī|Washing machine
+热水|rè shuǐ|Hot water
+停电|tíng diàn|Power outage
+坏了|huài le|Broken; has gone bad
+维修|wéi xiū|Repair; maintenance
+超市|chāo shì|Supermarket
+便利店|biàn lì diàn|Convenience store
+菜市场|cài shì chǎng|Fresh-food market
+药店|yào diàn|Pharmacy
+医院|yī yuàn|Hospital
+洗手间|xǐ shǒu jiān|Restroom
+垃圾|lā jī|Garbage; trash
+垃圾桶|lā jī tǒng|Garbage bin
+地铁|dì tiě|Metro; subway
+公交车|gōng jiāo chē|Public bus
+出租车|chū zū chē|Taxi
+网约车|wǎng yuē chē|Ride-hailing car
+打车|dǎ chē|Take a taxi or ride-hailing car
+自行车|zì xíng chē|Bicycle
+电动车|diàn dòng chē|Electric bike or electric vehicle
+高铁|gāo tiě|High-speed rail
+火车站|huǒ chē zhàn|Railway station
+机场|jī chǎng|Airport
+车票|chē piào|Transport ticket
+护照|hù zhào|Passport
+签证|qiān zhèng|Visa
+身份证|shēn fèn zhèng|Identity card
+入口|rù kǒu|Entrance
+出口|chū kǒu|Exit
+换乘|huàn chéng|Transfer between transit services
+排队|pái duì|Queue; line up
+堵车|dǔ chē|Traffic jam
+迟到|chí dào|Be late
+附近|fù jìn|Nearby; vicinity
+路口|lù kǒu|Intersection
+红绿灯|hóng lǜ dēng|Traffic lights
+直走|zhí zǒu|Go straight
+左转|zuǒ zhuǎn|Turn left
+右转|yòu zhuǎn|Turn right
+对面|duì miàn|Opposite; across from
+旁边|páng biān|Beside; next to
+里面|lǐ miàn|Inside
+外面|wài miàn|Outside
+楼上|lóu shàng|Upstairs
+楼下|lóu xià|Downstairs
+天气|tiān qì|Weather
+下雨|xià yǔ|Rain; be raining
+晴天|qíng tiān|Sunny day
+阴天|yīn tiān|Overcast day
+温度|wēn dù|Temperature
+湿度|shī dù|Humidity
+雨伞|yǔ sǎn|Umbrella
+衣服|yī fu|Clothes
+裤子|kù zi|Trousers; pants
+鞋子|xié zi|Shoes
+袜子|wà zi|Socks
+洗澡|xǐ zǎo|Shower; bathe
+刷牙|shuā yá|Brush teeth
+睡觉|shuì jiào|Sleep; go to bed
+起床|qǐ chuáng|Get up
+打扫|dǎ sǎo|Clean; sweep
+洗碗|xǐ wǎn|Wash dishes
+便宜|pián yi|Cheap; inexpensive
+贵|guì|Expensive
+价格|jià gé|Price
+打折|dǎ zhé|Give a discount; on sale
+退货|tuì huò|Return a purchase
+换货|huàn huò|Exchange a purchase
+合适|hé shì|Suitable; fits
+尺码|chǐ mǎ|Clothing or shoe size
+试穿|shì chuān|Try on clothes
+# everyday-core|Everyday foundations: people, numbers & time|daily,foundations
+我|wǒ|I; me
+你|nǐ|You
+您|nín|You (polite)
+他|tā|He; him
+她|tā|She; her
+它|tā|It
+我们|wǒ men|We; us
+你们|nǐ men|You (plural)
+他们|tā men|They; them
+人|rén|Person; people
+朋友|péng you|Friend
+家|jiā|Home; family
+家人|jiā rén|Family members
+爸爸|bà ba|Dad; father
+妈妈|mā ma|Mom; mother
+父母|fù mǔ|Parents
+哥哥|gē ge|Older brother
+姐姐|jiě jie|Older sister
+弟弟|dì di|Younger brother
+妹妹|mèi mei|Younger sister
+丈夫|zhàng fu|Husband
+妻子|qī zi|Wife
+孩子|hái zi|Child
+儿子|ér zi|Son
+女儿|nǚ ér|Daughter
+名字|míng zi|Name
+是|shì|Be; is; am; are
+不是|bù shì|Is not; am not; are not
+好|hǎo|Good; okay
+不好|bù hǎo|Not good
+有|yǒu|Have; there is
+没有|méi yǒu|Not have; there is no; have not
+不|bù|Not; no
+没|méi|Not; did not; have not
+的|de|Possessive or attributive particle
+了|le|Completion or change-of-state particle
+吗|ma|Question particle
+呢|ne|Question or topic-continuation particle
+也|yě|Also; too
+和|hé|And; with
+很|hěn|Very; quite
+来|lái|Come
+去|qù|Go
+看|kàn|Look; watch; read
+听|tīng|Listen; hear
+说|shuō|Say; speak
+读|dú|Read
+写|xiě|Write
+吃|chī|Eat
+喝|hē|Drink
+坐|zuò|Sit; take transport
+走|zǒu|Walk; go
+做|zuò|Do; make
+买|mǎi|Buy
+卖|mài|Sell
+给|gěi|Give; for
+找|zhǎo|Look for
+等|děng|Wait
+开|kāi|Open; turn on; drive
+关|guān|Close; turn off
+大|dà|Big; large
+小|xiǎo|Small
+快|kuài|Fast; quick
+慢|màn|Slow
+冷|lěng|Cold
+热|rè|Hot
+远|yuǎn|Far
+近|jìn|Near
+高|gāo|Tall; high
+低|dī|Low
+长|cháng|Long
+短|duǎn|Short (length)
+新|xīn|New
+旧|jiù|Old; used
+零|líng|Zero
+一|yī|One
+二|èr|Two (number)
+三|sān|Three
+四|sì|Four
+五|wǔ|Five
+六|liù|Six
+七|qī|Seven
+八|bā|Eight
+九|jiǔ|Nine
+十|shí|Ten
+百|bǎi|Hundred
+千|qiān|Thousand
+万|wàn|Ten thousand
+两|liǎng|Two (before most classifiers)
+个|ge|General classifier
+年|nián|Year
+月|yuè|Month; moon
+日|rì|Day; date (formal)
+号|hào|Date; number
+天|tiān|Day; sky
+星期|xīng qī|Week
+星期一|xīng qī yī|Monday
+星期二|xīng qī èr|Tuesday
+星期三|xīng qī sān|Wednesday
+星期四|xīng qī sì|Thursday
+星期五|xīng qī wǔ|Friday
+星期六|xīng qī liù|Saturday
+星期天|xīng qī tiān|Sunday
+早上|zǎo shang|Early morning
+上午|shàng wǔ|Morning; before noon
+中午|zhōng wǔ|Noon
+下午|xià wǔ|Afternoon
+晚上|wǎn shang|Evening; night
+小时|xiǎo shí|Hour
+分钟|fēn zhōng|Minute
+秒|miǎo|Second (time unit)
+前天|qián tiān|The day before yesterday
+后天|hòu tiān|The day after tomorrow
+今年|jīn nián|This year
+去年|qù nián|Last year
+明年|míng nián|Next year
+东|dōng|East
+南|nán|South
+西|xī|West
+北|běi|North
+左边|zuǒ biān|Left side
+右边|yòu biān|Right side
+前面|qián miàn|In front; ahead
+后面|hòu miàn|Behind; at the back
+颜色|yán sè|Color
+红色|hóng sè|Red
+蓝色|lán sè|Blue
+绿色|lǜ sè|Green
+黄色|huáng sè|Yellow
+黑色|hēi sè|Black
+白色|bái sè|White
+灰色|huī sè|Gray
+紫色|zǐ sè|Purple
+高兴|gāo xìng|Happy; pleased
+难过|nán guò|Sad; upset
+生气|shēng qì|Be angry
+担心|dān xīn|Worry; be worried
+害怕|hài pà|Be afraid
+饿|è|Hungry
+渴|kě|Thirsty
+困|kùn|Sleepy
+累|lèi|Tired
+忙|máng|Busy

@@ -20,11 +20,12 @@ STATIC_FILES = (
     "storage.js",
     "cards.js",
     "grammar.js",
+    "deck-catalog.js",
     "sw.js",
     "manifest.webmanifest",
     "_headers",
 )
-STATIC_DIRS = ("icons",)
+STATIC_DIRS = ("icons", "decks")
 
 
 def main() -> None:

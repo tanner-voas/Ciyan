@@ -1,0 +1,743 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Global foods & drinks",
+  "description": "Practical vocabulary for global foods & drinks.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-b4bf241cd10ee181",
+      "hanzi": "面包",
+      "pinyin": "miàn bāo",
+      "english": "Bread",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-921acd914acd6c57",
+      "hanzi": "吐司",
+      "pinyin": "tǔ sī",
+      "english": "Toast; sliced bread",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-828d5640ee422883",
+      "hanzi": "三明治",
+      "pinyin": "sān míng zhì",
+      "english": "Sandwich",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cff82d4e354fb41e",
+      "hanzi": "汉堡",
+      "pinyin": "hàn bǎo",
+      "english": "Burger",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0e1865390696e7be",
+      "hanzi": "披萨",
+      "pinyin": "pī sà",
+      "english": "Pizza",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-feac78dd0a0cae20",
+      "hanzi": "意大利面",
+      "pinyin": "yì dà lì miàn",
+      "english": "Pasta",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfe5cc3df3047299",
+      "hanzi": "牛排",
+      "pinyin": "niú pái",
+      "english": "Steak",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d4bb9332fd766d70",
+      "hanzi": "薯条",
+      "pinyin": "shǔ tiáo",
+      "english": "French fries; chips",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f93b757d1618d14",
+      "hanzi": "炸鸡",
+      "pinyin": "zhá jī",
+      "english": "Fried chicken",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b5b96fd0623a039",
+      "hanzi": "沙拉",
+      "pinyin": "shā lā",
+      "english": "Salad",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d6717b1e06ad748d",
+      "hanzi": "咖喱",
+      "pinyin": "gā lí",
+      "english": "Curry",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b66b04c2509a7c34",
+      "hanzi": "寿司",
+      "pinyin": "shòu sī",
+      "english": "Sushi",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-36930458f2b0b3d0",
+      "hanzi": "刺身",
+      "pinyin": "cì shēn",
+      "english": "Sashimi",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aa7e80d1b7d9d6d2",
+      "hanzi": "天妇罗",
+      "pinyin": "tiān fù luó",
+      "english": "Tempura",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-334a8bced922d17e",
+      "hanzi": "乌冬面",
+      "pinyin": "wū dōng miàn",
+      "english": "Udon noodles",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-873190e4d8c85d46",
+      "hanzi": "泡菜",
+      "pinyin": "pào cài",
+      "english": "Pickled vegetables; often kimchi in Korean-food contexts",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1cbdfd30e71ddab0",
+      "hanzi": "石锅拌饭",
+      "pinyin": "shí guō bàn fàn",
+      "english": "Hot-stone bibimbap",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-213da45a5207a631",
+      "hanzi": "越南河粉",
+      "pinyin": "yuè nán hé fěn",
+      "english": "Vietnamese pho",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7212a2c9511ad5e8",
+      "hanzi": "春卷",
+      "pinyin": "chūn juǎn",
+      "english": "Spring rolls",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2b11337503ed6bb",
+      "hanzi": "墨西哥卷饼",
+      "pinyin": "mò xī gē juǎn bǐng",
+      "english": "Burrito; Mexican wrap",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2a12716c8f5265d3",
+      "hanzi": "鹰嘴豆",
+      "pinyin": "yīng zuǐ dòu",
+      "english": "Chickpea",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a8e8b67480498fb7",
+      "hanzi": "扁豆",
+      "pinyin": "biǎn dòu",
+      "english": "Hyacinth bean; also lentil in some translated food labels",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1251b0535e6e7695",
+      "hanzi": "藜麦",
+      "pinyin": "lí mài",
+      "english": "Quinoa",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-04081d3010badeed",
+      "hanzi": "奶酪",
+      "pinyin": "nǎi lào",
+      "english": "Cheese",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e80b1362d4eb9b42",
+      "hanzi": "芝士",
+      "pinyin": "zhī shì",
+      "english": "Cheese (loanword)",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2aef3d11527dea46",
+      "hanzi": "黄油",
+      "pinyin": "huáng yóu",
+      "english": "Butter",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ed3cdb192a56efc6",
+      "hanzi": "奶油",
+      "pinyin": "nǎi yóu",
+      "english": "Cream",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9af9bd8ab9c684ed",
+      "hanzi": "酸奶",
+      "pinyin": "suān nǎi",
+      "english": "Yogurt",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b892a42b9695881d",
+      "hanzi": "牛奶",
+      "pinyin": "niú nǎi",
+      "english": "Milk",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a9259268d75f9f5",
+      "hanzi": "全脂牛奶",
+      "pinyin": "quán zhī niú nǎi",
+      "english": "Whole milk",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-92f52a38180ce150",
+      "hanzi": "脱脂牛奶",
+      "pinyin": "tuō zhī niú nǎi",
+      "english": "Skim milk",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d4afc8a33d200a8",
+      "hanzi": "燕麦奶",
+      "pinyin": "yàn mài nǎi",
+      "english": "Oat milk",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-435f5897b3588978",
+      "hanzi": "蛋白粉",
+      "pinyin": "dàn bái fěn",
+      "english": "Protein powder",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-da08de83f6268aad",
+      "hanzi": "蛋白质",
+      "pinyin": "dàn bái zhì",
+      "english": "Protein",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8026260f9c233fc2",
+      "hanzi": "碳水化合物",
+      "pinyin": "tàn shuǐ huà hé wù",
+      "english": "Carbohydrates",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d1cb6ec4c8f09de2",
+      "hanzi": "脂肪",
+      "pinyin": "zhī fáng",
+      "english": "Fat",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-941ba5f9ea73a1b5",
+      "hanzi": "热量",
+      "pinyin": "rè liàng",
+      "english": "Energy; calories in food contexts",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b8c4bb849e089dd",
+      "hanzi": "蛋糕",
+      "pinyin": "dàn gāo",
+      "english": "Cake",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-56ad9259e3e1c67d",
+      "hanzi": "饼干",
+      "pinyin": "bǐng gān",
+      "english": "Cookies; biscuits",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-73b9e5c797336213",
+      "hanzi": "巧克力",
+      "pinyin": "qiǎo kè lì",
+      "english": "Chocolate",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ea01af14f934746",
+      "hanzi": "冰淇淋",
+      "pinyin": "bīng qí lín",
+      "english": "Ice cream",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2872b3af058c9152",
+      "hanzi": "布丁",
+      "pinyin": "bù dīng",
+      "english": "Pudding",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7d17b8d9cb58de7a",
+      "hanzi": "甜甜圈",
+      "pinyin": "tián tián quān",
+      "english": "Doughnut",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-955ff309fc442822",
+      "hanzi": "可颂",
+      "pinyin": "kě sòng",
+      "english": "Croissant",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-720ec669f15b87b1",
+      "hanzi": "咖啡",
+      "pinyin": "kā fēi",
+      "english": "Coffee",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a83ecf1428473c60",
+      "hanzi": "美式咖啡",
+      "pinyin": "měi shì kā fēi",
+      "english": "Americano",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d4a87835d5d71468",
+      "hanzi": "拿铁",
+      "pinyin": "ná tiě",
+      "english": "Latte",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aa2d8de4226c004b",
+      "hanzi": "浓缩咖啡",
+      "pinyin": "nóng suō kā fēi",
+      "english": "Espresso",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-252a9a8f569801e8",
+      "hanzi": "红茶",
+      "pinyin": "hóng chá",
+      "english": "Black tea",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ded36aec25c40c8",
+      "hanzi": "绿茶",
+      "pinyin": "lǜ chá",
+      "english": "Green tea",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7b7ea9d62ce28c7",
+      "hanzi": "乌龙茶",
+      "pinyin": "wū lóng chá",
+      "english": "Oolong tea",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-54b77038f0df2655",
+      "hanzi": "奶茶",
+      "pinyin": "nǎi chá",
+      "english": "Milk tea",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76bfc0638386e508",
+      "hanzi": "珍珠奶茶",
+      "pinyin": "zhēn zhū nǎi chá",
+      "english": "Bubble tea with tapioca pearls",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-64c25f038caae862",
+      "hanzi": "果汁",
+      "pinyin": "guǒ zhī",
+      "english": "Fruit juice",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6b1311e9a899a0d4",
+      "hanzi": "矿泉水",
+      "pinyin": "kuàng quán shuǐ",
+      "english": "Mineral water",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d333160eac86b30",
+      "hanzi": "气泡水",
+      "pinyin": "qì pào shuǐ",
+      "english": "Sparkling water",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dbe286d922bc4d31",
+      "hanzi": "可乐",
+      "pinyin": "kě lè",
+      "english": "Cola",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6ce042f4036c671b",
+      "hanzi": "啤酒",
+      "pinyin": "pí jiǔ",
+      "english": "Beer",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-05f2ca8d331ee781",
+      "hanzi": "葡萄酒",
+      "pinyin": "pú tao jiǔ",
+      "english": "Wine",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-78e07efce8ca0462",
+      "hanzi": "白酒",
+      "pinyin": "bái jiǔ",
+      "english": "Chinese distilled liquor",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}

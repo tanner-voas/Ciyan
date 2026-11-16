@@ -1,0 +1,1027 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Activities, sports & exercise",
+  "description": "Practical vocabulary for activities, sports & exercise.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-a9d130d79595672c",
+      "hanzi": "运动",
+      "pinyin": "yùn dòng",
+      "english": "Exercise; sport",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ac42542715a9fd60",
+      "hanzi": "锻炼",
+      "pinyin": "duàn liàn",
+      "english": "Work out; train",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5d925cc69d52ad83",
+      "hanzi": "健身",
+      "pinyin": "jiàn shēn",
+      "english": "Fitness; work out",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ba08782b41001a19",
+      "hanzi": "健身房",
+      "pinyin": "jiàn shēn fáng",
+      "english": "Gym",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a29c0de140769391",
+      "hanzi": "训练",
+      "pinyin": "xùn liàn",
+      "english": "Training; train",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bc266d1610c100b9",
+      "hanzi": "热身",
+      "pinyin": "rè shēn",
+      "english": "Warm up",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5d7d4daca250eac9",
+      "hanzi": "拉伸",
+      "pinyin": "lā shēn",
+      "english": "Stretch; stretching",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7bb5f03a002359a1",
+      "hanzi": "放松",
+      "pinyin": "fàng sōng",
+      "english": "Relax; loosen up",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e0534b8a4e46a0cb",
+      "hanzi": "恢复",
+      "pinyin": "huī fù",
+      "english": "Recover; recovery",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fff33732fc978a09",
+      "hanzi": "休息",
+      "pinyin": "xiū xi",
+      "english": "Rest",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-591052c733499bad",
+      "hanzi": "跑步",
+      "pinyin": "pǎo bù",
+      "english": "Run; running",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-84390ddd71e84e8f",
+      "hanzi": "慢跑",
+      "pinyin": "màn pǎo",
+      "english": "Jog",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d4e25a7e386b8808",
+      "hanzi": "散步",
+      "pinyin": "sàn bù",
+      "english": "Take a walk",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0d4309fe260c23b",
+      "hanzi": "徒步",
+      "pinyin": "tú bù",
+      "english": "Hike; travel on foot",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-849f9ce9f688ba33",
+      "hanzi": "爬山",
+      "pinyin": "pá shān",
+      "english": "Hike up a mountain",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6af0ddf8b2f5453a",
+      "hanzi": "登山",
+      "pinyin": "dēng shān",
+      "english": "Mountaineering; mountain climbing",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-884198161bb72a3b",
+      "hanzi": "骑车",
+      "pinyin": "qí chē",
+      "english": "Ride a bicycle",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e81f910c0f2bb513",
+      "hanzi": "骑行",
+      "pinyin": "qí xíng",
+      "english": "Cycling",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f864303afb4e4a85",
+      "hanzi": "游泳",
+      "pinyin": "yóu yǒng",
+      "english": "Swim",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a4a3212a7a24e86",
+      "hanzi": "潜水",
+      "pinyin": "qián shuǐ",
+      "english": "Dive; diving",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1b44b4a7c98063d3",
+      "hanzi": "冲浪",
+      "pinyin": "chōng làng",
+      "english": "Surf",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5e6dbb1fcc4e27af",
+      "hanzi": "滑雪",
+      "pinyin": "huá xuě",
+      "english": "Ski; snow sports",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6ae9b614455e2e43",
+      "hanzi": "滑冰",
+      "pinyin": "huá bīng",
+      "english": "Ice skate",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6125f086d05dccee",
+      "hanzi": "滑板",
+      "pinyin": "huá bǎn",
+      "english": "Skateboard",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1e255d233d9652f5",
+      "hanzi": "篮球",
+      "pinyin": "lán qiú",
+      "english": "Basketball",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-27a60fa44a5333bf",
+      "hanzi": "足球",
+      "pinyin": "zú qiú",
+      "english": "Soccer; football",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-217a257fb363ed86",
+      "hanzi": "羽毛球",
+      "pinyin": "yǔ máo qiú",
+      "english": "Badminton",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f58a4aba8867c9a3",
+      "hanzi": "乒乓球",
+      "pinyin": "pīng pāng qiú",
+      "english": "Table tennis",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-324b8091c4f38dce",
+      "hanzi": "网球",
+      "pinyin": "wǎng qiú",
+      "english": "Tennis",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-19e5a6b8e56551f1",
+      "hanzi": "排球",
+      "pinyin": "pái qiú",
+      "english": "Volleyball",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67037c8b8e571d97",
+      "hanzi": "棒球",
+      "pinyin": "bàng qiú",
+      "english": "Baseball",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-59abe8d9dd12d0e4",
+      "hanzi": "高尔夫",
+      "pinyin": "gāo ěr fū",
+      "english": "Golf",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b609872e77c53e0a",
+      "hanzi": "拳击",
+      "pinyin": "quán jī",
+      "english": "Boxing",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6d115c9069666da",
+      "hanzi": "武术",
+      "pinyin": "wǔ shù",
+      "english": "Chinese martial arts",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bd4e166240089036",
+      "hanzi": "瑜伽",
+      "pinyin": "yú jiā",
+      "english": "Yoga",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ddb8a77b1ca95e5b",
+      "hanzi": "普拉提",
+      "pinyin": "pǔ lā tí",
+      "english": "Pilates",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d345d9a2fbf60ae0",
+      "hanzi": "跳舞",
+      "pinyin": "tiào wǔ",
+      "english": "Dance",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-203cc8f947e2e41a",
+      "hanzi": "跳绳",
+      "pinyin": "tiào shéng",
+      "english": "Jump rope",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-85efe392fda1a48c",
+      "hanzi": "举重",
+      "pinyin": "jǔ zhòng",
+      "english": "Weightlifting",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a2c014ee7d1b0c44",
+      "hanzi": "俯卧撑",
+      "pinyin": "fǔ wò chēng",
+      "english": "Push-up",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-797f5901859a802b",
+      "hanzi": "引体向上",
+      "pinyin": "yǐn tǐ xiàng shàng",
+      "english": "Pull-up",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-14906fe65951b860",
+      "hanzi": "深蹲",
+      "pinyin": "shēn dūn",
+      "english": "Squat",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67bbc97aea216d4c",
+      "hanzi": "硬拉",
+      "pinyin": "yìng lā",
+      "english": "Deadlift",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ef1b37790ea83916",
+      "hanzi": "卧推",
+      "pinyin": "wò tuī",
+      "english": "Bench press",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-17f856755af7a442",
+      "hanzi": "平板支撑",
+      "pinyin": "píng bǎn zhī chēng",
+      "english": "Plank exercise",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cfbb88c4ba804b90",
+      "hanzi": "哑铃",
+      "pinyin": "yǎ líng",
+      "english": "Dumbbell",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c45ad598360e2860",
+      "hanzi": "杠铃",
+      "pinyin": "gàng líng",
+      "english": "Barbell",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1fc91987002ccf2c",
+      "hanzi": "跑步机",
+      "pinyin": "pǎo bù jī",
+      "english": "Treadmill",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-178ac6abc242aa0f",
+      "hanzi": "弹力带",
+      "pinyin": "tán lì dài",
+      "english": "Resistance band",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76acfbf2e9e3914e",
+      "hanzi": "组",
+      "pinyin": "zǔ",
+      "english": "Set; group",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-05c518eb94a0ebab",
+      "hanzi": "次数",
+      "pinyin": "cì shù",
+      "english": "Number of repetitions or times",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5081ead9bbce7393",
+      "hanzi": "重量",
+      "pinyin": "zhòng liàng",
+      "english": "Weight",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-16b7568de4799d09",
+      "hanzi": "力量",
+      "pinyin": "lì liang",
+      "english": "Strength; force",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1eb7b22d65855362",
+      "hanzi": "耐力",
+      "pinyin": "nài lì",
+      "english": "Endurance",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-18a44b048b5b0d3a",
+      "hanzi": "爆发力",
+      "pinyin": "bào fā lì",
+      "english": "Explosive power",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a1d061638193ab06",
+      "hanzi": "柔韧性",
+      "pinyin": "róu rèn xìng",
+      "english": "Flexibility",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df544e46aa4d5c17",
+      "hanzi": "平衡",
+      "pinyin": "píng héng",
+      "english": "Balance",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5e41d1d344f5c993",
+      "hanzi": "协调",
+      "pinyin": "xié tiáo",
+      "english": "Coordination; coordinate",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ae09af09316df62",
+      "hanzi": "有氧运动",
+      "pinyin": "yǒu yǎng yùn dòng",
+      "english": "Aerobic exercise",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d33382f4375f5cf7",
+      "hanzi": "无氧运动",
+      "pinyin": "wú yǎng yùn dòng",
+      "english": "Anaerobic exercise",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f1e61a642db8afd",
+      "hanzi": "心率",
+      "pinyin": "xīn lǜ",
+      "english": "Heart rate",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-280e12a8d2af2414",
+      "hanzi": "呼吸",
+      "pinyin": "hū xī",
+      "english": "Breathe; breathing",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3db0d053f742b4ee",
+      "hanzi": "出汗",
+      "pinyin": "chū hàn",
+      "english": "Sweat",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fc1343aa793eed6",
+      "hanzi": "教练",
+      "pinyin": "jiào liàn",
+      "english": "Coach",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4bc61c410f731e7b",
+      "hanzi": "队友",
+      "pinyin": "duì yǒu",
+      "english": "Teammate",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7595b4b87e468f45",
+      "hanzi": "比赛",
+      "pinyin": "bǐ sài",
+      "english": "Competition; match",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6616b39525e049f2",
+      "hanzi": "报名",
+      "pinyin": "bào míng",
+      "english": "Sign up",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-352cdc8078923eed",
+      "hanzi": "预约",
+      "pinyin": "yù yuē",
+      "english": "Make a reservation; appointment",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e86aae75fd0db045",
+      "hanzi": "露营",
+      "pinyin": "lù yíng",
+      "english": "Camp; camping",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d069379363352dd",
+      "hanzi": "野餐",
+      "pinyin": "yě cān",
+      "english": "Picnic",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-596db314be7321a9",
+      "hanzi": "摄影",
+      "pinyin": "shè yǐng",
+      "english": "Photography",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6e3a10ade7c74955",
+      "hanzi": "拍照",
+      "pinyin": "pāi zhào",
+      "english": "Take photos",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-24c8fca13f093fc5",
+      "hanzi": "看电影",
+      "pinyin": "kàn diàn yǐng",
+      "english": "Watch a movie",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9f805978dd250981",
+      "hanzi": "看书",
+      "pinyin": "kàn shū",
+      "english": "Read a book",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-15809dbe28cb6848",
+      "hanzi": "玩游戏",
+      "pinyin": "wán yóu xì",
+      "english": "Play games",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-39712e9368a8e037",
+      "hanzi": "做饭",
+      "pinyin": "zuò fàn",
+      "english": "Cook a meal",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a12693d42292b86d",
+      "hanzi": "逛街",
+      "pinyin": "guàng jiē",
+      "english": "Browse shops; go shopping",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-86d347aaa30d1b43",
+      "hanzi": "唱歌",
+      "pinyin": "chàng gē",
+      "english": "Sing",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a59949fd38a4e7cb",
+      "hanzi": "乐器",
+      "pinyin": "yuè qì",
+      "english": "Musical instrument",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6b533a8c6ba1dd93",
+      "hanzi": "吉他",
+      "pinyin": "jí tā",
+      "english": "Guitar",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df3ce0fb82b6b8b1",
+      "hanzi": "钢琴",
+      "pinyin": "gāng qín",
+      "english": "Piano",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": []
+}
