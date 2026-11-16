@@ -1,0 +1,9 @@
+# Generated Cloudflare Pages upload
+/dist/
+
+# Local Python cache
+__pycache__/
+*.py[cod]
+
+# Local development files
+.DS_Store

@@ -1,0 +1,17 @@
+{
+  "id": "./",
+  "name": "Cíyán — Mandarin flashcards",
+  "short_name": "Cíyán",
+  "description": "Learn conversational Mandarin with beautiful offline spaced repetition.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f6f1",
+  "theme_color": "#f6f6f1",
+  "orientation": "portrait",
+  "lang": "en",
+  "icons": [
+    {"src":"./icons/icon-192.png", "sizes":"192x192", "type":"image/png", "purpose":"any maskable"},
+    {"src":"./icons/icon-512.png", "sizes":"512x512", "type":"image/png", "purpose":"any maskable"}
+  ]
+}

@@ -1,0 +1,480 @@
+{
+  "format": "ciyan-deck",
+  "version": 1,
+  "cards": [
+    {
+      "id": "starter-001",
+      "hanzi": "你好",
+      "pinyin": "nǐ hǎo",
+      "english": "Hello",
+      "example": "你好！今天怎么样？",
+      "examplePinyin": "Nǐ hǎo! Jīntiān zěnmeyàng?",
+      "exampleEnglish": "Hi! How is today going?",
+      "tags": [
+        "greetings",
+        "basics"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-002",
+      "hanzi": "谢谢",
+      "pinyin": "xièxie",
+      "english": "Thank you",
+      "example": "谢谢你帮我。",
+      "examplePinyin": "Xièxie nǐ bāng wǒ.",
+      "exampleEnglish": "Thanks for helping me.",
+      "tags": [
+        "greetings",
+        "basics"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-003",
+      "hanzi": "不好意思",
+      "pinyin": "bù hǎoyìsi",
+      "english": "Excuse me; sorry",
+      "example": "不好意思，打扰一下。",
+      "examplePinyin": "Bù hǎoyìsi, dǎrǎo yíxià.",
+      "exampleEnglish": "Excuse me, can I interrupt for a moment?",
+      "tags": [
+        "greetings",
+        "social"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-004",
+      "hanzi": "没关系",
+      "pinyin": "méi guānxi",
+      "english": "It's okay; no problem",
+      "example": "没关系，慢慢来。",
+      "examplePinyin": "Méi guānxi, mànman lái.",
+      "exampleEnglish": "No problem, take your time.",
+      "tags": [
+        "greetings",
+        "social"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-005",
+      "hanzi": "最近",
+      "pinyin": "zuìjìn",
+      "english": "Recently; lately",
+      "example": "你最近忙吗？",
+      "examplePinyin": "Nǐ zuìjìn máng ma?",
+      "exampleEnglish": "Have you been busy lately?",
+      "tags": [
+        "social",
+        "time"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-006",
+      "hanzi": "周末",
+      "pinyin": "zhōumò",
+      "english": "Weekend",
+      "example": "周末有什么计划？",
+      "examplePinyin": "Zhōumò yǒu shénme jìhuà?",
+      "exampleEnglish": "Any plans for the weekend?",
+      "tags": [
+        "social",
+        "time"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-007",
+      "hanzi": "约",
+      "pinyin": "yuē",
+      "english": "To arrange to meet",
+      "example": "我们下周约个时间吧。",
+      "examplePinyin": "Wǒmen xià zhōu yuē ge shíjiān ba.",
+      "exampleEnglish": "Let's find a time to meet next week.",
+      "tags": [
+        "social"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-008",
+      "hanzi": "方便",
+      "pinyin": "fāngbiàn",
+      "english": "Convenient",
+      "example": "你现在方便说话吗？",
+      "examplePinyin": "Nǐ xiànzài fāngbiàn shuōhuà ma?",
+      "exampleEnglish": "Is now a convenient time to talk?",
+      "tags": [
+        "social",
+        "work"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-009",
+      "hanzi": "随便",
+      "pinyin": "suíbiàn",
+      "english": "Whatever; any is fine",
+      "example": "吃什么？我都随便。",
+      "examplePinyin": "Chī shénme? Wǒ dōu suíbiàn.",
+      "exampleEnglish": "What should we eat? Anything is fine with me.",
+      "tags": [
+        "social",
+        "food"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-010",
+      "hanzi": "当然",
+      "pinyin": "dāngrán",
+      "english": "Of course",
+      "example": "当然可以！",
+      "examplePinyin": "Dāngrán kěyǐ!",
+      "exampleEnglish": "Of course you can!",
+      "tags": [
+        "basics",
+        "social"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-011",
+      "hanzi": "有点儿",
+      "pinyin": "yǒudiǎnr",
+      "english": "A little (often negative)",
+      "example": "今天有点儿累。",
+      "examplePinyin": "Jīntiān yǒudiǎnr lèi.",
+      "exampleEnglish": "I'm a little tired today.",
+      "tags": [
+        "basics"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-012",
+      "hanzi": "差不多",
+      "pinyin": "chàbuduō",
+      "english": "Almost; about the same",
+      "example": "我们差不多到了。",
+      "examplePinyin": "Wǒmen chàbuduō dào le.",
+      "exampleEnglish": "We're almost there.",
+      "tags": [
+        "basics",
+        "time"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-013",
+      "hanzi": "打算",
+      "pinyin": "dǎsuàn",
+      "english": "To plan; intend",
+      "example": "我打算周末去爬山。",
+      "examplePinyin": "Wǒ dǎsuàn zhōumò qù páshān.",
+      "exampleEnglish": "I plan to go hiking this weekend.",
+      "tags": [
+        "social",
+        "time"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-014",
+      "hanzi": "感觉",
+      "pinyin": "gǎnjué",
+      "english": "To feel; feeling",
+      "example": "我感觉这个不错。",
+      "examplePinyin": "Wǒ gǎnjué zhège búcuò.",
+      "exampleEnglish": "I feel this one is pretty good.",
+      "tags": [
+        "social",
+        "basics"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-015",
+      "hanzi": "推荐",
+      "pinyin": "tuījiàn",
+      "english": "To recommend",
+      "example": "你有什么推荐的餐厅？",
+      "examplePinyin": "Nǐ yǒu shénme tuījiàn de cāntīng?",
+      "exampleEnglish": "Do you have any restaurant recommendations?",
+      "tags": [
+        "food",
+        "social"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-016",
+      "hanzi": "点菜",
+      "pinyin": "diǎncài",
+      "english": "To order food",
+      "example": "我们先点菜吧。",
+      "examplePinyin": "Wǒmen xiān diǎncài ba.",
+      "exampleEnglish": "Let's order first.",
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-017",
+      "hanzi": "菜单",
+      "pinyin": "càidān",
+      "english": "Menu",
+      "example": "可以给我看一下菜单吗？",
+      "examplePinyin": "Kěyǐ gěi wǒ kàn yíxià càidān ma?",
+      "exampleEnglish": "May I see the menu?",
+      "tags": [
+        "food",
+        "restaurant",
+        "reading"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-018",
+      "hanzi": "打包",
+      "pinyin": "dǎbāo",
+      "english": "To pack food to go",
+      "example": "剩下的可以打包吗？",
+      "examplePinyin": "Shèngxià de kěyǐ dǎbāo ma?",
+      "exampleEnglish": "Can I take the leftovers to go?",
+      "tags": [
+        "food",
+        "restaurant"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-019",
+      "hanzi": "微辣",
+      "pinyin": "wēilà",
+      "english": "Mildly spicy",
+      "example": "我要微辣的。",
+      "examplePinyin": "Wǒ yào wēilà de.",
+      "exampleEnglish": "I'll have it mildly spicy.",
+      "tags": [
+        "food",
+        "restaurant",
+        "reading"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-020",
+      "hanzi": "加班",
+      "pinyin": "jiābān",
+      "english": "To work overtime",
+      "example": "我今天可能要加班。",
+      "examplePinyin": "Wǒ jīntiān kěnéng yào jiābān.",
+      "exampleEnglish": "I might have to work overtime today.",
+      "tags": [
+        "work"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-021",
+      "hanzi": "开会",
+      "pinyin": "kāihuì",
+      "english": "To have a meeting",
+      "example": "我下午三点要开会。",
+      "examplePinyin": "Wǒ xiàwǔ sān diǎn yào kāihuì.",
+      "exampleEnglish": "I have a meeting at 3 p.m.",
+      "tags": [
+        "work",
+        "time"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-022",
+      "hanzi": "进度",
+      "pinyin": "jìndù",
+      "english": "Progress; status",
+      "example": "项目进度怎么样？",
+      "examplePinyin": "Xiàngmù jìndù zěnmeyàng?",
+      "exampleEnglish": "How is the project coming along?",
+      "tags": [
+        "work"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-023",
+      "hanzi": "问题",
+      "pinyin": "wèntí",
+      "english": "Question; problem",
+      "example": "这个问题不太好解决。",
+      "examplePinyin": "Zhège wèntí bú tài hǎo jiějué.",
+      "exampleEnglish": "This problem is not easy to solve.",
+      "tags": [
+        "work",
+        "basics"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-024",
+      "hanzi": "解决",
+      "pinyin": "jiějué",
+      "english": "To solve; resolve",
+      "example": "我们一起想办法解决。",
+      "examplePinyin": "Wǒmen yìqǐ xiǎng bànfǎ jiějué.",
+      "exampleEnglish": "Let's find a way to solve it together.",
+      "tags": [
+        "work"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-025",
+      "hanzi": "地铁",
+      "pinyin": "dìtiě",
+      "english": "Subway; metro",
+      "example": "坐地铁比打车快。",
+      "examplePinyin": "Zuò dìtiě bǐ dǎchē kuài.",
+      "exampleEnglish": "The subway is faster than taking a taxi.",
+      "tags": [
+        "city",
+        "transport"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-026",
+      "hanzi": "换乘",
+      "pinyin": "huànchéng",
+      "english": "To transfer (transport)",
+      "example": "在这里换乘四号线。",
+      "examplePinyin": "Zài zhèlǐ huànchéng sì hào xiàn.",
+      "exampleEnglish": "Transfer to Line 4 here.",
+      "tags": [
+        "city",
+        "transport",
+        "reading"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-027",
+      "hanzi": "附近",
+      "pinyin": "fùjìn",
+      "english": "Nearby",
+      "example": "这附近有咖啡店吗？",
+      "examplePinyin": "Zhè fùjìn yǒu kāfēidiàn ma?",
+      "exampleEnglish": "Is there a coffee shop nearby?",
+      "tags": [
+        "city"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-028",
+      "hanzi": "排队",
+      "pinyin": "páiduì",
+      "english": "To queue; line up",
+      "example": "这里要排队多久？",
+      "examplePinyin": "Zhèlǐ yào páiduì duōjiǔ?",
+      "exampleEnglish": "How long is the queue here?",
+      "tags": [
+        "city",
+        "restaurant"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-029",
+      "hanzi": "攀岩",
+      "pinyin": "pānyán",
+      "english": "Rock climbing",
+      "example": "我每周去攀岩两次。",
+      "examplePinyin": "Wǒ měi zhōu qù pānyán liǎng cì.",
+      "exampleEnglish": "I go climbing twice a week.",
+      "tags": [
+        "hobbies"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-030",
+      "hanzi": "抱石",
+      "pinyin": "bàoshí",
+      "english": "Bouldering",
+      "example": "你喜欢抱石还是绳攀？",
+      "examplePinyin": "Nǐ xǐhuan bàoshí háishì shéngpān?",
+      "exampleEnglish": "Do you prefer bouldering or rope climbing?",
+      "tags": [
+        "hobbies"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-031",
+      "hanzi": "难度",
+      "pinyin": "nándù",
+      "english": "Difficulty level",
+      "example": "这条路线难度有点高。",
+      "examplePinyin": "Zhè tiáo lùxiàn nándù yǒudiǎn gāo.",
+      "exampleEnglish": "This route is a bit difficult.",
+      "tags": [
+        "hobbies"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    },
+    {
+      "id": "starter-032",
+      "hanzi": "坚持",
+      "pinyin": "jiānchí",
+      "english": "To persist; keep at it",
+      "example": "每天坚持练习很重要。",
+      "examplePinyin": "Měitiān jiānchí liànxí hěn zhòngyào.",
+      "exampleEnglish": "Practicing consistently every day is important.",
+      "tags": [
+        "hobbies",
+        "basics"
+      ],
+      "source": "Starter Mandarin",
+      "createdAt": "2026-11-16T00:00:00.000Z"
+    }
+  ]
+}
