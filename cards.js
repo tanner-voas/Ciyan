@@ -37,7 +37,25 @@ export const STARTER_CARDS = [
 export function initialCards() {
   return STARTER_CARDS.map(([hanzi,pinyin,english,example,examplePinyin,exampleEnglish,tags],i) => ({
     id: `starter-${String(i+1).padStart(3,'0')}`, hanzi, pinyin, english,
-    example, examplePinyin, exampleEnglish,
     tags: tags.split(','), source: 'Starter Mandarin', createdAt: '2026-11-16T00:00:00.000Z'
   }));
+}
+
+// Minimal words needed to make the starter grammar puzzles usable after review.
+const PUZZLE_WORDS = [
+ ['吃','chī','To eat','food,basics'],['什么','shénme','What','basics'],
+ ['我','wǒ','I; me','basics'],['都','dōu','All; both; in any case','grammar,basics'],
+ ['多','duō','Many; much','basics'],['你','nǐ','You','basics'],
+ ['现在','xiànzài','Now','time,basics'],['有','yǒu','To have; there is','basics'],
+ ['时间','shíjiān','Time (duration or availability)','time'],['时候','shíhou','Time; occasion; moment','time'],
+ ['吗','ma','Question particle','grammar,basics'],['想','xiǎng','To want; think','basics'],
+ ['去','qù','To go','basics'],['但是','dànshì','But; however','grammar'],
+ ['今天','jīntiān','Today','time'],['要','yào','To need; want; going to','basics'],
+ ['会','huì','Can; will; know how to','grammar'],['已经','yǐjīng','Already','time,grammar'],
+ ['了','le','Completion/change particle','grammar'],['还','hái','Still; yet','grammar,time']
+];
+export function extraWords() {
+ return PUZZLE_WORDS.map(([hanzi,pinyin,english,tags],i)=>({
+   id:`puzzle-${String(i+1).padStart(3,'0')}`,hanzi,pinyin,english,tags:tags.split(','),source:'Starter grammar vocabulary',createdAt:'2026-11-16T00:00:00.000Z'
+ }));
 }

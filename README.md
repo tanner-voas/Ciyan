@@ -1,68 +1,71 @@
-# Cíyán — Mandarin flashcards (PWA)
+# Cíyán (词言) — Mandarin SRS PWA, v0.2
 
-A pretty, offline-first Mandarin flashcard app for iPhone and desktop. No accounts, external fonts, analytics, network APIs, hosting backend, or build process are required.
+A dependency-free, offline-first Mandarin flashcard PWA for iPhone. Two independent card types: **vocabulary words** and **grammar sentence puzzles**. Review records, FSRS scheduling, settings, vocabulary and grammar all live in the device's IndexedDB database. You export an independent JSON backup to the iPhone **Files** app after every study session.
 
-## Install on an iPhone (recommended: Cloudflare Pages)
+**Privacy and data safety:** There are no accounts, server APIs, analytics or background uploads. IndexedDB usually survives phone restarts but may be cleared by iOS. **Only the separate JSON file that you save in Files (or iCloud Drive) protects your learning data against that loss.** The app cannot automatically save to Files or verify a download was actually saved.
 
-1. Download **Ciyan_PWA_Deploy.zip**. Keep the ZIP intact; its root contains `index.html`.
-2. Sign in or create a free account at https://dash.cloudflare.com/ . In **Workers & Pages**, choose **Create application → Pages → Direct Upload / Upload assets / Drag and drop files** (the interface wording may vary).
-3. Enter any available project name, upload the deployment ZIP, and select **Deploy**. Cloudflare provides an HTTPS URL such as `https://your-project.pages.dev`.
-4. Open that URL in **Safari** on your iPhone. Tap **Share → Add to Home Screen**, enable **Open as Web App**, and tap **Add**.
-5. Launch Cíyán from the Home Screen. After the first online load, the app shell is cached for offline use.
+## Build a Cloudflare Pages upload
 
-Official hosting instructions: https://developers.cloudflare.com/pages/get-started/direct-upload/ . Cloudflare's drag-and-drop deployment accepts ZIP files. The deployed web page is publicly reachable; **your personal review data is not sent to Cloudflare or any server**.
+From this Git repository, run:
 
-**Important:** Opening `index.html` directly in Files/Safari will not produce an installable, reliably offline PWA; service workers need an HTTPS origin (or localhost during development). Don't clear Safari website data, delete the Home Screen app, or change its hosting address without exporting a backup first.
+```sh
+python3 package.py
+```
 
-## Using Cíyán
+This regenerates **`dist/ciyan/`**, including `index.html` at its root. The entire `dist/` directory is Git-ignored. You can upload the folder to **Cloudflare Pages → Direct Upload**, or zip the contents of `dist/ciyan/` (not the `ciyan` parent directory) and upload that ZIP. No Node modules, bundler or Python packages are required for production.
 
-- **Home:** See due cards, words learned, today's activity, and topics.
-- **Study:** Reveal each Chinese card, then rate **Again**, **Hard**, **Good**, or **Easy**. The review and schedule are written to IndexedDB immediately after each rating.
-- **Words:** Search by Chinese, pinyin, English, example, or tag. Create, edit, or delete cards.
-- **Stats:** See historical reviews, practice streak, estimated retention, and recent sessions.
-- **Settings:** Adjust daily new words (default 8), session size (default 12), target retention (default 90%), and whether pinyin is shown on the front.
-- **End of session:** The app always reminds you to export a full JSON progress backup. Tap **Save to Files (share sheet)** and choose **Save to Files** (preferably iCloud Drive). If Web Share isn't supported, tap **Download JSON instead**, then save the downloaded file in Files. Tap **I saved this file in Files** only after verifying that the file exists.
-- **Restore:** Settings → Restore full backup → pick a `ciyan-progress-...json` file. This replaces current cards, schedules, settings, and review history; it can also restore a partial active session.
+**Existing v0.1 users:** export a full progress backup from v0.1 **before** deploying v0.2. Deploy v0.2 to the **same Cloudflare Pages origin/URL** so its local IndexedDB is accessible. It migrates existing words, schedules, review history and settings, converts every existing word example into an independent grammar sentence, and adds the new starter grammar vocabulary without overwriting any existing words. Reopen the site online and refresh once if the old service-worker-cached version is initially still visible. Check that v0.2 appears in Settings before studying. Avoid changing deployment URL or clearing website data until after exporting a v0.2 backup.
 
-**Data safety:** The working copy is IndexedDB (browser-managed, not guaranteed permanent). Independent JSON backups stored in iPhone Files are your recovery source. A phone restart normally does not delete IndexedDB, but iOS can evict it. Export after *every session*. The app cannot automatically save a persistent file to Files or confirm that the user completed the Files action.
+## Install on iPhone
 
-## Starter content and extension
+1. Deploy `dist/ciyan` using Cloudflare Pages (https://developers.cloudflare.com/pages/get-started/direct-upload/).
+2. Open the provided HTTPS `pages.dev` URL in Safari.
+3. Tap **Share → Add to Home Screen → Open as Web App → Add**.
+4. Launch Cíyán from its Home Screen icon. After online installation and caching, it works offline.
 
-Contains **32 test cards** focused on greetings, social conversation, work, food and restaurant vocabulary, Shanghai-style city navigation, and climbing. These are starter examples, not a graded curriculum. Add cards in-app or import a JSON deck.
+## What's new in v0.2
 
-Deck import accepts `[{...}, ...]` or `{ "cards": [{...}] }`. Each card requires `hanzi` and `english`; recommended fields: `id` (stable unique identifier), `pinyin`, `example`, `examplePinyin`, `exampleEnglish`, `tags` (array of strings), and `source`.
+- **Words** contain only Hanzi, pinyin, English, tags and metadata. Grammar sentences live separately.
+- **Grammar** cards contain Chinese token markup, pinyin, English, and optional indexed distractors. Linked word tags are calculated automatically from words that occur in the sentence. Tapping a word shows all matching grammar sentences sorted by combined score.
+- **Knowledge** (0–100%) derives from each word's latest rating, review count and FSRS recall estimate; new words score zero. On grammar cards, the knowledge score is the average across answer and distractor words. The grammar mode unlocks when **each** required word reaches at least 75% knowledge. A confidently answered first review (Good or Easy) normally qualifies while Hard / Again do not.
+- **Usage risk** is explicitly **0%** in v0.2, with multiplier `(1 - usageRisk)`; grammar errors are recorded with their incorrect word positions for future learning. Combined score = knowledge × (1 - usage risk). Grammar lists sort by combined score.
+- Words and Grammar both have **tri-state, multi-tag filters**: tap once to include (green), twice to exclude (red), three times to clear. Active tags move to a separate row. **Reset tags** clears all chosen tags. Word rating filtering compares `>`, `>=`, `=`, `<=`, `<` against the **latest review grade** (`Unseen=0`, `Again=1`, `Hard=2`, `Good=3`, `Easy=4`). Grammar has separate Knowledge and Usage Risk percentage comparisons.
+- **Vocabulary study:** optional Tone Test: four vertically stacked checkboxes below each Hanzi character. No checked box = neutral tone (0). Written pinyin is used for validation. Optional Enforce Tones disables **Easy** on a tone mismatch; **Good** or lower remain available. The test does not expose pinyin on the front, even if "show pinyin" is also enabled.
+- **Grammar lab:** English → Chinese sentence assembly. Tap shuffled tiles in order, or drag/drop (including a touch-drag fallback). Tap a placed tile to remove it. Distractors are mixed into the bank. Submit to check ordering and selections, view the correct sentence and save an attempt with mistaken positions. Only unlocked grammar is offered. Every submission is saved locally.
+- New words per day: **unlimited**. Session size (1–500) controls batch length, and you can start as many new sessions as you want.
+- **Editing** offers explicit Cancel / Save; duplicate Hanzi and duplicate grammar markup are rejected. Deleting shows a confirmation, and changing a previously studied word/sentence also prompts a warning. Settings has **Clear learning records** with a mandatory typed `delete` confirmation; all words, grammar, and settings are kept.
+- **Import** is additive by exact Chinese word or exact grammar markup: never overwrite existing cards, schedules or learning history. Existing word tags may be merged. **Full backup** exports everything, including all current word and grammar content and records. A **deck** is the same two card collections without review records; exportable from Settings. Imported full backups used as decks are also treated as content-only. A separate **Restore full backup** replaces the complete database, with confirmation.
 
-Example:
+## Grammar deck format
+
+Each grammar sentence uses `{...}` for a movable word tile and punctuation outside braces that stays fixed. The sample below has five word tokens, numbered **1, 2, 3, 4, 5**. `4: [多]` offers 多 as a distractor at the position occupied by 都 (the fourth word).
 
 ```json
 {
-  "format": "ciyan-deck",
-  "version": 1,
+  "format": "ciyan-deck", "version": 2, "records": false,
   "cards": [
-    {"id":"mydeck-001","hanzi":"咖啡","pinyin":"kāfēi","english":"Coffee","example":"我想喝咖啡。","examplePinyin":"Wǒ xiǎng hē kāfēi.","exampleEnglish":"I want coffee.","tags":["food","daily-life"],"source":"My deck"}
+    {"id":"word-suibian","hanzi":"随便","pinyin":"suíbiàn",
+     "english":"Whatever; any is fine","tags":["social","food"]}
+  ],
+  "grammar": [
+    {"id":"example-eat","markup":"{吃}{什么}？{我}{都}{随便}。",
+     "pinyin":"Chī shénme? Wǒ dōu suíbiàn.",
+     "english":"What should we eat? Anything is fine with me.",
+     "distractors":[{"index":4,"word":"多"}]}
   ]
 }
 ```
 
-Import is **additive**: cards with previously unseen IDs are added; existing IDs and review progress are preserved. To update existing cards, use the in-app edit function. Stable IDs matter. For a starting template, choose Settings → Download deck template.
+Import can also read arrays of legacy word cards, `{cards:[...]}`, `{grammar:[...]}`, v0.1 backups as a **deck**, and v0.2 backups as either decks (merge without history) or full restores (replace everything). For grammar mode to unlock, create vocabulary cards for all `{...}` words **and** any distractors.
 
-## Scheduling / limitations
+## The four FSRS review ratings
 
-- Implements a **self-contained FSRS-4.5** memory model with its published default parameters (rather than fetching a library over the network). The simple learning/relearning policy uses 1-minute **Again** and 10-minute early **Hard** steps, plus 90% configurable retention. The model is not personalized with FSRS parameter optimization. FSRS model reference: https://github.com/open-spaced-repetition/awesome-fsrs/wiki/The-Algorithm .
-- One **Chinese → English** review direction in v1; reverse and listening cards can be added in future versions.
-- User-provided vocabulary is rendered as text (not executable HTML).
-- There are **no remote reminders / push notifications**. The backup reminder appears at the end of every completed session, including sessions ended early after at least one answer.
-- If an imported deck contains bad card data, import fails rather than partially importing it.
-- Service worker caches the app shell for offline use after first online installation. To release an updated version, change the cache version string in `sw.js` (for example `ciyan-shell-v2`), redeploy to the **same origin**, and reopen online. Export a backup first.
+These are **not** mastery stages. **Again**: you did not recall the word (1-minute relearning). **Hard**: you recalled it with difficulty (often a 10-minute short step for a new card). **Good**: you remembered normally (ordinary FSRS interval). **Easy**: effortless recall (longer FSRS interval). Last Rating filters are numeric comparisons against the last action, not a continuous grade; the separate Knowledge percentage is a rough learning-confidence estimate. The underlying vocabulary scheduler remains the self-contained FSRS-4.5 model from v0.1.
 
-## Files / development
+## Data export, restore, and maintenance
 
-`index.html`, `styles.css`, `app.js`, `cards.js`, `fsrs.js`, `storage.js`, `manifest.webmanifest`, `sw.js`, and `icons/` are the **entire deployable app**. No npm dependencies. The source package additionally contains this README, `tests/`, and `package.json`.
+Every vocabulary rating and grammar answer is stored in IndexedDB before moving on. The Session Complete page prominently reminds you to export. Use **Save to Files (share sheet)** where available; otherwise download JSON, find it in Files and move it to a location you trust. Only confirm "I saved this file in Files" **after** actually checking. Importing a deck does not overwrite existing study progress. Restoring a full backup **does**, and asks before proceeding. After Clear Learning Records, export a new backup to preserve the reset state.
 
-To run locally from the app directory on any machine with Python:
+The repository includes test files under `tests/`. Run `npm test` using Node 20+ (no `npm install` necessary). To host a local preview, `python3 -m http.server 8765` and open `http://localhost:8765/`.
 
-```sh
-python3 -m http.server 8765
-```
-
-Visit http://localhost:8765/ . Run unit tests with `npm test` on Node.js 20+.
+**Limitations:** The app has no hosted sync, no push reminders, no spoken-answer detection, no grammar-error-derived usage scoring yet, and no iOS-native filesystem permission. The tone test uses pinyin syllables and the written tones rather than all possible tone sandhi changes. Touchdrag may behave differently in Safari; tapping the word tiles is supported independently. The app has not been tested on a physical iPhone in this development environment.

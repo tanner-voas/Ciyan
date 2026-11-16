@@ -19,6 +19,7 @@ STATIC_FILES = (
     "fsrs.js",
     "storage.js",
     "cards.js",
+    "grammar.js",
     "sw.js",
     "manifest.webmanifest",
     "_headers",
