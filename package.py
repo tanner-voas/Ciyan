@@ -21,6 +21,7 @@ STATIC_FILES = (
     "cards.js",
     "grammar.js",
     "deck-catalog.js",
+    "hsk-tag-map.js",
     "sw.js",
     "manifest.webmanifest",
     "_headers",

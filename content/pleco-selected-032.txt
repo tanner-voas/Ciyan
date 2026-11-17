@@ -1,0 +1,270 @@
+# pleco-conversation|Conversation & natural expressions|daily,conversation
+别|Don't; avoid|{别}{担心}，{我}{会}{帮忙}。|Don't worry; I'll help.|negative imperative
+不用|No need to; don't have to|{不用}{等}{我}，{你}{先}{走}。|You don't need to wait for me; go ahead.|lack of necessity
+不对|Incorrect; something is wrong|{这}{个}{答案}{不对}。|This answer is incorrect.|predicate of judgment
+差|Poor; fall short|{这}{家}{店}{的}{服务}{有点}{差}。|The service at this shop is a little poor.|degree with 有点
+常常|Often; frequently|{我}{周末}{常常}{去}{攀岩}。|I often go climbing on weekends.|frequency adverb
+车站|Bus or train station|{我们}{在}{车站}{见面}。|Let's meet at the station.|place phrase before verb
+错|Wrong; mistaken|{你}{没有}{听}{错}。|You didn't hear incorrectly.|result complement
+打开|Open; switch on|{请}{打开}{窗户}。|Please open the window.|polite imperative
+打电话|Make a phone call|{我}{一会儿}{给}{你}{打电话}。|I'll call you in a little while.|给 introducing recipient
+地点|Location; meeting place|{我们}{可以}{换}{个}{地点}{见面}。|We can meet somewhere else.|classifier and location
+地图|Map|{我}{想}{看}{一下}{地图}。|I want to take a quick look at the map.|softened request with 一下
+放假|Have a holiday; be on break|{我们}{下周}{放假}。|We're on holiday next week.|time word before predicate
+分|Minute; score; divide|{这}{次}{比赛}，{他}{得}{了}{十}{分}。|He scored ten points in this match.|score and result complement
+干净|Clean; tidy|{这}{个}{房间}{很}{干净}。|This room is very clean.|stative predicate
+国外|Abroad; overseas|{他}{以前}{在}{国外}{工作}{过}。|He worked abroad before.|experience particle 过
+回答|Answer; reply|{你}{可以}{回答}{这}{个}{问题}{吗}？|Can you answer this question?|modal question
+回去|Go back (away from speaker)|{我}{想}{先}{回去}{休息}。|I want to go back and rest first.|directional complement
+记住|Remember; keep in mind|{请}{记住}{这}{个}{名字}。|Please remember this name.|request with 请
+见面|Meet in person|{我们}{明天}{可以}{见面}{吗}？|Can we meet tomorrow?|ability and question
+进去|Go in; enter|{外面}{很}{冷}，{我们}{进去}{吧}。|It's cold outside; let's go inside.|suggestion with 吧
+开玩笑|Joke; tease|{我}{只是}{开玩笑}，{别}{生气}。|I'm just joking; don't be angry.|contrast with negation
+考试|Exam; take an exam|{他}{明天}{有}{考试}。|He has an exam tomorrow.|existential 有
+课|Class; lesson|{我们}{今天}{没有}{课}。|We don't have class today.|negative existential
+老人|Elderly person|{那个}{老人}{正在}{散步}。|That elderly person is taking a walk.|progressive 正在
+没什么|Nothing much; it's nothing|{这}{没什么}，{你}{不用}{担心}。|It's nothing; you don't need to worry.|reassurance
+门口|Entrance; doorway|{我}{在}{门口}{等}{你}。|I'll wait for you at the entrance.|location 在
+哪|Which; what (before a classifier)|{你}{想}{去}{哪}{个}{城市}？|Which city do you want to visit?|interrogative determiner
+哪些|Which ones|{你}{去}{过}{哪些}{国家}？|Which countries have you visited?|interrogative plural
+钱|Money|{我}{今天}{没有}{带}{钱}。|I didn't bring any money today.|negative possession
+钱包|Wallet|{我}{找}{不}{到}{钱包}{了}。|I can't find my wallet.|potential complement
+生日|Birthday|{明天}{是}{她}{的}{生日}。|Tomorrow is her birthday.|possessive 的
+上网|Go online; use the internet|{我}{需要}{上网}{查}{一下}。|I need to go online and check something.|serial verbs
+上学|Attend school|{他}{每天}{坐}{地铁}{去}{上学}。|He takes the metro to school every day.|purpose phrase
+水果|Fruit|{我}{每天}{都}{吃}{水果}。|I eat fruit every day.|frequency and 都
+外语|Foreign language|{我}{想}{学}{一}{门}{外语}。|I want to learn a foreign language.|classifier 门
+忘|Forget|{我}{忘}{了}{带}{钥匙}。|I forgot to bring my keys.|verb complement sequence
+笑|Smile; laugh|{他}{听}{完}{这个}{故事}{就}{笑}{了}。|He laughed as soon as he heard the story.|就 temporal sequence
+有时候|Sometimes|{我}{有时候}{下班}{以后}{去}{健身房}。|I sometimes go to the gym after work.|time clause
+有名|Famous; well known|{这}{家}{餐厅}{很}{有名}。|This restaurant is well known.|stative predicate
+有用|Useful|{你}{的}{建议}{很}{有用}。|Your advice is useful.|abstract evaluation
+再见|Goodbye; see you again|{我们}{明天}{再见}。|See you tomorrow.|future time expression
+在家|Be at home|{我}{今天}{想}{在家}{休息}。|I want to rest at home today.|location complement
+走路|Walk; go on foot|{从}{这里}{走路}{过去}{不}{远}。|It's not far to walk there from here.|direction complement
+最好|Best; had better|{你}{最好}{早点}{出门}。|You had better leave early.|advice and degree
+坐下|Sit down|{请}{先}{坐下}。|Please sit down first.|imperative and result complement
+# pleco-social|Social life & relationships|social,conversation
+爱情|Romantic love|{他}{觉得}{爱情}{需要}{信任}。|He thinks romantic love requires trust.|content clause
+爱人|Spouse; partner|{我}{的}{爱人}{今天}{加班}。|My spouse is working overtime today.|possessive and time
+安静|Quiet; peaceful|{这}{里}{晚上}{很}{安静}。|It's very quiet here in the evenings.|locative description
+半夜|Middle of the night|{我}{半夜}{被}{电话}{吵醒}{了}。|A phone call woke me in the middle of the night.|passive with 被
+比如|For example; such as|{我}{喜欢}{运动}，{比如}{攀岩}{和}{游泳}。|I like sports such as climbing and swimming.|exemplification
+不但|Not only (paired with 而且)|{他}{不但}{会}{中文}，{而且}{会}{英语}。|He speaks not only Chinese but also English.|不但…而且
+不够|Not enough; insufficient|{这}{个}{时间}{不够}。|There isn't enough time.|negative degree
+不太|Not very|{我}{今天}{不太}{想}{出门}。|I don't really feel like going out today.|softened negative
+不久|Soon; before long|{我们}{不久}{就}{会}{见面}。|We'll see each other soon.|future with 就
+不如|Not as good as; better to|{今天}{下雨}，{不如}{在家}{休息}{吧}。|It's raining today; we might as well stay home.|suggestion 不如…吧
+不行|Not allowed; won't work|{这}{个}{办法}{不行}，{我们}{换}{一}{个}。|This approach won't work; let's try another.|evaluation and change
+不一定|Not necessarily|{贵}{的}{东西}{不一定}{好}。|Expensive things aren't necessarily good.|modal uncertainty
+答应|Agree to; promise|{他}{已经}{答应}{帮}{我}{了}。|He has already agreed to help me.|verb complement
+打算|Plan; intend|{我们}{打算}{周末}{去}{徒步}。|We're planning to hike this weekend.|planning future activity
+放心|Be reassured; don't worry|{你}{放心}，{我}{会}{注意}{安全}。|Don't worry; I'll be careful about safety.|reassurance and future
+感谢|Thank; be grateful|{我}{很}{感谢}{你}{的}{帮助}。|I'm very grateful for your help.|object of thanks
+关心|Care about; be concerned for|{朋友}{生病}{了}，{我}{很}{关心}{他}。|My friend is sick, and I'm concerned about him.|cause and feeling
+故意|Deliberately; on purpose|{我}{不是}{故意}{的}。|I didn't do it on purpose.|emphatic 是…的
+好处|Benefit; advantage|{每天}{运动}{有}{很多}{好处}。|Exercising every day has many benefits.|existential 有
+好久|A long time|{我们}{好久}{没}{见面}{了}。|We haven't seen each other for ages.|duration and negation
+忽然|Suddenly|{天}{忽然}{下雨}{了}。|Suddenly it started to rain.|adverb of sudden change
+礼物|Gift; present|{我}{想}{给}{你}{买}{个}{礼物}。|I'd like to buy you a present.|double-object-like beneficiary
+流行|Popular; fashionable|{这}{个}{运动}{最近}{很}{流行}。|This sport has become popular recently.|recent trend
+满意|Satisfied; pleased|{你}{对}{这}{个}{结果}{满意}{吗}？|Are you satisfied with the result?|对 as topic introduction
+难受|Feel unwell; feel awful|{我}{今天}{有点}{难受}，{想}{休息}。|I feel a bit unwell today and want to rest.|degree with 有点
+年轻|Young|{他}{看起来}{很}{年轻}。|He looks very young.|perception complement
+怕|Be afraid of; fear|{我}{不}{怕}{高}，{但是}{怕}{掉下来}。|I'm not afraid of heights, but I am afraid of falling.|contrast and repetition
+碰到|Run into; encounter|{我}{昨天}{在}{地铁}{碰到}{朋友}。|I ran into a friend on the metro yesterday.|chance encounter
+平常|Usually; ordinary|{我}{平常}{都}{坐}{地铁}{上班}。|I usually commute by metro.|habitual adverb
+请客|Treat someone to a meal|{今天}{我}{请客}，{你}{想}{吃}{什么}？|I'm treating today; what do you want to eat?|offer and question
+全家|Whole family|{我们}{全家}{都}{喜欢}{旅行}。|Everyone in our family enjoys traveling.|quantifier 全
+热情|Warm and enthusiastic|{这里}{的}{人}{很}{热情}。|The people here are very welcoming.|descriptive predicate
+商量|Discuss; consult with|{我们}{先}{商量}{一下}{再}{决定}。|Let's discuss it before deciding.|serial action
+什么样|What kind of|{你}{想}{找}{什么样}{的}{房子}？|What kind of home are you looking for?|interrogative adjective
+实在|Really; genuinely; indeed|{我}{实在}{太}{累}{了}。|I'm really too tired.|degree intensifier
+随时|At any time; whenever|{有}{问题}{就}{随时}{联系}{我}。|Contact me anytime if you have a question.|conditional 就
+态度|Attitude; manner|{他}{的}{态度}{很}{认真}。|His attitude is very serious.|possessive description
+突然|Suddenly; abrupt|{他}{突然}{告诉}{我}{一}{个}{消息}。|He suddenly told me some news.|adverb modifying verb
+心情|Mood; state of mind|{我}{今天}{心情}{不错}。|I'm in a pretty good mood today.|topic-comment
+笑话|Joke|{他}{讲}{了}{一}{个}{笑话}。|He told a joke.|completed action
+相信|Believe; trust|{我}{相信}{你}{可以}{做到}。|I believe you can do it.|clausal object
+友好|Friendly|{这里}{的}{人}{对}{游客}{很}{友好}。|People here are very friendly to visitors.|对 with recipient
+# pleco-errands|Errands, shopping & technology|daily,errands,practical
+报纸|Newspaper|{我}{在}{咖啡店}{看}{报纸}。|I read a newspaper at the café.|locative 在
+笔记|Notes; written notes|{我}{开会}{的}{时候}{会}{做}{笔记}。|I take notes during meetings.|time clause …的时候
+笔记本|Notebook; laptop (by context)|{我}{把}{笔记本}{放}{在}{桌子}{上}。|I put the notebook on the desk.|把 disposal construction
+层|Floor; layer; storey|{他}{住}{在}{五}{层}。|He lives on the fifth floor.|number and floor
+查|Check; look up; investigate|{我}{先}{查}{一下}{地址}。|I'll check the address first.|verb reduplication softening
+超市|Supermarket|{我}{下班}{以后}{去}{超市}{买}{菜}。|I buy groceries at the supermarket after work.|after work clause
+车辆|Vehicles|{这里}{的}{车辆}{很多}。|There are lots of vehicles here.|location topic
+出发|Set out; depart|{我们}{明天}{早上}{出发}。|We set off tomorrow morning.|future timing
+出租|Rent out; hire out|{这个}{房子}{正在}{出租}。|This house is available to rent.|progressive passive-like state
+船|Boat; ship|{我们}{坐}{船}{去}{那个}{岛}。|We take a boat to that island.|transport serial verbs
+打印|Print a document|{请}{帮}{我}{打印}{这}{份}{文件}。|Please help me print this document.|帮 with action
+大门|Main gate; front entrance|{我们}{在}{学校}{的}{大门}{见面}。|We'll meet at the school gate.|locative and possession
+灯|Light; lamp|{请}{关}{一下}{灯}。|Please switch off the light.|polite request
+短信|Text message; SMS|{我}{刚才}{收到}{你}{的}{短信}。|I just received your text message.|recent past
+发票|Official invoice|{请}{给}{我}{开}{一}{张}{发票}。|Please issue me an invoice.|measure word 张
+方便面|Instant noodles|{今天}{太}{忙}，{我}{吃}{方便面}。|I'm too busy today, so I'll eat instant noodles.|causal juxtaposition
+分开|Separate; apart|{我们}{把}{这}{些}{东西}{分开}{放}。|Let's put these things separately.|把 and result
+封|Envelope measure word; seal|{我}{收到}{一}{封}{信}。|I received a letter.|classifier 封
+关机|Turn off a phone or computer|{上}{飞机}{之前}{请}{先}{关机}。|Please power off before boarding the plane.|time clause
+顾客|Customer|{这}{家}{店}{的}{顾客}{很多}。|This shop has lots of customers.|possessive location subject
+广告|Advertisement; ad|{我}{在}{手机}{上}{看到}{这}{个}{广告}。|I saw this ad on my phone.|place of medium
+过来|Come over here|{你}{有空}{的}{时候}{过来}{吧}。|Come over when you have time.|suggestion 吧
+海边|Seaside; coast|{我们}{想}{周末}{去}{海边}{散步}。|We want to walk by the sea this weekend.|future plan
+花园|Garden|{我}{每天}{早上}{在}{花园}{散步}。|I walk in the garden every morning.|location and habit
+换|Change; exchange; switch|{我}{想}{换}{一}{双}{鞋子}。|I want to exchange for another pair of shoes.|classifier 双
+交通|Traffic; transport|{这里}{的}{交通}{很}{方便}。|Transportation here is very convenient.|abstract subject
+接到|Receive; get|{我}{刚刚}{接到}{一}{个}{电话}。|I just got a phone call.|recent completion
+接着|Then; afterward; continue|{我们}{先}{吃饭}，{接着}{去}{看电影}。|We'll eat first, then go see a movie.|sequence 接着
+街|Street|{这}{条}{街}{有}{很多}{餐厅}。|There are many restaurants on this street.|classifier 条
+借|Borrow; lend|{我}{能}{借}{你}{的}{笔}{吗}？|May I borrow your pen?|permission 能
+斤|Jin; 500-gram unit|{我}{想}{买}{一}{斤}{苹果}。|I'd like to buy half a kilogram of apples.|unit 斤
+卡|Card; stored-value card|{我}{忘}{带}{银行卡}，{现在}{只}{有}{这}{张}{卡}。|I forgot my bank card and only have this card now.|classifier 张
+路边|Roadside|{路边}{有}{一}{家}{便利店}。|There's a convenience store by the road.|existential at location
+瓶子|Bottle|{请}{把}{空}{瓶子}{放}{在}{这里}。|Please put the empty bottle here.|把 construction
+请客|Treat someone|{明天}{我}{请客}{吧}。|Let me treat you tomorrow.|suggestion 吧
+停车场|Parking lot; car park|{这}{家}{商场}{有}{停车场}。|This mall has a parking lot.|existential 有
+收款|Receive payment|{这}{家}{店}{可以}{扫码}{收款}。|This shop can accept payment by QR code.|modal ability
+收到|Receive|{我}{已经}{收到}{你}{的}{邮件}。|I've already received your email.|perfective 已经
+手表|Wristwatch|{他}{送}{了}{我}{一}{块}{手表}。|He gave me a wristwatch.|double object and classifier
+司机|Driver|{司机}{说}{马上}{就}{到}。|The driver said we'd arrive soon.|reported speech
+通知|Notify; notice|{公司}{已经}{通知}{大家}{了}。|The company has already notified everyone.|direct recipient
+网站|Website|{我}{在}{这个}{网站}{找到}{了}{信息}。|I found the information on this website.|online location
+信用卡|Credit card|{我}{用}{信用卡}{付款}。|I pay by credit card.|instrument 用
+休假|Take leave from work|{我}{下}{个}{月}{准备}{休假}。|I'm planning to take leave next month.|future intention
+椅子|Chair|{请}{坐}{在}{这}{把}{椅子}{上}。|Please sit on this chair.|classifier 把 for chair
+租|Rent; lease|{我}{想}{在}{上海}{租}{房子}。|I want to rent an apartment in Shanghai.|place and intent
+座位|Seat|{这里}{还有}{空}{座位}{吗}？|Are there any seats free here?|existential with 还
+# pleco-work|Work, collaboration & problem-solving|work,professional
+成绩|Results; achievement; score|{我们}{最近}{的}{工作}{成绩}{不错}。|Our recent work results have been good.|possessive noun phrase
+重复|Repeat; duplicate|{这}{个}{问题}{一直}{重复}{出现}。|This problem keeps happening again.|adverb and aspect
+重新|Again; afresh; from scratch|{我们}{需要}{重新}{检查}{这}{个}{文件}。|We need to check this file again.|adverb before verb
+单位|Organization; work unit; unit of measure|{他}{在}{另}{一}{个}{单位}{工作}。|He works at a different organization.|classifier 个
+答应|Agree; promise|{他}{答应}{明天}{来}{帮忙}。|He promised to come help tomorrow.|verb plus future clause
+打工|Work for wages|{他}{在}{上海}{打工}{很多}{年}{了}。|He has worked for wages in Shanghai for many years.|duration with 了
+大部分|Most; the greater part|{大部分}{同事}{都}{同意}{这}{个}{计划}。|Most colleagues agree with this plan.|quantifier + 都
+大量|Large quantity; substantial amount|{这}{个}{项目}{需要}{大量}{的}{数据}。|This project needs a large amount of data.|quantifier 大量
+当时|At that time|{当时}{我们}{还}{没有}{决定}。|At that time, we hadn't decided yet.|time adverbial
+道理|Reason; underlying logic|{你}{说}{的}{有}{道理}。|What you're saying makes sense.|nominalization with 的
+得出|Obtain; arrive at a conclusion|{我们}{从}{数据}{中}{得出}{了}{这}{个}{结果}。|We arrived at this result from the data.|result complement and 从
+等到|Wait until; by the time|{等到}{周末}，{我们}{再}{讨论}。|Let's discuss it when the weekend comes.|time condition
+对话|Dialogue; conversation|{我们}{需要}{多}{一些}{面对面}{的}{对话}。|We need more face-to-face conversations.|nominal phrase with 的
+分数|Score; mark; fraction|{他}{这}{次}{考试}{的}{分数}{很}{高}。|His score on this exam is high.|classifier 次
+复习|Review material; revise|{我}{每天}{睡觉}{之前}{复习}{中文}。|I review Chinese every day before bed.|time clause
+改善|Improve; make better|{我们}{需要}{改善}{用户}{体验}。|We need to improve the user experience.|transitive verb
+改进|Improve; refine|{这个}{方法}{还}{可以}{再}{改进}。|This method can still be improved.|modal and 再
+公平|Fair; just|{这}{这样}{做}{对}{大家}{都}{公平}。|Doing it this way is fair to everyone.|对 as affected person
+国际|International|{这}{是}{一}{个}{国际}{会议}。|This is an international conference.|attributive modifier
+观点|Point of view; perspective|{我}{想}{听}{听}{你}{的}{观点}。|I'd like to hear your perspective.|reduplicated verb
+计算机|Computer|{这}{台}{计算机}{可以}{处理}{很多}{数据}。|This computer can process a lot of data.|modal ability
+经理|Manager|{经理}{正在}{开会}。|The manager is in a meeting.|progressive 正在
+教育|Education; educate|{教育}{对}{孩子}{的}{未来}{很}{重要}。|Education is important for children's futures.|topic and 对
+科学|Science; scientific|{我们}{应该}{用}{科学}{的}{方法}{解决}{问题}。|We should solve problems using scientific methods.|用 instrument
+练习|Practice; exercise|{我}{想}{多}{练习}{口语}。|I want to practice spoken Chinese more.|verb + object
+理想|Ideal; aspiration|{我}{的}{理想}{是}{做}{有}{意义}{的}{工作}。|My ideal is to do meaningful work.|copular 是
+目的|Goal; purpose|{这}{次}{开会}{的}{目的}{是}{解决}{问题}。|The purpose of this meeting is to solve problems.|nominalization with 的
+弄|Do; handle; get into a state (colloquial)|{这}{个}{东西}{怎么}{弄}？|How do you work this thing?|colloquial practical question
+努力|Make an effort; work hard|{只要}{继续}{努力}，{就}{会}{进步}。|If you keep trying, you'll improve.|只要…就
+取|Take; collect; fetch|{你}{可以}{去}{前台}{取}{东西}。|You can collect the item from reception.|directional and result
+取得|Achieve; obtain|{我们}{终于}{取得}{了}{好}{成绩}。|We finally achieved good results.|completion with 了
+实际|Actual; practical; reality|{我们}{需要}{考虑}{实际}{情况}。|We need to consider the actual situation.|adjective modification
+实习|Internship; work as an intern|{他}{大学}{毕业}{以后}{先}{实习}{了}{半年}。|After university he spent six months as an intern.|time after event
+实现|Make real; achieve; realize|{他}{终于}{实现}{了}{自己}{的}{目标}。|He finally achieved his goal.|perfective 了
+说明|Explain; demonstrate|{请}{说明}{一下}{你}{的}{想法}。|Please explain your idea briefly.|polite request
+提高|Raise; improve|{我们}{要}{提高}{工作}{效率}。|We need to improve work efficiency.|transitive verb
+通过|Pass through; by means of; pass an exam|{他}{通过}{了}{考试}。|He passed the exam.|perfective verb
+# pleco-health|Health, body & well-being|health,body
+饱|Full after eating|{我}{已经}{吃}{饱}{了}。|I've already eaten my fill.|result complement
+病人|Patient; sick person|{医生}{正在}{照顾}{病人}。|The doctor is caring for a patient.|progressive verb
+感冒|Catch a cold; a cold|{我}{好像}{感冒}{了}。|I think I may have caught a cold.|seeming 好像
+健康|Healthy; health|{我}{最近}{开始}{更}{注意}{健康}。|I've recently started paying more attention to health.|time adverb
+急|Urgent; in a hurry|{这}{件}{事}{很}{急}，{我们}{先}{处理}。|This is urgent; let's deal with it first.|stative and priority
+可怕|Scary; frightening|{那}{次}{经历}{真的}{很}{可怕}。|That experience was really frightening.|degree adverb
+凉快|Pleasantly cool|{今天}{比}{昨天}{凉快}{多}{了}。|Today is much cooler than yesterday.|comparison with 比
+难看|Ugly; unpleasant to look at|{这}{个}{颜色}{不太}{难看}。|This color isn't too ugly.|softened negation
+轻|Light in weight; gentle|{这}{个}{包}{比}{那个}{轻}。|This bag is lighter than that one.|比 comparison
+生病|Get sick; be ill|{他}{这}{几}{天}{生病}{了}。|He's been sick these past few days.|change-of-state 了
+舒服|Comfortable; feel well|{我}{今天}{觉得}{舒服}{多}{了}。|I feel much better today.|degree comparative
+头发|Hair on the head|{她}{的}{头发}{很}{长}。|Her hair is long.|possessive and adjective
+闻|Smell; detect an odor|{我}{闻}{到}{了}{咖啡}{的}{味道}。|I smelled coffee.|result complement 到
+味道|Flavor; taste; smell|{这}{道}{菜}{的}{味道}{很}{好}。|This dish tastes very good.|possessive noun phrase
+习惯|Habit; be used to|{我}{已经}{习惯}{了}{这里}{的}{生活}。|I've gotten used to life here.|change of state
+小心|Be careful|{路}{很}{滑}，{你}{要}{小心}。|The road is slippery; be careful.|advice with 要
+药片|Medication tablet|{这}{个}{药片}{应该}{饭后}{吃}。|This tablet should be taken after eating.|time expression and modal
+晕|Feel dizzy; faint|{我}{突然}{有点}{晕}。|I suddenly feel a little dizzy.|degree with 有点
+肿|Swollen|{我}{的}{脚踝}{还}{有点}{肿}。|My ankle is still a bit swollen.|stative adjective
+# pleco-travel|Travel, leisure & environment|travel,activities
+参观|Visit an attraction; tour|{我们}{明天}{去}{参观}{博物馆}。|Tomorrow we're visiting the museum.|purpose of motion
+大海|Sea; ocean|{我}{喜欢}{在}{大海}{边}{散步}。|I enjoy walking by the sea.|location phrase
+大自然|Nature; natural world|{周末}{去}{大自然}{里}{走}{走}{很}{放松}。|Going for a walk in nature on the weekend is relaxing.|nominalized verb phrase
+地球|Earth; planet Earth|{我们}{生活}{在}{地球}{上}。|We live on Earth.|locative 在…上
+东北|Northeast; northeastern China|{东北}{的}{冬天}{很}{冷}。|Winters in northeastern China are cold.|regional topic
+东南|Southeast|{上海}{在}{中国}{的}{东南}{方向}。|Shanghai lies in southeastern China.|directional locative
+动物|Animal|{这}{种}{动物}{主要}{生活}{在}{山}{里}。|This kind of animal mainly lives in the mountains.|measure word 种
+动物园|Zoo|{孩子}{很}{喜欢}{去}{动物园}。|Children enjoy going to the zoo.|destination complement
+冬天|Winter|{冬天}{去}{滑雪}{很}{有趣}。|Skiing in winter is fun.|time topic
+海|Sea; ocean|{从}{这里}{可以}{看到}{海}。|You can see the sea from here.|modal ability
+湖|Lake|{这}{个}{湖}{的}{水}{很}{清澈}。|The water in this lake is very clear.|possessive description
+秋天|Autumn; fall|{秋天}{的}{天气}{很}{舒服}。|The weather in autumn is pleasant.|seasonal modifier
+春天|Spring season|{春天}{的}{天气}{很}{暖和}。|The weather is warm in spring.|seasonal modifier
+树|Tree|{这}{个}{公园}{有}{很多}{树}。|There are many trees in this park.|existential 有
+太阳|Sun; sunlight|{今天}{太阳}{很}{大}。|The sun is very strong today.|weather statement
+夏天|Summer|{夏天}{这里}{很}{热}。|It's very hot here in summer.|seasonal location
+下雪|Snow; be snowing|{明天}{可能}{会}{下雪}。|It might snow tomorrow.|prediction with 会
+雪|Snow|{山}{上}{还有}{很多}{雪}。|There is still a lot of snow on the mountain.|locative
+月亮|Moon|{今天}{晚上}{的}{月亮}{很}{漂亮}。|The moon looks beautiful tonight.|possessive time
+游客|Tourist; visitor|{这}{个}{地方}{有}{很多}{游客}。|There are many tourists here.|existential 有
+国际|International|{这}{是}{国际}{比赛}。|This is an international competition.|compound modifier
+音乐会|Concert|{我}{想}{周末}{去}{听}{音乐会}。|I'd like to attend a concert this weekend.|serial verbs
+游泳|Swim; swimming|{他}{从}{小}{就}{喜欢}{游泳}。|He has liked swimming since childhood.|从…就
+# pleco-fluency|Fluency: nuance, choices & connectors|conversation,fluency
+不得不|Have no choice but to|{我}{今天}{不得不}{加班}。|I have no choice but to work overtime today.|necessity 不得不
+不仅|Not only|{他}{不仅}{会}{中文}，{还}{会}{英语}。|He speaks not only Chinese but also English.|不仅…还
+不然|Otherwise; if not|{我们}{快点}{出发}，{不然}{会}{迟到}。|Let's leave quickly, otherwise we'll be late.|consequence connector
+反而|Instead; on the contrary|{我}{以为}{会}{很}{难}，{结果}{反而}{很}{简单}。|I thought it would be difficult, but it turned out to be easy.|unexpected reversal
+反正|Anyway; in any case|{反正}{今天}{下雨}，{我们}{在家}{休息}{吧}。|Anyway, since it's raining, let's stay home.|colloquial summary
+至少|At least|{我们}{至少}{需要}{三}{天}{的}{时间}。|We need at least three days.|minimum quantifier
+终于|Finally; at last|{我}{终于}{把}{这}{个}{问题}{解决}{了}。|I finally solved the problem.|perfective finally
+估计|Estimate; suppose|{我}{估计}{他}{还有}{十}{分钟}{才}{到}。|I reckon he'll arrive in another ten minutes.|approximate prediction
+赶紧|Hurry up and; promptly|{快}{下雨}{了}，{我们}{赶紧}{回家}。|It's about to rain; let's hurry home.|urgent action
+干脆|Simply; might as well|{既然}{已经}{晚}{了}，{干脆}{坐}{出租车}{吧}。|Since we're already late, we might as well take a taxi.|decision with 干脆
+既然|Since; given that|{既然}{你}{有空}，{我们}{就}{一起}{去}{吃饭}。|Since you're free, let's eat together.|既然…就
+毕竟|After all; considering everything|{他}{毕竟}{是}{新}{来}{的}{同事}。|After all, he's a new colleague.|concessive explanation
+提前|In advance; ahead of schedule|{我们}{最好}{提前}{预约}。|We'd better book in advance.|advice with 最好
+临时|Temporary; last-minute|{我}{今天}{临时}{有}{点}{事}。|Something came up unexpectedly today.|sudden circumstance
+尽量|As much as possible; try one's best|{我}{会}{尽量}{早点}{到}。|I'll try to arrive as early as I can.|degree adverb
+难免|Hard to avoid; inevitably|{第一次}{尝试}{难免}{会}{紧张}。|It's natural to feel nervous on your first attempt.|generalization
+甚至|Even; to the extent of|{他}{最近}{很}{忙}，{甚至}{周末}{也}{在}{工作}。|He's been so busy that he's even working on weekends.|escalation 甚至
+不管|Regardless of; no matter|{不管}{天气}{怎么样}，{我们}{都}{会}{出发}。|No matter what the weather is like, we'll set off.|不管…都
+除非|Unless; except if|{除非}{下雨}，{不然}{我们}{就}{去}{徒步}。|Unless it rains, we'll go hiking.|unless condition
+万一|Just in case; what if|{万一}{迟到}{了}，{就}{给}{我}{发}{消息}。|If you happen to be late, send me a message.|contingency 万一
+总之|In short; in any case|{总之}，{我们}{现在}{先}{解决}{最}{重要}{的}{问题}。|In short, let's solve the most important problem first.|summarizing discourse
+另外|In addition; besides; another|{我}{想}{点}{一}{份}{炒饭}，{另外}{再}{要}{一}{杯}{水}。|I'd like fried rice, and another glass of water.|additional item
+稍微|A little; slightly|{这}{个}{包}{稍微}{有点}{重}。|This bag is slightly heavy.|degree modifier
+有点儿|A little; somewhat|{这}{里}{有点儿}{吵}。|It's a little noisy here.|softened negative assessment
+反映|Reflect; report (a problem)|{你}{可以}{向}{经理}{反映}{这}{个}{问题}。|You can raise this issue with the manager.|向 recipient
+其实|Actually; in fact|{其实}{我}{以前}{没有}{去}{过}{那里}。|Actually, I've never been there before.|discourse correction
+根本|Fundamentally; at all (with negation)|{我}{根本}{不}{认识}{他}。|I don't know him at all.|strong negation
+多亏|Thanks to; fortunately because of|{多亏}{你}{帮忙}，{我们}{才}{完成}{了}。|Thanks to your help, we managed to finish.|causal credit
+不得了|Extremely; serious; a big deal|{今天}{的}{交通}{堵}{得}{不得了}。|Traffic is unbelievably congested today.|degree complement 得
+顺便|While you're at it; conveniently|{你}{去}{超市}{的}{时候}{顺便}{买}{点}{牛奶}{吧}。|While you're at the supermarket, pick up some milk.|incidental action
+连忙|Hastily; promptly|{他}{听到}{消息}{以后}{连忙}{回家}。|After hearing the news, he rushed home.|time sequence
+# pleco-advanced|Advanced everyday issues & feelings|social,fluency
+抱怨|Complain; grumble|{他}{总是}{抱怨}{工作}{太}{忙}。|He's always complaining about being too busy at work.|habitual 总是
+崩溃|Break down; feel overwhelmed|{今天}{的}{事情}{太}{多}，{我}{快}{崩溃}{了}。|There's so much going on today that I'm nearly overwhelmed.|colloquial intensification
+别扭|Awkward; uncomfortable; unnatural|{这}{句}{中文}{听起来}{有点}{别扭}。|This Chinese sentence sounds a little unnatural.|perception complement
+尴尬|Awkward; embarrassing|{我}{忘}{了}{他}{的}{名字}，{真}{尴尬}。|I forgot his name; how embarrassing.|exclamatory 真
+后悔|Regret; wish one hadn't|{我}{有点}{后悔}{昨天}{没}{早点}{睡觉}。|I slightly regret not going to bed earlier yesterday.|psychological complement
+不耐烦|Impatient; annoyed|{他}{等}{了}{很}{久}，{有点}{不耐烦}。|He's waited a long time and is getting impatient.|degree with 有点
+担忧|Worry; be concerned|{我}{有点}{担忧}{明天}{的}{天气}。|I'm a little worried about tomorrow's weather.|verb with object
+怀念|Miss; look back fondly on|{我}{有时候}{很}{怀念}{以前}{的}{生活}。|Sometimes I really miss how life used to be.|past contrast
+难得|Rare; not easy to come by|{今天}{难得}{有空}，{我们}{出去}{玩}{吧}。|It's rare that we're free today; let's go out.|concession
+疲惫|Exhausted; worn out|{攀岩}{以后}{我}{觉得}{很}{疲惫}。|I feel exhausted after climbing.|time expression
+情绪|Emotion; mood|{他}{最近}{的}{情绪}{不太}{稳定}。|His mood has been a little unsettled recently.|descriptive adjective
+遗憾|Regrettable; a pity|{很}{遗憾}，{我}{这}{次}{不能}{参加}。|It's a pity that I can't attend this time.|polite refusal
+纠结|Torn; conflicted; overthink a choice|{我}{还}{在}{纠结}{要}{选}{哪}{个}。|I'm still torn over which one to choose.|informal decision-making
+靠谱|Reliable; dependable|{这}{个}{办法}{听起来}{挺}{靠谱}。|This approach sounds pretty reliable.|colloquial evaluation
+敷衍|Perfunctory; give a half-hearted response|{这}{个}{回答}{有点}{敷衍}。|This answer feels a little perfunctory.|subjective evaluation
+凑合|Make do; get by|{虽然}{不}{太}{好}，{但}{也}{能}{凑合}。|It's not very good, but it will do.|concessive contrast
+唠叨|Nag; talk at length|{他}{有时候}{会}{唠叨}{几}{句}。|Sometimes he goes on about things for a few sentences.|repetition with 句
+开窍|Suddenly understand; get the hang of it|{练}{了}{很}{久}，{我}{终于}{开窍}{了}。|After practicing for ages, it finally clicked.|result of prolonged effort

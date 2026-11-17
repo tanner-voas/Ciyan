@@ -15,8 +15,8 @@ const section=id=>geographicData.split('\n').slice(geographicData.split('\n').fi
 
 test('every vocabulary card, including original starter cards, appears in an exact grammar token',()=>{
  assert.equal(allWords.size,big.cards.length);
- assert.equal(big.cards.length,2002);
- assert.equal(big.grammar.length,1287);
+ assert.equal(big.cards.length,2277);
+ assert.equal(big.grammar.length,1549);
  for(const w of allWords)assert.ok(covered.has(w),`Missing exact example: ${w}`);
 });
 test('every grammar example is structurally valid and has complete vocabulary prerequisites',()=>{

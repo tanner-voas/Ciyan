@@ -1,8 +1,16 @@
-# Cíyán optional Mandarin decks — v0.3.1
+# Cíyán optional Mandarin decks — v0.3.2
 
-The downloadable decks contain **2,002 distinct vocabulary entries** (including the original starter words), and **1,287 grammar entries** covering all of them through exact `{word}` tokens. There are 26 individual topical/HSK/grammar decks, plus `all-decks.json`. Counts for individual decks overlap because they include the vocabulary required for their sentences; do not add them together.
+The downloadable decks contain **2,277 distinct vocabulary entries** (including the original starter words), and **1,549 grammar entries** covering all of them through exact `{word}` tokens. There are 38 individual topical/HSK/grammar decks, plus `all-decks.json`. Counts for individual decks overlap because they include the vocabulary required for their sentences; do not add them together.
 
 Open **Home → Explore optional decks** and import any topic, or load the all-in-one deck. Imports are strictly additive: existing vocabulary, grammar, and learning records are preserved, and additional tags may be merged. The larger grammar collection is optional; the app initially remains unchanged until you load a deck.
+
+## v0.3.2 content and tagging
+
+The library now comprises **2,277 distinct words and 1,549 grammar cards**, split across 38 individual optional decks plus the all-in-one deck. Included in the expansion are new curated conversation, relationships, errands, professional, health, travel, fluency and advanced-expression decks. These are **selected items** from the user-supplied Pleco headword inventory: their meanings are independently edited concise glosses, not copied definitions. Each word is explicitly used in an example; individual decks contain the example and all of its vocabulary prerequisites.
+
+The HSK deck labels are simply **HSK1, HSK2, HSK3, HSK4, HSK5, HSK6 and HSK7-9**, with the corresponding lower-case tag names `hsk1`, `hsk2`, etc. There is no parallel `hsk-2021-*`, `hsk-3.0`, or bare `hsk` tag. The level map is drawn from the *HSK 3.0* group in the uploaded reference (the 2021 framework, including its combined 7–9 band); this is provenance, **not a second set of user-facing lists**. If a word from food, climbing or another topical deck belongs to one of those levels, it receives that tag too. A level deck is not an exhaustive HSK list.
+
+The app is still in development and has no actual learning history. No v0.3.1-to-v0.3.2 migration of imported data or old tags is performed. Start with clean site data if needed while testing. Plan migration and backward-compatibility tests before real study data exists.
 
 ## New geography
 
@@ -22,10 +30,10 @@ Each word in the optional library, *including* the 52 starter words, is used in 
 
 ## Existing subject decks and HSK levels
 
-The original China foods, ingredients, ordering, world foods, activities/sports, muscles/body, climbing, places and daily-life decks remain included and are extended with independent usage examples. Selected HSK 3.0 level 1–4 decks continue to use **GF 0025–2021**, not a later exam-specific syllabus. The original selected 660 HSK words (180, 180, 160, 140) remain the primary selections; card counts in the shipped JSON are higher because associated grammar prerequisites are included.
+The original China foods, ingredients, ordering, world foods, activities/sports, muscles/body, climbing, places and daily-life decks remain included and are extended with independent usage examples. HSK1–HSK7-9 labels are canonical and unified; all included vocabulary receives its corresponding tag when present in the consolidated reference.
 
 ## Rebuilding
 
 `python3 build_decks.py` deterministically composes grammar and topic-deck JSON using committed source files in `content/`. The sentence builder is `build_sentence_031.py`. `python3 package.py` regenerates ignored `dist/ciyan/`; upload that folder (or a ZIP of its contents) to Cloudflare Pages. No network requests or third-party Python modules are required.
 
-See [ATTRIBUTION.md](ATTRIBUTION.md) for sources and licensing, and `AUDIT_v0.3.1.md` at repository root for test results and remaining caveats.
+See [ATTRIBUTION.md](ATTRIBUTION.md) for sources and licensing, and `AUDIT_v0.3.2.md` at repository root for test results and remaining caveats.

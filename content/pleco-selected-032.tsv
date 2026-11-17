@@ -1,0 +1,263 @@
+deck	hanzi	pinyin	english	tags	markup	sentence_english	principle
+pleco-conversation	别	bié	Don't; avoid	daily,conversation	{别}{担心}，{我}{会}{帮忙}。	Don't worry; I'll help.	negative imperative
+pleco-conversation	不用	bù yòng	No need to; don't have to	daily,conversation	{不用}{等}{我}，{你}{先}{走}。	You don't need to wait for me; go ahead.	lack of necessity
+pleco-conversation	不对	bù duì	Incorrect; something is wrong	daily,conversation	{这}{个}{答案}{不对}。	This answer is incorrect.	predicate of judgment
+pleco-conversation	差	chà	Poor; fall short	daily,conversation	{这}{家}{店}{的}{服务}{有点}{差}。	The service at this shop is a little poor.	degree with 有点
+pleco-conversation	常常	cháng cháng	Often; frequently	daily,conversation	{我}{周末}{常常}{去}{攀岩}。	I often go climbing on weekends.	frequency adverb
+pleco-conversation	车站	chē zhàn	Bus or train station	daily,conversation	{我们}{在}{车站}{见面}。	Let's meet at the station.	place phrase before verb
+pleco-conversation	错	cuò	Wrong; mistaken	daily,conversation	{你}{没有}{听}{错}。	You didn't hear incorrectly.	result complement
+pleco-conversation	打开	dǎ kāi	Open; switch on	daily,conversation	{请}{打开}{窗户}。	Please open the window.	polite imperative
+pleco-conversation	打电话	dǎ diàn huà	Make a phone call	daily,conversation	{我}{一会儿}{给}{你}{打电话}。	I'll call you in a little while.	给 introducing recipient
+pleco-conversation	地点	dì diǎn	Location; meeting place	daily,conversation	{我们}{可以}{换}{个}{地点}{见面}。	We can meet somewhere else.	classifier and location
+pleco-conversation	地图	dì tú	Map	daily,conversation	{我}{想}{看}{一下}{地图}。	I want to take a quick look at the map.	softened request with 一下
+pleco-conversation	放假	fàng jià	Have a holiday; be on break	daily,conversation	{我们}{下周}{放假}。	We're on holiday next week.	time word before predicate
+pleco-conversation	分	fēn	Minute; score; divide	daily,conversation	{这}{次}{比赛}，{他}{得}{了}{十}{分}。	He scored ten points in this match.	score and result complement
+pleco-conversation	干净	gān jìng	Clean; tidy	daily,conversation	{这}{个}{房间}{很}{干净}。	This room is very clean.	stative predicate
+pleco-conversation	国外	guó wài	Abroad; overseas	daily,conversation	{他}{以前}{在}{国外}{工作}{过}。	He worked abroad before.	experience particle 过
+pleco-conversation	回答	huí dá	Answer; reply	daily,conversation	{你}{可以}{回答}{这}{个}{问题}{吗}？	Can you answer this question?	modal question
+pleco-conversation	回去	huí qu	Go back (away from speaker)	daily,conversation	{我}{想}{先}{回去}{休息}。	I want to go back and rest first.	directional complement
+pleco-conversation	记住	jì zhu	Remember; keep in mind	daily,conversation	{请}{记住}{这}{个}{名字}。	Please remember this name.	request with 请
+pleco-conversation	见面	jiàn miàn	Meet in person	daily,conversation	{我们}{明天}{可以}{见面}{吗}？	Can we meet tomorrow?	ability and question
+pleco-conversation	进去	jìn qu	Go in; enter	daily,conversation	{外面}{很}{冷}，{我们}{进去}{吧}。	It's cold outside; let's go inside.	suggestion with 吧
+pleco-conversation	开玩笑	kāi wán xiào	Joke; tease	daily,conversation	{我}{只是}{开玩笑}，{别}{生气}。	I'm just joking; don't be angry.	contrast with negation
+pleco-conversation	考试	kǎo shì	Exam; take an exam	daily,conversation	{他}{明天}{有}{考试}。	He has an exam tomorrow.	existential 有
+pleco-conversation	课	kè	Class; lesson	daily,conversation	{我们}{今天}{没有}{课}。	We don't have class today.	negative existential
+pleco-conversation	老人	lǎo ren	Elderly person	daily,conversation	{那个}{老人}{正在}{散步}。	That elderly person is taking a walk.	progressive 正在
+pleco-conversation	没什么	méi shén me	Nothing much; it's nothing	daily,conversation	{这}{没什么}，{你}{不用}{担心}。	It's nothing; you don't need to worry.	reassurance
+pleco-conversation	门口	mén kǒu	Entrance; doorway	daily,conversation	{我}{在}{门口}{等}{你}。	I'll wait for you at the entrance.	location 在
+pleco-conversation	哪	nǎ	Which; what (before a classifier)	daily,conversation	{你}{想}{去}{哪}{个}{城市}？	Which city do you want to visit?	interrogative determiner
+pleco-conversation	哪些	nǎ xiē	Which ones	daily,conversation	{你}{去}{过}{哪些}{国家}？	Which countries have you visited?	interrogative plural
+pleco-conversation	钱	qián	Money	daily,conversation	{我}{今天}{没有}{带}{钱}。	I didn't bring any money today.	negative possession
+pleco-conversation	钱包	qián bāo	Wallet	daily,conversation	{我}{找}{不}{到}{钱包}{了}。	I can't find my wallet.	potential complement
+pleco-conversation	生日	shēng ri	Birthday	daily,conversation	{明天}{是}{她}{的}{生日}。	Tomorrow is her birthday.	possessive 的
+pleco-conversation	上网	shàng wǎng	Go online; use the internet	daily,conversation	{我}{需要}{上网}{查}{一下}。	I need to go online and check something.	serial verbs
+pleco-conversation	上学	shàng xué	Attend school	daily,conversation	{他}{每天}{坐}{地铁}{去}{上学}。	He takes the metro to school every day.	purpose phrase
+pleco-conversation	水果	shuǐ guǒ	Fruit	daily,conversation	{我}{每天}{都}{吃}{水果}。	I eat fruit every day.	frequency and 都
+pleco-conversation	外语	wài yǔ	Foreign language	daily,conversation	{我}{想}{学}{一}{门}{外语}。	I want to learn a foreign language.	classifier 门
+pleco-conversation	忘	wàng	Forget	daily,conversation	{我}{忘}{了}{带}{钥匙}。	I forgot to bring my keys.	verb complement sequence
+pleco-conversation	笑	xiào	Smile; laugh	daily,conversation	{他}{听}{完}{这个}{故事}{就}{笑}{了}。	He laughed as soon as he heard the story.	就 temporal sequence
+pleco-conversation	有时候	yǒu shí hou	Sometimes	daily,conversation	{我}{有时候}{下班}{以后}{去}{健身房}。	I sometimes go to the gym after work.	time clause
+pleco-conversation	有名	yǒu míng	Famous; well known	daily,conversation	{这}{家}{餐厅}{很}{有名}。	This restaurant is well known.	stative predicate
+pleco-conversation	有用	yǒu yòng	Useful	daily,conversation	{你}{的}{建议}{很}{有用}。	Your advice is useful.	abstract evaluation
+pleco-conversation	再见	zài jiàn	Goodbye; see you again	daily,conversation	{我们}{明天}{再见}。	See you tomorrow.	future time expression
+pleco-conversation	在家	zài jiā	Be at home	daily,conversation	{我}{今天}{想}{在家}{休息}。	I want to rest at home today.	location complement
+pleco-conversation	走路	zǒu lù	Walk; go on foot	daily,conversation	{从}{这里}{走路}{过去}{不}{远}。	It's not far to walk there from here.	direction complement
+pleco-conversation	最好	zuì hǎo	Best; had better	daily,conversation	{你}{最好}{早点}{出门}。	You had better leave early.	advice and degree
+pleco-conversation	坐下	zuò xià	Sit down	daily,conversation	{请}{先}{坐下}。	Please sit down first.	imperative and result complement
+pleco-social	爱情	ài qíng	Romantic love	social,conversation	{他}{觉得}{爱情}{需要}{信任}。	He thinks romantic love requires trust.	content clause
+pleco-social	爱人	ài ren	Spouse; partner	social,conversation	{我}{的}{爱人}{今天}{加班}。	My spouse is working overtime today.	possessive and time
+pleco-social	安静	ān jìng	Quiet; peaceful	social,conversation	{这}{里}{晚上}{很}{安静}。	It's very quiet here in the evenings.	locative description
+pleco-social	半夜	bàn yè	Middle of the night	social,conversation	{我}{半夜}{被}{电话}{吵醒}{了}。	A phone call woke me in the middle of the night.	passive with 被
+pleco-social	比如	bǐ rú	For example; such as	social,conversation	{我}{喜欢}{运动}，{比如}{攀岩}{和}{游泳}。	I like sports such as climbing and swimming.	exemplification
+pleco-social	不但	bù dàn	Not only (paired with 而且)	social,conversation	{他}{不但}{会}{中文}，{而且}{会}{英语}。	He speaks not only Chinese but also English.	不但…而且
+pleco-social	不够	bù gòu	Not enough; insufficient	social,conversation	{这}{个}{时间}{不够}。	There isn't enough time.	negative degree
+pleco-social	不太	bù tài	Not very	social,conversation	{我}{今天}{不太}{想}{出门}。	I don't really feel like going out today.	softened negative
+pleco-social	不久	bù jiǔ	Soon; before long	social,conversation	{我们}{不久}{就}{会}{见面}。	We'll see each other soon.	future with 就
+pleco-social	不如	bù rú	Not as good as; better to	social,conversation	{今天}{下雨}，{不如}{在家}{休息}{吧}。	It's raining today; we might as well stay home.	suggestion 不如…吧
+pleco-social	不行	bù xíng	Not allowed; won't work	social,conversation	{这}{个}{办法}{不行}，{我们}{换}{一}{个}。	This approach won't work; let's try another.	evaluation and change
+pleco-social	不一定	bù yī dìng	Not necessarily	social,conversation	{贵}{的}{东西}{不一定}{好}。	Expensive things aren't necessarily good.	modal uncertainty
+pleco-social	答应	dā ying	Agree to; promise	social,conversation	{他}{已经}{答应}{帮}{我}{了}。	He has already agreed to help me.	verb complement
+pleco-social	打算	dǎ suan	Plan; intend	social,conversation	{我们}{打算}{周末}{去}{徒步}。	We're planning to hike this weekend.	planning future activity
+pleco-social	放心	fàng xīn	Be reassured; don't worry	social,conversation	{你}{放心}，{我}{会}{注意}{安全}。	Don't worry; I'll be careful about safety.	reassurance and future
+pleco-social	感谢	gǎn xiè	Thank; be grateful	social,conversation	{我}{很}{感谢}{你}{的}{帮助}。	I'm very grateful for your help.	object of thanks
+pleco-social	关心	guān xīn	Care about; be concerned for	social,conversation	{朋友}{生病}{了}，{我}{很}{关心}{他}。	My friend is sick, and I'm concerned about him.	cause and feeling
+pleco-social	故意	gù yì	Deliberately; on purpose	social,conversation	{我}{不是}{故意}{的}。	I didn't do it on purpose.	emphatic 是…的
+pleco-social	好处	hǎo chu	Benefit; advantage	social,conversation	{每天}{运动}{有}{很多}{好处}。	Exercising every day has many benefits.	existential 有
+pleco-social	好久	hǎo jiǔ	A long time	social,conversation	{我们}{好久}{没}{见面}{了}。	We haven't seen each other for ages.	duration and negation
+pleco-social	忽然	hū rán	Suddenly	social,conversation	{天}{忽然}{下雨}{了}。	Suddenly it started to rain.	adverb of sudden change
+pleco-social	礼物	lǐ wù	Gift; present	social,conversation	{我}{想}{给}{你}{买}{个}{礼物}。	I'd like to buy you a present.	double-object-like beneficiary
+pleco-social	流行	liú xíng	Popular; fashionable	social,conversation	{这}{个}{运动}{最近}{很}{流行}。	This sport has become popular recently.	recent trend
+pleco-social	满意	mǎn yì	Satisfied; pleased	social,conversation	{你}{对}{这}{个}{结果}{满意}{吗}？	Are you satisfied with the result?	对 as topic introduction
+pleco-social	难受	nán shòu	Feel unwell; feel awful	social,conversation	{我}{今天}{有点}{难受}，{想}{休息}。	I feel a bit unwell today and want to rest.	degree with 有点
+pleco-social	年轻	nián qīng	Young	social,conversation	{他}{看起来}{很}{年轻}。	He looks very young.	perception complement
+pleco-social	怕	pà	Be afraid of; fear	social,conversation	{我}{不}{怕}{高}，{但是}{怕}{掉下来}。	I'm not afraid of heights, but I am afraid of falling.	contrast and repetition
+pleco-social	碰到	pèng dào	Run into; encounter	social,conversation	{我}{昨天}{在}{地铁}{碰到}{朋友}。	I ran into a friend on the metro yesterday.	chance encounter
+pleco-social	平常	píng cháng	Usually; ordinary	social,conversation	{我}{平常}{都}{坐}{地铁}{上班}。	I usually commute by metro.	habitual adverb
+pleco-social	请客	qǐng kè	Treat someone to a meal	social,conversation	{今天}{我}{请客}，{你}{想}{吃}{什么}？	I'm treating today; what do you want to eat?	offer and question
+pleco-social	全家	quán jiā	Whole family	social,conversation	{我们}{全家}{都}{喜欢}{旅行}。	Everyone in our family enjoys traveling.	quantifier 全
+pleco-social	热情	rè qíng	Warm and enthusiastic	social,conversation	{这里}{的}{人}{很}{热情}。	The people here are very welcoming.	descriptive predicate
+pleco-social	商量	shāng liang	Discuss; consult with	social,conversation	{我们}{先}{商量}{一下}{再}{决定}。	Let's discuss it before deciding.	serial action
+pleco-social	什么样	shén me yàng	What kind of	social,conversation	{你}{想}{找}{什么样}{的}{房子}？	What kind of home are you looking for?	interrogative adjective
+pleco-social	实在	shí zai	Really; genuinely; indeed	social,conversation	{我}{实在}{太}{累}{了}。	I'm really too tired.	degree intensifier
+pleco-social	随时	suí shí	At any time; whenever	social,conversation	{有}{问题}{就}{随时}{联系}{我}。	Contact me anytime if you have a question.	conditional 就
+pleco-social	态度	tài du	Attitude; manner	social,conversation	{他}{的}{态度}{很}{认真}。	His attitude is very serious.	possessive description
+pleco-social	突然	tū rán	Suddenly; abrupt	social,conversation	{他}{突然}{告诉}{我}{一}{个}{消息}。	He suddenly told me some news.	adverb modifying verb
+pleco-social	心情	xīn qíng	Mood; state of mind	social,conversation	{我}{今天}{心情}{不错}。	I'm in a pretty good mood today.	topic-comment
+pleco-social	笑话	xiào hua	Joke	social,conversation	{他}{讲}{了}{一}{个}{笑话}。	He told a joke.	completed action
+pleco-social	相信	xiāng xìn	Believe; trust	social,conversation	{我}{相信}{你}{可以}{做到}。	I believe you can do it.	clausal object
+pleco-social	友好	yǒu hǎo	Friendly	social,conversation	{这里}{的}{人}{对}{游客}{很}{友好}。	People here are very friendly to visitors.	对 with recipient
+pleco-errands	报纸	bào zhǐ	Newspaper	daily,errands,practical	{我}{在}{咖啡店}{看}{报纸}。	I read a newspaper at the café.	locative 在
+pleco-errands	笔记	bǐ jì	Notes; written notes	daily,errands,practical	{我}{开会}{的}{时候}{会}{做}{笔记}。	I take notes during meetings.	time clause …的时候
+pleco-errands	笔记本	bǐ jì běn	Notebook; laptop (by context)	daily,errands,practical	{我}{把}{笔记本}{放}{在}{桌子}{上}。	I put the notebook on the desk.	把 disposal construction
+pleco-errands	层	céng	Floor; layer; storey	daily,errands,practical	{他}{住}{在}{五}{层}。	He lives on the fifth floor.	number and floor
+pleco-errands	查	chá	Check; look up; investigate	daily,errands,practical	{我}{先}{查}{一下}{地址}。	I'll check the address first.	verb reduplication softening
+pleco-errands	超市	chāo shì	Supermarket	daily,errands,practical	{我}{下班}{以后}{去}{超市}{买}{菜}。	I buy groceries at the supermarket after work.	after work clause
+pleco-errands	车辆	chē liàng	Vehicles	daily,errands,practical	{这里}{的}{车辆}{很多}。	There are lots of vehicles here.	location topic
+pleco-errands	出发	chū fā	Set out; depart	daily,errands,practical	{我们}{明天}{早上}{出发}。	We set off tomorrow morning.	future timing
+pleco-errands	出租	chū zū	Rent out; hire out	daily,errands,practical	{这个}{房子}{正在}{出租}。	This house is available to rent.	progressive passive-like state
+pleco-errands	船	chuán	Boat; ship	daily,errands,practical	{我们}{坐}{船}{去}{那个}{岛}。	We take a boat to that island.	transport serial verbs
+pleco-errands	打印	dǎ yìn	Print a document	daily,errands,practical	{请}{帮}{我}{打印}{这}{份}{文件}。	Please help me print this document.	帮 with action
+pleco-errands	大门	dà mén	Main gate; front entrance	daily,errands,practical	{我们}{在}{学校}{的}{大门}{见面}。	We'll meet at the school gate.	locative and possession
+pleco-errands	灯	dēng	Light; lamp	daily,errands,practical	{请}{关}{一下}{灯}。	Please switch off the light.	polite request
+pleco-errands	短信	duǎn xìn	Text message; SMS	daily,errands,practical	{我}{刚才}{收到}{你}{的}{短信}。	I just received your text message.	recent past
+pleco-errands	发票	fā piào	Official invoice	daily,errands,practical	{请}{给}{我}{开}{一}{张}{发票}。	Please issue me an invoice.	measure word 张
+pleco-errands	方便面	fāng biàn miàn	Instant noodles	daily,errands,practical	{今天}{太}{忙}，{我}{吃}{方便面}。	I'm too busy today, so I'll eat instant noodles.	causal juxtaposition
+pleco-errands	分开	fēn kāi	Separate; apart	daily,errands,practical	{我们}{把}{这}{些}{东西}{分开}{放}。	Let's put these things separately.	把 and result
+pleco-errands	封	fēng	Envelope measure word; seal	daily,errands,practical	{我}{收到}{一}{封}{信}。	I received a letter.	classifier 封
+pleco-errands	关机	guān jī	Turn off a phone or computer	daily,errands,practical	{上}{飞机}{之前}{请}{先}{关机}。	Please power off before boarding the plane.	time clause
+pleco-errands	顾客	gù kè	Customer	daily,errands,practical	{这}{家}{店}{的}{顾客}{很多}。	This shop has lots of customers.	possessive location subject
+pleco-errands	广告	guǎng gào	Advertisement; ad	daily,errands,practical	{我}{在}{手机}{上}{看到}{这}{个}{广告}。	I saw this ad on my phone.	place of medium
+pleco-errands	过来	guò lai	Come over here	daily,errands,practical	{你}{有空}{的}{时候}{过来}{吧}。	Come over when you have time.	suggestion 吧
+pleco-errands	海边	hǎi biān	Seaside; coast	daily,errands,practical	{我们}{想}{周末}{去}{海边}{散步}。	We want to walk by the sea this weekend.	future plan
+pleco-errands	花园	huā yuán	Garden	daily,errands,practical	{我}{每天}{早上}{在}{花园}{散步}。	I walk in the garden every morning.	location and habit
+pleco-errands	换	huàn	Change; exchange; switch	daily,errands,practical	{我}{想}{换}{一}{双}{鞋子}。	I want to exchange for another pair of shoes.	classifier 双
+pleco-errands	交通	jiāo tōng	Traffic; transport	daily,errands,practical	{这里}{的}{交通}{很}{方便}。	Transportation here is very convenient.	abstract subject
+pleco-errands	接到	jiē dào	Receive; get	daily,errands,practical	{我}{刚刚}{接到}{一}{个}{电话}。	I just got a phone call.	recent completion
+pleco-errands	接着	jiē zhe	Then; afterward; continue	daily,errands,practical	{我们}{先}{吃饭}，{接着}{去}{看电影}。	We'll eat first, then go see a movie.	sequence 接着
+pleco-errands	街	jiē	Street	daily,errands,practical	{这}{条}{街}{有}{很多}{餐厅}。	There are many restaurants on this street.	classifier 条
+pleco-errands	借	jiè	Borrow; lend	daily,errands,practical	{我}{能}{借}{你}{的}{笔}{吗}？	May I borrow your pen?	permission 能
+pleco-errands	斤	jīn	Jin; 500-gram unit	daily,errands,practical	{我}{想}{买}{一}{斤}{苹果}。	I'd like to buy half a kilogram of apples.	unit 斤
+pleco-errands	卡	kǎ	Card; stored-value card	daily,errands,practical	{我}{忘}{带}{银行卡}，{现在}{只}{有}{这}{张}{卡}。	I forgot my bank card and only have this card now.	classifier 张
+pleco-errands	路边	lù biān	Roadside	daily,errands,practical	{路边}{有}{一}{家}{便利店}。	There's a convenience store by the road.	existential at location
+pleco-errands	瓶子	píng zi	Bottle	daily,errands,practical	{请}{把}{空}{瓶子}{放}{在}{这里}。	Please put the empty bottle here.	把 construction
+pleco-errands	请客	qǐng kè	Treat someone	daily,errands,practical	{明天}{我}{请客}{吧}。	Let me treat you tomorrow.	suggestion 吧
+pleco-errands	停车场	tíng chē chǎng	Parking lot; car park	daily,errands,practical	{这}{家}{商场}{有}{停车场}。	This mall has a parking lot.	existential 有
+pleco-errands	收款	shōu kuǎn	Receive payment	daily,errands,practical	{这}{家}{店}{可以}{扫码}{收款}。	This shop can accept payment by QR code.	modal ability
+pleco-errands	收到	shōu dào	Receive	daily,errands,practical	{我}{已经}{收到}{你}{的}{邮件}。	I've already received your email.	perfective 已经
+pleco-errands	手表	shǒu biǎo	Wristwatch	daily,errands,practical	{他}{送}{了}{我}{一}{块}{手表}。	He gave me a wristwatch.	double object and classifier
+pleco-errands	司机	sī jī	Driver	daily,errands,practical	{司机}{说}{马上}{就}{到}。	The driver said we'd arrive soon.	reported speech
+pleco-errands	通知	tōng zhī	Notify; notice	daily,errands,practical	{公司}{已经}{通知}{大家}{了}。	The company has already notified everyone.	direct recipient
+pleco-errands	网站	wǎng zhàn	Website	daily,errands,practical	{我}{在}{这个}{网站}{找到}{了}{信息}。	I found the information on this website.	online location
+pleco-errands	信用卡	xìn yòng kǎ	Credit card	daily,errands,practical	{我}{用}{信用卡}{付款}。	I pay by credit card.	instrument 用
+pleco-errands	休假	xiū jià	Take leave from work	daily,errands,practical	{我}{下}{个}{月}{准备}{休假}。	I'm planning to take leave next month.	future intention
+pleco-errands	椅子	yǐ zi	Chair	daily,errands,practical	{请}{坐}{在}{这}{把}{椅子}{上}。	Please sit on this chair.	classifier 把 for chair
+pleco-errands	租	zū	Rent; lease	daily,errands,practical	{我}{想}{在}{上海}{租}{房子}。	I want to rent an apartment in Shanghai.	place and intent
+pleco-errands	座位	zuò wei	Seat	daily,errands,practical	{这里}{还有}{空}{座位}{吗}？	Are there any seats free here?	existential with 还
+pleco-work	成绩	chéng jì	Results; achievement; score	work,professional	{我们}{最近}{的}{工作}{成绩}{不错}。	Our recent work results have been good.	possessive noun phrase
+pleco-work	重复	chóng fù	Repeat; duplicate	work,professional	{这}{个}{问题}{一直}{重复}{出现}。	This problem keeps happening again.	adverb and aspect
+pleco-work	重新	chóng xīn	Again; afresh; from scratch	work,professional	{我们}{需要}{重新}{检查}{这}{个}{文件}。	We need to check this file again.	adverb before verb
+pleco-work	单位	dān wèi	Organization; work unit; unit of measure	work,professional	{他}{在}{另}{一}{个}{单位}{工作}。	He works at a different organization.	classifier 个
+pleco-work	答应	dā ying	Agree; promise	work,professional	{他}{答应}{明天}{来}{帮忙}。	He promised to come help tomorrow.	verb plus future clause
+pleco-work	打工	dǎ gōng	Work for wages	work,professional	{他}{在}{上海}{打工}{很多}{年}{了}。	He has worked for wages in Shanghai for many years.	duration with 了
+pleco-work	大部分	dà bù fen	Most; the greater part	work,professional	{大部分}{同事}{都}{同意}{这}{个}{计划}。	Most colleagues agree with this plan.	quantifier + 都
+pleco-work	大量	dà liàng	Large quantity; substantial amount	work,professional	{这}{个}{项目}{需要}{大量}{的}{数据}。	This project needs a large amount of data.	quantifier 大量
+pleco-work	当时	dāng shí	At that time	work,professional	{当时}{我们}{还}{没有}{决定}。	At that time, we hadn't decided yet.	time adverbial
+pleco-work	道理	dào li	Reason; underlying logic	work,professional	{你}{说}{的}{有}{道理}。	What you're saying makes sense.	nominalization with 的
+pleco-work	得出	dé chū	Obtain; arrive at a conclusion	work,professional	{我们}{从}{数据}{中}{得出}{了}{这}{个}{结果}。	We arrived at this result from the data.	result complement and 从
+pleco-work	等到	děng dào	Wait until; by the time	work,professional	{等到}{周末}，{我们}{再}{讨论}。	Let's discuss it when the weekend comes.	time condition
+pleco-work	对话	duì huà	Dialogue; conversation	work,professional	{我们}{需要}{多}{一些}{面对面}{的}{对话}。	We need more face-to-face conversations.	nominal phrase with 的
+pleco-work	分数	fēn shù	Score; mark; fraction	work,professional	{他}{这}{次}{考试}{的}{分数}{很}{高}。	His score on this exam is high.	classifier 次
+pleco-work	复习	fù xí	Review material; revise	work,professional	{我}{每天}{睡觉}{之前}{复习}{中文}。	I review Chinese every day before bed.	time clause
+pleco-work	改善	gǎi shàn	Improve; make better	work,professional	{我们}{需要}{改善}{用户}{体验}。	We need to improve the user experience.	transitive verb
+pleco-work	改进	gǎi jìn	Improve; refine	work,professional	{这个}{方法}{还}{可以}{再}{改进}。	This method can still be improved.	modal and 再
+pleco-work	公平	gōng píng	Fair; just	work,professional	{这}{这样}{做}{对}{大家}{都}{公平}。	Doing it this way is fair to everyone.	对 as affected person
+pleco-work	国际	guó jì	International	work,professional	{这}{是}{一}{个}{国际}{会议}。	This is an international conference.	attributive modifier
+pleco-work	观点	guān diǎn	Point of view; perspective	work,professional	{我}{想}{听}{听}{你}{的}{观点}。	I'd like to hear your perspective.	reduplicated verb
+pleco-work	计算机	jì suàn jī	Computer	work,professional	{这}{台}{计算机}{可以}{处理}{很多}{数据}。	This computer can process a lot of data.	modal ability
+pleco-work	经理	jīng lǐ	Manager	work,professional	{经理}{正在}{开会}。	The manager is in a meeting.	progressive 正在
+pleco-work	教育	jiào yù	Education; educate	work,professional	{教育}{对}{孩子}{的}{未来}{很}{重要}。	Education is important for children's futures.	topic and 对
+pleco-work	科学	kē xué	Science; scientific	work,professional	{我们}{应该}{用}{科学}{的}{方法}{解决}{问题}。	We should solve problems using scientific methods.	用 instrument
+pleco-work	练习	liàn xí	Practice; exercise	work,professional	{我}{想}{多}{练习}{口语}。	I want to practice spoken Chinese more.	verb + object
+pleco-work	理想	lǐ xiǎng	Ideal; aspiration	work,professional	{我}{的}{理想}{是}{做}{有}{意义}{的}{工作}。	My ideal is to do meaningful work.	copular 是
+pleco-work	目的	mù dì	Goal; purpose	work,professional	{这}{次}{开会}{的}{目的}{是}{解决}{问题}。	The purpose of this meeting is to solve problems.	nominalization with 的
+pleco-work	弄	nòng	Do; handle; get into a state (colloquial)	work,professional	{这}{个}{东西}{怎么}{弄}？	How do you work this thing?	colloquial practical question
+pleco-work	努力	nǔ lì	Make an effort; work hard	work,professional	{只要}{继续}{努力}，{就}{会}{进步}。	If you keep trying, you'll improve.	只要…就
+pleco-work	取	qǔ	Take; collect; fetch	work,professional	{你}{可以}{去}{前台}{取}{东西}。	You can collect the item from reception.	directional and result
+pleco-work	取得	qǔ dé	Achieve; obtain	work,professional	{我们}{终于}{取得}{了}{好}{成绩}。	We finally achieved good results.	completion with 了
+pleco-work	实际	shí jì	Actual; practical; reality	work,professional	{我们}{需要}{考虑}{实际}{情况}。	We need to consider the actual situation.	adjective modification
+pleco-work	实习	shí xí	Internship; work as an intern	work,professional	{他}{大学}{毕业}{以后}{先}{实习}{了}{半年}。	After university he spent six months as an intern.	time after event
+pleco-work	实现	shí xiàn	Make real; achieve; realize	work,professional	{他}{终于}{实现}{了}{自己}{的}{目标}。	He finally achieved his goal.	perfective 了
+pleco-work	说明	shuō míng	Explain; demonstrate	work,professional	{请}{说明}{一下}{你}{的}{想法}。	Please explain your idea briefly.	polite request
+pleco-work	提高	tí gāo	Raise; improve	work,professional	{我们}{要}{提高}{工作}{效率}。	We need to improve work efficiency.	transitive verb
+pleco-work	通过	tōng guò	Pass through; by means of; pass an exam	work,professional	{他}{通过}{了}{考试}。	He passed the exam.	perfective verb
+pleco-health	饱	bǎo	Full after eating	health,body	{我}{已经}{吃}{饱}{了}。	I've already eaten my fill.	result complement
+pleco-health	病人	bìng rén	Patient; sick person	health,body	{医生}{正在}{照顾}{病人}。	The doctor is caring for a patient.	progressive verb
+pleco-health	感冒	gǎn mào	Catch a cold; a cold	health,body	{我}{好像}{感冒}{了}。	I think I may have caught a cold.	seeming 好像
+pleco-health	健康	jiàn kāng	Healthy; health	health,body	{我}{最近}{开始}{更}{注意}{健康}。	I've recently started paying more attention to health.	time adverb
+pleco-health	急	jí	Urgent; in a hurry	health,body	{这}{件}{事}{很}{急}，{我们}{先}{处理}。	This is urgent; let's deal with it first.	stative and priority
+pleco-health	可怕	kě pà	Scary; frightening	health,body	{那}{次}{经历}{真的}{很}{可怕}。	That experience was really frightening.	degree adverb
+pleco-health	凉快	liáng kuai	Pleasantly cool	health,body	{今天}{比}{昨天}{凉快}{多}{了}。	Today is much cooler than yesterday.	comparison with 比
+pleco-health	难看	nán kàn	Ugly; unpleasant to look at	health,body	{这}{个}{颜色}{不太}{难看}。	This color isn't too ugly.	softened negation
+pleco-health	轻	qīng	Light in weight; gentle	health,body	{这}{个}{包}{比}{那个}{轻}。	This bag is lighter than that one.	比 comparison
+pleco-health	生病	shēng bìng	Get sick; be ill	health,body	{他}{这}{几}{天}{生病}{了}。	He's been sick these past few days.	change-of-state 了
+pleco-health	舒服	shū fu	Comfortable; feel well	health,body	{我}{今天}{觉得}{舒服}{多}{了}。	I feel much better today.	degree comparative
+pleco-health	头发	tóu fa	Hair on the head	health,body	{她}{的}{头发}{很}{长}。	Her hair is long.	possessive and adjective
+pleco-health	闻	wén	Smell; detect an odor	health,body	{我}{闻}{到}{了}{咖啡}{的}{味道}。	I smelled coffee.	result complement 到
+pleco-health	味道	wèi dao	Flavor; taste; smell	health,body	{这}{道}{菜}{的}{味道}{很}{好}。	This dish tastes very good.	possessive noun phrase
+pleco-health	习惯	xí guàn	Habit; be used to	health,body	{我}{已经}{习惯}{了}{这里}{的}{生活}。	I've gotten used to life here.	change of state
+pleco-health	小心	xiǎo xin	Be careful	health,body	{路}{很}{滑}，{你}{要}{小心}。	The road is slippery; be careful.	advice with 要
+pleco-health	药片	yào piàn	Medication tablet	health,body	{这}{个}{药片}{应该}{饭后}{吃}。	This tablet should be taken after eating.	time expression and modal
+pleco-health	晕	yūn	Feel dizzy; faint	health,body	{我}{突然}{有点}{晕}。	I suddenly feel a little dizzy.	degree with 有点
+pleco-health	肿	zhǒng	Swollen	health,body	{我}{的}{脚踝}{还}{有点}{肿}。	My ankle is still a bit swollen.	stative adjective
+pleco-travel	参观	cān guān	Visit an attraction; tour	travel,activities	{我们}{明天}{去}{参观}{博物馆}。	Tomorrow we're visiting the museum.	purpose of motion
+pleco-travel	大海	dǎ hǎi	Sea; ocean	travel,activities	{我}{喜欢}{在}{大海}{边}{散步}。	I enjoy walking by the sea.	location phrase
+pleco-travel	大自然	dà zì rán	Nature; natural world	travel,activities	{周末}{去}{大自然}{里}{走}{走}{很}{放松}。	Going for a walk in nature on the weekend is relaxing.	nominalized verb phrase
+pleco-travel	地球	dì qiú	Earth; planet Earth	travel,activities	{我们}{生活}{在}{地球}{上}。	We live on Earth.	locative 在…上
+pleco-travel	东北	dōng běi	Northeast; northeastern China	travel,activities	{东北}{的}{冬天}{很}{冷}。	Winters in northeastern China are cold.	regional topic
+pleco-travel	东南	dōng nán	Southeast	travel,activities	{上海}{在}{中国}{的}{东南}{方向}。	Shanghai lies in southeastern China.	directional locative
+pleco-travel	动物	dòng wù	Animal	travel,activities	{这}{种}{动物}{主要}{生活}{在}{山}{里}。	This kind of animal mainly lives in the mountains.	measure word 种
+pleco-travel	动物园	dòng wù yuán	Zoo	travel,activities	{孩子}{很}{喜欢}{去}{动物园}。	Children enjoy going to the zoo.	destination complement
+pleco-travel	冬天	dōng tiān	Winter	travel,activities	{冬天}{去}{滑雪}{很}{有趣}。	Skiing in winter is fun.	time topic
+pleco-travel	海	hǎi	Sea; ocean	travel,activities	{从}{这里}{可以}{看到}{海}。	You can see the sea from here.	modal ability
+pleco-travel	湖	hú	Lake	travel,activities	{这}{个}{湖}{的}{水}{很}{清澈}。	The water in this lake is very clear.	possessive description
+pleco-travel	秋天	qiū tiān	Autumn; fall	travel,activities	{秋天}{的}{天气}{很}{舒服}。	The weather in autumn is pleasant.	seasonal modifier
+pleco-travel	春天	chūn tiān	Spring season	travel,activities	{春天}{的}{天气}{很}{暖和}。	The weather is warm in spring.	seasonal modifier
+pleco-travel	树	shù	Tree	travel,activities	{这}{个}{公园}{有}{很多}{树}。	There are many trees in this park.	existential 有
+pleco-travel	太阳	tài yáng	Sun; sunlight	travel,activities	{今天}{太阳}{很}{大}。	The sun is very strong today.	weather statement
+pleco-travel	夏天	xià tiān	Summer	travel,activities	{夏天}{这里}{很}{热}。	It's very hot here in summer.	seasonal location
+pleco-travel	下雪	xià xuě	Snow; be snowing	travel,activities	{明天}{可能}{会}{下雪}。	It might snow tomorrow.	prediction with 会
+pleco-travel	雪	xuě	Snow	travel,activities	{山}{上}{还有}{很多}{雪}。	There is still a lot of snow on the mountain.	locative
+pleco-travel	月亮	yuè liang	Moon	travel,activities	{今天}{晚上}{的}{月亮}{很}{漂亮}。	The moon looks beautiful tonight.	possessive time
+pleco-travel	游客	yóu kè	Tourist; visitor	travel,activities	{这}{个}{地方}{有}{很多}{游客}。	There are many tourists here.	existential 有
+pleco-travel	国际	guó jì	International	travel,activities	{这}{是}{国际}{比赛}。	This is an international competition.	compound modifier
+pleco-travel	音乐会	yīn yuè huì	Concert	travel,activities	{我}{想}{周末}{去}{听}{音乐会}。	I'd like to attend a concert this weekend.	serial verbs
+pleco-travel	游泳	yóu yǒng	Swim; swimming	travel,activities	{他}{从}{小}{就}{喜欢}{游泳}。	He has liked swimming since childhood.	从…就
+pleco-fluency	不得不	bù dé bù	Have no choice but to	conversation,fluency	{我}{今天}{不得不}{加班}。	I have no choice but to work overtime today.	necessity 不得不
+pleco-fluency	不仅	bù jǐn	Not only	conversation,fluency	{他}{不仅}{会}{中文}，{还}{会}{英语}。	He speaks not only Chinese but also English.	不仅…还
+pleco-fluency	不然	bù rán	Otherwise; if not	conversation,fluency	{我们}{快点}{出发}，{不然}{会}{迟到}。	Let's leave quickly, otherwise we'll be late.	consequence connector
+pleco-fluency	反而	fǎn ér	Instead; on the contrary	conversation,fluency	{我}{以为}{会}{很}{难}，{结果}{反而}{很}{简单}。	I thought it would be difficult, but it turned out to be easy.	unexpected reversal
+pleco-fluency	反正	fǎn zheng	Anyway; in any case	conversation,fluency	{反正}{今天}{下雨}，{我们}{在家}{休息}{吧}。	Anyway, since it's raining, let's stay home.	colloquial summary
+pleco-fluency	至少	zhì shǎo	At least	conversation,fluency	{我们}{至少}{需要}{三}{天}{的}{时间}。	We need at least three days.	minimum quantifier
+pleco-fluency	终于	zhōng yú	Finally; at last	conversation,fluency	{我}{终于}{把}{这}{个}{问题}{解决}{了}。	I finally solved the problem.	perfective finally
+pleco-fluency	估计	gū jì	Estimate; suppose	conversation,fluency	{我}{估计}{他}{还有}{十}{分钟}{才}{到}。	I reckon he'll arrive in another ten minutes.	approximate prediction
+pleco-fluency	赶紧	gǎn jǐn	Hurry up and; promptly	conversation,fluency	{快}{下雨}{了}，{我们}{赶紧}{回家}。	It's about to rain; let's hurry home.	urgent action
+pleco-fluency	干脆	gān cuì	Simply; might as well	conversation,fluency	{既然}{已经}{晚}{了}，{干脆}{坐}{出租车}{吧}。	Since we're already late, we might as well take a taxi.	decision with 干脆
+pleco-fluency	既然	jì rán	Since; given that	conversation,fluency	{既然}{你}{有空}，{我们}{就}{一起}{去}{吃饭}。	Since you're free, let's eat together.	既然…就
+pleco-fluency	毕竟	bì jìng	After all; considering everything	conversation,fluency	{他}{毕竟}{是}{新}{来}{的}{同事}。	After all, he's a new colleague.	concessive explanation
+pleco-fluency	提前	tí qián	In advance; ahead of schedule	conversation,fluency	{我们}{最好}{提前}{预约}。	We'd better book in advance.	advice with 最好
+pleco-fluency	临时	lín shí	Temporary; last-minute	conversation,fluency	{我}{今天}{临时}{有}{点}{事}。	Something came up unexpectedly today.	sudden circumstance
+pleco-fluency	尽量	jǐn liàng	As much as possible; try one's best	conversation,fluency	{我}{会}{尽量}{早点}{到}。	I'll try to arrive as early as I can.	degree adverb
+pleco-fluency	难免	nán miǎn	Hard to avoid; inevitably	conversation,fluency	{第一次}{尝试}{难免}{会}{紧张}。	It's natural to feel nervous on your first attempt.	generalization
+pleco-fluency	甚至	shèn zhì	Even; to the extent of	conversation,fluency	{他}{最近}{很}{忙}，{甚至}{周末}{也}{在}{工作}。	He's been so busy that he's even working on weekends.	escalation 甚至
+pleco-fluency	不管	bù guǎn	Regardless of; no matter	conversation,fluency	{不管}{天气}{怎么样}，{我们}{都}{会}{出发}。	No matter what the weather is like, we'll set off.	不管…都
+pleco-fluency	除非	chú fēi	Unless; except if	conversation,fluency	{除非}{下雨}，{不然}{我们}{就}{去}{徒步}。	Unless it rains, we'll go hiking.	unless condition
+pleco-fluency	万一	wàn yī	Just in case; what if	conversation,fluency	{万一}{迟到}{了}，{就}{给}{我}{发}{消息}。	If you happen to be late, send me a message.	contingency 万一
+pleco-fluency	总之	zǒng zhī	In short; in any case	conversation,fluency	{总之}，{我们}{现在}{先}{解决}{最}{重要}{的}{问题}。	In short, let's solve the most important problem first.	summarizing discourse
+pleco-fluency	另外	lìng wài	In addition; besides; another	conversation,fluency	{我}{想}{点}{一}{份}{炒饭}，{另外}{再}{要}{一}{杯}{水}。	I'd like fried rice, and another glass of water.	additional item
+pleco-fluency	稍微	shāo wēi	A little; slightly	conversation,fluency	{这}{个}{包}{稍微}{有点}{重}。	This bag is slightly heavy.	degree modifier
+pleco-fluency	有点儿	yǒu diǎn r	A little; somewhat	conversation,fluency	{这}{里}{有点儿}{吵}。	It's a little noisy here.	softened negative assessment
+pleco-fluency	反映	fǎn yìng	Reflect; report (a problem)	conversation,fluency	{你}{可以}{向}{经理}{反映}{这}{个}{问题}。	You can raise this issue with the manager.	向 recipient
+pleco-fluency	其实	qí shí	Actually; in fact	conversation,fluency	{其实}{我}{以前}{没有}{去}{过}{那里}。	Actually, I've never been there before.	discourse correction
+pleco-fluency	根本	gēn běn	Fundamentally; at all (with negation)	conversation,fluency	{我}{根本}{不}{认识}{他}。	I don't know him at all.	strong negation
+pleco-fluency	多亏	duō kuī	Thanks to; fortunately because of	conversation,fluency	{多亏}{你}{帮忙}，{我们}{才}{完成}{了}。	Thanks to your help, we managed to finish.	causal credit
+pleco-fluency	不得了	bù dé liǎo	Extremely; serious; a big deal	conversation,fluency	{今天}{的}{交通}{堵}{得}{不得了}。	Traffic is unbelievably congested today.	degree complement 得
+pleco-fluency	顺便	shùn biàn	While you're at it; conveniently	conversation,fluency	{你}{去}{超市}{的}{时候}{顺便}{买}{点}{牛奶}{吧}。	While you're at the supermarket, pick up some milk.	incidental action
+pleco-fluency	连忙	lián máng	Hastily; promptly	conversation,fluency	{他}{听到}{消息}{以后}{连忙}{回家}。	After hearing the news, he rushed home.	time sequence
+pleco-advanced	抱怨	bào yuan	Complain; grumble	social,fluency	{他}{总是}{抱怨}{工作}{太}{忙}。	He's always complaining about being too busy at work.	habitual 总是
+pleco-advanced	崩溃	bēng kuì	Break down; feel overwhelmed	social,fluency	{今天}{的}{事情}{太}{多}，{我}{快}{崩溃}{了}。	There's so much going on today that I'm nearly overwhelmed.	colloquial intensification
+pleco-advanced	别扭	biè niu	Awkward; uncomfortable; unnatural	social,fluency	{这}{句}{中文}{听起来}{有点}{别扭}。	This Chinese sentence sounds a little unnatural.	perception complement
+pleco-advanced	尴尬	gān gà	Awkward; embarrassing	social,fluency	{我}{忘}{了}{他}{的}{名字}，{真}{尴尬}。	I forgot his name; how embarrassing.	exclamatory 真
+pleco-advanced	后悔	hòu huǐ	Regret; wish one hadn't	social,fluency	{我}{有点}{后悔}{昨天}{没}{早点}{睡觉}。	I slightly regret not going to bed earlier yesterday.	psychological complement
+pleco-advanced	不耐烦	bù nài fán	Impatient; annoyed	social,fluency	{他}{等}{了}{很}{久}，{有点}{不耐烦}。	He's waited a long time and is getting impatient.	degree with 有点
+pleco-advanced	担忧	dān yōu	Worry; be concerned	social,fluency	{我}{有点}{担忧}{明天}{的}{天气}。	I'm a little worried about tomorrow's weather.	verb with object
+pleco-advanced	怀念	huái niàn	Miss; look back fondly on	social,fluency	{我}{有时候}{很}{怀念}{以前}{的}{生活}。	Sometimes I really miss how life used to be.	past contrast
+pleco-advanced	难得	nán dé	Rare; not easy to come by	social,fluency	{今天}{难得}{有空}，{我们}{出去}{玩}{吧}。	It's rare that we're free today; let's go out.	concession
+pleco-advanced	疲惫	pí bèi	Exhausted; worn out	social,fluency	{攀岩}{以后}{我}{觉得}{很}{疲惫}。	I feel exhausted after climbing.	time expression
+pleco-advanced	情绪	qíng xù	Emotion; mood	social,fluency	{他}{最近}{的}{情绪}{不太}{稳定}。	His mood has been a little unsettled recently.	descriptive adjective
+pleco-advanced	遗憾	yí hàn	Regrettable; a pity	social,fluency	{很}{遗憾}，{我}{这}{次}{不能}{参加}。	It's a pity that I can't attend this time.	polite refusal
+pleco-advanced	纠结	jiū jié	Torn; conflicted; overthink a choice	social,fluency	{我}{还}{在}{纠结}{要}{选}{哪}{个}。	I'm still torn over which one to choose.	informal decision-making
+pleco-advanced	靠谱	kào pǔ	Reliable; dependable	social,fluency	{这}{个}{办法}{听起来}{挺}{靠谱}。	This approach sounds pretty reliable.	colloquial evaluation
+pleco-advanced	敷衍	fū yǎn	Perfunctory; give a half-hearted response	social,fluency	{这}{个}{回答}{有点}{敷衍}。	This answer feels a little perfunctory.	subjective evaluation
+pleco-advanced	凑合	còu he	Make do; get by	social,fluency	{虽然}{不}{太}{好}，{但}{也}{能}{凑合}。	It's not very good, but it will do.	concessive contrast
+pleco-advanced	唠叨	láo dao	Nag; talk at length	social,fluency	{他}{有时候}{会}{唠叨}{几}{句}。	Sometimes he goes on about things for a few sentences.	repetition with 句
+pleco-advanced	开窍	kāi qiào	Suddenly understand; get the hang of it	social,fluency	{练}{了}{很}{久}，{我}{终于}{开窍}{了}。	After practicing for ages, it finally clicked.	result of prolonged effort

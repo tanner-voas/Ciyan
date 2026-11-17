@@ -1,5 +1,15 @@
 import {initialCards,extraWords} from './cards.js';
 import {initialGrammar,normalizeGrammar} from './grammar.js';
+import {hskTagFor} from './hsk-tag-map.js';
+// Assign exactly one canonical HSK band based on the headword, regardless of
+// which topic deck supplies it. No migration of historical data is needed.
+export function canonicalHSKTags(hanzi,tags){
+  const cleaned=[...new Set((tags||[]).map(t=>String(t).trim().toLowerCase())
+    .filter(t=>t&&!/^hsk(?:$|[-.0-9])/i.test(t)))];
+  const level=hskTagFor(hanzi);
+  if(level)cleaned.push(level);
+  return cleaned;
+}
 export const DB_NAME='ciyan-mandarin';
 const DB_VERSION=1, STORE='state';
 let databasePromise;
@@ -15,7 +25,7 @@ function database(){
   return databasePromise;
 }
 export function defaultState(){return {
-  schemaVersion:2,cards:[...initialCards(),...extraWords()],grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
+  schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
   settings:{sessionSize:12,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
@@ -46,7 +56,7 @@ export function normalizeCard(source,fallbackId=null){
   const hanzi=string(source.hanzi,120),english=string(source.english,500);
   if(!hanzi||!english)throw new Error('Every word needs Chinese and English');
   const rawTags=Array.isArray(source.tags)?source.tags:String(source.tags||'').split(',');
-  const tags=[...new Set(rawTags.map(t=>string(t,36).toLowerCase()).filter(Boolean))].slice(0,24);
+  const tags=canonicalHSKTags(hanzi,[...new Set(rawTags.map(t=>string(t,36).toLowerCase()).filter(Boolean))].slice(0,24));
   return {id,hanzi,pinyin:string(source.pinyin,160),english,tags,
     source:string(source.source||'My cards',80),createdAt:string(source.createdAt||new Date().toISOString(),80)};
 }
@@ -140,8 +150,8 @@ export function mergeDeck(current,content){
   for(const c of words){
     if(names.has(c.hanzi)){
       const existing=draft.cards[names.get(c.hanzi)];
-      const tags=[...new Set([...existing.tags,...c.tags])];
-      if(tags.length>existing.tags.length){existing.tags=tags;tagsUpdated++;}
+      const tags=canonicalHSKTags(existing.hanzi,[...existing.tags,...c.tags]);
+      if(tags.length!==existing.tags.length||tags.some((t,i)=>t!==existing.tags[i])){existing.tags=tags;tagsUpdated++;}
     }else{
       if(ids.has(c.id))c.id=crypto.randomUUID();
       names.set(c.hanzi,draft.cards.length);ids.add(c.id);draft.cards.push(c);addedWords++;

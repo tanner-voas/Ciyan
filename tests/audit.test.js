@@ -6,14 +6,14 @@ import {linkedWords,grammarTags,grammarMistakes,toneTargets,requiredWords,normal
 import {scheduleReview} from '../fsrs.js';
 import {DECKS} from '../deck-catalog.js';
 const read=id=>JSON.parse(fs.readFileSync(new URL('../decks/'+id+'.json',import.meta.url)));
-test('all 26 decks validate, metadata agrees, and imports are idempotent',()=>{
+test('all generated decks validate, metadata agrees, and imports are idempotent',()=>{
  let state=defaultState();
  for(const d of DECKS){
   const content=read(d.id);assert.equal(content.cards.length,d.wordCount);assert.equal(content.grammar.length,d.grammarCount);
   const result=mergeDeck(state,content);state=result.draft;
   const repeated=mergeDeck(state,content);assert.equal(repeated.addedWords,0);assert.equal(repeated.addedGrammar,0);assert.equal(repeated.tagsUpdated,0);
  }
- assert.equal(read('all-decks').cards.length,2002);
+ assert.equal(read('all-decks').cards.length,2277);
  assert.equal(new Set(state.cards.map(c=>c.hanzi)).size,state.cards.length);
  assert.equal(new Set(state.cards.map(c=>c.id)).size,state.cards.length);
 });
@@ -52,13 +52,26 @@ test('all generated pinyin matches character count and explicit syllable tones',
  }
  assert.deepEqual(toneTargets('西安','xī ān'),[1,1]);assert.deepEqual(toneTargets('你好','ni3 hao3'),[3,3]);
 });
-test('HSK membership agrees with the frozen 2021 reference',()=>{
- const levels=JSON.parse(fs.readFileSync(new URL('../content/hsk2021-levels.json',import.meta.url)));
+test('exactly one canonical HSK band is used by every matching vocabulary word',()=>{
+ const ref=JSON.parse(fs.readFileSync(new URL('../content/hsk-levels-032.json',import.meta.url)));
+ const all=read('all-decks');
+ const bands=new Set(['hsk1','hsk2','hsk3','hsk4','hsk5','hsk6','hsk7-9']);
+ for(const c of all.cards){
+  const matching=c.tags.filter(t=>bands.has(t));
+  assert.deepEqual(matching,ref[c.hanzi]?[ref[c.hanzi].toLowerCase()]:[],c.hanzi);
+  assert.ok(c.tags.every(t=>!t.startsWith('hsk-2021')&&t!=='hsk'&&!t.includes('3.0')),c.hanzi);
+ }
+ for(const band of bands){
+  const d=read(band);
+  const tagged=all.cards.filter(c=>c.tags.includes(band));
+  assert.ok(tagged.length>0,band);
+  const names=new Set(d.cards.map(c=>c.hanzi));
+  for(const c of tagged)assert.ok(names.has(c.hanzi),`${band}: ${c.hanzi}`);
+ }
  for(let n=1;n<=4;n++){
-  const source=fs.readFileSync(new URL('../content/hsk-'+n+'.tsv',import.meta.url),'utf8').trim().split('\n').map(s=>s.split('\t')[0]);
-  assert.equal(source.length,[180,180,160,140][n-1]);
-  const cards=new Set(read('hsk-2021-'+n).cards.map(c=>c.hanzi));
-  for(const term of source){assert.equal(levels[term],n,term);assert.ok(cards.has(term),term);}
+  const original=fs.readFileSync(new URL(`../content/hsk-${n}.tsv`,import.meta.url),'utf8').trim().split('\n');
+  const allNames=new Set(all.cards.map(c=>c.hanzi));
+  for(const row of original)assert.ok(allNames.has(row.split('\t')[0]),row);
  }
 });
 test('reject corrupt numeric schedules and reserved object keys',()=>{

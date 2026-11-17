@@ -1,6 +1,6 @@
 # Deck data attribution and reuse
 
-The v0.3 deck collection is distributed under Creative Commons Attribution–ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/ . This applies to the deck data, not automatically to the app source or the user's learning history.
+The v0.3.2 deck collection is distributed under Creative Commons Attribution–ShareAlike 4.0: https://creativecommons.org/licenses/by-sa/4.0/ . This applies to the deck data, not automatically to the app source or the user's learning history.
 
 Practical topic vocabulary, concise English glosses, and 24 sentence exercises were prepared for Cíyán. HSK candidate glosses and spaced pinyin derive from the Complete HSK Vocabulary project and its CC-CEDICT source; common senses were selected and editorial corrections made. The data is educational material, not a claim that every possible translation or regional usage is covered.
 
@@ -33,3 +33,9 @@ The extended geography, English glosses, curated sentence examples, and topical 
 - Casual Chinese usage and internet slang were cross-checked against contemporary language-learning articles; usage varies by age, region and date. The seven friend-chat expressions are described in a separate deck and should not be mistaken for universal colloquial forms.
 
 All new English translations and sentence patterns should be treated as learning aids, not official geographic or Chinese-language proficiency certifications.
+
+## v0.3.2 Pleco reference and HSK labels
+
+A user-provided Pleco flashcard export (`AllCards.txt`) was used solely as a candidate list of headwords and pinyin readings, including its HSK 3.0 group headings. We did not reproduce its dictionary definitions or include the original export in the distributed decks or Git repository. Added definitions, topic tags and sample sentences were independently curated as application learning material. Exact level assignments are frozen in `content/hsk-levels-032.json` and rendered uniformly as HSK1–HSK7-9. The labels describe the supplied 2021 HSK grading system (not the separately revised examination syllabus); the interface does not expose competing label sets.
+
+Like previous releases, examples have been checked automatically for structural correctness and coverage; they are not a substitute for native-speaker review of every example.

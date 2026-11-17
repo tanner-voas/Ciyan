@@ -15,7 +15,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -27,7 +27,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -39,7 +39,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -51,7 +51,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -63,7 +63,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -75,7 +75,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -87,7 +87,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -99,7 +99,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -111,7 +111,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -121,9 +121,10 @@
       "english": "Sausage",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -133,9 +134,10 @@
       "english": "Ham",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -147,7 +149,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -158,9 +160,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-2"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -170,9 +172,10 @@
       "english": "Shrimp; prawns",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -184,7 +187,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -196,7 +199,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -208,7 +211,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -220,7 +223,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -232,7 +235,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -244,7 +247,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -255,9 +258,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -268,9 +271,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-1"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -282,7 +285,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -294,7 +297,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -306,7 +309,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -317,9 +320,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -331,7 +334,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -343,7 +346,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -355,7 +358,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -367,7 +370,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -379,7 +382,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -391,7 +394,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -401,9 +404,10 @@
       "english": "Peanuts",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -413,9 +417,10 @@
       "english": "Sesame",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -425,9 +430,10 @@
       "english": "Walnut",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -439,7 +445,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -451,7 +457,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -461,9 +467,10 @@
       "english": "Uncooked rice",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -475,7 +482,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -485,9 +492,10 @@
       "english": "Wheat flour",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -497,9 +505,10 @@
       "english": "Starch",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -511,7 +520,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -522,9 +531,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -534,9 +543,10 @@
       "english": "Potato",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -546,9 +556,10 @@
       "english": "Sweet potato",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -560,7 +571,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -572,7 +583,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -584,7 +595,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -596,7 +607,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -608,7 +619,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -619,9 +630,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -631,9 +642,10 @@
       "english": "Tomato",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -643,9 +655,10 @@
       "english": "Tomato (another common name)",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -655,9 +668,10 @@
       "english": "Eggplant",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -667,9 +681,10 @@
       "english": "Pumpkin; squash",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -681,7 +696,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -693,7 +708,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -705,7 +720,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -717,7 +732,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -728,9 +743,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-3"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -742,7 +757,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -754,7 +769,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -766,7 +781,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -778,7 +793,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -790,7 +805,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -802,7 +817,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -814,7 +829,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -826,7 +841,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -838,7 +853,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -850,7 +865,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -862,7 +877,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -872,9 +887,10 @@
       "english": "Mushroom",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -886,7 +902,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -898,7 +914,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -910,7 +926,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -922,7 +938,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -934,7 +950,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -946,7 +962,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -956,9 +972,10 @@
       "english": "Scallion; spring onion",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -968,9 +985,10 @@
       "english": "Ginger",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -980,9 +998,10 @@
       "english": "Garlic",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -994,7 +1013,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1004,9 +1023,10 @@
       "english": "Chili pepper",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1018,7 +1038,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1030,7 +1050,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1041,9 +1061,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-3"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1054,9 +1074,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-3"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1068,7 +1088,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1078,9 +1098,10 @@
       "english": "Mandarin orange",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1092,7 +1113,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1104,7 +1125,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1114,9 +1135,10 @@
       "english": "Pear",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1128,7 +1150,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1138,9 +1160,10 @@
       "english": "Grapes",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1152,7 +1175,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1164,7 +1187,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1175,9 +1198,9 @@
       "tags": [
         "food",
         "ingredients",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1189,7 +1212,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1201,7 +1224,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1213,7 +1236,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1225,7 +1248,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1237,7 +1260,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1249,7 +1272,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1261,7 +1284,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1273,7 +1296,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1285,7 +1308,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1295,9 +1318,10 @@
       "english": "Coconut",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1309,7 +1333,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1321,7 +1345,7 @@
         "food",
         "ingredients"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1331,9 +1355,10 @@
       "english": "Persimmon",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1343,9 +1368,10 @@
       "english": "Jujube; Chinese date",
       "tags": [
         "food",
-        "ingredients"
+        "ingredients",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1356,12 +1382,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1372,11 +1397,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1387,12 +1412,11 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1403,12 +1427,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1419,9 +1442,9 @@
       "tags": [
         "activities",
         "sports",
-        "hsk-2021-2"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1432,10 +1455,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-1",
-        "hsk"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1446,11 +1468,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1461,11 +1483,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1476,10 +1498,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-1",
-        "hsk"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1490,10 +1511,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-1",
-        "hsk"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1504,12 +1524,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1520,12 +1539,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1536,10 +1554,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-1",
-        "hsk"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1550,11 +1567,12 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-2",
+        "hsk2",
         "grammar-support",
-        "basics"
+        "basics",
+        "errands"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],

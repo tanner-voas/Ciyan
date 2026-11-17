@@ -4,11 +4,12 @@ import hashlib,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 OUT=ROOT/'decks';OUT.mkdir(exist_ok=True)
-levels=json.loads((ROOT/'content/hsk2021-levels.json').read_text())
+levels=json.loads((ROOT/'content/hsk-levels-032.json').read_text())
+def hsk_tag(word): return levels.get(word, '').lower()
 STAMP='2026-11-17T00:00:00.000Z'
 def uid(word):return 'v3-word-'+hashlib.sha256(word.encode()).hexdigest()[:16]
 def card(word,pinyin,english,tags):
-    return dict(id=uid(word),hanzi=word,pinyin=pinyin,english=english,tags=list(dict.fromkeys(tags)),source='Ciyan optional decks v0.3.1',createdAt=STAMP)
+    return dict(id=uid(word),hanzi=word,pinyin=pinyin,english=english,tags=list(dict.fromkeys(tags)),source='Ciyan optional decks v0.3.2',createdAt=STAMP)
 def dump(path,obj):path.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
 decks=[];master={}
 for line in '\n'.join((ROOT/'content'/f).read_text() for f in ('topics.txt','geography-031.txt','slang-031.txt','grammar-support-031.txt')).splitlines():
@@ -19,7 +20,7 @@ for line in '\n'.join((ROOT/'content'/f).read_text() for f in ('topics.txt','geo
     else:
         word,pinyin,english=line.split('|')
         t=tags.copy()
-        if word in levels:t+=['hsk-2021-'+str(levels[word])]
+        if word in levels:t+=[hsk_tag(word)]
         c=card(word,pinyin,english,t);current['cards'].append(c)
         if word not in master:master[word]=dict(c)
         else:master[word]['tags']=list(dict.fromkeys(master[word]['tags']+t))
@@ -27,13 +28,44 @@ for line in '\n'.join((ROOT/'content'/f).read_text() for f in ('topics.txt','geo
 for n in range(1,5):
     cards=[]
     for line in (ROOT/f'content/hsk-{n}.tsv').read_text().splitlines():
-        w,p,e=line.split('\t');c=card(w,p,e,['hsk','hsk-2021-'+str(n)])
+        w,p,e=line.split('\t');c=card(w,p,e,[hsk_tag(w)] if hsk_tag(w) else [])
         if w in master:
             c={**master[w],'tags':list(dict.fromkeys(master[w]['tags']+c['tags']))}
         cards.append(c)
         if w not in master:master[w]=dict(c)
         else:master[w]['tags']=list(dict.fromkeys(master[w]['tags']+c['tags']))
     decks.append(dict(id=f'hsk-2021-{n}',title=f'HSK 3.0 (2021): selected level {n}',description=f'{len(cards)} useful entries at level {n} of GF 0025–2021. Selective, not the complete syllabus. Level membership is checked against the reference list.',cards=cards,grammar=[]))
+# Freshly curated everyday words selected from the user's Pleco export.
+# Definitions and sentences were authored independently; no Pleco gloss is copied.
+import csv
+with (ROOT/'content/pleco-selected-032.tsv').open() as fh:
+    for row in csv.DictReader(fh,delimiter='\t'):
+        deck_id=row['deck']
+        deck=next((d for d in decks if d['id']==deck_id),None)
+        if deck is None:
+            titles=json.loads((ROOT/'content/pleco-032-deck-titles.json').read_text())
+            title,tags=titles[deck_id]
+            deck=dict(id=deck_id,title=title,description='Hand-selected conversational vocabulary with contextual Mandarin examples.',cards=[],grammar=[])
+            decks.append(deck)
+        word=row['hanzi']; t=row['tags'].split(',')
+        if hsk_tag(word):t.append(hsk_tag(word))
+        c=card(word,row['pinyin'],row['english'],t)
+        deck['cards'].append(c)
+        if word not in master:master[word]=dict(c)
+        else:master[word]['tags']=list(dict.fromkeys(master[word]['tags']+t))
+
+support=dict(id='pleco-support',title='Supporting vocabulary for context',
+             description='Practical words used to make the new example sentences clear and natural.',cards=[],grammar=[])
+with (ROOT/'content/pleco-support-032.tsv').open() as fh:
+    for row in csv.DictReader(fh,delimiter='\t'):
+        word=row['hanzi'];t=row['tags'].split(',')
+        if hsk_tag(word):t.append(hsk_tag(word))
+        c=card(word,row['pinyin'],row['english'],t)
+        support['cards'].append(c)
+        if word not in master:master[word]=dict(c)
+        else:master[word]['tags']=list(dict.fromkeys(master[word]['tags']+t))
+decks.append(support)
+
 # Grammar dependencies included, regardless of whether another deck was loaded.
 extras='''我|wǒ|I; me
 你|nǐ|You
@@ -85,10 +117,22 @@ for line in extras.splitlines():
     w,p,e=line.split('|')
     # In a grammar dependency deck these glosses explain the sense used in the sentence.
     if w not in master:master[w]=card(w,p,e,['grammar-words'])
+# Only the chosen headword's lowest HSK introductory band is used.
+# Removing legacy tags here prevents separate, contradictory HSK sets.
+for c in master.values():
+    c['tags']=[x for x in c['tags'] if not (x=='hsk' or x.startswith('hsk-2021-') or x.startswith('hsk-3.0'))]
+    if hsk_tag(c['hanzi']):c['tags']=list(dict.fromkeys(c['tags']+[hsk_tag(c['hanzi'])]))
+
 # v0.3.1 context grammar is generated exclusively from existing vocabulary
 # tokens; no app runtime change and stable IDs across all builds.
 from build_sentence_031 import generate, TOKENS
 context=generate(master,decks)
+# Independent example sentences for every selected expression, including
+# commonly confused and higher-order grammar structures.
+with (ROOT/'content/pleco-selected-032.tsv').open() as fh:
+    for row in csv.DictReader(fh,delimiter='\t'):
+        g=context.add(row['markup'],row['sentence_english'],row['principle'],row['deck'])
+        if g:context.association['grammar-principles'].add(g['id'])
 if context.missing: raise ValueError('Missing grammar vocabulary: '+repr(sorted(context.missing)))
 grammar=[];required=[]
 for i,(markup,pinyin,english,dist) in enumerate(json.loads((ROOT/'content/grammar.json').read_text()),1):
@@ -111,6 +155,16 @@ for g in all_grammar:
         index[term].append(g['id'])
 for c in master:
     if c not in index: raise ValueError(f'Uncovered vocabulary word: {c}')
+
+# The legacy HSK decks are used *internally* to preserve v0.3.1 grammar
+# generation, but never published. Present only one HSK1/HSK2/... group,
+# containing every known word assigned to that introductory band.
+decks=[d for d in decks if not d['id'].startswith('hsk-2021-')]
+for level in ('HSK1','HSK2','HSK3','HSK4','HSK5','HSK6','HSK7-9'):
+    primary=[c for c in master.values() if levels.get(c['hanzi'])==level]
+    decks.append(dict(id=level.lower(),title=level,description=(
+        f'{len(primary)} words in this collection with the {level} introductory tag, plus supporting vocabulary for examples. '
+        'This is a selective deck, not a complete HSK syllabus.'),cards=primary,grammar=[]))
 
 # Every *individual deck*, not merely the all-in-one deck, provides an
 # actual sentence for each word it imports. Include its prerequisites.
@@ -179,7 +233,13 @@ for d in decks:
       license='CC-BY-SA-4.0; see ATTRIBUTION.md',cards=d['cards'],grammar=d['grammar'])
     dump(OUT/(d['id']+'.json'),payload)
     catalog.append(dict(id=d['id'],title=d['title'],description=d['description'],wordCount=len(d['cards']),grammarCount=len(d['grammar']),words=[c['hanzi'] for c in d['cards']]))
+# Delete obsolete generated HSK aliases after the catalog is complete.
+for old in OUT.glob('hsk-2021-*.json'):old.unlink()
 dump(OUT/'manifest.json',catalog)
 (ROOT/'deck-catalog.js').write_text('// Generated by build_decks.py. No user data.\nexport const DECKS = '+json.dumps(catalog,ensure_ascii=False,separators=(',',':'))+';\n')
+# Runtime source for canonical HSK tagging on edits, deck merge and upgrade.
+(ROOT/'hsk-tag-map.js').write_text('// Generated from content/hsk-levels-032.json.\n'
+    + 'export const HSK_LEVELS = '+json.dumps({k:v.lower() for k,v in levels.items()},ensure_ascii=False,separators=(',',':'))+';\n'
+    + 'export const hskTagFor = word => HSK_LEVELS[word] || null;\n')
 print('Unique optional words:',len(allwords),'Grammar:',len(all_grammar),'Individual decks:',len(decks)-1)
 for d in catalog:print(d['id'],d['wordCount'],d['grammarCount'])

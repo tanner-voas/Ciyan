@@ -1,0 +1,4187 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "HSK7-9",
+  "description": "97 words in this collection with the HSK7-9 introductory tag, plus supporting vocabulary for examples. This is a selective deck, not a complete HSK syllabus.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-261c51c9f1cd2baf",
+      "hanzi": "粉丝",
+      "pinyin": "fěn sī",
+      "english": "Glass noodles; also fans of a person",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9c61c36d4df7f909",
+      "hanzi": "豆浆",
+      "pinyin": "dòu jiāng",
+      "english": "Soy milk",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-87ba8cbb50fabc4e",
+      "hanzi": "粽子",
+      "pinyin": "zòng zi",
+      "english": "Leaf-wrapped sticky rice dumpling",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-80ab3590f6610e7d",
+      "hanzi": "汤圆",
+      "pinyin": "tāng yuán",
+      "english": "Glutinous rice balls, often filled",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8d56ca5e36ec8d4f",
+      "hanzi": "火锅",
+      "pinyin": "huǒ guō",
+      "english": "Hot pot",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5691a276aac242e7",
+      "hanzi": "烧烤",
+      "pinyin": "shāo kǎo",
+      "english": "Barbecue; grilled food",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fd254848320a5b2e",
+      "hanzi": "卤味",
+      "pinyin": "lǔ wèi",
+      "english": "Foods braised in seasoned master stock",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-86902fa0e945aac8",
+      "hanzi": "虾",
+      "pinyin": "xiā",
+      "english": "Shrimp; prawns",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e0df14af49c71df3",
+      "hanzi": "芝麻",
+      "pinyin": "zhī ma",
+      "english": "Sesame",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c7a897444f3d6363",
+      "hanzi": "核桃",
+      "pinyin": "hé tao",
+      "english": "Walnut",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-21eaff4331362c33",
+      "hanzi": "面粉",
+      "pinyin": "miàn fěn",
+      "english": "Wheat flour",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ab4489e89e7aa18",
+      "hanzi": "淀粉",
+      "pinyin": "diàn fěn",
+      "english": "Starch",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-acf383cef37613dc",
+      "hanzi": "红薯",
+      "pinyin": "hóng shǔ",
+      "english": "Sweet potato",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-85bc0873e2450c0b",
+      "hanzi": "南瓜",
+      "pinyin": "nán guā",
+      "english": "Pumpkin; squash",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9519349f65a7addd",
+      "hanzi": "蘑菇",
+      "pinyin": "mó gu",
+      "english": "Mushroom",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-16e853fdba34b3a7",
+      "hanzi": "葱",
+      "pinyin": "cōng",
+      "english": "Scallion; spring onion",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-02f183bb91331006",
+      "hanzi": "姜",
+      "pinyin": "jiāng",
+      "english": "Ginger",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ad335111628f08a1",
+      "hanzi": "蒜",
+      "pinyin": "suàn",
+      "english": "Garlic",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc12e809f6355354",
+      "hanzi": "辣椒",
+      "pinyin": "là jiāo",
+      "english": "Chili pepper",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d8816dfefa548859",
+      "hanzi": "橘子",
+      "pinyin": "jú zi",
+      "english": "Mandarin orange",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e29ba7e06c2ccf9",
+      "hanzi": "椰子",
+      "pinyin": "yē zi",
+      "english": "Coconut",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-41ecfe1ee941b2cc",
+      "hanzi": "柿子",
+      "pinyin": "shì zi",
+      "english": "Persimmon",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8363de2c30ed4bdb",
+      "hanzi": "枣",
+      "pinyin": "zǎo",
+      "english": "Jujube; Chinese date",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2461475506683975",
+      "hanzi": "麻",
+      "pinyin": "má",
+      "english": "Numbing; tingling",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-acefcc8eba9c833e",
+      "hanzi": "清淡",
+      "pinyin": "qīng dàn",
+      "english": "Lightly seasoned",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-459c995ae50ffca2",
+      "hanzi": "嫩",
+      "pinyin": "nèn",
+      "english": "Tender",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ad12ba0d6ecd87c",
+      "hanzi": "烫",
+      "pinyin": "tàng",
+      "english": "Scalding hot",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9f66215f40220a69",
+      "hanzi": "常温",
+      "pinyin": "cháng wēn",
+      "english": "Room temperature",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1f88337baf2604f1",
+      "hanzi": "素食",
+      "pinyin": "sù shí",
+      "english": "Vegetarian food or diet",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-06f2f61aced38ba2",
+      "hanzi": "忌口",
+      "pinyin": "jì kǒu",
+      "english": "Dietary restrictions; avoid particular foods",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b8dca68e725d658",
+      "hanzi": "蒸",
+      "pinyin": "zhēng",
+      "english": "Steam",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-19f180e4410ecedf",
+      "hanzi": "煎",
+      "pinyin": "jiān",
+      "english": "Pan-fry",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f5a8e63b6f63b48e",
+      "hanzi": "烤",
+      "pinyin": "kǎo",
+      "english": "Roast; bake; grill",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-34b6d3f72de36b7e",
+      "hanzi": "炖",
+      "pinyin": "dùn",
+      "english": "Stew; simmer",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9756f408bb0aedff",
+      "hanzi": "拌",
+      "pinyin": "bàn",
+      "english": "Mix; toss",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d79ec370a92c8c1",
+      "hanzi": "冷冻",
+      "pinyin": "lěng dòng",
+      "english": "Freeze; frozen",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-062fffe72d605fee",
+      "hanzi": "保质期",
+      "pinyin": "bǎo zhì qī",
+      "english": "Shelf life",
+      "tags": [
+        "food",
+        "ordering",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e80b1362d4eb9b42",
+      "hanzi": "芝士",
+      "pinyin": "zhī shì",
+      "english": "Cheese (loanword)",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-da08de83f6268aad",
+      "hanzi": "蛋白质",
+      "pinyin": "dàn bái zhì",
+      "english": "Protein",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d1cb6ec4c8f09de2",
+      "hanzi": "脂肪",
+      "pinyin": "zhī fáng",
+      "english": "Fat",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0d4309fe260c23b",
+      "hanzi": "徒步",
+      "pinyin": "tú bù",
+      "english": "Hike; travel on foot",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a4a3212a7a24e86",
+      "hanzi": "潜水",
+      "pinyin": "qián shuǐ",
+      "english": "Dive; diving",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1b44b4a7c98063d3",
+      "hanzi": "冲浪",
+      "pinyin": "chōng làng",
+      "english": "Surf",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5e6dbb1fcc4e27af",
+      "hanzi": "滑雪",
+      "pinyin": "huá xuě",
+      "english": "Ski; snow sports",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6ae9b614455e2e43",
+      "hanzi": "滑冰",
+      "pinyin": "huá bīng",
+      "english": "Ice skate",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f58a4aba8867c9a3",
+      "hanzi": "乒乓球",
+      "pinyin": "pīng pāng qiú",
+      "english": "Table tennis",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67037c8b8e571d97",
+      "hanzi": "棒球",
+      "pinyin": "bàng qiú",
+      "english": "Baseball",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-85efe392fda1a48c",
+      "hanzi": "举重",
+      "pinyin": "jǔ zhòng",
+      "english": "Weightlifting",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c45ad598360e2860",
+      "hanzi": "杠铃",
+      "pinyin": "gàng líng",
+      "english": "Barbell",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d069379363352dd",
+      "hanzi": "野餐",
+      "pinyin": "yě cān",
+      "english": "Picnic",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a59949fd38a4e7cb",
+      "hanzi": "乐器",
+      "pinyin": "yuè qì",
+      "english": "Musical instrument",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6b533a8c6ba1dd93",
+      "hanzi": "吉他",
+      "pinyin": "jí tā",
+      "english": "Guitar",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-630e5531ed0ec1db",
+      "hanzi": "关节",
+      "pinyin": "guān jié",
+      "english": "Joint",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e3b1367eddea9efd",
+      "hanzi": "脖子",
+      "pinyin": "bó zi",
+      "english": "Neck",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-80ff1b1d0851270f",
+      "hanzi": "肩膀",
+      "pinyin": "jiān bǎng",
+      "english": "Shoulder",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a7220bdaaaff1fd2",
+      "hanzi": "腹部",
+      "pinyin": "fù bù",
+      "english": "Abdomen",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a79a7755dc467357",
+      "hanzi": "手臂",
+      "pinyin": "shǒu bì",
+      "english": "Arm",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b836e6bc52d4f063",
+      "hanzi": "手腕",
+      "pinyin": "shǒu wàn",
+      "english": "Wrist",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-17e494945d93e1a2",
+      "hanzi": "手掌",
+      "pinyin": "shǒu zhǎng",
+      "english": "Palm",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90d87bd6730729fc",
+      "hanzi": "膝盖",
+      "pinyin": "xī gài",
+      "english": "Knee",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9211f0637f2eb233",
+      "hanzi": "疲劳",
+      "pinyin": "pí láo",
+      "english": "Fatigue",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d9d02e83d396eb7",
+      "hanzi": "级别",
+      "pinyin": "jí bié",
+      "english": "Grade; level",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ae2b22c2b9a5aaac",
+      "hanzi": "脱落",
+      "pinyin": "tuō luò",
+      "english": "Come off; fall off",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33afc4103402a1f8",
+      "hanzi": "落地",
+      "pinyin": "luò dì",
+      "english": "Land; reach the ground",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b9bc4485fba1fb4",
+      "hanzi": "垫子",
+      "pinyin": "diàn zi",
+      "english": "Mat; pad",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dae1c060d0ad0854",
+      "hanzi": "重心",
+      "pinyin": "zhòng xīn",
+      "english": "Center of gravity",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a7dca75c80a3745b",
+      "hanzi": "蹬",
+      "pinyin": "dēng",
+      "english": "Push with the legs; step forcefully",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d114d446dbcfc7fb",
+      "hanzi": "捏",
+      "pinyin": "niē",
+      "english": "Pinch",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3418bb61ac9c7a42",
+      "hanzi": "勾",
+      "pinyin": "gōu",
+      "english": "Hook",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ff9872a023e3a8aa",
+      "hanzi": "锁定",
+      "pinyin": "suǒ dìng",
+      "english": "Lock off; lock in place",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6f0546de73d1c9b0",
+      "hanzi": "付款",
+      "pinyin": "fù kuǎn",
+      "english": "Make a payment",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f1bd7f7711b02233",
+      "hanzi": "收据",
+      "pinyin": "shōu jù",
+      "english": "Receipt",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ea9f36ef3d9c6b9",
+      "hanzi": "小区",
+      "pinyin": "xiǎo qū",
+      "english": "Residential complex",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d132744a95cf394",
+      "hanzi": "钥匙",
+      "pinyin": "yào shi",
+      "english": "Key",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-de315176eb445f99",
+      "hanzi": "停电",
+      "pinyin": "tíng diàn",
+      "english": "Power outage",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a6fb85d363923e6",
+      "hanzi": "便利店",
+      "pinyin": "biàn lì diàn",
+      "english": "Convenience store",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b879cd10722fe817",
+      "hanzi": "菜市场",
+      "pinyin": "cài shì chǎng",
+      "english": "Fresh-food market",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-82213712d6ae0bcf",
+      "hanzi": "湿度",
+      "pinyin": "shī dù",
+      "english": "Humidity",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baf08af9464b9148",
+      "hanzi": "不像话",
+      "pinyin": "bú xiàng huà",
+      "english": "Outrageous; unreasonable; that's not okay (informal criticism)",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f4e492db67ece5a1",
+      "hanzi": "好家伙",
+      "pinyin": "hǎo jiā huo",
+      "english": "Wow; goodness; well, look at that",
+      "tags": [
+        "slang",
+        "social",
+        "modern",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f5ec4e26df6e8be",
+      "hanzi": "上头",
+      "pinyin": "shàng tóu",
+      "english": "Addictive; totally caught up in something",
+      "tags": [
+        "slang",
+        "social",
+        "modern",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1452deafc6d96546",
+      "hanzi": "推荐",
+      "pinyin": "tuī jiàn",
+      "english": "Recommend",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c22461f31ef19cdf",
+      "hanzi": "划算",
+      "pinyin": "huá suàn",
+      "english": "Worth it; good value",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0e31cead7dbcae30",
+      "hanzi": "好笑",
+      "pinyin": "hǎo xiào",
+      "english": "Funny; laughable",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e79890c96ee6f0c5",
+      "hanzi": "行政",
+      "pinyin": "xíng zhèng",
+      "english": "Administration; administrative",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9b861e211f0f81b",
+      "hanzi": "地理",
+      "pinyin": "dì lǐ",
+      "english": "Geography",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfa9397d77e71d59",
+      "hanzi": "睁",
+      "pinyin": "zhēng",
+      "english": "Open one's eyes",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f81ff55de14e3f45",
+      "hanzi": "进度",
+      "pinyin": "jìn dù",
+      "english": "Progress; project status",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cbaeb7d10d730833",
+      "hanzi": "多亏",
+      "pinyin": "duō kuī",
+      "english": "Thanks to; fortunately because of",
+      "tags": [
+        "conversation",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2e331dc332df16a7",
+      "hanzi": "顺便",
+      "pinyin": "shùn biàn",
+      "english": "While you're at it; conveniently",
+      "tags": [
+        "conversation",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-20618334758ac3da",
+      "hanzi": "崩溃",
+      "pinyin": "bēng kuì",
+      "english": "Break down; feel overwhelmed",
+      "tags": [
+        "social",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9ae9f32236bbe903",
+      "hanzi": "别扭",
+      "pinyin": "biè niu",
+      "english": "Awkward; uncomfortable; unnatural",
+      "tags": [
+        "social",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b795c7fd61ef3a4",
+      "hanzi": "尴尬",
+      "pinyin": "gān gà",
+      "english": "Awkward; embarrassing",
+      "tags": [
+        "social",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3bcd542b08005ab9",
+      "hanzi": "疲惫",
+      "pinyin": "pí bèi",
+      "english": "Exhausted; worn out",
+      "tags": [
+        "social",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6f04573beb477532",
+      "hanzi": "凑合",
+      "pinyin": "còu he",
+      "english": "Make do; get by",
+      "tags": [
+        "social",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33d62befc4d484bf",
+      "hanzi": "唠叨",
+      "pinyin": "láo dao",
+      "english": "Nag; talk at length",
+      "tags": [
+        "social",
+        "fluency",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bc211adc0f77e8a6",
+      "hanzi": "前台",
+      "pinyin": "qián tái",
+      "english": "Reception desk; front desk",
+      "tags": [
+        "daily",
+        "work",
+        "hsk7-9"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-51a75f4634dfa859",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "english": "One",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-11a9d8072cf9e368",
+      "hanzi": "一下",
+      "pinyin": "yí xià",
+      "english": "Briefly; a little",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5448481f38a4f908",
+      "hanzi": "一天",
+      "pinyin": "yì tiān",
+      "english": "One day; a whole day",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-220ac6c5a3602b71",
+      "hanzi": "一起",
+      "pinyin": "yī qǐ",
+      "english": "Together",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b02dfe2160c687c2",
+      "hanzi": "不",
+      "pinyin": "bù",
+      "english": "Not; no",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6c475741193526c6",
+      "hanzi": "不能",
+      "pinyin": "bù néng",
+      "english": "Cannot; not able to",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b1813501860b58c2",
+      "hanzi": "东西",
+      "pinyin": "dōng xi",
+      "english": "Thing; something",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a116815bc9da10d",
+      "hanzi": "个",
+      "pinyin": "ge",
+      "english": "General classifier",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-260cca3889c2a05c",
+      "hanzi": "中心",
+      "pinyin": "zhōng xīn",
+      "english": "center; heart; core",
+      "tags": [
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-72726d8818f69306",
+      "hanzi": "中文",
+      "pinyin": "zhōng wén",
+      "english": "Chinese language",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-28ff471d9a227562",
+      "hanzi": "之后",
+      "pinyin": "zhī hòu",
+      "english": "After",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-658605835bfc7ff8",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "Also; too",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2cd2507d65de178f",
+      "hanzi": "买",
+      "pinyin": "mǎi",
+      "english": "Buy",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2dd27e84f07f49b",
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "Completion or change-of-state particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aecbe4cbd4449c9a",
+      "hanzi": "了解",
+      "pinyin": "liǎo jiě",
+      "english": "to understand; to realize; to find out",
+      "tags": [
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e66d9fac19a76a4b",
+      "hanzi": "事情",
+      "pinyin": "shì qing",
+      "english": "Matter; thing",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d5f5a7a010731feb",
+      "hanzi": "今天",
+      "pinyin": "jīn tiān",
+      "english": "Today",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b7b91e0001c6971",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "He; him",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6ad7a1dbc1ede22",
+      "hanzi": "以后",
+      "pinyin": "yǐ hòu",
+      "english": "After; afterwards",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ba1e3c0eb636161",
+      "hanzi": "会",
+      "pinyin": "huì",
+      "english": "Know how to; will; be likely to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1f863793c6f0460d",
+      "hanzi": "但",
+      "pinyin": "dàn",
+      "english": "But; however",
+      "tags": [
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8cb1f721c82e7933",
+      "hanzi": "但是",
+      "pinyin": "dàn shì",
+      "english": "But; however",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-40f6d6bab7e54cc4",
+      "hanzi": "作用",
+      "pinyin": "zuò yòng",
+      "english": "Effect; function; role",
+      "tags": [
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-39712e9368a8e037",
+      "hanzi": "做饭",
+      "pinyin": "zuò fàn",
+      "english": "Cook a meal",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-27250da81c0a763a",
+      "hanzi": "先",
+      "pinyin": "xiān",
+      "english": "First",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3489763e620ac7ff",
+      "hanzi": "冒菜",
+      "pinyin": "mào cài",
+      "english": "Sichuan ingredients cooked in seasoned broth",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7a6cc29740a72c4c",
+      "hanzi": "冬天",
+      "pinyin": "dōng tiān",
+      "english": "Winter",
+      "tags": [
+        "travel",
+        "activities",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4404ea8981d2fc02",
+      "hanzi": "冬瓜",
+      "pinyin": "dōng guā",
+      "english": "Winter melon",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ddcf6e77b0ee1000",
+      "hanzi": "准备",
+      "pinyin": "zhǔn bèi",
+      "english": "Prepare",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bb0d9c666fa88969",
+      "hanzi": "几",
+      "pinyin": "jǐ",
+      "english": "How many; a few",
+      "tags": [
+        "daily",
+        "numbers",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e8ec877c8da553d3",
+      "hanzi": "医生",
+      "pinyin": "yī shēng",
+      "english": "doctor",
+      "tags": [
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8a34401a3072f25a",
+      "hanzi": "去冰",
+      "pinyin": "qù bīng",
+      "english": "No ice",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c782b991a221c2cd",
+      "hanzi": "发力",
+      "pinyin": "fā lì",
+      "english": "Apply force; generate power",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5441f9fb09dc5bb9",
+      "hanzi": "取",
+      "pinyin": "qǔ",
+      "english": "Take; collect; fetch",
+      "tags": [
+        "work",
+        "professional",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cd583bc65b686ec9",
+      "hanzi": "句",
+      "pinyin": "jù",
+      "english": "Sentence (classifier); sentence or phrase",
+      "tags": [
+        "language",
+        "study",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c814805bc6d0365a",
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "english": "Eat",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baa672710078887f",
+      "hanzi": "吉隆坡",
+      "pinyin": "jí lóng pō",
+      "english": "Kuala Lumpur",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6773310492a96fcf",
+      "hanzi": "名字",
+      "pinyin": "míng zi",
+      "english": "Name",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bad8b6c7ae2ee84b",
+      "hanzi": "吧",
+      "pinyin": "ba",
+      "english": "Suggestion particle",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-92fb50246746f1bc",
+      "hanzi": "听起来",
+      "pinyin": "tīng qǐ lai",
+      "english": "Sound as if; appear from hearing",
+      "tags": [
+        "grammar",
+        "conversation"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-709b90ebf308c71e",
+      "hanzi": "周末",
+      "pinyin": "zhōu mò",
+      "english": "Weekend",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-653b04330b75751f",
+      "hanzi": "喜欢",
+      "pinyin": "xǐ huan",
+      "english": "Like",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-193632bffe7bd105",
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "english": "Drink",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-61990afc7ac0eec3",
+      "hanzi": "团购",
+      "pinyin": "tuán gòu",
+      "english": "Group-buy deal",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-12404a0b63817240",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "english": "At; in; ongoing action",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1940119f05716460",
+      "hanzi": "多",
+      "pinyin": "duō",
+      "english": "Many; much; more",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e7ace7adf264b714",
+      "hanzi": "太",
+      "pinyin": "tài",
+      "english": "Too; very",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f867f34178594f89",
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "english": "Good; okay",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2118cbc109880ac8",
+      "hanzi": "学习",
+      "pinyin": "xué xí",
+      "english": "Study",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c0b3fbff51ccc40b",
+      "hanzi": "完成",
+      "pinyin": "wán chéng",
+      "english": "Finish; complete",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8ae97be80f3867c",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "Home; family",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-651354aa43fc317f",
+      "hanzi": "布城",
+      "pinyin": "bù chéng",
+      "english": "Putrajaya — Malaysia's federal administrative center",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fd5db2cf36a92942",
+      "hanzi": "带",
+      "pinyin": "dài",
+      "english": "Bring",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-de8f371434589d64",
+      "hanzi": "帮忙",
+      "pinyin": "bāng máng",
+      "english": "Help; lend a hand",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-39eae64cfc41ef37",
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "english": "Open; turn on; drive",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f2b91797ea3a7171",
+      "hanzi": "很",
+      "pinyin": "hěn",
+      "english": "Very; quite",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3de85d3b5a4a8057",
+      "hanzi": "忘",
+      "pinyin": "wàng",
+      "english": "Forget",
+      "tags": [
+        "daily",
+        "conversation",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2846d63055754517",
+      "hanzi": "快",
+      "pinyin": "kuài",
+      "english": "Fast; quick",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-60067e7ac645088b",
+      "hanzi": "怎么样",
+      "pinyin": "zěn me yàng",
+      "english": "How; what is it like",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2",
+        "grammar",
+        "conversation"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-65eb352d08bf12a0",
+      "hanzi": "意思",
+      "pinyin": "yì si",
+      "english": "Meaning; idea",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d2855d3c6ad90497",
+      "hanzi": "手指",
+      "pinyin": "shǒu zhǐ",
+      "english": "Finger",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9a8d951dcb604ef6",
+      "hanzi": "才",
+      "pinyin": "cái",
+      "english": "Only then; not until; only (context dependent)",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1ce151dd62de4dd1",
+      "hanzi": "打算",
+      "pinyin": "dǎ suàn",
+      "english": "Plan; intend",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2",
+        "social",
+        "conversation"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4aa1a3c6743f7d8e",
+      "hanzi": "技术",
+      "pinyin": "jì shù",
+      "english": "Technique; skill",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2442748e41108dab",
+      "hanzi": "把",
+      "pinyin": "bǎ",
+      "english": "Object disposal construction marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67d04ffaf62e23cf",
+      "hanzi": "抓",
+      "pinyin": "zhuā",
+      "english": "Grab; grip",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-19e5a6b8e56551f1",
+      "hanzi": "排球",
+      "pinyin": "pái qiú",
+      "english": "Volleyball",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ae9049c6f5aff8a9",
+      "hanzi": "攀岩",
+      "pinyin": "pān yán",
+      "english": "Rock climbing",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4c2c5762d328829b",
+      "hanzi": "故事",
+      "pinyin": "gù shi",
+      "english": "Story",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fc1343aa793eed6",
+      "hanzi": "教练",
+      "pinyin": "jiào liàn",
+      "english": "Coach",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5484678be4ef7c24",
+      "hanzi": "时候",
+      "pinyin": "shí hou",
+      "english": "Time; occasion; when",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b5141d3d19e9a048",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "Be; is; am; are",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-69c679ef6bf3d499",
+      "hanzi": "更",
+      "pinyin": "gèng",
+      "english": "More; even more",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dae9a3d28e2962dc",
+      "hanzi": "月饼",
+      "pinyin": "yuè bǐng",
+      "english": "Mooncake",
+      "tags": [
+        "food",
+        "china-food",
+        "hsk5"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90ce0f66f09488f2",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "Have; there is",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1f652e02964827d6",
+      "hanzi": "有时候",
+      "pinyin": "yǒu shí hou",
+      "english": "Sometimes",
+      "tags": [
+        "daily",
+        "conversation",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29506aa712190082",
+      "hanzi": "有点",
+      "pinyin": "yǒu diǎn",
+      "english": "A bit (often undesirable)",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d072553ed65bfffa",
+      "hanzi": "有趣",
+      "pinyin": "yǒu qù",
+      "english": "Interesting; engaging",
+      "tags": [
+        "daily",
+        "conversation",
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-423d45adea4b94b6",
+      "hanzi": "杏仁",
+      "pinyin": "xìng rén",
+      "english": "Almond or apricot kernel, depending on product",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9ef8346f7304ffdf",
+      "hanzi": "柚子",
+      "pinyin": "yòu zi",
+      "english": "Pomelo",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6b02a08e69a342d",
+      "hanzi": "正在",
+      "pinyin": "zhèng zài",
+      "english": "just at (that time); right in (that place); right in the middle of (doing sth)",
+      "tags": [
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eea1694c235b5ddf",
+      "hanzi": "每天",
+      "pinyin": "měi tiān",
+      "english": "Every day",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ffef8f3113a3a11",
+      "hanzi": "注意",
+      "pinyin": "zhù yì",
+      "english": "Pay attention",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-847c5f681ce955a0",
+      "hanzi": "游戏",
+      "pinyin": "yóu xì",
+      "english": "game; to play",
+      "tags": [
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-08dddeac1319d6e8",
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "english": "Order; point; o'clock",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-111bb0cd52189d59",
+      "hanzi": "点菜",
+      "pinyin": "diǎn cài",
+      "english": "Order dishes",
+      "tags": [
+        "food",
+        "ordering",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-909ea2ab741648e4",
+      "hanzi": "烤串",
+      "pinyin": "kǎo chuàn",
+      "english": "Grilled skewers",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f45d561296963c4a",
+      "hanzi": "燕麦",
+      "pinyin": "yàn mài",
+      "english": "Oats",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-14c221b376b7551f",
+      "hanzi": "爬",
+      "pinyin": "pá",
+      "english": "Climb; crawl",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b892a42b9695881d",
+      "hanzi": "牛奶",
+      "pinyin": "niú nǎi",
+      "english": "Milk",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-09f00a522e023e1d",
+      "hanzi": "牛油果",
+      "pinyin": "niú yóu guǒ",
+      "english": "Avocado",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-05bf5dcfb4b418ae",
+      "hanzi": "特别行政区",
+      "pinyin": "tè bié xíng zhèng qū",
+      "english": "Special administrative region",
+      "tags": [
+        "places",
+        "china-regions"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-04e45efb3be890e7",
+      "hanzi": "用",
+      "pinyin": "yòng",
+      "english": "Use",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c4d0aea9e2da2f9f",
+      "hanzi": "电梯",
+      "pinyin": "diàn tī",
+      "english": "Elevator; lift",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9658fe9662be7ec6",
+      "hanzi": "盖浇饭",
+      "pinyin": "gài jiāo fàn",
+      "english": "Rice topped with a cooked dish",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-827d018e1bf8a869",
+      "hanzi": "真",
+      "pinyin": "zhēn",
+      "english": "really; truly; indeed",
+      "tags": [
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-393ee0b5797efaa4",
+      "hanzi": "眼",
+      "pinyin": "yǎn",
+      "english": "eye; small hole; crux (of a matter)",
+      "tags": [
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2ce2847cbc4743b6",
+      "hanzi": "知识",
+      "pinyin": "zhī shi",
+      "english": "Knowledge",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ca8d4f77574e43a",
+      "hanzi": "短",
+      "pinyin": "duǎn",
+      "english": "Short (length)",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-64e861c0b886f036",
+      "hanzi": "石榴",
+      "pinyin": "shí liu",
+      "english": "Pomegranate",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-46aa7d60145ef5ab",
+      "hanzi": "竟然",
+      "pinyin": "jìng rán",
+      "english": "unexpectedly; to one's surprise; in spite of everything",
+      "tags": [
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0bdbc8395720e98e",
+      "hanzi": "笑死",
+      "pinyin": "xiào sǐ",
+      "english": "I'm dying laughing; LOL",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4a9fd6fedd322c3b",
+      "hanzi": "米粉",
+      "pinyin": "mǐ fěn",
+      "english": "Rice noodles; rice flour",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-be5e4cd867092013",
+      "hanzi": "糯米",
+      "pinyin": "nuò mǐ",
+      "english": "Glutinous rice",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-83ee4811d833487c",
+      "hanzi": "线",
+      "pinyin": "xiàn",
+      "english": "Line; route",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk3"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3cae1f75ef711370",
+      "hanzi": "练习",
+      "pinyin": "liàn xí",
+      "english": "Practice; rehearse",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2",
+        "work",
+        "professional"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3b15fa5b2ac08ae5",
+      "hanzi": "结构",
+      "pinyin": "jié gòu",
+      "english": "Structure",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-324b8091c4f38dce",
+      "hanzi": "网球",
+      "pinyin": "wǎng qiú",
+      "english": "Tennis",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a433fa5a77157d7c",
+      "hanzi": "肘部",
+      "pinyin": "zhǒu bù",
+      "english": "Elbow region",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-413c06bcef7c934d",
+      "hanzi": "能",
+      "pinyin": "néng",
+      "english": "Can; be able to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ba18e7b5ce36a4e5",
+      "hanzi": "脚踝",
+      "pinyin": "jiǎo huái",
+      "english": "Ankle",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9629f0ba611b20d7",
+      "hanzi": "臀部",
+      "pinyin": "tún bù",
+      "english": "Buttocks; gluteal region",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a25211ce5c812248",
+      "hanzi": "芋头",
+      "pinyin": "yù tou",
+      "english": "Taro",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7739ff2ac7a8c5f7",
+      "hanzi": "花生",
+      "pinyin": "huā shēng",
+      "english": "Peanuts",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk6"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d50a0dad88f865b0",
+      "hanzi": "茶叶蛋",
+      "pinyin": "chá yè dàn",
+      "english": "Tea egg",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-45f0c2d97be1214d",
+      "hanzi": "菜",
+      "pinyin": "cài",
+      "english": "Dish; vegetables",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bd2b80097697b084",
+      "hanzi": "虽然",
+      "pinyin": "suī rán",
+      "english": "Although",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-975f35218ed8782e",
+      "hanzi": "要",
+      "pinyin": "yào",
+      "english": "Want; need; be going to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-78c82d9f411246cb",
+      "hanzi": "觉得",
+      "pinyin": "jué de",
+      "english": "Feel; think; find",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3cef912ce8819fff",
+      "hanzi": "讨论",
+      "pinyin": "tǎo lùn",
+      "english": "Discuss",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ad3757440409cf73",
+      "hanzi": "让",
+      "pinyin": "ràng",
+      "english": "Let; allow; ask someone to; yield",
+      "tags": [
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a29c0de140769391",
+      "hanzi": "训练",
+      "pinyin": "xùn liàn",
+      "english": "Training; train",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk3",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-41afea934e9531af",
+      "hanzi": "试试",
+      "pinyin": "shì shi",
+      "english": "Give it a try",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-88d5840fab773af6",
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "to ask; to invite; please (do sth)",
+      "tags": [
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d6229ff65c65d97",
+      "hanzi": "豌豆",
+      "pinyin": "wān dòu",
+      "english": "Peas",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc63db3dd42214b4",
+      "hanzi": "超市",
+      "pinyin": "chāo shì",
+      "english": "Supermarket",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2",
+        "grammar-support",
+        "basics",
+        "errands"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-203cc8f947e2e41a",
+      "hanzi": "跳绳",
+      "pinyin": "tiào shéng",
+      "english": "Jump rope",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a9d130d79595672c",
+      "hanzi": "运动",
+      "pinyin": "yùn dòng",
+      "english": "Exercise; sport",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfaa7d6f73c1ec07",
+      "hanzi": "还是",
+      "pinyin": "hái shi",
+      "english": "Or (in choices/questions); still",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d409ab2ab3f8a04e",
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "english": "This",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk1"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-979e2bc35b14bf4c",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "english": "This one",
+      "tags": [
+        "daily",
+        "practical",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-95da259434ea9883",
+      "hanzi": "这么多",
+      "pinyin": "zhè me duō",
+      "english": "So many; so much",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1029fedefdf99d95",
+      "hanzi": "选",
+      "pinyin": "xuǎn",
+      "english": "Choose",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-00a9d5bd97c269b4",
+      "hanzi": "道",
+      "pinyin": "dào",
+      "english": "Dish classifier; path; way",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7eabb36ba1ab565b",
+      "hanzi": "都",
+      "pinyin": "dōu",
+      "english": "All; both; in every case",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-063b78481d2eab5f",
+      "hanzi": "银行卡",
+      "pinyin": "yín háng kǎ",
+      "english": "Bank card",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e86aae75fd0db045",
+      "hanzi": "露营",
+      "pinyin": "lù yíng",
+      "english": "Camp; camping",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ca90ce4930a1fb8e",
+      "hanzi": "青椒",
+      "pinyin": "qīng jiāo",
+      "english": "Green pepper",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-79f326be4409d51f",
+      "hanzi": "项目",
+      "pinyin": "xiàng mù",
+      "english": "item; project; (sports) event",
+      "tags": [
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e3e38b7716d60060",
+      "hanzi": "餐厅",
+      "pinyin": "cān tīng",
+      "english": "Restaurant",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk5"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3da5ab9c1b9f5d83",
+      "hanzi": "首都",
+      "pinyin": "shǒu dū",
+      "english": "Capital city",
+      "tags": [
+        "places",
+        "countries",
+        "hsk3",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9d1e11e8cba926ec",
+      "hanzi": "香菜",
+      "pinyin": "xiāng cài",
+      "english": "Cilantro; coriander leaves",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3320aa9c0948089",
+      "hanzi": "马来西亚",
+      "pinyin": "mǎ lái xī yà",
+      "english": "Malaysia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ca3c3637d8979e0",
+      "hanzi": "骨头",
+      "pinyin": "gǔ tou",
+      "english": "Bone",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk4"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-01d3e28a19e3e51a",
+      "hanzi": "髋关节",
+      "pinyin": "kuān guān jié",
+      "english": "Hip joint",
+      "tags": [
+        "body",
+        "fitness"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b1c27820fec23edb",
+      "hanzi": "高",
+      "pinyin": "gāo",
+      "english": "Tall; high",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ac3069de682490ac",
+      "hanzi": "鱼",
+      "pinyin": "yú",
+      "english": "Fish",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk2"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2aef3d11527dea46",
+      "hanzi": "黄油",
+      "pinyin": "huáng yóu",
+      "english": "Butter",
+      "tags": [
+        "food",
+        "global-food"
+      ],
+      "source": "Ciyan optional decks v0.3.2",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-0191e0340d0ca9fc6f7a",
+      "markup": "{我}{今天}{在}{超市}{买}{了}{南瓜}{和}{冬瓜}。",
+      "pinyin": "Wǒ jīn tiān zài chāo shì mǎi le nán guā hé dōng guā.",
+      "english": "I bought pumpkin and winter melon at the supermarket today.",
+      "distractors": [],
+      "source": "Context: completed action with food objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0249d42c9abfd669fdd8",
+      "markup": "{这}{句}{中文}{听起来}{有点}{别扭}。",
+      "pinyin": "Zhè jù zhōng wén tīng qǐ lai yǒu diǎn biè niu.",
+      "english": "This Chinese sentence sounds a little unnatural.",
+      "distractors": [],
+      "source": "Context: perception complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0bdc24a15c59078d9052",
+      "markup": "{我们}{今天}{学习}{特别行政区}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí tè bié xíng zhèng qū de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Special administrative region.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0f81e13ddfcc9b4ab2fd",
+      "markup": "{我们}{准备}{用}{蒜}{和}{香菜}{做饭}。",
+      "pinyin": "Wǒ men zhǔn bèi yòng suàn hé xiāng cài zuò fàn.",
+      "english": "We are planning to cook with garlic and cilantro.",
+      "distractors": [],
+      "source": "Context: preposition 用 and coordinated objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0fbb2cae831d9caccc9f",
+      "markup": "{我们}{准备}{用}{枣}{做饭}。",
+      "pinyin": "Wǒ men zhǔn bèi yòng zǎo zuò fàn.",
+      "english": "We are planning to cook with jujube.",
+      "distractors": [],
+      "source": "Context: preposition 用 and coordinated objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-11143cd6e7a767cf6d05",
+      "markup": "{请}{推荐}{一}{家}{餐厅}。",
+      "pinyin": "Qǐng tuī jiàn yī jiā cān tīng.",
+      "english": "Please recommend a restaurant.",
+      "distractors": [],
+      "source": "Context: Recommend",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1533bdd032fd04a141bc",
+      "markup": "{我}{喜欢}{火锅}，{但是}{他}{更}{喜欢}{冒菜}。",
+      "pinyin": "Wǒ xǐ huan huǒ guō, dàn shì tā gèng xǐ huan mào cài.",
+      "english": "I like hot pot, but he prefers sichuan ingredients cooked in seasoned broth.",
+      "distractors": [],
+      "source": "Context: comparison with 更",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-15d8267ce7d1b2e2eb70",
+      "markup": "{你}{想}{试试}{露营}{还是}{野餐}？",
+      "pinyin": "Nǐ xiǎng shì shi lù yíng hái shi yě cān?",
+      "english": "Would you like to try camp or picnic?",
+      "distractors": [],
+      "source": "Context: alternatives in a question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-171ad734b4db31f38fec",
+      "markup": "{多亏}{你}{帮忙}，{我们}{才}{完成}{了}。",
+      "pinyin": "Duō kuī nǐ bāng máng, wǒ men cái wán chéng le.",
+      "english": "Thanks to your help, we managed to finish.",
+      "distractors": [],
+      "source": "Context: causal credit",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1889d715fa1c7447898f",
+      "markup": "{你}{去}{超市}{的}{时候}{顺便}{买}{点}{牛奶}{吧}。",
+      "pinyin": "Nǐ qù chāo shì de shí hou shùn biàn mǎi diǎn niú nǎi ba.",
+      "english": "While you're at the supermarket, pick up some milk.",
+      "distractors": [],
+      "source": "Context: incidental action",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1ce6d1359dcceb6857b0",
+      "markup": "{你}{喜欢}{烤串}{还是}{烧烤}？",
+      "pinyin": "Nǐ xǐ huan kǎo chuàn hái shi shāo kǎo?",
+      "english": "Do you prefer grilled skewers or barbecue?",
+      "distractors": [],
+      "source": "Context: choice question with 还是",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1d2abbb958e89749ac32",
+      "markup": "{马来西亚}{的}{首都}{是}{吉隆坡}，{布城}{是}{行政}{中心}。",
+      "pinyin": "Mǎ lái xī yà de shǒu dū shì jí lóng pō, bù chéng shì xíng zhèng zhōng xīn.",
+      "english": "Kuala Lumpur is Malaysia’s capital, while Putrajaya is its administrative center.",
+      "distractors": [],
+      "source": "Context: administrative distinction",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1f9988737753d1bffcc5",
+      "markup": "{这}{家}{餐厅}{有}{团购}，{很}{划算}。",
+      "pinyin": "Zhè jiā cān tīng yǒu tuán gòu, hěn huá suàn.",
+      "english": "This restaurant has a group-buy deal; it is good value.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-22b67c5d976753afb3b5",
+      "markup": "{虽然}{不}{太}{好}，{但}{也}{能}{凑合}。",
+      "pinyin": "Suī rán bù tài hǎo, dàn yě néng còu he.",
+      "english": "It's not very good, but it will do.",
+      "distractors": [],
+      "source": "Context: concessive contrast",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2901af09b893aa0f0f50",
+      "markup": "{请}{把}{菜}{冷冻}{一下}。",
+      "pinyin": "Qǐng bǎ cài lěng dòng yí xià.",
+      "english": "Please freeze the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2daaf79b5652a94749b0",
+      "markup": "{我}{想}{吃}{汤圆}，{你}{想}{吃}{月饼}{吗}？",
+      "pinyin": "Wǒ xiǎng chī tāng yuán, nǐ xiǎng chī yuè bǐng ma?",
+      "english": "I want to eat glutinous rice balls. Do you want mooncake?",
+      "distractors": [],
+      "source": "Context: contrast and question in a restaurant",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2dd6b3331544c4996e2c",
+      "markup": "{我}{用}{银行卡}{付款}。",
+      "pinyin": "Wǒ yòng yín háng kǎ fù kuǎn.",
+      "english": "I pay with a bank card.",
+      "distractors": [],
+      "source": "Context: Bank card",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-30004b0b56966e0fed23",
+      "markup": "{我们}{今天}{学习}{膝盖}{和}{脚踝}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí xī gài hé jiǎo huái de jié gòu.",
+      "english": "Today we are learning about the structure of the knee and ankle.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-323c5121e89f68fa8ddb",
+      "markup": "{请}{把}{菜}{拌}{一下}。",
+      "pinyin": "Qǐng bǎ cài bàn yí xià.",
+      "english": "Please mix the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-32ee0457f50b25e35d92",
+      "markup": "{我们}{先}{了解}{级别}{的}{意思}。",
+      "pinyin": "Wǒ men xiān liǎo jiě jí bié de yì si.",
+      "english": "First, we learn what grade means.",
+      "distractors": [],
+      "source": "Context: technical climbing terminology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-336bde341cf717a32be8",
+      "markup": "{我们}{今天}{学习}{手掌}{和}{手指}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí shǒu zhǎng hé shǒu zhǐ de jié gòu.",
+      "english": "Today we are learning about the structure of the palm and finger.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-37e379084495941b5fd5",
+      "markup": "{我}{运动}{之后}{觉得}{很}{疲劳}。",
+      "pinyin": "Wǒ yùn dòng zhī hòu jué de hěn pí láo.",
+      "english": "After exercising, I experienced fatigue.",
+      "distractors": [],
+      "source": "Context: physical sensation after exercise",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3b4a68e22099cf221056",
+      "markup": "{请}{把}{菜}{烤}{一下}。",
+      "pinyin": "Qǐng bǎ cài kǎo yí xià.",
+      "english": "Please roast the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3da6678473ed971acfb0",
+      "markup": "{他}{有时候}{会}{唠叨}{几}{句}。",
+      "pinyin": "Tā yǒu shí hou huì láo dao jǐ jù.",
+      "english": "Sometimes he goes on about things for a few sentences.",
+      "distractors": [],
+      "source": "Context: repetition with 句",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3ec4ca1c2b3f73d91a11",
+      "markup": "{我们}{今天}{学习}{髋关节}{和}{手臂}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí kuān guān jié hé shǒu bì de jié gòu.",
+      "english": "Today we are learning about the structure of the hip joint and arm.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-41ff912ab72859155f2c",
+      "markup": "{好家伙}，{他}{竟然}{一天}{爬}{了}{这么多}{线}！",
+      "pinyin": "Hǎo jiā huo, tā jìng rán yì tiān pá le zhè me duō xiàn!",
+      "english": "Wow, he climbed so many routes in one day!",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-49ac269efc001c7a0c59",
+      "markup": "{你}{喜欢}{椰子}{和}{牛油果}{吗}？",
+      "pinyin": "Nǐ xǐ huan yē zi hé niú yóu guǒ ma?",
+      "english": "Do you like coconut and avocado?",
+      "distractors": [],
+      "source": "Context: yes/no question with food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4a2502e0d69733c553b0",
+      "markup": "{这个}{牛奶}{的}{保质期}{很}{短}。",
+      "pinyin": "Zhè ge niú nǎi de bǎo zhì qī hěn duǎn.",
+      "english": "This milk has a short shelf life.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4f849e231816d6f6dc94",
+      "markup": "{这}{个}{项目}{的}{进度}{怎么样}？",
+      "pinyin": "Zhè ge xiàng mù de jìn dù zěn me yàng?",
+      "english": "How is this project's progress?",
+      "distractors": [],
+      "source": "Context: Project progress",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-504a1737925bf5456b80",
+      "markup": "{这}{道}{菜}{很}{嫩}。",
+      "pinyin": "Zhè dào cài hěn nèn.",
+      "english": "This dish is tender.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-517a69e3df53f94d1b09",
+      "markup": "{请}{把}{菜}{煎}{一下}。",
+      "pinyin": "Qǐng bǎ cài jiān yí xià.",
+      "english": "Please pan-fry the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-54a56da472f33b03039a",
+      "markup": "{这}{道}{菜}{有点}{烫}。",
+      "pinyin": "Zhè dào cài yǒu diǎn tàng.",
+      "english": "This dish is a little scalding hot.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-54f61c386cc4ad6b2029",
+      "markup": "{我}{今天}{在}{超市}{买}{了}{葱}{和}{姜}。",
+      "pinyin": "Wǒ jīn tiān zài chāo shì mǎi le cōng hé jiāng.",
+      "english": "I bought scallion and ginger at the supermarket today.",
+      "distractors": [],
+      "source": "Context: completed action with food objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-586ff9a5a836c654a11f",
+      "markup": "{你}{喜欢}{辣椒}{和}{青椒}{吗}？",
+      "pinyin": "Nǐ xǐ huan là jiāo hé qīng jiāo ma?",
+      "english": "Do you like chili pepper and green pepper?",
+      "distractors": [],
+      "source": "Context: yes/no question with food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5a96efe425b41e8745ea",
+      "markup": "{教练}{要}{我们}{练习}{勾}{和}{锁定}。",
+      "pinyin": "Jiào liàn yào wǒ men liàn xí gōu hé suǒ dìng.",
+      "english": "The coach wants us to practice hook and lock off.",
+      "distractors": [],
+      "source": "Context: causative instruction",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5ae60823d81ad6201584",
+      "markup": "{你}{喜欢}{橘子}{和}{柚子}{吗}？",
+      "pinyin": "Nǐ xǐ huan jú zi hé yòu zi ma?",
+      "english": "Do you like mandarin orange and pomelo?",
+      "distractors": [],
+      "source": "Context: yes/no question with food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5e2b1acbcd736a3eb822",
+      "markup": "{攀岩}{的}{时候}{要}{注意}{脱落}。",
+      "pinyin": "Pān yán de shí hou yào zhù yì tuō luò.",
+      "english": "When climbing, pay attention to come off.",
+      "distractors": [],
+      "source": "Context: risk awareness",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5e9abcee8735debf3e93",
+      "markup": "{我们}{打算}{周末}{去}{徒步}。",
+      "pinyin": "Wǒ men dǎ suàn zhōu mò qù tú bù.",
+      "english": "We're planning to hike this weekend.",
+      "distractors": [],
+      "source": "Context: planning future activity",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6020b92d62f0a63a6d5f",
+      "markup": "{我们}{正在}{讨论}{收据}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn shōu jù.",
+      "english": "We are discussing receipt.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-64a429f55e19556b4134",
+      "markup": "{我}{今天}{在}{超市}{买}{了}{鱼}{和}{虾}。",
+      "pinyin": "Wǒ jīn tiān zài chāo shì mǎi le yú hé xiā.",
+      "english": "I bought fish and shrimp at the supermarket today.",
+      "distractors": [],
+      "source": "Context: completed action with food objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-663ab19e7833a23d7bc3",
+      "markup": "{我}{周末}{喜欢}{跳绳}{和}{举重}。",
+      "pinyin": "Wǒ zhōu mò xǐ huan tiào shéng hé jǔ zhòng.",
+      "english": "On weekends, I enjoy jump rope and weightlifting.",
+      "distractors": [],
+      "source": "Context: habit and preference",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-663de87f9f2cbbe05239",
+      "markup": "{请}{把}{菜}{蒸}{一下}。",
+      "pinyin": "Qǐng bǎ cài zhēng yí xià.",
+      "english": "Please steam the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-66bbafc9a0dd480717d2",
+      "markup": "{你}{可以}{去}{前台}{取}{东西}。",
+      "pinyin": "Nǐ kě yǐ qù qián tái qǔ dōng xi.",
+      "english": "You can collect the item from reception.",
+      "distractors": [],
+      "source": "Context: directional and result",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-675cc647cce518b9480c",
+      "markup": "{我们}{今天}{学习}{脖子}{和}{肩膀}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí bó zi hé jiān bǎng de jié gòu.",
+      "english": "Today we are learning about the structure of the neck and shoulder.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-693a2daf1474dcd2181c",
+      "markup": "{这}{道}{菜}{很}{清淡}。",
+      "pinyin": "Zhè dào cài hěn qīng dàn.",
+      "english": "This dish is lightly seasoned.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6bfae403f74dec89189a",
+      "markup": "{他}{每天}{都}{练习}{吉他}。",
+      "pinyin": "Tā měi tiān dōu liàn xí jí tā.",
+      "english": "He practices guitar every day.",
+      "distractors": [],
+      "source": "Context: music practice and frequency",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6fc7e0b594f1e5a2393a",
+      "markup": "{我}{忘}{了}{带}{钥匙}。",
+      "pinyin": "Wǒ wàng le dài yào shi.",
+      "english": "I forgot to bring my keys.",
+      "distractors": [],
+      "source": "Context: verb complement sequence",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-721072fa1416189f206f",
+      "markup": "{我们}{想}{去}{小区}。",
+      "pinyin": "Wǒ men xiǎng qù xiǎo qū.",
+      "english": "We would like to go to the residential complex.",
+      "distractors": [],
+      "source": "Context: place as directional object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-72b479b2d85a971f7021",
+      "markup": "{我们}{今天}{点}{了}{卤味}{和}{盖浇饭}。",
+      "pinyin": "Wǒ men jīn tiān diǎn le lǔ wèi hé gài jiāo fàn.",
+      "english": "We ordered foods braised in seasoned master stock and rice topped with a cooked dish today.",
+      "distractors": [],
+      "source": "Context: ordering and completed action",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7627cc52a8b1f9e86dc5",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{去冰}{还是}{常温}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn qù bīng hái shi cháng wēn?",
+      "english": "When ordering, would you choose no ice or room temperature?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-77402e93e2f7f10afffd",
+      "markup": "{攀岩}{的}{时候}{要}{注意}{落地}。",
+      "pinyin": "Pān yán de shí hou yào zhù yì luò dì.",
+      "english": "When climbing, pay attention to land.",
+      "distractors": [],
+      "source": "Context: risk awareness",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-777ef34b2b188f8e356f",
+      "markup": "{我}{忘}{了}{他}{的}{名字}，{真}{尴尬}。",
+      "pinyin": "Wǒ wàng le tā de míng zi, zhēn gān gà.",
+      "english": "I forgot his name; how embarrassing.",
+      "distractors": [],
+      "source": "Context: exclamatory 真",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-77e6336ab4ce514f5030",
+      "markup": "{我们}{先}{了解}{重心}{的}{意思}。",
+      "pinyin": "Wǒ men xiān liǎo jiě zhòng xīn de yì si.",
+      "english": "First, we learn what center of gravity means.",
+      "distractors": [],
+      "source": "Context: technical climbing terminology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7e145112574e9d856f3e",
+      "markup": "{我}{周末}{喜欢}{潜水}{和}{冲浪}。",
+      "pinyin": "Wǒ zhōu mò xǐ huan qián shuǐ hé chōng làng.",
+      "english": "On weekends, I enjoy dive and surf.",
+      "distractors": [],
+      "source": "Context: habit and preference",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-81822a14c3dcebca8f02",
+      "markup": "{我们}{可以}{一起}{排球}{和}{棒球}。",
+      "pinyin": "Wǒ men kě yǐ yī qǐ pái qiú hé bàng qiú.",
+      "english": "We can do volleyball and baseball together.",
+      "distractors": [],
+      "source": "Context: modal 可以 and companionship",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8b4fcdbc6bc1fe67499a",
+      "markup": "{我们}{今天}{学习}{发力}{和}{蹬}{的}{技术}。",
+      "pinyin": "Wǒ men jīn tiān xué xí fā lì hé dēng de jì shù.",
+      "english": "Today we are learning techniques for apply force and push with the legs.",
+      "distractors": [],
+      "source": "Context: technique as study topic",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8c3cf598f19d1fd5ea04",
+      "markup": "{他}{每天}{都}{练习}{乐器}。",
+      "pinyin": "Tā měi tiān dōu liàn xí yuè qì.",
+      "english": "He practices musical instrument every day.",
+      "distractors": [],
+      "source": "Context: music practice and frequency",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9094e0b48bef70b0689e",
+      "markup": "{我}{今天}{在}{超市}{买}{了}{石榴}{和}{柿子}。",
+      "pinyin": "Wǒ jīn tiān zài chāo shì mǎi le shí liu hé shì zi.",
+      "english": "I bought pomegranate and persimmon at the supermarket today.",
+      "distractors": [],
+      "source": "Context: completed action with food objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9ddf2350b9e22e7fda1a",
+      "markup": "{他}{喜欢}{吃}{素食}。",
+      "pinyin": "Tā xǐ huan chī sù shí.",
+      "english": "He likes to eat vegetarian food.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9ef4e8463fb37749694f",
+      "markup": "{请}{把}{菜}{炖}{一下}。",
+      "pinyin": "Qǐng bǎ cài dùn yí xià.",
+      "english": "Please stew the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a360d909aafff54366dc",
+      "markup": "{我}{想}{喝}{豆浆}。",
+      "pinyin": "Wǒ xiǎng hē dòu jiāng.",
+      "english": "I would like to drink soy milk.",
+      "distractors": [],
+      "source": "Context: food and drink selection",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a39fb0a7c3974acc568d",
+      "markup": "{我}{想}{吃}{米粉}，{你}{想}{吃}{粉丝}{吗}？",
+      "pinyin": "Wǒ xiǎng chī mǐ fěn, nǐ xiǎng chī fěn sī ma?",
+      "english": "I want to eat rice noodles. Do you want glass noodles?",
+      "distractors": [],
+      "source": "Context: contrast and question in a restaurant",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a56c2d573254dc72dc1b",
+      "markup": "{你}{喜欢}{豌豆}{和}{蘑菇}{吗}？",
+      "pinyin": "Nǐ xǐ huan wān dòu hé mó gu ma?",
+      "english": "Do you like peas and mushroom?",
+      "distractors": [],
+      "source": "Context: yes/no question with food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ac0b756371a4793ee5e5",
+      "markup": "{冬天}{去}{滑雪}{很}{有趣}。",
+      "pinyin": "Dōng tiān qù huá xuě hěn yǒu qù.",
+      "english": "Skiing in winter is fun.",
+      "distractors": [],
+      "source": "Context: time topic",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b54131c5358af9e024c3",
+      "markup": "{我}{今天}{要}{用}{杠铃}{训练}。",
+      "pinyin": "Wǒ jīn tiān yào yòng gàng líng xùn liàn.",
+      "english": "I am going to train using barbell today.",
+      "distractors": [],
+      "source": "Context: equipment with 用",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bdd2f88b05f5b44281a8",
+      "markup": "{我}{想}{了解}{蛋白质}{的}{作用}。",
+      "pinyin": "Wǒ xiǎng liǎo jiě dàn bái zhì de zuò yòng.",
+      "english": "I want to learn more about the role of protein.",
+      "distractors": [],
+      "source": "Context: nominalization with 的",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c11bd7318e2328fbe084",
+      "markup": "{我们}{想}{去}{菜市场}。",
+      "pinyin": "Wǒ men xiǎng qù cài shì chǎng.",
+      "english": "We would like to go to the fresh-food market.",
+      "distractors": [],
+      "source": "Context: place as directional object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c42ebfb49f4fa6252778",
+      "markup": "{你}{喜欢}{淀粉}{和}{燕麦}{吗}？",
+      "pinyin": "Nǐ xǐ huan diàn fěn hé yàn mài ma?",
+      "english": "Do you like starch and oats?",
+      "distractors": [],
+      "source": "Context: yes/no question with food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c46ab112b4ee2948667a",
+      "markup": "{攀岩}{以后}{我}{觉得}{很}{疲惫}。",
+      "pinyin": "Pān yán yǐ hòu wǒ jué de hěn pí bèi.",
+      "english": "I feel exhausted after climbing.",
+      "distractors": [],
+      "source": "Context: time expression",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c9216e8878e3e62f0f4f",
+      "markup": "{这}{也}{太}{不像话}{了}！",
+      "pinyin": "Zhè yě tài bú xiàng huà le!",
+      "english": "This is completely out of line!",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c93d2855726db756cff6",
+      "markup": "{医生}{让}{我}{忌口}。",
+      "pinyin": "Yī shēng ràng wǒ jì kǒu.",
+      "english": "The doctor told me to avoid certain foods.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ca16b0e960f02b682854",
+      "markup": "{你}{想}{试试}{滑雪}{还是}{滑冰}？",
+      "pinyin": "Nǐ xiǎng shì shi huá xuě hái shi huá bīng?",
+      "english": "Would you like to try ski or ice skate?",
+      "distractors": [],
+      "source": "Context: alternatives in a question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cd47b42c908f9dc50f46",
+      "markup": "{我}{想}{了解}{脂肪}{的}{作用}。",
+      "pinyin": "Wǒ xiǎng liǎo jiě zhī fáng de zuò yòng.",
+      "english": "I want to learn more about the role of fat.",
+      "distractors": [],
+      "source": "Context: nominalization with 的",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cded233765784b4522b2",
+      "markup": "{你}{喜欢}{核桃}{和}{杏仁}{吗}？",
+      "pinyin": "Nǐ xǐ huan hé tao hé xìng rén ma?",
+      "english": "Do you like walnut and almond or apricot kernel?",
+      "distractors": [],
+      "source": "Context: yes/no question with food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cf09fb76700100a47ddb",
+      "markup": "{今天}{的}{湿度}{很}{高}。",
+      "pinyin": "Jīn tiān de shī dù hěn gāo.",
+      "english": "The humidity is high today.",
+      "distractors": [],
+      "source": "Context: weather stative adjective",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cfd8619362cb48ad0d1d",
+      "markup": "{今天}{的}{事情}{太}{多}，{我}{快}{崩溃}{了}。",
+      "pinyin": "Jīn tiān de shì qing tài duō, wǒ kuài bēng kuì le.",
+      "english": "There's so much going on today that I'm nearly overwhelmed.",
+      "distractors": [],
+      "source": "Context: colloquial intensification",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cffb53431ef63d874999",
+      "markup": "{我们}{今天}{学习}{腹部}{和}{臀部}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí fù bù hé tún bù de jié gòu.",
+      "english": "Today we are learning about the structure of the abdomen and buttocks.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d9e14658c65f102e03c5",
+      "markup": "{我们}{今天}{学习}{抓}{和}{捏}{的}{技术}。",
+      "pinyin": "Wǒ men jīn tiān xué xí zhuā hé niē de jì shù.",
+      "english": "Today we are learning techniques for grab and pinch.",
+      "distractors": [],
+      "source": "Context: technique as study topic",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-da56d5b30b8819858fbf",
+      "markup": "{这}{个}{游戏}{太}{上头}{了}。",
+      "pinyin": "Zhè ge yóu xì tài shàng tóu le.",
+      "english": "This game is so addictive.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dc3aeea6391f2dcdca1e",
+      "markup": "{你}{喜欢}{茶叶蛋}{还是}{粽子}？",
+      "pinyin": "Nǐ xǐ huan chá yè dàn hái shi zòng zi?",
+      "english": "Do you prefer tea egg or leaf-wrapped sticky rice dumpling?",
+      "distractors": [],
+      "source": "Context: choice question with 还是",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dcb755ca4939bb621d52",
+      "markup": "{我们}{准备}{用}{糯米}{和}{面粉}{做饭}。",
+      "pinyin": "Wǒ men zhǔn bèi yòng nuò mǐ hé miàn fěn zuò fàn.",
+      "english": "We are planning to cook with glutinous rice and wheat flour.",
+      "distractors": [],
+      "source": "Context: preposition 用 and coordinated objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dde844b36299e643fb2b",
+      "markup": "{我们}{先}{了解}{垫子}{的}{意思}。",
+      "pinyin": "Wǒ men xiān liǎo jiě diàn zi de yì si.",
+      "english": "First, we learn what mat means.",
+      "distractors": [],
+      "source": "Context: technical climbing terminology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-df49f4b4c092a8801a59",
+      "markup": "{我们}{准备}{用}{花生}{和}{芝麻}{做饭}。",
+      "pinyin": "Wǒ men zhǔn bèi yòng huā shēng hé zhī ma zuò fàn.",
+      "english": "We are planning to cook with peanuts and sesame.",
+      "distractors": [],
+      "source": "Context: preposition 用 and coordinated objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e2c19d05cc0251a9e9a4",
+      "markup": "{我们}{今天}{学习}{骨头}{和}{关节}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí gǔ tou hé guān jié de jié gòu.",
+      "english": "Today we are learning about the structure of the bone and joint.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e4b7d7108ff7d08a30b7",
+      "markup": "{他}{睁}{开}{了}{眼}。",
+      "pinyin": "Tā zhēng kāi le yǎn.",
+      "english": "He opened his eyes.",
+      "distractors": [],
+      "source": "Context: Eye",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e6c09db096895c369826",
+      "markup": "{我们}{准备}{用}{红薯}{和}{芋头}{做饭}。",
+      "pinyin": "Wǒ men zhǔn bèi yòng hóng shǔ hé yù tou zuò fàn.",
+      "english": "We are planning to cook with sweet potato and taro.",
+      "distractors": [],
+      "source": "Context: preposition 用 and coordinated objects",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e7103c1ecbd51a8c6980",
+      "markup": "{这}{道}{菜}{有点}{麻}。",
+      "pinyin": "Zhè dào cài yǒu diǎn má.",
+      "english": "This dish is a little numbing.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-eae5e133513c92beb2ed",
+      "markup": "{他}{的}{故事}{太}{好笑}{了}，{笑死}！",
+      "pinyin": "Tā de gù shi tài hǎo xiào le, xiào sǐ!",
+      "english": "His story is so funny. I am dying laughing!",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ecf7ac73fb106721e583",
+      "markup": "{今天}{停电}{了}，{电梯}{不能}{用}。",
+      "pinyin": "Jīn tiān tíng diàn le, diàn tī bù néng yòng.",
+      "english": "The power is out today, and the elevator isn't working.",
+      "distractors": [],
+      "source": "Context: Outage",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f0f870829b2da6591d0a",
+      "markup": "{你}{想}{试试}{乒乓球}{还是}{网球}？",
+      "pinyin": "Nǐ xiǎng shì shi pīng pāng qiú hái shi wǎng qiú?",
+      "english": "Would you like to try table tennis or tennis?",
+      "distractors": [],
+      "source": "Context: alternatives in a question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f3008912b6ba0e5b5ee6",
+      "markup": "{我们}{想}{去}{便利店}。",
+      "pinyin": "Wǒ men xiǎng qù biàn lì diàn.",
+      "english": "We would like to go to the convenience store.",
+      "distractors": [],
+      "source": "Context: place as directional object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f43b421ad8c23f41cf46",
+      "markup": "{我}{想}{吃}{芝士}，{你}{想}{吃}{黄油}{吗}？",
+      "pinyin": "Wǒ xiǎng chī zhī shì, nǐ xiǎng chī huáng yóu ma?",
+      "english": "I want to eat cheese. Do you want butter?",
+      "distractors": [],
+      "source": "Context: contrast and question in a restaurant",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f89e4183ea0c4c257adb",
+      "markup": "{我们}{今天}{学习}{肘部}{和}{手腕}{的}{结构}。",
+      "pinyin": "Wǒ men jīn tiān xué xí zhǒu bù hé shǒu wàn de jié gòu.",
+      "english": "Today we are learning about the structure of the elbow region and wrist.",
+      "distractors": [],
+      "source": "Context: anatomy and physiology",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

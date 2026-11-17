@@ -1,0 +1,47 @@
+# Support vocabulary for natural sentence examples; each item appears in another curated context sentence.
+主要|Main; primary; chiefly|daily,connectives
+体验|Experience; experience something|daily,work
+信任|Trust; confidence in someone|social,relationships
+几|How many; a few|daily,numbers
+前台|Reception desk; front desk|daily,work
+半年|Half a year; six months|time,daily
+博物馆|Museum|travel,places
+口语|Spoken language; oral expression|language,study
+另|Other; another (before a measure)|grammar,connectives
+吵醒|Wake someone up with noise|daily,sleep
+咖啡店|Coffee shop; café|food,places
+商场|Shopping mall; commercial complex|daily,shopping
+岛|Island|travel,places
+房子|House; apartment; dwelling|daily,housing
+掉下来|Fall down; drop from above|activities,climbing
+效率|Efficiency|work,professional
+方向|Direction; orientation|places,travel
+暖和|Warm; comfortably warm|weather,daily
+有趣|Interesting; engaging|daily,conversation
+清澈|Clear and transparent (water)|travel,nature
+滑|Slippery; slide|health,activities
+照顾|Look after; take care of|social,daily
+用户|User; customer of a service|work,technology
+看起来|Seem; look as if|grammar,conversation
+种|Kind; type (classifier)|grammar,measure-words
+空|Empty; unoccupied; available|daily,places
+窗户|Window|daily,housing
+笔|Pen; writing tool|daily,study
+答案|Answer; solution|daily,study
+联系|Contact; get in touch|social,work
+英语|English language|language
+边|Side; edge; next to|grammar,places
+过去|Go over there; the past (in context)|daily,travel
+邮件|Email; mail|work,technology
+面对面|Face-to-face|social,conversation
+飞机|Airplane; aircraft|travel,transport
+饭后|After a meal|food,health
+句|Sentence (classifier); sentence or phrase|language,study
+听起来|Sound as if; appear from hearing|grammar,conversation
+吵|Noisy; quarrel|daily,conversation
+堵|Blocked; congested|travel,traffic
+快点|Hurry up; faster|daily,conversation
+第一次|First time|time,grammar
+练|Practice; train|activities,study
+重|Heavy; important (zhòng)|daily,fitness
+怎么样|How; what kind; how about it|grammar,conversation

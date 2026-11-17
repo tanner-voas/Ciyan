@@ -1,0 +1,34 @@
+{
+  "pleco-conversation": [
+    "Conversation & natural expressions",
+    "daily,conversation"
+  ],
+  "pleco-social": [
+    "Social life & relationships",
+    "social,conversation"
+  ],
+  "pleco-errands": [
+    "Errands, shopping & technology",
+    "daily,errands,practical"
+  ],
+  "pleco-work": [
+    "Work, collaboration & problem-solving",
+    "work,professional"
+  ],
+  "pleco-health": [
+    "Health, body & well-being",
+    "health,body"
+  ],
+  "pleco-travel": [
+    "Travel, leisure & environment",
+    "travel,activities"
+  ],
+  "pleco-fluency": [
+    "Fluency: nuance, choices & connectors",
+    "conversation,fluency"
+  ],
+  "pleco-advanced": [
+    "Advanced everyday issues & feelings",
+    "social,fluency"
+  ]
+}

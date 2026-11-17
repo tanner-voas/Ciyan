@@ -373,7 +373,7 @@ function renderSettings(){const s=state.settings;
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.3 · Offline-first, local-only, ${MODEL} vocabulary reviews. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.3.2 · Offline-first, local-only, ${MODEL} vocabulary reviews. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk is reserved at 0% until its future scoring model is designed.</p></div>`;
 }
 function render(){if(!state)return;const views={home:renderHome,study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings,decks:renderDecks};
@@ -693,7 +693,7 @@ boot();
 function renderDecks(){
   const names=new Set(state.cards.map(c=>c.hanzi));
   return `<div class="page-heading"><div class="eyebrow">GROW YOUR COLLECTION</div><h1 class="h1">Pick your<br>next topic.</h1><p class="lead">Optional decks. Load only what you want to study.</p></div>
-  <div class="notice">HSK decks are selective lists from the 2021 HSK 3.0 standard (GF 0025–2021), not the later exam syllabus. Grammar includes its required words and distractors.</div>
+  <div class="notice">HSK1, HSK2, and higher labels form one consistent set of level tags. Each deck is selective and includes supporting words needed for its grammar examples.</div>
   <p class="subtle">Importing adds words and tags without changing existing cards or progress. Reimporting is safe. All decks are included in the offline app download.</p>
   ${DECKS.map(d=>{const present=d.words.filter(w=>names.has(w)).length;return `<section class="panel stack" style="margin-top:14px"><div class="row"><h2 class="section-title">${esc(d.title)}</h2><span class="tag">${d.wordCount} words</span></div><p>${esc(d.description)}</p><div class="subtle">${present} words already in your collection${d.grammarCount?' · '+d.grammarCount+' grammar cards':''}</div><button class="btn btn-primary btn-full" data-action="load-deck" data-deck="${esc(d.id)}">Load / merge deck</button><a class="text-link" href="./decks/${esc(d.id)}.json" download>Download JSON</a></section>`;}).join('')}
   <p class="subtle"><a href="./decks/README.md">Deck guide and sources</a> · <a href="./decks/ATTRIBUTION.md">Data attribution</a></p>`;

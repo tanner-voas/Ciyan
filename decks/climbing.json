@@ -15,7 +15,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -27,7 +27,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -39,7 +39,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -51,7 +51,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -63,7 +63,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -75,7 +75,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -87,7 +87,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -97,9 +97,10 @@
       "english": "Climbing route; route",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -111,7 +112,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -123,7 +124,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -134,9 +135,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-3"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -146,9 +147,10 @@
       "english": "Grade; level",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -158,9 +160,10 @@
       "english": "Starting point",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -170,9 +173,10 @@
       "english": "Finish; endpoint",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -184,7 +188,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -194,9 +198,10 @@
       "english": "Attempt; try",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -208,7 +213,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -220,7 +225,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -232,7 +237,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -244,7 +249,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -255,9 +260,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -269,7 +274,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -281,7 +286,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -293,7 +298,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -305,7 +310,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -317,7 +322,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -329,7 +334,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -341,7 +346,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -353,7 +358,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -365,7 +370,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -377,7 +382,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -389,7 +394,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -400,10 +405,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-3",
-        "hsk"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -415,7 +419,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -427,7 +431,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -439,7 +443,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -451,7 +455,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -463,7 +467,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -475,7 +479,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -486,9 +490,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -500,7 +504,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -510,9 +514,10 @@
       "english": "Come off; fall off",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -522,9 +527,10 @@
       "english": "Land; reach the ground",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -534,9 +540,10 @@
       "english": "Mat; pad",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -548,7 +555,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -560,7 +567,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -572,7 +579,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -584,7 +591,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -594,9 +601,10 @@
       "english": "Center of gravity",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -608,7 +616,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -618,9 +626,10 @@
       "english": "Push with the legs; step forcefully",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -631,10 +640,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-2",
-        "hsk"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -645,9 +653,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-2"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -658,10 +666,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-3",
-        "hsk"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -671,9 +678,10 @@
       "english": "Pinch",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -683,9 +691,10 @@
       "english": "Hook",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -695,9 +704,10 @@
       "english": "Lock off; lock in place",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk7-9"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -707,9 +717,10 @@
       "english": "Dynamic movement; dynamic",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk5"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -721,7 +732,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -733,7 +744,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -745,7 +756,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -757,7 +768,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -769,7 +780,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -781,7 +792,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -792,10 +803,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-3",
-        "hsk"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -806,11 +816,11 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -820,9 +830,10 @@
       "english": "Rhythm; pacing",
       "tags": [
         "climbing",
-        "sports"
+        "sports",
+        "hsk6"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -834,7 +845,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -845,10 +856,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-2",
-        "hsk"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -860,7 +870,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -871,9 +881,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -884,9 +894,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-3"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -897,9 +907,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-2"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -911,7 +921,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -922,10 +932,9 @@
       "tags": [
         "climbing",
         "sports",
-        "hsk-2021-3",
-        "hsk"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -937,7 +946,7 @@
         "climbing",
         "sports"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -948,10 +957,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-4",
-        "hsk"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -960,10 +968,9 @@
       "pinyin": "liǎo jiě",
       "english": "to understand; to realize; to find out",
       "tags": [
-        "hsk",
-        "hsk-2021-4"
+        "hsk4"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -974,12 +981,11 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -990,10 +996,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-1",
-        "hsk"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1004,9 +1009,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-2"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1017,11 +1022,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1032,10 +1037,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-1",
-        "hsk"
+        "hsk1"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1046,9 +1050,9 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-2"
+        "hsk2"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1059,12 +1063,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1075,12 +1078,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1091,9 +1093,9 @@
       "tags": [
         "activities",
         "sports",
-        "hsk-2021-3"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1104,12 +1106,11 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1120,10 +1121,9 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-3",
-        "hsk"
+        "hsk3"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1134,11 +1134,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1149,9 +1149,11 @@
       "tags": [
         "grammar-support",
         "basics",
-        "hsk-2021-2"
+        "hsk2",
+        "work",
+        "professional"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1162,11 +1164,11 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1177,11 +1179,11 @@
       "tags": [
         "daily",
         "foundations",
-        "hsk-2021-1",
+        "hsk1",
         "grammar-support",
         "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1192,12 +1194,11 @@
       "tags": [
         "daily",
         "practical",
-        "hsk-2021-3",
+        "hsk3",
         "grammar-support",
-        "basics",
-        "hsk"
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3.1",
+      "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],

@@ -1,4 +1,4 @@
-# Cíyán (词言) — Mandarin SRS PWA, v0.3.1
+# Cíyán (词言) — Mandarin SRS PWA, v0.3.2
 
 A dependency-free, offline-first Mandarin flashcard PWA for iPhone. Two independent card types: **vocabulary words** and **grammar sentence puzzles**. Review records, FSRS scheduling, settings, vocabulary and grammar all live in the device's IndexedDB database. You export an independent JSON backup to the iPhone **Files** app after every study session.
 
@@ -14,15 +14,23 @@ python3 package.py
 
 This regenerates **`dist/ciyan/`**, including `index.html` at its root. The entire `dist/` directory is Git-ignored. You can upload the folder to **Cloudflare Pages → Direct Upload**, or zip the contents of `dist/ciyan/` (not the `ciyan` parent directory) and upload that ZIP. No Node modules, bundler or Python packages are required for production.
 
-**Upgrading to the v0.3.1 deck refresh:** Export a full backup before deployment. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. The app may still label its unchanged study interface v0.3 in Settings; the Git/deck release version is v0.3.1. The new worker waits for old windows to close so a release does not swap scripts mid-session. Existing v0.1 migration remains supported; v0.2 data uses the same schema and database name. Optional decks are never added automatically.
+**Upgrading a development installation:** If you have no study data, there is nothing to migrate. You can clear the website data and reload to start fresh. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. Settings shows v0.3.2; the vocabulary data and HSK tag source are refreshed. The new worker waits for old windows to close so a release does not swap scripts mid-session. Optional decks are never added automatically. There is no new historical data migration in this release.
 
-## Deck-only update in v0.3.1
+## Earlier geography and slang additions (v0.3.1)
 
-The existing app logic is unchanged. The optional library now contains **2,002 distinct words and 1,287 grammar examples**, including exact-token usage coverage for every vocabulary entry and the original starter words. Geography now includes visited places from the supplied list, all 50 US states, 27 EU member country-capital pairs, 34 Chinese province-level names and the requested world capitals; additional decks cover contemporary non-rude slang and familiar friend-chat expressions. New data is opt-in through **Explore optional decks**. The service-worker cache version is bumped to refresh offline JSON assets. See `decks/README.md` and `AUDIT_v0.3.1.md`.
+The preceding v0.3.1 release contained **2,002 distinct words and 1,287 grammar examples**, with exact-token usage coverage for every vocabulary entry and the original starter words. Geography now includes visited places from the supplied list, all 50 US states, 27 EU member country-capital pairs, 34 Chinese province-level names and the requested world capitals; additional decks cover contemporary non-rude slang and familiar friend-chat expressions. New data is opt-in through **Explore optional decks**. The service-worker cache version is bumped to refresh offline JSON assets. See `decks/README.md` and `AUDIT_v0.3.1.md`.
+
+## v0.3.2 — vocabulary curation and unified HSK labels
+
+- Reviewed the user's Pleco headword export as a **reference only**. Added 262 context examples, representing 259 selected headwords (with some already present in the library), plus supporting vocabulary. The concise definitions and new example sentences were written independently of Pleco's definitions.
+- The optional collection now contains **2,277 unique words and 1,549 grammar entries**. All words, including starters and new additions, occur in at least one exact `{word}` token in a grammar entry. Each individual deck includes linked example(s) and prerequisite words so it can be imported independently.
+- Replaced visible HSK 3.0 / HSK 2021 / generic HSK labels with one group: **HSK1, HSK2, HSK3, HSK4, HSK5, HSK6, HSK7-9**. Every included word found in the consolidated level reference has precisely one matching band tag, whether imported from an HSK deck or a topical deck. HSK decks contain *selected* words and supporting terms, not exhaustive level lists.
+- HSK tags are assigned on **new imports, cards and edits**. Because this is an **unused development build**, no v0.3.1 tag migration or retrospective user-data conversion has been added. Before real use begins, future releases must introduce and test migration when schema or tag semantics change.
+- **No changes to SRS algorithms or study session behavior.** The version string and offline deck cache were updated; refer to `AUDIT_v0.3.2.md` for testing evidence and limits.
 
 ## New in v0.3
 
-There are **1,580 unique optional vocabulary entries**, **24 grammar cards**, and **17 individual decks** plus an all-in-one import. Topics include Chinese meals, ingredients, ordering, global food, activities/sports, muscles/body/recovery, climbing, provinces/regions, cities, countries and everyday life. Four selected HSK decks contain 180 / 180 / 160 / 140 entries respectively, verified against the **2021 HSK 3.0 grading standard**, not the later exam syllabus.
+The earlier v0.3 release contained **1,580 unique optional vocabulary entries**, **24 grammar cards**, and **17 individual decks** plus an all-in-one import. Topics include Chinese meals, ingredients, ordering, global food, activities/sports, muscles/body/recovery, climbing, provinces/regions, cities, countries and everyday life. Four selected HSK decks contain 180 / 180 / 160 / 140 entries respectively, verified against the **2021 HSK 3.0 grading standard**, not the later exam syllabus.
 
 Use **Home → Explore optional decks** or the same button in Settings. You can load any topic directly, download its JSON, or use the separate decks ZIP. Imports preserve existing words and progress. On Words, set tag filters and use **Study matching words** for focused new/due reviews. Large word collections initially show 80 rows, with a Show More button.
 
