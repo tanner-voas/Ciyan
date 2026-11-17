@@ -1,0 +1,964 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "All 50 US states and Washington, DC",
+  "description": "Practical vocabulary for all 50 us states and washington, dc.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-578ec2fd7d69cba3",
+      "hanzi": "阿拉巴马州",
+      "pinyin": "ā lā bā mǎ zhōu",
+      "english": "Alabama, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d6a3a0641bb19d21",
+      "hanzi": "阿拉斯加州",
+      "pinyin": "ā lā sī jiā zhōu",
+      "english": "Alaska, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5c35a42964002ac1",
+      "hanzi": "亚利桑那州",
+      "pinyin": "yà lì sāng nà zhōu",
+      "english": "Arizona, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-274d65459b06509c",
+      "hanzi": "阿肯色州",
+      "pinyin": "ā kěn sè zhōu",
+      "english": "Arkansas, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e65d8538fc7519e3",
+      "hanzi": "加利福尼亚州",
+      "pinyin": "jiā lì fú ní yà zhōu",
+      "english": "California, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f0bf797be8227461",
+      "hanzi": "科罗拉多州",
+      "pinyin": "kē luó lā duō zhōu",
+      "english": "Colorado, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9b3cd164a49f53cc",
+      "hanzi": "康涅狄格州",
+      "pinyin": "kāng niè dí gé zhōu",
+      "english": "Connecticut, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4b35305d5e93008c",
+      "hanzi": "特拉华州",
+      "pinyin": "tè lā huá zhōu",
+      "english": "Delaware, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-013702a89e8a619d",
+      "hanzi": "佛罗里达州",
+      "pinyin": "fó luó lǐ dá zhōu",
+      "english": "Florida, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c06e6607b3cf94ef",
+      "hanzi": "佐治亚州",
+      "pinyin": "zuǒ zhì yà zhōu",
+      "english": "Georgia, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-67253401bba71201",
+      "hanzi": "夏威夷州",
+      "pinyin": "xià wēi yí zhōu",
+      "english": "Hawaii, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3ba9f9f9b6eebf58",
+      "hanzi": "爱达荷州",
+      "pinyin": "ài dá hé zhōu",
+      "english": "Idaho, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0eae5cea526a2ec7",
+      "hanzi": "伊利诺伊州",
+      "pinyin": "yī lì nuò yī zhōu",
+      "english": "Illinois, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8c063277f5c7e98b",
+      "hanzi": "印第安纳州",
+      "pinyin": "yìn dì ān nà zhōu",
+      "english": "Indiana, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-56c16bc4fe255906",
+      "hanzi": "爱荷华州",
+      "pinyin": "ài hé huá zhōu",
+      "english": "Iowa, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81921bc271ddfba0",
+      "hanzi": "堪萨斯州",
+      "pinyin": "kān sà sī zhōu",
+      "english": "Kansas, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a56880c142ce23f5",
+      "hanzi": "肯塔基州",
+      "pinyin": "kěn tǎ jī zhōu",
+      "english": "Kentucky, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9918c101093df5ca",
+      "hanzi": "路易斯安那州",
+      "pinyin": "lù yì sī ān nà zhōu",
+      "english": "Louisiana, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c6a070a5bf09a948",
+      "hanzi": "缅因州",
+      "pinyin": "miǎn yīn zhōu",
+      "english": "Maine, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2262f020543e2a87",
+      "hanzi": "马里兰州",
+      "pinyin": "mǎ lǐ lán zhōu",
+      "english": "Maryland, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8cef2f4c4cd6b580",
+      "hanzi": "马萨诸塞州",
+      "pinyin": "mǎ sà zhū sài zhōu",
+      "english": "Massachusetts, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfd8f3fba4ecd593",
+      "hanzi": "密歇根州",
+      "pinyin": "mì xiē gēn zhōu",
+      "english": "Michigan, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33c53e3515827553",
+      "hanzi": "明尼苏达州",
+      "pinyin": "míng ní sū dá zhōu",
+      "english": "Minnesota, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-71b95afc5ca41446",
+      "hanzi": "密西西比州",
+      "pinyin": "mì xī xī bǐ zhōu",
+      "english": "Mississippi, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-981002f8328de8df",
+      "hanzi": "密苏里州",
+      "pinyin": "mì sū lǐ zhōu",
+      "english": "Missouri, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0522c95befbfd804",
+      "hanzi": "蒙大拿州",
+      "pinyin": "méng dà ná zhōu",
+      "english": "Montana, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0fd3e5f9b6523538",
+      "hanzi": "内布拉斯加州",
+      "pinyin": "nèi bù lā sī jiā zhōu",
+      "english": "Nebraska, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-566e8604d1c38cc7",
+      "hanzi": "内华达州",
+      "pinyin": "nèi huá dá zhōu",
+      "english": "Nevada, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f97b21ac3527440",
+      "hanzi": "新罕布什尔州",
+      "pinyin": "xīn hǎn bù shí ěr zhōu",
+      "english": "New Hampshire, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-810aa60f5af92cb2",
+      "hanzi": "新泽西州",
+      "pinyin": "xīn zé xī zhōu",
+      "english": "New Jersey, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-750ea02780a64fc9",
+      "hanzi": "新墨西哥州",
+      "pinyin": "xīn mò xī gē zhōu",
+      "english": "New Mexico, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5c75df8fbb013de2",
+      "hanzi": "纽约州",
+      "pinyin": "niǔ yuē zhōu",
+      "english": "New York (state), USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7348dab965b761b9",
+      "hanzi": "北卡罗来纳州",
+      "pinyin": "běi kǎ luó lái nà zhōu",
+      "english": "North Carolina, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-862a4f2ce854a494",
+      "hanzi": "北达科他州",
+      "pinyin": "běi dá kē tā zhōu",
+      "english": "North Dakota, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d067080315108aa",
+      "hanzi": "俄亥俄州",
+      "pinyin": "é hài é zhōu",
+      "english": "Ohio, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-580db44fb7967160",
+      "hanzi": "俄克拉荷马州",
+      "pinyin": "é kè lā hé mǎ zhōu",
+      "english": "Oklahoma, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-63748083f039be82",
+      "hanzi": "俄勒冈州",
+      "pinyin": "é lè gāng zhōu",
+      "english": "Oregon, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7bf3f830e4062048",
+      "hanzi": "宾夕法尼亚州",
+      "pinyin": "bīn xī fǎ ní yà zhōu",
+      "english": "Pennsylvania, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-efaed6eab77f103f",
+      "hanzi": "罗得岛州",
+      "pinyin": "luó dé dǎo zhōu",
+      "english": "Rhode Island, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d9e3bb5734065a3",
+      "hanzi": "南卡罗来纳州",
+      "pinyin": "nán kǎ luó lái nà zhōu",
+      "english": "South Carolina, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0680b9a684907d24",
+      "hanzi": "南达科他州",
+      "pinyin": "nán dá kē tā zhōu",
+      "english": "South Dakota, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-353bc0940d96c330",
+      "hanzi": "田纳西州",
+      "pinyin": "tián nà xī zhōu",
+      "english": "Tennessee, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-61bc3126dc9fdcec",
+      "hanzi": "得克萨斯州",
+      "pinyin": "dé kè sà sī zhōu",
+      "english": "Texas, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c2331509b140ee7f",
+      "hanzi": "犹他州",
+      "pinyin": "yóu tā zhōu",
+      "english": "Utah, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-75362cd90bef7736",
+      "hanzi": "佛蒙特州",
+      "pinyin": "fó méng tè zhōu",
+      "english": "Vermont, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-87c0cbb72e6ac5d0",
+      "hanzi": "弗吉尼亚州",
+      "pinyin": "fú jí ní yà zhōu",
+      "english": "Virginia, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29d62851254e88d4",
+      "hanzi": "华盛顿州",
+      "pinyin": "huá shèng dùn zhōu",
+      "english": "Washington (state), USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-db9e435a7ec8e161",
+      "hanzi": "西弗吉尼亚州",
+      "pinyin": "xī fú jí ní yà zhōu",
+      "english": "West Virginia, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0aeafb1328e34d66",
+      "hanzi": "威斯康星州",
+      "pinyin": "wēi sī kāng xīng zhōu",
+      "english": "Wisconsin, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3e1d3f45bc4b0a09",
+      "hanzi": "怀俄明州",
+      "pinyin": "huái é míng zhōu",
+      "english": "Wyoming, USA",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-615f77c856be4792",
+      "hanzi": "华盛顿特区",
+      "pinyin": "huá shèng dùn tè qū",
+      "english": "Washington, DC, USA (federal district, not a state)",
+      "tags": [
+        "places",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8bf3f878e389b57",
+      "hanzi": "旅游",
+      "pinyin": "lǚ yóu",
+      "english": "Travel for leisure",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f6b1949b093e352",
+      "hanzi": "计划",
+      "pinyin": "jì huà",
+      "english": "Plan",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-004ac81d5f1b8ec12447",
+      "markup": "{我}{想}{去}{缅因州}、{马里兰州}{和}{马萨诸塞州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù miǎn yīn zhōu, mǎ lǐ lán zhōu hé mǎ sà zhū sài zhōu lǚ xíng.",
+      "english": "I would like to travel to Maine, Maryland and Massachusetts.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-04306d41df76f89af265",
+      "markup": "{我}{想}{去}{弗吉尼亚州}、{华盛顿州}{和}{西弗吉尼亚州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù fú jí ní yà zhōu, huá shèng dùn zhōu hé xī fú jí ní yà zhōu lǚ xíng.",
+      "english": "I would like to travel to Virginia, Washington and West Virginia.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-07aa47547e4308f63b36",
+      "markup": "{你}{去}{过}{伊利诺伊州}、{印第安纳州}{和}{爱荷华州}{吗}？",
+      "pinyin": "Nǐ qù guo yī lì nuò yī zhōu, yìn dì ān nà zhōu hé ài hé huá zhōu ma?",
+      "english": "Have you been to Illinois, Indiana and Iowa?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0b7b69be86de894817ec",
+      "markup": "{你}{去}{过}{南卡罗来纳州}、{南达科他州}{和}{田纳西州}{吗}？",
+      "pinyin": "Nǐ qù guo nán kǎ luó lái nà zhōu, nán dá kē tā zhōu hé tián nà xī zhōu ma?",
+      "english": "Have you been to South Carolina, South Dakota and Tennessee?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-12f7b689da73b107daf9",
+      "markup": "{我}{想}{去}{俄勒冈州}、{宾夕法尼亚州}{和}{罗得岛州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù é lè gāng zhōu, bīn xī fǎ ní yà zhōu hé luó dé dǎo zhōu lǚ xíng.",
+      "english": "I would like to travel to Oregon, Pennsylvania and Rhode Island.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-22c999b17b411fdc57f5",
+      "markup": "{我}{想}{去}{内华达州}、{新罕布什尔州}{和}{新泽西州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù nèi huá dá zhōu, xīn hǎn bù shí ěr zhōu hé xīn zé xī zhōu lǚ xíng.",
+      "english": "I would like to travel to Nevada, New Hampshire and New Jersey.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3ef50622d2be972597e1",
+      "markup": "{你}{去}{过}{新墨西哥州}、{纽约州}{和}{北卡罗来纳州}{吗}？",
+      "pinyin": "Nǐ qù guo xīn mò xī gē zhōu, niǔ yuē zhōu hé běi kǎ luó lái nà zhōu ma?",
+      "english": "Have you been to New Mexico, New York and North Carolina?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-481944f782b1932cbd39",
+      "markup": "{我们}{可以}{计划}{去}{康涅狄格州}、{特拉华州}{和}{佛罗里达州}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù kāng niè dí gé zhōu, tè lā huá zhōu hé fó luó lǐ dá zhōu lǚ yóu.",
+      "english": "We could plan a trip to Connecticut, Delaware and Florida.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-58e209ff5b77204d611a",
+      "markup": "{我们}{可以}{计划}{去}{堪萨斯州}、{肯塔基州}{和}{路易斯安那州}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù kān sà sī zhōu, kěn tǎ jī zhōu hé lù yì sī ān nà zhōu lǚ yóu.",
+      "english": "We could plan a trip to Kansas, Kentucky and Louisiana.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6eea429c960c91ddace3",
+      "markup": "{我们}{可以}{计划}{去}{密苏里州}、{蒙大拿州}{和}{内布拉斯加州}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù mì sū lǐ zhōu, méng dà ná zhōu hé nèi bù lā sī jiā zhōu lǚ yóu.",
+      "english": "We could plan a trip to Missouri, Montana and Nebraska.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-838ee773be301905b175",
+      "markup": "{你}{去}{过}{威斯康星州}、{怀俄明州}{和}{华盛顿特区}{吗}？",
+      "pinyin": "Nǐ qù guo wēi sī kāng xīng zhōu, huái é míng zhōu hé huá shèng dùn tè qū ma?",
+      "english": "Have you been to Wisconsin, Wyoming and Washington?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a4d2a8cbb555af651a4f",
+      "markup": "{我们}{可以}{计划}{去}{得克萨斯州}、{犹他州}{和}{佛蒙特州}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù dé kè sà sī zhōu, yóu tā zhōu hé fó méng tè zhōu lǚ yóu.",
+      "english": "We could plan a trip to Texas, Utah and Vermont.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b7a8dede144461bf43b2",
+      "markup": "{你}{去}{过}{阿肯色州}、{加利福尼亚州}{和}{科罗拉多州}{吗}？",
+      "pinyin": "Nǐ qù guo ā kěn sè zhōu, jiā lì fú ní yà zhōu hé kē luó lā duō zhōu ma?",
+      "english": "Have you been to Arkansas, California and Colorado?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d05458019f20ce92e10a",
+      "markup": "{我}{想}{去}{佐治亚州}、{夏威夷州}{和}{爱达荷州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù zuǒ zhì yà zhōu, xià wēi yí zhōu hé ài dá hé zhōu lǚ xíng.",
+      "english": "I would like to travel to Georgia, Hawaii and Idaho.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-eb1738c4ec4009fa76b5",
+      "markup": "{我}{想}{去}{阿拉巴马州}、{阿拉斯加州}{和}{亚利桑那州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù ā lā bā mǎ zhōu, ā lā sī jiā zhōu hé yà lì sāng nà zhōu lǚ xíng.",
+      "english": "I would like to travel to Alabama, Alaska and Arizona.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ec74bfe1218e339ef712",
+      "markup": "{我们}{可以}{计划}{去}{北达科他州}、{俄亥俄州}{和}{俄克拉荷马州}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù běi dá kē tā zhōu, é hài é zhōu hé é kè lā hé mǎ zhōu lǚ yóu.",
+      "english": "We could plan a trip to North Dakota, Ohio and Oklahoma.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f0cb907c8e96b77d3409",
+      "markup": "{你}{去}{过}{密歇根州}、{明尼苏达州}{和}{密西西比州}{吗}？",
+      "pinyin": "Nǐ qù guo mì xiē gēn zhōu, míng ní sū dá zhōu hé mì xī xī bǐ zhōu ma?",
+      "english": "Have you been to Michigan, Minnesota and Mississippi?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

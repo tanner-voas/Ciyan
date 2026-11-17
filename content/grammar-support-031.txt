@@ -1,0 +1,363 @@
+# grammar-support|Grammar building blocks|grammar-support,basics
+我们|wǒ men|We; us
+我|wǒ|I; me
+你|nǐ|You
+他|tā|He; him
+她|tā|She; her
+他们|tā men|They
+是|shì|To be; is; are
+不是|bú shì|Is not; are not
+有|yǒu|Have; there is
+没|méi|Not; have not
+不|bù|Not
+的|de|Possessive or attributive particle
+了|le|Aspect/change marker
+过|guo|Past experience marker
+在|zài|At; in; ongoing action
+去|qù|Go
+来|lái|Come
+也|yě|Also
+都|dōu|All; both
+和|hé|And; with
+还是|hái shi|Or (questions)
+或者|huò zhě|Or (statements)
+喜欢|xǐ huan|Like
+想|xiǎng|Want; think
+要|yào|Want; need
+会|huì|Will; know how to
+能|néng|Can; be able to
+可以|kě yǐ|May; can
+需要|xū yào|Need
+觉得|jué de|Think; feel
+认为|rèn wéi|Consider; believe
+知道|zhī dào|Know
+看到|kàn dào|See
+买|mǎi|Buy
+吃|chī|Eat
+喝|hē|Drink
+尝尝|cháng chang|Try/taste (food)
+试试|shì shi|Give it a try
+试|shì|Try; test
+说|shuō|Say
+告诉|gào su|Tell
+看|kàn|Look; watch; read
+问|wèn|Ask
+听|tīng|Listen
+做|zuò|Do; make
+选|xuǎn|Choose
+用|yòng|Use
+给|gěi|Give; for
+点|diǎn|Order; point; o'clock
+点菜|diǎn cài|Order dishes
+餐厅|cān tīng|Restaurant
+店|diàn|Store; shop
+超市|chāo shì|Supermarket
+菜|cài|Dish; vegetables
+东西|dōng xi|Thing; something
+这个|zhè ge|This one
+那个|nà ge|That one
+这些|zhè xiē|These
+那个|nà ge|That one
+这|zhè|This
+那|nà|That
+一|yī|One
+二|èr|Two
+三|sān|Three
+两|liǎng|Two before classifiers
+个|ge|General classifier
+一些|yī xiē|Some; a few
+很多|hěn duō|A lot
+多|duō|Many; much
+更|gèng|More; even more
+很|hěn|Very
+太|tài|Too; very
+最|zuì|Most
+好|hǎo|Good
+不错|bú cuò|Not bad; good
+重要|zhòng yào|Important
+新的|xīn de|New (attributive)
+有点|yǒu diǎn|A bit (often undesirable)
+有点儿|yǒu diǎnr|A bit
+非常|fēi cháng|Very
+特别|tè bié|Particularly; special
+现在|xiàn zài|Now
+今天|jīn tiān|Today
+明天|míng tiān|Tomorrow
+昨天|zuó tiān|Yesterday
+周末|zhōu mò|Weekend
+最近|zuì jìn|Recently
+以前|yǐ qián|Before; previously
+以后|yǐ hòu|After; afterwards
+已经|yǐ jīng|Already
+还|hái|Still; yet
+又|yòu|Again; also
+再|zài|Again (future); then
+先|xiān|First
+然后|rán hòu|Then
+因为|yīn wèi|Because
+所以|suǒ yǐ|So; therefore
+虽然|suī rán|Although
+但是|dàn shì|But
+如果|rú guǒ|If
+就|jiù|Then; right away
+才|cái|Only then
+把|bǎ|Object disposal construction marker
+被|bèi|Passive marker
+比|bǐ|Compared with
+从|cóng|From
+到|dào|To; arrive
+跟|gēn|With
+对|duì|Regarding; correct
+为了|wèi le|In order to
+时候|shí hou|Time; when
+的时候|de shí hou|When; at the time
+之前|zhī qián|Before
+之后|zhī hòu|After
+这样|zhè yàng|Like this
+怎么|zěn me|How
+为什么|wèi shén me|Why
+什么|shén me|What
+哪儿|nǎr|Where
+哪里|nǎ lǐ|Where
+多少|duō shao|How much; how many
+吗|ma|Question particle
+吧|ba|Suggestion particle
+呢|ne|Question/topic particle
+一下|yí xià|Briefly; a little
+一起|yì qǐ|Together
+进行|jìn xíng|Conduct; carry out
+开始|kāi shǐ|Begin
+继续|jì xù|Continue
+完成|wán chéng|Finish; complete
+准备|zhǔn bèi|Prepare
+计划|jì huà|Plan
+决定|jué dìng|Decide
+旅游|lǚ yóu|Travel for leisure
+旅行|lǚ xíng|Travel
+首都|shǒu dū|Capital city
+国家|guó jiā|Country
+城市|chéng shì|City
+地方|dì fang|Place
+省|shěng|Province
+州|zhōu|State; prefecture; region
+工作|gōng zuò|Work
+学习|xué xí|Study
+朋友|péng you|Friend
+家|jiā|Home; family
+回家|huí jiā|Go home
+餐具|cān jù|Tableware
+一份|yí fèn|One serving/portion
+份|fèn|Serving/portion classifier
+杯|bēi|Cup; measure word
+瓶|píng|Bottle; measure word
+双|shuāng|Pair classifier
+件|jiàn|Item/matter classifier
+本|běn|Book classifier
+条|tiáo|Classifier for long/thin items
+首|shǒu|Song/poem classifier
+次|cì|Occurrence classifier
+位|wèi|Polite classifier for people
+路|lù|Road; way
+线|xiàn|Line; route
+技能|jì néng|Skill
+动作|dòng zuò|Movement; action
+路线|lù xiàn|Route; path
+训练|xùn liàn|Training
+热身|rè shēn|Warm up
+休息|xiū xi|Rest
+感觉|gǎn jué|Feeling; feel
+舒服|shū fu|Comfortable
+疼|téng|Hurt; painful
+酸|suān|Sour; sore
+累|lèi|Tired
+累了|lèi le|Tired (completed state)
+小|xiǎo|Small
+大|dà|Big
+长|cháng|Long
+短|duǎn|Short
+多长|duō cháng|How long
+时间|shí jiān|Time
+分钟|fēn zhōng|Minute
+小时|xiǎo shí|Hour
+年|nián|Year
+天气|tiān qì|Weather
+人|rén|Person
+人们|rén men|People
+事情|shì qing|Matter; thing
+事|shì|Matter; affair
+问题|wèn tí|Problem; question
+原因|yuán yīn|Reason
+结果|jié guǒ|Result
+方法|fāng fǎ|Method
+方式|fāng shì|Manner; way
+机会|jī huì|Opportunity
+帮助|bāng zhù|Help
+解决|jiě jué|Solve
+解释|jiě shì|Explain
+理解|lǐ jiě|Understand
+讨论|tǎo lùn|Discuss
+介绍|jiè shào|Introduce
+分享|fēn xiǎng|Share
+推荐|tuī jiàn|Recommend
+比较|bǐ jiào|Compare; rather
+同时|tóng shí|At the same time
+可能|kě néng|Possible
+应该|yīng gāi|Should
+必须|bì xū|Must
+一定|yí dìng|Certainly
+努力|nǔ lì|Work hard
+认真|rèn zhēn|Seriously; conscientious
+安全|ān quán|Safe; safety
+注意|zhù yì|Pay attention
+记得|jì de|Remember
+忘了|wàng le|Forgot
+带|dài|Bring
+放|fàng|Put; place
+拿|ná|Take; hold
+找|zhǎo|Look for
+发现|fā xiàn|Discover; notice
+遇到|yù dào|Encounter; meet
+选择|xuǎn zé|Choose; choice
+改变|gǎi biàn|Change
+提高|tí gāo|Improve
+减少|jiǎn shǎo|Reduce
+增加|zēng jiā|Increase
+保持|bǎo chí|Maintain; keep
+获得|huò dé|Obtain
+安排|ān pái|Arrange; schedule
+确认|què rèn|Confirm
+约|yuē|Arrange to meet
+等|děng|Wait
+一会儿|yí huìr|A while
+附近|fù jìn|Nearby
+买单|mǎi dān|Pay the bill
+打包|dǎ bāo|Pack food to go
+晚饭|wǎn fàn|Dinner
+练习|liàn xí|Practice; rehearse
+进步|jìn bù|Progress; improve
+即使|jí shǐ|Even if
+难|nán|Difficult
+地铁站|dì tiě zhàn|Metro station
+书|shū|Book
+有意思|yǒu yì si|Interesting
+相机|xiàng jī|Camera
+得|de|Degree-complement particle
+中文|zhōng wén|Chinese language
+进来|jìn lái|Come in
+一边|yì biān|One side; while (doing two actions)
+越来越|yuè lái yuè|More and more; increasingly
+信心|xìn xīn|Confidence
+这里|zhè lǐ|Here
+出门|chū mén|Go out; leave home
+吃饭|chī fàn|Eat a meal
+好吃|hǎo chī|Tasty
+很久|hěn jiǔ|A long time
+连|lián|Even (emphatic)
+水平|shuǐ píng|Level; proficiency
+每天|měi tiān|Every day
+打算|dǎ suàn|Plan; intend
+跑|pǎo|Run
+公里|gōng lǐ|Kilometer
+音乐|yīn yuè|Music
+晚饭|wǎn fàn|Evening meal
+老师|lǎo shī|Teacher
+回来|huí lái|Come back
+出去|chū qù|Go out
+家|jiā|Home; family
+衣服|yī fu|Clothes
+贵|guì|Expensive
+便宜|pián yi|Inexpensive
+所|suǒ|Measure word for buildings; nominalization particle
+认识|rèn shi|Know a person; recognize
+饮料|yǐn liào|Beverage; drink
+道|dào|Dish classifier; path; way
+味|wèi|Flavor; taste
+一天|yì tiān|One day; a whole day
+下周|xià zhōu|Next week
+中|zhōng|Within; middle; during
+偷偷|tōu tōu|Secretly; on the sly
+出来|chū lái|Come out
+划算|huá suàn|Worth it; good value
+办公室|bàn gōng shì|Office
+千万|qiān wàn|By all means; absolutely (in warnings); ten million
+只|zhǐ|Only; merely
+只好|zhǐ hǎo|Have no choice but to
+叫错|jiào cuò|Call by the wrong name
+咖啡馆|kā fēi guǎn|Café
+好笑|hǎo xiào|Funny; laughable
+故事|gù shi|Story
+更多|gèng duō|More; additional
+爬|pá|Climb; crawl
+玩|wán|Play; have fun
+知识|zhī shi|Knowledge
+聊天|liáo tiān|Chat
+行业|háng yè|Industry; trade
+行政|xíng zhèng|Administration; administrative
+视频|shì pín|Video
+谁|shéi|Who
+这么多|zhè me duō|So many; so much
+食品|shí pǐn|Food product; foodstuff
+向|xiàng|Toward
+散步|sàn bù|Take a walk
+高|gāo|High; tall
+用法|yòng fǎ|Usage; way of using
+元|yuán|Yuan, Chinese currency unit
+不能|bù néng|Cannot; not able to
+专业|zhuān yè|Professional; specialized
+事故|shì gù|Accident; incident
+今晚|jīn wǎn|Tonight
+作业|zuò yè|Homework; assignment
+公园|gōng yuán|Park
+冰|bīng|Ice
+准时|zhǔn shí|Punctual; on time
+刚好|gāng hǎo|Just right; exactly enough
+厉害|lì hai|Formidable; impressive; intense
+发表|fā biǎo|Deliver; publish; make public
+发言|fā yán|Speak at a meeting; make a statement
+好听|hǎo tīng|Pleasant to hear; sounds good
+好看|hǎo kàn|Good-looking; enjoyable to watch
+安静|ān jìng|Quiet
+尊重|zūn zhòng|Respect
+山|shān|Mountain
+帮|bāng|Help
+常见|cháng jiàn|Common; frequently seen
+强大|qiáng dà|Powerful; strong
+怎么样|zěn me yàng|How; what is it like
+想法|xiǎng fǎ|Idea; thought
+早点|zǎo diǎn|Earlier; breakfast (depending on context)
+早餐|zǎo cān|Breakfast
+更新|gēng xīn|Update; renew
+楼|lóu|Building; floor
+看法|kàn fǎ|Opinion; viewpoint
+看看|kàn kan|Take a look
+经验|jīng yàn|Experience; know-how
+见|jiàn|See; meet
+讲话|jiǎng huà|Give a speech; speak
+讲课|jiǎng kè|Teach a class; lecture
+路上|lù shang|On the road; on the way
+里|lǐ|Inside; within
+门|mén|Door; gate
+阶段|jiē duàn|Stage; phase
+雪|xuě|Snow
+保存|bǎo cún|Keep; save; preserve
+地理|dì lǐ|Geography
+戴|dài|Wear (accessories)
+结构|jié gòu|Structure
+上去|shàng qù|Go up
+下车|xià chē|Get off a vehicle
+亮|liàng|Bright
+包|bāo|Bag; package
+发|fā|Send; issue
+台|tái|Classifier for machines
+坏|huài|Broken; bad
+张|zhāng|Classifier for flat objects
+忘记|wàng jì|Forget
+房间|fáng jiān|Room
+打|dǎ|Hit; do; make (verb component)
+扫|sǎo|Scan; sweep
+电|diàn|Electricity
+睁|zhēng|Open one's eyes
+红|hóng|Red
+那边|nà biān|Over there
+差不多|chà bu duō|Almost; approximately; about the same
+进度|jìn dù|Progress; project status

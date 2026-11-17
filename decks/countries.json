@@ -17,7 +17,7 @@
         "hsk-2021-1",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -29,7 +29,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -39,9 +39,10 @@
       "english": "United Kingdom",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -53,7 +54,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -63,9 +64,11 @@
       "english": "Australia",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -75,9 +78,10 @@
       "english": "New Zealand",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -87,9 +91,10 @@
       "english": "Japan",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -99,9 +104,11 @@
       "english": "South Korea",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -111,9 +118,10 @@
       "english": "North Korea; Korea in historical contexts",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -125,7 +133,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -135,9 +143,10 @@
       "english": "Russia",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -149,7 +158,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -161,7 +170,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -173,7 +182,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -185,7 +194,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -197,7 +206,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -207,9 +216,11 @@
       "english": "Thailand",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -219,9 +230,10 @@
       "english": "Vietnam",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -231,9 +243,10 @@
       "english": "Laos",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -243,9 +256,11 @@
       "english": "Cambodia",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -257,7 +272,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -267,9 +282,11 @@
       "english": "Malaysia",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -279,9 +296,11 @@
       "english": "Singapore",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -291,9 +310,10 @@
       "english": "Indonesia",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -303,9 +323,10 @@
       "english": "Philippines",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -315,9 +336,11 @@
       "english": "France",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -327,9 +350,11 @@
       "english": "Germany",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -339,9 +364,11 @@
       "english": "Italy",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -351,9 +378,11 @@
       "english": "Spain",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -363,9 +392,11 @@
       "english": "Portugal",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -375,9 +406,11 @@
       "english": "Netherlands",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -387,9 +420,11 @@
       "english": "Belgium",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -399,9 +434,10 @@
       "english": "Switzerland",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -411,9 +447,11 @@
       "english": "Austria",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -423,9 +461,10 @@
       "english": "Sweden",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -437,7 +476,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -447,9 +486,10 @@
       "english": "Denmark",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -459,9 +499,10 @@
       "english": "Finland",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -473,7 +514,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -483,9 +524,10 @@
       "english": "Ireland",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -495,9 +537,10 @@
       "english": "Poland",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -507,9 +550,11 @@
       "english": "Czechia",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -519,9 +564,11 @@
       "english": "Hungary",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -531,9 +578,10 @@
       "english": "Greece",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -545,7 +593,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -557,7 +605,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -567,9 +615,10 @@
       "english": "Mexico",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -581,7 +630,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -593,7 +642,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -605,7 +654,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -617,7 +666,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -629,7 +678,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -639,9 +688,10 @@
       "english": "South Africa",
       "tags": [
         "places",
-        "countries"
+        "countries",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -653,7 +703,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -665,7 +715,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -677,7 +727,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -689,7 +739,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -701,7 +751,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -713,7 +763,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -725,7 +775,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -737,7 +787,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -749,7 +799,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -761,7 +811,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -773,7 +823,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -785,7 +835,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -797,7 +847,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -809,7 +859,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -821,7 +871,7 @@
         "places",
         "countries"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -833,9 +883,11 @@
         "places",
         "countries",
         "hsk-2021-1",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -846,9 +898,11 @@
       "tags": [
         "places",
         "countries",
-        "hsk-2021-3"
+        "hsk-2021-3",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -860,11 +914,544 @@
         "places",
         "countries",
         "hsk-2021-3",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d5f5a7a010731feb",
+      "hanzi": "今天",
+      "pinyin": "jīn tiān",
+      "english": "Today",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9b861e211f0f81b",
+      "hanzi": "地理",
+      "pinyin": "dì lǐ",
+      "english": "Geography",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2118cbc109880ac8",
+      "hanzi": "学习",
+      "pinyin": "xué xí",
+      "english": "Study",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8bf3f878e389b57",
+      "hanzi": "旅游",
+      "pinyin": "lǚ yóu",
+      "english": "Travel for leisure",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2ce2847cbc4743b6",
+      "hanzi": "知识",
+      "pinyin": "zhī shi",
+      "english": "Knowledge",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f6b1949b093e352",
+      "hanzi": "计划",
+      "pinyin": "jì huà",
+      "english": "Plan",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],
-  "grammar": []
+  "grammar": [
+    {
+      "id": "ctx-003be32bb9d18e27efb9",
+      "markup": "{我们}{可以}{计划}{去}{日本}、{韩国}{和}{朝鲜}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù rì běn, hán guó hé cháo xiǎn lǚ yóu.",
+      "english": "We could plan a trip to Japan, South Korea and North Korea.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-144bfd9d685fd47c79bf",
+      "markup": "{我们}{今天}{学习}{大洋洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí dà yáng zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Oceania.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-18fe039436b2e5203442",
+      "markup": "{我们}{可以}{计划}{去}{以色列}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù yǐ sè liè lǚ yóu.",
+      "english": "We could plan a trip to Israel.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1d9664e1265920d246e4",
+      "markup": "{我们}{可以}{计划}{去}{菲律宾}、{法国}{和}{德国}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù fēi lǜ bīn, fǎ guó hé dé guó lǚ yóu.",
+      "english": "We could plan a trip to Philippines, France and Germany.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1feb13e0cabde20079e4",
+      "markup": "{我们}{今天}{学习}{国家}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí guó jiā de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Country.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2009486e1435bc1e1084",
+      "markup": "{我们}{今天}{学习}{非洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí fēi zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Africa.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-232a99327522777633eb",
+      "markup": "{我们}{可以}{计划}{去}{奥地利}、{瑞典}{和}{挪威}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù ào dì lì, ruì diǎn hé nuó wēi lǚ yóu.",
+      "english": "We could plan a trip to Austria, Sweden and Norway.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-305dd5a37ac177b896e9",
+      "markup": "{我}{想}{去}{蒙古}、{俄罗斯}{和}{印度}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù měng gǔ, é luó sī hé yìn dù lǚ xíng.",
+      "english": "I would like to travel to Mongolia, Russia and India.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4688ee8c9ce616d3a985",
+      "markup": "{我}{想}{去}{丹麦}、{芬兰}{和}{冰岛}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù dān mài, fēn lán hé bīng dǎo lǚ xíng.",
+      "english": "I would like to travel to Denmark, Finland and Iceland.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4825706b9a49ac787eaf",
+      "markup": "{你}{去}{过}{荷兰}、{比利时}{和}{瑞士}{吗}？",
+      "pinyin": "Nǐ qù guo hé lán, bǐ lì shí hé ruì shì ma?",
+      "english": "Have you been to Netherlands, Belgium and Switzerland?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-51cc2485efc0aec01aee",
+      "markup": "{我们}{今天}{学习}{南美洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí nán měi zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: South America.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5350f1bef600eee2a193",
+      "markup": "{我们}{今天}{学习}{亚洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí yà zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Asia.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-698a7170272e25d13bf1",
+      "markup": "{我们}{可以}{计划}{去}{斯里兰卡}、{泰国}{和}{越南}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù sī lǐ lán kǎ, tài guó hé yuè nán lǚ yóu.",
+      "english": "We could plan a trip to Sri Lanka, Thailand and Vietnam.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7a9ca29f4b523abc9807",
+      "markup": "{你}{去}{过}{沙特阿拉伯}、{阿联酋}{和}{伊朗}{吗}？",
+      "pinyin": "Nǐ qù guo shā tè ā lā bó, ā lián qiú hé yī lǎng ma?",
+      "english": "Have you been to Saudi Arabia, United Arab Emirates and Iran?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-82263bd1fc241f58eab3",
+      "markup": "{你}{去}{过}{巴基斯坦}、{孟加拉国}{和}{尼泊尔}{吗}？",
+      "pinyin": "Nǐ qù guo bā jī sī tǎn, mèng jiā lā guó hé ní bó ěr ma?",
+      "english": "Have you been to Pakistan, Bangladesh and Nepal?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-976518569c364aca1f66",
+      "markup": "{我}{想}{去}{老挝}、{柬埔寨}{和}{缅甸}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù lǎo wō, jiǎn pǔ zhài hé miǎn diàn lǚ xíng.",
+      "english": "I would like to travel to Laos, Cambodia and Myanmar.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9eb8db59bac446bf9469",
+      "markup": "{我们}{可以}{计划}{去}{哥伦比亚}、{南非}{和}{埃及}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù gē lún bǐ yà, nán fēi hé āi jí lǚ yóu.",
+      "english": "We could plan a trip to Colombia, South Africa and Egypt.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a3e165885e0dac22ee15",
+      "markup": "{我们}{今天}{学习}{南极洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí nán jí zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Antarctica.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-aa07ba6f91ed170e79b1",
+      "markup": "{你}{去}{过}{加拿大}、{澳大利亚}{和}{新西兰}{吗}？",
+      "pinyin": "Nǐ qù guo jiā ná dà, ào dà lì yà hé xīn xī lán ma?",
+      "english": "Have you been to Canada, Australia and New Zealand?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-abb0ceeb8b705c0523b3",
+      "markup": "{你}{去}{过}{马来西亚}、{新加坡}{和}{印度尼西亚}{吗}？",
+      "pinyin": "Nǐ qù guo mǎ lái xī yà, xīn jiā pō hé yìn dù ní xī yà ma?",
+      "english": "Have you been to Malaysia, Singapore and Indonesia?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-afc63ce2f7cde83459b7",
+      "markup": "{你}{去}{过}{爱尔兰}、{波兰}{和}{捷克}{吗}？",
+      "pinyin": "Nǐ qù guo ài ěr lán, bō lán hé jié kè ma?",
+      "english": "Have you been to Ireland, Poland and Czechia?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bcf4f05a6ed53c7187a3",
+      "markup": "{我}{想}{去}{中国}、{美国}{和}{英国}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù zhōng guó, měi guó hé yīng guó lǚ xíng.",
+      "english": "I would like to travel to China, United States and United Kingdom.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-be569ab9409830ec6585",
+      "markup": "{我们}{今天}{学习}{城市}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí chéng shì de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: City.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cc1e336b234b3f18cf89",
+      "markup": "{我们}{今天}{学习}{北美洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí běi měi zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: North America.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dae8c8af0a269d958a23",
+      "markup": "{我}{想}{去}{摩洛哥}、{肯尼亚}{和}{尼日利亚}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù mó luò gē, kěn ní yà hé ní rì lì yà lǚ xíng.",
+      "english": "I would like to travel to Morocco, Kenya and Nigeria.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-db53d919ad525d2c747d",
+      "markup": "{我}{想}{去}{乌克兰}、{墨西哥}{和}{巴西}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù wū kè lán, mò xī gē hé bā xī lǚ xíng.",
+      "english": "I would like to travel to Ukraine, Mexico and Brazil.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e816631d87dd4bceb557",
+      "markup": "{我们}{可以}{计划}{去}{匈牙利}、{希腊}{和}{土耳其}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù xiōng yá lì, xī là hé tǔ ěr qí lǚ yóu.",
+      "english": "We could plan a trip to Hungary, Greece and Türkiye.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-eaf5bca08772f968d1e6",
+      "markup": "{你}{去}{过}{阿根廷}、{智利}{和}{秘鲁}{吗}？",
+      "pinyin": "Nǐ qù guo ā gēn tíng, zhì lì hé bì lǔ ma?",
+      "english": "Have you been to Argentina, Chile and Peru?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fa2f968aa6f7ad6c4201",
+      "markup": "{我们}{今天}{学习}{首都}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí shǒu dū de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Capital city.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fd927ce36b479b55b368",
+      "markup": "{我们}{今天}{学习}{欧洲}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí ōu zhōu de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Europe.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fe7f4f43cca48aecfb0b",
+      "markup": "{我}{想}{去}{意大利}、{西班牙}{和}{葡萄牙}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù yì dà lì, xī bān yá hé pú táo yá lǚ xíng.",
+      "english": "I would like to travel to Italy, Spain and Portugal.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
 }

@@ -15,7 +15,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -27,7 +27,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -39,7 +39,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -51,9 +51,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -65,9 +67,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -79,9 +83,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -93,9 +99,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -107,9 +115,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -121,21 +131,25 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-33a8618cb6710e43",
       "hanzi": "问题",
       "pinyin": "wèn tí",
-      "english": "question; problem; issue",
+      "english": "Problem; question",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -149,7 +163,7 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -161,9 +175,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -175,7 +191,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -187,9 +203,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -201,9 +219,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -215,7 +235,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -227,9 +247,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -241,7 +263,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -253,19 +275,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-31e43519db636cc3",
       "hanzi": "认为",
       "pinyin": "rèn wéi",
-      "english": "to believe; to think; to consider; to feel",
+      "english": "Consider; believe",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -277,45 +301,53 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-1aa9c4170bddb16e",
       "hanzi": "位",
       "pinyin": "wèi",
-      "english": "Polite classifier for people; position",
+      "english": "Polite classifier for people",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-fd5db2cf36a92942",
       "hanzi": "带",
       "pinyin": "dài",
-      "english": "Bring; take along; belt",
+      "english": "Bring",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-10493d06b90f6b18",
       "hanzi": "发现",
       "pinyin": "fā xiàn",
-      "english": "to notice; to become aware of; to discover; to find; to detect; a discovery",
+      "english": "Discover; notice",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -327,19 +359,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-a57fbc7663a1c92b",
       "hanzi": "一定",
-      "pinyin": "yī dìng",
-      "english": "surely; certainly; necessarily",
+      "pinyin": "yí dìng",
+      "english": "Certainly",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -351,7 +385,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -363,7 +397,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -375,7 +409,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -387,7 +421,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -399,7 +433,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -411,7 +445,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -423,7 +457,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -435,19 +469,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-2c08cddfb13b0ab0",
       "hanzi": "必须",
       "pinyin": "bì xū",
-      "english": "to have to; must; compulsory",
+      "english": "Must",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -459,7 +495,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -471,67 +507,77 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-e66d9fac19a76a4b",
       "hanzi": "事情",
       "pinyin": "shì qing",
-      "english": "affair; matter; thing; business",
+      "english": "Matter; thing",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-bea6e5f48e20d646",
       "hanzi": "感觉",
       "pinyin": "gǎn jué",
-      "english": "feeling; impression; sensation; to feel; to perceive",
+      "english": "Feeling; feel",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-ca4f5ee82e28628d",
       "hanzi": "然后",
       "pinyin": "rán hòu",
-      "english": "then; after that; afterwards",
+      "english": "Then",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-f004f1d84cf962dc",
       "hanzi": "条",
       "pinyin": "tiáo",
-      "english": "Classifier for long thin objects; item",
+      "english": "Classifier for long/thin items",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-7c00255577088ec9",
       "hanzi": "件",
       "pinyin": "jiàn",
-      "english": "Classifier for matters, clothing and items",
+      "english": "Item/matter classifier",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -543,21 +589,25 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-760aa1681047cfca",
       "hanzi": "进行",
       "pinyin": "jìn xíng",
-      "english": "to advance; to conduct; underway",
+      "english": "Conduct; carry out",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -569,7 +619,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -581,7 +631,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -593,7 +643,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -605,7 +655,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -617,7 +667,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -629,19 +679,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-afb63a620bdcff15",
       "hanzi": "安全",
       "pinyin": "ān quán",
-      "english": "safe; secure; safety; security",
+      "english": "Safe; safety",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -653,21 +705,25 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-3da947d6a115b5ca",
       "hanzi": "不错",
-      "pinyin": "bù cuò",
-      "english": "correct; right; not bad",
+      "pinyin": "bú cuò",
+      "english": "Not bad; good",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -679,19 +735,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-558d9951283ea1e2",
       "hanzi": "机会",
       "pinyin": "jī huì",
-      "english": "opportunity; chance; occasion",
+      "english": "Opportunity",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -703,19 +761,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-0f6b1949b093e352",
       "hanzi": "计划",
       "pinyin": "jì huà",
-      "english": "plan; project; program",
+      "english": "Plan",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -727,19 +787,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-e6ad7a1dbc1ede22",
       "hanzi": "以后",
       "pinyin": "yǐ hòu",
-      "english": "after; later; afterwards",
+      "english": "After; afterwards",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -751,7 +813,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -763,7 +825,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -775,7 +837,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -787,7 +849,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -799,7 +861,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -811,7 +873,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -823,21 +885,25 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-f029d9cb4a7614ef",
       "hanzi": "原因",
       "pinyin": "yuán yīn",
-      "english": "cause; origin; root cause",
+      "english": "Reason",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -849,7 +915,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -861,7 +927,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -873,7 +939,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -885,7 +951,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -897,9 +963,11 @@
         "daily",
         "foundations",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -911,7 +979,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -923,31 +991,35 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-1ec687a275e8803b",
       "hanzi": "人们",
       "pinyin": "rén men",
-      "english": "people",
+      "english": "People",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-00a9d5bd97c269b4",
       "hanzi": "道",
       "pinyin": "dào",
-      "english": "Road; way; classifier for dishes or questions",
+      "english": "Dish classifier; path; way",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -959,7 +1031,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -973,19 +1045,21 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-c0b3fbff51ccc40b",
       "hanzi": "完成",
       "pinyin": "wán chéng",
-      "english": "to complete; to accomplish",
+      "english": "Finish; complete",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -997,19 +1071,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-a57cfcb8428da408",
       "hanzi": "帮助",
       "pinyin": "bāng zhù",
-      "english": "assistance; aid; to help; to assist",
+      "english": "Help",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1021,19 +1097,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-abe26aa668de1e20",
       "hanzi": "努力",
       "pinyin": "nǔ lì",
-      "english": "to make an effort; to try hard; to strive; hard-working; conscientious",
+      "english": "Work hard",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1045,19 +1123,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-aa98317793b49d8d",
       "hanzi": "以前",
       "pinyin": "yǐ qián",
-      "english": "before; formerly; previous",
+      "english": "Before; previously",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1069,19 +1149,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-f02c4801c1c04ee3",
       "hanzi": "特别",
       "pinyin": "tè bié",
-      "english": "unusual; special; very; especially; particularly; expressly; for a specific purpose",
+      "english": "Particularly; special",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1093,7 +1175,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1105,19 +1187,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-6e57b8b83c8841e7",
       "hanzi": "改变",
       "pinyin": "gǎi biàn",
-      "english": "to change; to alter; to transform",
+      "english": "Change",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1129,7 +1213,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1141,7 +1225,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1155,19 +1239,21 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-b9a6fa173c480d48",
       "hanzi": "同时",
       "pinyin": "tóng shí",
-      "english": "at the same time; simultaneously",
+      "english": "At the same time",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1179,7 +1265,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1191,19 +1277,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-22b9f0b66212809c",
       "hanzi": "方法",
       "pinyin": "fāng fǎ",
-      "english": "method; way; means",
+      "english": "Method",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1215,7 +1303,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1229,19 +1317,21 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-1029fedefdf99d95",
       "hanzi": "选",
       "pinyin": "xuǎn",
-      "english": "to choose; to pick; to select",
+      "english": "Choose",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1253,7 +1343,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1265,7 +1355,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1277,7 +1367,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1289,7 +1379,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1301,7 +1391,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1313,7 +1403,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1325,7 +1415,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1337,9 +1427,11 @@
         "daily",
         "practical",
         "hsk-2021-2",
+        "grammar-support",
+        "basics",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1351,7 +1443,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1363,7 +1455,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1375,7 +1467,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1387,7 +1479,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1399,7 +1491,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1411,7 +1503,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1423,7 +1515,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1437,7 +1529,7 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1449,7 +1541,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1461,7 +1553,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1473,7 +1565,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1485,7 +1577,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1497,7 +1589,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1509,7 +1601,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1521,7 +1613,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1533,7 +1625,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1545,7 +1637,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1557,7 +1649,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1569,7 +1661,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1581,7 +1673,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1593,7 +1685,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1605,19 +1697,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-aaded36a83022ef1",
       "hanzi": "店",
       "pinyin": "diàn",
-      "english": "Shop; store",
+      "english": "Store; shop",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1629,7 +1723,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1641,7 +1735,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1653,7 +1747,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1665,7 +1759,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1677,7 +1771,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1689,7 +1783,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1701,19 +1795,21 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
       "id": "v3-word-db95142124934467",
       "hanzi": "音乐",
       "pinyin": "yīn yuè",
-      "english": "music",
+      "english": "Music",
       "tags": [
-        "hsk",
-        "hsk-2021-2"
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1725,7 +1821,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1737,7 +1833,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1751,7 +1847,7 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1763,7 +1859,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1775,7 +1871,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1787,7 +1883,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1799,7 +1895,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1811,7 +1907,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1823,7 +1919,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1835,7 +1931,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1847,7 +1943,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1859,7 +1955,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1871,7 +1967,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1883,7 +1979,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1895,7 +1991,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1907,7 +2003,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1919,7 +2015,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1931,7 +2027,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1943,7 +2039,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1955,7 +2051,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1969,7 +2065,7 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1981,7 +2077,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -1993,7 +2089,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2005,7 +2101,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2017,7 +2113,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2029,7 +2125,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2041,7 +2137,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2053,7 +2149,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2065,7 +2161,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2077,7 +2173,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2089,7 +2185,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2101,7 +2197,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2113,7 +2209,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2125,7 +2221,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2139,7 +2235,7 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2151,7 +2247,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2163,7 +2259,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2175,7 +2271,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2187,7 +2283,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2199,7 +2295,7 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -2211,9 +2307,4421 @@
         "hsk",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-51a75f4634dfa859",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "english": "One",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-11a9d8072cf9e368",
+      "hanzi": "一下",
+      "pinyin": "yí xià",
+      "english": "Briefly; a little",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-220ac6c5a3602b71",
+      "hanzi": "一起",
+      "pinyin": "yī qǐ",
+      "english": "Together",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ffa41540ad317051",
+      "hanzi": "一边",
+      "pinyin": "yì biān",
+      "english": "One side; while (doing two actions)",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a4c3313deb180960",
+      "hanzi": "三",
+      "pinyin": "sān",
+      "english": "Three",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4906a49adc5c472b",
+      "hanzi": "上海",
+      "pinyin": "shàng hǎi",
+      "english": "Shanghai",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-13c12b064b635e06",
+      "hanzi": "下",
+      "pinyin": "xià",
+      "english": "Down; below; next; go down",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-686fd82b4e3e4a81",
+      "hanzi": "下头",
+      "pinyin": "xià tóu",
+      "english": "Off-putting; suddenly lose interest; gives the ick",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e3d3afd884be213e",
+      "hanzi": "下班",
+      "pinyin": "xià bān",
+      "english": "Finish work",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-024b2708ed8e3ffc",
+      "hanzi": "下雨",
+      "pinyin": "xià yǔ",
+      "english": "Rain; be raining",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b02dfe2160c687c2",
+      "hanzi": "不",
+      "pinyin": "bù",
+      "english": "Not; no",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b1813501860b58c2",
+      "hanzi": "东西",
+      "pinyin": "dōng xi",
+      "english": "Thing; something",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-83385d2edafe28d4",
+      "hanzi": "两",
+      "pinyin": "liǎng",
+      "english": "Two (before most classifiers)",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a116815bc9da10d",
+      "hanzi": "个",
+      "pinyin": "ge",
+      "english": "General classifier",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76e519872dc2a5d7",
+      "hanzi": "之前",
+      "pinyin": "zhī qián",
+      "english": "Before",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-4",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-658605835bfc7ff8",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "Also; too",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2cd2507d65de178f",
+      "hanzi": "买",
+      "pinyin": "mǎi",
+      "english": "Buy",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2dd27e84f07f49b",
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "Completion or change-of-state particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aecbe4cbd4449c9a",
+      "hanzi": "了解",
+      "pinyin": "liǎo jiě",
+      "english": "to understand; to realize; to find out",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d9ed569515d4b88",
+      "hanzi": "事",
+      "pinyin": "shì",
+      "english": "Matter; affair",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-867d0e70073530dd",
+      "hanzi": "事故",
+      "pinyin": "shì gù",
+      "english": "Accident; incident",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-50f5d65d57290f75",
+      "hanzi": "人",
+      "pinyin": "rén",
+      "english": "Person; people",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0cfe1b3c1bb2914b",
+      "hanzi": "人民",
+      "pinyin": "rén mín",
+      "english": "the people",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d5f5a7a010731feb",
+      "hanzi": "今天",
+      "pinyin": "jīn tiān",
+      "english": "Today",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2719a8ea304b8cbf",
+      "hanzi": "从",
+      "pinyin": "cóng",
+      "english": "From",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b7b91e0001c6971",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "He; him",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-10518f8f0abf21a3",
+      "hanzi": "他们",
+      "pinyin": "tā men",
+      "english": "They; them",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a46dac0a68062fb1",
+      "hanzi": "以来",
+      "pinyin": "yǐ lái",
+      "english": "since (a previous event)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5253040db8643c85",
+      "hanzi": "任务",
+      "pinyin": "rèn wu",
+      "english": "mission; assignment; task; duty; role",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fff33732fc978a09",
+      "hanzi": "休息",
+      "pinyin": "xiū xi",
+      "english": "Rest",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-63d30f1a037d0771",
+      "hanzi": "会议",
+      "pinyin": "huì yì",
+      "english": "meeting; conference",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b0dff016ff17d665",
+      "hanzi": "作业",
+      "pinyin": "zuò yè",
+      "english": "Homework; assignment",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-303a288691f82c62",
+      "hanzi": "便宜",
+      "pinyin": "pián yi",
+      "english": "Cheap; inexpensive",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a5047cb907ee665c",
+      "hanzi": "保护员",
+      "pinyin": "bǎo hù yuán",
+      "english": "Belayer",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e0ade9fe436d4f9c",
+      "hanzi": "信心",
+      "pinyin": "xìn xīn",
+      "english": "Confidence",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-94f5404441e8c480",
+      "hanzi": "做",
+      "pinyin": "zuò",
+      "english": "Do; make",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-39712e9368a8e037",
+      "hanzi": "做饭",
+      "pinyin": "zuò fàn",
+      "english": "Cook a meal",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-27250da81c0a763a",
+      "hanzi": "先",
+      "pinyin": "xiān",
+      "english": "First",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c7a3de26eb057205",
+      "hanzi": "公交车",
+      "pinyin": "gōng jiāo chē",
+      "english": "Public bus",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e852dca995be4432",
+      "hanzi": "公园",
+      "pinyin": "gōng yuán",
+      "english": "Park",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8aa07f1595bd98d4",
+      "hanzi": "再",
+      "pinyin": "zài",
+      "english": "Again; then, for a future action",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ce1b85070022a3fd",
+      "hanzi": "冰",
+      "pinyin": "bīng",
+      "english": "Ice",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6e87e42fbc222f49",
+      "hanzi": "冷",
+      "pinyin": "lěng",
+      "english": "Cold",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-10809c4d0192c12a",
+      "hanzi": "出门",
+      "pinyin": "chū mén",
+      "english": "Go out; leave home",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-43c09e9166602d39",
+      "hanzi": "利用",
+      "pinyin": "lì yòng",
+      "english": "to exploit; to make use of; to use",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eeb0be5265ca353a",
+      "hanzi": "别人",
+      "pinyin": "bié ren",
+      "english": "other people; others; other person",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b56f36b529dbcd62",
+      "hanzi": "到",
+      "pinyin": "dào",
+      "english": "To; arrive",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ad0a0abeab6bedf6",
+      "hanzi": "前面",
+      "pinyin": "qián miàn",
+      "english": "In front; ahead",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-68c77e155132565e",
+      "hanzi": "北京",
+      "pinyin": "běi jīng",
+      "english": "Beijing",
+      "tags": [
+        "places",
+        "china-regions",
+        "hsk-2021-1",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e8ec877c8da553d3",
+      "hanzi": "医生",
+      "pinyin": "yī shēng",
+      "english": "doctor",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f1b9fd6d8812c715",
+      "hanzi": "医疗",
+      "pinyin": "yī liáo",
+      "english": "medical treatment",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc7edd399a5c4b93",
+      "hanzi": "十",
+      "pinyin": "shí",
+      "english": "Ten",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8a1d04b0e6bd0ae6",
+      "hanzi": "半糖",
+      "pinyin": "bàn táng",
+      "english": "Half sugar",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c5c593d385bf5696",
+      "hanzi": "去年",
+      "pinyin": "qù nián",
+      "english": "Last year",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c814805bc6d0365a",
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "english": "Eat",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e1d2a9310891c22f",
+      "hanzi": "吃饭",
+      "pinyin": "chī fàn",
+      "english": "Eat a meal",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baa672710078887f",
+      "hanzi": "吉隆坡",
+      "pinyin": "jí lóng pō",
+      "english": "Kuala Lumpur",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-905819e2e3a059a0",
+      "hanzi": "同意",
+      "pinyin": "tóng yì",
+      "english": "to agree; to consent; to approve",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1f2eb2608d236247",
+      "hanzi": "听",
+      "pinyin": "tīng",
+      "english": "Listen; hear",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-709b90ebf308c71e",
+      "hanzi": "周末",
+      "pinyin": "zhōu mò",
+      "english": "Weekend",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-720ec669f15b87b1",
+      "hanzi": "咖啡",
+      "pinyin": "kā fēi",
+      "english": "Coffee",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-653b04330b75751f",
+      "hanzi": "喜欢",
+      "pinyin": "xǐ huan",
+      "english": "Like",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-193632bffe7bd105",
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "english": "Drink",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9a6ce4cf2cab6307",
+      "hanzi": "回家",
+      "pinyin": "huí jiā",
+      "english": "Go home",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3ab908cef2352cd",
+      "hanzi": "回来",
+      "pinyin": "huí lái",
+      "english": "Come back",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b91d7a653efc48d2",
+      "hanzi": "围观",
+      "pinyin": "wéi guān",
+      "english": "Watch as a bystander; gather to watch",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-12404a0b63817240",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "english": "At; in; ongoing action",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1462a7d8531ef5d2",
+      "hanzi": "地方",
+      "pinyin": "dì fang",
+      "english": "Place",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b8466cd555e68992",
+      "hanzi": "地铁",
+      "pinyin": "dì tiě",
+      "english": "Metro; subway",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-70fb29929614c2b2",
+      "hanzi": "坏",
+      "pinyin": "huài",
+      "english": "Broken; bad",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4247f1a43b8230cb",
+      "hanzi": "坐",
+      "pinyin": "zuò",
+      "english": "Sit; take transport",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b0acee7c4f23a3a",
+      "hanzi": "坚持",
+      "pinyin": "jiān chí",
+      "english": "to persevere with; to persist in; to insist on",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0e826095b60ccf03",
+      "hanzi": "外",
+      "pinyin": "wài",
+      "english": "outside; in addition; foreign",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e7ace7adf264b714",
+      "hanzi": "太",
+      "pinyin": "tài",
+      "english": "Too; very",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f64ab008929fdb5",
+      "hanzi": "头",
+      "pinyin": "tóu",
+      "english": "Head",
+      "tags": [
+        "body",
+        "fitness",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f867f34178594f89",
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "english": "Good; okay",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0148aa8ffb7148d8",
+      "hanzi": "好吃",
+      "pinyin": "hǎo chī",
+      "english": "Tasty",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6bb6a07bc6efef5e",
+      "hanzi": "好听",
+      "pinyin": "hǎo tīng",
+      "english": "Pleasant to hear; sounds good",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f2aedcbd1c742e2b",
+      "hanzi": "好看",
+      "pinyin": "hǎo kàn",
+      "english": "Good-looking; enjoyable to watch",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2118cbc109880ac8",
+      "hanzi": "学习",
+      "pinyin": "xué xí",
+      "english": "Study",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dc6e2aafeb9e125b",
+      "hanzi": "学校",
+      "pinyin": "xué xiào",
+      "english": "school",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-13a58ec2074e014a",
+      "hanzi": "学生",
+      "pinyin": "xué sheng",
+      "english": "student; schoolchild",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f887419f463425a",
+      "hanzi": "孩子",
+      "pinyin": "hái zi",
+      "english": "Child",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-18d8ab054b71ebb3",
+      "hanzi": "安全带",
+      "pinyin": "ān quán dài",
+      "english": "Harness; safety belt",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8ae97be80f3867c",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "Home; family",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ede29e6ed2aee238",
+      "hanzi": "尊重",
+      "pinyin": "zūn zhòng",
+      "english": "Respect",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6a7339bb759788f3",
+      "hanzi": "小",
+      "pinyin": "xiǎo",
+      "english": "Small",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2f9d9872e5f920d0",
+      "hanzi": "就",
+      "pinyin": "jiù",
+      "english": "Then; right away; precisely (context dependent)",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4862540a299762b3",
+      "hanzi": "山",
+      "pinyin": "shān",
+      "english": "Mountain",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bc62d1b6b936c78d",
+      "hanzi": "工作",
+      "pinyin": "gōng zuò",
+      "english": "Work",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-651354aa43fc317f",
+      "hanzi": "布城",
+      "pinyin": "bù chéng",
+      "english": "Putrajaya — Malaysia's federal administrative center",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-775c85c93af28349",
+      "hanzi": "布达佩斯",
+      "pinyin": "bù dá pèi sī",
+      "english": "Budapest, Hungary",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4bd12b1e62a32a9c",
+      "hanzi": "帮",
+      "pinyin": "bāng",
+      "english": "Help",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-de8f371434589d64",
+      "hanzi": "帮忙",
+      "pinyin": "bāng máng",
+      "english": "Help; lend a hand",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8913b8b6e1ef81dc",
+      "hanzi": "并且",
+      "pinyin": "bìng qiě",
+      "english": "and; besides; moreover",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-39eae64cfc41ef37",
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "english": "Open; turn on; drive",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d2bb025a2e51c410",
+      "hanzi": "开始",
+      "pinyin": "kāi shǐ",
+      "english": "Begin",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f56a049fcc23f1eb",
+      "hanzi": "张",
+      "pinyin": "zhāng",
+      "english": "Classifier for flat objects",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f2b91797ea3a7171",
+      "hanzi": "很",
+      "pinyin": "hěn",
+      "english": "Very; quite",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6805c7479b746a48",
+      "hanzi": "得到",
+      "pinyin": "dé dào",
+      "english": "to get; to obtain; to receive",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f1e61a642db8afd",
+      "hanzi": "心率",
+      "pinyin": "xīn lǜ",
+      "english": "Heart rate",
+      "tags": [
+        "activities",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-06f2f61aced38ba2",
+      "hanzi": "忌口",
+      "pinyin": "jì kǒu",
+      "english": "Dietary restrictions; avoid particular foods",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-963e4f4abf641ba9",
+      "hanzi": "忙",
+      "pinyin": "máng",
+      "english": "Busy",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ee8091a38eee188",
+      "hanzi": "怎么",
+      "pinyin": "zěn me",
+      "english": "How",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-461d2dabe42580d5",
+      "hanzi": "情况",
+      "pinyin": "qíng kuàng",
+      "english": "circumstances; state of affairs; situation",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-65eb352d08bf12a0",
+      "hanzi": "意思",
+      "pinyin": "yì si",
+      "english": "Meaning; idea",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-25193c85d84bab4c",
+      "hanzi": "或许",
+      "pinyin": "huò xǔ",
+      "english": "perhaps; maybe",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2e07333c8c740978",
+      "hanzi": "手机",
+      "pinyin": "shǒu jī",
+      "english": "Mobile phone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4aa1a3c6743f7d8e",
+      "hanzi": "技术",
+      "pinyin": "jì shù",
+      "english": "Technique; skill",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2442748e41108dab",
+      "hanzi": "把",
+      "pinyin": "bǎ",
+      "english": "Object disposal construction marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bd9bc18a4c57be3d",
+      "hanzi": "拿捏",
+      "pinyin": "ná niē",
+      "english": "Have something completely under control; nail it",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4eed57b5a12b5dc4",
+      "hanzi": "挑战",
+      "pinyin": "tiǎo zhàn",
+      "english": "to challenge; challenge",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e92752bff47baf3",
+      "hanzi": "推",
+      "pinyin": "tuī",
+      "english": "Push",
+      "tags": [
+        "climbing",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1686f268e494583f",
+      "hanzi": "提高",
+      "pinyin": "tí gāo",
+      "english": "Improve",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-44ce03c73ac4b101",
+      "hanzi": "摆烂",
+      "pinyin": "bǎi làn",
+      "english": "Stop trying; intentionally give up",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ae9049c6f5aff8a9",
+      "hanzi": "攀岩",
+      "pinyin": "pān yán",
+      "english": "Rock climbing",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4c2c5762d328829b",
+      "hanzi": "故事",
+      "pinyin": "gù shi",
+      "english": "Story",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-456e01f9206141b9",
+      "hanzi": "教授",
+      "pinyin": "jiào shòu",
+      "english": "professor; to instruct; to lecture on",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fc1343aa793eed6",
+      "hanzi": "教练",
+      "pinyin": "jiào liàn",
+      "english": "Coach",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d8371816931250d",
+      "hanzi": "整活",
+      "pinyin": "zhěng huó",
+      "english": "Do a bit; pull a stunt to entertain",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-402590868fff593d",
+      "hanzi": "无法",
+      "pinyin": "wú fǎ",
+      "english": "unable; incapable",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33e934d5eab50d6a",
+      "hanzi": "无糖",
+      "pinyin": "wú táng",
+      "english": "Sugar-free; no sugar",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e7c7fb50f3db8408",
+      "hanzi": "早",
+      "pinyin": "zǎo",
+      "english": "early; morning; Good morning!",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5484678be4ef7c24",
+      "hanzi": "时候",
+      "pinyin": "shí hou",
+      "english": "Time; occasion; when",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b6ff498515bcc2f",
+      "hanzi": "时间",
+      "pinyin": "shí jiān",
+      "english": "Time; time available",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b1d841b978fb524c",
+      "hanzi": "明天",
+      "pinyin": "míng tiān",
+      "english": "Tomorrow",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0c184871f658375a",
+      "hanzi": "昨天",
+      "pinyin": "zuó tiān",
+      "english": "Yesterday",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b5141d3d19e9a048",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "Be; is; am; are",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90ce0f66f09488f2",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "Have; there is",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29506aa712190082",
+      "hanzi": "有点",
+      "pinyin": "yǒu diǎn",
+      "english": "A bit (often undesirable)",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-677aad1a0ee44cd6",
+      "hanzi": "朋友",
+      "pinyin": "péng you",
+      "english": "Friend",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0c75d89282e0f00f",
+      "hanzi": "本来",
+      "pinyin": "běn lái",
+      "english": "original; originally; at first",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d8229118caa20c2",
+      "hanzi": "来",
+      "pinyin": "lái",
+      "english": "Come",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-172fb7e67b9b09dd",
+      "hanzi": "次",
+      "pinyin": "cì",
+      "english": "Occurrence classifier",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6b02a08e69a342d",
+      "hanzi": "正在",
+      "pinyin": "zhèng zài",
+      "english": "just at (that time); right in (that place); right in the middle of (doing sth)",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fb8791a7645ec8e3",
+      "hanzi": "比较",
+      "pinyin": "bǐ jiào",
+      "english": "Compare; rather",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-327b54d04f71f212",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "Water",
+      "tags": [
+        "grammar-words"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1a19b5468c0683ab",
+      "hanzi": "汽车",
+      "pinyin": "qì chē",
+      "english": "car; automobile; bus",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-279e8b3573607d17",
+      "hanzi": "没",
+      "pinyin": "méi",
+      "english": "Not; did not; have not",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f127804b9227e152",
+      "hanzi": "没有",
+      "pinyin": "méi yǒu",
+      "english": "Not have; there is no; have not",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9042ade1d569e24",
+      "hanzi": "油腻",
+      "pinyin": "yóu nì",
+      "english": "Greasy; oily",
+      "tags": [
+        "food",
+        "ordering"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6acfa1db6a625946",
+      "hanzi": "洗衣机",
+      "pinyin": "xǐ yī jī",
+      "english": "Washing machine",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1a7b61344813fef1",
+      "hanzi": "派",
+      "pinyin": "pài",
+      "english": "Send; assign; group; school of thought",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6aa8f49cc992dfd7",
+      "hanzi": "测试",
+      "pinyin": "cè shì",
+      "english": "to test (machinery etc); to test (a person's skill in a particular area); a test",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4da199fae933d4fa",
+      "hanzi": "消息",
+      "pinyin": "xiāo xi",
+      "english": "Message; news",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-08dddeac1319d6e8",
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "english": "Order; point; o'clock",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-111bb0cd52189d59",
+      "hanzi": "点菜",
+      "pinyin": "diǎn cài",
+      "english": "Order dishes",
+      "tags": [
+        "food",
+        "ordering",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bc266d1610c100b9",
+      "hanzi": "热身",
+      "pinyin": "rè shēn",
+      "english": "Warm up",
+      "tags": [
+        "activities",
+        "sports",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-849f9ce9f688ba33",
+      "hanzi": "爬山",
+      "pinyin": "pá shān",
+      "english": "Hike up a mountain",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-12a2aadcf0a5a2d2",
+      "hanzi": "球",
+      "pinyin": "qiú",
+      "english": "ball; sphere; globe",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-14c3c9835167f742",
+      "hanzi": "用法",
+      "pinyin": "yòng fǎ",
+      "english": "Usage; way of using",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-61f43315f98a4b16",
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "english": "Look; watch; read",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d87059e4c8caabe7",
+      "hanzi": "看看",
+      "pinyin": "kàn kan",
+      "english": "Take a look",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-827d018e1bf8a869",
+      "hanzi": "真",
+      "pinyin": "zhēn",
+      "english": "really; truly; indeed",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfa9397d77e71d59",
+      "hanzi": "睁",
+      "pinyin": "zhēng",
+      "english": "Open one's eyes",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-89ab26c310c3c419",
+      "hanzi": "破防",
+      "pinyin": "pò fáng",
+      "english": "Feel emotionally overwhelmed; one's defenses break",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-385a845b6094b687",
+      "hanzi": "等",
+      "pinyin": "děng",
+      "english": "Wait",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0eb7ee7e38effcf3",
+      "hanzi": "红",
+      "pinyin": "hóng",
+      "english": "Red",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-223b24b821cc4fbf",
+      "hanzi": "线路",
+      "pinyin": "xiàn lù",
+      "english": "Climbing route; route",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3cae1f75ef711370",
+      "hanzi": "练习",
+      "pinyin": "liàn xí",
+      "english": "Practice; rehearse",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bb7ef73495dd8a74",
+      "hanzi": "结果",
+      "pinyin": "jié guǒ",
+      "english": "Result",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-58857e5318f3090b",
+      "hanzi": "美国",
+      "pinyin": "měi guó",
+      "english": "United States",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c9a31a3f670b7f99",
+      "hanzi": "老师",
+      "pinyin": "lǎo shī",
+      "english": "Teacher",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-413c06bcef7c934d",
+      "hanzi": "能",
+      "pinyin": "néng",
+      "english": "Can; be able to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5c5374dd958bcb79",
+      "hanzi": "能力",
+      "pinyin": "néng lì",
+      "english": "capability; ability",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ef93a55e5a12905",
+      "hanzi": "至少",
+      "pinyin": "zhì shǎo",
+      "english": "at least; (to say the) least",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7e005ba311f86fa7",
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "english": "Tea",
+      "tags": [
+        "grammar-words"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-45f0c2d97be1214d",
+      "hanzi": "菜",
+      "pinyin": "cài",
+      "english": "Dish; vegetables",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e79890c96ee6f0c5",
+      "hanzi": "行政",
+      "pinyin": "xíng zhèng",
+      "english": "Administration; administrative",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a28422f1f71d7f5",
+      "hanzi": "衣服",
+      "pinyin": "yī fu",
+      "english": "Clothes",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-975f35218ed8782e",
+      "hanzi": "要",
+      "pinyin": "yào",
+      "english": "Want; need; be going to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-78c82d9f411246cb",
+      "hanzi": "觉得",
+      "pinyin": "jué de",
+      "english": "Feel; think; find",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5516eb8280b50ab4",
+      "hanzi": "解决",
+      "pinyin": "jiě jué",
+      "english": "Solve",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8051ef2e9c0e573",
+      "hanzi": "认真",
+      "pinyin": "rèn zhēn",
+      "english": "Seriously; conscientious",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3cef912ce8819fff",
+      "hanzi": "讨论",
+      "pinyin": "tǎo lùn",
+      "english": "Discuss",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-805b2ab19aaa8f37",
+      "hanzi": "记得",
+      "pinyin": "jì de",
+      "english": "Remember",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5c0f3d67bb3822e1",
+      "hanzi": "讲课",
+      "pinyin": "jiǎng kè",
+      "english": "Teach a class; lecture",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90b793146f059076",
+      "hanzi": "证明",
+      "pinyin": "zhèng míng",
+      "english": "Prove; proof; certificate",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ccca74461399d2a0",
+      "hanzi": "说",
+      "pinyin": "shuō",
+      "english": "Say; speak",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cc0dc791ff9c00c6",
+      "hanzi": "说话",
+      "pinyin": "shuō huà",
+      "english": "to speak; to say; to talk",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-88d5840fab773af6",
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "to ask; to invite; please (do sth)",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c6ebb240162851a6",
+      "hanzi": "赢",
+      "pinyin": "yíng",
+      "english": "to beat; to win; to profit",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f66de6c4cd41cdff",
+      "hanzi": "走",
+      "pinyin": "zǒu",
+      "english": "Walk; go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-536be9b372bbf17f",
+      "hanzi": "车票",
+      "pinyin": "chē piào",
+      "english": "Transport ticket",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1bc709b8bf6c9706",
+      "hanzi": "还",
+      "pinyin": "hái",
+      "english": "Still; also; yet",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfaa7d6f73c1ec07",
+      "hanzi": "还是",
+      "pinyin": "hái shi",
+      "english": "Or (in choices/questions); still",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d409ab2ab3f8a04e",
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "english": "This",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-979e2bc35b14bf4c",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "english": "This one",
+      "tags": [
+        "daily",
+        "practical",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-467d6a749e06b07a",
+      "hanzi": "这里",
+      "pinyin": "zhè lǐ",
+      "english": "Here",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c6e95f74f98ddac1",
+      "hanzi": "造成",
+      "pinyin": "zào chéng",
+      "english": "to bring about; to create; to cause",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5a2362a20207f453",
+      "hanzi": "那",
+      "pinyin": "nà",
+      "english": "That",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7eabb36ba1ab565b",
+      "hanzi": "都",
+      "pinyin": "dōu",
+      "english": "All; both; in every case",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-79f43de6e3bc9fd5",
+      "hanzi": "里",
+      "pinyin": "lǐ",
+      "english": "Inside; within",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a8cd9642aa48cd9f",
+      "hanzi": "重要",
+      "pinyin": "zhòng yào",
+      "english": "Important",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a407325e0081cb7d",
+      "hanzi": "门",
+      "pinyin": "mén",
+      "english": "Door; gate",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3c516d94c088c9d3",
+      "hanzi": "阳了",
+      "pinyin": "yáng le",
+      "english": "Tested positive for COVID; caught COVID (colloquial)",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a5689144ca713f23",
+      "hanzi": "随便",
+      "pinyin": "suí biàn",
+      "english": "Anything is fine; casual; as one wishes",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-de73e9045636fb33",
+      "hanzi": "难",
+      "pinyin": "nán",
+      "english": "Difficult",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c9e9a062f5d588f3",
+      "hanzi": "需要",
+      "pinyin": "xū yào",
+      "english": "Need",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-3",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1bfde6b7ea27c9b8",
+      "hanzi": "风格",
+      "pinyin": "fēng gé",
+      "english": "style",
+      "tags": [
+        "hsk",
+        "hsk-2021-4"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e3e38b7716d60060",
+      "hanzi": "餐厅",
+      "pinyin": "cān tīng",
+      "english": "Restaurant",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0773bec1e651fec0",
+      "hanzi": "饭搭子",
+      "pinyin": "fàn dā zi",
+      "english": "Regular eating companion; food buddy",
+      "tags": [
+        "slang",
+        "social",
+        "modern"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3da5ab9c1b9f5d83",
+      "hanzi": "首都",
+      "pinyin": "shǒu dū",
+      "english": "Capital city",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-3",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3320aa9c0948089",
+      "hanzi": "马来西亚",
+      "pinyin": "mǎ lái xī yà",
+      "english": "Malaysia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b1c27820fec23edb",
+      "hanzi": "高",
+      "pinyin": "gāo",
+      "english": "Tall; high",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9f5b71a472d27bb",
+      "hanzi": "鸡蛋",
+      "pinyin": "jī dàn",
+      "english": "Chicken egg",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],
-  "grammar": []
+  "grammar": [
+    {
+      "id": "ctx-0116f5fa09c5f62dbe73",
+      "markup": "{这个}{问题}，{我们}{以后}{再}{讨论}。",
+      "pinyin": "Zhè ge wèn tí, wǒ men yǐ hòu zài tǎo lùn.",
+      "english": "As for this issue, we'll discuss it later.",
+      "distractors": [],
+      "source": "Context: Topic-comment",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-01f3d7c56aaaa9c1efdb",
+      "markup": "{我们}{应该}{尊重}{别人}。",
+      "pinyin": "Wǒ men yīng gāi zūn zhòng bié ren.",
+      "english": "We should respect other people.",
+      "distractors": [],
+      "source": "Context: Other people",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-02f6e550c2114f479abd",
+      "markup": "{我们}{今天}{学习}{出现}{的}{用法}。",
+      "pinyin": "Wǒ men jīn tiān xué xí chū xiàn de yòng fǎ.",
+      "english": "Today we are learning how to use appear.",
+      "distractors": [],
+      "source": "Context: word usage in context",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0447c3651575d16d7ded",
+      "markup": "{他}{点}{头}{表示}{同意}。",
+      "pinyin": "Tā diǎn tóu biǎo shì tóng yì.",
+      "english": "He nodded to express agreement.",
+      "distractors": [],
+      "source": "Context: Express opinion",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-04bd657508575df2b10c",
+      "markup": "{这}{个}{东西}{比较}{满}。",
+      "pinyin": "Zhè ge dōng xi bǐ jiào mǎn.",
+      "english": "This item is relatively full.",
+      "distractors": [],
+      "source": "Context: stative comparison 比较",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0881cff7ead2030cb0b5",
+      "markup": "{这}{名}{学生}{很}{认真}。",
+      "pinyin": "Zhè míng xué sheng hěn rèn zhēn.",
+      "english": "This student is very diligent.",
+      "distractors": [],
+      "source": "Context: Classifier 名",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-09838d15550ebaa417a2",
+      "markup": "{请}{明天}{交}{作业}。",
+      "pinyin": "Qǐng míng tiān jiāo zuò yè.",
+      "english": "Please hand in your homework tomorrow.",
+      "distractors": [],
+      "source": "Context: Hand in 交",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-09a4916396c9904875d0",
+      "markup": "{你}{为什么}{喜欢}{攀岩}？",
+      "pinyin": "Nǐ wèi shén me xǐ huan pān yán?",
+      "english": "Why do you like climbing?",
+      "distractors": [],
+      "source": "Context: Question word 为什么",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-09b450136b30fa0e2b2e",
+      "markup": "{这}{道}{菜}{有点}{油腻}。",
+      "pinyin": "Zhè dào cài yǒu diǎn yóu nì.",
+      "english": "This dish is a little greasy.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0aead86b9b4ee3b4e479",
+      "markup": "{这}{位}{教授}{正在}{讲课}。",
+      "pinyin": "Zhè wèi jiào shòu zhèng zài jiǎng kè.",
+      "english": "This professor is teaching a class.",
+      "distractors": [],
+      "source": "Context: Professor",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0b6778719fa72add333a",
+      "markup": "{他}{想}{证明}{自己}{的}{能力}。",
+      "pinyin": "Tā xiǎng zhèng míng zì jǐ de néng lì.",
+      "english": "He wants to prove his abilities.",
+      "distractors": [],
+      "source": "Context: Prove ability",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0c04774d28ed56951d99",
+      "markup": "{我}{已经}{看}{完}{全部}{了}。",
+      "pinyin": "Wǒ yǐ jīng kàn wán quán bù le.",
+      "english": "I've finished watching all of it.",
+      "distractors": [],
+      "source": "Context: All of it",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0eb47060951c34efe89a",
+      "markup": "{这}{个}{鸡蛋}{是}{生}{的}。",
+      "pinyin": "Zhè ge jī dàn shì shēng de.",
+      "english": "This egg is raw.",
+      "distractors": [],
+      "source": "Context: state of cooking with 是...的",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0ec7c8aae94a92be1076",
+      "markup": "{公司}{派}{他}{去}{北京}。",
+      "pinyin": "Gōng sī pài tā qù běi jīng.",
+      "english": "The company sent him to Beijing.",
+      "distractors": [],
+      "source": "Context: Send 派",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0fc9cfffe0b30a8e1af9",
+      "markup": "{这}{家}{餐厅}{便宜}{而且}{好吃}。",
+      "pinyin": "Zhè jiā cān tīng pián yi ér qiě hǎo chī.",
+      "english": "This restaurant is inexpensive and the food is tasty.",
+      "distractors": [],
+      "source": "Context: Conjunctive 而且",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-10dc151050efb88ca14d",
+      "markup": "{他}{的}{声音}{很}{好听}。",
+      "pinyin": "Tā de shēng yīn hěn hǎo tīng.",
+      "english": "His voice sounds nice.",
+      "distractors": [],
+      "source": "Context: Voice",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-125c821921458629120e",
+      "markup": "{我们}{今天}{学习}{变}{的}{用法}。",
+      "pinyin": "Wǒ men jīn tiān xué xí biàn de yòng fǎ.",
+      "english": "Today we are learning how to use change.",
+      "distractors": [],
+      "source": "Context: word usage in context",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1692099a2da14279bc33",
+      "markup": "{我}{越}{练习}，{就}{越}{有}{信心}。",
+      "pinyin": "Wǒ yuè liàn xí, jiù yuè yǒu xìn xīn.",
+      "english": "The more I practice, the more confident I become.",
+      "distractors": [],
+      "source": "Context: Progressive 越越",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-181a53634dd4dfc7d8ac",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{无糖}{还是}{半糖}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn wú táng hái shi bàn táng?",
+      "english": "When ordering, would you choose sugar-free or half sugar?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-193106a738d842f246b0",
+      "markup": "{我们}{需要}{了解}{心率}{的}{作用}。",
+      "pinyin": "Wǒ men xū yào liǎo jiě xīn lǜ de zuò yòng.",
+      "english": "We need to understand the role of heart rate.",
+      "distractors": [],
+      "source": "Context: nominalized technical topic",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1d2abbb958e89749ac32",
+      "markup": "{马来西亚}{的}{首都}{是}{吉隆坡}，{布城}{是}{行政}{中心}。",
+      "pinyin": "Mǎ lái xī yà de shǒu dū shì jí lóng pō, bù chéng shì xíng zhèng zhōng xīn.",
+      "english": "Kuala Lumpur is Malaysia’s capital, while Putrajaya is its administrative center.",
+      "distractors": [],
+      "source": "Context: administrative distinction",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1d6b25795db97ee96d73",
+      "markup": "{我们}{经过}{了}{公园}。",
+      "pinyin": "Wǒ men jīng guò le gōng yuán.",
+      "english": "We passed through the park.",
+      "distractors": [],
+      "source": "Context: Pass by",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1e395fe3c0acc68f8186",
+      "markup": "{这}{个}{小}{狗}{真}{可爱}。",
+      "pinyin": "Zhè ge xiǎo gǒu zhēn kě ài.",
+      "english": "This little dog is so cute.",
+      "distractors": [],
+      "source": "Context: Cute 可爱",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1e5593b9399f7e99b70f",
+      "markup": "{我们}{重新}{开始}。",
+      "pinyin": "Wǒ men chóng xīn kāi shǐ.",
+      "english": "Let's start again.",
+      "distractors": [],
+      "source": "Context: Start again",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-20204b636f673ae774ab",
+      "markup": "{这}{个}{节目}{很}{好看}。",
+      "pinyin": "Zhè ge jié mù hěn hǎo kàn.",
+      "english": "This show is entertaining.",
+      "distractors": [],
+      "source": "Context: Program on TV",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-21860a0cde1e7f669952",
+      "markup": "{他}{可能}{喜欢}{这}{个}{地方}。",
+      "pinyin": "Tā kě néng xǐ huan zhè ge dì fang.",
+      "english": "He likes this place (possible).",
+      "distractors": [],
+      "source": "Context: adverb before predicate",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2196e66e37f29a8acb7c",
+      "markup": "{它们}{今天}{有}{时间}{吗}？",
+      "pinyin": "Tā men jīn tiān yǒu shí jiān ma?",
+      "english": "Do they have time today?",
+      "distractors": [],
+      "source": "Context: pronoun as question subject",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-224c737aba00f14d0ca6",
+      "markup": "{他}{不}{喝}{酒}。",
+      "pinyin": "Tā bù hē jiǔ.",
+      "english": "He doesn't drink alcohol.",
+      "distractors": [],
+      "source": "Context: Alcohol 酒",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2351535815a5d9c5a361",
+      "markup": "{他}{今天}{无法}{参加}{会议}。",
+      "pinyin": "Tā jīn tiān wú fǎ cān jiā huì yì.",
+      "english": "He can't attend the meeting today.",
+      "distractors": [],
+      "source": "Context: Unable",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2449e5e3510ac5c701ed",
+      "markup": "{出门}{之前}{请}{带}{车票}。",
+      "pinyin": "Chū mén zhī qián qǐng dài chē piào.",
+      "english": "Please bring your transport ticket before leaving.",
+      "distractors": [],
+      "source": "Context: imperative with time clause",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2687159e7822ba3df110",
+      "markup": "{他}{得到}{了}{帮助}。",
+      "pinyin": "Tā dé dào le bāng zhù.",
+      "english": "He received help.",
+      "distractors": [],
+      "source": "Context: Receive",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-284cb50116865a71d1fd",
+      "markup": "{你}{怎么}{这么}{早}？",
+      "pinyin": "Nǐ zěn me zhè me zǎo?",
+      "english": "Why are you here so early?",
+      "distractors": [],
+      "source": "Context: Degree 这么",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-29435e8b700914689a03",
+      "markup": "{医疗}{服务}{很}{重要}。",
+      "pinyin": "Yī liáo fú wù hěn zhòng yào.",
+      "english": "Medical services are important.",
+      "distractors": [],
+      "source": "Context: Healthcare",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2a1f412c66885841ad16",
+      "markup": "{我们}{正在}{讨论}{家庭}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn jiā tíng.",
+      "english": "We are discussing family.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2f9f94b016323a49df67",
+      "markup": "{我}{刚}{下班}。",
+      "pinyin": "Wǒ gāng xià bān.",
+      "english": "I just finished work.",
+      "distractors": [],
+      "source": "Context: Recent action 刚",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-34161d77457faf10eda2",
+      "markup": "{今天}{没有}{昨天}{那么}{冷}。",
+      "pinyin": "Jīn tiān méi yǒu zuó tiān nà me lěng.",
+      "english": "Today isn't as cold as yesterday.",
+      "distractors": [],
+      "source": "Context: Comparison 没有那么",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-35a2ead02258cb1c951d",
+      "markup": "{我}{想}{感谢}{他}。",
+      "pinyin": "Wǒ xiǎng gǎn xiè tā.",
+      "english": "I want to 感谢 him.",
+      "distractors": [],
+      "source": "Context: transitive verb with person",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-39abd58e8755babc6e9d",
+      "markup": "{请}{不要}{靠}{门}。",
+      "pinyin": "Qǐng bù yào kào mén.",
+      "english": "Please don't lean against the door.",
+      "distractors": [],
+      "source": "Context: Lean 靠",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3a99fd2dfd7171ef8cbf",
+      "markup": "{我们}{正在}{讨论}{信}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn xìn.",
+      "english": "We are discussing letter.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3ad91c70875fc1bed258",
+      "markup": "{我}{把}{情况}{说}{清楚}{了}。",
+      "pinyin": "Wǒ bǎ qíng kuàng shuō qīng chu le.",
+      "english": "I explained the situation clearly.",
+      "distractors": [],
+      "source": "Context: Explain clearly 清楚",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-425a119cbc39ebc65580",
+      "markup": "{我}{认为}{这}{个}{计划}{很}{好}。",
+      "pinyin": "Wǒ rèn wéi zhè ge jì huà hěn hǎo.",
+      "english": "I think this plan is good.",
+      "distractors": [],
+      "source": "Context: Opinion 认为",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-43159703d30c13d17d40",
+      "markup": "{我}{朋友}{最近}{阳了}，{所以}{在}{家}{休息}。",
+      "pinyin": "Wǒ péng you zuì jìn yáng le, suǒ yǐ zài jiā xiū xi.",
+      "english": "My friend recently tested positive for COVID, so they are resting at home.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4481a594d6dda0295531",
+      "markup": "{这}{个}{东西}{比较}{完全}。",
+      "pinyin": "Zhè ge dōng xi bǐ jiào wán quán.",
+      "english": "This item is relatively complete.",
+      "distractors": [],
+      "source": "Context: stative comparison 比较",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-45c27f9ecedb8b883960",
+      "markup": "{我}{想}{相信}{他}。",
+      "pinyin": "Wǒ xiǎng xiāng xìn tā.",
+      "english": "I want to be convinced him.",
+      "distractors": [],
+      "source": "Context: transitive verb with person",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-46cb97f76fa28c293a97",
+      "markup": "{这}{条}{线路}{他}{已经}{拿捏}{了}。",
+      "pinyin": "Zhè tiáo xiàn lù tā yǐ jīng ná niē le.",
+      "english": "He has already mastered this climbing route.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-474d0e16ce2953bc7e8d",
+      "markup": "{他}{能够}{解决}{这个}{问题}。",
+      "pinyin": "Tā néng gòu jiě jué zhè ge wèn tí.",
+      "english": "He is capable of solving this problem.",
+      "distractors": [],
+      "source": "Context: Capable",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4e241d4853b6e8adeabe",
+      "markup": "{他}{同时}{工作}{和}{学习}。",
+      "pinyin": "Tā tóng shí gōng zuò hé xué xí.",
+      "english": "He works and studies at the same time.",
+      "distractors": [],
+      "source": "Context: Simultaneous 同时",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4eef971f4d9ad37a1271",
+      "markup": "{我}{一般}{周末}{休息}。",
+      "pinyin": "Wǒ yī bān zhōu mò xiū xi.",
+      "english": "I usually rest on weekends.",
+      "distractors": [],
+      "source": "Context: Usually 一般",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4f57cee9f6ac5d5440de",
+      "markup": "{我}{想}{去}，{不过}{今天}{没有}{时间}。",
+      "pinyin": "Wǒ xiǎng qù, bù guò jīn tiān méi yǒu shí jiān.",
+      "english": "I want to go, but I don't have time today.",
+      "distractors": [],
+      "source": "Context: Contrast 不过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4f68f7aa35e58af00669",
+      "markup": "{我们}{明天}{进行}{测试}。",
+      "pinyin": "Wǒ men míng tiān jìn xíng cè shì.",
+      "english": "We'll conduct the test tomorrow.",
+      "distractors": [],
+      "source": "Context: Conduct 进行",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-502e9891bb8e4456e362",
+      "markup": "{他}{刚刚}{回来}。",
+      "pinyin": "Tā gāng gang huí lái.",
+      "english": "He just came back.",
+      "distractors": [],
+      "source": "Context: Just now 刚刚",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5223325f3943cb76c8ea",
+      "markup": "{这}{个}{东西}{比较}{近}。",
+      "pinyin": "Zhè ge dōng xi bǐ jiào jìn.",
+      "english": "This item is relatively near.",
+      "distractors": [],
+      "source": "Context: stative comparison 比较",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-525ccd61707ffd0d888b",
+      "markup": "{如果}{明天}{有}{时间}，{我们}{就}{一起}{去}{攀岩}。",
+      "pinyin": "Rú guǒ míng tiān yǒu shí jiān, wǒ men jiù yī qǐ qù pān yán.",
+      "english": "If we have time tomorrow, we'll go climbing together.",
+      "distractors": [],
+      "source": "Context: Condition 如果就",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5268426dc475f420ac6d",
+      "markup": "{我}{永远}{记得}{这}{个}{地方}。",
+      "pinyin": "Wǒ yǒng yuǎn jì de zhè ge dì fang.",
+      "english": "I will always remember this place.",
+      "distractors": [],
+      "source": "Context: Forever 永远",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-53f66aa3a15d866be2bf",
+      "markup": "{他}{今天}{觉得}{很}{不错}。",
+      "pinyin": "Tā jīn tiān jué de hěn bú cuò.",
+      "english": "He feels not bad today.",
+      "distractors": [],
+      "source": "Context: stative adjective as predicate",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-56ade42878df22f3e9cc",
+      "markup": "{这}{个}{地方}{像}{上海}。",
+      "pinyin": "Zhè ge dì fang xiàng shàng hǎi.",
+      "english": "This place looks like Shanghai.",
+      "distractors": [],
+      "source": "Context: Resemblance 像",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-586f3efa37c666992ae2",
+      "markup": "{我们}{明天}{办}{这}{件}{事}。",
+      "pinyin": "Wǒ men míng tiān bàn zhè jiàn shì.",
+      "english": "We'll deal with this matter tomorrow.",
+      "distractors": [],
+      "source": "Context: Handle 办",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-58c9639d6d51ade683bb",
+      "markup": "{这}{家}{店}{的}{风格}{很}{特别}。",
+      "pinyin": "Zhè jiā diàn de fēng gé hěn tè bié.",
+      "english": "This shop's style is quite distinctive.",
+      "distractors": [],
+      "source": "Context: Style",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5a83d39be06af31396ce",
+      "markup": "{你}{可以}{这样}{做}，{也}{可以}{那样}{做}。",
+      "pinyin": "Nǐ kě yǐ zhè yàng zuò, yě kě yǐ nà yàng zuò.",
+      "english": "You can do it this way or that way.",
+      "distractors": [],
+      "source": "Context: Discourse 那样",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5ab97ebba9b982de05c1",
+      "markup": "{我们}{今天}{学习}{离开}{的}{用法}。",
+      "pinyin": "Wǒ men jīn tiān xué xí lí kāi de yòng fǎ.",
+      "english": "Today we are learning how to use depart.",
+      "distractors": [],
+      "source": "Context: word usage in context",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5c58b142b28897a4e62d",
+      "markup": "{教练}{要}{我们}{练习}{拉}{和}{推}。",
+      "pinyin": "Jiào liàn yào wǒ men liàn xí lā hé tuī.",
+      "english": "The coach wants us to practice pull and push.",
+      "distractors": [],
+      "source": "Context: causative instruction",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5d3211aa7b40e339f371",
+      "markup": "{这}{个}{东西}{有}{两}{面}。",
+      "pinyin": "Zhè ge dōng xi yǒu liǎng miàn.",
+      "english": "This object has two sides.",
+      "distractors": [],
+      "source": "Context: Two sides",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-60f1552ac4d5a266e715",
+      "markup": "{我}{来自}{美国}。",
+      "pinyin": "Wǒ lái zì měi guó.",
+      "english": "I come from the United States.",
+      "distractors": [],
+      "source": "Context: Origin",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6221b2e9ab38161b8b29",
+      "markup": "{他}{喜欢}{学习}，{并且}{很}{努力}。",
+      "pinyin": "Tā xǐ huan xué xí, bìng qiě hěn nǔ lì.",
+      "english": "He likes studying and works very hard.",
+      "distractors": [],
+      "source": "Context: And moreover",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-63e2bba0f3c01e4f53c3",
+      "markup": "{保护员}{必须}{检查}{安全带}。",
+      "pinyin": "Bǎo hù yuán bì xū jiǎn chá ān quán dài.",
+      "english": "A belayer must check the harness.",
+      "distractors": [],
+      "source": "Context: Obligation 必须",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-682aecc0c994edaa247a",
+      "markup": "{我们}{正在}{讨论}{信息}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn xìn xī.",
+      "english": "We are discussing information.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-686097c90d28177669af",
+      "markup": "{他}{讲}{了}{一}{个}{故事}。",
+      "pinyin": "Tā jiǎng le yī ge gù shi.",
+      "english": "He told a story.",
+      "distractors": [],
+      "source": "Context: Tell story",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6a0ed9ee09fd0a5ded15",
+      "markup": "{我们}{正在}{讨论}{健康}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn jiàn kāng.",
+      "english": "We are discussing health.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6b5d0d081951545a84a9",
+      "markup": "{我}{一边}{听}{音乐}，{一边}{做饭}。",
+      "pinyin": "Wǒ yì biān tīng yīn yuè, yì biān zuò fàn.",
+      "english": "I listen to music while cooking.",
+      "distractors": [],
+      "source": "Context: Simultaneous 一边一边",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6bfe1ce507aae3d598c0",
+      "markup": "{人民}{需要}{安全}{的}{生活}。",
+      "pinyin": "Rén mín xū yào ān quán de shēng huó.",
+      "english": "People need a safe life.",
+      "distractors": [],
+      "source": "Context: The people",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6cef4172ecf1e24d6aac",
+      "markup": "{我}{想}{见到}{他}。",
+      "pinyin": "Wǒ xiǎng jiàn dào tā.",
+      "english": "I want to see him.",
+      "distractors": [],
+      "source": "Context: transitive verb with person",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6de9bbb69f9b4afe5c4f",
+      "markup": "{从}{去年}{以来}，{他}{一直}{在}{学习}。",
+      "pinyin": "Cóng qù nián yǐ lái, tā yī zhí zài xué xí.",
+      "english": "He has been studying since last year.",
+      "distractors": [],
+      "source": "Context: Since 以来",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-70818c52735c83c6799e",
+      "markup": "{我}{今天}{想}{买}{眼睛}。",
+      "pinyin": "Wǒ jīn tiān xiǎng mǎi yǎn jing.",
+      "english": "I want to buy eye today.",
+      "distractors": [],
+      "source": "Context: shopping intention",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-71cf0fe59f5b95cf5763",
+      "markup": "{手机}{掉}{了}。",
+      "pinyin": "Shǒu jī diào le.",
+      "english": "The phone fell.",
+      "distractors": [],
+      "source": "Context: Fall 掉",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7206ec56f5b08b962343",
+      "markup": "{我}{今天}{看}{了}{新闻}。",
+      "pinyin": "Wǒ jīn tiān kàn le xīn wén.",
+      "english": "I read the news today.",
+      "distractors": [],
+      "source": "Context: News",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-759171eaa0e9c8844863",
+      "markup": "{水}{变成}{冰}{了}。",
+      "pinyin": "Shuǐ biàn chéng bīng le.",
+      "english": "The water turned into ice.",
+      "distractors": [],
+      "source": "Context: Become 变成",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-77f804696a390b1aa493",
+      "markup": "{他}{今天}{觉得}{很}{快乐}。",
+      "pinyin": "Tā jīn tiān jué de hěn kuài lè.",
+      "english": "He feels happy today.",
+      "distractors": [],
+      "source": "Context: stative adjective as predicate",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-78c22d9dd009b9554306",
+      "markup": "{孩子}{哭}{了}。",
+      "pinyin": "Hái zi kū le.",
+      "english": "The child cried.",
+      "distractors": [],
+      "source": "Context: Cry",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7916ed52a3fb5291bc32",
+      "markup": "{我们}{正在}{讨论}{方法}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn fāng fǎ.",
+      "english": "We are discussing method.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-798c5a3acafd39f843d4",
+      "markup": "{看}{到}{这个}{消息}，{我}{直接}{破防}{了}。",
+      "pinyin": "Kàn dào zhè ge xiāo xi, wǒ zhí jiē pò fáng le.",
+      "english": "That news got to me emotionally.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7a547851d0542ec3b1a8",
+      "markup": "{人们}{都}{在}{等}{公交车}。",
+      "pinyin": "Rén men dōu zài děng gōng jiāo chē.",
+      "english": "People are all waiting for the bus.",
+      "distractors": [],
+      "source": "Context: People gathering",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7b9924079d1cbe4131c2",
+      "markup": "{这里}{有人}{吗}？",
+      "pinyin": "Zhè lǐ yǒu rén ma?",
+      "english": "Is anyone here?",
+      "distractors": [],
+      "source": "Context: Someone",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7c702c6e2faaeec73e91",
+      "markup": "{你}{可以}{走}{或}{坐}{地铁}。",
+      "pinyin": "Nǐ kě yǐ zǒu huò zuò dì tiě.",
+      "english": "You can walk or take the subway.",
+      "distractors": [],
+      "source": "Context: Written alternative 或",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8166d2e730ea53e10567",
+      "markup": "{他}{求}{我}{帮忙}。",
+      "pinyin": "Tā qiú wǒ bāng máng.",
+      "english": "He begged me for help.",
+      "distractors": [],
+      "source": "Context: Ask earnestly",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-81e2c4a5665570b82ba0",
+      "markup": "{我们}{发现}{了}{这}{个}{问题}。",
+      "pinyin": "Wǒ men fā xiàn le zhè ge wèn tí.",
+      "english": "We discovered this problem.",
+      "distractors": [],
+      "source": "Context: Notice a problem",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-83e1e1b3fa7e5bc6d8da",
+      "markup": "{这}{才}{是}{真正}{的}{原因}。",
+      "pinyin": "Zhè cái shì zhēn zhèng de yuán yīn.",
+      "english": "This is the real reason.",
+      "distractors": [],
+      "source": "Context: Real versus fake",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-85797eebefd689ee4a00",
+      "markup": "{我}{今天}{想}{卖}{这}{个}{东西}。",
+      "pinyin": "Wǒ jīn tiān xiǎng mài zhè ge dōng xi.",
+      "english": "Today I want to sell this item.",
+      "distractors": [],
+      "source": "Context: transitive verb with concrete object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-85955a09d4995f7b7181",
+      "markup": "{请}{往}{前面}{走}。",
+      "pinyin": "Qǐng wǎng qián miàn zǒu.",
+      "english": "Please walk forward.",
+      "distractors": [],
+      "source": "Context: Direction 往",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-85cd2284e2b044ef222d",
+      "markup": "{我们}{经常}{一起}{吃饭}，{是}{饭搭子}。",
+      "pinyin": "Wǒ men jīng cháng yī qǐ chī fàn, shì fàn dā zi.",
+      "english": "We eat together often; we are food buddies.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-860fb455b9a2110cc477",
+      "markup": "{虽然}{很}{难}，{但是}{我}{不}{想}{摆烂}。",
+      "pinyin": "Suī rán hěn nán, dàn shì wǒ bù xiǎng bǎi làn.",
+      "english": "Although it is hard, I do not want to give up.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-86f0b2d949fb2ede6872",
+      "markup": "{我}{想}{去}，{但}{今天}{没有}{时间}。",
+      "pinyin": "Wǒ xiǎng qù, dàn jīn tiān méi yǒu shí jiān.",
+      "english": "I want to go, but I don't have time today.",
+      "distractors": [],
+      "source": "Context: Conjunction 但",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-883644ec4d785b2bc7dc",
+      "markup": "{我}{该}{回家}{了}。",
+      "pinyin": "Wǒ gāi huí jiā le.",
+      "english": "It's time for me to go home.",
+      "distractors": [],
+      "source": "Context: Ought to 该",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-883888e4fefa8a962df2",
+      "markup": "{我们}{可以}{喝}{咖啡}{或者}{茶}。",
+      "pinyin": "Wǒ men kě yǐ hē kā fēi huò zhě chá.",
+      "english": "We can drink coffee or tea.",
+      "distractors": [],
+      "source": "Context: Statement choice 或者",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-88dfceb05788847c9f77",
+      "markup": "{我们}{队}{今天}{赢}{了}。",
+      "pinyin": "Wǒ men duì jīn tiān yíng le.",
+      "english": "Our team won today.",
+      "distractors": [],
+      "source": "Context: Team",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8bc080ce90f0bf90238e",
+      "markup": "{他们}{周末}{又}{在}{整活}。",
+      "pinyin": "Tā men zhōu mò yòu zài zhěng huó.",
+      "english": "They are doing another goofy stunt this weekend.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8bedae5d644f597dac02",
+      "markup": "{随便}，{我}{都}{可以}。",
+      "pinyin": "Suí biàn, wǒ dōu kě yǐ.",
+      "english": "Anything is fine with me.",
+      "distractors": [],
+      "source": "Context: Casual preference",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8ecdb8615d2fae019cb1",
+      "markup": "{他}{好像}{已经}{走}{了}。",
+      "pinyin": "Tā hǎo xiàng yǐ jīng zǒu le.",
+      "english": "It looks like he has already left.",
+      "distractors": [],
+      "source": "Context: Seeming 好像",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8fabc6ac332e444d639b",
+      "markup": "{我}{本来}{想}{去}，{但是}{没}{时间}。",
+      "pinyin": "Wǒ běn lái xiǎng qù, dàn shì méi shí jiān.",
+      "english": "I had originally wanted to go, but I didn't have time.",
+      "distractors": [],
+      "source": "Context: Originally 本来",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-90537aa93fa2fdc78f9a",
+      "markup": "{我}{以为}{你}{今天}{不}{来}。",
+      "pinyin": "Wǒ yǐ wéi nǐ jīn tiān bù lái.",
+      "english": "I thought you weren't coming today.",
+      "distractors": [],
+      "source": "Context: Mistaken assumption",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-927ea0ae5212bef8da2f",
+      "markup": "{这}{家}{店}{很}{漂亮}。",
+      "pinyin": "Zhè jiā diàn hěn piào liang.",
+      "english": "This shop is beautiful.",
+      "distractors": [],
+      "source": "Context: Beautiful 漂亮",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-92bbf3f1667c8a7e4e97",
+      "markup": "{学校}{就}{在}{我}{面前}。",
+      "pinyin": "Xué xiào jiù zài wǒ miàn qián.",
+      "english": "The school is right in front of me.",
+      "distractors": [],
+      "source": "Context: Before one's eyes",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-978a231e990e1216aca3",
+      "markup": "{这}{个}{东西}{比较}{低}。",
+      "pinyin": "Zhè ge dōng xi bǐ jiào dī.",
+      "english": "This item is relatively low.",
+      "distractors": [],
+      "source": "Context: stative comparison 比较",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-99acde1dfcd730c1728a",
+      "markup": "{你}{懂}{我}{的}{意思}{吗}？",
+      "pinyin": "Nǐ dǒng wǒ de yì si ma?",
+      "english": "Do you understand what I mean?",
+      "distractors": [],
+      "source": "Context: Understand 懂",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-99ae4d848c54e1dc4cec",
+      "markup": "{他}{这样}{说话}{真}{下头}。",
+      "pinyin": "Tā zhè yàng shuō huà zhēn xià tóu.",
+      "english": "The way he talks is such a turn-off.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9dd69111e022a5f852ec",
+      "markup": "{这}{个}{球}{里}{有}{气}。",
+      "pinyin": "Zhè ge qiú lǐ yǒu qì.",
+      "english": "There is air inside this ball.",
+      "distractors": [],
+      "source": "Context: Air 气",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9e5e3a548da8ef700800",
+      "markup": "{我们}{可以}{利用}{这个}{机会}。",
+      "pinyin": "Wǒ men kě yǐ lì yòng zhè ge jī huì.",
+      "english": "We can make use of this opportunity.",
+      "distractors": [],
+      "source": "Context: Make use of",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9ea1a0457a72d13388c3",
+      "markup": "{我们}{需要}{了解}{使用}{的}{用法}。",
+      "pinyin": "Wǒ men xū yào liǎo jiě shǐ yòng de yòng fǎ.",
+      "english": "We need to learn how to use use.",
+      "distractors": [],
+      "source": "Context: transitive word in a usage explanation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a092223e634833086cfe",
+      "markup": "{大家}{都}{在}{围观}{这}{件}{事}。",
+      "pinyin": "Dà jiā dōu zài wéi guān zhè jiàn shì.",
+      "english": "Everyone is watching this unfold.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a16012d40769531fb36b",
+      "markup": "{他}{需要}{吃}{药}。",
+      "pinyin": "Tā xū yào chī yào.",
+      "english": "He needs to take medicine.",
+      "distractors": [],
+      "source": "Context: Medicine",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a16778437bf041d19a00",
+      "markup": "{我们}{正在}{讨论}{行为}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn xíng wéi.",
+      "english": "We are discussing action.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a329a5fc1fcf425d5e83",
+      "markup": "{那}{座}{山}{很}{高}。",
+      "pinyin": "Nà zuò shān hěn gāo.",
+      "english": "That mountain is very tall.",
+      "distractors": [],
+      "source": "Context: Mountain classifier 座",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a609b96e5da136352b3c",
+      "markup": "{只要}{你}{坚持}，{就}{能}{提高}。",
+      "pinyin": "Zhǐ yào nǐ jiān chí, jiù néng tí gāo.",
+      "english": "As long as you persist, you can improve.",
+      "distractors": [],
+      "source": "Context: As long as 只要就",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a6d5f19d005419a0a44c",
+      "markup": "{你}{一定}{能}{做到}。",
+      "pinyin": "Nǐ yí dìng néng zuò dào.",
+      "english": "You can definitely do it.",
+      "distractors": [],
+      "source": "Context: Manage to do",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ab91aec0532a5f131c99",
+      "markup": "{我}{今天}{想}{接}{这}{个}{东西}。",
+      "pinyin": "Wǒ jīn tiān xiǎng jiē zhè ge dōng xi.",
+      "english": "Today I want to receive this item.",
+      "distractors": [],
+      "source": "Context: transitive verb with concrete object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-acbeec63978257ee4b24",
+      "markup": "{我}{以前}{去}{过}{布达佩斯}。",
+      "pinyin": "Wǒ yǐ qián qù guo bù dá pèi sī.",
+      "english": "I have visited Budapest.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-aef145b2ca103b38a304",
+      "markup": "{我们}{正在}{讨论}{事情}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn shì qing.",
+      "english": "We are discussing matter.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-aef97964b2dc43dcf0d9",
+      "markup": "{这}{次}{事故}{造成}{了}{影响}。",
+      "pinyin": "Zhè cì shì gù zào chéng le yǐng xiǎng.",
+      "english": "This incident had consequences.",
+      "distractors": [],
+      "source": "Context: Cause damage",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-afe83a53352e9e8a8083",
+      "markup": "{我}{买}{了}{一}{套}{衣服}。",
+      "pinyin": "Wǒ mǎi le yī tào yī fu.",
+      "english": "I bought a matching set of clothing.",
+      "distractors": [],
+      "source": "Context: Set classifier 套",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b0489da7eeb1c965301f",
+      "markup": "{我}{今天}{只能}{在}{家}{工作}。",
+      "pinyin": "Wǒ jīn tiān zhǐ néng zài jiā gōng zuò.",
+      "english": "I can only work from home today.",
+      "distractors": [],
+      "source": "Context: Only able",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b0a52528eef2af7ae1ff",
+      "markup": "{你}{愿意}{帮忙}{吗}？",
+      "pinyin": "Nǐ yuàn yì bāng máng ma?",
+      "english": "Are you willing to help?",
+      "distractors": [],
+      "source": "Context: Willing",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b13dac2f293be5b77dc5",
+      "markup": "{欢迎}{你}{来}{上海}。",
+      "pinyin": "Huān yíng nǐ lái shàng hǎi.",
+      "english": "Welcome to Shanghai!",
+      "distractors": [],
+      "source": "Context: Welcome",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b1da76c96ca06dee2c27",
+      "markup": "{洗衣机}{已经}{坏}{了}。",
+      "pinyin": "Xǐ yī jī yǐ jīng huài le.",
+      "english": "The washing machine is broken.",
+      "distractors": [],
+      "source": "Context: Washing machine",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b2a0a3d9246ca7a4a509",
+      "markup": "{我们}{正在}{讨论}{部分}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn bù fen.",
+      "english": "We are discussing part.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b498a2f5fafbec300042",
+      "markup": "{请}{说明}{原因}。",
+      "pinyin": "Qǐng shuō míng yuán yīn.",
+      "english": "Please explain the reason.",
+      "distractors": [],
+      "source": "Context: Explain reason",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b88ca220fdf772099c96",
+      "markup": "{我}{已经}{完成}{了}{任务}。",
+      "pinyin": "Wǒ yǐ jīng wán chéng le rèn wu.",
+      "english": "I've already completed the task.",
+      "distractors": [],
+      "source": "Context: Aspect 已经",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ba986303eeb8bbf73a50",
+      "markup": "{我们}{或许}{可以}{换}{个}{时间}。",
+      "pinyin": "Wǒ men huò xǔ kě yǐ huàn ge shí jiān.",
+      "english": "Perhaps we can choose a different time.",
+      "distractors": [],
+      "source": "Context: Possibility 或许",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bc2bfee0af92a1c7f652",
+      "markup": "{所有}{人}{都}{在}{这里}。",
+      "pinyin": "Suǒ yǒu rén dōu zài zhè lǐ.",
+      "english": "Everyone is here.",
+      "distractors": [],
+      "source": "Context: All 所有",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bda0735a8629ce2e5c80",
+      "markup": "{我们}{需要}{改变}{这}{个}{情况}。",
+      "pinyin": "Wǒ men xū yào gǎi biàn zhè ge qíng kuàng.",
+      "english": "We need to change this situation.",
+      "distractors": [],
+      "source": "Context: Change situation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bea5352db47d406af55e",
+      "markup": "{这}{个}{工作}{的}{要求}{很}{高}。",
+      "pinyin": "Zhè ge gōng zuò de yāo qiú hěn gāo.",
+      "english": "This job has demanding requirements.",
+      "distractors": [],
+      "source": "Context: Requirement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bfaef9a8c1cf486506ef",
+      "markup": "{我}{还}{想}{看看}{其他}{的}{菜}。",
+      "pinyin": "Wǒ hái xiǎng kàn kan qí tā de cài.",
+      "english": "I also want to see the other dishes.",
+      "distractors": [],
+      "source": "Context: Other 其他",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c3413ca5d5d0c93b3aaa",
+      "markup": "{汽车}{停}{在}{门}{外}。",
+      "pinyin": "Qì chē tíng zài mén wài.",
+      "english": "The car is parked outside the door.",
+      "distractors": [],
+      "source": "Context: Car parked",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c34e282bd785ac992554",
+      "markup": "{我们}{受到}{了}{帮助}。",
+      "pinyin": "Wǒ men shòu dào le bāng zhù.",
+      "english": "We received help.",
+      "distractors": [],
+      "source": "Context: Receive",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c53ce79cddb86c4d6a4f",
+      "markup": "{这}{个}{菜}{挺}{好吃}。",
+      "pinyin": "Zhè ge cài tǐng hǎo chī.",
+      "english": "This dish is pretty tasty.",
+      "distractors": [],
+      "source": "Context: Informal degree 挺",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c93d2855726db756cff6",
+      "markup": "{医生}{让}{我}{忌口}。",
+      "pinyin": "Yī shēng ràng wǒ jì kǒu.",
+      "english": "The doctor told me to avoid certain foods.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c97d25f212fc393764d7",
+      "markup": "{我}{下}{周}{去}{北京}。",
+      "pinyin": "Wǒ xià zhōu qù běi jīng.",
+      "english": "I'm going to Beijing next week.",
+      "distractors": [],
+      "source": "Context: Week 周",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ca18abb078bcde58f085",
+      "markup": "{我}{通过}{练习}{提高}{了}{技术}。",
+      "pinyin": "Wǒ tōng guò liàn xí tí gāo le jì shù.",
+      "english": "I improved my technique through practice.",
+      "distractors": [],
+      "source": "Context: Means 通过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ca487431fef240d5ad04",
+      "markup": "{他}{今天}{才}{回来}。",
+      "pinyin": "Tā jīn tiān cái huí lái.",
+      "english": "He didn't come back until today.",
+      "distractors": [],
+      "source": "Context: Not until 才",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-caed078c0f6987d61e74",
+      "markup": "{我们}{正在}{讨论}{方面}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn fāng miàn.",
+      "english": "We are discussing respect.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ccb9d5c48423e9b82cbf",
+      "markup": "{它}{在}{这里}。",
+      "pinyin": "Tā zài zhè lǐ.",
+      "english": "It is here.",
+      "distractors": [],
+      "source": "Context: third-person animal or object pronoun",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cf53b3256fa902a50b3c",
+      "markup": "{我们}{想}{去}{银行}。",
+      "pinyin": "Wǒ men xiǎng qù yín háng.",
+      "english": "We would like to go to the bank.",
+      "distractors": [],
+      "source": "Context: place as directional object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d120cdd2a86509dc2666",
+      "markup": "{我们}{正在}{讨论}{行动}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn xíng dòng.",
+      "english": "We are discussing operation.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d1df4232ff610d54b0a9",
+      "markup": "{因为}{下雨}，{所以}{我们}{不}{去}{爬山}。",
+      "pinyin": "Yīn wèi xià yǔ, suǒ yǐ wǒ men bù qù pá shān.",
+      "english": "Because it's raining, we're not going hiking.",
+      "distractors": [],
+      "source": "Context: Cause 因为所以",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d1e42344a2a04a68649e",
+      "markup": "{我们}{应该}{怎样}{做}？",
+      "pinyin": "Wǒ men yīng gāi zěn yàng zuò?",
+      "english": "How should we do it?",
+      "distractors": [],
+      "source": "Context: How 怎样",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d21ae74fe7b1f6477cef",
+      "markup": "{我们}{需要}{想到}{这}{个}{问题}。",
+      "pinyin": "Wǒ men xū yào xiǎng dào zhè ge wèn tí.",
+      "english": "We need to think of this problem.",
+      "distractors": [],
+      "source": "Context: mental or discussion verb with object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d36794899951bd6c81df",
+      "markup": "{我们}{至少}{要}{等}{十}{分钟}。",
+      "pinyin": "Wǒ men zhì shǎo yào děng shí fēn zhōng.",
+      "english": "We need to wait at least ten minutes.",
+      "distractors": [],
+      "source": "Context: At least 至少",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d53746c83bb72b50e4ec",
+      "markup": "{请}{帮}{我}{算}{一下}。",
+      "pinyin": "Qǐng bāng wǒ suàn yí xià.",
+      "english": "Please calculate it for me.",
+      "distractors": [],
+      "source": "Context: Calculate",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d58dfcf7d61dad543c46",
+      "markup": "{这}{个}{东西}{比较}{正常}。",
+      "pinyin": "Zhè ge dōng xi bǐ jiào zhèng cháng.",
+      "english": "This item is relatively regular.",
+      "distractors": [],
+      "source": "Context: stative comparison 比较",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d64011eb298e789b5a55",
+      "markup": "{我们}{正在}{讨论}{活动}。",
+      "pinyin": "Wǒ men zhèng zài tǎo lùn huó dòng.",
+      "english": "We are discussing activity.",
+      "distractors": [],
+      "source": "Context: topic as object of 讨论",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d6968ad8f3f2538a0122",
+      "markup": "{我们}{有}{三}{个}{办法}，{其中}{一}{个}{很}{好}。",
+      "pinyin": "Wǒ men yǒu sān ge bàn fǎ, qí zhōng yī ge hěn hǎo.",
+      "english": "We have three approaches; one of them is good.",
+      "distractors": [],
+      "source": "Context: One among",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d9a7676d824ec4c3f80d",
+      "markup": "{我}{今天}{想}{收}{这}{个}{东西}。",
+      "pinyin": "Wǒ jīn tiān xiǎng shōu zhè ge dōng xi.",
+      "english": "Today I want to receive this item.",
+      "distractors": [],
+      "source": "Context: transitive verb with concrete object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-db360fb7ac3ec8acc7b9",
+      "markup": "{原来}{你}{也}{喜欢}{攀岩}！",
+      "pinyin": "Yuán lái nǐ yě xǐ huan pān yán!",
+      "english": "So you like climbing too!",
+      "distractors": [],
+      "source": "Context: Realization 原来",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-decedc1a9b9e6cf6f635",
+      "markup": "{我}{想}{接受}{这个}{挑战}。",
+      "pinyin": "Wǒ xiǎng jiē shòu zhè ge tiǎo zhàn.",
+      "english": "I want to accept this challenge.",
+      "distractors": [],
+      "source": "Context: Challenge",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e00746e5e77a17947268",
+      "markup": "{我}{感到}{很}{开心}。",
+      "pinyin": "Wǒ gǎn dào hěn kāi xīn.",
+      "english": "I feel happy.",
+      "distractors": [],
+      "source": "Context: Feel 感到",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e2a572eb08bc7ae5e3cd",
+      "markup": "{我}{想}{去}，{可是}{今天}{太}{忙}。",
+      "pinyin": "Wǒ xiǎng qù, kě shì jīn tiān tài máng.",
+      "english": "I want to go, but I'm too busy today.",
+      "distractors": [],
+      "source": "Context: Concession 可是",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e4b7d7108ff7d08a30b7",
+      "markup": "{他}{睁}{开}{了}{眼}。",
+      "pinyin": "Tā zhēng kāi le yǎn.",
+      "english": "He opened his eyes.",
+      "distractors": [],
+      "source": "Context: Eye",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e69bc12fb142f8e63f63",
+      "markup": "{这}{个}{东西}{比较}{不同}。",
+      "pinyin": "Zhè ge dōng xi bǐ jiào bù tóng.",
+      "english": "This item is relatively different.",
+      "distractors": [],
+      "source": "Context: stative comparison 比较",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e747b5f4e9ab7f08f663",
+      "markup": "{他}{也许}{喜欢}{这}{个}{地方}。",
+      "pinyin": "Tā yě xǔ xǐ huan zhè ge dì fang.",
+      "english": "He likes this place (perhaps).",
+      "distractors": [],
+      "source": "Context: adverb before predicate",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e808ec533e7cb20c57b8",
+      "markup": "{他}{想}{成为}{老师}。",
+      "pinyin": "Tā xiǎng chéng wéi lǎo shī.",
+      "english": "He wants to become a teacher.",
+      "distractors": [],
+      "source": "Context: Become",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-efbbbcdbf11a9c2b630e",
+      "markup": "{我}{感觉}{今天}{有点}{冷}。",
+      "pinyin": "Wǒ gǎn jué jīn tiān yǒu diǎn lěng.",
+      "english": "I feel a bit cold today.",
+      "distractors": [],
+      "source": "Context: Feeling 感觉",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f5babbedd82ec64c78d3",
+      "markup": "{我}{喜欢}{这}{张}{照片}。",
+      "pinyin": "Wǒ xǐ huan zhè zhāng zhào piàn.",
+      "english": "I like this photo.",
+      "distractors": [],
+      "source": "Context: Photograph",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f5d0c18756966e94a1cb",
+      "markup": "{我们}{今天}{学习}{进入}{的}{用法}。",
+      "pinyin": "Wǒ men jīn tiān xué xí jìn rù de yòng fǎ.",
+      "english": "Today we are learning how to use enter.",
+      "distractors": [],
+      "source": "Context: word usage in context",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f8e0a274dc42ccb78a66",
+      "markup": "{这}{个}{消息}{带来}{了}{好}{结果}。",
+      "pinyin": "Zhè ge xiāo xi dài lái le hǎo jié guǒ.",
+      "english": "This news brought a good result.",
+      "distractors": [],
+      "source": "Context: Bring about",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f9ce1f15689ae14caaae",
+      "markup": "{我}{今天}{想}{装}{这}{个}{东西}。",
+      "pinyin": "Wǒ jīn tiān xiǎng zhuāng zhè ge dōng xi.",
+      "english": "Today I want to pack this item.",
+      "distractors": [],
+      "source": "Context: transitive verb with concrete object",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fde23f226450353d6b9f",
+      "markup": "{他}{的}{脸}{有点}{红}。",
+      "pinyin": "Tā de liǎn yǒu diǎn hóng.",
+      "english": "His face is a little red.",
+      "distractors": [],
+      "source": "Context: Face",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fdeafcccacfda00318b3",
+      "markup": "{这里}{有}{许多}{人}。",
+      "pinyin": "Zhè lǐ yǒu xǔ duō rén.",
+      "english": "There are many people here.",
+      "distractors": [],
+      "source": "Context: Many",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-grammar-020",
+      "markup": "{我}{先}{热身}，{然后}{开始}{攀岩}。",
+      "pinyin": "Wǒ xiān rèshēn, ránhòu kāishǐ pānyán.",
+      "english": "I warm up first, then start climbing.",
+      "distractors": [],
+      "source": "Ciyan practical grammar v0.3",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
 }

@@ -1,0 +1,341 @@
+# visited-places|Places you've visited|places,visited
+加利福尼亚州|jiā lì fú ní yà zhōu|California, USA (visited state)
+旧金山|jiù jīn shān|San Francisco, California
+洛杉矶|luò shān jī|Los Angeles, California
+圣迭戈|shèng dié gē|San Diego, California
+萨克拉门托|sà kè lā mén tuō|Sacramento, California
+圣巴巴拉|shèng bā bā lā|Santa Barbara, California
+圣克鲁斯|shèng kè lǔ sī|Santa Cruz, California
+太浩湖|tài hào hú|Lake Tahoe, California/Nevada
+优胜美地国家公园|yōu shèng měi dì guó jiā gōng yuán|Yosemite National Park, California
+科罗拉多州|kē luó lā duō zhōu|Colorado, USA (visited state)
+丹佛|dān fó|Denver, Colorado
+柯林斯堡|kē lín sī bǎo|Fort Collins, Colorado
+明尼苏达州|míng ní sū dá zhōu|Minnesota, USA (visited state)
+明尼阿波利斯|míng ní ā bō lì sī|Minneapolis, Minnesota
+圣保罗|shèng bǎo luó|Saint Paul, Minnesota, USA (not São Paulo)
+圣克劳德|shèng kè láo dé|St. Cloud, Minnesota
+密苏里州|mì sū lǐ zhōu|Missouri, USA (visited state)
+圣路易斯|shèng lù yì sī|St. Louis, Missouri
+内华达州|nèi huá dá zhōu|Nevada, USA (visited state)
+拉斯维加斯|lā sī wéi jiā sī|Las Vegas, Nevada
+得克萨斯州|dé kè sà sī zhōu|Texas, USA (visited state)
+奥斯汀|ào sī tīng|Austin, Texas
+达拉斯|dá lā sī|Dallas, Texas
+休斯敦|xiū sī dūn|Houston, Texas
+圣安东尼奥|shèng ān dōng ní ào|San Antonio, Texas
+日本|rì běn|Japan
+大阪|dà bǎn|Osaka, Japan
+京都|jīng dū|Kyoto, Japan
+奈良|nài liáng|Nara, Japan
+富士山|fù shì shān|Mount Fuji, Japan
+东京|dōng jīng|Tokyo, Japan
+安徽|ān huī|Anhui, China
+黄山|huáng shān|Huangshan (Yellow Mountain / city), Anhui
+宏村|hóng cūn|Hongcun village, Anhui
+福建|fú jiàn|Fujian, China
+福州|fú zhōu|Fuzhou, Fujian
+泉州|quán zhōu|Quanzhou, Fujian
+武夷山|wǔ yí shān|Wuyi Mountains / Wuyishan, Fujian
+平潭岛|píng tán dǎo|Pingtan Island, Fujian
+厦门|xià mén|Xiamen, Fujian
+甘肃|gān sù|Gansu, China
+兰州|lán zhōu|Lanzhou, Gansu
+敦煌|dūn huáng|Dunhuang, Gansu
+广东|guǎng dōng|Guangdong, China
+深圳|shēn zhèn|Shenzhen, Guangdong
+广州|guǎng zhōu|Guangzhou, Guangdong
+贵州|guì zhōu|Guizhou, China
+贵阳|guì yáng|Guiyang, Guizhou
+安顺|ān shùn|Anshun, Guizhou
+荔波|lì bō|Libo, Guizhou
+湖北|hú běi|Hubei, China
+武汉|wǔ hàn|Wuhan, Hubei
+恩施|ēn shī|Enshi, Hubei (not Zhejiang)
+湖南|hú nán|Hunan, China
+岳阳|yuè yáng|Yueyang, Hunan
+长沙|cháng shā|Changsha, Hunan
+江苏|jiāng sū|Jiangsu, China
+南京|nán jīng|Nanjing, Jiangsu
+苏州|sū zhōu|Suzhou, Jiangsu
+无锡|wú xī|Wuxi, Jiangsu
+江西|jiāng xī|Jiangxi, China
+景德镇|jǐng dé zhèn|Jingdezhen, Jiangxi
+南昌|nán chāng|Nanchang, Jiangxi (not Qinghai)
+青海|qīng hǎi|Qinghai, China
+陕西|shǎn xī|Shaanxi, China
+西安|xī ān|Xi'an, Shaanxi
+云南|yún nán|Yunnan, China
+大理|dà lǐ|Dali, Yunnan
+丽江|lì jiāng|Lijiang, Yunnan
+昆明|kūn míng|Kunming, Yunnan
+西双版纳|xī shuāng bǎn nà|Xishuangbanna, Yunnan
+浙江|zhè jiāng|Zhejiang, China
+杭州|háng zhōu|Hangzhou, Zhejiang
+上海|shàng hǎi|Shanghai, China
+北京|běi jīng|Beijing, China
+重庆|chóng qìng|Chongqing, China
+台湾|tái wān|Taiwan
+台北|tái běi|Taipei, Taiwan
+新竹|xīn zhú|Hsinchu, Taiwan
+法国|fǎ guó|France
+巴黎|bā lí|Paris, France
+里尔|lǐ ěr|Lille, France
+比利时|bǐ lì shí|Belgium
+布鲁塞尔|bù lǔ sài ěr|Brussels, Belgium
+荷兰|hé lán|Netherlands
+阿姆斯特丹|ā mǔ sī tè dān|Amsterdam, Netherlands
+西班牙|xī bān yá|Spain
+巴塞罗那|bā sài luó nà|Barcelona, Spain
+马德里|mǎ dé lǐ|Madrid, Spain
+塞维利亚|sāi wéi lì yà|Seville, Spain
+科尔多瓦|kē ěr duō wǎ|Córdoba, Spain
+马来西亚|mǎ lái xī yà|Malaysia
+吉隆坡|jí lóng pō|Kuala Lumpur, Malaysia
+马六甲|mǎ liù jiǎ|Malacca, Malaysia
+新加坡|xīn jiā pō|Singapore (country and city)
+韩国|hán guó|South Korea
+济州岛|jì zhōu dǎo|Jeju Island, South Korea
+牛岛|niú dǎo|Udo Island, Jeju, South Korea
+首尔|shǒu ěr|Seoul, South Korea
+仁川|rén chuān|Incheon, South Korea
+釜山|fǔ shān|Busan, South Korea
+甘川文化村|gān chuān wén huà cūn|Gamcheon Culture Village, Busan
+泰国|tài guó|Thailand
+曼谷|màn gǔ|Bangkok, Thailand
+德国|dé guó|Germany
+法兰克福|fǎ lán kè fú|Frankfurt, Germany
+哈瑙|hā nào|Hanau, Germany
+慕尼黑|mù ní hēi|Munich, Germany
+新天鹅堡|xīn tiān é bǎo|Neuschwanstein Castle, Bavaria
+纽伦堡|niǔ lún bǎo|Nuremberg, Germany
+维尔茨堡|wéi ěr cí bǎo|Würzburg, Germany
+陶伯河畔罗滕堡|táo bó hé pàn luó téng bǎo|Rothenburg ob der Tauber, Germany
+科隆|kē lóng|Cologne, Germany
+柏林|bó lín|Berlin, Germany
+瑞士|ruì shì|Switzerland
+卢塞恩|lú sài ēn|Lucerne (Luzern), Switzerland
+苏黎世|sū lí shì|Zürich, Switzerland
+因特拉肯|yīn tè lā kěn|Interlaken, Switzerland
+格林德瓦|gé lín dé wǎ|Grindelwald, Switzerland
+意大利|yì dà lì|Italy
+米兰|mǐ lán|Milan, Italy
+威尼斯|wēi ní sī|Venice, Italy
+佛罗伦萨|fó luó lún sà|Florence, Italy
+博洛尼亚|bó luò ní yà|Bologna, Italy
+比萨|bǐ sà|Pisa, Italy
+罗马|luó mǎ|Rome, Italy
+澳大利亚|ào dà lì yà|Australia
+悉尼|xī ní|Sydney, Australia
+墨尔本|mò ěr běn|Melbourne, Australia
+卧龙岗|wò lóng gǎng|Wollongong, Australia
+香港|xiāng gǎng|Hong Kong
+澳门|ào mén|Macao
+柬埔寨|jiǎn pǔ zhài|Cambodia
+暹粒|xiān lì|Siem Reap, Cambodia
+吴哥窟|wú gē kū|Angkor Wat, Cambodia
+墨西哥|mò xī gē|Mexico
+墨西哥城|mò xī gē chéng|Mexico City, Mexico
+普埃布拉|pǔ āi bù lā|Puebla, Mexico
+瓜纳华托|guā nà huá tuō|Guanajuato City, Mexico
+圣米格尔德阿连德|shèng mǐ gé ěr dé ā lián dé|San Miguel de Allende, Mexico
+葡萄牙|pú táo yá|Portugal
+里斯本|lǐ sī běn|Lisbon, Portugal
+辛特拉|xīn tè lā|Sintra, Portugal
+苏格兰|sū gé lán|Scotland, UK
+爱丁堡|ài dīng bǎo|Edinburgh, Scotland
+英格兰|yīng gé lán|England, UK
+约克|yuē kè|York, England
+伦敦|lún dūn|London, England
+捷克|jié kè|Czechia
+布拉格|bù lā gé|Prague, Czechia
+奥地利|ào dì lì|Austria
+维也纳|wéi yě nà|Vienna, Austria
+匈牙利|xiōng yá lì|Hungary
+布达佩斯|bù dá pèi sī|Budapest, Hungary
+# us-states|All 50 US states and Washington, DC|places,us-states
+阿拉巴马州|ā lā bā mǎ zhōu|Alabama, USA
+阿拉斯加州|ā lā sī jiā zhōu|Alaska, USA
+亚利桑那州|yà lì sāng nà zhōu|Arizona, USA
+阿肯色州|ā kěn sè zhōu|Arkansas, USA
+加利福尼亚州|jiā lì fú ní yà zhōu|California, USA
+科罗拉多州|kē luó lā duō zhōu|Colorado, USA
+康涅狄格州|kāng niè dí gé zhōu|Connecticut, USA
+特拉华州|tè lā huá zhōu|Delaware, USA
+佛罗里达州|fó luó lǐ dá zhōu|Florida, USA
+佐治亚州|zuǒ zhì yà zhōu|Georgia, USA
+夏威夷州|xià wēi yí zhōu|Hawaii, USA
+爱达荷州|ài dá hé zhōu|Idaho, USA
+伊利诺伊州|yī lì nuò yī zhōu|Illinois, USA
+印第安纳州|yìn dì ān nà zhōu|Indiana, USA
+爱荷华州|ài hé huá zhōu|Iowa, USA
+堪萨斯州|kān sà sī zhōu|Kansas, USA
+肯塔基州|kěn tǎ jī zhōu|Kentucky, USA
+路易斯安那州|lù yì sī ān nà zhōu|Louisiana, USA
+缅因州|miǎn yīn zhōu|Maine, USA
+马里兰州|mǎ lǐ lán zhōu|Maryland, USA
+马萨诸塞州|mǎ sà zhū sài zhōu|Massachusetts, USA
+密歇根州|mì xiē gēn zhōu|Michigan, USA
+明尼苏达州|míng ní sū dá zhōu|Minnesota, USA
+密西西比州|mì xī xī bǐ zhōu|Mississippi, USA
+密苏里州|mì sū lǐ zhōu|Missouri, USA
+蒙大拿州|méng dà ná zhōu|Montana, USA
+内布拉斯加州|nèi bù lā sī jiā zhōu|Nebraska, USA
+内华达州|nèi huá dá zhōu|Nevada, USA
+新罕布什尔州|xīn hǎn bù shí ěr zhōu|New Hampshire, USA
+新泽西州|xīn zé xī zhōu|New Jersey, USA
+新墨西哥州|xīn mò xī gē zhōu|New Mexico, USA
+纽约州|niǔ yuē zhōu|New York (state), USA
+北卡罗来纳州|běi kǎ luó lái nà zhōu|North Carolina, USA
+北达科他州|běi dá kē tā zhōu|North Dakota, USA
+俄亥俄州|é hài é zhōu|Ohio, USA
+俄克拉荷马州|é kè lā hé mǎ zhōu|Oklahoma, USA
+俄勒冈州|é lè gāng zhōu|Oregon, USA
+宾夕法尼亚州|bīn xī fǎ ní yà zhōu|Pennsylvania, USA
+罗得岛州|luó dé dǎo zhōu|Rhode Island, USA
+南卡罗来纳州|nán kǎ luó lái nà zhōu|South Carolina, USA
+南达科他州|nán dá kē tā zhōu|South Dakota, USA
+田纳西州|tián nà xī zhōu|Tennessee, USA
+得克萨斯州|dé kè sà sī zhōu|Texas, USA
+犹他州|yóu tā zhōu|Utah, USA
+佛蒙特州|fó méng tè zhōu|Vermont, USA
+弗吉尼亚州|fú jí ní yà zhōu|Virginia, USA
+华盛顿州|huá shèng dùn zhōu|Washington (state), USA
+西弗吉尼亚州|xī fú jí ní yà zhōu|West Virginia, USA
+威斯康星州|wēi sī kāng xīng zhōu|Wisconsin, USA
+怀俄明州|huái é míng zhōu|Wyoming, USA
+华盛顿特区|huá shèng dùn tè qū|Washington, DC, USA (federal district, not a state)
+# eu-capitals|European Union: 27 countries and capitals|places,eu-capitals
+奥地利|ào dì lì|Austria — capital Vienna
+维也纳|wéi yě nà|Vienna — capital of Austria
+比利时|bǐ lì shí|Belgium — capital Brussels
+布鲁塞尔|bù lǔ sài ěr|Brussels — capital of Belgium
+保加利亚|bǎo jiā lì yà|Bulgaria — capital Sofia
+索非亚|suǒ fēi yà|Sofia — capital of Bulgaria
+克罗地亚|kè luó dì yà|Croatia — capital Zagreb
+萨格勒布|sà gé lè bù|Zagreb — capital of Croatia
+塞浦路斯|sài pǔ lù sī|Cyprus — capital Nicosia
+尼科西亚|ní kē xī yà|Nicosia — capital of Cyprus
+捷克|jié kè|Czechia — capital Prague
+布拉格|bù lā gé|Prague — capital of Czechia
+丹麦|dān mài|Denmark — capital Copenhagen
+哥本哈根|gē běn hā gēn|Copenhagen — capital of Denmark
+爱沙尼亚|ài shā ní yà|Estonia — capital Tallinn
+塔林|tǎ lín|Tallinn — capital of Estonia
+芬兰|fēn lán|Finland — capital Helsinki
+赫尔辛基|hè ěr xīn jī|Helsinki — capital of Finland
+法国|fǎ guó|France — capital Paris
+巴黎|bā lí|Paris — capital of France
+德国|dé guó|Germany — capital Berlin
+柏林|bó lín|Berlin — capital of Germany
+希腊|xī là|Greece — capital Athens
+雅典|yǎ diǎn|Athens — capital of Greece
+匈牙利|xiōng yá lì|Hungary — capital Budapest
+布达佩斯|bù dá pèi sī|Budapest — capital of Hungary
+爱尔兰|ài ěr lán|Ireland — capital Dublin
+都柏林|dū bó lín|Dublin — capital of Ireland
+意大利|yì dà lì|Italy — capital Rome
+罗马|luó mǎ|Rome — capital of Italy
+拉脱维亚|lā tuō wéi yà|Latvia — capital Riga
+里加|lǐ jiā|Riga — capital of Latvia
+立陶宛|lì táo wǎn|Lithuania — capital Vilnius
+维尔纽斯|wéi ěr niǔ sī|Vilnius — capital of Lithuania
+卢森堡|lú sēn bǎo|Luxembourg — capital Luxembourg City
+卢森堡市|lú sēn bǎo shì|Luxembourg City — capital of Luxembourg
+马耳他|mǎ ěr tā|Malta — capital Valletta
+瓦莱塔|wǎ lái tǎ|Valletta — capital of Malta
+荷兰|hé lán|Netherlands — capital Amsterdam
+阿姆斯特丹|ā mǔ sī tè dān|Amsterdam — capital of Netherlands (government in The Hague)
+波兰|bō lán|Poland — capital Warsaw
+华沙|huá shā|Warsaw — capital of Poland
+葡萄牙|pú táo yá|Portugal — capital Lisbon
+里斯本|lǐ sī běn|Lisbon — capital of Portugal
+罗马尼亚|luó mǎ ní yà|Romania — capital Bucharest
+布加勒斯特|bù jiā lè sī tè|Bucharest — capital of Romania
+斯洛伐克|sī luò fá kè|Slovakia — capital Bratislava
+布拉迪斯拉发|bù lā dí sī lā fā|Bratislava — capital of Slovakia
+斯洛文尼亚|sī luò wén ní yà|Slovenia — capital Ljubljana
+卢布尔雅那|lú bù ěr yǎ nà|Ljubljana — capital of Slovenia
+西班牙|xī bān yá|Spain — capital Madrid
+马德里|mǎ dé lǐ|Madrid — capital of Spain
+瑞典|ruì diǎn|Sweden — capital Stockholm
+斯德哥尔摩|sī dé gē ěr mó|Stockholm — capital of Sweden
+# asia-world-capitals|Asia, Oceania, Africa & UK: countries and capitals|places,world-capitals
+越南|yuè nán|Vietnam — capital Hanoi
+河内|hé nèi|Hanoi — capital of Vietnam
+菲律宾|fēi lǜ bīn|Philippines — capital Manila
+马尼拉|mǎ ní lā|Manila — capital of the Philippines
+印度尼西亚|yìn dù ní xī yà|Indonesia — currently Jakarta as capital; Nusantara planned
+雅加达|yǎ jiā dá|Jakarta — current capital of Indonesia
+努山塔拉|nǔ shān tǎ lā|Nusantara — Indonesia's planned future capital
+马来西亚|mǎ lái xī yà|Malaysia — capital Kuala Lumpur
+吉隆坡|jí lóng pō|Kuala Lumpur — capital of Malaysia
+布城|bù chéng|Putrajaya — Malaysia's federal administrative center
+新加坡|xīn jiā pō|Singapore — country and capital city
+韩国|hán guó|South Korea — capital Seoul
+首尔|shǒu ěr|Seoul — capital of South Korea
+朝鲜|cháo xiǎn|North Korea — capital Pyongyang
+平壤|píng rǎng|Pyongyang — capital of North Korea
+老挝|lǎo wō|Laos — capital Vientiane
+万象|wàn xiàng|Vientiane — capital of Laos
+柬埔寨|jiǎn pǔ zhài|Cambodia — capital Phnom Penh
+金边|jīn biān|Phnom Penh — capital of Cambodia
+泰国|tài guó|Thailand — capital Bangkok
+曼谷|màn gǔ|Bangkok — capital of Thailand
+澳大利亚|ào dà lì yà|Australia — capital Canberra
+堪培拉|kān péi lā|Canberra — capital of Australia
+新西兰|xīn xī lán|New Zealand — capital Wellington
+惠灵顿|huì líng dùn|Wellington — capital of New Zealand
+俄罗斯|é luó sī|Russia — capital Moscow
+莫斯科|mò sī kē|Moscow — capital of Russia
+南非|nán fēi|South Africa — three capitals, administrative/legislative/judicial
+比勒陀利亚|bǐ lè tuó lì yà|Pretoria — administrative capital of South Africa
+开普敦|kāi pǔ dūn|Cape Town — legislative capital of South Africa
+布隆方丹|bù lóng fāng dān|Bloemfontein — judicial capital of South Africa
+英国|yīng guó|United Kingdom — capital London; four constituent countries
+英格兰|yīng gé lán|England — capital London (part of UK)
+伦敦|lún dūn|London — capital of England and UK
+苏格兰|sū gé lán|Scotland — capital Edinburgh (part of UK)
+爱丁堡|ài dīng bǎo|Edinburgh — capital of Scotland
+威尔士|wēi ěr shì|Wales — capital Cardiff (part of UK)
+加的夫|jiā dì fū|Cardiff — capital of Wales
+北爱尔兰|běi ài ěr lán|Northern Ireland — capital Belfast (part of UK)
+贝尔法斯特|bèi ěr fǎ sī tè|Belfast — capital of Northern Ireland
+# major-cities|More major cities and useful places|places,major-cities
+纽约|niǔ yuē|New York City, USA
+芝加哥|zhī jiā gē|Chicago, USA
+波士顿|bō shì dùn|Boston, USA
+西雅图|xī yǎ tú|Seattle, USA
+波特兰|bō tè lán|Portland, USA
+迈阿密|mài ā mì|Miami, USA
+费城|fèi chéng|Philadelphia, USA
+亚特兰大|yà tè lán dà|Atlanta, USA
+新奥尔良|xīn ào ěr liáng|New Orleans, USA
+凤凰城|fèng huáng chéng|Phoenix, USA
+盐湖城|yán hú chéng|Salt Lake City, USA
+底特律|dǐ tè lǜ|Detroit, USA
+克利夫兰|kè lì fū lán|Cleveland, USA
+匹兹堡|pǐ zī bǎo|Pittsburgh, USA
+蒙特利尔|méng tè lì ěr|Montréal, Canada
+渥太华|wò tài huá|Ottawa — capital of Canada
+魁北克城|kuí běi kè chéng|Québec City, Canada
+卡尔加里|kǎ ěr jiā lǐ|Calgary, Canada
+奥克兰|ào kè lán|Auckland, New Zealand
+基督城|jī dū chéng|Christchurch, New Zealand
+德里|dé lǐ|Delhi, India
+孟买|mèng mǎi|Mumbai, India
+新德里|xīn dé lǐ|New Delhi — capital of India
+伊斯坦布尔|yī sī tǎn bù ěr|Istanbul, Türkiye
+安卡拉|ān kǎ lā|Ankara — capital of Türkiye
+圣彼得堡|shèng bǐ dé bǎo|Saint Petersburg, Russia
+约翰内斯堡|yuē hàn nèi sī bǎo|Johannesburg, South Africa
+开罗|kāi luó|Cairo — capital of Egypt
+胡志明市|hú zhì míng shì|Ho Chi Minh City, Vietnam
+岘港|xiàn gǎng|Da Nang, Vietnam
+清迈|qīng mài|Chiang Mai, Thailand
+普吉岛|pǔ jí dǎo|Phuket Island, Thailand
+巴厘岛|bā lí dǎo|Bali, Indonesia
+泗水|sì shuǐ|Surabaya, Indonesia
+槟城|bīn chéng|Penang, Malaysia
+宿务|sù wù|Cebu, Philippines
+长滩岛|cháng tān dǎo|Boracay, Philippines

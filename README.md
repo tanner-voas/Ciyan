@@ -1,4 +1,4 @@
-# Cíyán (词言) — Mandarin SRS PWA, v0.3
+# Cíyán (词言) — Mandarin SRS PWA, v0.3.1
 
 A dependency-free, offline-first Mandarin flashcard PWA for iPhone. Two independent card types: **vocabulary words** and **grammar sentence puzzles**. Review records, FSRS scheduling, settings, vocabulary and grammar all live in the device's IndexedDB database. You export an independent JSON backup to the iPhone **Files** app after every study session.
 
@@ -14,7 +14,11 @@ python3 package.py
 
 This regenerates **`dist/ciyan/`**, including `index.html` at its root. The entire `dist/` directory is Git-ignored. You can upload the folder to **Cloudflare Pages → Direct Upload**, or zip the contents of `dist/ciyan/` (not the `ciyan` parent directory) and upload that ZIP. No Node modules, bundler or Python packages are required for production.
 
-**Upgrading:** Export a full backup before deployment. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. Version v0.3 should appear in Settings. The new worker waits for old windows to close so a release does not swap scripts mid-session. Existing v0.1 migration remains supported; v0.2 data uses the same schema and database name. Optional decks are never added automatically.
+**Upgrading to the v0.3.1 deck refresh:** Export a full backup before deployment. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. The app may still label its unchanged study interface v0.3 in Settings; the Git/deck release version is v0.3.1. The new worker waits for old windows to close so a release does not swap scripts mid-session. Existing v0.1 migration remains supported; v0.2 data uses the same schema and database name. Optional decks are never added automatically.
+
+## Deck-only update in v0.3.1
+
+The existing app logic is unchanged. The optional library now contains **2,002 distinct words and 1,287 grammar examples**, including exact-token usage coverage for every vocabulary entry and the original starter words. Geography now includes visited places from the supplied list, all 50 US states, 27 EU member country-capital pairs, 34 Chinese province-level names and the requested world capitals; additional decks cover contemporary non-rude slang and familiar friend-chat expressions. New data is opt-in through **Explore optional decks**. The service-worker cache version is bumped to refresh offline JSON assets. See `decks/README.md` and `AUDIT_v0.3.1.md`.
 
 ## New in v0.3
 

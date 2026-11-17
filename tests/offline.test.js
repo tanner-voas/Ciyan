@@ -14,6 +14,6 @@ test('service worker precaches app and every optional deck without forced activa
 });
 test('service worker removes only its own obsolete caches',async()=>{
  const handlers={},deleted=[];
- vm.runInNewContext(source,{self:{addEventListener:(name,fn)=>handlers[name]=fn,clients:{claim:async()=>{}}},caches:{keys:async()=>['other-app-cache','ciyan-shell-v2','ciyan-shell-v3'],delete:async k=>deleted.push(k)}});
- let pending;handlers.activate({waitUntil:p=>pending=p});await pending;assert.deepEqual(deleted,['ciyan-shell-v2']);
+ vm.runInNewContext(source,{self:{addEventListener:(name,fn)=>handlers[name]=fn,clients:{claim:async()=>{}}},caches:{keys:async()=>['other-app-cache','ciyan-shell-v2','ciyan-shell-v3','ciyan-shell-v3.1'],delete:async k=>deleted.push(k)}});
+ let pending;handlers.activate({waitUntil:p=>pending=p});await pending;assert.deepEqual(deleted,['ciyan-shell-v2','ciyan-shell-v3']);
 });

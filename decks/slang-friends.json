@@ -1,0 +1,570 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Chat expressions previously encountered with friends",
+  "description": "Practical vocabulary for chat expressions previously encountered with friends.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-3c516d94c088c9d3",
+      "hanzi": "阳了",
+      "pinyin": "yáng le",
+      "english": "Tested positive for COVID; caught COVID (colloquial)",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9e171fa36d22d0c",
+      "hanzi": "留守儿童",
+      "pinyin": "liú shǒu ér tóng",
+      "english": "Left-behind child; a serious social term sometimes used jokingly among close friends",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4c38c1ae0f333bbf",
+      "hanzi": "爬墙",
+      "pinyin": "pá qiáng",
+      "english": "Climb walls; in jokes also a cheeky expression, context dependent",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baf08af9464b9148",
+      "hanzi": "不像话",
+      "pinyin": "bú xiàng huà",
+      "english": "Outrageous; unreasonable; that's not okay (informal criticism)",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d7dd65c144c885de",
+      "hanzi": "抓现行",
+      "pinyin": "zhuā xiàn xíng",
+      "english": "Catch someone red-handed; catch in the act (colloquial)",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-718d2022628c2da0",
+      "hanzi": "查岗",
+      "pinyin": "chá gǎng",
+      "english": "Check up on someone's whereabouts or activities (often teasing)",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a1dd772074d2d696",
+      "hanzi": "吐槽",
+      "pinyin": "tǔ cáo",
+      "english": "Rant or roast something humorously; complain informally",
+      "tags": [
+        "slang",
+        "social",
+        "friend-chat"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-220ac6c5a3602b71",
+      "hanzi": "一起",
+      "pinyin": "yī qǐ",
+      "english": "Together",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-658605835bfc7ff8",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "Also; too",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2dd27e84f07f49b",
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "Completion or change-of-state particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b7b91e0001c6971",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "He; him",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-10518f8f0abf21a3",
+      "hanzi": "他们",
+      "pinyin": "tā men",
+      "english": "They; them",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fff33732fc978a09",
+      "hanzi": "休息",
+      "pinyin": "xiū xi",
+      "english": "Rest",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eb137dee4c0aafcc",
+      "hanzi": "关注",
+      "pinyin": "guān zhù",
+      "english": "to pay attention to; to follow sth closely; to follow (on social media)",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-709b90ebf308c71e",
+      "hanzi": "周末",
+      "pinyin": "zhōu mò",
+      "english": "Weekend",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-12404a0b63817240",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "english": "At; in; ongoing action",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e7ace7adf264b714",
+      "hanzi": "太",
+      "pinyin": "tài",
+      "english": "Too; very",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8ae97be80f3867c",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "Home; family",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a57cfcb8428da408",
+      "hanzi": "帮助",
+      "pinyin": "bāng zhù",
+      "english": "Help",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a2f7e42081a8eb13",
+      "hanzi": "所以",
+      "pinyin": "suǒ yǐ",
+      "english": "So; therefore",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2442748e41108dab",
+      "hanzi": "把",
+      "pinyin": "bǎ",
+      "english": "Object disposal construction marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f48e96d3715305eb",
+      "hanzi": "攀岩馆",
+      "pinyin": "pān yán guǎn",
+      "english": "Climbing gym",
+      "tags": [
+        "climbing",
+        "sports"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0c184871f658375a",
+      "hanzi": "昨天",
+      "pinyin": "zuó tiān",
+      "english": "Yesterday",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-38844b135cf70dfc",
+      "hanzi": "更多",
+      "pinyin": "gèng duō",
+      "english": "More; additional",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-997a5e6e513f2a90",
+      "hanzi": "最近",
+      "pinyin": "zuì jìn",
+      "english": "Recently; lately",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-677aad1a0ee44cd6",
+      "hanzi": "朋友",
+      "pinyin": "péng you",
+      "english": "Friend",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bb7ef73495dd8a74",
+      "hanzi": "结果",
+      "pinyin": "jié guǒ",
+      "english": "Result",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d409ab2ab3f8a04e",
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "english": "This",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-979e2bc35b14bf4c",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "english": "This one",
+      "tags": [
+        "daily",
+        "practical",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33a8618cb6710e43",
+      "hanzi": "问题",
+      "pinyin": "wèn tí",
+      "english": "Problem; question",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c9e9a062f5d588f3",
+      "hanzi": "需要",
+      "pinyin": "xū yào",
+      "english": "Need",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-3",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-1b3e82e5cddb2e830351",
+      "markup": "{我}{去}{攀岩馆}{查岗}，{结果}{把}{他}{抓现行}{了}。",
+      "pinyin": "Wǒ qù pān yán guǎn chá gǎng, jié guǒ bǎ tā zhuā xiàn xíng le.",
+      "english": "I jokingly went to check up on him at the climbing gym and caught him in the act.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-43159703d30c13d17d40",
+      "markup": "{我}{朋友}{最近}{阳了}，{所以}{在}{家}{休息}。",
+      "pinyin": "Wǒ péng you zuì jìn yáng le, suǒ yǐ zài jiā xiū xi.",
+      "english": "My friend recently tested positive for COVID, so they are resting at home.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4499dcfa0423a5336f2d",
+      "markup": "{他们}{周末}{去}{攀岩馆}{爬墙}。",
+      "pinyin": "Tā men zhōu mò qù pān yán guǎn pá qiáng.",
+      "english": "They go to the climbing gym to climb walls on weekends.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6d535ff8f92e5dc9a566",
+      "markup": "{我们}{昨天}{一起}{吐槽}{了}{这个}{问题}。",
+      "pinyin": "Wǒ men zuó tiān yī qǐ tǔ cáo le zhè ge wèn tí.",
+      "english": "We joked and complained about this problem together yesterday.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8b215a81be3e08cde56a",
+      "markup": "{留守儿童}{需要}{更多}{关注}{和}{帮助}。",
+      "pinyin": "Liú shǒu ér tóng xū yào gèng duō guān zhù hé bāng zhù.",
+      "english": "Left-behind children need more attention and support.",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c9216e8878e3e62f0f4f",
+      "markup": "{这}{也}{太}{不像话}{了}！",
+      "pinyin": "Zhè yě tài bú xiàng huà le!",
+      "english": "This is completely out of line!",
+      "distractors": [],
+      "source": "Context: natural conversational register",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

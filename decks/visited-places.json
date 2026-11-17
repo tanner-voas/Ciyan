@@ -1,0 +1,2511 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Places you've visited",
+  "description": "Practical vocabulary for places you've visited.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-e65d8538fc7519e3",
+      "hanzi": "加利福尼亚州",
+      "pinyin": "jiā lì fú ní yà zhōu",
+      "english": "California, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9d0fe47598dfbd14",
+      "hanzi": "旧金山",
+      "pinyin": "jiù jīn shān",
+      "english": "San Francisco",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bd12e7ddfed2b630",
+      "hanzi": "洛杉矶",
+      "pinyin": "luò shān jī",
+      "english": "Los Angeles",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-51f778d282e18636",
+      "hanzi": "圣迭戈",
+      "pinyin": "shèng dié gē",
+      "english": "San Diego, California",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cbf42a4f9f563d45",
+      "hanzi": "萨克拉门托",
+      "pinyin": "sà kè lā mén tuō",
+      "english": "Sacramento, California",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4d8e47a0467ad721",
+      "hanzi": "圣巴巴拉",
+      "pinyin": "shèng bā bā lā",
+      "english": "Santa Barbara, California",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d7cc841bca831ed1",
+      "hanzi": "圣克鲁斯",
+      "pinyin": "shèng kè lǔ sī",
+      "english": "Santa Cruz, California",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4cc91bbd3bdc011f",
+      "hanzi": "太浩湖",
+      "pinyin": "tài hào hú",
+      "english": "Lake Tahoe, California/Nevada",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3c1596cd5aa72ed6",
+      "hanzi": "优胜美地国家公园",
+      "pinyin": "yōu shèng měi dì guó jiā gōng yuán",
+      "english": "Yosemite National Park, California",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f0bf797be8227461",
+      "hanzi": "科罗拉多州",
+      "pinyin": "kē luó lā duō zhōu",
+      "english": "Colorado, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2f895bcf5815e9b4",
+      "hanzi": "丹佛",
+      "pinyin": "dān fó",
+      "english": "Denver, Colorado",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1654fa1de7e30db0",
+      "hanzi": "柯林斯堡",
+      "pinyin": "kē lín sī bǎo",
+      "english": "Fort Collins, Colorado",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33c53e3515827553",
+      "hanzi": "明尼苏达州",
+      "pinyin": "míng ní sū dá zhōu",
+      "english": "Minnesota, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ee59f7e8c090a51",
+      "hanzi": "明尼阿波利斯",
+      "pinyin": "míng ní ā bō lì sī",
+      "english": "Minneapolis, Minnesota",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6cb8191ca9b31c0f",
+      "hanzi": "圣保罗",
+      "pinyin": "shèng bǎo luó",
+      "english": "Saint Paul, Minnesota, USA (not São Paulo)",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-49f17707efd60fa6",
+      "hanzi": "圣克劳德",
+      "pinyin": "shèng kè láo dé",
+      "english": "St. Cloud, Minnesota",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-981002f8328de8df",
+      "hanzi": "密苏里州",
+      "pinyin": "mì sū lǐ zhōu",
+      "english": "Missouri, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0db202a4bc456235",
+      "hanzi": "圣路易斯",
+      "pinyin": "shèng lù yì sī",
+      "english": "St. Louis, Missouri",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-566e8604d1c38cc7",
+      "hanzi": "内华达州",
+      "pinyin": "nèi huá dá zhōu",
+      "english": "Nevada, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f315c04888b077bb",
+      "hanzi": "拉斯维加斯",
+      "pinyin": "lā sī wéi jiā sī",
+      "english": "Las Vegas, Nevada",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-61bc3126dc9fdcec",
+      "hanzi": "得克萨斯州",
+      "pinyin": "dé kè sà sī zhōu",
+      "english": "Texas, USA (visited state)",
+      "tags": [
+        "places",
+        "visited",
+        "us-states"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2e6b936dfe68d0c2",
+      "hanzi": "奥斯汀",
+      "pinyin": "ào sī tīng",
+      "english": "Austin, Texas",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6ecf4fe70dd9af94",
+      "hanzi": "达拉斯",
+      "pinyin": "dá lā sī",
+      "english": "Dallas, Texas",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3179bb66ef30970a",
+      "hanzi": "休斯敦",
+      "pinyin": "xiū sī dūn",
+      "english": "Houston, Texas",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6214dda0ab572ce4",
+      "hanzi": "圣安东尼奥",
+      "pinyin": "shèng ān dōng ní ào",
+      "english": "San Antonio, Texas",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cf2abf0c5be326cb",
+      "hanzi": "日本",
+      "pinyin": "rì běn",
+      "english": "Japan",
+      "tags": [
+        "places",
+        "countries",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6df977461d522f10",
+      "hanzi": "大阪",
+      "pinyin": "dà bǎn",
+      "english": "Osaka",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-58d07b8a69516695",
+      "hanzi": "京都",
+      "pinyin": "jīng dū",
+      "english": "Kyoto, Japan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-88a6e3a06ff0ce8f",
+      "hanzi": "奈良",
+      "pinyin": "nài liáng",
+      "english": "Nara, Japan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e294ab9d429f9a9a",
+      "hanzi": "富士山",
+      "pinyin": "fù shì shān",
+      "english": "Mount Fuji, Japan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-95b3ec132e6e5bfc",
+      "hanzi": "东京",
+      "pinyin": "dōng jīng",
+      "english": "Tokyo",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a88467ba68eb2b5e",
+      "hanzi": "安徽",
+      "pinyin": "ān huī",
+      "english": "Anhui",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d18b39f420442c3c",
+      "hanzi": "黄山",
+      "pinyin": "huáng shān",
+      "english": "Huangshan (Yellow Mountain / city), Anhui",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4739f4b3f8092d53",
+      "hanzi": "宏村",
+      "pinyin": "hóng cūn",
+      "english": "Hongcun village, Anhui",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7b14a21bfa3f9759",
+      "hanzi": "福建",
+      "pinyin": "fú jiàn",
+      "english": "Fujian",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d3c9fca77d7a9d8c",
+      "hanzi": "福州",
+      "pinyin": "fú zhōu",
+      "english": "Fuzhou",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9457b11a06702874",
+      "hanzi": "泉州",
+      "pinyin": "quán zhōu",
+      "english": "Quanzhou",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bbe7a852985f974c",
+      "hanzi": "武夷山",
+      "pinyin": "wǔ yí shān",
+      "english": "Wuyi Mountains / Wuyishan, Fujian",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e3aa42d7ed8f4a67",
+      "hanzi": "平潭岛",
+      "pinyin": "píng tán dǎo",
+      "english": "Pingtan Island, Fujian",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-606a45e0a989094c",
+      "hanzi": "厦门",
+      "pinyin": "xià mén",
+      "english": "Xiamen",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f997569e6f5c48bb",
+      "hanzi": "甘肃",
+      "pinyin": "gān sù",
+      "english": "Gansu",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-28575b2e37b82c49",
+      "hanzi": "兰州",
+      "pinyin": "lán zhōu",
+      "english": "Lanzhou",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c7d0a83b0b82598b",
+      "hanzi": "敦煌",
+      "pinyin": "dūn huáng",
+      "english": "Dunhuang, Gansu",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2d3b0fd944ccc36b",
+      "hanzi": "广东",
+      "pinyin": "guǎng dōng",
+      "english": "Guangdong",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1bb5e3986433569c",
+      "hanzi": "深圳",
+      "pinyin": "shēn zhèn",
+      "english": "Shenzhen",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-85da183b0683e5f7",
+      "hanzi": "广州",
+      "pinyin": "guǎng zhōu",
+      "english": "Guangzhou",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e91f2cf85217cdd8",
+      "hanzi": "贵州",
+      "pinyin": "guì zhōu",
+      "english": "Guizhou",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-286554f051391c33",
+      "hanzi": "贵阳",
+      "pinyin": "guì yáng",
+      "english": "Guiyang",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d0177f8ff75abb03",
+      "hanzi": "安顺",
+      "pinyin": "ān shùn",
+      "english": "Anshun, Guizhou",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e220a898d8436607",
+      "hanzi": "荔波",
+      "pinyin": "lì bō",
+      "english": "Libo, Guizhou",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-57ffa94bb2133e08",
+      "hanzi": "湖北",
+      "pinyin": "hú běi",
+      "english": "Hubei",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-48afd8d3b9269706",
+      "hanzi": "武汉",
+      "pinyin": "wǔ hàn",
+      "english": "Wuhan",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-092cf77530b8cee2",
+      "hanzi": "恩施",
+      "pinyin": "ēn shī",
+      "english": "Enshi, Hubei (not Zhejiang)",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-08f480473cbda4cc",
+      "hanzi": "湖南",
+      "pinyin": "hú nán",
+      "english": "Hunan",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f04518b52e53dce",
+      "hanzi": "岳阳",
+      "pinyin": "yuè yáng",
+      "english": "Yueyang, Hunan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-65ba77fdcc270873",
+      "hanzi": "长沙",
+      "pinyin": "cháng shā",
+      "english": "Changsha",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eee4f90829f0c985",
+      "hanzi": "江苏",
+      "pinyin": "jiāng sū",
+      "english": "Jiangsu",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c690fe6240419c66",
+      "hanzi": "南京",
+      "pinyin": "nán jīng",
+      "english": "Nanjing",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a66e82e6953383b1",
+      "hanzi": "苏州",
+      "pinyin": "sū zhōu",
+      "english": "Suzhou",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76e42093f9b91c96",
+      "hanzi": "无锡",
+      "pinyin": "wú xī",
+      "english": "Wuxi",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0882a98a00d21589",
+      "hanzi": "江西",
+      "pinyin": "jiāng xī",
+      "english": "Jiangxi",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3acf2d04deffe167",
+      "hanzi": "景德镇",
+      "pinyin": "jǐng dé zhèn",
+      "english": "Jingdezhen, Jiangxi",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a02251f7201578b1",
+      "hanzi": "南昌",
+      "pinyin": "nán chāng",
+      "english": "Nanchang",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e5414441a2ad4d88",
+      "hanzi": "青海",
+      "pinyin": "qīng hǎi",
+      "english": "Qinghai",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7049339bb48df0e4",
+      "hanzi": "陕西",
+      "pinyin": "shǎn xī",
+      "english": "Shaanxi",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e2d11378ac1898de",
+      "hanzi": "西安",
+      "pinyin": "xī ān",
+      "english": "Xi'an",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ce00a1a5ac507381",
+      "hanzi": "云南",
+      "pinyin": "yún nán",
+      "english": "Yunnan",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-86b1c01e198c1e21",
+      "hanzi": "大理",
+      "pinyin": "dà lǐ",
+      "english": "Dali, Yunnan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d1420f26bd37d690",
+      "hanzi": "丽江",
+      "pinyin": "lì jiāng",
+      "english": "Lijiang, Yunnan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fa637322597c0c74",
+      "hanzi": "昆明",
+      "pinyin": "kūn míng",
+      "english": "Kunming",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6d06adbbeed8628d",
+      "hanzi": "西双版纳",
+      "pinyin": "xī shuāng bǎn nà",
+      "english": "Xishuangbanna, Yunnan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8631ef491b6a9786",
+      "hanzi": "浙江",
+      "pinyin": "zhè jiāng",
+      "english": "Zhejiang",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a8027f71a8e38bcb",
+      "hanzi": "杭州",
+      "pinyin": "háng zhōu",
+      "english": "Hangzhou",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4906a49adc5c472b",
+      "hanzi": "上海",
+      "pinyin": "shàng hǎi",
+      "english": "Shanghai",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-68c77e155132565e",
+      "hanzi": "北京",
+      "pinyin": "běi jīng",
+      "english": "Beijing",
+      "tags": [
+        "places",
+        "china-regions",
+        "hsk-2021-1",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ea31f4d6d27dd76d",
+      "hanzi": "重庆",
+      "pinyin": "chóng qìng",
+      "english": "Chongqing",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33db161daa042c42",
+      "hanzi": "台湾",
+      "pinyin": "tái wān",
+      "english": "Taiwan",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b4415237de7351a0",
+      "hanzi": "台北",
+      "pinyin": "tái běi",
+      "english": "Taipei",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-09cdb408ea3830a6",
+      "hanzi": "新竹",
+      "pinyin": "xīn zhú",
+      "english": "Hsinchu, Taiwan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81678972842d4663",
+      "hanzi": "法国",
+      "pinyin": "fǎ guó",
+      "english": "France",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-089dd4929e658cdb",
+      "hanzi": "巴黎",
+      "pinyin": "bā lí",
+      "english": "Paris",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cfae3802370c4b26",
+      "hanzi": "里尔",
+      "pinyin": "lǐ ěr",
+      "english": "Lille, France",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4f09d2e86c63eb0f",
+      "hanzi": "比利时",
+      "pinyin": "bǐ lì shí",
+      "english": "Belgium",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0591e97ab5bc055a",
+      "hanzi": "布鲁塞尔",
+      "pinyin": "bù lǔ sài ěr",
+      "english": "Brussels, Belgium",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8e1849a68722af8b",
+      "hanzi": "荷兰",
+      "pinyin": "hé lán",
+      "english": "Netherlands",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b86de9af14a325b",
+      "hanzi": "阿姆斯特丹",
+      "pinyin": "ā mǔ sī tè dān",
+      "english": "Amsterdam, Netherlands",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bde5cc5b7e1a7eb4",
+      "hanzi": "西班牙",
+      "pinyin": "xī bān yá",
+      "english": "Spain",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1d3e035fa12aa4d9",
+      "hanzi": "巴塞罗那",
+      "pinyin": "bā sài luó nà",
+      "english": "Barcelona, Spain",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b77d1845765c5d8b",
+      "hanzi": "马德里",
+      "pinyin": "mǎ dé lǐ",
+      "english": "Madrid",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cd7388b3032c0e64",
+      "hanzi": "塞维利亚",
+      "pinyin": "sāi wéi lì yà",
+      "english": "Seville, Spain",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b19061477fe64ba4",
+      "hanzi": "科尔多瓦",
+      "pinyin": "kē ěr duō wǎ",
+      "english": "Córdoba, Spain",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3320aa9c0948089",
+      "hanzi": "马来西亚",
+      "pinyin": "mǎ lái xī yà",
+      "english": "Malaysia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baa672710078887f",
+      "hanzi": "吉隆坡",
+      "pinyin": "jí lóng pō",
+      "english": "Kuala Lumpur",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d20f599deaf41f51",
+      "hanzi": "马六甲",
+      "pinyin": "mǎ liù jiǎ",
+      "english": "Malacca, Malaysia",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f98b2fc82a45eadf",
+      "hanzi": "新加坡",
+      "pinyin": "xīn jiā pō",
+      "english": "Singapore",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-963cd73004547f84",
+      "hanzi": "韩国",
+      "pinyin": "hán guó",
+      "english": "South Korea",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-671193c28c0d4d69",
+      "hanzi": "济州岛",
+      "pinyin": "jì zhōu dǎo",
+      "english": "Jeju Island, South Korea",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f38f1f5b9a50a6db",
+      "hanzi": "牛岛",
+      "pinyin": "niú dǎo",
+      "english": "Udo Island, Jeju, South Korea",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76f872eea127e057",
+      "hanzi": "首尔",
+      "pinyin": "shǒu ěr",
+      "english": "Seoul",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8a31803011625b69",
+      "hanzi": "仁川",
+      "pinyin": "rén chuān",
+      "english": "Incheon, South Korea",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7ff6dc87af0c7990",
+      "hanzi": "釜山",
+      "pinyin": "fǔ shān",
+      "english": "Busan, South Korea",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-afb8e075b7763ba2",
+      "hanzi": "甘川文化村",
+      "pinyin": "gān chuān wén huà cūn",
+      "english": "Gamcheon Culture Village, Busan",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f6ee8c64166eba0",
+      "hanzi": "泰国",
+      "pinyin": "tài guó",
+      "english": "Thailand",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6790c32cc11b02bf",
+      "hanzi": "曼谷",
+      "pinyin": "màn gǔ",
+      "english": "Bangkok",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a7e404732db8f48",
+      "hanzi": "德国",
+      "pinyin": "dé guó",
+      "english": "Germany",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fdf5ff0bdfbe30d8",
+      "hanzi": "法兰克福",
+      "pinyin": "fǎ lán kè fú",
+      "english": "Frankfurt, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-11e03e560cf93f56",
+      "hanzi": "哈瑙",
+      "pinyin": "hā nào",
+      "english": "Hanau, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-801b048a11c78e80",
+      "hanzi": "慕尼黑",
+      "pinyin": "mù ní hēi",
+      "english": "Munich, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ed103e643d87def5",
+      "hanzi": "新天鹅堡",
+      "pinyin": "xīn tiān é bǎo",
+      "english": "Neuschwanstein Castle, Bavaria",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-57bc76ac7a12acd3",
+      "hanzi": "纽伦堡",
+      "pinyin": "niǔ lún bǎo",
+      "english": "Nuremberg, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cc6fb74331bd17c6",
+      "hanzi": "维尔茨堡",
+      "pinyin": "wéi ěr cí bǎo",
+      "english": "Würzburg, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-97ec3531ec657f40",
+      "hanzi": "陶伯河畔罗滕堡",
+      "pinyin": "táo bó hé pàn luó téng bǎo",
+      "english": "Rothenburg ob der Tauber, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a535e936e815fe0e",
+      "hanzi": "科隆",
+      "pinyin": "kē lóng",
+      "english": "Cologne, Germany",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-665d26b506d82648",
+      "hanzi": "柏林",
+      "pinyin": "bó lín",
+      "english": "Berlin",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0344bcb449f5b8ae",
+      "hanzi": "瑞士",
+      "pinyin": "ruì shì",
+      "english": "Switzerland",
+      "tags": [
+        "places",
+        "countries",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2be09f9646263530",
+      "hanzi": "卢塞恩",
+      "pinyin": "lú sài ēn",
+      "english": "Lucerne (Luzern), Switzerland",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e4578f8af6304c69",
+      "hanzi": "苏黎世",
+      "pinyin": "sū lí shì",
+      "english": "Zürich, Switzerland",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33fc386186c54928",
+      "hanzi": "因特拉肯",
+      "pinyin": "yīn tè lā kěn",
+      "english": "Interlaken, Switzerland",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9ec2986b4cb893b0",
+      "hanzi": "格林德瓦",
+      "pinyin": "gé lín dé wǎ",
+      "english": "Grindelwald, Switzerland",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7d3566712e910adc",
+      "hanzi": "意大利",
+      "pinyin": "yì dà lì",
+      "english": "Italy",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9313f4070dc7e1b3",
+      "hanzi": "米兰",
+      "pinyin": "mǐ lán",
+      "english": "Milan, Italy",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a450f78e4551525",
+      "hanzi": "威尼斯",
+      "pinyin": "wēi ní sī",
+      "english": "Venice, Italy",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1cd013257f1da9a7",
+      "hanzi": "佛罗伦萨",
+      "pinyin": "fó luó lún sà",
+      "english": "Florence, Italy",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2fd2b05cbff25553",
+      "hanzi": "博洛尼亚",
+      "pinyin": "bó luò ní yà",
+      "english": "Bologna, Italy",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29313f6e399b1c40",
+      "hanzi": "比萨",
+      "pinyin": "bǐ sà",
+      "english": "Pisa, Italy",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3b54664e8163d36a",
+      "hanzi": "罗马",
+      "pinyin": "luó mǎ",
+      "english": "Rome",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b1001a02c971a01",
+      "hanzi": "澳大利亚",
+      "pinyin": "ào dà lì yà",
+      "english": "Australia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-40a5bd6e30cb7f9b",
+      "hanzi": "悉尼",
+      "pinyin": "xī ní",
+      "english": "Sydney",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-17655b5246c53181",
+      "hanzi": "墨尔本",
+      "pinyin": "mò ěr běn",
+      "english": "Melbourne",
+      "tags": [
+        "places",
+        "cities",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ba176b26f2efb6cd",
+      "hanzi": "卧龙岗",
+      "pinyin": "wò lóng gǎng",
+      "english": "Wollongong, Australia",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d448d143c4e04eb6",
+      "hanzi": "香港",
+      "pinyin": "xiāng gǎng",
+      "english": "Hong Kong",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7f73b538e7793541",
+      "hanzi": "澳门",
+      "pinyin": "ào mén",
+      "english": "Macao; Macau",
+      "tags": [
+        "places",
+        "china-regions",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6ff6d750de02e32",
+      "hanzi": "柬埔寨",
+      "pinyin": "jiǎn pǔ zhài",
+      "english": "Cambodia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af801ea3ab304f0e",
+      "hanzi": "暹粒",
+      "pinyin": "xiān lì",
+      "english": "Siem Reap, Cambodia",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c59e784e21b4dbb9",
+      "hanzi": "吴哥窟",
+      "pinyin": "wú gē kū",
+      "english": "Angkor Wat, Cambodia",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f5b984831b2d99e5",
+      "hanzi": "墨西哥",
+      "pinyin": "mò xī gē",
+      "english": "Mexico",
+      "tags": [
+        "places",
+        "countries",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-34bb03e8d85ab74a",
+      "hanzi": "墨西哥城",
+      "pinyin": "mò xī gē chéng",
+      "english": "Mexico City, Mexico",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eaa618fbd0206a60",
+      "hanzi": "普埃布拉",
+      "pinyin": "pǔ āi bù lā",
+      "english": "Puebla, Mexico",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-19106534d9919fe7",
+      "hanzi": "瓜纳华托",
+      "pinyin": "guā nà huá tuō",
+      "english": "Guanajuato City, Mexico",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2423e3559cef8bfa",
+      "hanzi": "圣米格尔德阿连德",
+      "pinyin": "shèng mǐ gé ěr dé ā lián dé",
+      "english": "San Miguel de Allende, Mexico",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-44a06f03dbb06498",
+      "hanzi": "葡萄牙",
+      "pinyin": "pú táo yá",
+      "english": "Portugal",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cdedf06610769e03",
+      "hanzi": "里斯本",
+      "pinyin": "lǐ sī běn",
+      "english": "Lisbon, Portugal",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2702f6c7fd25453d",
+      "hanzi": "辛特拉",
+      "pinyin": "xīn tè lā",
+      "english": "Sintra, Portugal",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-984339075c658115",
+      "hanzi": "苏格兰",
+      "pinyin": "sū gé lán",
+      "english": "Scotland, UK",
+      "tags": [
+        "places",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bfd92ac3c0f1af0b",
+      "hanzi": "爱丁堡",
+      "pinyin": "ài dīng bǎo",
+      "english": "Edinburgh, Scotland",
+      "tags": [
+        "places",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cc5ba5e6ab7dfed6",
+      "hanzi": "英格兰",
+      "pinyin": "yīng gé lán",
+      "english": "England, UK",
+      "tags": [
+        "places",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-23dd00c9d50e8109",
+      "hanzi": "约克",
+      "pinyin": "yuē kè",
+      "english": "York, England",
+      "tags": [
+        "places",
+        "visited"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a6c0db788b589b10",
+      "hanzi": "伦敦",
+      "pinyin": "lún dūn",
+      "english": "London",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-572b2e8c04dd11f0",
+      "hanzi": "捷克",
+      "pinyin": "jié kè",
+      "english": "Czechia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-87590ca9c7e222df",
+      "hanzi": "布拉格",
+      "pinyin": "bù lā gé",
+      "english": "Prague, Czechia",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-205ca5ebee147c08",
+      "hanzi": "奥地利",
+      "pinyin": "ào dì lì",
+      "english": "Austria",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-55312f17d1e7ef08",
+      "hanzi": "维也纳",
+      "pinyin": "wéi yě nà",
+      "english": "Vienna, Austria",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8bc42950fd150ce3",
+      "hanzi": "匈牙利",
+      "pinyin": "xiōng yá lì",
+      "english": "Hungary",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-775c85c93af28349",
+      "hanzi": "布达佩斯",
+      "pinyin": "bù dá pèi sī",
+      "english": "Budapest, Hungary",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aa98317793b49d8d",
+      "hanzi": "以前",
+      "pinyin": "yǐ qián",
+      "english": "Before; previously",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-0380d740f15dd400e67f",
+      "markup": "{我}{以前}{去}{过}{泉州}、{武夷山}{和}{平潭岛}。",
+      "pinyin": "Wǒ yǐ qián qù guo quán zhōu, wǔ yí shān hé píng tán dǎo.",
+      "english": "I have visited Quanzhou, Wuyi Mountains / Wuyishan and Pingtan Island.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-039c2a3f4da3734c7eb3",
+      "markup": "{我}{以前}{去}{过}{马六甲}、{新加坡}{和}{韩国}。",
+      "pinyin": "Wǒ yǐ qián qù guo mǎ liù jiǎ, xīn jiā pō hé hán guó.",
+      "english": "I have visited Malacca, Singapore and South Korea.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0477cd5d202b7715c9a8",
+      "markup": "{我}{以前}{去}{过}{江西}、{景德镇}{和}{南昌}。",
+      "pinyin": "Wǒ yǐ qián qù guo jiāng xī, jǐng dé zhèn hé nán chāng.",
+      "english": "I have visited Jiangxi, Jingdezhen and Nanchang.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-050e156a9715f29a5004",
+      "markup": "{我}{以前}{去}{过}{卧龙岗}、{香港}{和}{澳门}。",
+      "pinyin": "Wǒ yǐ qián qù guo wò lóng gǎng, xiāng gǎng hé ào mén.",
+      "english": "I have visited Wollongong, Hong Kong and Macao.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1002839f61233730fdae",
+      "markup": "{我}{以前}{去}{过}{奥地利}、{维也纳}{和}{匈牙利}。",
+      "pinyin": "Wǒ yǐ qián qù guo ào dì lì, wéi yě nà hé xiōng yá lì.",
+      "english": "I have visited Austria, Vienna and Hungary.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1710ef56188619ede9af",
+      "markup": "{我}{以前}{去}{过}{瑞士}、{卢塞恩}{和}{苏黎世}。",
+      "pinyin": "Wǒ yǐ qián qù guo ruì shì, lú sài ēn hé sū lí shì.",
+      "english": "I have visited Switzerland, Lucerne and Zürich.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1ac84eb4df431bf33287",
+      "markup": "{我}{以前}{去}{过}{新竹}、{法国}{和}{巴黎}。",
+      "pinyin": "Wǒ yǐ qián qù guo xīn zhú, fǎ guó hé bā lí.",
+      "english": "I have visited Hsinchu, France and Paris.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1b25a1edc7916c7a6c4e",
+      "markup": "{我}{以前}{去}{过}{科尔多瓦}、{马来西亚}{和}{吉隆坡}。",
+      "pinyin": "Wǒ yǐ qián qù guo kē ěr duō wǎ, mǎ lái xī yà hé jí lóng pō.",
+      "english": "I have visited Córdoba, Malaysia and Kuala Lumpur.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1c3bc98d12ff1ab24821",
+      "markup": "{我}{以前}{去}{过}{荷兰}、{阿姆斯特丹}{和}{西班牙}。",
+      "pinyin": "Wǒ yǐ qián qù guo hé lán, ā mǔ sī tè dān hé xī bān yá.",
+      "english": "I have visited Netherlands, Amsterdam and Spain.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1f2a054273abb137ceb7",
+      "markup": "{我}{以前}{去}{过}{内华达州}、{拉斯维加斯}{和}{得克萨斯州}。",
+      "pinyin": "Wǒ yǐ qián qù guo nèi huá dá zhōu, lā sī wéi jiā sī hé dé kè sà sī zhōu.",
+      "english": "I have visited Nevada, Las Vegas and Texas.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2702526ceee5f5cfba85",
+      "markup": "{我}{以前}{去}{过}{柬埔寨}、{暹粒}{和}{吴哥窟}。",
+      "pinyin": "Wǒ yǐ qián qù guo jiǎn pǔ zhài, xiān lì hé wú gē kū.",
+      "english": "I have visited Cambodia, Siem Reap and Angkor Wat.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-29f727291855edd83c0a",
+      "markup": "{我}{以前}{去}{过}{杭州}、{上海}{和}{北京}。",
+      "pinyin": "Wǒ yǐ qián qù guo háng zhōu, shàng hǎi hé běi jīng.",
+      "english": "I have visited Hangzhou, Shanghai and Beijing.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-31c23fd11772e132532a",
+      "markup": "{我}{以前}{去}{过}{澳大利亚}、{悉尼}{和}{墨尔本}。",
+      "pinyin": "Wǒ yǐ qián qù guo ào dà lì yà, xī ní hé mò ěr běn.",
+      "english": "I have visited Australia, Sydney and Melbourne.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-36c0195c7c0f2336917d",
+      "markup": "{我}{以前}{去}{过}{青海}、{陕西}{和}{西安}。",
+      "pinyin": "Wǒ yǐ qián qù guo qīng hǎi, shǎn xī hé xī ān.",
+      "english": "I have visited Qinghai, Shaanxi and Xi'an.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-38eb420df9a87ea3f3b6",
+      "markup": "{我}{以前}{去}{过}{巴塞罗那}、{马德里}{和}{塞维利亚}。",
+      "pinyin": "Wǒ yǐ qián qù guo bā sài luó nà, mǎ dé lǐ hé sāi wéi lì yà.",
+      "english": "I have visited Barcelona, Madrid and Seville.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-38ebd4a40a6fe173f24b",
+      "markup": "{我}{以前}{去}{过}{里斯本}、{辛特拉}{和}{苏格兰}。",
+      "pinyin": "Wǒ yǐ qián qù guo lǐ sī běn, xīn tè lā hé sū gé lán.",
+      "english": "I have visited Lisbon, Sintra and Scotland.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4d49945d9f1d0c4b9830",
+      "markup": "{我}{以前}{去}{过}{济州岛}、{牛岛}{和}{首尔}。",
+      "pinyin": "Wǒ yǐ qián qù guo jì zhōu dǎo, niú dǎo hé shǒu ěr.",
+      "english": "I have visited Jeju Island, Udo Island and Seoul.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-50f35ed8cb5fa5b29346",
+      "markup": "{我}{以前}{去}{过}{仁川}、{釜山}{和}{甘川文化村}。",
+      "pinyin": "Wǒ yǐ qián qù guo rén chuān, fǔ shān hé gān chuān wén huà cūn.",
+      "english": "I have visited Incheon, Busan and Gamcheon Culture Village.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-539eafd691e3ac38c8ac",
+      "markup": "{我}{以前}{去}{过}{奥斯汀}、{达拉斯}{和}{休斯敦}。",
+      "pinyin": "Wǒ yǐ qián qù guo ào sī tīng, dá lā sī hé xiū sī dūn.",
+      "english": "I have visited Austin, Dallas and Houston.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5f80c926e2cf0fec66e7",
+      "markup": "{我}{以前}{去}{过}{因特拉肯}、{格林德瓦}{和}{意大利}。",
+      "pinyin": "Wǒ yǐ qián qù guo yīn tè lā kěn, gé lín dé wǎ hé yì dà lì.",
+      "english": "I have visited Interlaken, Grindelwald and Italy.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-641a82a018600fa2b64b",
+      "markup": "{我}{以前}{去}{过}{厦门}、{甘肃}{和}{兰州}。",
+      "pinyin": "Wǒ yǐ qián qù guo xià mén, gān sù hé lán zhōu.",
+      "english": "I have visited Xiamen, Gansu and Lanzhou.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-65c0e99f5151be898cf9",
+      "markup": "{我}{以前}{去}{过}{东京}、{安徽}{和}{黄山}。",
+      "pinyin": "Wǒ yǐ qián qù guo dōng jīng, ān huī hé huáng shān.",
+      "english": "I have visited Tokyo, Anhui and Huangshan.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-672b90a61981e507c173",
+      "markup": "{我}{以前}{去}{过}{南京}、{苏州}{和}{无锡}。",
+      "pinyin": "Wǒ yǐ qián qù guo nán jīng, sū zhōu hé wú xī.",
+      "english": "I have visited Nanjing, Suzhou and Wuxi.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7b73eaef29f710190abd",
+      "markup": "{我}{以前}{去}{过}{岳阳}、{长沙}{和}{江苏}。",
+      "pinyin": "Wǒ yǐ qián qù guo yuè yáng, cháng shā hé jiāng sū.",
+      "english": "I have visited Yueyang, Changsha and Jiangsu.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7bcd2f4bc3944aa43bcf",
+      "markup": "{我}{以前}{去}{过}{新天鹅堡}、{纽伦堡}{和}{维尔茨堡}。",
+      "pinyin": "Wǒ yǐ qián qù guo xīn tiān é bǎo, niǔ lún bǎo hé wéi ěr cí bǎo.",
+      "english": "I have visited Neuschwanstein Castle, Nuremberg and Würzburg.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-84973b894d594a9b7f89",
+      "markup": "{我}{以前}{去}{过}{加利福尼亚州}、{旧金山}{和}{洛杉矶}。",
+      "pinyin": "Wǒ yǐ qián qù guo jiā lì fú ní yà zhōu, jiù jīn shān hé luò shān jī.",
+      "english": "I have visited California, San Francisco and Los Angeles.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-87f2ff0336910de7b2b3",
+      "markup": "{我}{以前}{去}{过}{武汉}、{恩施}{和}{湖南}。",
+      "pinyin": "Wǒ yǐ qián qù guo wǔ hàn, ēn shī hé hú nán.",
+      "english": "I have visited Wuhan, Enshi and Hunan.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8ad1cf18976ca20d11c6",
+      "markup": "{我}{以前}{去}{过}{圣克鲁斯}、{太浩湖}{和}{优胜美地国家公园}。",
+      "pinyin": "Wǒ yǐ qián qù guo shèng kè lǔ sī, tài hào hú hé yōu shèng měi dì guó jiā gōng yuán.",
+      "english": "I have visited Santa Cruz, Lake Tahoe and Yosemite National Park.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-931869c7f2ca95b59dd0",
+      "markup": "{我}{以前}{去}{过}{爱丁堡}、{英格兰}{和}{约克}。",
+      "pinyin": "Wǒ yǐ qián qù guo ài dīng bǎo, yīng gé lán hé yuē kè.",
+      "english": "I have visited Edinburgh, England and York.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9688ec21fef7160a185f",
+      "markup": "{我}{以前}{去}{过}{米兰}、{威尼斯}{和}{佛罗伦萨}。",
+      "pinyin": "Wǒ yǐ qián qù guo mǐ lán, wēi ní sī hé fó luó lún sà.",
+      "english": "I have visited Milan, Venice and Florence.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9968a5d5fc00a4256ec2",
+      "markup": "{我}{以前}{去}{过}{博洛尼亚}、{比萨}{和}{罗马}。",
+      "pinyin": "Wǒ yǐ qián qù guo bó luò ní yà, bǐ sà hé luó mǎ.",
+      "english": "I have visited Bologna, Pisa and Rome.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9b72fdb103497b59c662",
+      "markup": "{我}{以前}{去}{过}{圣克劳德}、{密苏里州}{和}{圣路易斯}。",
+      "pinyin": "Wǒ yǐ qián qù guo shèng kè láo dé, mì sū lǐ zhōu hé shèng lù yì sī.",
+      "english": "I have visited St. Cloud, Missouri and St. Louis.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9d3f091efc1eab1bf0b8",
+      "markup": "{我}{以前}{去}{过}{明尼苏达州}、{明尼阿波利斯}{和}{圣保罗}。",
+      "pinyin": "Wǒ yǐ qián qù guo míng ní sū dá zhōu, míng ní ā bō lì sī hé shèng bǎo luó.",
+      "english": "I have visited Minnesota, Minneapolis and Saint Paul.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9dcf5cbc6ac9cddddad3",
+      "markup": "{我}{以前}{去}{过}{宏村}、{福建}{和}{福州}。",
+      "pinyin": "Wǒ yǐ qián qù guo hóng cūn, fú jiàn hé fú zhōu.",
+      "english": "I have visited Hongcun village, Fujian and Fuzhou.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a4cabef3081b850cd5e0",
+      "markup": "{我}{以前}{去}{过}{圣迭戈}、{萨克拉门托}{和}{圣巴巴拉}。",
+      "pinyin": "Wǒ yǐ qián qù guo shèng dié gē, sà kè lā mén tuō hé shèng bā bā lā.",
+      "english": "I have visited San Diego, Sacramento and Santa Barbara.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a82d511b5a6a97264ed3",
+      "markup": "{我}{以前}{去}{过}{圣安东尼奥}、{日本}{和}{大阪}。",
+      "pinyin": "Wǒ yǐ qián qù guo shèng ān dōng ní ào, rì běn hé dà bǎn.",
+      "english": "I have visited San Antonio, Japan and Osaka.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ab8d89c2503d4c7a4e1e",
+      "markup": "{我}{以前}{去}{过}{云南}、{大理}{和}{丽江}。",
+      "pinyin": "Wǒ yǐ qián qù guo yún nán, dà lǐ hé lì jiāng.",
+      "english": "I have visited Yunnan, Dali and Lijiang.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-acbeec63978257ee4b24",
+      "markup": "{我}{以前}{去}{过}{布达佩斯}。",
+      "pinyin": "Wǒ yǐ qián qù guo bù dá pèi sī.",
+      "english": "I have visited Budapest.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b25cc0d07dd2f7a4e657",
+      "markup": "{我}{以前}{去}{过}{广州}、{贵州}{和}{贵阳}。",
+      "pinyin": "Wǒ yǐ qián qù guo guǎng zhōu, guì zhōu hé guì yáng.",
+      "english": "I have visited Guangzhou, Guizhou and Guiyang.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b9f1a3d4ac2690f68d37",
+      "markup": "{我}{以前}{去}{过}{京都}、{奈良}{和}{富士山}。",
+      "pinyin": "Wǒ yǐ qián qù guo jīng dū, nài liáng hé fù shì shān.",
+      "english": "I have visited Kyoto, Nara and Mount Fuji.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-beda906200b503afdd08",
+      "markup": "{我}{以前}{去}{过}{安顺}、{荔波}{和}{湖北}。",
+      "pinyin": "Wǒ yǐ qián qù guo ān shùn, lì bō hé hú běi.",
+      "english": "I have visited Anshun, Libo and Hubei.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bf9ab8a0e52ed9dad53c",
+      "markup": "{我}{以前}{去}{过}{伦敦}、{捷克}{和}{布拉格}。",
+      "pinyin": "Wǒ yǐ qián qù guo lún dūn, jié kè hé bù lā gé.",
+      "english": "I have visited London, Czechia and Prague.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d40b281c925b35284280",
+      "markup": "{我}{以前}{去}{过}{泰国}、{曼谷}{和}{德国}。",
+      "pinyin": "Wǒ yǐ qián qù guo tài guó, màn gǔ hé dé guó.",
+      "english": "I have visited Thailand, Bangkok and Germany.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d4c232d9ed3485d4cacd",
+      "markup": "{我}{以前}{去}{过}{重庆}、{台湾}{和}{台北}。",
+      "pinyin": "Wǒ yǐ qián qù guo chóng qìng, tái wān hé tái běi.",
+      "english": "I have visited Chongqing, Taiwan and Taipei.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d6d2829dd3a48a971af5",
+      "markup": "{我}{以前}{去}{过}{陶伯河畔罗滕堡}、{科隆}{和}{柏林}。",
+      "pinyin": "Wǒ yǐ qián qù guo táo bó hé pàn luó téng bǎo, kē lóng hé bó lín.",
+      "english": "I have visited Rothenburg ob der Tauber, Cologne and Berlin.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dbc1592615806a1a8a3c",
+      "markup": "{我}{以前}{去}{过}{瓜纳华托}、{圣米格尔德阿连德}{和}{葡萄牙}。",
+      "pinyin": "Wǒ yǐ qián qù guo guā nà huá tuō, shèng mǐ gé ěr dé ā lián dé hé pú táo yá.",
+      "english": "I have visited Guanajuato City, San Miguel de Allende and Portugal.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e1eb877d916ef704024a",
+      "markup": "{我}{以前}{去}{过}{里尔}、{比利时}{和}{布鲁塞尔}。",
+      "pinyin": "Wǒ yǐ qián qù guo lǐ ěr, bǐ lì shí hé bù lǔ sài ěr.",
+      "english": "I have visited Lille, Belgium and Brussels.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e79fde1c8e4ee2456e99",
+      "markup": "{我}{以前}{去}{过}{敦煌}、{广东}{和}{深圳}。",
+      "pinyin": "Wǒ yǐ qián qù guo dūn huáng, guǎng dōng hé shēn zhèn.",
+      "english": "I have visited Dunhuang, Guangdong and Shenzhen.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ec6f839480570070370e",
+      "markup": "{我}{以前}{去}{过}{墨西哥}、{墨西哥城}{和}{普埃布拉}。",
+      "pinyin": "Wǒ yǐ qián qù guo mò xī gē, mò xī gē chéng hé pǔ āi bù lā.",
+      "english": "I have visited Mexico, Mexico City and Puebla.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f245e3cb8be3d5bc90a1",
+      "markup": "{我}{以前}{去}{过}{昆明}、{西双版纳}{和}{浙江}。",
+      "pinyin": "Wǒ yǐ qián qù guo kūn míng, xī shuāng bǎn nà hé zhè jiāng.",
+      "english": "I have visited Kunming, Xishuangbanna and Zhejiang.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f2488edce91eac50d483",
+      "markup": "{我}{以前}{去}{过}{科罗拉多州}、{丹佛}{和}{柯林斯堡}。",
+      "pinyin": "Wǒ yǐ qián qù guo kē luó lā duō zhōu, dān fó hé kē lín sī bǎo.",
+      "english": "I have visited Colorado, Denver and Fort Collins.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f3fb76d8a8fb1d7f6fb9",
+      "markup": "{我}{以前}{去}{过}{法兰克福}、{哈瑙}{和}{慕尼黑}。",
+      "pinyin": "Wǒ yǐ qián qù guo fǎ lán kè fú, hā nào hé mù ní hēi.",
+      "english": "I have visited Frankfurt, Hanau and Munich.",
+      "distractors": [],
+      "source": "Context: past travel experience: 过",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

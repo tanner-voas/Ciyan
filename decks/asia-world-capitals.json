@@ -1,0 +1,1019 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "Asia, Oceania, Africa & UK: countries and capitals",
+  "description": "Practical vocabulary for asia, oceania, africa & uk: countries and capitals.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-193e6ef53d649254",
+      "hanzi": "越南",
+      "pinyin": "yuè nán",
+      "english": "Vietnam",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-84b88ef1d2538b5b",
+      "hanzi": "河内",
+      "pinyin": "hé nèi",
+      "english": "Hanoi",
+      "tags": [
+        "places",
+        "cities",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f1e3c16bbd633ea4",
+      "hanzi": "菲律宾",
+      "pinyin": "fēi lǜ bīn",
+      "english": "Philippines",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ef23d2489a3c0aff",
+      "hanzi": "马尼拉",
+      "pinyin": "mǎ ní lā",
+      "english": "Manila — capital of the Philippines",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-027121b0528b6bdb",
+      "hanzi": "印度尼西亚",
+      "pinyin": "yìn dù ní xī yà",
+      "english": "Indonesia",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-71a281aebfa4b227",
+      "hanzi": "雅加达",
+      "pinyin": "yǎ jiā dá",
+      "english": "Jakarta",
+      "tags": [
+        "places",
+        "cities",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-390b5a6514e326f7",
+      "hanzi": "努山塔拉",
+      "pinyin": "nǔ shān tǎ lā",
+      "english": "Nusantara — Indonesia's planned future capital",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b3320aa9c0948089",
+      "hanzi": "马来西亚",
+      "pinyin": "mǎ lái xī yà",
+      "english": "Malaysia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-baa672710078887f",
+      "hanzi": "吉隆坡",
+      "pinyin": "jí lóng pō",
+      "english": "Kuala Lumpur",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-651354aa43fc317f",
+      "hanzi": "布城",
+      "pinyin": "bù chéng",
+      "english": "Putrajaya — Malaysia's federal administrative center",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f98b2fc82a45eadf",
+      "hanzi": "新加坡",
+      "pinyin": "xīn jiā pō",
+      "english": "Singapore",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-963cd73004547f84",
+      "hanzi": "韩国",
+      "pinyin": "hán guó",
+      "english": "South Korea",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-76f872eea127e057",
+      "hanzi": "首尔",
+      "pinyin": "shǒu ěr",
+      "english": "Seoul",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8c2021079f63830b",
+      "hanzi": "朝鲜",
+      "pinyin": "cháo xiǎn",
+      "english": "North Korea; Korea in historical contexts",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-382ce9b39b760da9",
+      "hanzi": "平壤",
+      "pinyin": "píng rǎng",
+      "english": "Pyongyang — capital of North Korea",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e273aaab1f7d6d09",
+      "hanzi": "老挝",
+      "pinyin": "lǎo wō",
+      "english": "Laos",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af971d05078ad95e",
+      "hanzi": "万象",
+      "pinyin": "wàn xiàng",
+      "english": "Vientiane — capital of Laos",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e6ff6d750de02e32",
+      "hanzi": "柬埔寨",
+      "pinyin": "jiǎn pǔ zhài",
+      "english": "Cambodia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2dbcdefb8199285b",
+      "hanzi": "金边",
+      "pinyin": "jīn biān",
+      "english": "Phnom Penh — capital of Cambodia",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8f6ee8c64166eba0",
+      "hanzi": "泰国",
+      "pinyin": "tài guó",
+      "english": "Thailand",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6790c32cc11b02bf",
+      "hanzi": "曼谷",
+      "pinyin": "màn gǔ",
+      "english": "Bangkok",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b1001a02c971a01",
+      "hanzi": "澳大利亚",
+      "pinyin": "ào dà lì yà",
+      "english": "Australia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5f3d90850091b4f2",
+      "hanzi": "堪培拉",
+      "pinyin": "kān péi lā",
+      "english": "Canberra — capital of Australia",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-14c7289f304b9152",
+      "hanzi": "新西兰",
+      "pinyin": "xīn xī lán",
+      "english": "New Zealand",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-33aaf69315cf8bbf",
+      "hanzi": "惠灵顿",
+      "pinyin": "huì líng dùn",
+      "english": "Wellington — capital of New Zealand",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d8fcbae05f79fb85",
+      "hanzi": "俄罗斯",
+      "pinyin": "é luó sī",
+      "english": "Russia",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-09fdb8c909a83ac7",
+      "hanzi": "莫斯科",
+      "pinyin": "mò sī kē",
+      "english": "Moscow",
+      "tags": [
+        "places",
+        "cities",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-54fc2b6c3b9bf718",
+      "hanzi": "南非",
+      "pinyin": "nán fēi",
+      "english": "South Africa",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cb69801fe25f6635",
+      "hanzi": "比勒陀利亚",
+      "pinyin": "bǐ lè tuó lì yà",
+      "english": "Pretoria — administrative capital of South Africa",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d5f0a46a2114d003",
+      "hanzi": "开普敦",
+      "pinyin": "kāi pǔ dūn",
+      "english": "Cape Town — legislative capital of South Africa",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-82050f660bd04598",
+      "hanzi": "布隆方丹",
+      "pinyin": "bù lóng fāng dān",
+      "english": "Bloemfontein — judicial capital of South Africa",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d055c3998f13e70e",
+      "hanzi": "英国",
+      "pinyin": "yīng guó",
+      "english": "United Kingdom",
+      "tags": [
+        "places",
+        "countries",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cc5ba5e6ab7dfed6",
+      "hanzi": "英格兰",
+      "pinyin": "yīng gé lán",
+      "english": "England, UK",
+      "tags": [
+        "places",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a6c0db788b589b10",
+      "hanzi": "伦敦",
+      "pinyin": "lún dūn",
+      "english": "London",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-984339075c658115",
+      "hanzi": "苏格兰",
+      "pinyin": "sū gé lán",
+      "english": "Scotland, UK",
+      "tags": [
+        "places",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bfd92ac3c0f1af0b",
+      "hanzi": "爱丁堡",
+      "pinyin": "ài dīng bǎo",
+      "english": "Edinburgh, Scotland",
+      "tags": [
+        "places",
+        "visited",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5a03ce7675ffdd1c",
+      "hanzi": "威尔士",
+      "pinyin": "wēi ěr shì",
+      "english": "Wales — capital Cardiff (part of UK)",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f3cac84b6a0849c2",
+      "hanzi": "加的夫",
+      "pinyin": "jiā dì fū",
+      "english": "Cardiff — capital of Wales",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8eafb90203db6387",
+      "hanzi": "北爱尔兰",
+      "pinyin": "běi ài ěr lán",
+      "english": "Northern Ireland — capital Belfast (part of UK)",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fb64216b6d5de7b6",
+      "hanzi": "贝尔法斯特",
+      "pinyin": "bèi ěr fǎ sī tè",
+      "english": "Belfast — capital of Northern Ireland",
+      "tags": [
+        "places",
+        "world-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a4c3313deb180960",
+      "hanzi": "三",
+      "pinyin": "sān",
+      "english": "Three",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a116815bc9da10d",
+      "hanzi": "个",
+      "pinyin": "ge",
+      "english": "General classifier",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a567bdaa11367f26",
+      "hanzi": "中",
+      "pinyin": "zhōng",
+      "english": "Within; middle; during",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f0e9521611bb290d",
+      "hanzi": "中国",
+      "pinyin": "zhōng guó",
+      "english": "China",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-260cca3889c2a05c",
+      "hanzi": "中心",
+      "pinyin": "zhōng xīn",
+      "english": "center; heart; core",
+      "tags": [
+        "hsk",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-658605835bfc7ff8",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "Also; too",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b71852847d38252f",
+      "hanzi": "叫",
+      "pinyin": "jiào",
+      "english": "Be called; call; shout",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3cc493bc5b3b9b51",
+      "hanzi": "新",
+      "pinyin": "xīn",
+      "english": "New",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b5141d3d19e9a048",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "Be; is; am; are",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90ce0f66f09488f2",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "Have; there is",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-43584f37c1f4932f",
+      "hanzi": "现在",
+      "pinyin": "xiàn zài",
+      "english": "Now",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-58857e5318f3090b",
+      "hanzi": "美国",
+      "pinyin": "měi guó",
+      "english": "United States",
+      "tags": [
+        "places",
+        "countries"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e79890c96ee6f0c5",
+      "hanzi": "行政",
+      "pinyin": "xíng zhèng",
+      "english": "Administration; administrative",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f6b1949b093e352",
+      "hanzi": "计划",
+      "pinyin": "jì huà",
+      "english": "Plan",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3da5ab9c1b9f5d83",
+      "hanzi": "首都",
+      "pinyin": "shǒu dū",
+      "english": "Capital city",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-3",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-013e4f0022f26f0ddc13",
+      "markup": "{威尔士}{的}{首都}{是}{加的夫}。",
+      "pinyin": "Wēi ěr shì de shǒu dū shì jiā dì fū.",
+      "english": "The capital of Wales is Cardiff.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-11c579915f54df1ca2c0",
+      "markup": "{韩国}{的}{首都}{是}{首尔}。",
+      "pinyin": "Hán guó de shǒu dū shì shǒu ěr.",
+      "english": "The capital of South Korea is Seoul.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-162e86f560314099b12b",
+      "markup": "{北爱尔兰}{的}{首都}{是}{贝尔法斯特}。",
+      "pinyin": "Běi ài ěr lán de shǒu dū shì bèi ěr fǎ sī tè.",
+      "english": "The capital of Northern Ireland is Belfast.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1d2abbb958e89749ac32",
+      "markup": "{马来西亚}{的}{首都}{是}{吉隆坡}，{布城}{是}{行政}{中心}。",
+      "pinyin": "Mǎ lái xī yà de shǒu dū shì jí lóng pō, bù chéng shì xíng zhèng zhōng xīn.",
+      "english": "Kuala Lumpur is Malaysia’s capital, while Putrajaya is its administrative center.",
+      "distractors": [],
+      "source": "Context: administrative distinction",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-309fd223d29af79b215c",
+      "markup": "{英格兰}{的}{首都}{是}{伦敦}。",
+      "pinyin": "Yīng gé lán de shǒu dū shì lún dūn.",
+      "english": "The capital of England is London.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-350f70fd393109196e26",
+      "markup": "{朝鲜}{的}{首都}{是}{平壤}。",
+      "pinyin": "Cháo xiǎn de shǒu dū shì píng rǎng.",
+      "english": "The capital of North Korea is Pyongyang.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3a812b9668421c3a22ee",
+      "markup": "{印度尼西亚}{的}{首都}{现在}{是}{雅加达}，{努山塔拉}{是}{计划}{中}{的}{新}{首都}。",
+      "pinyin": "Yìn dù ní xī yà de shǒu dū xiàn zài shì yǎ jiā dá, nǔ shān tǎ lā shì jì huà zhōng de xīn shǒu dū.",
+      "english": "Jakarta is currently the capital of Indonesia; Nusantara is the planned new capital.",
+      "distractors": [],
+      "source": "Context: present versus future administrative status",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6afe856b0b48937156c9",
+      "markup": "{菲律宾}{的}{首都}{是}{马尼拉}。",
+      "pinyin": "Fēi lǜ bīn de shǒu dū shì mǎ ní lā.",
+      "english": "The capital of Philippines is Manila.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7b7e1a0697536bb71201",
+      "markup": "{老挝}{的}{首都}{是}{万象}。",
+      "pinyin": "Lǎo wō de shǒu dū shì wàn xiàng.",
+      "english": "The capital of Laos is Vientiane.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8010e49a6548c1267668",
+      "markup": "{新加坡}{的}{首都}{也}{叫}{新加坡}。",
+      "pinyin": "Xīn jiā pō de shǒu dū yě jiào xīn jiā pō.",
+      "english": "The capital of Singapore is also named Singapore.",
+      "distractors": [],
+      "source": "Context: city-state and capital",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9e1aefe94912bb8b739b",
+      "markup": "{马来西亚}{的}{首都}{是}{吉隆坡}。",
+      "pinyin": "Mǎ lái xī yà de shǒu dū shì jí lóng pō.",
+      "english": "The capital of Malaysia is Kuala Lumpur.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a0e45e79776b49a8ff7e",
+      "markup": "{新西兰}{的}{首都}{是}{惠灵顿}。",
+      "pinyin": "Xīn xī lán de shǒu dū shì huì líng dùn.",
+      "english": "The capital of New Zealand is Wellington.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a2c1459c34eafccdd800",
+      "markup": "{澳大利亚}{的}{首都}{是}{堪培拉}。",
+      "pinyin": "Ào dà lì yà de shǒu dū shì kān péi lā.",
+      "english": "The capital of Australia is Canberra.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a8db4a223639dcec05fb",
+      "markup": "{柬埔寨}{的}{首都}{是}{金边}。",
+      "pinyin": "Jiǎn pǔ zhài de shǒu dū shì jīn biān.",
+      "english": "The capital of Cambodia is Phnom Penh.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b2f525cb93cd972b5545",
+      "markup": "{越南}{的}{首都}{是}{河内}。",
+      "pinyin": "Yuè nán de shǒu dū shì hé nèi.",
+      "english": "The capital of Vietnam is Hanoi.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bcf4f05a6ed53c7187a3",
+      "markup": "{我}{想}{去}{中国}、{美国}{和}{英国}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù zhōng guó, měi guó hé yīng guó lǚ xíng.",
+      "english": "I would like to travel to China, United States and United Kingdom.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c3aa70786cf3f3457158",
+      "markup": "{泰国}{的}{首都}{是}{曼谷}。",
+      "pinyin": "Tài guó de shǒu dū shì màn gǔ.",
+      "english": "The capital of Thailand is Bangkok.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c64f2aecd08e2959eebf",
+      "markup": "{南非}{有}{三}{个}{首都}：{比勒陀利亚}、{开普敦}{和}{布隆方丹}。",
+      "pinyin": "Nán fēi yǒu sān ge shǒu dū:bǐ lè tuó lì yà, kāi pǔ dūn hé bù lóng fāng dān.",
+      "english": "South Africa has three capitals: Pretoria, Cape Town, and Bloemfontein.",
+      "distractors": [],
+      "source": "Context: multiple capitals",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-da4bbc578e31a715ed22",
+      "markup": "{俄罗斯}{的}{首都}{是}{莫斯科}。",
+      "pinyin": "É luó sī de shǒu dū shì mò sī kē.",
+      "english": "The capital of Russia is Moscow.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f40673936de9d6754c68",
+      "markup": "{印度尼西亚}{的}{首都}{是}{雅加达}。",
+      "pinyin": "Yìn dù ní xī yà de shǒu dū shì yǎ jiā dá.",
+      "english": "The capital of Indonesia is Jakarta.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fe08e55f3df8d63f22b2",
+      "markup": "{苏格兰}{的}{首都}{是}{爱丁堡}。",
+      "pinyin": "Sū gé lán de shǒu dū shì ài dīng bǎo.",
+      "english": "The capital of Scotland is Edinburgh.",
+      "distractors": [],
+      "source": "Context: capital and constituent nation",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

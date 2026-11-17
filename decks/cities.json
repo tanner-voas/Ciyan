@@ -13,9 +13,10 @@
       "english": "Guangzhou",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -25,9 +26,10 @@
       "english": "Shenzhen",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -39,7 +41,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -49,9 +51,10 @@
       "english": "Hangzhou",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -61,9 +64,10 @@
       "english": "Nanjing",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -73,9 +77,10 @@
       "english": "Suzhou",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -85,9 +90,10 @@
       "english": "Wuhan",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -97,9 +103,10 @@
       "english": "Xi'an",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -109,9 +116,10 @@
       "english": "Changsha",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -123,7 +131,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -135,7 +143,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -147,7 +155,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -159,7 +167,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -171,7 +179,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -183,7 +191,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -195,7 +203,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -205,9 +213,10 @@
       "english": "Kunming",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -217,9 +226,10 @@
       "english": "Guiyang",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -231,7 +241,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -243,7 +253,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -255,7 +265,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -265,9 +275,10 @@
       "english": "Fuzhou",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -277,9 +288,10 @@
       "english": "Xiamen",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -289,9 +301,10 @@
       "english": "Quanzhou",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -301,9 +314,10 @@
       "english": "Nanchang",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -315,7 +329,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -327,7 +341,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -339,7 +353,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -349,9 +363,10 @@
       "english": "Lanzhou",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -363,7 +378,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -375,7 +390,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -387,7 +402,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -399,7 +414,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -411,7 +426,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -423,7 +438,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -435,7 +450,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -447,7 +462,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -457,9 +472,10 @@
       "english": "Wuxi",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -471,7 +487,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -481,9 +497,10 @@
       "english": "Taipei",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -495,7 +512,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -507,7 +524,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -517,9 +534,11 @@
       "english": "London",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -529,9 +548,11 @@
       "english": "Paris",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -541,9 +562,10 @@
       "english": "New York",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "major-cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -553,9 +575,10 @@
       "english": "Los Angeles",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -565,9 +588,10 @@
       "english": "San Francisco",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -579,7 +603,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -589,9 +613,10 @@
       "english": "Tokyo",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -601,9 +626,10 @@
       "english": "Osaka",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -613,9 +639,11 @@
       "english": "Seoul",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -625,9 +653,11 @@
       "english": "Bangkok",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -637,9 +667,10 @@
       "english": "Hanoi",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -649,9 +680,11 @@
       "english": "Kuala Lumpur",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -661,9 +694,10 @@
       "english": "Jakarta",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -673,9 +707,10 @@
       "english": "Sydney",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -685,9 +720,10 @@
       "english": "Melbourne",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -699,7 +735,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -711,7 +747,7 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -721,9 +757,11 @@
       "english": "Berlin",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -733,9 +771,11 @@
       "english": "Rome",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -745,9 +785,11 @@
       "english": "Madrid",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "visited",
+        "eu-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -757,9 +799,10 @@
       "english": "Moscow",
       "tags": [
         "places",
-        "cities"
+        "cities",
+        "world-capitals"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -771,9 +814,389 @@
         "places",
         "cities"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8bf3f878e389b57",
+      "hanzi": "旅游",
+      "pinyin": "lǚ yóu",
+      "english": "Travel for leisure",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f6b1949b093e352",
+      "hanzi": "计划",
+      "pinyin": "jì huà",
+      "english": "Plan",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],
-  "grammar": []
+  "grammar": [
+    {
+      "id": "ctx-04dedfaeb37143f94026",
+      "markup": "{我}{想}{去}{石家庄}、{兰州}{和}{西宁}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù shí jiā zhuāng, lán zhōu hé xī níng lǚ xíng.",
+      "english": "I would like to travel to Shijiazhuang, Lanzhou and Xining.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-05bb796c2d201b75d99a",
+      "markup": "{我}{想}{去}{雅加达}、{悉尼}{和}{墨尔本}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù yǎ jiā dá, xī ní hé mò ěr běn lǚ xíng.",
+      "english": "I would like to travel to Jakarta, Sydney and Melbourne.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0a2a88a9a3455a4a10ed",
+      "markup": "{你}{去}{过}{福州}、{厦门}{和}{泉州}{吗}？",
+      "pinyin": "Nǐ qù guo fú zhōu, xià mén hé quán zhōu ma?",
+      "english": "Have you been to Fuzhou, Xiamen and Quanzhou?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0c6d56cd6c9ae761cdf7",
+      "markup": "{我}{想}{去}{郑州}、{济南}{和}{青岛}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù zhèng zhōu, jǐ nán hé qīng dǎo lǚ xíng.",
+      "english": "I would like to travel to Zhengzhou, Jinan and Qingdao.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0f6c696b0a1f003e31fc",
+      "markup": "{我}{想}{去}{宁波}、{无锡}{和}{温州}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù níng bō, wú xī hé wēn zhōu lǚ xíng.",
+      "english": "I would like to travel to Ningbo, Wuxi and Wenzhou.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-375626fdc13fd62d77ee",
+      "markup": "{你}{去}{过}{温哥华}、{多伦多}{和}{柏林}{吗}？",
+      "pinyin": "Nǐ qù guo wēn gē huá, duō lún duō hé bó lín ma?",
+      "english": "Have you been to Vancouver, Toronto and Berlin?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-39d674af33139af28e26",
+      "markup": "{我们}{可以}{计划}{去}{罗马}、{马德里}{和}{莫斯科}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù luó mǎ, mǎ dé lǐ hé mò sī kē lǚ yóu.",
+      "english": "We could plan a trip to Rome, Madrid and Moscow.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3a2af9264da347556df3",
+      "markup": "{我们}{可以}{计划}{去}{呼和浩特}、{海口}{和}{三亚}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù hū hé hào tè, hǎi kǒu hé sān yà lǚ yóu.",
+      "english": "We could plan a trip to Hohhot, Haikou and Sanya.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5286ddfd25fb09563af5",
+      "markup": "{我}{想}{去}{迪拜}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù dí bài lǚ xíng.",
+      "english": "I would like to travel to Dubai.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-64cc9f7a29c82347c412",
+      "markup": "{你}{去}{过}{银川}、{乌鲁木齐}{和}{拉萨}{吗}？",
+      "pinyin": "Nǐ qù guo yín chuān, wū lǔ mù qí hé lā sà ma?",
+      "english": "Have you been to Yinchuan, Urumqi and Lhasa?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7893acc3049c919eddf4",
+      "markup": "{你}{去}{过}{杭州}、{南京}{和}{苏州}{吗}？",
+      "pinyin": "Nǐ qù guo háng zhōu, nán jīng hé sū zhōu ma?",
+      "english": "Have you been to Hangzhou, Nanjing and Suzhou?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7a8e587a8af6fe6bd571",
+      "markup": "{我们}{可以}{计划}{去}{南昌}、{合肥}{和}{太原}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù nán chāng, hé féi hé tài yuán lǚ yóu.",
+      "english": "We could plan a trip to Nanchang, Hefei and Taiyuan.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7b923ae1574a0a5d1adf",
+      "markup": "{我们}{可以}{计划}{去}{伦敦}、{巴黎}{和}{纽约}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù lún dūn, bā lí hé niǔ yuē lǚ yóu.",
+      "english": "We could plan a trip to London, Paris and New York.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-888e52db78929544a093",
+      "markup": "{我们}{可以}{计划}{去}{长春}、{昆明}{和}{贵阳}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù cháng chūn, kūn míng hé guì yáng lǚ yóu.",
+      "english": "We could plan a trip to Changchun, Kunming and Guiyang.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-960879b0b3c484d53923",
+      "markup": "{你}{去}{过}{东京}、{大阪}{和}{首尔}{吗}？",
+      "pinyin": "Nǐ qù guo dōng jīng, dà bǎn hé shǒu ěr ma?",
+      "english": "Have you been to Tokyo, Osaka and Seoul?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-994108d1891d3092363a",
+      "markup": "{我}{想}{去}{广州}、{深圳}{和}{成都}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù guǎng zhōu, shēn zhèn hé chéng dū lǚ xíng.",
+      "english": "I would like to travel to Guangzhou, Shenzhen and Chengdu.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a64c5dd2935d8b9d2350",
+      "markup": "{我}{想}{去}{南宁}、{桂林}{和}{阳朔}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù nán níng, guì lín hé yáng shuò lǚ xíng.",
+      "english": "I would like to travel to Nanning, Guilin and Yangshuo.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-aa8cdbe671ce2873c852",
+      "markup": "{我}{想}{去}{洛杉矶}、{旧金山}{和}{华盛顿}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù luò shān jī, jiù jīn shān hé huá shèng dùn lǚ xíng.",
+      "english": "I would like to travel to Los Angeles, San Francisco and Washington.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-aadebab3d5eb24c7f162",
+      "markup": "{你}{去}{过}{台北}、{浦东}{和}{浦西}{吗}？",
+      "pinyin": "Nǐ qù guo tái běi, pǔ dōng hé pǔ xī ma?",
+      "english": "Have you been to Taipei, Pudong and Puxi?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c3976932fa4f75cb8281",
+      "markup": "{我们}{可以}{计划}{去}{武汉}、{西安}{和}{长沙}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù wǔ hàn, xī ān hé cháng shā lǚ yóu.",
+      "english": "We could plan a trip to Wuhan, Xi'an and Changsha.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ec039e469cae3f356e5a",
+      "markup": "{我们}{可以}{计划}{去}{曼谷}、{河内}{和}{吉隆坡}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù màn gǔ, hé nèi hé jí lóng pō lǚ yóu.",
+      "english": "We could plan a trip to Bangkok, Hanoi and Kuala Lumpur.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f1d16575c4beb74949aa",
+      "markup": "{你}{去}{过}{大连}、{沈阳}{和}{哈尔滨}{吗}？",
+      "pinyin": "Nǐ qù guo dà lián, shěn yáng hé hā ěr bīn ma?",
+      "english": "Have you been to Dalian, Shenyang and Harbin?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
 }

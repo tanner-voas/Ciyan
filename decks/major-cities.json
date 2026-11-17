@@ -1,0 +1,755 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "More major cities and useful places",
+  "description": "Practical vocabulary for more major cities and useful places.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-21f9f830edf15d42",
+      "hanzi": "纽约",
+      "pinyin": "niǔ yuē",
+      "english": "New York",
+      "tags": [
+        "places",
+        "cities",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6de99512acbf3f39",
+      "hanzi": "芝加哥",
+      "pinyin": "zhī jiā gē",
+      "english": "Chicago, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-243eeb0a56fb1818",
+      "hanzi": "波士顿",
+      "pinyin": "bō shì dùn",
+      "english": "Boston, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9284b63b8611c53",
+      "hanzi": "西雅图",
+      "pinyin": "xī yǎ tú",
+      "english": "Seattle, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-973a49806b6aa16b",
+      "hanzi": "波特兰",
+      "pinyin": "bō tè lán",
+      "english": "Portland, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f05cfcd2799d9357",
+      "hanzi": "迈阿密",
+      "pinyin": "mài ā mì",
+      "english": "Miami, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e40a5254d89dbde9",
+      "hanzi": "费城",
+      "pinyin": "fèi chéng",
+      "english": "Philadelphia, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1b7799277bd5768e",
+      "hanzi": "亚特兰大",
+      "pinyin": "yà tè lán dà",
+      "english": "Atlanta, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8ffe9c2554843fe7",
+      "hanzi": "新奥尔良",
+      "pinyin": "xīn ào ěr liáng",
+      "english": "New Orleans, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-25513d3fcc551f71",
+      "hanzi": "凤凰城",
+      "pinyin": "fèng huáng chéng",
+      "english": "Phoenix, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cf44f7ab91c012bb",
+      "hanzi": "盐湖城",
+      "pinyin": "yán hú chéng",
+      "english": "Salt Lake City, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-755497a8baa3f48f",
+      "hanzi": "底特律",
+      "pinyin": "dǐ tè lǜ",
+      "english": "Detroit, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3f08f2a79eacd231",
+      "hanzi": "克利夫兰",
+      "pinyin": "kè lì fū lán",
+      "english": "Cleveland, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9d77fbf7957da1ce",
+      "hanzi": "匹兹堡",
+      "pinyin": "pǐ zī bǎo",
+      "english": "Pittsburgh, USA",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-da9f00e5f6aa842e",
+      "hanzi": "蒙特利尔",
+      "pinyin": "méng tè lì ěr",
+      "english": "Montréal, Canada",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0d6987e5334793b6",
+      "hanzi": "渥太华",
+      "pinyin": "wò tài huá",
+      "english": "Ottawa — capital of Canada",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2d9e45ba0734f431",
+      "hanzi": "魁北克城",
+      "pinyin": "kuí běi kè chéng",
+      "english": "Québec City, Canada",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-584b1444111c7931",
+      "hanzi": "卡尔加里",
+      "pinyin": "kǎ ěr jiā lǐ",
+      "english": "Calgary, Canada",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-937d13c1ea551877",
+      "hanzi": "奥克兰",
+      "pinyin": "ào kè lán",
+      "english": "Auckland, New Zealand",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-471b44baa76389f0",
+      "hanzi": "基督城",
+      "pinyin": "jī dū chéng",
+      "english": "Christchurch, New Zealand",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4722dd0adefa60cb",
+      "hanzi": "德里",
+      "pinyin": "dé lǐ",
+      "english": "Delhi, India",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dbd7eae813c1dc02",
+      "hanzi": "孟买",
+      "pinyin": "mèng mǎi",
+      "english": "Mumbai, India",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c6dddd16dfc17755",
+      "hanzi": "新德里",
+      "pinyin": "xīn dé lǐ",
+      "english": "New Delhi — capital of India",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2e13b49eacb92d7a",
+      "hanzi": "伊斯坦布尔",
+      "pinyin": "yī sī tǎn bù ěr",
+      "english": "Istanbul, Türkiye",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c052962ebd60ac66",
+      "hanzi": "安卡拉",
+      "pinyin": "ān kǎ lā",
+      "english": "Ankara — capital of Türkiye",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-20cf5df407b240aa",
+      "hanzi": "圣彼得堡",
+      "pinyin": "shèng bǐ dé bǎo",
+      "english": "Saint Petersburg, Russia",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9b2c9698ecb416f6",
+      "hanzi": "约翰内斯堡",
+      "pinyin": "yuē hàn nèi sī bǎo",
+      "english": "Johannesburg, South Africa",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2dd265812024c822",
+      "hanzi": "开罗",
+      "pinyin": "kāi luó",
+      "english": "Cairo — capital of Egypt",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-36cda85de6742f0d",
+      "hanzi": "胡志明市",
+      "pinyin": "hú zhì míng shì",
+      "english": "Ho Chi Minh City, Vietnam",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e78226507817eead",
+      "hanzi": "岘港",
+      "pinyin": "xiàn gǎng",
+      "english": "Da Nang, Vietnam",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3325150eda50fc20",
+      "hanzi": "清迈",
+      "pinyin": "qīng mài",
+      "english": "Chiang Mai, Thailand",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-276de639865bed0b",
+      "hanzi": "普吉岛",
+      "pinyin": "pǔ jí dǎo",
+      "english": "Phuket Island, Thailand",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e79f64400df7aa7e",
+      "hanzi": "巴厘岛",
+      "pinyin": "bā lí dǎo",
+      "english": "Bali, Indonesia",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fa4f703fc23b9a02",
+      "hanzi": "泗水",
+      "pinyin": "sì shuǐ",
+      "english": "Surabaya, Indonesia",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b978268c1ee633c",
+      "hanzi": "槟城",
+      "pinyin": "bīn chéng",
+      "english": "Penang, Malaysia",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e335f00806f33a0f",
+      "hanzi": "宿务",
+      "pinyin": "sù wù",
+      "english": "Cebu, Philippines",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-222ea18dbc18cbb0",
+      "hanzi": "长滩岛",
+      "pinyin": "cháng tān dǎo",
+      "english": "Boracay, Philippines",
+      "tags": [
+        "places",
+        "major-cities"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8bf3f878e389b57",
+      "hanzi": "旅游",
+      "pinyin": "lǚ yóu",
+      "english": "Travel for leisure",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f6b1949b093e352",
+      "hanzi": "计划",
+      "pinyin": "jì huà",
+      "english": "Plan",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-402057a4b2affd5fcc7d",
+      "markup": "{我}{想}{去}{凤凰城}、{盐湖城}{和}{底特律}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù fèng huáng chéng, yán hú chéng hé dǐ tè lǜ lǚ xíng.",
+      "english": "I would like to travel to Phoenix, Salt Lake City and Detroit.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5aea7d116f706e932bc6",
+      "markup": "{我}{想}{去}{奥克兰}、{基督城}{和}{德里}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù ào kè lán, jī dū chéng hé dé lǐ lǚ xíng.",
+      "english": "I would like to travel to Auckland, Christchurch and Delhi.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-608c626981161436603d",
+      "markup": "{你}{去}{过}{清迈}、{普吉岛}{和}{巴厘岛}{吗}？",
+      "pinyin": "Nǐ qù guo qīng mài, pǔ jí dǎo hé bā lí dǎo ma?",
+      "english": "Have you been to Chiang Mai, Phuket Island and Bali?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-758e8b3204692789fe29",
+      "markup": "{我}{想}{去}{长滩岛}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù cháng tān dǎo lǚ xíng.",
+      "english": "I would like to travel to Boracay.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8806728b192dedbd3e12",
+      "markup": "{你}{去}{过}{克利夫兰}、{匹兹堡}{和}{蒙特利尔}{吗}？",
+      "pinyin": "Nǐ qù guo kè lì fū lán, pǐ zī bǎo hé méng tè lì ěr ma?",
+      "english": "Have you been to Cleveland, Pittsburgh and Montréal?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9c508c74dff5e38ee938",
+      "markup": "{我们}{可以}{计划}{去}{泗水}、{槟城}{和}{宿务}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù sì shuǐ, bīn chéng hé sù wù lǚ yóu.",
+      "english": "We could plan a trip to Surabaya, Penang and Cebu.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ab9e2e92e41549b31ebf",
+      "markup": "{我们}{可以}{计划}{去}{安卡拉}、{圣彼得堡}{和}{约翰内斯堡}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù ān kǎ lā, shèng bǐ dé bǎo hé yuē hàn nèi sī bǎo lǚ yóu.",
+      "english": "We could plan a trip to Ankara, Saint Petersburg and Johannesburg.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-be6d994cf353d515f966",
+      "markup": "{你}{去}{过}{西雅图}、{波特兰}{和}{迈阿密}{吗}？",
+      "pinyin": "Nǐ qù guo xī yǎ tú, bō tè lán hé mài ā mì ma?",
+      "english": "Have you been to Seattle, Portland and Miami?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d35d7fd49f3747e8d1a8",
+      "markup": "{我}{想}{去}{开罗}、{胡志明市}{和}{岘港}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù kāi luó, hú zhì míng shì hé xiàn gǎng lǚ xíng.",
+      "english": "I would like to travel to Cairo, Ho Chi Minh City and Da Nang.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d7c74646444e7cc4996e",
+      "markup": "{我们}{可以}{计划}{去}{渥太华}、{魁北克城}{和}{卡尔加里}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù wò tài huá, kuí běi kè chéng hé kǎ ěr jiā lǐ lǚ yóu.",
+      "english": "We could plan a trip to Ottawa, Québec City and Calgary.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ddd3b83fbd08ec0c38dd",
+      "markup": "{你}{去}{过}{孟买}、{新德里}{和}{伊斯坦布尔}{吗}？",
+      "pinyin": "Nǐ qù guo mèng mǎi, xīn dé lǐ hé yī sī tǎn bù ěr ma?",
+      "english": "Have you been to Mumbai, New Delhi and Istanbul?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e53bb874e609404bfea2",
+      "markup": "{我们}{可以}{计划}{去}{费城}、{亚特兰大}{和}{新奥尔良}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù fèi chéng, yà tè lán dà hé xīn ào ěr liáng lǚ yóu.",
+      "english": "We could plan a trip to Philadelphia, Atlanta and New Orleans.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fa941d7e030a73f9e8b0",
+      "markup": "{我}{想}{去}{纽约}、{芝加哥}{和}{波士顿}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù niǔ yuē, zhī jiā gē hé bō shì dùn lǚ xíng.",
+      "english": "I would like to travel to New York, Chicago and Boston.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

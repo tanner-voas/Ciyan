@@ -16,7 +16,7 @@
         "ordering",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -26,9 +26,11 @@
       "english": "Order dishes",
       "tags": [
         "food",
-        "ordering"
+        "ordering",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -38,9 +40,11 @@
       "english": "Pay the bill",
       "tags": [
         "food",
-        "ordering"
+        "ordering",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -52,7 +56,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -62,9 +66,11 @@
       "english": "Pack to take away",
       "tags": [
         "food",
-        "ordering"
+        "ordering",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -77,7 +83,7 @@
         "ordering",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -89,7 +95,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -99,9 +105,11 @@
       "english": "Tableware",
       "tags": [
         "food",
-        "ordering"
+        "ordering",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -114,7 +122,7 @@
         "ordering",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -126,7 +134,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -138,7 +146,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -151,7 +159,7 @@
         "ordering",
         "hsk-2021-3"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -164,7 +172,7 @@
         "ordering",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -177,7 +185,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -190,7 +198,7 @@
         "ordering",
         "hsk-2021-1"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -203,7 +211,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -215,7 +223,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -226,9 +234,11 @@
       "tags": [
         "food",
         "ordering",
-        "hsk-2021-2"
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -239,9 +249,11 @@
       "tags": [
         "food",
         "ordering",
-        "hsk-2021-2"
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -254,7 +266,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -266,7 +278,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -279,7 +291,7 @@
         "ordering",
         "hsk-2021-3"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -292,7 +304,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -303,9 +315,11 @@
       "tags": [
         "food",
         "ordering",
-        "hsk-2021-4"
+        "hsk-2021-4",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -318,7 +332,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -330,7 +344,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -342,7 +356,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -355,7 +369,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -369,7 +383,7 @@
         "hsk-2021-2",
         "hsk"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -382,7 +396,7 @@
         "ordering",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -394,7 +408,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -406,7 +420,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -418,7 +432,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -430,7 +444,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -442,7 +456,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -454,7 +468,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -466,7 +480,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -478,7 +492,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -490,7 +504,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -502,7 +516,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -514,7 +528,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -526,7 +540,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -538,7 +552,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -550,7 +564,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -562,7 +576,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -574,7 +588,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -586,7 +600,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -598,7 +612,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -610,7 +624,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -622,7 +636,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -635,7 +649,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -648,7 +662,7 @@
         "ordering",
         "hsk-2021-3"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -661,7 +675,7 @@
         "ordering",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -673,7 +687,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -685,7 +699,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -697,7 +711,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -709,7 +723,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -721,7 +735,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -733,7 +747,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -745,7 +759,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -757,7 +771,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -769,7 +783,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -781,7 +795,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -793,7 +807,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -805,7 +819,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -818,7 +832,7 @@
         "ordering",
         "hsk-2021-4"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -830,7 +844,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -842,7 +856,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -854,7 +868,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -866,7 +880,7 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -878,9 +892,1276 @@
         "food",
         "ordering"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-51a75f4634dfa859",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "english": "One",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-11a9d8072cf9e368",
+      "hanzi": "一下",
+      "pinyin": "yí xià",
+      "english": "Briefly; a little",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b02dfe2160c687c2",
+      "hanzi": "不",
+      "pinyin": "bù",
+      "english": "Not; no",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-83385d2edafe28d4",
+      "hanzi": "两",
+      "pinyin": "liǎng",
+      "english": "Two (before most classifiers)",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a116815bc9da10d",
+      "hanzi": "个",
+      "pinyin": "ge",
+      "english": "General classifier",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b2dd27e84f07f49b",
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "Completion or change-of-state particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d5f5a7a010731feb",
+      "hanzi": "今天",
+      "pinyin": "jīn tiān",
+      "english": "Today",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8b7b91e0001c6971",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "He; him",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e8ec877c8da553d3",
+      "hanzi": "医生",
+      "pinyin": "yī shēng",
+      "english": "doctor",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c814805bc6d0365a",
+      "hanzi": "吃",
+      "pinyin": "chī",
+      "english": "Eat",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-653b04330b75751f",
+      "hanzi": "喜欢",
+      "pinyin": "xǐ huan",
+      "english": "Like",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e7ace7adf264b714",
+      "hanzi": "太",
+      "pinyin": "tài",
+      "english": "Too; very",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2ab425e0c6b932cb",
+      "hanzi": "她",
+      "pinyin": "tā",
+      "english": "She; her",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-28e0bba69ee9141a",
+      "hanzi": "完",
+      "pinyin": "wán",
+      "english": "to finish; to be over; whole",
+      "tags": [
+        "hsk",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8ae97be80f3867c",
+      "hanzi": "家",
+      "pinyin": "jiā",
+      "english": "Home; family",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-74570c72706a38b1",
+      "hanzi": "对",
+      "pinyin": "duì",
+      "english": "Regarding; correct",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-aaded36a83022ef1",
+      "hanzi": "店",
+      "pinyin": "diàn",
+      "english": "Store; shop",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f2b91797ea3a7171",
+      "hanzi": "很",
+      "pinyin": "hěn",
+      "english": "Very; quite",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-963e4f4abf641ba9",
+      "hanzi": "忙",
+      "pinyin": "máng",
+      "english": "Busy",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2442748e41108dab",
+      "hanzi": "把",
+      "pinyin": "bǎ",
+      "english": "Object disposal construction marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5484678be4ef7c24",
+      "hanzi": "时候",
+      "pinyin": "shí hou",
+      "english": "Time; occasion; when",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b5141d3d19e9a048",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "Be; is; am; are",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-90ce0f66f09488f2",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "Have; there is",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-29506aa712190082",
+      "hanzi": "有点",
+      "pinyin": "yǒu diǎn",
+      "english": "A bit (often undesirable)",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-327b54d04f71f212",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "Water",
+      "tags": [
+        "grammar-words"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a3fb9bc3abb90f1f",
+      "hanzi": "炒饭",
+      "pinyin": "chǎo fàn",
+      "english": "Fried rice",
+      "tags": [
+        "food",
+        "china-food"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-08dddeac1319d6e8",
+      "hanzi": "点",
+      "pinyin": "diǎn",
+      "english": "Order; point; o'clock",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b892a42b9695881d",
+      "hanzi": "牛奶",
+      "pinyin": "niú nǎi",
+      "english": "Milk",
+      "tags": [
+        "food",
+        "global-food",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-43584f37c1f4932f",
+      "hanzi": "现在",
+      "pinyin": "xiàn zài",
+      "english": "Now",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4ca8d4f77574e43a",
+      "hanzi": "短",
+      "pinyin": "duǎn",
+      "english": "Short (length)",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-01805727314e4def",
+      "hanzi": "简单",
+      "pinyin": "jiǎn dān",
+      "english": "simple; not complicated",
+      "tags": [
+        "hsk",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6e55fb9d8a3dacc1",
+      "hanzi": "给",
+      "pinyin": "gěi",
+      "english": "Give; for",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7739ff2ac7a8c5f7",
+      "hanzi": "花生",
+      "pinyin": "huā shēng",
+      "english": "Peanuts",
+      "tags": [
+        "food",
+        "ingredients"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-45f0c2d97be1214d",
+      "hanzi": "菜",
+      "pinyin": "cài",
+      "english": "Dish; vegetables",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-975f35218ed8782e",
+      "hanzi": "要",
+      "pinyin": "yào",
+      "english": "Want; need; be going to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ad3757440409cf73",
+      "hanzi": "让",
+      "pinyin": "ràng",
+      "english": "Let; allow; ask someone to; yield",
+      "tags": [
+        "hsk",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-88d5840fab773af6",
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "to ask; to invite; please (do sth)",
+      "tags": [
+        "hsk",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-dfaa7d6f73c1ec07",
+      "hanzi": "还是",
+      "pinyin": "hái shi",
+      "english": "Or (in choices/questions); still",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d409ab2ab3f8a04e",
+      "hanzi": "这",
+      "pinyin": "zhè",
+      "english": "This",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-979e2bc35b14bf4c",
+      "hanzi": "这个",
+      "pinyin": "zhè ge",
+      "english": "This one",
+      "tags": [
+        "daily",
+        "practical",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7a590a22cd94f687",
+      "hanzi": "这些",
+      "pinyin": "zhè xiē",
+      "english": "These",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-1029fedefdf99d95",
+      "hanzi": "选",
+      "pinyin": "xuǎn",
+      "english": "Choose",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-00a9d5bd97c269b4",
+      "hanzi": "道",
+      "pinyin": "dào",
+      "english": "Dish classifier; path; way",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6840b7e095496bf5",
+      "hanzi": "食品",
+      "pinyin": "shí pǐn",
+      "english": "Food product; foodstuff",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-3"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e9f5b71a472d27bb",
+      "hanzi": "鸡蛋",
+      "pinyin": "jī dàn",
+      "english": "Chicken egg",
+      "tags": [
+        "food",
+        "ingredients",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],
-  "grammar": []
+  "grammar": [
+    {
+      "id": "ctx-0575d51394dacc3aef7d",
+      "markup": "{这}{家}{店}{有}{蚝油}{和}{番茄酱}{吗}？",
+      "pinyin": "Zhè jiā diàn yǒu háo yóu hé fān qié jiàng ma?",
+      "english": "Does this shop have oyster sauce and ketchup?",
+      "distractors": [],
+      "source": "Context: existential yes/no question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-09b450136b30fa0e2b2e",
+      "markup": "{这}{道}{菜}{有点}{油腻}。",
+      "pinyin": "Zhè dào cài yǒu diǎn yóu nì.",
+      "english": "This dish is a little greasy.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0d7f403ff018d95ac290",
+      "markup": "{这}{道}{菜}{很}{新鲜}。",
+      "pinyin": "Zhè dào cài hěn xīn xiān.",
+      "english": "This dish is fresh.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0eb47060951c34efe89a",
+      "markup": "{这}{个}{鸡蛋}{是}{生}{的}。",
+      "pinyin": "Zhè ge jī dàn shì shēng de.",
+      "english": "This egg is raw.",
+      "distractors": [],
+      "source": "Context: state of cooking with 是...的",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-181a53634dd4dfc7d8ac",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{无糖}{还是}{半糖}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn wú táng hái shi bàn táng?",
+      "english": "When ordering, would you choose sugar-free or half sugar?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-281b1add455c71645b68",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{免辣}{还是}{少冰}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn miǎn là hái shi shǎo bīng?",
+      "english": "When ordering, would you choose no chili or less ice?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2901af09b893aa0f0f50",
+      "markup": "{请}{把}{菜}{冷冻}{一下}。",
+      "pinyin": "Qǐng bǎ cài lěng dòng yí xià.",
+      "english": "Please freeze the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2f225f3e8b5bf292a65f",
+      "markup": "{请}{给}{我}{杯子}{和}{吸管}。",
+      "pinyin": "Qǐng gěi wǒ bēi zi hé xī guǎn.",
+      "english": "Please give me cup and drinking straw.",
+      "distractors": [],
+      "source": "Context: polite request",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2fa66b5c22427e6d88db",
+      "markup": "{这}{个}{食品}{的}{配料}{很}{简单}。",
+      "pinyin": "Zhè ge shí pǐn de pèi liào hěn jiǎn dān.",
+      "english": "The ingredients in this food are simple.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-30fb4c390dc91998f91f",
+      "markup": "{这}{道}{菜}{有点}{甜}。",
+      "pinyin": "Zhè dào cài yǒu diǎn tián.",
+      "english": "This dish is a little sweet.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-323c5121e89f68fa8ddb",
+      "markup": "{请}{把}{菜}{拌}{一下}。",
+      "pinyin": "Qǐng bǎ cài bàn yí xià.",
+      "english": "Please mix the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-324ae975a1476a820365",
+      "markup": "{这}{道}{菜}{有点}{咸}。",
+      "pinyin": "Zhè dào cài yǒu diǎn xián.",
+      "english": "This dish is a little salty.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3377c310f85ebdbf9b93",
+      "markup": "{我们}{现在}{可以}{点菜}{了}。",
+      "pinyin": "Wǒ men xiàn zài kě yǐ diǎn cài le.",
+      "english": "We can order now.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3b4a68e22099cf221056",
+      "markup": "{请}{把}{菜}{烤}{一下}。",
+      "pinyin": "Qǐng bǎ cài kǎo yí xià.",
+      "english": "Please roast the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3bd849e83d3ae5c4f5d0",
+      "markup": "{请}{给}{我}{纸巾}{和}{沙拉酱}。",
+      "pinyin": "Qǐng gěi wǒ zhǐ jīn hé shā lā jiàng.",
+      "english": "Please give me tissue and salad dressing.",
+      "distractors": [],
+      "source": "Context: polite request",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3fa6a3428879471b380e",
+      "markup": "{今天}{太}{忙}，{我}{想}{点}{外卖}。",
+      "pinyin": "Jīn tiān tài máng, wǒ xiǎng diǎn wài mài.",
+      "english": "I am too busy today, so I want to order delivery.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-420fc02fa3839a937e38",
+      "markup": "{这}{家}{店}{有}{盐}{和}{糖}{吗}？",
+      "pinyin": "Zhè jiā diàn yǒu yán hé táng ma?",
+      "english": "Does this shop have salt and sugar?",
+      "distractors": [],
+      "source": "Context: existential yes/no question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4295059b794b25ea9622",
+      "markup": "{请}{把}{菜}{煮}{一下}。",
+      "pinyin": "Qǐng bǎ cài zhǔ yí xià.",
+      "english": "Please boil the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4439a76f2d233fb465ef",
+      "markup": "{这}{家}{店}{有}{酱油}{和}{醋}{吗}？",
+      "pinyin": "Zhè jiā diàn yǒu jiàng yóu hé cù ma?",
+      "english": "Does this shop have soy sauce and vinegar?",
+      "distractors": [],
+      "source": "Context: existential yes/no question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4a2502e0d69733c553b0",
+      "markup": "{这个}{牛奶}{的}{保质期}{很}{短}。",
+      "pinyin": "Zhè ge niú nǎi de bǎo zhì qī hěn duǎn.",
+      "english": "This milk has a short shelf life.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4a8d96489cda8689aa13",
+      "markup": "{请}{给}{我}{筷子}{和}{勺子}。",
+      "pinyin": "Qǐng gěi wǒ kuài zi hé sháo zi.",
+      "english": "Please give me chopsticks and spoon.",
+      "distractors": [],
+      "source": "Context: polite request",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-4c8dff292127dedf43bb",
+      "markup": "{请}{给}{我}{叉子}{和}{刀}。",
+      "pinyin": "Qǐng gěi wǒ chā zi hé dāo.",
+      "english": "Please give me fork and knife.",
+      "distractors": [],
+      "source": "Context: polite request",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-504a1737925bf5456b80",
+      "markup": "{这}{道}{菜}{很}{嫩}。",
+      "pinyin": "Zhè dào cài hěn nèn.",
+      "english": "This dish is tender.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-517a69e3df53f94d1b09",
+      "markup": "{请}{把}{菜}{煎}{一下}。",
+      "pinyin": "Qǐng bǎ cài jiān yí xià.",
+      "english": "Please pan-fry the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-54804ef2485a61bde643",
+      "markup": "{我们}{吃}{完}{了}，{可以}{买单}{吗}？",
+      "pinyin": "Wǒ men chī wán le, kě yǐ mǎi dān ma?",
+      "english": "We have finished eating; can we pay the bill?",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-54a56da472f33b03039a",
+      "markup": "{这}{道}{菜}{有点}{烫}。",
+      "pinyin": "Zhè dào cài yǒu diǎn tàng.",
+      "english": "This dish is a little scalding hot.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6139713b22a0c807d190",
+      "markup": "{我}{想}{结账}。",
+      "pinyin": "Wǒ xiǎng jié zhàng.",
+      "english": "I would like to pay the bill.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6591b15026b3993ee51c",
+      "markup": "{请}{给}{我}{一}{瓶}{水}。",
+      "pinyin": "Qǐng gěi wǒ yī píng shuǐ.",
+      "english": "Please give me a bottle of water.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-663de87f9f2cbbe05239",
+      "markup": "{请}{把}{菜}{蒸}{一下}。",
+      "pinyin": "Qǐng bǎ cài zhēng yí xià.",
+      "english": "Please steam the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-66830afe5ef2b54e09ce",
+      "markup": "{这}{个}{鸡蛋}{是}{熟}{的}。",
+      "pinyin": "Zhè ge jī dàn shì shú de.",
+      "english": "This egg is cooked.",
+      "distractors": [],
+      "source": "Context: state of cooking with 是...的",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-693a2daf1474dcd2181c",
+      "markup": "{这}{道}{菜}{很}{清淡}。",
+      "pinyin": "Zhè dào cài hěn qīng dàn.",
+      "english": "This dish is lightly seasoned.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-6b416fd480a563330032",
+      "markup": "{这}{道}{菜}{有点}{酸}。",
+      "pinyin": "Zhè dào cài yǒu diǎn suān.",
+      "english": "This dish is a little sour.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-727b1ac0a4ca630d709d",
+      "markup": "{我}{想}{点}{两}{份}{炒饭}。",
+      "pinyin": "Wǒ xiǎng diǎn liǎng fèn chǎo fàn.",
+      "english": "I want to order two portions of fried rice.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7627cc52a8b1f9e86dc5",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{去冰}{还是}{常温}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn qù bīng hái shi cháng wēn?",
+      "english": "When ordering, would you choose no ice or room temperature?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-76788721f4a9ce4f12ac",
+      "markup": "{这}{道}{菜}{有点}{辣}。",
+      "pinyin": "Zhè dào cài yǒu diǎn là.",
+      "english": "This dish is a little spicy.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-80cd949483c0c28b60d0",
+      "markup": "{这}{道}{菜}{很}{软}。",
+      "pinyin": "Zhè dào cài hěn ruǎn.",
+      "english": "This dish is soft.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8dea8d7b64f1b8d4a7e9",
+      "markup": "{请}{把}{菜}{炒}{一下}。",
+      "pinyin": "Qǐng bǎ cài chǎo yí xià.",
+      "english": "Please stir-fry the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9ddf2350b9e22e7fda1a",
+      "markup": "{他}{喜欢}{吃}{素食}。",
+      "pinyin": "Tā xǐ huan chī sù shí.",
+      "english": "He likes to eat vegetarian food.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9ef4e8463fb37749694f",
+      "markup": "{请}{把}{菜}{炖}{一下}。",
+      "pinyin": "Qǐng bǎ cài dùn yí xià.",
+      "english": "Please stew the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ae76ed52449568b25282",
+      "markup": "{请}{给}{我}{菜单}{和}{餐具}。",
+      "pinyin": "Qǐng gěi wǒ cài dān hé cān jù.",
+      "english": "Please give me menu and tableware.",
+      "distractors": [],
+      "source": "Context: polite request",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b00ee2cd89a791c33999",
+      "markup": "{请}{把}{菜}{冷藏}{一下}。",
+      "pinyin": "Qǐng bǎ cài lěng cáng yí xià.",
+      "english": "Please refrigerate the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b64ec3678d026f2acc1b",
+      "markup": "{请}{把}{菜}{切}{一下}。",
+      "pinyin": "Qǐng bǎ cài qiē yí xià.",
+      "english": "Please cut the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b8ec8e20ea58cf56b032",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{微辣}{还是}{中辣}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn wēi là hái shi zhōng là?",
+      "english": "When ordering, would you choose mildly spicy or medium spicy?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ba3d837432e04bf34d74",
+      "markup": "{请}{给}{我}{碗}{和}{盘子}。",
+      "pinyin": "Qǐng gěi wǒ wǎn hé pán zi.",
+      "english": "Please give me bowl and plate.",
+      "distractors": [],
+      "source": "Context: polite request",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bde05f54999974a33e15",
+      "markup": "{我}{不}{打包}，{我}{要}{堂食}。",
+      "pinyin": "Wǒ bù dǎ bāo, wǒ yào táng shí.",
+      "english": "I do not want takeaway; I will eat here.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c7ccbe6e7f0f78e87803",
+      "markup": "{这}{道}{菜}{很}{脆}。",
+      "pinyin": "Zhè dào cài hěn cuì.",
+      "english": "This dish is crisp.",
+      "distractors": [],
+      "source": "Context: stative predicate describing food",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c93d2855726db756cff6",
+      "markup": "{医生}{让}{我}{忌口}。",
+      "pinyin": "Yī shēng ràng wǒ jì kǒu.",
+      "english": "The doctor told me to avoid certain foods.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d126a51987b9d8c00500",
+      "markup": "{这}{家}{店}{有}{油}{和}{辣椒油}{吗}？",
+      "pinyin": "Zhè jiā diàn yǒu yóu hé là jiāo yóu ma?",
+      "english": "Does this shop have oil and chili oil?",
+      "distractors": [],
+      "source": "Context: existential yes/no question",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d33d2e5e67b389eccf14",
+      "markup": "{这}{道}{菜}{有点}{苦}。",
+      "pinyin": "Zhè dào cài yǒu diǎn kǔ.",
+      "english": "This dish is a little bitter.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dd47feee4ddbdced167b",
+      "markup": "{这些}{菜}{可以}{打包}{吗}？",
+      "pinyin": "Zhè xiē cài kě yǐ dǎ bāo ma?",
+      "english": "Can these dishes be packed to take away?",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e4ae3b8d1527838ba196",
+      "markup": "{请}{把}{菜}{炸}{一下}。",
+      "pinyin": "Qǐng bǎ cài zhá yí xià.",
+      "english": "Please deep-fry the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-e7103c1ecbd51a8c6980",
+      "markup": "{这}{道}{菜}{有点}{麻}。",
+      "pinyin": "Zhè dào cài yǒu diǎn má.",
+      "english": "This dish is a little numbing.",
+      "distractors": [],
+      "source": "Context: degree complement describing flavors",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ee987ab5999045307e64",
+      "markup": "{我}{对}{花生}{过敏}。",
+      "pinyin": "Wǒ duì huā shēng guò mǐn.",
+      "english": "I am allergic to peanuts.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f1d1fac6da7434106d41",
+      "markup": "{点菜}{的}{时候}，{你}{想}{选}{特辣}{还是}{少辣}？",
+      "pinyin": "Diǎn cài de shí hou, nǐ xiǎng xuǎn tè là hái shi shǎo là?",
+      "english": "When ordering, would you choose extra spicy or less chili?",
+      "distractors": [],
+      "source": "Context: alternative menu preferences",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f4dd45e560616d63bec3",
+      "markup": "{请}{把}{菜}{加热}{一下}。",
+      "pinyin": "Qǐng bǎ cài jiā rè yí xià.",
+      "english": "Please heat up the vegetables briefly.",
+      "distractors": [],
+      "source": "Context: disposal 把 + action + complement",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ff4b8b76e48b57bbd427",
+      "markup": "{她}{吃}{纯素}{食品}。",
+      "pinyin": "Tā chī chún sù shí pǐn.",
+      "english": "She eats vegan food.",
+      "distractors": [],
+      "source": "Context: food-service practical use",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
 }

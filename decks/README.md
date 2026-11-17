@@ -1,43 +1,31 @@
-# Cíyán optional decks — v0.3
+# Cíyán optional Mandarin decks — v0.3.1
 
-Open **Home → Explore optional decks** (also in Settings). Load one deck, inspect the proposed additions, and confirm. Existing cards and reviews are preserved; matching words receive additional tags only. You can also import any of these JSON files through Settings. To load everything at once, choose **All optional decks** or import `all-decks.json`.
+The downloadable decks contain **2,002 distinct vocabulary entries** (including the original starter words), and **1,287 grammar entries** covering all of them through exact `{word}` tokens. There are 26 individual topical/HSK/grammar decks, plus `all-decks.json`. Counts for individual decks overlap because they include the vocabulary required for their sentences; do not add them together.
 
-There are 1,580 unique vocabulary entries and 24 new grammar entries, with overlap between topics and HSK decks. Counts below are per-deck counts, not additive.
+Open **Home → Explore optional decks** and import any topic, or load the all-in-one deck. Imports are strictly additive: existing vocabulary, grammar, and learning records are preserved, and additional tags may be merged. The larger grammar collection is optional; the app initially remains unchanged until you load a deck.
 
-| Deck | Words | Grammar |
-|---|---:|---:|
-| China: meals & street food | 64 | 0 |
-| Ingredients, vegetables & fruit | 111 | 0 |
-| Ordering, flavors & cooking | 71 | 0 |
-| Global foods & drinks | 60 | 0 |
-| Activities, sports & exercise | 82 | 0 |
-| Body, muscles & recovery | 70 | 0 |
-| Climbing | 76 | 0 |
-| China: provinces & major regions | 38 | 0 |
-| Cities in China & abroad | 64 | 0 |
-| Countries & world geography | 71 | 0 |
-| Daily life, errands & conversation | 182 | 0 |
-| Everyday foundations: people, numbers & time | 143 | 0 |
-| HSK 3.0 (2021), selected level 1 | 180 | 0 |
-| HSK 3.0 (2021), selected level 2 | 180 | 0 |
-| HSK 3.0 (2021), selected level 3 | 160 | 0 |
-| HSK 3.0 (2021), selected level 4 | 140 | 0 |
-| Practical grammar starter | 83 prerequisites | 24 |
+## New geography
 
-## Study a particular topic
+`visited-places.json` preserves the places supplied by the user, with corrected spelling and geographic grouping. It does *not* imply travel to other places added in general-reference decks. The geographic corrections include **南昌 (Nanchang) under 江西 (Jiangxi)**, not Qinghai, and **恩施 (Enshi) under 湖北 (Hubei)**, not Zhejiang. Mount Fuji, Lake Tahoe, Yosemite National Park, Angkor Wat, Neuschwanstein Castle, and other landmarks are identified as places/landmarks rather than cities. User-listed Hong Kong and Macao areas are included without inventing individual trips within them.
 
-On Words, select a topic tag (green includes it; red excludes it), then tap **Study matching words**. This selects new or due words only. If a session is already open, finish it first. Multiple green tags are combined with AND, not OR. Session size remains configurable; there is no daily new-word cap.
+`us-states.json` contains all **50 US states** plus **Washington, DC** as a distinct district. `china-regions.json` covers **34 province-level administrative/geographic entries** in the common Chinese vocabulary listing (23 provinces including Taiwan, 5 autonomous regions, 4 municipalities and 2 special administrative regions), without resolving contested legal status. `eu-capitals.json` lists **27 EU member countries** and their capitals. `asia-world-capitals.json` has the requested Southeast and East Asian nations, Oceania, Russia, South Africa's three-capital distinction, the UK's four constituent countries and their capitals, and additional relevant countries. Singapore is both a country and its own capital. Malaysia's Kuala Lumpur/Putrajaya distinction and Indonesia's Jakarta/Nusantara transition are explained in separate example cards.
 
-## Content choices
+## Slang and social language
 
-HSK tags refer specifically to the 2021 Ministry of Education grading standard, GF 0025–2021. These are selected subsets, not full HSK lists and not the newer exam-specific syllabus. Candidate selection prioritized common words using the source frequency ranking, then filtered ambiguous readings and edited problematic dictionary senses. The exact selected lists and level reference are included under `content/` for reproducible builds. HSK topics are secondary to practical spoken use.
+`slang-friends.json` has seven expressions previously encountered in chats with friends: 阳了, 留守儿童, 爬墙, 不像话, 抓现行, 查岗 and 吐槽. **留守儿童** is primarily a serious term referring to children separated from migrant-working parents; the card explains that context rather than portraying it as general slang. `slang-modern.json` includes contemporary conversational language such as 无语, 离谱, 笑死, 上头, 摸鱼, 搭子, 种草, 吃瓜 and 社恐. Usage can change quickly and some expressions are online-oriented rather than universal spoken slang.
 
-Pinyin uses spaced syllables and citation tones. For example, 一 is `yī` and 不 is `bù` in vocabulary cards; connected-speech tone sandhi is not tested. Neutral-tone usage can vary by speaker and context. 儿化 is represented with a separate neutral `r` where the word includes 儿, matching the app's per-character input. Countries and regions are vocabulary labels, not a political-status taxonomy.
+## Grammar coverage
 
-Grammar provides a deliberately small first set. It includes all required word and distractor cards, so it can be imported independently. It unlocks only when each prerequisite reaches the existing 75% knowledge threshold. The activity compares the card's target order; it is not a general Chinese grammar judge. Repeated identical tiles are interchangeable. Usage-risk scoring remains 0%, while attempts are recorded.
+Each word in the optional library, *including* the 52 starter words, is used in at least one sentence as an exact marked vocabulary token. The generator validates character-token correctness, grammar-card structure, unique IDs, syllable availability for tone testing, and prerequisite vocabulary. Original 24 grammar cards retain their IDs. Contextual examples span the following constructions: subject–verb–object, time/place fronting, classifiers, 了 / 过 / 着 aspect, negation, question particles, 还是 vs 或者, 比 comparisons, 把 and 被, complements, directional forms, cause/consequence, concessions, conditions, modal verbs, degrees of certainty, and colloquial conversation. Some grammar entries are fact statements about geography, restaurant orders, exercise, and travel.
 
-The all-in-one import overlaps the starter deck. Existing starter text is deliberately preserved by the additive import policy; the new grammar file contains 24 entries but a sentence already in your collection will not be duplicated.
+**Quality limitation:** The 1,200+ new examples were composed using a combination of authored sentences, reviewed lexical overrides and template families. Tests establish *coverage and structural validity*, but cannot formally prove that every sentence's collocations or English gloss sound natural. More editorial review is appropriate as you encounter examples. A sentence can also have other valid Mandarin word orders; the existing grammar study mode grades against the target version on its card. Its usage-risk score remains 0% until the planned scoring algorithm is implemented. Automatically composed pinyin follows lexical citation tones rather than all conversational tone-sandhi rules.
 
-## Rebuild and attribution
+## Existing subject decks and HSK levels
 
-Run `python3 build_decks.py` from any directory to regenerate JSON and the catalog from local sources. Then `python3 package.py` builds `dist/ciyan/`. Both scripts require only Python's standard library. All decks are cached with the app for offline use after a successful install. See `ATTRIBUTION.md` for sources and data licenses.
+The original China foods, ingredients, ordering, world foods, activities/sports, muscles/body, climbing, places and daily-life decks remain included and are extended with independent usage examples. Selected HSK 3.0 level 1–4 decks continue to use **GF 0025–2021**, not a later exam-specific syllabus. The original selected 660 HSK words (180, 180, 160, 140) remain the primary selections; card counts in the shipped JSON are higher because associated grammar prerequisites are included.
+
+## Rebuilding
+
+`python3 build_decks.py` deterministically composes grammar and topic-deck JSON using committed source files in `content/`. The sentence builder is `build_sentence_031.py`. `python3 package.py` regenerates ignored `dist/ciyan/`; upload that folder (or a ZIP of its contents) to Cloudflare Pages. No network requests or third-party Python modules are required.
+
+See [ATTRIBUTION.md](ATTRIBUTION.md) for sources and licensing, and `AUDIT_v0.3.1.md` at repository root for test results and remaining caveats.

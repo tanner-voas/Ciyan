@@ -1,0 +1,989 @@
+{
+  "format": "ciyan-deck",
+  "version": 2,
+  "records": false,
+  "title": "European Union: 27 countries and capitals",
+  "description": "Practical vocabulary for european union: 27 countries and capitals.",
+  "license": "CC-BY-SA-4.0; see ATTRIBUTION.md",
+  "cards": [
+    {
+      "id": "v3-word-205ca5ebee147c08",
+      "hanzi": "奥地利",
+      "pinyin": "ào dì lì",
+      "english": "Austria",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-55312f17d1e7ef08",
+      "hanzi": "维也纳",
+      "pinyin": "wéi yě nà",
+      "english": "Vienna, Austria",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4f09d2e86c63eb0f",
+      "hanzi": "比利时",
+      "pinyin": "bǐ lì shí",
+      "english": "Belgium",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0591e97ab5bc055a",
+      "hanzi": "布鲁塞尔",
+      "pinyin": "bù lǔ sài ěr",
+      "english": "Brussels, Belgium",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f04be90b4a9d9142",
+      "hanzi": "保加利亚",
+      "pinyin": "bǎo jiā lì yà",
+      "english": "Bulgaria — capital Sofia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-80e808ed987a8691",
+      "hanzi": "索非亚",
+      "pinyin": "suǒ fēi yà",
+      "english": "Sofia — capital of Bulgaria",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cc5dbc698d2a5479",
+      "hanzi": "克罗地亚",
+      "pinyin": "kè luó dì yà",
+      "english": "Croatia — capital Zagreb",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-9f4c80f00e35f49e",
+      "hanzi": "萨格勒布",
+      "pinyin": "sà gé lè bù",
+      "english": "Zagreb — capital of Croatia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-175db2ab6900ba40",
+      "hanzi": "塞浦路斯",
+      "pinyin": "sài pǔ lù sī",
+      "english": "Cyprus — capital Nicosia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ceb00ed33dd1c3ef",
+      "hanzi": "尼科西亚",
+      "pinyin": "ní kē xī yà",
+      "english": "Nicosia — capital of Cyprus",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-572b2e8c04dd11f0",
+      "hanzi": "捷克",
+      "pinyin": "jié kè",
+      "english": "Czechia",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-87590ca9c7e222df",
+      "hanzi": "布拉格",
+      "pinyin": "bù lā gé",
+      "english": "Prague, Czechia",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81bb2b7732cea586",
+      "hanzi": "丹麦",
+      "pinyin": "dān mài",
+      "english": "Denmark",
+      "tags": [
+        "places",
+        "countries",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4fe0443b4e2995fc",
+      "hanzi": "哥本哈根",
+      "pinyin": "gē běn hā gēn",
+      "english": "Copenhagen — capital of Denmark",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-eeef603afe8c8830",
+      "hanzi": "爱沙尼亚",
+      "pinyin": "ài shā ní yà",
+      "english": "Estonia — capital Tallinn",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fa871cd6180982e5",
+      "hanzi": "塔林",
+      "pinyin": "tǎ lín",
+      "english": "Tallinn — capital of Estonia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-07e125b9356ff254",
+      "hanzi": "芬兰",
+      "pinyin": "fēn lán",
+      "english": "Finland",
+      "tags": [
+        "places",
+        "countries",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-865c3afb4db4224d",
+      "hanzi": "赫尔辛基",
+      "pinyin": "hè ěr xīn jī",
+      "english": "Helsinki — capital of Finland",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-81678972842d4663",
+      "hanzi": "法国",
+      "pinyin": "fǎ guó",
+      "english": "France",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-089dd4929e658cdb",
+      "hanzi": "巴黎",
+      "pinyin": "bā lí",
+      "english": "Paris",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0a7e404732db8f48",
+      "hanzi": "德国",
+      "pinyin": "dé guó",
+      "english": "Germany",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-665d26b506d82648",
+      "hanzi": "柏林",
+      "pinyin": "bó lín",
+      "english": "Berlin",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-fc2c8c31225942f6",
+      "hanzi": "希腊",
+      "pinyin": "xī là",
+      "english": "Greece",
+      "tags": [
+        "places",
+        "countries",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f4470534322968e8",
+      "hanzi": "雅典",
+      "pinyin": "yǎ diǎn",
+      "english": "Athens — capital of Greece",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8bc42950fd150ce3",
+      "hanzi": "匈牙利",
+      "pinyin": "xiōng yá lì",
+      "english": "Hungary",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-775c85c93af28349",
+      "hanzi": "布达佩斯",
+      "pinyin": "bù dá pèi sī",
+      "english": "Budapest, Hungary",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6f8eab9a291791e8",
+      "hanzi": "爱尔兰",
+      "pinyin": "ài ěr lán",
+      "english": "Ireland",
+      "tags": [
+        "places",
+        "countries",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3a9fc80060d002fe",
+      "hanzi": "都柏林",
+      "pinyin": "dū bó lín",
+      "english": "Dublin — capital of Ireland",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-7d3566712e910adc",
+      "hanzi": "意大利",
+      "pinyin": "yì dà lì",
+      "english": "Italy",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3b54664e8163d36a",
+      "hanzi": "罗马",
+      "pinyin": "luó mǎ",
+      "english": "Rome",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-14e9224f0e0e30e0",
+      "hanzi": "拉脱维亚",
+      "pinyin": "lā tuō wéi yà",
+      "english": "Latvia — capital Riga",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-6e380c483ea5b8fa",
+      "hanzi": "里加",
+      "pinyin": "lǐ jiā",
+      "english": "Riga — capital of Latvia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0b74e579a21e92fe",
+      "hanzi": "立陶宛",
+      "pinyin": "lì táo wǎn",
+      "english": "Lithuania — capital Vilnius",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-27e3bf4128927471",
+      "hanzi": "维尔纽斯",
+      "pinyin": "wéi ěr niǔ sī",
+      "english": "Vilnius — capital of Lithuania",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-166e1a99b3ed4d30",
+      "hanzi": "卢森堡",
+      "pinyin": "lú sēn bǎo",
+      "english": "Luxembourg — capital Luxembourg City",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-02ff0e7e9682b6ee",
+      "hanzi": "卢森堡市",
+      "pinyin": "lú sēn bǎo shì",
+      "english": "Luxembourg City — capital of Luxembourg",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-52cb511f622cc4dc",
+      "hanzi": "马耳他",
+      "pinyin": "mǎ ěr tā",
+      "english": "Malta — capital Valletta",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-596c29dca7aa4bfe",
+      "hanzi": "瓦莱塔",
+      "pinyin": "wǎ lái tǎ",
+      "english": "Valletta — capital of Malta",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8e1849a68722af8b",
+      "hanzi": "荷兰",
+      "pinyin": "hé lán",
+      "english": "Netherlands",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b86de9af14a325b",
+      "hanzi": "阿姆斯特丹",
+      "pinyin": "ā mǔ sī tè dān",
+      "english": "Amsterdam, Netherlands",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-07d67d424576d5ea",
+      "hanzi": "波兰",
+      "pinyin": "bō lán",
+      "english": "Poland",
+      "tags": [
+        "places",
+        "countries",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4518f55bb38a383e",
+      "hanzi": "华沙",
+      "pinyin": "huá shā",
+      "english": "Warsaw — capital of Poland",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-44a06f03dbb06498",
+      "hanzi": "葡萄牙",
+      "pinyin": "pú táo yá",
+      "english": "Portugal",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-cdedf06610769e03",
+      "hanzi": "里斯本",
+      "pinyin": "lǐ sī běn",
+      "english": "Lisbon, Portugal",
+      "tags": [
+        "places",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5b4868ec3760ba45",
+      "hanzi": "罗马尼亚",
+      "pinyin": "luó mǎ ní yà",
+      "english": "Romania — capital Bucharest",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-ee2c66e00589664b",
+      "hanzi": "布加勒斯特",
+      "pinyin": "bù jiā lè sī tè",
+      "english": "Bucharest — capital of Romania",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-17b828f70a640aef",
+      "hanzi": "斯洛伐克",
+      "pinyin": "sī luò fá kè",
+      "english": "Slovakia — capital Bratislava",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5265bb16c61e8362",
+      "hanzi": "布拉迪斯拉发",
+      "pinyin": "bù lā dí sī lā fā",
+      "english": "Bratislava — capital of Slovakia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-4c2871d889f403b2",
+      "hanzi": "斯洛文尼亚",
+      "pinyin": "sī luò wén ní yà",
+      "english": "Slovenia — capital Ljubljana",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-13216ad8446daae6",
+      "hanzi": "卢布尔雅那",
+      "pinyin": "lú bù ěr yǎ nà",
+      "english": "Ljubljana — capital of Slovenia",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bde5cc5b7e1a7eb4",
+      "hanzi": "西班牙",
+      "pinyin": "xī bān yá",
+      "english": "Spain",
+      "tags": [
+        "places",
+        "countries",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b77d1845765c5d8b",
+      "hanzi": "马德里",
+      "pinyin": "mǎ dé lǐ",
+      "english": "Madrid",
+      "tags": [
+        "places",
+        "cities",
+        "visited",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-af02be73f1a847f8",
+      "hanzi": "瑞典",
+      "pinyin": "ruì diǎn",
+      "english": "Sweden",
+      "tags": [
+        "places",
+        "countries",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c40721963f4ddda5",
+      "hanzi": "斯德哥尔摩",
+      "pinyin": "sī dé gē ěr mó",
+      "english": "Stockholm — capital of Sweden",
+      "tags": [
+        "places",
+        "eu-capitals"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b5141d3d19e9a048",
+      "hanzi": "是",
+      "pinyin": "shì",
+      "english": "Be; is; am; are",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3da5ab9c1b9f5d83",
+      "hanzi": "首都",
+      "pinyin": "shǒu dū",
+      "english": "Capital city",
+      "tags": [
+        "places",
+        "countries",
+        "hsk-2021-3",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ],
+  "grammar": [
+    {
+      "id": "ctx-083a19991d950644130f",
+      "markup": "{捷克}{的}{首都}{是}{布拉格}。",
+      "pinyin": "Jié kè de shǒu dū shì bù lā gé.",
+      "english": "The capital of Czechia is Prague.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-0fb05f269b97f5fcfbf3",
+      "markup": "{立陶宛}{的}{首都}{是}{维尔纽斯}。",
+      "pinyin": "Lì táo wǎn de shǒu dū shì wéi ěr niǔ sī.",
+      "english": "The capital of Lithuania is Vilnius.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1e6db1c65d3c7f994a98",
+      "markup": "{丹麦}{的}{首都}{是}{哥本哈根}。",
+      "pinyin": "Dān mài de shǒu dū shì gē běn hā gēn.",
+      "english": "The capital of Denmark is Copenhagen.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-230964d3a2e622794834",
+      "markup": "{意大利}{的}{首都}{是}{罗马}。",
+      "pinyin": "Yì dà lì de shǒu dū shì luó mǎ.",
+      "english": "The capital of Italy is Rome.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-3dc1a19960f3a67b0628",
+      "markup": "{荷兰}{的}{首都}{是}{阿姆斯特丹}。",
+      "pinyin": "Hé lán de shǒu dū shì ā mǔ sī tè dān.",
+      "english": "The capital of Netherlands is Amsterdam.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-419bf914dd4432a867f3",
+      "markup": "{斯洛伐克}{的}{首都}{是}{布拉迪斯拉发}。",
+      "pinyin": "Sī luò fá kè de shǒu dū shì bù lā dí sī lā fā.",
+      "english": "The capital of Slovakia is Bratislava.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-53c8587828c7b59716be",
+      "markup": "{罗马尼亚}{的}{首都}{是}{布加勒斯特}。",
+      "pinyin": "Luó mǎ ní yà de shǒu dū shì bù jiā lè sī tè.",
+      "english": "The capital of Romania is Bucharest.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-59efd18497dae7714917",
+      "markup": "{法国}{的}{首都}{是}{巴黎}。",
+      "pinyin": "Fǎ guó de shǒu dū shì bā lí.",
+      "english": "The capital of France is Paris.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5d1ea8accaf9daa0d621",
+      "markup": "{葡萄牙}{的}{首都}{是}{里斯本}。",
+      "pinyin": "Pú táo yá de shǒu dū shì lǐ sī běn.",
+      "english": "The capital of Portugal is Lisbon.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5e4a48b2c9d2af2df58e",
+      "markup": "{匈牙利}{的}{首都}{是}{布达佩斯}。",
+      "pinyin": "Xiōng yá lì de shǒu dū shì bù dá pèi sī.",
+      "english": "The capital of Hungary is Budapest.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-69a773eb56df1e639b8e",
+      "markup": "{瑞典}{的}{首都}{是}{斯德哥尔摩}。",
+      "pinyin": "Ruì diǎn de shǒu dū shì sī dé gē ěr mó.",
+      "english": "The capital of Sweden is Stockholm.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-712616d6ca898a00fd04",
+      "markup": "{卢森堡}{的}{首都}{是}{卢森堡市}。",
+      "pinyin": "Lú sēn bǎo de shǒu dū shì lú sēn bǎo shì.",
+      "english": "The capital of Luxembourg is Luxembourg City.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7ca7df9f5085fd88d77f",
+      "markup": "{保加利亚}{的}{首都}{是}{索非亚}。",
+      "pinyin": "Bǎo jiā lì yà de shǒu dū shì suǒ fēi yà.",
+      "english": "The capital of Bulgaria is Sofia.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-8ac33d68c2db5fbc119f",
+      "markup": "{西班牙}{的}{首都}{是}{马德里}。",
+      "pinyin": "Xī bān yá de shǒu dū shì mǎ dé lǐ.",
+      "english": "The capital of Spain is Madrid.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-9a230bf68c9b9192499c",
+      "markup": "{芬兰}{的}{首都}{是}{赫尔辛基}。",
+      "pinyin": "Fēn lán de shǒu dū shì hè ěr xīn jī.",
+      "english": "The capital of Finland is Helsinki.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a5ca674643f6b4cdac12",
+      "markup": "{波兰}{的}{首都}{是}{华沙}。",
+      "pinyin": "Bō lán de shǒu dū shì huá shā.",
+      "english": "The capital of Poland is Warsaw.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ad28958cb5a1b7516cec",
+      "markup": "{希腊}{的}{首都}{是}{雅典}。",
+      "pinyin": "Xī là de shǒu dū shì yǎ diǎn.",
+      "english": "The capital of Greece is Athens.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b164c7dca67aaecbf2fa",
+      "markup": "{爱尔兰}{的}{首都}{是}{都柏林}。",
+      "pinyin": "Ài ěr lán de shǒu dū shì dū bó lín.",
+      "english": "The capital of Ireland is Dublin.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-b2cf7c4a0f6b16261ede",
+      "markup": "{克罗地亚}{的}{首都}{是}{萨格勒布}。",
+      "pinyin": "Kè luó dì yà de shǒu dū shì sà gé lè bù.",
+      "english": "The capital of Croatia is Zagreb.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bfb03cbbf67243015290",
+      "markup": "{斯洛文尼亚}{的}{首都}{是}{卢布尔雅那}。",
+      "pinyin": "Sī luò wén ní yà de shǒu dū shì lú bù ěr yǎ nà.",
+      "english": "The capital of Slovenia is Ljubljana.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c25019c8348765277ad6",
+      "markup": "{爱沙尼亚}{的}{首都}{是}{塔林}。",
+      "pinyin": "Ài shā ní yà de shǒu dū shì tǎ lín.",
+      "english": "The capital of Estonia is Tallinn.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-cc4471e618498c2b2683",
+      "markup": "{塞浦路斯}{的}{首都}{是}{尼科西亚}。",
+      "pinyin": "Sài pǔ lù sī de shǒu dū shì ní kē xī yà.",
+      "english": "The capital of Cyprus is Nicosia.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d8c14892ee53ec9db2ea",
+      "markup": "{比利时}{的}{首都}{是}{布鲁塞尔}。",
+      "pinyin": "Bǐ lì shí de shǒu dū shì bù lǔ sài ěr.",
+      "english": "The capital of Belgium is Brussels.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-db2f9ccc27d86faffdb5",
+      "markup": "{奥地利}{的}{首都}{是}{维也纳}。",
+      "pinyin": "Ào dì lì de shǒu dū shì wéi yě nà.",
+      "english": "The capital of Austria is Vienna.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f48ca74767c564e553f6",
+      "markup": "{德国}{的}{首都}{是}{柏林}。",
+      "pinyin": "Dé guó de shǒu dū shì bó lín.",
+      "english": "The capital of Germany is Berlin.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fb4a59b48e1517450441",
+      "markup": "{拉脱维亚}{的}{首都}{是}{里加}。",
+      "pinyin": "Lā tuō wéi yà de shǒu dū shì lǐ jiā.",
+      "english": "The capital of Latvia is Riga.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-fe448cf3a48eb20880e0",
+      "markup": "{马耳他}{的}{首都}{是}{瓦莱塔}。",
+      "pinyin": "Mǎ ěr tā de shǒu dū shì wǎ lái tǎ.",
+      "english": "The capital of Malta is Valletta.",
+      "distractors": [],
+      "source": "Context: country-capital facts",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
+}

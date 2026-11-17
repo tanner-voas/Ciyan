@@ -8,10 +8,10 @@ levels=json.loads((ROOT/'content/hsk2021-levels.json').read_text())
 STAMP='2026-11-17T00:00:00.000Z'
 def uid(word):return 'v3-word-'+hashlib.sha256(word.encode()).hexdigest()[:16]
 def card(word,pinyin,english,tags):
-    return dict(id=uid(word),hanzi=word,pinyin=pinyin,english=english,tags=list(dict.fromkeys(tags)),source='Ciyan optional decks v0.3',createdAt=STAMP)
+    return dict(id=uid(word),hanzi=word,pinyin=pinyin,english=english,tags=list(dict.fromkeys(tags)),source='Ciyan optional decks v0.3.1',createdAt=STAMP)
 def dump(path,obj):path.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
 decks=[];master={}
-for line in (ROOT/'content/topics.txt').read_text().splitlines():
+for line in '\n'.join((ROOT/'content'/f).read_text() for f in ('topics.txt','geography-031.txt','slang-031.txt','grammar-support-031.txt')).splitlines():
     if not line.strip():continue
     if line.startswith('# '):
         id,title,tags=line[2:].split('|');tags=tags.split(',')
@@ -85,26 +85,101 @@ for line in extras.splitlines():
     w,p,e=line.split('|')
     # In a grammar dependency deck these glosses explain the sense used in the sentence.
     if w not in master:master[w]=card(w,p,e,['grammar-words'])
+# v0.3.1 context grammar is generated exclusively from existing vocabulary
+# tokens; no app runtime change and stable IDs across all builds.
+from build_sentence_031 import generate, TOKENS
+context=generate(master,decks)
+if context.missing: raise ValueError('Missing grammar vocabulary: '+repr(sorted(context.missing)))
 grammar=[];required=[]
 for i,(markup,pinyin,english,dist) in enumerate(json.loads((ROOT/'content/grammar.json').read_text()),1):
     grammar.append(dict(id=f'v3-grammar-{i:03}',markup=markup,pinyin=pinyin,english=english,distractors=[dict(index=n,word=w) for n,w in dist],source='Ciyan practical grammar v0.3',createdAt=STAMP))
     required.extend(re.findall(r'\{([^{}]+)\}',markup));required.extend(w for _,w in dist)
 missing=set(required)-master.keys()
 assert not missing,missing
-# Uniform canonical content across decks; all semantic tags merge regardless of load order.
-for d in decks:d['cards']=[master[c['hanzi']] for c in d['cards']]
-decks.append(dict(id='practical-grammar',title='Practical grammar starter',description='24 short sentence-building exercises, with every answer word and distractor included. Grammar unlocks as those words become familiar.',cards=[master[w] for w in dict.fromkeys(required)],grammar=grammar))
-allwords={}
+# Restore the existing 24 cards first; a repeated sentence reuses its old ID.
+from collections import defaultdict
+by_markup={g['markup']:g for g in grammar}
+id_map={}
+for g in context.by_markup.values():
+    canonical=by_markup.setdefault(g['markup'],g)
+    id_map[g['id']]=canonical['id']
+all_grammar=list(by_markup.values())
+by_id={g['id']:g for g in all_grammar}
+index=defaultdict(list)
+for g in all_grammar:
+    for term in set(TOKENS.findall(g['markup'])):
+        index[term].append(g['id'])
+for c in master:
+    if c not in index: raise ValueError(f'Uncovered vocabulary word: {c}')
+
+# Every *individual deck*, not merely the all-in-one deck, provides an
+# actual sentence for each word it imports. Include its prerequisites.
 for d in decks:
-    for c in d['cards']:allwords[c['hanzi']]=c
-combined=dict(id='all-decks',title='All optional decks',description='Every optional word and grammar card in one import. Overlapping words are deduplicated.',cards=list(allwords.values()),grammar=grammar)
+    own={id_map.get(id,id) for id in context.association.get(d['id'],())}
+    for c in d['cards']:
+        word=c['hanzi']
+        if not any(word in TOKENS.findall(by_id[id]['markup']) for id in own):
+            opts=index.get(word,())
+            if not opts: raise ValueError(f'Deck {d["id"]} has uncovered word {word}')
+            def rank(id):
+                g=by_id[id]; tokens=TOKENS.findall(g['markup'])
+                return (0 if g['source'].startswith('Context:') else 1,len(tokens),id)
+            own.add(min(opts,key=rank))
+    d['grammar']=[by_id[id] for id in sorted(own)]
+
+# Dedicated, optional context deck: idiomatic examples and the grammar
+# principles index; the starter 24 remain independently importable.
+principles={id_map.get(id,id) for id in context.association.get('grammar-principles',())}
+decks.append(dict(id='grammar-principles',title='Grammar principles and contextual examples',
+    description='Curated syntax and authentic short examples: aspect, word order, comparisons, 把/被, conditions, classifiers and more.',
+    cards=[],grammar=[by_id[id] for id in sorted(principles)]))
+
+# Reuse original 24 grammar cards, including their original prerequisite deck.
+decks.append(dict(id='practical-grammar',title='Practical grammar starter',
+    description='24 starter sentence-building exercises with their answer and distractor words.',
+    cards=[],grammar=grammar))
+
+for d in decks:
+    d['cards']=list({c['hanzi']:c for c in d['cards']}.values())
+    word_names={c['hanzi'] for c in d['cards']}
+    original_words=set(word_names)
+    prerequisites=set()
+    for g in d['grammar']:
+        prerequisites.update(TOKENS.findall(g['markup']))
+        prerequisites.update(x['word'] for x in g.get('distractors',[]))
+    for missing_word in sorted(prerequisites-word_names):
+        if missing_word not in master:raise ValueError(f'Grammar prerequisite missing: {missing_word}')
+        d['cards'].append(master[missing_word]);word_names.add(missing_word)
+    # Fully canonicalize tags and English according to the prior deck order.
+    d['cards']=[master[c['hanzi']] for c in d['cards']]
+    assert len(word_names)==len(d['cards']),(d['id'],len(word_names),len(d['cards']))
+    deck_coverage=set(t for g in d['grammar'] for t in TOKENS.findall(g['markup']))
+    missed=original_words-deck_coverage
+    if missed:raise ValueError(f'Deck {d["id"]} has no grammar usage for {sorted(missed)[:20]}')
+
+# All-in-one is comprehensive, but never overwrites existing user records.
+allwords=dict(master)
+combined=dict(id='all-decks',title='All optional decks',
+    description='Every vocabulary card and contextual sentence, deduplicated; includes visited places, capitals, states and everyday slang.',
+    cards=list(allwords.values()),grammar=all_grammar)
 decks.append(combined)
+
+# Strict invariants: no duplicates, no unrepresented word, no missing puzzle
+# prerequisite, no grammar IDs that collide when decks are merged.
+for d in decks:
+    ids=[c['id'] for c in d['cards']]
+    assert len(ids)==len(set(ids)),('duplicate word IDs',d['id'])
+    assert len(d['grammar'])==len({g['markup'] for g in d['grammar']}),('duplicate grammar',d['id'])
+    vocab={c['hanzi'] for c in d['cards']}
+    assert all(t in vocab for g in d['grammar'] for t in TOKENS.findall(g['markup']))
+
 catalog=[]
 for d in decks:
-    payload=dict(format='ciyan-deck',version=2,records=False,title=d['title'],description=d['description'],license='CC-BY-SA-4.0; see ATTRIBUTION.md',cards=d['cards'],grammar=d['grammar'])
+    payload=dict(format='ciyan-deck',version=2,records=False,title=d['title'],description=d['description'],
+      license='CC-BY-SA-4.0; see ATTRIBUTION.md',cards=d['cards'],grammar=d['grammar'])
     dump(OUT/(d['id']+'.json'),payload)
     catalog.append(dict(id=d['id'],title=d['title'],description=d['description'],wordCount=len(d['cards']),grammarCount=len(d['grammar']),words=[c['hanzi'] for c in d['cards']]))
 dump(OUT/'manifest.json',catalog)
 (ROOT/'deck-catalog.js').write_text('// Generated by build_decks.py. No user data.\nexport const DECKS = '+json.dumps(catalog,ensure_ascii=False,separators=(',',':'))+';\n')
-print('Unique optional words:',len(allwords),'Grammar:',len(grammar),'Individual decks:',len(decks)-1)
-for c in catalog:print(c['id'],c['wordCount'],c['grammarCount'])
+print('Unique optional words:',len(allwords),'Grammar:',len(all_grammar),'Individual decks:',len(decks)-1)
+for d in catalog:print(d['id'],d['wordCount'],d['grammarCount'])

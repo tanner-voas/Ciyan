@@ -14,9 +14,11 @@
       "tags": [
         "places",
         "china-regions",
-        "hsk-2021-2"
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -29,7 +31,7 @@
         "china-regions",
         "hsk-2021-2"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -41,7 +43,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -53,7 +55,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -63,9 +65,10 @@
       "english": "Anhui",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -75,9 +78,10 @@
       "english": "Fujian",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -87,9 +91,10 @@
       "english": "Gansu",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -99,9 +104,10 @@
       "english": "Guangdong",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -111,9 +117,10 @@
       "english": "Guizhou",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -125,7 +132,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -137,7 +144,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -149,7 +156,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -161,7 +168,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -171,9 +178,10 @@
       "english": "Hubei",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -183,9 +191,10 @@
       "english": "Hunan",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -197,7 +206,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -207,9 +216,10 @@
       "english": "Jiangsu",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -219,9 +229,10 @@
       "english": "Jiangxi",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -233,7 +244,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -243,9 +254,10 @@
       "english": "Qinghai",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -257,7 +269,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -269,7 +281,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -279,9 +291,10 @@
       "english": "Shaanxi",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -293,7 +306,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -303,9 +316,10 @@
       "english": "Yunnan",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -315,9 +329,10 @@
       "english": "Zhejiang",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -327,9 +342,10 @@
       "english": "Taiwan",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -341,7 +357,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -353,7 +369,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -365,7 +381,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -377,7 +393,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -389,7 +405,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -400,9 +416,10 @@
       "tags": [
         "places",
         "china-regions",
-        "hsk-2021-1"
+        "hsk-2021-1",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -412,9 +429,10 @@
       "english": "Shanghai",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -426,7 +444,7 @@
         "places",
         "china-regions"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -436,9 +454,10 @@
       "english": "Chongqing",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -448,9 +467,10 @@
       "english": "Hong Kong",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     },
     {
@@ -460,11 +480,408 @@
       "english": "Macao; Macau",
       "tags": [
         "places",
-        "china-regions"
+        "china-regions",
+        "visited"
       ],
-      "source": "Ciyan optional decks v0.3",
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-d5f5a7a010731feb",
+      "hanzi": "今天",
+      "pinyin": "jīn tiān",
+      "english": "Today",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-a0c7716669b5ded0",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-99ae21ea6c39ccc1",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0ef5c86fab94f13a",
+      "hanzi": "可以",
+      "pinyin": "kě yǐ",
+      "english": "Can; may; be allowed to",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-5ac1612110def2c4",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-3d7114281f5b59d9",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b9b861e211f0f81b",
+      "hanzi": "地理",
+      "pinyin": "dì lǐ",
+      "english": "Geography",
+      "tags": [
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2118cbc109880ac8",
+      "hanzi": "学习",
+      "pinyin": "xué xí",
+      "english": "Study",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-df0d25193874aa17",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone",
+      "tags": [
+        "daily",
+        "practical",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-b70bb4acc0484cf0",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-bcacb40df81b94b7",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-c8bf3f878e389b57",
+      "hanzi": "旅游",
+      "pinyin": "lǚ yóu",
+      "english": "Travel for leisure",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-e751bca25e1fc515",
+      "hanzi": "旅行",
+      "pinyin": "lǚ xíng",
+      "english": "Travel",
+      "tags": [
+        "activities",
+        "sports",
+        "hsk-2021-2",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-8af2350cfd65805b",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle",
+      "tags": [
+        "daily",
+        "foundations",
+        "hsk-2021-1",
+        "grammar-support",
+        "basics"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-2ce2847cbc4743b6",
+      "hanzi": "知识",
+      "pinyin": "zhī shi",
+      "english": "Knowledge",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-0f6b1949b093e352",
+      "hanzi": "计划",
+      "pinyin": "jì huà",
+      "english": "Plan",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-2",
+        "hsk"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v3-word-f7778934807d1283",
+      "hanzi": "过",
+      "pinyin": "guo",
+      "english": "Past experience marker",
+      "tags": [
+        "grammar-support",
+        "basics",
+        "hsk-2021-1"
+      ],
+      "source": "Ciyan optional decks v0.3.1",
       "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],
-  "grammar": []
+  "grammar": [
+    {
+      "id": "ctx-0bdc24a15c59078d9052",
+      "markup": "{我们}{今天}{学习}{特别行政区}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí tè bié xíng zhèng qū de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Special administrative region.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-1d4aadbe0ef9206539ec",
+      "markup": "{我们}{可以}{计划}{去}{澳门}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù ào mén lǚ yóu.",
+      "english": "We could plan a trip to Macao.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-21dcb81766340cc565fb",
+      "markup": "{我}{想}{去}{新疆}、{北京}{和}{上海}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù xīn jiāng, běi jīng hé shàng hǎi lǚ xíng.",
+      "english": "I would like to travel to Xinjiang, Beijing and Shanghai.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-2fb6f2e7230b9b502e7c",
+      "markup": "{我们}{今天}{学习}{省}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí shěng de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Province.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-56b5c197763481c1b536",
+      "markup": "{我们}{可以}{计划}{去}{青海}、{山东}{和}{山西}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù qīng hǎi, shān dōng hé shān xī lǚ yóu.",
+      "english": "We could plan a trip to Qinghai, Shandong and Shanxi.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-57a0906f8fa37c3b0664",
+      "markup": "{你}{去}{过}{江苏}、{江西}{和}{辽宁}{吗}？",
+      "pinyin": "Nǐ qù guo jiāng sū, jiāng xī hé liáo níng ma?",
+      "english": "Have you been to Jiangsu, Jiangxi and Liaoning?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-5956eb96ac7ee47297fb",
+      "markup": "{我们}{今天}{学习}{市}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí shì de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: City.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-7b71c04505052771e324",
+      "markup": "{你}{去}{过}{天津}、{重庆}{和}{香港}{吗}？",
+      "pinyin": "Nǐ qù guo tiān jīn, chóng qìng hé xiāng gǎng ma?",
+      "english": "Have you been to Tianjin, Chongqing and Hong Kong?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-a86cf630327d0ced709f",
+      "markup": "{我们}{可以}{计划}{去}{河北}、{河南}{和}{黑龙江}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù hé běi, hé nán hé hēi lóng jiāng lǚ yóu.",
+      "english": "We could plan a trip to Hebei, Henan and Heilongjiang.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-bb4158b0ced1a77278a7",
+      "markup": "{我们}{可以}{计划}{去}{内蒙古}、{宁夏}{和}{西藏}{旅游}。",
+      "pinyin": "Wǒ men kě yǐ jì huà qù nèi měng gǔ, níng xià hé xī zàng lǚ yóu.",
+      "english": "We could plan a trip to Inner Mongolia, Ningxia and Tibet.",
+      "distractors": [],
+      "source": "Context: modal verb and future plans",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-c0490d903b6c21a39522",
+      "markup": "{我们}{今天}{学习}{自治区}{的}{地理}{知识}。",
+      "pinyin": "Wǒ men jīn tiān xué xí zì zhì qū de dì lǐ zhī shi.",
+      "english": "Today we are studying geography terminology: Autonomous region.",
+      "distractors": [],
+      "source": "Context: administrative and geographic terms",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-d8c3cd60d0f87232980a",
+      "markup": "{我}{想}{去}{安徽}、{福建}{和}{甘肃}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù ān huī, fú jiàn hé gān sù lǚ xíng.",
+      "english": "I would like to travel to Anhui, Fujian and Gansu.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-dbf65922f3b5d4013a79",
+      "markup": "{你}{去}{过}{浙江}、{台湾}{和}{广西}{吗}？",
+      "pinyin": "Nǐ qù guo zhè jiāng, tái wān hé guǎng xī ma?",
+      "english": "Have you been to Zhejiang, Taiwan and Guangxi?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-ea100b5e635ec5b1dc5e",
+      "markup": "{我}{想}{去}{湖北}、{湖南}{和}{吉林}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù hú běi, hú nán hé jí lín lǚ xíng.",
+      "english": "I would like to travel to Hubei, Hunan and Jilin.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f176780075d539f56083",
+      "markup": "{你}{去}{过}{广东}、{贵州}{和}{海南}{吗}？",
+      "pinyin": "Nǐ qù guo guǎng dōng, guì zhōu hé hǎi nán ma?",
+      "english": "Have you been to Guangdong, Guizhou and Hainan?",
+      "distractors": [],
+      "source": "Context: experience marker 过 and questions",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "ctx-f26c176214ef11ed4002",
+      "markup": "{我}{想}{去}{陕西}、{四川}{和}{云南}{旅行}。",
+      "pinyin": "Wǒ xiǎng qù shǎn xī, sì chuān hé yún nán lǚ xíng.",
+      "english": "I would like to travel to Shaanxi, Sichuan and Yunnan.",
+      "distractors": [],
+      "source": "Context: serial verb construction with destinations",
+      "createdAt": "2026-11-17T00:00:00.000Z"
+    }
+  ]
 }

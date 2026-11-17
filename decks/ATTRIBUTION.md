@@ -20,3 +20,16 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## v0.3.1 content additions
+
+The extended geography, English glosses, curated sentence examples, and topical templates were authored for this application. Country memberships and capitals were cross-checked against official EU membership resources and standard geographic references; United States states and Chinese province-level terms use established Chinese transliterations. Source references for ongoing review:
+
+- EU country list: https://european-union.europa.eu/principles-countries-history/eu-countries_en
+- EU country data: https://european-union.europa.eu/principles-countries-history/country-profiles_en
+- China administrative vocabulary and geography: https://www.stats.gov.cn/
+- US states: https://www.census.gov/about/history/historical-censuses-and-surveys/census-states.html
+- South Africa's executive/legislative/judicial capitals: https://www.gov.za/about-sa/south-africas-provinces
+- Casual Chinese usage and internet slang were cross-checked against contemporary language-learning articles; usage varies by age, region and date. The seven friend-chat expressions are described in a separate deck and should not be mistaken for universal colloquial forms.
+
+All new English translations and sentence patterns should be treated as learning aids, not official geographic or Chinese-language proficiency certifications.
