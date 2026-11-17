@@ -319,30 +319,46 @@ test('v0.5.2 Settings accepts negative and fractional tag weights and applies od
  const {makeBackup}=await import('../storage.js');assert.equal(makeBackup(state).state.settings.tagWeights['Food/food'],-1.75);
 });
 
-test('v0.5.3 starts clean once on upgrade, but preserves new v0.5.3 usage on refresh',async()=>{
+test('v0.5.4 preserves all local results and preferences when upgrading from v0.5.3',async()=>{
  const mock=mockBrowser();
  const {defaultState}=await import('../storage.js');
- const old=defaultState();old.appVersion='0.5.2';old.revision=7;
- old.settings.tagWeights['HSK/HSK1']=7;old.settings.newWordsPerDay=5;
- old.history=[{id:'old',cardId:old.cards[0].id,grade:3,at:new Date().toISOString()}];
- mock.data.set('main',structuredClone(old));
- await import('../app.js?smoke=firstReset053');await delay(30);
- const clean=mock.data.get('main');
- assert.equal(clean.appVersion,'0.5.3');assert.equal(clean.cards.length,2278);
- assert.equal(clean.grammar.length,1549);assert.equal(clean.history.length,0);
- assert.equal(Object.keys(clean.schedules).length,0);
- assert.equal(clean.settings.tagWeights['HSK/HSK1'],0);
- assert.equal(clean.settings.newWordsPerDay,null);
- assert.ok(clean.revision>old.revision);
- // Simulate usage saved by the current release, then a normal page refresh.
- const current=structuredClone(clean);
- current.settings.tagWeights['HSK/HSK1']=2.25;
- current.settings.newWordsPerDay=3;
- current.history=[{id:'new',cardId:current.cards[0].id,grade:3,at:new Date().toISOString()}];
- mock.data.set('main',current);
- await import('../app.js?smoke=sameVersionReload053');await delay(30);
- const kept=mock.data.get('main');
- assert.deepEqual(kept.history,current.history);
- assert.equal(kept.settings.tagWeights['HSK/HSK1'],2.25);
- assert.equal(kept.settings.newWordsPerDay,3);
+ const {scheduleReview}=await import('../review-scheduler.js');
+ const old=defaultState();old.appVersion='0.5.3';old.revision=7;
+ const card=old.cards[0];old.settings.tagWeights['HSK/HSK1']=7;
+ old.settings.newWordsPerDay=5;old.settings.retryIntervals[2]={value:2.5,unit:'days'};
+ const reviewedAt=Date.now()-86400000;
+ old.schedules[card.id]=scheduleReview(null,3,reviewedAt,old.settings);
+ old.history=[{id:'old',cardId:card.id,grade:3,at:new Date(reviewedAt).toISOString()}];
+ old.skillHistory=[{id:'written',mode:'drawing',grade:3,at:new Date(reviewedAt).toISOString()}];
+ old.grammarHistory=[{id:'grammar-review',grammarId:old.grammar[0].id,grade:3,correct:true,at:new Date(reviewedAt).toISOString()}];
+ const before=structuredClone(old);mock.data.set('main',structuredClone(old));
+ await import('../app.js?smoke=preserveUpgrade054');await delay(40);
+ // Opening a new version must not even write the stored state.
+ assert.deepEqual(mock.data.get('main'),before);
+ assert.match(mock.shell.innerHTML,/5 new available/);
+ const navigate={dataset:{action:'navigate',page:'settings'}};
+ await mock.listeners.click({target:{closest:q=>q==='[data-action]'?navigate:null}});await delay();
+ assert.match(mock.shell.innerHTML,/New vocabulary words per day/);
+ assert.deepEqual(mock.data.get('main'),before);
+ // A normal user edit should then stamp the current version and retain progress.
+ const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
+ await mock.listeners.change({target});await delay();
+ const saved=mock.data.get('main');
+ assert.equal(saved.appVersion,'0.5.4');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
+ assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
+ assert.deepEqual(saved.schedules,before.schedules);
+ assert.deepEqual(saved.history,before.history);assert.deepEqual(saved.skillHistory,before.skillHistory);
+ assert.deepEqual(saved.grammarHistory,before.grammarHistory);
+ assert.equal(saved.revision,before.revision+1);
+ // Reload at the new version also preserves everything.
+ await import('../app.js?smoke=preserveRefresh054');await delay(40);
+ const reloaded=mock.data.get('main');assert.deepEqual(reloaded,saved);
+});
+
+test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.5.4');
+ assert.equal(saved.cards.length,2278);assert.equal(saved.grammar.length,1549);
+ assert.equal(saved.history.length,0);
 });

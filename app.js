@@ -79,7 +79,7 @@ async function change(mutator,shouldRender=true){
   if(saving)return false;
   saving=true;
   const draft=structuredClone(state);
-  try{mutator(draft);draft.revision=(draft.revision||0)+1;await saveState(draft,state.revision);state=draft;if(shouldRender)render();return true;}
+  try{mutator(draft);draft.appVersion=APP_VERSION;draft.revision=(draft.revision||0)+1;await saveState(draft,state.revision);state=draft;if(shouldRender)render();return true;}
   catch(error){toast(`Not saved: ${error.message}`);return false;}
   finally{saving=false;}
 }
@@ -708,16 +708,17 @@ document.addEventListener('keydown',event=>{
 });
 async function boot(){try{
   const loaded=await loadState();
-  // v0.5.3 is a clean development baseline. This is a deliberate, one-time
-  // reset when arriving from any earlier local build, NOT a migration of its
-  // scores, weights, retry intervals or review history. Later releases must
-  // preserve state and use explicit versioned backup migrations instead.
-  if(!loaded||loaded.appVersion!==APP_VERSION){
-    state=defaultState();replaceMaster(state,MASTER);
-    if(loaded)state.revision=(Number(loaded.revision)||0)+1;
-    await saveState(state,loaded?.revision??null);
-  }else{
-    state=migrateState(loaded);
+  // Existing local data must never be discarded because the app version changed.
+  // Creating a fresh state is valid only when no saved state exists. The user
+  // controls clearing learning records through the explicit Settings action.
+  state=loaded?migrateState(loaded):defaultState();
+  if(!loaded){
+    replaceMaster(state,MASTER);
+    await saveState(state,null);
+  }else if(state.revision!==loaded.revision){
+    // Structural normalization can return a different revision for older
+    // schemas; keep the persisted revision until an explicit write occurs.
+    state.revision=Number(loaded.revision)||0;
   }
   if(!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!Array.isArray(state.history)||!state.schedules)throw new Error('Local data appears invalid. Import a JSON backup to restore it.');
   ensureStudy(state);replaceMaster(state,MASTER);
