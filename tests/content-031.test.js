@@ -4,18 +4,19 @@ import fs from 'node:fs';
 import {defaultState,mergeDeck} from '../storage.js';
 import {normalizeGrammar,parseSegments} from '../grammar.js';
 import {DECKS} from '../deck-catalog.js';
+import {PARTICLES} from '../particles.js';
 const deck=id=>JSON.parse(fs.readFileSync(new URL(`../decks/${id}.json`,import.meta.url),'utf8'));
 const tokens=markup=>[...markup.matchAll(/\{([^{}]+)\}/g)].map(m=>m[1]);
 const big=deck('all-decks');
 const allWords=new Set([...defaultState().cards,...big.cards].map(c=>c.hanzi));
-const covered=new Set(big.grammar.flatMap(g=>tokens(g.markup)));
+const covered=new Set([...big.grammar.flatMap(g=>tokens(g.markup)),...PARTICLES.flatMap(p=>[...p.base,...p.choices])]);
 const geoPath=new URL('../content/geography-031.txt',import.meta.url);
 const geographicData=fs.readFileSync(geoPath,'utf8');
 const section=id=>geographicData.split('\n').slice(geographicData.split('\n').findIndex(l=>l.startsWith(`# ${id}|`))+1).filter(l=>l&&!l.startsWith('# '));
 
 test('every vocabulary card, including original starter cards, appears in an exact grammar token',()=>{
  assert.equal(allWords.size,big.cards.length);
- assert.equal(big.cards.length,2277);
+ assert.equal(big.cards.length,2278);
  assert.equal(big.grammar.length,1549);
  for(const w of allWords)assert.ok(covered.has(w),`Missing exact example: ${w}`);
 });

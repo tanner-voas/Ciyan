@@ -1042,3 +1042,6 @@
 困|kùn|Sleepy
 累|lèi|Tired
 忙|máng|Busy
+
+# particle-prerequisites|Particle Zoo prerequisites|grammar,grammar-support
+地|de|Adverbial particle linking a description to a following verb

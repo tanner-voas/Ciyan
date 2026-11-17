@@ -1,19 +1,27 @@
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
-import {grammarTokens,grammarScores,wordKnowledge} from './grammar.js';
+import {grammarTokens,wordKnowledge} from './grammar.js';
 import {allParticles} from './particles.js';
+import {matchesTagFilters} from './tags.js';
 export const MODES={words:'Vocabulary',grammar:'Grammar',drawing:'Drawing',particles:'Particle Zoo'};
 export const SHARES={words:.60,grammar:.20,drawing:.12,particles:.08};
 export const COSTS={words:12,grammar:35,drawing:50,particles:25};
+export const POOLS=['all','due','new'];
+const HAS_HAN=/^[\p{Script=Han}]+$/u;
 export function ensureStudy(s){
  s.skillSchedules??={grammar:{},drawing:{},particles:{}};
  for(const m of ['grammar','drawing','particles'])s.skillSchedules[m]??={};
- s.postponed??={};s.settings.continuous??=false;s.settings.autoShares={...SHARES,...s.settings.autoShares};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
+ s.postponed??={};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
+ s.settings.autoShares={...SHARES,...s.settings.autoShares};
  s.settings.autoModes={words:true,grammar:true,drawing:true,particles:true,...s.settings.autoModes};
+ // Null means unlimited. Zero is a meaningful limit, unlike a blank field.
+ const limit=s.settings.newWordsPerDay;
+ s.settings.newWordsPerDay=limit===undefined||limit===null||limit===''?null:Math.max(0,Math.min(20000,Math.floor(Number(limit)||0)));
  return s;
 }
 export function scheduleFor(s,mode,id){return mode==='words'?s.schedules[id]:s.skillSchedules?.[mode]?.[id];}
+export function netScore(s,wordId){const x=s.schedules[wordId]?.score;return Number.isFinite(x)?Math.max(0,x):0;}
 export function knowledge(s,c,now=Date.now()){return c?wordKnowledge(s.schedules[c.id],retrievability(s.schedules[c.id],now)):0;}
 export function contextFor(s,card,now=Date.now(),index=null,lookup=null){
  const byWord=lookup||new Map(s.cards.map(c=>[c.hanzi,c]));
@@ -23,51 +31,114 @@ export function contextFor(s,card,now=Date.now(),index=null,lookup=null){
   return {grammar:g,familiarity};
  }).sort((a,b)=>b.familiarity-a.familiarity||grammarTokens(a.grammar).length-grammarTokens(b.grammar).length)[0]||null;
 }
-export function candidates(s,mode,auto=false,now=Date.now(),includeFuture=false){
- const byWord=new Map(s.cards.map(c=>[c.hanzi,c]));
- let items=[];
- if(mode==='words')items=s.cards.map(c=>({id:c.id,wordIds:[c.id]}));
- if(mode==='grammar')items=s.grammar.filter(g=>grammarScores(g,s.cards,s.schedules,x=>retrievability(x,now)).ready).map(g=>({id:g.id,wordIds:grammarTokens(g).map(w=>byWord.get(w)?.id).filter(Boolean)}));
- const contextIndex=new Map();if(mode==='drawing')for(const g of s.grammar){if(!g.pinyin)continue;for(const w of new Set(grammarTokens(g))){if(!contextIndex.has(w))contextIndex.set(w,[]);contextIndex.get(w).push(g);}}
- if(mode==='drawing')items=s.cards.filter(c=>/^[\p{Script=Han}]+$/u.test(c.hanzi)&&c.pinyin).flatMap(c=>{
-  if(auto&&knowledge(s,c,now)<.75)return [];
-  const ctx=contextFor(s,c,now,contextIndex,byWord);
-  if(auto&&(!ctx||ctx.familiarity<.6))return [];
-  return [{id:c.id,contextId:ctx?.grammar.id||null,wordIds:[c.id]}];
- });
- if(mode==='particles')items=allParticles(s).filter(p=>!auto||p.base.reduce((n,w)=>n+knowledge(s,byWord.get(w),now),0)/p.base.length>=.6).map(p=>({id:p.id,wordIds:p.base.map(w=>byWord.get(w)?.id).filter(Boolean)}));
- return items.flatMap(item=>{
-  const sched=scheduleFor(s,mode,item.id);
-  if(!includeFuture&&((sched&&Date.parse(sched.dueAt)>now)||Date.parse(s.postponed?.[`${mode}:${item.id}`]||0)>now))return [];
-  const r=sched?retrievability(sched,now):1;
-  const overdue=sched?Math.max(0,(now-Date.parse(sched.dueAt))/86400000):0;
-  const urgency=sched?(sched.learning?3:2)+Math.max(0,s.settings.desiredRetention-r)*4+Math.min(1,overdue/30):1;
-  return [{...item,mode,urgency,reason:!sched?'first practice':sched.learning?'relearning due':'review due'}];
- }).sort((a,b)=>b.urgency-a.urgency||a.id.localeCompare(b.id));
+const dayKey=(date)=>{const d=new Date(date);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+export function newVocabToday(s,now=Date.now()){
+ const today=dayKey(now),unique=new Set();
+ for(const h of s.history)if(h?.cardId&&h.first===true&&dayKey(h.at)===today)unique.add(h.cardId);
+ return unique.size;
 }
-// Weighted fair queuing in estimated seconds. Urgency adjusts each mode's soft
-// share; it is not a fitted or clinically validated optimization model.
-export function nextExercise(s,session,now=Date.now()){
- const enabled=Object.keys(MODES).filter(m=>session.mode==='auto'?s.settings.autoModes[m]:m===session.mode);
- const recent=session.results.slice(-3).filter(r=>now-Date.parse(r.at)<600000).flatMap(r=>r.wordIds||[]);
- const pool=enabled.map(mode=>{
-  const list=candidates(s,mode,session.mode==='auto',now);
-  const candidate=list.find(x=>!session.skipped?.includes(`${mode}:${x.id}`)&&(!session.allowedWords||mode!=='words'||session.allowedWords.includes(x.id))&&!(mode==='drawing'&&x.wordIds.some(id=>recent.includes(id))));
-  return candidate;
- }).filter(Boolean);
- if(!pool.length)return null;
- const urgent=pool.filter(p=>p.reason==='relearning due');
- const due=pool.filter(p=>p.reason!=='first practice');
- const available=urgent.length?urgent:due.length?due:pool;
- return available.sort((a,b)=>{
-  const cost=m=>Math.max(COSTS[m]*.5,Math.min(COSTS[m]*2,s.settings.modeSeconds?.[m]||COSTS[m]));
-  const priority=x=>((session.spent[x.mode]||0)+cost(x.mode))/((s.settings.autoShares?.[x.mode]||SHARES[x.mode])*Math.min(2,x.urgency));
-  return priority(a)-priority(b)||b.urgency-a.urgency;
- })[0];
+export function newVocabRemaining(s,now=Date.now()){
+ const limit=s.settings?.newWordsPerDay;
+ return limit===null||limit===undefined?Infinity:Math.max(0,limit-newVocabToday(s,now));
+}
+export function currentPool(session){return POOLS.includes(session?.pool)?session.pool:'all';}
+function anchorMatches(card,filters){
+ if(!filters||(!filters.search&&!Object.values(filters.tags||{}).some(Boolean)))return true;
+ if(!card||!matchesTagFilters(card.tags||[],filters.tags||{}))return false;
+ const q=String(filters.search||'').trim().toLowerCase();
+ return !q||[card.hanzi,card.pinyin,card.english,...(card.tags||[])].join(' ').toLowerCase().includes(q);
+}
+function isFiltered(filters){return !!filters&&(!!String(filters.search||'').trim()||Object.values(filters.tags||{}).some(Boolean));}
+function info(s,mode,now,filters){
+ const byWord=new Map(s.cards.map(c=>[c.hanzi,c])),cards=s.cards;
+ const toCard=w=>byWord.get(w);
+ const acceptsGroup=(words)=>{
+  const terms=[...new Set(words)].map(w=>({word:w,card:toCard(w)}));
+  if(!terms.length||terms.some(x=>!x.card||netScore(s,x.card.id)<1))return false;
+  const average=terms.reduce((sum,x)=>sum+netScore(s,x.card.id),0)/terms.length;
+  if(average<2)return false;
+  if(isFiltered(filters)&&!terms.some(x=>netScore(s,x.card.id)>=2&&anchorMatches(x.card,filters)))return false;
+  return true;
+ };
+ if(mode==='words')return cards.filter(c=>anchorMatches(c,filters)).map(c=>({id:c.id,wordIds:[c.id]}));
+ if(mode==='drawing'){
+  const index=new Map();for(const g of s.grammar){if(!g.pinyin)continue;for(const w of new Set(grammarTokens(g))){if(!index.has(w))index.set(w,[]);index.get(w).push(g);}}
+  return cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin&&netScore(s,c.id)>=2&&anchorMatches(c,filters)).map(c=>{
+   const ctx=contextFor(s,c,now,index,byWord);
+   return {id:c.id,contextId:ctx?.grammar.id||null,wordIds:[c.id]};
+  });
+ }
+ if(mode==='grammar')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
+ if(mode==='particles')return allParticles(s).filter(p=>acceptsGroup([...p.base,...p.choices])).map(p=>({id:p.id,wordIds:[...new Set([...p.base,...p.choices])].map(w=>toCard(w)?.id).filter(Boolean)}));
+ return [];
+}
+export function candidates(s,mode,_auto=false,now=Date.now(),includeFuture=false,filters=null){
+ return info(s,mode,now,filters).flatMap(item=>{
+  const sched=scheduleFor(s,mode,item.id);
+  if(!includeFuture&&sched&&Date.parse(sched.dueAt)>now)return [];
+  const interval=Math.max(60,(sched?.intervalMinutes||1)*60000);
+  const overdue=sched?Math.max(0,now-Date.parse(sched.dueAt)):0;
+  const r=sched?retrievability(sched,now):1;
+  const urgency=sched?1+Math.min(5,Math.log1p(overdue/interval))+Math.max(0,1-r):.5;
+  return [{...item,mode,urgency,reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
+ });
+}
+export function availableModes(s,session){return Object.keys(MODES).filter(m=>session?.mode==='auto'?s.settings.autoModes[m]:m===(session?.mode||'words'));}
+function deferredUntil(session,item,now){
+ const data=session?.deferred?.[`${item.mode}:${item.id}`];
+ if(!data)return 0;
+ // After another two exercises, or after 15 seconds if no other work remains.
+ return (session.turn||0)>=(data.turn||0)?0:(now>=data.at?0:data.at);
+}
+function sessionAllowed(s,session,item,now){
+ if(session?.skipped?.includes(`${item.mode}:${item.id}`))return false;
+ if(session?.allowedWords&&item.mode==='words'&&!session.allowedWords.includes(item.id))return false;
+ if(deferredUntil(session,item,now)>now)return false;
+ if(!item.dueAt&&item.mode==='words'&&newVocabRemaining(s,now)<=0)return false;
+ return true;
+}
+export function modeCounts(s,mode,filters=null,now=Date.now(),session=null){
+ const all=candidates(s,mode,false,now,true,filters).filter(item=>!session?.skipped?.includes(`${mode}:${item.id}`)&&(!session?.allowedWords||mode!=='words'||session.allowedWords.includes(item.id)));
+ const due=all.filter(x=>x.dueAt&&Date.parse(x.dueAt)<=now);
+ const started=all.filter(x=>x.dueAt&&Date.parse(x.dueAt)>now);
+ const fresh=all.filter(x=>!x.dueAt);
+ return {mode,due:due.length,started:started.length,new:fresh.length,available:all.length,eligible:all,blocked:Math.max(0,(mode==='words'?s.cards.length:mode==='grammar'?s.grammar.length:mode==='drawing'?s.cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin).length:allParticles(s).length)-all.length)};
+}
+export function sessionAvailability(s,session,now=Date.now()){
+ const modes=availableModes(s,session).map(m=>modeCounts(s,m,session?.filters||null,now,session));
+ const keySet=new Set();let earliest=null;
+ for(const row of modes)for(const item of row.eligible){
+  if(item.dueAt&&Date.parse(item.dueAt)>now)earliest=earliest===null?Date.parse(item.dueAt):Math.min(earliest,Date.parse(item.dueAt));
+  const defer=deferredUntil(session,item,now);
+  if(defer>now)earliest=earliest===null?defer:Math.min(earliest,defer);
+  keySet.add(`${item.mode}:${item.id}`);
+ }
+ const remaining=newVocabRemaining(s,now),due=modes.reduce((sum,x)=>sum+x.due,0),fresh=modes.reduce((sum,x)=>sum+x.new,0);
+ return {modes,due,new:fresh,started:modes.reduce((sum,x)=>sum+x.started,0),available:modes.reduce((sum,x)=>sum+x.available,0),nextAt:earliest,remaining,blocked:modes.some(m=>m.blocked),skipped:session?.skipped?.length||0};
+}
+function pickWeighted(pool,rng){
+ const list=pool.map(p=>({p,w:Math.max(.001,Number(p.urgency)||1)})),total=list.reduce((n,x)=>n+x.w,0);
+ let r=Math.min(.9999999999,Math.max(0,rng()))*total;
+ for(const entry of list){r-=entry.w;if(r<0)return entry.p;}
+ return list.at(-1)?.p||null;
+}
+// Randomly choose a mode according to preferences, then draw a random eligible
+// card using overdue/forgetting urgency. A large deck does not overwhelm modes.
+export function nextExercise(s,session,now=Date.now(),rng=Math.random){
+ const all=availableModes(s,session).flatMap(mode=>candidates(s,mode,false,now,false,session.filters||null))
+  .filter(item=>sessionAllowed(s,session,item,now));
+ const pool=currentPool(session);
+ const due=all.filter(item=>!!item.dueAt),fresh=all.filter(item=>!item.dueAt);
+ const selected=pool==='due'?due:pool==='new'?fresh:due.length?due:fresh;
+ if(!selected.length)return null;
+ const choices=new Map();for(const entry of selected){if(!choices.has(entry.mode))choices.set(entry.mode,[]);choices.get(entry.mode).push(entry);}
+ if(session.mode!=='auto')return pickWeighted(selected,rng);
+ const weighted=[...choices].map(([mode,items])=>({mode,items,urgency:(s.settings.autoShares?.[mode]||SHARES[mode])*Math.max(.1,Math.min(4,items.reduce((n,x)=>n+x.urgency,0)/items.length))}));
+ const group=pickWeighted(weighted.map(x=>({urgency:x.urgency,...x})),rng);
+ return pickWeighted(group.items,rng);
 }
 export function recordExercise(s,session,grade,details={},now=Date.now()){
- const e=session.current,previous=scheduleFor(s,e.mode,e.id);
- const after=scheduleReview(previous,grade,now,s.settings);
+ const e=session.current,previous=scheduleFor(s,e.mode,e.id),after=scheduleReview(previous,grade,now,s.settings);
  if(e.mode==='words')s.schedules[e.id]=after;else s.skillSchedules[e.mode][e.id]=after;
  const seconds=Math.max(2,Math.min(180,Number(details.seconds)||COSTS[e.mode]));
  const record={...e,...details,grade,score:after.score,at:new Date(now).toISOString(),seconds,nextDueAt:after.dueAt};
@@ -76,6 +147,7 @@ export function recordExercise(s,session,grade,details={},now=Date.now()){
  else s.skillHistory.push(record);
  s.settings.modeSeconds??={};s.settings.modeSeconds[e.mode]=.8*(s.settings.modeSeconds[e.mode]||COSTS[e.mode])+.2*seconds;
  session.spent[e.mode]=(session.spent[e.mode]||0)+seconds;
+ session.turn=(session.turn||0)+1;
  session.results.push(record);session.current=null;session.input={};
  return record;
 }

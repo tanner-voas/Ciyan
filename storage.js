@@ -29,7 +29,7 @@ function database(){
 export function defaultState(){return ensureStudy({
   schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  settings:{sessionSize:12,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false},
+  settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 export async function loadState(){const db=await database();return new Promise((resolve,reject)=>{
@@ -119,8 +119,9 @@ export function parseBackup(data){
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
   const settings={sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+    newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
-    continuous:!!s.continuous,autoShares:{...defaults.settings.autoShares,...s.autoShares},scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones};
+    continuous:true,retryDefaultsVersion:s.retryDefaultsVersion||'v0.5',autoShares:{...defaults.settings.autoShares,...s.autoShares},scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones};
   retrySeconds(settings.retryIntervals);
   const activeSession=source.activeSession&&Array.isArray(source.activeSession.queue)&&Array.isArray(source.activeSession.results)
     ?{...source.activeSession,queue:source.activeSession.queue.filter(id=>ids.has(id)),results:source.activeSession.results.filter(r=>ids.has(r.cardId))}:null;
@@ -133,8 +134,13 @@ export function parseBackup(data){
     activeGrammarSession:activeGrammarSession?.queue?.length?activeGrammarSession:null,
     revision,backedUpRevision:revision,lastBackupAt:new Date().toISOString(),createdAt:source.createdAt||defaults.createdAt};
 }
-export function makeBackup(state){return {format:'ciyan-backup',version:2,exportedAt:new Date().toISOString(),
-  state:{...state,backedUpRevision:state.revision,lastBackupAt:new Date().toISOString()}};}
+export function makeBackup(state){
+ const content={...state,backedUpRevision:state.revision,lastBackupAt:new Date().toISOString()};
+ delete content.filters;delete content.studyFilters;
+ if(content.activePractice){content.activePractice={...content.activePractice};delete content.activePractice.filters;delete content.activePractice.allowedWords;}
+ if(content.lastPracticeUndo){content.lastPracticeUndo={...content.lastPracticeUndo};delete content.lastPracticeUndo.filters;delete content.lastPracticeUndo.allowedWords;}
+ return {format:'ciyan-backup',version:2,exportedAt:new Date().toISOString(),state:content};
+}
 export function makeDeck(state){return {format:'ciyan-deck',version:2,records:false,
   cards:state.cards.map(normalizeCardForDeck),grammar:state.grammar.map(g=>({...g}))};}
 function normalizeCardForDeck(c){return {...c};}
@@ -192,7 +198,7 @@ function validatePractice(input,words,grammar,particles){
  if((!e&&!input.continuous)||e&&!['words','grammar','drawing','particles'].includes(e.mode)||!['auto','words','grammar','drawing','particles'].includes(input.mode)||!Array.isArray(input.results)||input.results.length>500000)return null;
  if(e&&e.mode==='particles'&&!particles.has(e.id))return null;
  if(e&&(['words','drawing'].includes(e.mode)&&!words.has(e.id)||e.mode==='grammar'&&!grammar.has(e.id)))return null;
- const result=structuredClone(input);result.limit=Math.max(1,Math.min(500,Number(result.limit)||12));result.spent??={};result.input??={};
+ const result=structuredClone(input);delete result.filters;delete result.allowedWords;result.continuous=true;result.pool=['all','due','new'].includes(result.pool)?result.pool:'all';result.turn=Number.isSafeInteger(result.turn)&&result.turn>=0?result.turn:0;result.deferred=Object.fromEntries(Object.entries(result.deferred||{}).filter(([key,val])=>typeof key==='string'&&val&&Number.isFinite(val.at)&&Number.isSafeInteger(val.turn)));result.limit=Math.max(1,Math.min(500,Number(result.limit)||12));result.spent??={};result.input??={};
  if(result.input.pads){
   if(!Array.isArray(result.input.pads)||result.input.pads.length>120)throw new Error('Invalid drawing pads');
   for(const pad of result.input.pads){if(pad==null)continue;if(!Array.isArray(pad)||pad.length>1000)throw new Error('Invalid drawing strokes');

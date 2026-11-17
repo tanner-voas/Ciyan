@@ -40,7 +40,7 @@ test('UI renders, reviews persist, session finishes with backup reminder',async(
   const mock=mockBrowser();
   await import('../app.js?smoke=1');
   await delay(25);
-  assert.match(mock.shell.innerHTML,/Little words/);
+  assert.match(mock.shell.innerHTML,/STUDY · YOUR HOME/);assert.doesNotMatch(mock.shell.innerHTML,/data-page="home"/);
   assert.match(mock.shell.innerHTML,/Due now/);
   const click=async(action, extra={})=>{
     const element={dataset:{action,...extra}};
@@ -54,6 +54,8 @@ test('UI renders, reviews persist, session finishes with backup reminder',async(
     assert.match(mock.shell.innerHTML,/Again/);
     await click('grade',{grade:'3'});
   }
+  assert.match(mock.shell.innerHTML,/continuous/);
+  await click('practice-finish');
   assert.match(mock.shell.innerHTML,/Protect your progress/);
   const state=mock.data.get('main');
   assert.equal(state.history.length,12);
@@ -65,36 +67,26 @@ test('UI renders, reviews persist, session finishes with backup reminder',async(
   assert.match(mock.shell.innerHTML,/>12</);
   await click('navigate',{page:'settings'});
   assert.match(mock.shell.innerHTML,/Restore full backup/);
-  assert.match(mock.shell.innerHTML,/Unlimited/);
+  assert.match(mock.shell.innerHTML,/New vocabulary words per day/);
   await click('navigate',{page:'browse'});
   assert.match(mock.shell.innerHTML,/Every word/);
   await click('navigate',{page:'grammar'});
   assert.match(mock.shell.innerHTML,/Words in/);
 });
 
-test('grammar mode unlocks known sentences and saves ordering results',async()=>{
-  const mock=mockBrowser();
-  const {defaultState}=await import('../storage.js');
-  const {scheduleReview}=await import('../fsrs.js');
-  const source=defaultState();
-  for(const c of source.cards)source.schedules[c.id]=scheduleReview(null,3,Date.now());
-  mock.data.set('main',source);
-  await import('../app.js?smoke=grammar');await delay(25);
-  assert.match(mock.shell.innerHTML,/of 1549 grammar examples unlocked/);
-  const click=async(action,extra={})=>{
-    const el={dataset:{action,...extra}};
-    await mock.listeners.click({target:{closest:(query)=>query==='[data-action]'?el:null}});
-    await delay();
-  };
-  await click('start',{mode:'grammar'});
-  assert.match(mock.shell.innerHTML,/Grammar ·/);
-  for(let i=0;i<5;i++)await click('practice-pick',{tile:`t${i}`});
-  await click('practice-check');
-  assert.match(mock.shell.innerHTML,/Correct target order/);
-  await click('practice-grade',{grade:'3'});
-  assert.equal(mock.data.get('main').grammarHistory[0].correct,true);
-  assert.equal(mock.data.get('main').activePractice.results.length,1);
-  assert.match(mock.shell.innerHTML,/grammar-bank/);
+test('grammar mode unlocks only after required continuous vocabulary scores and records outcomes',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {replaceMaster}=await import('../master.js');const {MASTER}=await import('../master-data.js');const {scheduleReview}=await import('../review-scheduler.js');
+ const s=defaultState();replaceMaster(s,MASTER);for(const c of s.cards)s.schedules[c.id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.5};mock.data.set('main',s);
+ await import('../app.js?smoke=grammar');await delay(25);
+ assert.match(mock.shell.innerHTML,/Eligible total/);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('practice-start',{mode:'grammar'});assert.match(mock.shell.innerHTML,/Grammar ·/);
+ const g=mock.data.get('main').grammar.find(g=>g.id===mock.data.get('main').activePractice.current.id);
+ const {grammarTokens}=await import('../grammar.js');
+ for(let i=0;i<grammarTokens(g).length;i++)await click('practice-pick',{tile:`t${i}`});
+ await click('practice-check');assert.match(mock.shell.innerHTML,/Correct target order/);
+ await click('practice-grade',{grade:'3'});assert.equal(mock.data.get('main').grammarHistory[0].correct,true);
+ assert.equal(mock.data.get('main').activePractice.results.length,1);
 });
 
 test('tone enforcement prevents Easy and records an incorrect tone answer',async()=>{
@@ -123,9 +115,9 @@ test('tone enforcement prevents Easy and records an incorrect tone answer',async
 
 test('bundled master is available without importing; filters and focused study work',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=master041');await delay(25);
- assert.match(mock.shell.innerHTML,/One master collection/);assert.doesNotMatch(mock.shell.innerHTML,/Explore optional decks/);
+ assert.match(mock.shell.innerHTML,/STUDY · YOUR HOME/);assert.doesNotMatch(mock.shell.innerHTML,/Explore optional decks/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),2277);
+ await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),2278);
  assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,80);
  await click('cycle-tag',{kind:'words',tag:'Activities/climbing'});await click('study-filtered');
  const saved=mock.data.get('main');assert.ok(saved.activePractice.allowedWords.every(id=>saved.cards.find(c=>c.id===id).tags.includes('Activities/climbing')));
@@ -152,26 +144,27 @@ test('refresh replaces unsaved grammar edits with bundled content',async()=>{
   assert.ok(!modalContent.includes('<img'));assert.ok(!modalContent.includes('&lt;img'));
 });
 
-test('drawing UI keeps per-character pads, reveals comparisons and records only writing',async()=>{
- const mock=mockBrowser();const {defaultState}=await import('../storage.js');const source=defaultState();source.cards=source.cards.filter(c=>[...c.hanzi].length>1);source.settings.sessionSize=1;
- mock.data.set('main',source);await import('../app.js?smoke=drawing04');await delay(25);
+test('drawing UI requires score >=2, navigates pads and records independent writing',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {replaceMaster}=await import('../master.js');const {MASTER}=await import('../master-data.js');const {scheduleReview}=await import('../review-scheduler.js');
+ const s=defaultState();replaceMaster(s,MASTER);const c=s.cards.find(x=>x.hanzi==='随便');s.schedules[c.id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.5};mock.data.set('main',s);
+ await import('../app.js?smoke=drawing04');await delay(25);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('practice-start',{mode:'drawing'});
- let saved=mock.data.get('main'),id=saved.activePractice.current.id,c=saved.cards.find(c=>c.id===id);
- assert.match(mock.shell.innerHTML,/drawing-pad/);assert.ok(!mock.shell.innerHTML.includes(`printed-character">${c.hanzi[0]}`));
+ await click('practice-start',{mode:'drawing'});const saved=mock.data.get('main'),id=saved.activePractice.current.id;
+ assert.equal(id,c.id);assert.match(mock.shell.innerHTML,/drawing-pad/);
  await click('draw-page',{pad:'1'});assert.equal(mock.data.get('main').activePractice.input.pad,1);
  await click('draw-page',{pad:'0'});assert.equal(mock.data.get('main').activePractice.input.pad,0);
- await click('practice-reveal');assert.match(mock.shell.innerHTML,/drawing-comparison/);assert.match(mock.shell.innerHTML,/printed-character/);
- await click('practice-grade',{grade:'3'});saved=mock.data.get('main');
- assert.equal(saved.skillSchedules.drawing[id].reps,1);assert.equal(saved.history.length,0);assert.equal(saved.activePractice,null);
- assert.match(mock.shell.innerHTML,/Protect your progress/);
+ await click('practice-reveal');assert.match(mock.shell.innerHTML,/drawing-comparison/);
+ await click('practice-grade',{grade:'3'});
+ const done=mock.data.get('main');assert.equal(done.skillSchedules.drawing[id].reps,1);assert.equal(done.history.length,0);
+ assert.equal(done.activePractice,null);assert.match(mock.shell.innerHTML,/Protect your progress/);
 });
 
-test('particle UI distinguishes a wrong choice from a correct placement and persists score',async()=>{
- const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {PARTICLES}=await import('../particles.js');const s=defaultState();s.settings.sessionSize=1;mock.data.set('main',s);
+test('Particle Zoo requires familiar base and choices, grades wrong choice separately from placement',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {replaceMaster}=await import('../master.js');const {MASTER}=await import('../master-data.js');const {scheduleReview}=await import('../review-scheduler.js');const {PARTICLES}=await import('../particles.js');
+ const s=defaultState();replaceMaster(s,MASTER);for(const word of new Set([...PARTICLES[0].base,...PARTICLES[0].choices])){const c=s.cards.find(x=>x.hanzi===word);s.schedules[c.id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.5};}mock.data.set('main',s);
  await import('../app.js?smoke=particles04');await delay(25);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('practice-start',{mode:'particles'});const id=mock.data.get('main').activePractice.current.id,p=PARTICLES.find(p=>p.id===id),a=p.accepted[0];
+ await click('practice-start',{mode:'particles'});const id=mock.data.get('main').activePractice.current.id,p=PARTICLES.find(x=>x.id===id),a=p.accepted[0];
  await click('particle-choice',{choice:p.choices.find(c=>c!==a.choice)});await click('particle-slot',{slot:String(a.slot)});await click('practice-check');
  assert.equal(mock.data.get('main').activePractice.input.correct,false);assert.match(mock.shell.innerHTML,/One to revisit/);
  await click('practice-grade',{grade:'4'});assert.equal(mock.data.get('main').skillHistory.length,0);
@@ -203,11 +196,11 @@ test('timing settings save unit controls and update existing due dates',async()=
 });
 
 test('vocabulary reveal includes context and undo after completion reverses the stored answer',async()=>{
- const mock=mockBrowser();const {defaultState}=await import('../storage.js');const s=defaultState();s.settings.sessionSize=1;mock.data.set('main',s);
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const s=defaultState();s.settings.sessionSize=1;s.settings.newWordsPerDay=1;mock.data.set('main',s);
  await import('../app.js?smoke=undo041');await delay(25);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('start',{mode:'words'});const id=mock.data.get('main').activePractice.current.id;
- await click('reveal');assert.match(mock.shell.innerHTML,/vocab-context/);assert.match(mock.shell.innerHTML,/2\.3m/);
+ await click('reveal');assert.match(mock.shell.innerHTML,/vocab-context/);assert.match(mock.shell.innerHTML,/36\.3m/);assert.match(mock.shell.innerHTML,/Score 0\.36/);
  await click('grade',{grade:'3'});assert.equal(mock.data.get('main').history.length,1);assert.match(mock.shell.innerHTML,/undo-completed/);
  await click('undo-completed');const restored=mock.data.get('main');assert.equal(restored.history.length,0);assert.equal(restored.schedules[id],undefined);assert.equal(restored.mixedSessions.length,0);assert.equal(restored.activePractice.current.id,id);
 });
@@ -215,7 +208,7 @@ test('skip and explicit postpone controls do not add failed answers',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=skip041');await delay(25);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('start');const first=mock.data.get('main').activePractice.current.id;await click('practice-skip');let s=mock.data.get('main');assert.notEqual(s.activePractice.current.id,first);assert.equal(s.history.length,0);assert.equal(s.activePractice.results.length,0);
- const second=s.activePractice.current.id;await click('practice-postpone');await click('postpone-for',{seconds:'300'});s=mock.data.get('main');assert.ok(s.postponed['words:'+second]);assert.equal(s.history.length,0);assert.notEqual(s.activePractice.current.id,second);
+ const second=s.activePractice.current.id;await click('practice-postpone');s=mock.data.get('main');assert.ok(s.activePractice.deferred['words:'+second]);assert.equal(s.history.length,0);assert.notEqual(s.activePractice.current.id,second);
 });
 test('future-only timing changes require confirmation and leave existing due dates alone',async()=>{
  const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {scheduleReview}=await import('../review-scheduler.js');const s=defaultState(),id=s.cards[0].id;s.schedules[id]=scheduleReview(null,3,Date.now(),s.settings);const before=s.schedules[id].dueAt;mock.data.set('main',s);
@@ -224,4 +217,36 @@ test('future-only timing changes require confirmation and leave existing due dat
  try{await mock.listeners.submit({target:{matches:q=>q==='#scheduler-form'},preventDefault(){}});await delay();}finally{globalThis.FormData=Original;}
  assert.match(modalContent,/additional reviews due now/);assert.equal(mock.data.get('main').settings.retryIntervals[0].unit,'minutes');
  const el={dataset:{action:'apply-timing',scope:'future'}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();assert.equal(mock.data.get('main').settings.retryIntervals[0].unit,'seconds');assert.equal(mock.data.get('main').schedules[id].dueAt,before);
+});
+
+test('v0.5 Study landing filters and due/new/all pool are session-specific',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {scheduleReview}=await import('../review-scheduler.js');
+ const s=defaultState();const c=s.cards[0];s.schedules[c.id]={...scheduleReview(null,3,Date.now()-86400000,s.settings),score:2,dueAt:new Date(Date.now()-1000).toISOString()};mock.data.set('main',s);
+ await import('../app.js?smoke=pool05');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay(5);};
+ assert.doesNotMatch(mock.shell.innerHTML,/data-page="home"/);assert.match(mock.shell.innerHTML,/Session filters/);assert.match(mock.shell.innerHTML,/Due only/);
+ await click('study-pool',{pool:'due'});await click('practice-start',{mode:'words'});
+ let saved=mock.data.get('main');assert.equal(saved.activePractice.current.id,c.id);assert.equal(saved.activePractice.pool,'due');
+ await click('practice-finish');await click('study-pool',{pool:'new'});await click('practice-start',{mode:'words'});
+ saved=mock.data.get('main');assert.ok(saved.activePractice.current.id!==c.id);assert.equal(saved.activePractice.pool,'new');
+ await click('practice-finish');await click('navigate',{page:'stats'});assert.match(mock.shell.innerHTML,/Vocabulary due now/);assert.match(mock.shell.innerHTML,/Words encountered/);
+});
+
+test('v0.5 session tag tree chooses matching word pool without saving filters into full backup',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=studyfilter05');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay(5);};
+ await click('study-expand-tag',{tag:'Food'});await click('study-tag',{tag:'Food'});
+ assert.match(mock.shell.innerHTML,/Food/);
+ await click('practice-start',{mode:'words'});
+ const s=mock.data.get('main'),id=s.activePractice.current.id;
+ assert.ok(s.cards.find(c=>c.id===id).tags.some(t=>t==='Food'||t.startsWith('Food/')));
+ const {makeBackup}=await import('../storage.js');assert.equal(makeBackup(s).state.activePractice.filters,undefined);
+});
+
+test('v0.5 settings persist a zero daily word cap but default blank is unlimited',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=cap05');await delay(25);
+ const change=async value=>{await mock.listeners.change({target:{dataset:{setting:'newWordsPerDay'},type:'number',value}});await delay(5);};
+ await change('0');assert.equal(mock.data.get('main').settings.newWordsPerDay,0);
+ await change('35');assert.equal(mock.data.get('main').settings.newWordsPerDay,35);
+ await change('');assert.equal(mock.data.get('main').settings.newWordsPerDay,null);
 });

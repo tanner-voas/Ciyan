@@ -1,53 +1,52 @@
-# Cíyán (词言) v0.4.1
+# Cíyán (词言) v0.5
 
-An offline-first Mandarin flashcard PWA for iPhone, with one bundled master
-collection, local progress, and explicit JSON backups to Files.
+Offline-first Mandarin study PWA for iPhone. **Study is the home page.**
+Includes vocabulary recognition, sentence assembly, self-graded handwriting,
+particle/classifier placement and weighted-random Auto Study. The single
+bundled master currently contains **2,278 words** and **1,549 grammar cards**.
 
-See [RELEASE_v0.4.1.md](RELEASE_v0.4.1.md) for current behavior and validation.
-It supersedes earlier scheduling, session and optional-deck notes.
+Read [RELEASE_v0.5.md](RELEASE_v0.5.md) for the current, authoritative details
+on eligibility, continuous session behavior, daily caps, score scheduling,
+filters and backups. Previous release notes remain in the Git history as
+historical design references; they are not the current specification.
 
-## Run and package
+## Deployment
+
+From this repository, run:
 
 ```bash
 npm test
 python3 package.py
 ```
 
-The no-argument packager writes `dist/ciyan/`, ready for Cloudflare Pages.
-`dist/` remains Git-ignored. The distribution ZIP has index.html at its root.
-The Git ZIP includes history and release tags.
+Upload the contents of `dist/ciyan/` to Cloudflare Pages (or use the separate
+Cloudflare ZIP, with `index.html` at its root). The packager requires only the
+Python standard library and can run from any working directory. `dist/` is
+Git-ignored. The PWA caches the static app and master content for offline use.
 
-For local development, `python3 -m http.server 8765` serves the repository.
-`python3 build_master.py` rebuilds the single runtime content asset from the
-consolidated source. No runtime npm dependencies or remote content requests are
-required. Older topic files are development sources, not optional app downloads.
+**Existing installation:** Export a full progress backup first, deploy to the
+same Cloudflare URL, open once online, close all old app/Safari windows, and
+reopen to confirm v0.5 in Settings. All progress is locally stored in IndexedDB;
+manual JSON backups to iPhone Files remain the durable independent copy.
 
-## Study
+## Master collection
 
-Vocabulary, grammar assembly, drawing and Particle Zoo each have their own
-scheduling record. Auto Study mixes enabled modes. Continuous study, undo,
-skip, postpone and finish controls are available. Ratings preview their actual
-predicted intervals using gradual scores and geometric interpolation.
+The app always loads one bundled master content file. It has no optional-deck
+management interface. Vocabulary/grammar edits are for the current visit:
+export the complete master and explicitly reload that saved file after a
+refresh if you want the edits. Reviews and settings save automatically.
 
-Settings offers interval anchors, a live curve, a change-impact preview and a
-choice between future-only application and recalculating existing due dates.
-Auto Study weights and actual-versus-preferred distribution are visible.
+`python3 build_master.py` regenerates the bundled runtime asset from the
+consolidated source (`decks/all-decks.json`, a historical source pathname).
+The individual archived topic-source files in Git are not shipped in the PWA.
+No runtime npm dependencies are required.
 
-## Content and progress
+## Data protection and limitations
 
-The full bundled master loads on refresh. In-app content edits are for the
-current visit: export a complete master and manually load it after refreshing
-if you want those edits. Learning records persist automatically in IndexedDB.
-Export a full progress backup after each session to protect against browser data
-loss. Full backup restoration resumes records and current input, with a fresh
-undo boundary. Loading a master is content-only and never imports review records.
+Full backups include review histories, independent skill schedules and current
+settings. Session filters are excluded. Full backup restoration uses the
+backup's settings. Offline storage can be evicted by the browser; export often.
 
-When updating an existing deployment, export progress, upload to the same address,
-open online, close all old app windows, then reopen and confirm v0.4.1 in Settings.
-The service worker waits for existing windows to close before activating.
-
-## Testing limits
-
-Automated tests exercise algorithms and UI handlers with DOM/IndexedDB mocks.
-Browser launch is blocked in the build runtime; visual and physical-iPhone testing
-remain unverified. Drawing is self-graded. Particle answers are explicitly authored.
+Automated tests cover logic and UI handlers, but do not substitute for physical
+iPhone validation. Drawing is deliberately self-graded. Particle exercises
+have authored, context-specific accepted answers and explanations.

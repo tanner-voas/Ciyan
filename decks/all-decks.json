@@ -28392,6 +28392,18 @@
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
+    },
+    {
+      "id": "v5-word-bdbd41e490e2e1d0",
+      "hanzi": "地",
+      "pinyin": "de",
+      "english": "Adverbial particle linking a description to a following verb",
+      "tags": [
+        "Grammar/grammar-support",
+        "HSK/HSK1"
+      ],
+      "source": "Ciyan Particle Zoo prerequisite v0.5",
+      "createdAt": "2026-11-17T00:00:00.000Z"
     }
   ],
   "grammar": [

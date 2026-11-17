@@ -1,5 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {defaultState,makeBackup,parseBackup,clearLearningRecords,mergeDeck} from '../storage.js';
+import {MASTER} from '../master-data.js';import {replaceMaster} from '../master.js';
 import {MODES,candidates,nextExercise,recordExercise,scheduleFor,contextFor} from '../study-engine.js';
 import {PARTICLES,particleCorrect,normalizeParticle} from '../particles.js';
 import {normalizeGrammar} from '../grammar.js';
@@ -7,7 +8,7 @@ import {tagNodes,matchesTagFilters,normalizeTags} from '../tags.js';
 import {scheduleReview,interpolatedSeconds,retrySeconds,historyScore,rescheduleExisting,dueHistogram} from '../review-scheduler.js';
 import {attachPad,drawPad} from '../drawing.js';
 const now=Date.parse('2026-11-17T00:00:00Z');
-function known(){const s=defaultState();for(const c of s.cards)s.schedules[c.id]={...scheduleReview(null,3,now,s.settings),score:2.8};return s;}
+function known(){const s=defaultState();replaceMaster(s,MASTER);for(const c of s.cards)s.schedules[c.id]={...scheduleReview(null,3,now,s.settings),score:2.8};return s;}
 function session(mode='auto'){return {mode,spent:{},results:[],input:{},limit:20};}
 
 test('hierarchical parent inclusion, descendant exclusion, intersections, and boundaries',()=>{
@@ -45,12 +46,12 @@ test('skills are independent and disabled auto modes cannot appear',()=>{
  assert.equal(s.skillHistory.length,1);assert.equal(s.grammarHistory.length,0);
  s.settings.autoModes={words:false,grammar:false,drawing:false,particles:false};assert.equal(nextExercise(s,a,now),null);
 });
-test('auto prerequisites block unfamiliar contexts while manual drawing and particles are available',()=>{
- const s=defaultState();assert.equal(candidates(s,'drawing',true,now).length,0);
- assert.equal(candidates(s,'grammar',true,now).length,0);assert.equal(candidates(s,'particles',true,now).length,0);
- assert.ok(candidates(s,'drawing',false,now).length);assert.equal(candidates(s,'particles',false,now).length,PARTICLES.length);
- const k=known(),c=k.cards.find(c=>c.hanzi==='随便');assert.equal(contextFor(k,c,now).grammar.id,'grammar-001');
- assert.ok(candidates(k,'drawing',true,now).some(x=>x.id===c.id));
+test('all manual modes obey the same net-score gates as Auto Study',()=>{
+ const s=defaultState();replaceMaster(s,MASTER);
+ assert.equal(candidates(s,'drawing',true,now).length,0);assert.equal(candidates(s,'drawing',false,now).length,0);
+ assert.equal(candidates(s,'grammar',true,now).length,0);assert.equal(candidates(s,'particles',false,now).length,0);
+ const k=known(),c=k.cards.find(c=>c.hanzi==='随便');assert.ok(contextFor(k,c,now)?.grammar?.id);
+ assert.ok(candidates(k,'drawing',true,now).some(x=>x.id===c.id));assert.ok(candidates(k,'particles',true,now).length>0);
 });
 test('due reviews precede new items, and immediate answer exposure blocks drawing',()=>{
  const s=known(),a=session();const c=s.cards[0];s.schedules[c.id].dueAt=new Date(now-1000).toISOString();
@@ -58,11 +59,10 @@ test('due reviews precede new items, and immediate answer exposure blocks drawin
  const b=session('drawing');b.results=[{mode:'words',id:c.id,wordIds:[c.id],at:new Date(now).toISOString()}];
  assert.notEqual(nextExercise(s,b,now)?.id,c.id);
 });
-test('weighted scheduling eventually serves every enabled mode with eligible work',()=>{
+test('weighted random Auto Study can serve all enabled modes with eligible due work',()=>{
  const s=known();for(const c of s.cards)s.schedules[c.id].dueAt=new Date(now-1000).toISOString();
- // Give each mode a due candidate so fresh/due prioritization does not dominate fairness.
- for(const m of ['grammar','drawing','particles'])for(const x of candidates(s,m,false,now))s.skillSchedules[m][x.id]={...scheduleReview(null,3,now,s.settings),dueAt:new Date(now-1000).toISOString()};
- const a=session(),seen=new Set();for(let i=0;i<30;i++){a.current=nextExercise(s,a,now);if(!a.current)break;seen.add(a.current.mode);recordExercise(s,a,3,{seconds:20},now);}
+ for(const m of ['grammar','drawing','particles'])for(const x of candidates(s,m,false,now))s.skillSchedules[m][x.id]={...scheduleReview(null,3,now,s.settings),score:2.5,dueAt:new Date(now-1000).toISOString()};
+ const a=session(),seen=new Set();for(let i=0;i<120;i++){a.current=nextExercise(s,a,now,()=>((i*37)%101)/101);if(!a.current)break;seen.add(a.current.mode);recordExercise(s,a,3,{seconds:20},now);}
  assert.deepEqual([...seen].sort(),Object.keys(MODES).sort());
 });
 test('particle validation, choice and placement, and accepted alternatives',()=>{

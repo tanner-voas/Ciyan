@@ -273,3 +273,17 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 /* Keep the prompt label in normal flow; absolute placement caused tone overlap. */
 .review-card .card-kicker{position:static;align-self:flex-start;margin:0 0 18px;line-height:1.5;flex-shrink:0}
 .vocab-review{justify-content:flex-start;gap:8px;padding-top:28px;min-height:0}.vocab-review .tone-intro{margin-top:0}.vocab-review .review-hanzi{margin-top:12px}.vocab-review .review-english{overflow-wrap:anywhere}.vocab-context{margin:18px 0;overflow-wrap:anywhere}.vocab-context p{margin:0}.session-controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0}.auto-distribution{margin:16px 0}.auto-distribution summary{cursor:pointer;font-weight:700}.timing-curve{width:100%;height:auto;min-height:170px}.timing-curve text{font-size:11px;fill:#466151}.review-controls .grade{min-width:0;padding-left:6px;padding-right:6px}.review-controls .grade span{white-space:nowrap}
+
+/* v0.5: Study replaces Home; continuous session filters and eligibility. */
+.bottom-nav{grid-template-columns:repeat(4,minmax(0,1fr))}
+.study-filter-panel{margin:18px 0}.study-filter-panel .tag-tree{max-height:270px;overflow:auto;overscroll-behavior:contain}
+.study-filter-panel .active-tags{min-height:24px}.study-filter-panel .search-field{margin:0}
+.study-pool{margin:16px 0}.study-pool-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.study-pool-options .btn{min-width:0;padding:10px 4px}
+.study-counts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:12px 0}
+.study-counts span{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f0f6f0;border-radius:10px;padding:9px 4px;min-height:64px}
+.study-counts strong{font-size:20px;line-height:1.2;font-variant-numeric:tabular-nums}
+.study-counts small{text-align:center;font-size:10px;line-height:1.35;color:#5b746b}
+.study-live-counts{margin:10px 0}.study-live-counts .study-counts{margin:0}.study-live-counts span{min-height:48px}
+.review-controls .grade small{display:block;font-size:10px;line-height:1.35;white-space:nowrap;color:inherit;opacity:.83}
+.stats-daily{margin-bottom:16px}

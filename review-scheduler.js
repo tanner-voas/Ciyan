@@ -1,6 +1,6 @@
 import {scheduleReview as fsrsReview,previewIntervals as fsrsPreview} from './fsrs.js';
 export const UNITS={seconds:1,minutes:60,hours:3600,days:86400,weeks:604800};
-export const DEFAULT_RETRY=[{value:1,unit:'minutes'},{value:10,unit:'minutes'},{value:3,unit:'days'},{value:2,unit:'weeks'}];
+export const DEFAULT_RETRY=[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:2,unit:'days'},{value:2,unit:'weeks'}];
 export function retrySeconds(config=DEFAULT_RETRY){
  if(!Array.isArray(config)||config.length!==4)throw new Error('Set all four retry intervals.');
  const values=config.map(x=>Number(x.value)*UNITS[x.unit]);
@@ -9,23 +9,25 @@ export function retrySeconds(config=DEFAULT_RETRY){
  return values;
 }
 export function interpolatedSeconds(score,config=DEFAULT_RETRY){
- const values=retrySeconds(config),s=Math.max(0,Math.min(3,Number(score)||0)),lo=Math.floor(s),hi=Math.min(3,lo+1);
- return values[lo]*Math.pow(values[hi]/values[lo],s-lo);
+ const values=retrySeconds(config),s=Math.max(0,Number(score)||0);
+ if(s>=3)return values[3]*(s-2); // Linear extrapolation above 3: score 3.2 = 2 weeks × 1.2.
+ const lo=Math.floor(s),hi=lo+1;return values[lo]*Math.pow(values[hi]/values[lo],s-lo);
 }
 // Gradual evidence accumulation. Short retries earn less credit than spaced recall.
 export function historyScore(previous,grade,now=Date.now()){
  if(![1,2,3,4].includes(grade))throw new Error('Invalid rating');
- const old=Math.max(0,Math.min(3,Number.isFinite(previous?.score)?previous.score:0));
+ const old=Math.max(0,Number.isFinite(previous?.score)?previous.score:0);
  if(grade===1)return old*.8;
  const elapsed=previous?.lastReviewedAt?Math.max(0,(now-Date.parse(previous.lastReviewedAt))/1000):0;
  const spacing=Math.min(1,elapsed/Math.max(21600,(previous?.intervalMinutes||0)*30));
  const alpha=(previous?.reps||0)>0 ? .08+.12*spacing : .18;
- return Math.max(0,Math.min(3,old+alpha*((grade-1)-old)));
+ if(grade===4)return Math.max(old+.2,old+alpha*(3-old));
+ return Math.max(0,old+alpha*((grade-1)-old));
 }
 export function scheduleReview(previous,grade,now=Date.now(),settings={}){
  if(typeof settings==='number')settings={scheduler:'fsrs',desiredRetention:settings};
  const after=fsrsReview(previous,grade,now,settings.desiredRetention||.9);
- after.score=historyScore(previous,grade,now);after.scoreModel='gradual-v1';after.fsrsIntervalMinutes=after.intervalMinutes;
+ after.score=historyScore(previous,grade,now);after.scoreModel='gradual-v2';after.fsrsIntervalMinutes=after.intervalMinutes;
  if((settings.scheduler||'score')==='fsrs')return after;
  const seconds=interpolatedSeconds(after.score,settings.retryIntervals||DEFAULT_RETRY);
  return {...after,dueAt:new Date(now+seconds*1000).toISOString(),intervalMinutes:seconds/60,learning:grade<=2,scheduler:'score'};
@@ -35,9 +37,13 @@ export function intervalText(seconds){
  const [unit,scale]=n>=604800?['w',604800]:n>=86400?['d',86400]:n>=3600?['h',3600]:n>=60?['m',60]:['s',1];
  return `${(n/scale).toFixed(1)}${unit}`;
 }
+export function previewOutcomes(previous,now=Date.now(),settings={}){
+ if(typeof settings==='number')settings={scheduler:'fsrs',desiredRetention:settings};
+ return [1,2,3,4].map(grade=>{const next=scheduleReview(previous,grade,now,settings);return {grade,score:next.score,interval:intervalText(next.intervalMinutes*60),dueAt:next.dueAt};});
+}
 export function previewIntervals(previous,now=Date.now(),settings={}){
  if(typeof settings==='number')settings={scheduler:'fsrs',desiredRetention:settings};
- return [1,2,3,4].map(g=>intervalText(scheduleReview(previous,g,now,settings).intervalMinutes*60));
+ return previewOutcomes(previous,now,settings).map(x=>x.interval);
 }
 export function rescheduleExisting(schedule,settings){
  const score=Number.isFinite(schedule.score)?schedule.score:Math.max(0,(schedule.lastRating||1)-1);
