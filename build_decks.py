@@ -247,3 +247,6 @@ for d in catalog:print(d['id'],d['wordCount'],d['grammarCount'])
 # v0.4 stores slash-delimited tag paths in the JSON itself.
 import subprocess
 subprocess.run(['node', str(ROOT/'normalize-deck-tags.mjs')], check=True)
+# The shipped app contains only one master, regardless of internal content sources.
+import sys
+subprocess.run([sys.executable, str(ROOT/'build_master.py')], check=True)

@@ -68,6 +68,7 @@ export function requiredWords(grammar,cards) {
 }
 export function wordKnowledge(schedule, recall=1) {
   if(!schedule?.reps)return 0;
+  if(Number.isFinite(schedule.score))return Math.max(0,Math.min(1,schedule.score/3))*Math.max(0,Math.min(1,recall||0));
   const quality={1:.12,2:.58,3:.95,4:1}[schedule.lastRating]||0;
   const maturity=Math.min(1,.85+.075*Math.max(0,schedule.reps-1));
   return Math.max(0,Math.min(1,quality*maturity*Math.max(0,Math.min(1,recall||0))));

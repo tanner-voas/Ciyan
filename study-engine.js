@@ -8,7 +8,7 @@ export const COSTS={words:12,grammar:35,drawing:50,particles:25};
 export function ensureStudy(s){
  s.skillSchedules??={grammar:{},drawing:{},particles:{}};
  for(const m of ['grammar','drawing','particles'])s.skillSchedules[m]??={};
- s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
+ s.postponed??={};s.settings.continuous??=false;s.settings.autoShares={...SHARES,...s.settings.autoShares};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
  s.settings.autoModes={words:true,grammar:true,drawing:true,particles:true,...s.settings.autoModes};
  return s;
@@ -23,7 +23,7 @@ export function contextFor(s,card,now=Date.now(),index=null,lookup=null){
   return {grammar:g,familiarity};
  }).sort((a,b)=>b.familiarity-a.familiarity||grammarTokens(a.grammar).length-grammarTokens(b.grammar).length)[0]||null;
 }
-export function candidates(s,mode,auto=false,now=Date.now()){
+export function candidates(s,mode,auto=false,now=Date.now(),includeFuture=false){
  const byWord=new Map(s.cards.map(c=>[c.hanzi,c]));
  let items=[];
  if(mode==='words')items=s.cards.map(c=>({id:c.id,wordIds:[c.id]}));
@@ -38,7 +38,7 @@ export function candidates(s,mode,auto=false,now=Date.now()){
  if(mode==='particles')items=allParticles(s).filter(p=>!auto||p.base.reduce((n,w)=>n+knowledge(s,byWord.get(w),now),0)/p.base.length>=.6).map(p=>({id:p.id,wordIds:p.base.map(w=>byWord.get(w)?.id).filter(Boolean)}));
  return items.flatMap(item=>{
   const sched=scheduleFor(s,mode,item.id);
-  if(sched&&Date.parse(sched.dueAt)>now)return [];
+  if(!includeFuture&&((sched&&Date.parse(sched.dueAt)>now)||Date.parse(s.postponed?.[`${mode}:${item.id}`]||0)>now))return [];
   const r=sched?retrievability(sched,now):1;
   const overdue=sched?Math.max(0,(now-Date.parse(sched.dueAt))/86400000):0;
   const urgency=sched?(sched.learning?3:2)+Math.max(0,s.settings.desiredRetention-r)*4+Math.min(1,overdue/30):1;
@@ -49,10 +49,10 @@ export function candidates(s,mode,auto=false,now=Date.now()){
 // share; it is not a fitted or clinically validated optimization model.
 export function nextExercise(s,session,now=Date.now()){
  const enabled=Object.keys(MODES).filter(m=>session.mode==='auto'?s.settings.autoModes[m]:m===session.mode);
- const recent=session.results.slice(-3).flatMap(r=>r.wordIds||[]);
+ const recent=session.results.slice(-3).filter(r=>now-Date.parse(r.at)<600000).flatMap(r=>r.wordIds||[]);
  const pool=enabled.map(mode=>{
   const list=candidates(s,mode,session.mode==='auto',now);
-  const candidate=list.find(x=>!(mode==='drawing'&&x.wordIds.some(id=>recent.includes(id)))&&!session.results.some(r=>r.mode===mode&&r.id===x.id&&now-Date.parse(r.at)<60000));
+  const candidate=list.find(x=>!session.skipped?.includes(`${mode}:${x.id}`)&&(!session.allowedWords||mode!=='words'||session.allowedWords.includes(x.id))&&!(mode==='drawing'&&x.wordIds.some(id=>recent.includes(id))));
   return candidate;
  }).filter(Boolean);
  if(!pool.length)return null;
@@ -61,7 +61,7 @@ export function nextExercise(s,session,now=Date.now()){
  const available=urgent.length?urgent:due.length?due:pool;
  return available.sort((a,b)=>{
   const cost=m=>Math.max(COSTS[m]*.5,Math.min(COSTS[m]*2,s.settings.modeSeconds?.[m]||COSTS[m]));
-  const priority=x=>((session.spent[x.mode]||0)+cost(x.mode))/(SHARES[x.mode]*Math.min(2,x.urgency));
+  const priority=x=>((session.spent[x.mode]||0)+cost(x.mode))/((s.settings.autoShares?.[x.mode]||SHARES[x.mode])*Math.min(2,x.urgency));
   return priority(a)-priority(b)||b.urgency-a.urgency;
  })[0];
 }

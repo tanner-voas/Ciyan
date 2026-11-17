@@ -7,7 +7,7 @@ import {tagNodes,matchesTagFilters,normalizeTags} from '../tags.js';
 import {scheduleReview,interpolatedSeconds,retrySeconds,historyScore,rescheduleExisting,dueHistogram} from '../review-scheduler.js';
 import {attachPad,drawPad} from '../drawing.js';
 const now=Date.parse('2026-11-17T00:00:00Z');
-function known(){const s=defaultState();for(const c of s.cards)s.schedules[c.id]=scheduleReview(null,3,now,s.settings);return s;}
+function known(){const s=defaultState();for(const c of s.cards)s.schedules[c.id]={...scheduleReview(null,3,now,s.settings),score:2.8};return s;}
 function session(mode='auto'){return {mode,spent:{},results:[],input:{},limit:20};}
 
 test('hierarchical parent inclusion, descendant exclusion, intersections, and boundaries',()=>{
@@ -29,12 +29,12 @@ test('retry interpolation matches requested 2.5 example and exact anchors',()=>{
  assert.throws(()=>retrySeconds([config[3],...config.slice(1)]));
  const oneSecond=[{value:1,unit:'seconds'},...config.slice(1)];assert.equal(interpolatedSeconds(0,oneSecond),1);
 });
-test('history scores smooth successful ratings and reset a lapse, schedules recalculate from last review',()=>{
- const s=scheduleReview(null,4,now,{});assert.equal(s.score,3);
- assert.equal(historyScore(s,1),0);assert.ok(Math.abs(historyScore(s,3)-2.35)<1e-10);
- const after=scheduleReview(s,1,now+10000,{});assert.equal(Date.parse(after.dueAt),now+70000);
- const settings=defaultState().settings;settings.retryIntervals[3]={value:3,unit:'weeks'};
- assert.equal(Date.parse(rescheduleExisting(s,settings).dueAt),now+21*86400000);
+test('scores grow gradually and a lapse reduces rather than resets them',()=>{
+ const s=scheduleReview(null,4,now,{});assert.ok(Math.abs(s.score-.54)<1e-10);
+ assert.ok(historyScore(s,1,now)>0);assert.ok(historyScore(s,1,now)<s.score);
+ const fast=historyScore(s,4,now+60000),spaced=historyScore(s,4,now+86400000);assert.ok(fast<spaced);assert.ok(fast<1);
+ const mature={...s,score:3},settings=defaultState().settings;settings.retryIntervals[3]={value:3,unit:'weeks'};
+ assert.equal(Date.parse(rescheduleExisting(mature,settings).dueAt),now+21*86400000);
  assert.equal(scheduleReview(null,3,now,{scheduler:'fsrs'}).intervalMinutes,5760);
 });
 test('skills are independent and disabled auto modes cannot appear',()=>{

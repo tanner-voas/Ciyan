@@ -12,30 +12,31 @@ export function interpolatedSeconds(score,config=DEFAULT_RETRY){
  const values=retrySeconds(config),s=Math.max(0,Math.min(3,Number(score)||0)),lo=Math.floor(s),hi=Math.min(3,lo+1);
  return values[lo]*Math.pow(values[hi]/values[lo],s-lo);
 }
-export function historyScore(previous,grade){
- if(grade===1)return 0; // A lapse must not retain a long interval from past successes.
- const current=grade-1;
- if(!previous?.reps)return current;
- const old=Number.isFinite(previous.score)?previous.score:previous.lastRating-1;
- return Math.max(0,Math.min(3,.65*current+.35*old));
+// Gradual evidence accumulation. Short retries earn less credit than spaced recall.
+export function historyScore(previous,grade,now=Date.now()){
+ if(![1,2,3,4].includes(grade))throw new Error('Invalid rating');
+ const old=Math.max(0,Math.min(3,Number.isFinite(previous?.score)?previous.score:0));
+ if(grade===1)return old*.8;
+ const elapsed=previous?.lastReviewedAt?Math.max(0,(now-Date.parse(previous.lastReviewedAt))/1000):0;
+ const spacing=Math.min(1,elapsed/Math.max(21600,(previous?.intervalMinutes||0)*30));
+ const alpha=(previous?.reps||0)>0 ? .08+.12*spacing : .18;
+ return Math.max(0,Math.min(3,old+alpha*((grade-1)-old)));
 }
 export function scheduleReview(previous,grade,now=Date.now(),settings={}){
  if(typeof settings==='number')settings={scheduler:'fsrs',desiredRetention:settings};
  const after=fsrsReview(previous,grade,now,settings.desiredRetention||.9);
- after.score=historyScore(previous,grade);after.fsrsIntervalMinutes=after.intervalMinutes;
+ after.score=historyScore(previous,grade,now);after.scoreModel='gradual-v1';after.fsrsIntervalMinutes=after.intervalMinutes;
  if((settings.scheduler||'score')==='fsrs')return after;
  const seconds=interpolatedSeconds(after.score,settings.retryIntervals||DEFAULT_RETRY);
  return {...after,dueAt:new Date(now+seconds*1000).toISOString(),intervalMinutes:seconds/60,learning:grade<=2,scheduler:'score'};
 }
 export function intervalText(seconds){
- if(seconds<60)return `${Math.round(seconds)}s`;
- if(seconds<3600)return `${+(seconds/60).toFixed(1)}m`;
- if(seconds<86400)return `${+(seconds/3600).toFixed(1)}h`;
- if(seconds<604800)return `${+(seconds/86400).toFixed(1)}d`;
- return `${+(seconds/604800).toFixed(1)}w`;
+ const n=Math.max(0,Number(seconds)||0);
+ const [unit,scale]=n>=604800?['w',604800]:n>=86400?['d',86400]:n>=3600?['h',3600]:n>=60?['m',60]:['s',1];
+ return `${(n/scale).toFixed(1)}${unit}`;
 }
 export function previewIntervals(previous,now=Date.now(),settings={}){
- if(typeof settings==='number')return fsrsPreview(previous,now,settings);
+ if(typeof settings==='number')settings={scheduler:'fsrs',desiredRetention:settings};
  return [1,2,3,4].map(g=>intervalText(scheduleReview(previous,g,now,settings).intervalMinutes*60));
 }
 export function rescheduleExisting(schedule,settings){
@@ -54,4 +55,36 @@ export function dueHistogram(entries,width=360,now=Date.now()){
  const bins=Array.from({length:last-first},(_,i)=>({start:(first+i)*step,end:(first+i+1)*step,counts:{words:0,grammar:0,drawing:0,particles:0},total:0}));
  for(const v of values){const i=Math.max(0,Math.min(bins.length-1,Math.floor(v.offset/step)-first));if(Object.hasOwn(bins[i].counts,v.mode)){bins[i].counts[v.mode]++;bins[i].total++;}}
  return {bins,step};
+}
+
+export function timingImpact(state,settings,now=Date.now()){
+ const before={due:0,total:0},after={due:0,total:0};let additional=0,later=0;
+ for(const [mode,map] of [['words',state.schedules],...Object.entries(state.skillSchedules||{})])for(const [id,item] of Object.entries(map)){
+  const deferred=Date.parse(state.postponed?.[`${mode}:${id}`]||'')||0;
+  const b=Math.max(Date.parse(item.dueAt),deferred)<=now,a=Math.max(Date.parse(rescheduleExisting(item,settings).dueAt),deferred)<=now;
+  before.total++;after.total++;if(b)before.due++;if(a)after.due++;if(a&&!b)additional++;if(b&&!a)later++;
+ }
+ return {before,after,additional,later};
+}
+
+// Correct v0.4 scores only when a complete recorded review sequence is available.
+// Historical events remain untouched; memory-model fields retain their values.
+export function upgradeScores(state){
+ let changed=false;
+ for(const [mode,map] of [['words',state.schedules],...Object.entries(state.skillSchedules||{})]){
+  const history=mode==='words'?state.history:mode==='grammar'?state.grammarHistory:state.skillHistory.filter(h=>h.mode===mode);
+  const byId=new Map();for(const h of history){const id=mode==='words'?h.cardId:mode==='grammar'?h.grammarId:h.id;if(!byId.has(id))byId.set(id,[]);byId.get(id).push(h);}
+  for(const [id,s] of Object.entries(map)){
+   if(s.scoreModel==='gradual-v1')continue;
+   const records=(byId.get(id)||[]).filter(h=>[1,2,3,4].includes(h.grade)&&Number.isFinite(Date.parse(h.at))).sort((a,b)=>Date.parse(a.at)-Date.parse(b.at));
+   if(records.length!==s.reps)continue;
+   let replay=null;for(const h of records)replay=scheduleReview(replay,h.grade,Date.parse(h.at),state.settings);
+   if(!replay)continue;
+   const corrected={...s,score:replay.score,scoreModel:'gradual-v1'};
+   map[id]=(state.settings.scheduler||'score')==='score'?rescheduleExisting(corrected,state.settings):corrected;
+   const deferred=state.postponed?.[`${mode}:${id}`];if(deferred&&Date.parse(deferred)>Date.parse(map[id].dueAt))map[id].dueAt=deferred;
+   changed=true;
+  }
+ }
+ return changed;
 }

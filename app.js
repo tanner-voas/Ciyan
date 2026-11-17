@@ -1,10 +1,12 @@
-import {normalizeTags,tagNodes,matchesTagFilters,tagMatches} from './tags.js';
-import {MODES,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary} from './study-engine.js';
+import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './tags.js';
+import {MODES,SHARES,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary,contextFor} from './study-engine.js';
 import {allParticles,particleCorrect,particleSentence} from './particles.js';
 import {drawPad,attachPad} from './drawing.js';
-import {DECKS} from './deck-catalog.js';
-import {MODEL,retrievability,dueLabel} from './fsrs.js';
-import {scheduleReview,previewIntervals,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText} from './review-scheduler.js';
+import {MASTER} from './master-data.js';
+import {replaceMaster} from './master.js';
+import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
+import {MODEL,retrievability} from './fsrs.js';
+import {scheduleReview,previewIntervals,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
 import {loadState,saveState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords} from './storage.js';
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
@@ -59,7 +61,7 @@ const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.
 const scoreGrammar=g=>grammarScores(g,state.cards,state.schedules,recall);
 const tagsFor=kind=>tagNodes((kind==='words'?state.cards.map(c=>c.tags):state.grammar.map(g=>grammarTags(g,state.cards))).flat()).map(n=>n.path);
 const expandedTags={words:new Set(),grammar:new Set()};
-const tagHtml=text=>`<span class="tag">#${esc(text)}</span>`;
+const tagHtml=text=>`<span class="tag">#${esc(tagLabel(text))}</span>`;
 function toast(message){clearTimeout(toastTimer);toastNode.textContent=message;toastNode.classList.add('show');toastTimer=setTimeout(()=>toastNode.classList.remove('show'),3600);}
 async function change(mutator,shouldRender=true){
   if(saving)return false;
@@ -92,7 +94,7 @@ function renderHome(){
     <div class="metrics"><div class="metric">${icon('clock')}<div class="num">${due}</div><div class="label">Due now</div></div>
       <div class="metric">${icon('book')}<div class="num">${learned}</div><div class="label">Words seen</div></div>
       <div class="metric">${icon('flame')}<div class="num">${today}</div><div class="label">Reviews today</div></div></div>
-    ${autoControls()}${backupBanner()}<button class="btn btn-secondary btn-full" data-action="navigate" data-page="decks">Explore optional decks</button>
+    ${autoControls()}${backupBanner()}<p class="subtle">One master collection · ${state.cards.length} words · ${state.grammar.length} sentences</p>
     <div class="section-row"><h2 class="section-title">Learn in context</h2><button class="text-link" data-action="navigate" data-page="grammar">Explore grammar ${icon('right')}</button></div>
     <div class="panel stack"><div class="row"><div><strong>${countReadyGrammar()} of ${state.grammar.length} grammar examples unlocked</strong><div class="subtle" style="margin-top:5px">New examples unlock once their words and distractors are familiar.</div></div><span class="tag alt">${percent(state.grammar.length?countReadyGrammar()/state.grammar.length:0)}</span></div>
       <button class="btn btn-secondary btn-full" data-action="start" data-mode="grammar">${icon('layers')}Study sentence order</button></div>
@@ -100,7 +102,7 @@ function renderHome(){
     <div class="panel"><div class="row"><strong>${learned} of ${state.cards.length} words encountered</strong><span class="tag">${percent(state.cards.length?learned/state.cards.length:0)}</span></div>
       <div class="progress-group"><div class="progress-track"><div class="progress-fill" style="width:${state.cards.length?100*learned/state.cards.length:0}%"></div></div></div></div>
     <div class="section-row"><h2 class="section-title">Explore a topic</h2></div>
-    <div class="category-scroll">${tagsFor('words').filter(t=>!t.includes('/')).slice(0,9).map(t=>`<button class="pill" data-action="open-tag" data-tag="${esc(t)}"># ${esc(t)}</button>`).join('')}</div>
+    <div class="category-scroll">${tagsFor('words').filter(t=>!t.includes('/')).slice(0,9).map(t=>`<button class="pill" data-action="open-tag" data-tag="${esc(t)}"># ${esc(tagLabel(t))}</button>`).join('')}</div>
     <div class="word-grid">${state.cards.filter(c=>c.tags.some(t=>t==='social'||t==='food')).slice(0,4).map(c=>`<button class="word-tile" data-action="card-detail" data-id="${esc(c.id)}"><div class="hanzi">${esc(c.hanzi)}</div><div class="pinyin">${esc(c.pinyin)}</div><div class="translation">${esc(c.english)}</div></button>`).join('')}</div>`;
 }
 function availableWordQueue(){
@@ -125,7 +127,7 @@ async function startSession(mode='words'){
     if(await change(d=>{d.activeGrammarSession=session;},false)){studyMode='grammar';page='study';grammarFeedback=null;render();}
   }else{
     const queue=availableWordQueue();
-    if(!queue.length){page='study';studyMode='words';render();toast('No words due. You can import more vocabulary.');return;}
+    if(!queue.length){page='study';studyMode='words';render();toast('No words are due now.');return;}
     const session={id:crypto.randomUUID(),startedAt:new Date().toISOString(),queue,initialTotal:queue.length,results:[],newWords:0,correct:0};
     if(await change(d=>{d.activeSession=session;},false)){studyMode='words';page='study';revealed=false;toneSelections=[];render();}
   }
@@ -202,7 +204,7 @@ function renderWordStudy(){
       `<button class="grade ${cls}" data-action="grade" data-grade="${grade}" ${grade===4&&state.settings.enforceTones&&badTone?'disabled':''}><strong>${label}</strong><span>${intervals[i]}</span></button>`).join('')}</div>
       <p class="study-captions">Again: forgot · Hard: struggled · Good: recalled · Easy: effortless</p>`:
       `<button class="btn btn-primary btn-full" data-action="reveal">Reveal answer ${icon('right')}</button>`}
-    <div class="study-actions"><span class="subtle">${countDue()} due in your deck</span><button class="text-link" data-action="finish-prompt">Finish early</button></div>
+    <div class="study-actions"><span class="subtle">${countDue()} due in your collection</span><button class="text-link" data-action="finish-prompt">Finish early</button></div>
     <p class="study-captions">Each answer is saved automatically · Export at session end</p>`;
 }
 function shuffledBank(grammar,session){
@@ -263,7 +265,7 @@ function renderComplete(){
     <div class="complete-stats"><div><strong>${s.total}</strong><span>${grammar?'Sentences':'Reviewed'}</span></div>
       <div><strong>${grammar?countReadyGrammar():s.newWords}</strong><span>${grammar?'Unlocked':'New words'}</span></div>
       <div><strong>${s.total?Math.round(100*s.correct/s.total):0}%</strong><span>${grammar?'Correct':'Good / Easy'}</span></div></div>
-    <div class="panel stack"><div class="row"><strong>${icon('shield')} Protect your progress</strong><span class="tag alt">Important</span></div>
+    ${state.lastPracticeUndo?'<button class="btn btn-secondary btn-full" data-action="undo-completed">Undo last answer</button>':''}<div class="panel stack"><div class="row"><strong>${icon('shield')} Protect your progress</strong><span class="tag alt">Important</span></div>
       <p class="lead" style="font-size:13px">Your reviews are saved locally, but only a separate JSON file in Files protects against browser storage loss.</p>
       <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Save progress to Files</button>
       ${backupNeeded()?'<div class="notice warning">Your latest reviews have not been confirmed as backed up.</div>':'<div class="notice">Your current changes are marked as backed up.</div>'}
@@ -303,12 +305,12 @@ function updateCollection(keepPage=false){
   const kind=page==='grammar'?'grammar':'words',f=filters[kind],tags=tagsFor(kind);
   const positives=tags.filter(t=>f.tags[t]===1),negatives=tags.filter(t=>f.tags[t]===-1),active=[...positives,...negatives];
   const activeNode=$('#active-tag-filter'),availableNode=$('#tag-filter');if(!activeNode||!availableNode)return;
-  activeNode.innerHTML=active.length?active.map(t=>`<button class="pill ${f.tags[t]===1?'include':'exclude'}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(t)}">${f.tags[t]===1?'✓':'−'} # ${esc(t)}</button>`).join(''):
+  activeNode.innerHTML=active.length?active.map(t=>`<button class="pill ${f.tags[t]===1?'include':'exclude'}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(t)}">${f.tags[t]===1?'✓':'−'} # ${esc(tagLabel(t))}</button>`).join(''):
     '<span class="subtle">No active tags. Tap a topic to include it.</span>';
   availableNode.innerHTML=tagNodes(tags).filter(n=>{const parts=n.path.split('/');return parts.slice(0,-1).every((_,i)=>expandedTags[kind].has(parts.slice(0,i+1).join('/')));}).map(n=>{
     const children=tags.some(t=>t.startsWith(n.path+'/')),v=f.tags[n.path]||0;
     const inherited=Object.entries(f.tags).find(([t,value])=>value&&n.path.startsWith(t+'/'));
-    return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="expand-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="Expand ${esc(n.label)}" aria-expanded="${expandedTags[kind].has(n.path)}">${expandedTags[kind].has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(n.label)}${!v&&inherited?`<small> · parent ${inherited[1]===1?'required':'excluded'}</small>`:''}</button></div>`;
+    return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="expand-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}" aria-expanded="${expandedTags[kind].has(n.path)}">${expandedTags[kind].has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}${!v&&inherited?`<small> · parent ${inherited[1]===1?'required':'excluded'}</small>`:''}</button></div>`;
   }).join('')+'<p class="subtle">Tap a label: require → exclude → neutral. Required tags all must match; parents include descendants. Exclusions win. Use arrows to expand.</p>';
   const q=f.search.trim().toLowerCase();
   if(kind==='words'){
@@ -319,7 +321,7 @@ function updateCollection(keepPage=false){
     $('#collection-list').innerHTML=results.length?results.slice(0,visibleWords).map(c=>{
       const schedule=state.schedules[c.id];
       return `<button class="list-card" data-action="card-detail" data-id="${esc(c.id)}"><div class="list-hanzi">${esc(c.hanzi)}<small>${esc(c.pinyin)}</small></div>
-       <div class="list-detail"><strong>${esc(c.english)}</strong><small>${esc(c.tags.slice(0,3).map(x=>'#'+x).join('  '))} · ${esc(dueLabel(schedule))}</small></div>
+       <div class="list-detail"><strong>${esc(c.english)}</strong><small>${esc(c.tags.slice(0,3).map(x=>'#'+tagLabel(x)).join('  '))} · ${esc(dueLabel(schedule))}</small></div>
        <div class="list-meta"><strong>${percent(scoreWord(c))}</strong><small>${schedule?ratingLabels[schedule.lastRating]:'New'}</small></div>${icon('right')}</button>`;
     }).join('')+(results.length>visibleWords?'<button class="btn btn-secondary btn-full" data-action="more-words">Show more words</button>':''):'<div class="empty"><strong>No matching words</strong>Adjust a filter or add a new word.</div>';
   }else{
@@ -372,26 +374,26 @@ ${schedulerSettings()}   <div class="section-row"><h2 class="section-title">Stud
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
-   <div class="section-row"><h2 class="section-title">Optional decks</h2></div><div class="panel stack"><p>Load topics when you want them. Existing words and review history are preserved.</p><button class="btn btn-primary btn-full" data-action="navigate" data-page="decks">Browse available decks</button></div>
+   <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences load automatically.</p><p class="subtle">Edits apply for this visit. Export one master file to keep changes, then load that file again after refreshing. Learning records save automatically and remain separate from the master content.</p></div>
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
      <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Export full progress backup</button>
      <button class="btn btn-secondary btn-full" data-action="restore">${icon('upload')}Restore full backup (replace)</button>
-     <button class="btn btn-secondary btn-full" data-action="import-deck">${icon('plus')}Import word / grammar deck (merge)</button>
-     <button class="btn btn-secondary btn-full" data-action="export-deck">${icon('archive')}Export deck (no review records)</button>
-     <button class="btn btn-secondary btn-full" data-action="template">${icon('book')}Download deck template</button>
-     <p class="subtle">Deck imports add missing words/sentences and may add tags to matching words. They never overwrite existing cards or progress. Backups include every card, sentence, schedule, and review.</p>
+     <button class="btn btn-secondary btn-full" data-action="import-deck">${icon('plus')}Load complete master file</button>
+     <button class="btn btn-secondary btn-full" data-action="export-deck">${icon('archive')}Export complete master (no review records)</button>
+
+     <p class="subtle">Loading a master replaces the complete content for this visit. Matching words retain their learning records. Full backups contain content and progress; a master export contains only content.</p>
      <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
    <div class="section-row"><h2 class="section-title">Danger zone</h2></div>
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.4 · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.4.1 · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk is reserved at 0% until its future scoring model is designed.</p></div>`;
 }
-function render(){if(!state)return;const views={home:renderHome,study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings,decks:renderDecks};
+function render(){if(!state)return;const views={home:renderHome,study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
   app.innerHTML=shell((views[page]||renderHome)());if(['browse','grammar'].includes(page))updateCollection();mountDrawing();}
-function navigate(dest){if(!['home','study','browse','grammar','stats','settings','complete','decks'].includes(dest))return;
+function navigate(dest){if(!['home','study','browse','grammar','stats','settings','complete'].includes(dest))return;
   page=dest;revealed=false;render();window.scrollTo({top:0,behavior:'instant'});}
 function modal(title,contents){closeModal();currentModal=document.createElement('div');currentModal.className='modal-backdrop';
   currentModal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${icon('x')}</button></div><div class="modal-scroll">${contents}</div></div>`;
@@ -475,13 +477,13 @@ async function saveGrammarEditor(form){const id=form.dataset.id||null,existing=i
 async function deleteWord(id){const c=wordById(id);if(!c)return;
   const uses=state.grammar.filter(g=>linkedWords(g,[c]).length).length;
   if(!window.confirm(`Delete “${c.hanzi}” and all of its vocabulary reviews? ${uses} linked grammar sentences will remain but may be locked until a replacement word is added. This is irreversible without a backup.`))return;
-  if(await change(d=>{d.cards=d.cards.filter(c=>c.id!==id);delete d.schedules[id];delete d.skillSchedules.drawing[id];d.skillHistory=d.skillHistory.filter(h=>!(h.mode==='drawing'&&h.id===id));if(d.activePractice?.current?.id===id)d.activePractice=null;d.history=d.history.filter(h=>h.cardId!==id);
+  if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.cards=d.cards.filter(c=>c.id!==id);delete d.schedules[id];delete d.skillSchedules.drawing[id];d.skillHistory=d.skillHistory.filter(h=>!(h.mode==='drawing'&&h.id===id));if(d.activePractice?.current?.id===id)d.activePractice=null;d.history=d.history.filter(h=>h.cardId!==id);
     d.activeSession?.queue&&(d.activeSession.queue=d.activeSession.queue.filter(x=>x!==id));
     if(d.activeSession&&!d.activeSession.queue.length)d.activeSession=null;})){closeModal();toast('Word deleted');}
 }
 async function deleteGrammar(id){const g=grammarById(id);if(!g)return;
   if(!window.confirm(`Delete grammar sentence “${plainSentence(g.markup)}” and its ${state.grammarHistory.filter(h=>h.grammarId===id).length} attempts? This cannot be undone without a backup.`))return;
-  if(await change(d=>{d.grammar=d.grammar.filter(g=>g.id!==id);delete d.skillSchedules.grammar[id];for(const key of Object.keys(d.skillSchedules.particles))if(key.startsWith(id+':particle:'))delete d.skillSchedules.particles[key];d.skillHistory=d.skillHistory.filter(h=>!h.id.startsWith(id+':particle:'));if(d.activePractice?.current?.id===id||d.activePractice?.current?.id.startsWith(id+':particle:'))d.activePractice=null;d.grammarHistory=d.grammarHistory.filter(h=>h.grammarId!==id);
+  if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.grammar=d.grammar.filter(g=>g.id!==id);delete d.skillSchedules.grammar[id];for(const key of Object.keys(d.skillSchedules.particles))if(key.startsWith(id+':particle:'))delete d.skillSchedules.particles[key];d.skillHistory=d.skillHistory.filter(h=>!h.id.startsWith(id+':particle:'));if(d.activePractice?.current?.id===id||d.activePractice?.current?.id.startsWith(id+':particle:'))d.activePractice=null;d.grammarHistory=d.grammarHistory.filter(h=>h.grammarId!==id);
     d.activeGrammarSession?.queue&&(d.activeGrammarSession.queue=d.activeGrammarSession.queue.filter(x=>x!==id));
     if(d.activeGrammarSession&&!d.activeGrammarSession.queue.length)d.activeGrammarSession=null;})){closeModal();toast('Grammar sentence deleted');}
 }
@@ -526,18 +528,16 @@ function requestFile(kind){const input=document.createElement('input');input.typ
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`REPLACE your entire current database with this backup? It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;page='home';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
+  try{upgradeScores(parsed);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;page='home';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
-async function importDeck(content){const result=mergeDeck(state,content);
-  const {addedWords,addedGrammar,tagsUpdated}=result;
-  if(!addedWords&&!addedGrammar&&!tagsUpdated){toast('Everything in this deck is already present. No changes made.');return;}
-  if(!window.confirm(`Merge ${addedWords} new words, ${addedGrammar} grammar sentences and ${tagsUpdated} tag updates? No existing cards, reviews or scores will be replaced.`))return;
-  const done=await change(d=>{d.cards=result.draft.cards;d.grammar=result.draft.grammar;});
-  if(done){closeModal();toast(`Imported ${addedWords} words, ${addedGrammar} sentences, ${tagsUpdated} tag updates`);}
+async function importDeck(content){
+ const draft=replaceMaster(structuredClone(state),content);
+ if(!window.confirm(`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. Refresh loads the bundled master again.`))return;
+ if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;})){closeModal();toast('Master collection loaded for this visit.');}
 }
-function exportDeck(){const data=makeDeck(state);
-  downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-deck-v0.3.json');toast('Record-free deck JSON prepared');}
+function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
+ downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-master-v0.4.1.json');toast('Complete master file prepared');}
 function downloadTemplate(){const sample={format:'ciyan-deck',version:2,records:false,
   cards:[{id:'deck-coffee',hanzi:'咖啡',pinyin:'kāfēi',english:'Coffee',tags:['food']}],
   grammar:[{id:'deck-sentence-001',markup:'{我}{想}{喝}{咖啡}。',pinyin:'Wǒ xiǎng hē kāfēi.',english:'I want to drink coffee.',distractors:[{index:2,word:'要'}]}]};
@@ -651,7 +651,7 @@ document.addEventListener('click',async event=>{
     case 'download-backup':await exportBackup('download');break;
     case 'confirm-backup':await confirmBackup();break;
     case 'restore':requestFile('restore');break;
-    case 'load-deck':await loadBundledDeck(element.dataset.deck);break;
+
     case 'more-words':visibleWords+=80;updateCollection(true);break;
     case 'study-filtered':await startFilteredSession();break;
     case 'import-deck':requestFile('deck');break;
@@ -671,10 +671,12 @@ document.addEventListener('submit',async event=>{
   else if(event.target.matches('#grammar-form')){event.preventDefault();await saveGrammarEditor(event.target);}
 });
 document.addEventListener('input',event=>{
+  if(event.target.closest?.('#scheduler-form'))updateTimingPreview(event.target.closest('#scheduler-form'));
   if(event.target.id==='collection-search') {const kind=page==='grammar'?'grammar':'words';filters[kind].search=event.target.value;updateCollection();}
   if(event.target.id==='clear-confirm') {const b=$('#clear-confirm-button');if(b)b.disabled=event.target.value!=='delete';}
 });
 document.addEventListener('change',async event=>{
+  if(event.target.closest?.('#scheduler-form')){updateTimingPreview(event.target.closest('#scheduler-form'));return;}
   if(event.target.dataset.autoMode){await change(d=>{d.settings.autoModes[event.target.dataset.autoMode]=event.target.checked;});return;}
   if(state.activePractice&&event.target.dataset.toneIndex!==undefined){if(state.activePractice.input.revealed)return;await practiceInput(i=>{i.tones??=[];i.tones[Number(event.target.dataset.toneIndex)]=event.target.checked?Number(event.target.dataset.toneValue):0;});render();return;}
   if(event.target.dataset.toneIndex!==undefined){if(revealed)return;
@@ -701,7 +703,9 @@ async function boot(){try{
     if(loaded.schemaVersion!==state.schemaVersion){await saveState(state);}
   }
   if(!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!Array.isArray(state.history)||!state.schedules)throw new Error('Local data appears invalid. Import a JSON backup to restore it.');
-  ensureStudy(state);studyMode=state.activeGrammarSession?'grammar':'words';render();
+  ensureStudy(state);replaceMaster(state,MASTER);
+  if(upgradeScores(state)){const previous=state.revision;state.revision++;await saveState(state,previous);}
+  studyMode=state.activeGrammarSession?'grammar':'words';render();
   if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
 }catch(error){app.innerHTML=`<div class="loading-state" style="text-align:center"><div class="brand-mark">!</div>
@@ -709,51 +713,34 @@ async function boot(){try{
   <button class="btn btn-secondary" onclick="location.reload()">Try again</button></div>`;}}
 boot();
 
-function renderDecks(){
-  const names=new Set(state.cards.map(c=>c.hanzi));
-  return `<div class="page-heading"><div class="eyebrow">GROW YOUR COLLECTION</div><h1 class="h1">Pick your<br>next topic.</h1><p class="lead">Optional decks. Load only what you want to study.</p></div>
-  <div class="notice">HSK1, HSK2, and higher labels form one consistent set of level tags. Each deck is selective and includes supporting words needed for its grammar examples.</div>
-  <p class="subtle">Importing adds words and tags without changing existing cards or progress. Reimporting is safe. All decks are included in the offline app download.</p>
-  ${DECKS.map(d=>{const present=d.words.filter(w=>names.has(w)).length;return `<section class="panel stack" style="margin-top:14px"><div class="row"><h2 class="section-title">${esc(d.title)}</h2><span class="tag">${d.wordCount} words</span></div><p>${esc(d.description)}</p><div class="subtle">${present} words already in your collection${d.grammarCount?' · '+d.grammarCount+' grammar cards':''}</div><button class="btn btn-primary btn-full" data-action="load-deck" data-deck="${esc(d.id)}">Load / merge deck</button><a class="text-link" href="./decks/${esc(d.id)}.json" download>Download JSON</a></section>`;}).join('')}
-  <p class="subtle"><a href="./decks/README.md">Deck guide and sources</a> · <a href="./decks/ATTRIBUTION.md">Data attribution</a></p>`;
-}
-async function loadBundledDeck(id){
-  if(!DECKS.some(d=>d.id===id)||saving)return;
-  try{const response=await fetch('./decks/'+encodeURIComponent(id)+'.json');if(!response.ok)throw new Error('Deck unavailable. Reopen online to cache the latest app.');await importDeck(await response.json());}
-  catch(e){toast(e.message);}
-}
 async function startFilteredSession(){
-  if(state.activePractice||state.activeSession||state.activeGrammarSession){await startSession();return;}
-  const f=filters.words,q=f.search.trim().toLowerCase();
-  const matches=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&(f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&(!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q)));
-  const due=matches.filter(c=>isDue(c.id)).sort((a,b)=>Date.parse(state.schedules[a.id].dueAt)-Date.parse(state.schedules[b.id].dueAt));
-  const queue=[...due,...matches.filter(c=>!state.schedules[c.id])].slice(0,state.settings.sessionSize).map(c=>c.id);
-  if(!queue.length){toast('No new or due words match these filters.');return;}
-  const session={id:crypto.randomUUID(),startedAt:new Date().toISOString(),queue,initialTotal:queue.length,results:[],newWords:0,correct:0};
-  if(await change(d=>{d.activeSession=session;},false)){studyMode='words';page='study';revealed=false;toneSelections=[];render();}
+ if(state.activePractice||state.activeSession||state.activeGrammarSession){await startSession();return;}
+ const f=filters.words,q=f.search.trim().toLowerCase();
+ const ids=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&(f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&(!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q))).map(c=>c.id);
+ await startPractice('words',ids);
 }
-
-function autoControls(){return `<section class="panel stack auto-panel"><div class="eyebrow">A BALANCED PRACTICE</div><h2>Auto Study</h2><p>Due reviews first, with vocabulary at the core. Mix the skills you want to work on.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${state.settings.autoModes[m]?'checked':''}> ${label}</label>`).join('')}</div><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${Object.values(state.settings.autoModes).some(Boolean)?'':'disabled'}>Start Auto Study</button><p class="subtle">Grammar needs familiar sentence words and distractors. Drawing and Particle Zoo use lighter context prerequisites. Unavailable modes yield their time to the others.</p></section>`;}
-async function startPractice(mode){
+function autoControls(){return `<section class="panel stack auto-panel"><div class="eyebrow">A BALANCED PRACTICE</div><h2>Auto Study</h2><p>Due reviews first, with vocabulary at the core. Mix the skills you want to work on.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${state.settings.autoModes[m]?'checked':''}> ${label}</label>`).join('')}</div><label><input type="checkbox" data-setting="continuous" ${state.settings.continuous?'checked':''}> Continuous study — keep going until I finish</label><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${Object.values(state.settings.autoModes).some(Boolean)?'':'disabled'}>Start Auto Study</button><p class="subtle">Grammar needs familiar sentence words and distractors. Drawing and Particle Zoo use lighter context prerequisites. Unavailable modes yield their time to the others.</p></section>`;}
+async function startPractice(mode,allowedWords=null){
  if(state.activeSession||state.activeGrammarSession){await startSession();return;}
  if(state.activePractice){page='study';render();return;}
- const session={id:crypto.randomUUID(),mode,startedAt:new Date().toISOString(),limit:state.settings.sessionSize,spent:{},results:[],input:{}};
+ const session={id:crypto.randomUUID(),mode,allowedWords,startedAt:new Date().toISOString(),continuous:!!state.settings.continuous,limit:state.settings.sessionSize,spent:{},results:[],input:{},skipped:[],undo:[]};
  session.current=nextExercise(state,session);
- if(!session.current){toast('No eligible reviews in these modes. Review vocabulary, load suitable sentences, or enable Vocabulary in Auto Study.');return;}
+ if(!session.current&&!session.continuous){const a=availability(state,session);toast(a.nextAt?'No reviews due now. Turn on continuous study to wait for the next review.':a.blocked?'Vocabulary prerequisites are blocking these modes.':'No eligible exercises remain.');return;}
  session.itemStartedAt=Date.now();
- if(await change(d=>{d.activePractice=session;},false)){page='study';render();}
+ if(await change(d=>{d.activePractice=session;d.lastPracticeUndo=null;},false)){page='study';render();}
 }
 function practiceRatings(mode,id,cap=4){const intervals=previewIntervals(scheduleFor(state,mode,id),Date.now(),state.settings);return `<div class="review-controls">${['Again','Hard','Good','Easy'].map((l,i)=>`<button class="grade ${l.toLowerCase()}" data-action="practice-grade" data-grade="${i+1}" ${i+1>cap?'disabled':''}><strong>${l}</strong><span>${intervals[i]}</span></button>`).join('')}</div><p class="study-captions">Again: incorrect / forgot · Hard: struggled · Good: recalled · Easy: effortless</p>`;}
 function practiceRender(){
  const s=state.activePractice,e=s.current,input=s.input||{};
- if(!e)return '<div class="empty">Session complete.</div>';
- const top=`<div class="review-top"><button class="icon-btn" data-action="practice-finish" aria-label="Finish session">${icon('x')}</button><div class="review-progress"><span style="width:${100*s.results.length/s.limit}%"></span></div><span>${s.results.length+1} / ${s.limit}</span></div><div class="eyebrow">${MODES[e.mode]} · ${esc(e.reason)}${s.mode==='auto'?' · AUTO':''}</div>`;
+ if(!e)return waitingPractice(s);
+ const top=`<div class="review-top"><button class="icon-btn" data-action="practice-finish" aria-label="Finish session">${icon('x')}</button><div class="review-progress"><span style="width:${100*s.results.length/s.limit}%"></span></div><span>${s.results.length+1}${s.continuous?' · continuous':' / '+s.limit}</span></div><div class="eyebrow">${MODES[e.mode]} · ${esc(e.reason)}${s.mode==='auto'?' · AUTO':''}</div>`;
  let body='';
  if(e.mode==='words'){
   const c=wordById(e.id);toneSelections=input.tones||[];revealed=!!input.revealed;
   const tone=wordToneCheck(c),cap=state.settings.enforceTones&&tone?.wrong.length?3:4;
-  body=`<div class="review-card"><div class="card-kicker">CHINESE → ENGLISH</div>${state.settings.toneTest?renderToneGrid(c):`<div class="review-hanzi">${esc(c.hanzi)}</div>`}${input.revealed||state.settings.showPinyinPrompt&&!state.settings.toneTest?`<div class="review-pinyin">${esc(c.pinyin)}</div>`:''}${input.revealed?`<div class="review-english">${esc(c.english)}</div>${tone?`<p class="subtle">Expected tones: ${tone.expected.join(' · ')}${cap===3?' · Easy unavailable':''}</p>`:''}`:'<p>Recall the meaning, then reveal.</p>'}</div>${input.revealed?practiceRatings(e.mode,e.id,cap):'<button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal answer</button>'}`;
+  body=`<div class="review-card vocab-review"><div class="card-kicker">CHINESE → ENGLISH</div>${state.settings.toneTest?renderToneGrid(c):`<div class="review-hanzi">${esc(c.hanzi)}</div>`}${input.revealed||state.settings.showPinyinPrompt&&!state.settings.toneTest?`<div class="review-pinyin">${esc(c.pinyin)}</div>`:''}${input.revealed?`<div class="review-english">${esc(c.english)}</div>${tone?`<p class="subtle">Expected tones: ${tone.expected.join(' · ')}${cap===3?' · Easy unavailable':''}</p>`:''}`:'<p>Recall the meaning, then reveal.</p>'}</div>${input.revealed?practiceRatings(e.mode,e.id,cap):'<button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal answer</button>'}`;
  }
+ if(e.mode==='words'&&input.revealed){const ctx=contextFor(state,wordById(e.id));if(ctx)body+=`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT</div><strong>${esc(plainSentence(ctx.grammar.markup))}</strong><p>${esc(ctx.grammar.pinyin)}</p><p>${esc(ctx.grammar.english)}</p></section>`;}
  if(e.mode==='drawing'){
   const c=wordById(e.id),chars=[...c.hanzi],index=input.pad||0,g=grammarById(e.contextId);
   body=`<section class="panel stack drawing-prompt"><h2>${esc(c.pinyin)}</h2><strong>${esc(c.english)}</strong><span class="tag">${chars.length} character${chars.length===1?'':'s'}</span>${g?`<div class="drawing-context"><div class="eyebrow">WORD IN CONTEXT</div><p>${highlightPinyin(g.pinyin,c.pinyin)}</p><p>${esc(g.english)}</p><small>Target: ${esc(c.pinyin)} — ${esc(c.english)}</small></div>`:'<p class="subtle">No loaded example for this word. Word-only writing practice.</p>'}</section>`;
@@ -770,7 +757,7 @@ function practiceRender(){
   body=`<section class="panel stack"><h2>${esc(p.focus)}</h2><p>${esc(p.prompt)}</p><div class="eyebrow">1. CHOOSE THE PARTICLE OR CLASSIFIER</div><div class="grammar-bank">${p.choices.map(c=>`<button class="bank-tile ${input.choice===c?'chosen':''}" data-action="particle-choice" data-choice="${esc(c)}" ${input.revealed?'disabled':''}>${esc(c)}</button>`).join('')}</div><div class="eyebrow">2. TAP ITS GAP IN THE SENTENCE</div><div class="particle-line">${Array.from({length:p.base.length+1},(_,i)=>`<button class="gap ${input.slot===i?'chosen':''}" data-action="particle-slot" data-slot="${i}" aria-label="Gap ${i+1}" ${input.revealed?'disabled':''}>${input.slot===i?esc(input.choice||'?'):'＋'}</button>${i<p.base.length?`<span>${esc(p.base[i])}</span>`:''}`).join('')}</div></section>`;
   body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct':'One to revisit'}</strong><p>${esc(particleSentence(p))}</p><p>${esc(p.pinyin)}</p><p>${esc(p.explanation)}</p></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${!input.choice||!Number.isInteger(input.slot)?'disabled':''}>Check particle and placement</button>`;
  }
- return top+body+'<button class="text-link" data-action="practice-finish" style="margin:20px 0">Finish session</button><p class="study-captions">Answers save automatically. Export your progress after studying.</p>';
+ return top+body+sessionControls(s)+autoDistribution(s)+'<p class="study-captions">Answers save automatically. Export your progress after studying.</p>';
 }
 let drawingSave=Promise.resolve();
 function mountDrawing(){
@@ -790,7 +777,7 @@ function mountDrawing(){
 async function practiceInput(fn){await drawingSave;return change(d=>fn(d.activePractice.input,d.activePractice),false);}
 async function finishPractice(){await drawingSave;const s=state.activePractice;if(!s)return;
  const finished={id:s.id,mode:s.mode,startedAt:s.startedAt,endedAt:new Date().toISOString(),total:s.results.length,correct:s.results.filter(r=>r.grade>=3).length,newWords:s.results.filter(r=>r.reason==='first practice'&&r.mode==='words').length,results:s.results};
- if(await change(d=>{if(finished.total)d.mixedSessions.push(finished);d.activePractice=null;},false)){lastFinished=finished;page=finished.total?'complete':'study';render();}
+ if(await change(d=>{if(finished.total)d.mixedSessions.push(finished);d.lastPracticeUndo=s.undo?.length?structuredClone(s):null;d.activePractice=null;},false)){lastFinished=finished;page=finished.total?'complete':'study';render();}
 }
 async function gradePractice(grade){
  await drawingSave;const s=state.activePractice;if(!s?.input?.revealed||saving||![1,2,3,4].includes(grade))return;
@@ -798,21 +785,29 @@ async function gradePractice(grade){
  if(['grammar','particles'].includes(e.mode)&&!input.correct&&grade>2)return;
  if(e.mode==='words'){toneSelections=input.tones||[];if(grade===4&&state.settings.enforceTones&&wordToneCheck(wordById(e.id))?.wrong.length)return;}
  const done=await change(d=>{
-  const a=d.activePractice;
+  const a=d.activePractice;rememberAnswer(d,a);
   const tone=e.mode==='words'?wordToneCheck(wordById(e.id)):null;
   recordExercise(d,a,grade,{toneResult:tone?{expected:tone.expected,selected:tone.chosen,correct:tone.wrong.length===0}:null,seconds:(Date.now()-a.itemStartedAt)/1000,choice:input.choice,slot:input.slot,correct:input.correct,mistakes:input.mistakes,selectedTiles:input.picks});
-  if(a.results.length<a.limit)a.current=nextExercise(d,a);
+  if(a.continuous||a.results.length<a.limit)a.current=nextExercise(d,a);
   a.itemStartedAt=Date.now();
  },false);
- if(done){if(!state.activePractice.current)await finishPractice();else{revealed=false;render();}}
+ if(done){if(!state.activePractice.current&&!state.activePractice.continuous)await finishPractice();else{revealed=false;render();}}
 }
 async function practiceAction(action,el){
  if(Date.now()<ignorePracticeClickUntil&&['practice-pick','practice-remove'].includes(action))return true;
+ if(action==='undo-completed'){await undoCompleted();return true;}
+ if(action==='apply-timing'){await applyTiming(el.dataset.scope);return true;}
  if(action==='practice-start'){await startPractice(el.dataset.mode);return true;}
  if(!state.activePractice)return false;
+ if(action==='practice-undo'){await undoPractice();return true;}
+ if(action==='practice-skip'){await movePractice('skip');return true;}
+ if(action==='practice-postpone'){modal('Postpone this item',`<p>No rating or failure is recorded. Choose when it may return.</p><div class="stack">${[300,1800,3600,86400].map(n=>`<button class="btn btn-secondary" data-action="postpone-for" data-seconds="${n}">${intervalText(n)}</button>`).join('')}</div>`);return true;}
+ if(action==='postpone-for'){closeModal();await movePractice('postpone',Number(el.dataset.seconds));return true;}
+ if(action==='practice-check-ready'){await wakePractice();return true;}
  if(action==='practice-finish'){await finishPractice();return true;}
  if(action==='practice-grade'||action==='grade'){await gradePractice(Number(el.dataset.grade));return true;}
  const s=state.activePractice,e=s.current;
+ if(!e)return false;
  if(['practice-reveal','reveal'].includes(action)){await practiceInput(i=>{i.revealed=true;});render();return true;}
  if(s.input.revealed)return false;
  if(action==='draw-page'){const n=Number(el.dataset.pad);if(n>=0&&n<[...wordById(e.id).hanzi].length)await practiceInput(i=>{i.pad=n;});}
@@ -832,7 +827,7 @@ function extendedStats(){
  const all=[...state.history.map(h=>({...h,mode:'words'})),...state.grammarHistory.map(h=>({...h,mode:'grammar'})),...state.skillHistory];
  const now=Date.now(),days=Array.from({length:28},(_,i)=>{const d=new Date();d.setDate(d.getDate()-27+i);const key=formatDay(d);return {key,count:all.filter(h=>dateKey(h.at)===key).length};});
  const max=Math.max(1,...days.map(d=>d.count));
- const forecasts=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()+i);const key=formatDay(d);return {key,n:Object.keys(MODES).reduce((sum,m)=>sum+Object.values(m==='words'?state.schedules:state.skillSchedules[m]).filter(x=>dateKey(x.dueAt)===key).length,0)};});
+ const forecasts=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()+i);const key=formatDay(d);return {key,n:activeDueEntries().filter(x=>dateKey(x.dueAt)===key).length};});
  const trouble=allParticles(state).map(p=>{const h=state.skillHistory.filter(x=>x.mode==='particles'&&x.id===p.id);return {p,n:h.length,bad:h.filter(x=>x.correct===false).length};}).filter(x=>x.bad).sort((a,b)=>b.bad-a.bad).slice(0,6);
  return `${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
  <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${all.length} recorded attempts</p></section>
@@ -866,20 +861,78 @@ document.addEventListener('touchmove',event=>{if(!practiceTouch)return;const t=e
 document.addEventListener('touchend',async event=>{const touch=practiceTouch;practiceTouch=null;if(!touch?.moved)return;ignorePracticeClickUntil=Date.now()+500;const t=event.changedTouches[0],el=document.elementFromPoint(t.clientX,t.clientY)?.closest('[data-practice-slot]');if(el){event.preventDefault();await dropPracticeTile(touch.tile,Number(el.dataset.practiceSlot));}},{passive:false});
 
 function schedulerSettings(){const settings=state.settings,config=settings.retryIntervals||DEFAULT_RETRY;
- return `<section class="panel stack"><h2>Review timing</h2><form id="scheduler-form" class="stack"><label>Scheduling method <select name="scheduler">${options([['score','History score + retry intervals'],['fsrs','FSRS memory model']],settings.scheduler)}</select></label><p class="subtle">Scores: Again 0 · Hard 1 · Good 2 · Easy 3. After the first review, score = 65% latest rating + 35% previous score. Again resets it to 0. Fractional scores use geometric interpolation between adjacent intervals.</p>${config.map((c,i)=>`<div class="retry-row"><label for="retry-${i}">${i} · ${ratingLabels[i+1]}</label><input id="retry-${i}" name="value${i}" type="number" min="0.001" step="any" required value="${c.value}" aria-label="${ratingLabels[i+1]} interval"><select name="unit${i}" aria-label="${ratingLabels[i+1]} unit">${options(Object.keys(UNITS).map(u=>[u,u]),c.unit)}</select></div>`).join('')}<button class="btn btn-primary btn-full" type="submit">Save review timing</button><p class="subtle">Saving recalculates existing due dates from their last review time, including overdue items. FSRS uses its remembered model intervals instead. No review history is erased.</p></form></section>`;
+ return `<section class="panel stack"><h2>Review timing</h2><form id="scheduler-form" class="stack"><label>Scheduling method <select name="scheduler">${options([['score','Gradual score + retry intervals'],['fsrs','FSRS memory model']],settings.scheduler)}</select></label><p class="subtle">New scores start at 0. Success increases the score gradually; closely repeated recalls earn less credit. Again reduces the score by 20%, without resetting it. Fractional scores use geometric interpolation.</p>${config.map((c,i)=>`<div class="retry-row"><label for="retry-${i}">${i} · ${ratingLabels[i+1]}</label><input id="retry-${i}" name="value${i}" type="number" min="0.001" step="any" required value="${c.value}" aria-label="${ratingLabels[i+1]} interval"><select name="unit${i}" aria-label="${ratingLabels[i+1]} unit">${options(Object.keys(UNITS).map(u=>[u,u]),c.unit)}</select></div>`).join('')}<div id="timing-preview">${timingCurve(settings)}</div><h3>Auto Study preferred weights</h3>${Object.entries(MODES).map(([m,n])=>`<label class="retry-row">${n}<input name="share-${m}" type="number" min="1" max="100" step="1" value="${Math.round(settings.autoShares[m]*100)}" aria-label="${n} weight"></label>`).join('')}<p class="subtle">Weights are normalized among enabled modes. Actual practice time can differ when reviews or prerequisites take priority.</p><button class="btn btn-primary btn-full" type="submit">Preview scheduling changes</button></form></section>`;
 }
 async function saveScheduler(form){try{
- const f=new FormData(form),retryIntervals=Array.from({length:4},(_,i)=>({value:Number(f.get('value'+i)),unit:String(f.get('unit'+i))}));retrySeconds(retryIntervals);
- const scheduler=f.get('scheduler')==='fsrs'?'fsrs':'score';
- const done=await change(d=>{d.settings.retryIntervals=retryIntervals;d.settings.scheduler=scheduler;
-  for(const map of [d.schedules,...Object.values(d.skillSchedules)])for(const id of Object.keys(map))map[id]=rescheduleExisting(map[id],d.settings);
- });if(done)toast('Review timing saved; due dates recalculated.');
+ pendingTiming=readTimingForm(form);const impact=timingImpact(state,pendingTiming);
+ modal('Review scheduling changes',`${timingCurve(pendingTiming)}<p><strong>${impact.additional} additional reviews due now.</strong> ${impact.later} currently due reviews move later. Due now: ${impact.before.due} → ${impact.after.due} if existing schedules are recalculated.</p><div class="stack"><button class="btn btn-primary" data-action="apply-timing" data-scope="future">Use for future reviews only</button><button class="btn btn-secondary" data-action="apply-timing" data-scope="existing">Also recalculate existing schedules</button><button class="btn btn-secondary" data-action="close-modal">Cancel</button></div><p class="subtle">No scores or review history are erased. Applying timing starts a new undo boundary.</p>`);
  }catch(e){toast(e.message);}}
 function dueChart(){
- const entries=Object.keys(MODES).flatMap(mode=>Object.values(mode==='words'?state.schedules:state.skillSchedules[mode]).map(s=>({...s,mode})));
+ const entries=activeDueEntries();
  const width=Math.max(280,Math.min(900,$('#main')?.clientWidth||globalThis.innerWidth||360)-64),data=dueHistogram(entries,width),max=Math.max(1,...data.bins.map(b=>b.total));
  const when=s=>s===0?'Now':`${s<0?'−':'+'}${intervalText(Math.abs(s))}`;
  return `<section class="panel stack due-panel"><h2>Overdue → next due</h2><p class="subtle">Scheduled cards by time from now. Bars and interval widths adapt to your data and screen.</p><div class="due-legend">${Object.entries(MODES).map(([m,n])=>`<span><i class="mode-${m}"></i>${n}</span>`).join('')}</div>${data.bins.length?`<div class="due-chart" role="img" aria-label="Review workload histogram"><div class="due-bars">${data.bins.map(b=>`<div class="due-column ${b.end<=0?'overdue':''}" title="${when(b.start)} to ${when(b.end)}: ${b.total} scheduled"><strong>${b.total}</strong><div class="due-stack">${Object.keys(MODES).map(m=>`<div class="mode-${m}" style="height:${150*b.counts[m]/max}px" title="${MODES[m]}: ${b.counts[m]}"></div>`).join('')}</div><small>${when(b.start)}</small></div>`).join('')}</div></div><p class="subtle">${entries.filter(e=>Date.parse(e.dueAt)<=Date.now()).length} overdue · ${entries.length} scheduled · ${intervalText(data.step)} per bar</p><details><summary>View exact bucket counts</summary><div class="stats-table-wrap"><table class="skill-table"><tr><th>Range</th>${Object.values(MODES).map(m=>`<th>${m}</th>`).join('')}</tr>${data.bins.map(b=>`<tr><th>${when(b.start)} to ${when(b.end)}</th>${Object.values(b.counts).map(n=>`<td>${n}</td>`).join('')}</tr>`).join('')}</table></div></details>`:'<p class="subtle">No scheduled reviews yet. New, unstudied cards are excluded from this chart.</p>'}</section>`;
 }
 let resizeTimer;
 window.addEventListener?.('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(page==='stats')render();},160);});
+
+function sessionControls(s){return `<div class="session-controls"><button class="btn btn-secondary" data-action="practice-undo" ${s.undo?.length?'':'disabled'}>Undo last answer</button>${s.current?'<button class="btn btn-secondary" data-action="practice-skip">Skip</button><button class="btn btn-secondary" data-action="practice-postpone">Postpone…</button>':''}<button class="btn btn-secondary" data-action="practice-finish">Finish session</button></div>`;}
+function autoDistribution(s){
+ if(s.mode!=='auto')return '';
+ const sum=Object.values(s.spent).reduce((n,x)=>n+x,0),weights=state.settings.autoShares||SHARES;
+ const total=Object.keys(MODES).reduce((n,m)=>n+(state.settings.autoModes[m]?weights[m]:0),0)||1;
+ const status=availability(state,s);
+ return `<details class="panel auto-distribution"><summary>Auto Study balance · actual vs preferred</summary><p class="subtle">Shares use practice time, not card count. Due/relearning reviews take priority; vocabulary prerequisites can block other modes.</p><table class="skill-table"><tr><th>Mode</th><th>Actual</th><th>Preferred</th><th>Ready now</th></tr>${Object.entries(MODES).map(([m,n])=>`<tr><th>${n}</th><td>${percent(sum?(s.spent[m]||0)/sum:0)}</td><td>${state.settings.autoModes[m]?percent(weights[m]/total):'Off'}</td><td>${status.modes.find(x=>x.mode===m)?.due||0}</td></tr>`).join('')}</table>${status.modes.filter(m=>m.blocked).map(m=>`<p class="subtle">${MODES[m.mode]}: ${m.blocked} waiting on vocabulary or suitable context.</p>`).join('')}</details>`;
+}
+let waitTimer;
+function waitingPractice(s){
+ const a=availability(state,s),seconds=a.nextAt?Math.max(0,(a.nextAt-Date.now())/1000):null;
+ clearTimeout(waitTimer);
+ if(seconds!==null){waitTimer=setTimeout(()=>{if(page==='study'&&state.activePractice?.id===s.id&&!state.activePractice.current)wakePractice();},Math.max(1000,Math.min(60000,seconds*1000+30)));waitTimer.unref?.();}
+ return `<section class="panel stack"><div class="eyebrow">CONTINUOUS STUDY</div><h2>${seconds!==null?'Waiting for the next review':a.blocked?'More vocabulary practice needed':'No eligible exercises remain'}</h2><p>${seconds!==null?`Next eligible time in ${intervalText(seconds)}. This screen checks again automatically; you can finish whenever you like.`:a.blocked?'The enabled modes need more familiar vocabulary or suitable sentence context. Enable vocabulary in Auto Study to build those prerequisites.':'All eligible work is complete or skipped for this session. Skipping records no failure.'}</p><button class="btn btn-primary" data-action="practice-check-ready">Check again</button></section>${sessionControls(s)}${autoDistribution(s)}`;
+}
+async function wakePractice(){
+ if(saving||!state.activePractice||state.activePractice.current)return;
+ const next=nextExercise(state,state.activePractice);
+ if(next)await change(d=>{d.activePractice.current=next;d.activePractice.input={};d.activePractice.itemStartedAt=Date.now();},false);
+ if(page==='study')render();
+}
+async function movePractice(kind,seconds){
+ await drawingSave;if(!state.activePractice?.current)return;
+ const done=await change(d=>{const s=d.activePractice;if(kind==='skip')skipItem(s);else postponeItem(d,s,seconds);s.current=nextExercise(d,s);s.itemStartedAt=Date.now();},false);
+ if(done){if(!state.activePractice.current&&!state.activePractice.continuous)await finishPractice();else render();}
+}
+async function undoPractice(){
+ await drawingSave;if(!state.activePractice?.undo?.length)return;
+ if(await change(d=>{undoAnswer(d,d.activePractice);},false)){page='study';render();toast('Last answer undone, including its schedule and history.');}
+}
+async function undoCompleted(){
+ if(!state.lastPracticeUndo)return;
+ const done=await change(d=>{d.activePractice=d.lastPracticeUndo;d.lastPracticeUndo=null;d.mixedSessions=d.mixedSessions.filter(s=>s.id!==d.activePractice.id);undoAnswer(d,d.activePractice);},false);
+ if(done){lastFinished=null;page='study';render();}
+}
+function timingCurve(settings){
+ const values=retrySeconds(settings.retryIntervals),lo=Math.log(values[0]),span=Math.max(.01,Math.log(values[3])-lo);
+ const points=Array.from({length:61},(_,i)=>`${30+i*5},${155-125*(Math.log(interpolatedSeconds(i/20,settings.retryIntervals))-lo)/span}`).join(' ');
+ return `<svg class="timing-curve" viewBox="0 0 360 190" role="img" aria-label="Score to retry interval, logarithmic time scale"><path d="M30 20V155H330" fill="none" stroke="#a6b9ad"/><polyline points="${points}" fill="none" stroke="#24765d" stroke-width="3"/>${values.map((n,i)=>`<text x="${30+i*100}" y="177" text-anchor="middle">${i}</text><text x="${Math.max(40,Math.min(312,30+i*100))}" y="${Math.max(15,145-125*(Math.log(n)-lo)/span)}" text-anchor="middle">${intervalText(n)}</text>`).join('')}</svg><p class="subtle">Score → retry interval · logarithmic time scale. Rating buttons use the predicted next score, not these anchor values directly.</p>`;
+}
+function readTimingForm(form){
+ const f=new FormData(form),retryIntervals=Array.from({length:4},(_,i)=>({value:Number(f.get('value'+i)),unit:String(f.get('unit'+i))}));retrySeconds(retryIntervals);
+ const autoShares=Object.fromEntries(Object.keys(MODES).map(m=>[m,Number(f.get('share-'+m)??(state.settings.autoShares[m]*100))/100]));
+ if(Object.values(autoShares).some(n=>!Number.isFinite(n)||n<=0||n>1))throw new Error('Auto Study weights must be between 1 and 100. Disable a mode with its checkbox.');
+ return {...state.settings,retryIntervals,autoShares,scheduler:f.get('scheduler')==='fsrs'?'fsrs':'score'};
+}
+function updateTimingPreview(form){const node=$('#timing-preview');if(!node)return;try{const settings=readTimingForm(form),impact=timingImpact(state,settings);node.innerHTML=timingCurve(settings)+`<p><strong>${impact.additional} additional reviews due now</strong>; ${impact.later} currently due reviews move later if applied to existing schedules.</p>`;}catch(e){node.textContent=e.message;}}
+let pendingTiming=null;
+async function applyTiming(scope){if(!pendingTiming||!['future','existing'].includes(scope))return;
+ const settings=pendingTiming;
+ const done=await change(d=>{d.settings={...d.settings,...settings};if(scope==='existing')for(const map of [d.schedules,...Object.values(d.skillSchedules)])for(const id of Object.keys(map))map[id]=rescheduleExisting(map[id],d.settings);d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];},false);
+ if(done){pendingTiming=null;closeModal();render();toast(scope==='existing'?'Timing saved and existing schedules recalculated.':'Timing saved for future reviews; existing due dates unchanged.');}
+}
+
+function dueLabel(schedule,now=Date.now()){if(!schedule)return 'New';const seconds=(Date.parse(schedule.dueAt)-now)/1000;return seconds<=0?'Due now':'In '+intervalText(seconds);}
+
+function activeDueEntries(){
+ const ids={words:state.cards.map(c=>c.id),drawing:state.cards.map(c=>c.id),grammar:state.grammar.map(g=>g.id),particles:allParticles(state).map(p=>p.id)};
+ return Object.keys(MODES).flatMap(mode=>ids[mode].flatMap(id=>{const s=scheduleFor(state,mode,id),postponed=state.postponed?.[`${mode}:${id}`];if(!s&&!postponed)return [];const at=Math.max(s?Date.parse(s.dueAt):0,postponed?Date.parse(postponed):0);return [{mode,dueAt:new Date(at).toISOString()}];}));
+}

@@ -1,14 +1,12 @@
 // App shell is cached for offline study after the first successful online visit.
-const CACHE = 'ciyan-shell-v4';
+const CACHE = 'ciyan-shell-v4.1';
 const ASSETS = ['./','./index.html','./styles.css','./app.js','./study-engine.js','./review-scheduler.js','./particles.js','./tags.js','./drawing.js','./fsrs.js','./storage.js',
-  './cards.js','./grammar.js','./deck-catalog.js','./hsk-tag-map.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png',
+  './cards.js','./grammar.js','./master-data.js','./master.js','./session-controls.js','./hsk-tag-map.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png',
   './icons/apple-touch-icon.png'];
 self.addEventListener('install', event => {
   event.waitUntil((async()=>{
-    const manifest=await fetch('./decks/manifest.json');if(!manifest.ok)throw new Error('Missing deck manifest');
-    const decks=await manifest.json();
     const cache=await caches.open(CACHE);
-    await cache.addAll([...ASSETS,'./decks/manifest.json','./decks/README.md','./decks/ATTRIBUTION.md',...decks.map(d=>'./decks/'+d.id+'.json')]);
+    await cache.addAll(ASSETS);
   })()); // Activate once existing app windows close; avoid mixing JS releases mid-session.
 });
 self.addEventListener('activate', event => {
