@@ -1,3 +1,4 @@
+import {APP_VERSION,prepareVersionedBackup} from './backup-versions.js';
 import {validatedTagWeights} from './tag-weights.js';
 import {allParticles} from './particles.js';
 import {retrySeconds,DEFAULT_RETRY} from './review-scheduler.js';
@@ -28,7 +29,7 @@ function database(){
   return databasePromise;
 }
 export function defaultState(){return ensureStudy({
-  schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
+  appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
   settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
@@ -83,7 +84,7 @@ export function migrateState(input){
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,
-      settings:{...defaultState().settings,...input.settings,tagWeightDefaultsVersion:input.settings?.tagWeightDefaultsVersion}});
+      settings:{...defaultState().settings,...input.settings}});
   }
   const oldCards=Array.isArray(input.cards)?input.cards:[];
   const migratedCards=oldCards.map(c=>normalizeCard(c));
@@ -103,7 +104,8 @@ export function migrateState(input){
 const validDate=value=>Number.isFinite(Date.parse(value||''));
 export function parseBackup(data){
   if(!data||data.format!=='ciyan-backup'||![1,2].includes(data.version)||!data.state)throw new Error('Not a supported Cíyán backup');
-  const source=migrateState(data.state),defaults=defaultState();
+  const checked=prepareVersionedBackup(data);
+  const source=migrateState(checked.state),defaults=defaultState();
   if(!Array.isArray(source.cards)||!Array.isArray(source.history)||!Array.isArray(source.sessions)||!Array.isArray(source.grammar))throw new Error('Backup is missing required data');
   if(source.cards.length>20000||source.grammar.length>20000||source.history.length>500000||source.grammarHistory.length>500000)throw new Error('Backup is too large');
   const ids=new Set(),names=new Set();
@@ -120,7 +122,7 @@ export function parseBackup(data){
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
   const settings={sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
-    tagWeights:validatedTagWeights(s.tagWeights),tagWeightDefaultsVersion:s.tagWeightDefaultsVersion,
+    tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
     continuous:true,retryDefaultsVersion:s.retryDefaultsVersion||'v0.5',autoShares:{...defaults.settings.autoShares,...s.autoShares},scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones};
@@ -130,18 +132,18 @@ export function parseBackup(data){
   const activeGrammarSession=source.activeGrammarSession&&Array.isArray(source.activeGrammarSession.queue)&&Array.isArray(source.activeGrammarSession.results)
     ?{...source.activeGrammarSession,queue:source.activeGrammarSession.queue.filter(id=>grammarIds.has(id)),results:source.activeGrammarSession.results.filter(r=>grammarIds.has(r.grammarId))}:null;
   const revision=Math.max(0,Math.floor(Number(source.revision)||0));
-  return {...defaults,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
+  return {...defaults,appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
     postponed:Object.fromEntries(Object.entries(source.postponed||{}).filter(([k,v])=>!Object.hasOwn(Object.prototype,k)&&validDate(v))),skillSchedules:validateSkillSchedules(source.skillSchedules,ids,grammarIds),skillHistory:(source.skillHistory||[]).filter(h=>h&&[1,2,3,4].includes(h.grade)&&validDate(h.at)).slice(-500000),mixedSessions:(source.mixedSessions||[]).filter(s=>validDate(s.endedAt)).slice(-50000),activePractice:validatePractice(source.activePractice,ids,grammarIds,new Set(allParticles({grammar}).map(p=>p.id))),
     activeSession:activeSession?.queue?.length?activeSession:null,
     activeGrammarSession:activeGrammarSession?.queue?.length?activeGrammarSession:null,
     revision,backedUpRevision:revision,lastBackupAt:new Date().toISOString(),createdAt:source.createdAt||defaults.createdAt};
 }
 export function makeBackup(state){
- const content={...state,backedUpRevision:state.revision,lastBackupAt:new Date().toISOString()};
+ const content={...state,appVersion:APP_VERSION,backedUpRevision:state.revision,lastBackupAt:new Date().toISOString()};
  delete content.filters;delete content.studyFilters;
  if(content.activePractice){content.activePractice={...content.activePractice};delete content.activePractice.filters;delete content.activePractice.allowedWords;}
  if(content.lastPracticeUndo){content.lastPracticeUndo={...content.lastPracticeUndo};delete content.lastPracticeUndo.filters;delete content.lastPracticeUndo.allowedWords;}
- return {format:'ciyan-backup',version:2,exportedAt:new Date().toISOString(),state:content};
+ return {format:'ciyan-backup',version:2,appVersion:APP_VERSION,exportedAt:new Date().toISOString(),state:content};
 }
 export function makeDeck(state){return {format:'ciyan-deck',version:2,records:false,
   cards:state.cards.map(normalizeCardForDeck),grammar:state.grammar.map(g=>({...g}))};}

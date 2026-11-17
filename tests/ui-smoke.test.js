@@ -280,12 +280,12 @@ test('v0.5.1 Settings odds reflect a newly introduced word when returning to Set
  assert.match(mock.shell.innerHTML,/2277 unstudied words/);
 });
 
-test('v0.5.1 migration upgrades unchanged v0.5 retry default without moving existing due dates',async()=>{
+test('v0.5.3 current state does not automatically rewrite old retry settings or review dates',async()=>{
  const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {scheduleReview}=await import('../review-scheduler.js');
  const state=defaultState();state.settings.retryIntervals=[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:2,unit:'days'},{value:2,unit:'weeks'}];state.settings.retryDefaultsVersion='v0.5';
  const card=state.cards[0],schedule=scheduleReview(null,3,Date.now(),state.settings);state.schedules[card.id]=schedule;mock.data.set('main',state);
- await import('../app.js?smoke=migrate051');await delay(25);
- const after=mock.data.get('main');assert.equal(after.settings.retryIntervals[2].value,3);assert.equal(after.settings.retryDefaultsVersion,'v0.5.1');assert.equal(after.schedules[card.id].dueAt,schedule.dueAt);
+ await import('../app.js?smoke=noImplicitMigration053');await delay(25);
+ const after=mock.data.get('main');assert.equal(after.settings.retryIntervals[2].value,2);assert.equal(after.settings.retryDefaultsVersion,'v0.5');assert.equal(after.schedules[card.id].dueAt,schedule.dueAt);
 });
 
 test('v0.5.2 Study landing displays daily-capped vocabulary counts, not the master total',async()=>{
@@ -317,4 +317,32 @@ test('v0.5.2 Settings accepts negative and fractional tag weights and applies od
  const state=mock.data.get('main');assert.equal(state.settings.tagWeights['Food/food'],-1.75);
  assert.equal(state.settings.tagWeights['HSK/HSK1'],.125);
  const {makeBackup}=await import('../storage.js');assert.equal(makeBackup(state).state.settings.tagWeights['Food/food'],-1.75);
+});
+
+test('v0.5.3 starts clean once on upgrade, but preserves new v0.5.3 usage on refresh',async()=>{
+ const mock=mockBrowser();
+ const {defaultState}=await import('../storage.js');
+ const old=defaultState();old.appVersion='0.5.2';old.revision=7;
+ old.settings.tagWeights['HSK/HSK1']=7;old.settings.newWordsPerDay=5;
+ old.history=[{id:'old',cardId:old.cards[0].id,grade:3,at:new Date().toISOString()}];
+ mock.data.set('main',structuredClone(old));
+ await import('../app.js?smoke=firstReset053');await delay(30);
+ const clean=mock.data.get('main');
+ assert.equal(clean.appVersion,'0.5.3');assert.equal(clean.cards.length,2278);
+ assert.equal(clean.grammar.length,1549);assert.equal(clean.history.length,0);
+ assert.equal(Object.keys(clean.schedules).length,0);
+ assert.equal(clean.settings.tagWeights['HSK/HSK1'],0);
+ assert.equal(clean.settings.newWordsPerDay,null);
+ assert.ok(clean.revision>old.revision);
+ // Simulate usage saved by the current release, then a normal page refresh.
+ const current=structuredClone(clean);
+ current.settings.tagWeights['HSK/HSK1']=2.25;
+ current.settings.newWordsPerDay=3;
+ current.history=[{id:'new',cardId:current.cards[0].id,grade:3,at:new Date().toISOString()}];
+ mock.data.set('main',current);
+ await import('../app.js?smoke=sameVersionReload053');await delay(30);
+ const kept=mock.data.get('main');
+ assert.deepEqual(kept.history,current.history);
+ assert.equal(kept.settings.tagWeights['HSK/HSK1'],2.25);
+ assert.equal(kept.settings.newWordsPerDay,3);
 });

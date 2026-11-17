@@ -15,12 +15,7 @@ export function ensureStudy(s){
  s.postponed??={};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
  s.settings.autoShares={...SHARES,...s.settings.autoShares};
- const legacyTagWeights=s.settings.tagWeightDefaultsVersion!=='v0.5.2';
  s.settings.tagWeights=validatedTagWeights(s.settings.tagWeights);
- // v0.5.1 explicitly populated every leaf with 1. Interpret those original
- // defaults as neutral (0), while keeping custom non-default preferences.
- if(legacyTagWeights)for(const tag of Object.keys(s.settings.tagWeights))if(s.settings.tagWeights[tag]===1)s.settings.tagWeights[tag]=0;
- s.settings.tagWeightDefaultsVersion='v0.5.2';
  for(const tag of leafTagPaths(s.cards||[]))if(s.settings.tagWeights[tag]===undefined)s.settings.tagWeights[tag]=0;
  s.settings.autoModes={words:true,grammar:true,drawing:true,particles:true,...s.settings.autoModes};
  // Null means unlimited. Zero is a meaningful limit, unlike a blank field.

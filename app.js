@@ -1,3 +1,4 @@
+import {APP_VERSION} from './backup-versions.js';
 import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './tags.js';
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
 import {contextsForWord} from './grammar-context.js';
@@ -389,7 +390,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.5.2 · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk is reserved at 0% until its future scoring model is designed.</p></div>`;
 }
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
@@ -511,7 +512,7 @@ function backupModal(){pendingBackupRevision=null;
 function downloadFile(file,name){const url=URL.createObjectURL(file),anchor=document.createElement('a');anchor.href=url;anchor.download=name;anchor.style.display='none';
   document.body.appendChild(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
 function backupFile(){const content=JSON.stringify(makeBackup(state),null,2);
-  return new File([content],`ciyan-progress-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
+  return new File([content],`ciyan-progress-v${APP_VERSION}-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
 async function exportBackup(mode){const file=backupFile(),revision=state.revision;
   try{
     if(mode==='share'&&navigator.share&&navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'Cíyán complete backup'});
@@ -533,7 +534,7 @@ function requestFile(kind){const input=document.createElement('input');input.typ
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`REPLACE your entire current database with this backup? It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{migrateRetryDefaults(parsed);ensureStudy(parsed);upgradeScores(parsed);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
+  try{ensureStudy(parsed);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -542,7 +543,7 @@ async function importDeck(content){
  if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);})){invalidateTagOdds();closeModal();toast('Master collection loaded for this visit.');}
 }
 function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
- downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-master-v0.5.2.json');toast('Complete master file prepared');}
+ downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),`ciyan-master-v${APP_VERSION}.json`);toast('Complete master file prepared');}
 function downloadTemplate(){const sample={format:'ciyan-deck',version:2,records:false,
   cards:[{id:'deck-coffee',hanzi:'咖啡',pinyin:'kāfēi',english:'Coffee',tags:['food']}],
   grammar:[{id:'deck-sentence-001',markup:'{我}{想}{喝}{咖啡}。',pinyin:'Wǒ xiǎng hē kāfēi.',english:'I want to drink coffee.',distractors:[{index:2,word:'要'}]}]};
@@ -707,18 +708,19 @@ document.addEventListener('keydown',event=>{
 });
 async function boot(){try{
   const loaded=await loadState();
-  const migratedTagDefaults=!!loaded&&loaded.settings?.tagWeightDefaultsVersion!=='v0.5.2';
-  if(!loaded){state=defaultState();await saveState(state);}
-  else {
+  // v0.5.3 is a clean development baseline. This is a deliberate, one-time
+  // reset when arriving from any earlier local build, NOT a migration of its
+  // scores, weights, retry intervals or review history. Later releases must
+  // preserve state and use explicit versioned backup migrations instead.
+  if(!loaded||loaded.appVersion!==APP_VERSION){
+    state=defaultState();replaceMaster(state,MASTER);
+    if(loaded)state.revision=(Number(loaded.revision)||0)+1;
+    await saveState(state,loaded?.revision??null);
+  }else{
     state=migrateState(loaded);
-    if(loaded.schemaVersion!==state.schemaVersion){await saveState(state);}
   }
   if(!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!Array.isArray(state.history)||!state.schedules)throw new Error('Local data appears invalid. Import a JSON backup to restore it.');
   ensureStudy(state);replaceMaster(state,MASTER);
-  const migration=migrateRetryDefaults(state);const upgraded=upgradeScores(state);
-  const beforeWeightCount=Object.keys(state.settings.tagWeights||{}).length;ensureStudy(state);
-  const weightsChanged=Object.keys(state.settings.tagWeights).length!==beforeWeightCount;
-  if(migration||upgraded||weightsChanged||migratedTagDefaults){const previous=state.revision;state.revision++;await saveState(state,previous);}
   studyMode=state.activeGrammarSession?'grammar':'words';render();
   if(state.activePractice&&!state.activePractice.current)void settlePractice();
   if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
@@ -980,18 +982,4 @@ function dueLabel(schedule,now=Date.now()){if(!schedule)return 'New';const secon
 function activeDueEntries(){
  const ids={words:state.cards.map(c=>c.id),drawing:state.cards.map(c=>c.id),grammar:state.grammar.map(g=>g.id),particles:allParticles(state).map(p=>p.id)};
  return Object.keys(MODES).flatMap(mode=>ids[mode].flatMap(id=>{const s=scheduleFor(state,mode,id),postponed=state.postponed?.[`${mode}:${id}`];if(!s&&!postponed)return [];const at=Math.max(s?Date.parse(s.dueAt):0,postponed?Date.parse(postponed):0);return [{mode,dueAt:new Date(at).toISOString()}];}));
-}
-
-function migrateRetryDefaults(s){
- if(s.settings.retryDefaultsVersion==='v0.5.1')return false;
- if(s.settings.retryDefaultsVersion==='v0.5'){
-  const oldV05=[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:2,unit:'days'},{value:2,unit:'weeks'}];
-  if(JSON.stringify(s.settings.retryIntervals)===JSON.stringify(oldV05))s.settings.retryIntervals=structuredClone(DEFAULT_RETRY);
-  s.settings.retryDefaultsVersion='v0.5.1';return true;
- }
- const old=[{value:1,unit:'minutes'},{value:10,unit:'minutes'},{value:3,unit:'days'},{value:2,unit:'weeks'}];
- const isOld=JSON.stringify(s.settings.retryIntervals)===JSON.stringify(old);
- // Migrate the unmodified v0.4.1 preset; individually configured values remain untouched.
- if(isOld)s.settings.retryIntervals=structuredClone(DEFAULT_RETRY);
- s.settings.retryDefaultsVersion='v0.5.1';return true;
 }

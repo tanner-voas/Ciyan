@@ -37,22 +37,20 @@ test('tag odds are inclusive across multi-tag cards and reflect clamped card wei
  assert.equal(y.odds['HSK/HSK1'],100/4.5);
 });
 
-test('migrate old auto-populated 1 to 0 once, preserve custom values and explicit new-version 1',()=>{
- const legacy=defaultState();delete legacy.settings.tagWeightDefaultsVersion;
- legacy.settings.tagWeights={'HSK/HSK1':1,'Food/china-food':2.5,'Activities/climbing':-1.25};
- const converted=migrateState(legacy);
- assert.equal(converted.settings.tagWeights['HSK/HSK1'],0);
- assert.equal(converted.settings.tagWeights['Food/china-food'],2.5);
- assert.equal(converted.settings.tagWeights['Activities/climbing'],-1.25);
- assert.equal(converted.settings.tagWeightDefaultsVersion,'v0.5.2');
- ensureStudy(converted);assert.equal(converted.settings.tagWeights['HSK/HSK1'],0);
- const restored=parseBackup(makeBackup(converted));
+test('no implicit tag-weight upgrades: saved 1 and other custom values remain unchanged',()=>{
+ const old=defaultState();delete old.settings.tagWeightDefaultsVersion;
+ old.settings.tagWeights={'HSK/HSK1':1,'Food/china-food':2.5,'Activities/climbing':-1.25};
+ const prepared=migrateState(old);
+ assert.equal(prepared.settings.tagWeights['HSK/HSK1'],1);
+ assert.equal(prepared.settings.tagWeights['Food/china-food'],2.5);
+ assert.equal(prepared.settings.tagWeights['Activities/climbing'],-1.25);
+ ensureStudy(prepared);assert.equal(prepared.settings.tagWeights['HSK/HSK1'],1);
+ const restored=parseBackup(makeBackup(prepared));
+ assert.equal(restored.settings.tagWeights['HSK/HSK1'],1);
  assert.equal(restored.settings.tagWeights['Food/china-food'],2.5);
- assert.equal(restored.settings.tagWeights['HSK/HSK1'],0);
- restored.settings.tagWeights['HSK/HSK1']=1;
- ensureStudy(restored);assert.equal(restored.settings.tagWeights['HSK/HSK1'],1);
- const oldBackup=makeBackup(legacy);const migratedBackup=parseBackup(oldBackup);
- assert.equal(migratedBackup.settings.tagWeights['HSK/HSK1'],0);
+ assert.equal(restored.settings.tagWeights['Activities/climbing'],-1.25);
+ const unstamped=makeBackup(old);delete unstamped.appVersion;delete unstamped.state.appVersion;
+ assert.equal(parseBackup(unstamped).settings.tagWeights['HSK/HSK1'],1);
 });
 
 test('all new neutral tag values are added on first population and after master changes',()=>{
