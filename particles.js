@@ -1,5 +1,10 @@
 // Authored contrast tests; never infer a unique grammatical answer from raw text.
 // slot is a zero-based gap in base tokens; multiple accepted pairs are supported.
+import {EXTRA_PARTICLES} from './particle-content.js';
+export const OMIT='∅';
+export const particleLabel=c=>c===OMIT?'No particle':c;
+export const particleWords=p=>[...new Set([...p.base,...p.choices].filter(w=>w!==OMIT))];
+export const particleFamily=p=>p.family||(['次','个','本'].includes(p.focus.split(' · ')[0])?'Classifiers':p.focus.split(' · ')[0]);
 export const PARTICLES=[
  ['le-complete','了 · completed action',['我','昨天','买','一','本','书'],'I bought one book yesterday. Mark the buying event as completed immediately after 买.',['了','的','得'],[['了',3]],'了 after 买 marks the event as completed. It is not a general past-tense suffix.','Wǒ zuótiān mǎi le yì běn shū.'],
  ['le-change','了 · new situation',['现在','不','下雨'],'It is not raining anymore. Add a sentence-final particle to signal the changed situation.',['了','过','的'],[['了',3]],'Sentence-final 了 marks a new situation: it was raining, and now it is not.','Xiànzài bù xiàyǔ le.'],
@@ -13,16 +18,23 @@ export const PARTICLES=[
  ['ci-count','次 · action count',['我','去','过','一'],'I have been once. Finish the expression counting the number of visits.',['次','个','本'],[['次',4]],'次 counts occurrences of an action: 一次 means once. 个 counts entities rather than visits.','Wǒ qù guo yí cì.'],
  ['ge-count','个 · object count',['我','买','了','一','苹果'],'I bought one apple. Supply the ordinary general classifier between 一 and 苹果.',['个','次','本'],[['个',4]],'个 counts apples here; 次 would count times an action occurred.','Wǒ mǎi le yí ge píngguǒ.'],
  ['ben-count','本 · books',['我','有','两','书'],'I have two books. Insert the classifier used for bound books.',['本','个','次'],[['本',3]],'本 is the conventional classifier for books: 两本书.','Wǒ yǒu liǎng běn shū.']
-].map(([id,focus,base,prompt,choices,pairs,explanation,pinyin])=>({id:'particle-'+id,focus,base,prompt,choices,accepted:pairs.map(([choice,slot])=>({choice,slot})),explanation,pinyin}));
+].map(([id,focus,base,prompt,choices,pairs,explanation,pinyin])=>({id:'particle-'+id,focus,base,prompt,choices,accepted:pairs.map(([choice,slot])=>({choice,slot})),explanation,pinyin})).concat(EXTRA_PARTICLES);
 export function normalizeParticle(x){
  if(!x||!Array.isArray(x.base)||!x.base.length||x.base.length>35||!Array.isArray(x.choices)||!x.choices.length||x.choices.length>12||!Array.isArray(x.accepted)||!x.accepted.length)throw new Error('Invalid particle exercise');
  const clean=v=>String(v??'').trim().slice(0,900);
  const base=x.base.map(clean),choices=[...new Set(x.choices.map(clean))];
  if([...base,...choices].some(v=>!v)||!clean(x.prompt)||!clean(x.explanation))throw new Error('Particle exercises need tokens, prompt and explanation');
- const accepted=x.accepted.map(a=>({choice:clean(a.choice),slot:Number(a.slot)}));
- if(accepted.some(a=>!choices.includes(a.choice)||!Number.isInteger(a.slot)||a.slot<0||a.slot>base.length))throw new Error('Invalid particle answer');
- return {id:clean(x.id||crypto.randomUUID()),focus:clean(x.focus||'Particle practice'),base,choices,accepted,prompt:clean(x.prompt),explanation:clean(x.explanation),pinyin:clean(x.pinyin)};
+ const accepted=x.accepted.map(a=>({choice:clean(a.choice),slot:a.choice===OMIT?-1:Number(a.slot)}));
+ if(accepted.some(a=>!choices.includes(a.choice)||!Number.isInteger(a.slot)||(a.choice===OMIT?a.slot!==-1:a.slot<0||a.slot>base.length)))throw new Error('Invalid particle answer');
+ return {id:clean(x.id||crypto.randomUUID()),focus:clean(x.focus||'Particle practice'),family:clean(x.family||''),base,choices,accepted,prompt:clean(x.prompt),explanation:clean(x.explanation),pinyin:clean(x.pinyin)};
 }
-export const particleCorrect=(test,choice,slot)=>test.accepted.some(a=>a.choice===choice&&a.slot===slot);
-export function particleSentence(test,answer=test.accepted[0]){const words=[...test.base];words.splice(answer.slot,0,answer.choice);return words.join('');}
+export const particleCorrect=(test,choice,slot)=>test.accepted.some(a=>a.choice===choice&&(choice===OMIT||a.slot===slot));
+export function particleSentence(test,answer=test.accepted[0]){const words=[...test.base];if(answer.choice!==OMIT)words.splice(answer.slot,0,answer.choice);return words.join('');}
 export function allParticles(state){return [...PARTICLES,...state.grammar.flatMap(g=>(g.particleTests||[]).map((p,i)=>({...p,id:g.id+':particle:'+i})))];}
+
+export function particleError(test,choice,slot){
+ if(particleCorrect(test,choice,slot))return null;
+ if(choice===OMIT)return 'omission';
+ if(test.accepted.every(a=>a.choice===OMIT))return 'unnecessary';
+ return test.accepted.some(a=>a.choice===choice)?'placement':'choice';
+}

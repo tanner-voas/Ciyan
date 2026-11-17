@@ -21,7 +21,7 @@ STATIC_FILES = (
     "tag-weights.js",
     "grammar-context.js",
     "review-scheduler.js",
-    "particles.js",
+    "particles.js", "particle-content.js", "learning-feedback.js",
     "tags.js",
     "drawing.js",
     "fsrs.js",

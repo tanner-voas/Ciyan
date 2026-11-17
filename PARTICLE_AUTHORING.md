@@ -25,12 +25,11 @@ Slots are zero-based gaps: 0 is before the first token; `base.length` is after t
 last. Here slot 3 means after 我, before 书. The inserted choice is not part of
 `base`. The answer Chinese is reconstructed from base plus the accepted insertion.
 Add every valid choice/slot pair for the specified context to `accepted`. If the
-construction allows omission, either explicitly request a marker in the prompt
-or choose another test; the current interface has no omission option. Split tests
+construction allows omission, include `∅` in choices and `{ "choice": "∅", "slot": -1 }` in accepted. The interface labels this “No particle” and does not require a gap. Include all natural answers consistent with the prompt. Split tests
 requiring multiple simultaneous particles into separate exercises with enough
 context. Avoid labeling different meanings as universally ungrammatical.
 
 Include vocabulary cards for surrounding tokens to unlock Auto Study. Manual
-Particle Zoo remains available when vocabulary is unfamiliar. Imported test
+Particle Zoo uses the same minimum-score and average-score prerequisites as Auto Study. Imported test
 schedules use `grammar-id:particle:index`; preserve test array order once records
 exist, or treat reordering as a content change requiring record reset.

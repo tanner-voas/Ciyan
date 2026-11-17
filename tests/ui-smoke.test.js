@@ -117,7 +117,7 @@ test('bundled master is available without importing; filters and focused study w
  const mock=mockBrowser();await import('../app.js?smoke=master041');await delay(25);
  assert.match(mock.shell.innerHTML,/STUDY · YOUR HOME/);assert.doesNotMatch(mock.shell.innerHTML,/Explore optional decks/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),11760);
+ await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),11890);
  assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,80);
  await click('cycle-tag',{kind:'words',tag:'Activities/climbing'});await click('study-filtered');
  const saved=mock.data.get('main');assert.ok(saved.activePractice.allowedWords.every(id=>saved.cards.find(c=>c.id===id).tags.includes('Activities/climbing')));
@@ -154,8 +154,9 @@ test('drawing UI requires score >=2, navigates pads and records independent writ
  await click('draw-page',{pad:'1'});assert.equal(mock.data.get('main').activePractice.input.pad,1);
  await click('draw-page',{pad:'0'});assert.equal(mock.data.get('main').activePractice.input.pad,0);
  await click('practice-reveal');assert.match(mock.shell.innerHTML,/drawing-comparison/);
+ await click('draw-feedback',{index:'0',rating:'forgotten'});assert.equal(mock.data.get('main').activePractice.input.characterRatings[0],'forgotten');
  await click('practice-grade',{grade:'3'});
- const done=mock.data.get('main');assert.equal(done.skillSchedules.drawing[id].reps,1);assert.equal(done.history.length,0);
+ const done=mock.data.get('main');assert.equal(done.skillSchedules.drawing[id].reps,1);assert.deepEqual(done.skillHistory[0].characters,[{character:'随',rating:'forgotten'}]);assert.equal(done.lastPracticeUndo.undo[0].input.pads,undefined);assert.equal(done.history.length,0);
  assert.equal(done.activePractice,null);assert.match(mock.shell.innerHTML,/Protect your progress/);
 });
 
@@ -274,10 +275,10 @@ test('v0.5.1 tag-weight settings apply only on submit, show exact odds, and pers
 test('v0.5.1 Settings odds reflect a newly introduced word when returning to Settings',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=odds051');await delay(25);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('navigate',{page:'settings'});assert.match(mock.shell.innerHTML,/11760 unstudied words/);
+ await click('navigate',{page:'settings'});assert.match(mock.shell.innerHTML,/11890 unstudied words/);
  await click('navigate',{page:'study'});await click('practice-start',{mode:'words'});await click('practice-reveal');await click('practice-grade',{grade:'3'});
  await click('practice-finish');await click('navigate',{page:'settings'});
- assert.match(mock.shell.innerHTML,/11759 unstudied words/);
+ assert.match(mock.shell.innerHTML,/11889 unstudied words/);
 });
 
 test('v0.5.3 current state does not automatically rewrite old retry settings or review dates',async()=>{
@@ -293,9 +294,9 @@ test('v0.5.2 Study landing displays daily-capped vocabulary counts, not the mast
  const s=defaultState();s.settings.newWordsPerDay=5;mock.data.set('main',s);
  await import('../app.js?smoke=counts052');await delay(25);
  assert.match(mock.shell.innerHTML,/<strong>5<\/strong><small>Available to study<\/small>/);
- assert.match(mock.shell.innerHTML,/5 new available of 11760 unstarted matching words/);
+ assert.match(mock.shell.innerHTML,/5 new available of 11890 unstarted matching words/);
  assert.match(mock.shell.innerHTML,/5 new available across enabled modes/);
- assert.doesNotMatch(mock.shell.innerHTML,/>11760<\/strong><small>Available to study/);
+ assert.doesNotMatch(mock.shell.innerHTML,/>11890<\/strong><small>Available to study/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('study-pool',{pool:'due'});
  assert.match(mock.shell.innerHTML,/<strong>0<\/strong><small>Available to study<\/small>/);
@@ -344,7 +345,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.5.5');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.0');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -358,8 +359,8 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.5.5');
- assert.equal(saved.cards.length,11760);assert.equal(saved.grammar.length,1549);
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.0');
+ assert.equal(saved.cards.length,11890);assert.equal(saved.grammar.length,1846);
  assert.equal(saved.history.length,0);
 });
 
@@ -374,4 +375,13 @@ test('v0.5.5 word details show scored synonyms after context and navigate with a
  assert.match(view,/data-action="synonym-detail"/);assert.match(view,/0\.99/);assert.doesNotMatch(view,/shared_sense|evidence|confidence_band/);
  await click('synonym-detail',{id:other.id});view=dialogs.at(-1);assert.match(view,/Back to 番茄/);assert.match(view,/西红柿/);
  await click('synonym-back');view=dialogs.at(-1);assert.match(view,/番茄/);assert.doesNotMatch(view,/data-action="synonym-back"/);
+});
+
+test('v0.6 omission answer checks without choosing a gap and saves error classification',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const s=defaultState();
+ s.activePractice={id:'omit-ui',mode:'particles',continuous:true,pool:'all',startedAt:new Date().toISOString(),itemStartedAt:Date.now(),spent:{},results:[],input:{},skipped:[],deferred:{},turn:0,undo:[],current:{id:'particle-v06-le-havent-eaten',mode:'particles',family:'了'}};mock.data.set('main',s);
+ await import('../app.js?smoke=omit060');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ assert.match(mock.shell.innerHTML,/No particle/);await click('particle-choice',{choice:'∅'});await click('practice-check');assert.equal(mock.data.get('main').activePractice.input.correct,true);
+ await click('practice-grade',{grade:'3'});assert.equal(mock.data.get('main').skillHistory[0].correct,true);assert.equal(mock.data.get('main').skillHistory[0].errorType,null);
 });

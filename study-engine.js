@@ -2,7 +2,8 @@ import {weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.j
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
 import {grammarTokens,wordKnowledge} from './grammar.js';
-import {allParticles} from './particles.js';
+import {allParticles,particleWords,particleFamily} from './particles.js';
+import {familyEvidence,weaknessWeight} from './learning-feedback.js';
 import {matchesTagFilters} from './tags.js';
 export const MODES={words:'Vocabulary',grammar:'Grammar',drawing:'Drawing',particles:'Particle Zoo'};
 export const SHARES={words:.60,grammar:.20,drawing:.12,particles:.08};
@@ -28,7 +29,9 @@ export function netScore(s,wordId){const x=s.schedules[wordId]?.score;return Num
 export function knowledge(s,c,now=Date.now()){return c?wordKnowledge(s.schedules[c.id],retrievability(s.schedules[c.id],now)):0;}
 export function contextFor(s,card,now=Date.now(),index=null,lookup=null){
  const byWord=lookup||new Map(s.cards.map(c=>[c.hanzi,c]));
- return (index?(index.get(card.hanzi)||[]):s.grammar.filter(g=>g.pinyin&&grammarTokens(g).includes(card.hanzi))).map(g=>{
+ const targetChars=new Set([...card.hanzi]);
+ const contexts=(index?(index.get(card.hanzi)||[]):s.grammar.filter(g=>g.pinyin&&grammarTokens(g).includes(card.hanzi))).filter(g=>grammarTokens(g).filter(w=>w!==card.hanzi).every(w=>![...w].some(ch=>targetChars.has(ch))));
+ return contexts.map(g=>{
   const other=[...new Set(grammarTokens(g).filter(w=>w!==card.hanzi))];
   const familiarity=other.length?other.reduce((n,w)=>n+knowledge(s,byWord.get(w),now),0)/other.length:1;
   return {grammar:g,familiarity};
@@ -72,19 +75,20 @@ function info(s,mode,now,filters){
   });
  }
  if(mode==='grammar')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
- if(mode==='particles')return allParticles(s).filter(p=>acceptsGroup([...p.base,...p.choices])).map(p=>({id:p.id,wordIds:[...new Set([...p.base,...p.choices])].map(w=>toCard(w)?.id).filter(Boolean)}));
+ if(mode==='particles')return allParticles(s).filter(p=>acceptsGroup(particleWords(p))).map(p=>({id:p.id,family:particleFamily(p),wordIds:[...new Set(particleWords(p))].map(w=>toCard(w)?.id).filter(Boolean)}));
  return [];
 }
 export function candidates(s,mode,_auto=false,now=Date.now(),includeFuture=false,filters=null){
  const newWeightLeaves=mode==='words'?new Set(leafTagPaths(s.cards)):null;
  const wordMap=mode==='words'?new Map(s.cards.map(c=>[c.id,c])):null;
+ const evidence=mode==='particles'?familyEvidence(s):null;
  return info(s,mode,now,filters).flatMap(item=>{
   const sched=scheduleFor(s,mode,item.id);
   if(!includeFuture&&sched&&Date.parse(sched.dueAt)>now)return [];
   const interval=Math.max(1,(sched?.intervalMinutes||1)*60000);
   const elapsed=sched?Math.max(0,now-Date.parse(sched.lastReviewedAt)):0;
   const weight=sched?Math.max(.000001,elapsed/interval):mode==='words'?weightForNewCard(wordMap.get(item.id),s.settings.tagWeights,newWeightLeaves):1;
-  return [{...item,mode,urgency:weight,reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
+  return [{...item,mode,urgency:weight*(evidence?weaknessWeight(evidence.get(item.family)):1),reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
  });
 }
 export function availableModes(s,session){return Object.keys(MODES).filter(m=>session?.mode==='auto'?s.settings.autoModes[m]:m===(session?.mode||'words'));}
@@ -150,7 +154,7 @@ export function recordExercise(s,session,grade,details={},now=Date.now()){
  const seconds=Math.max(2,Math.min(180,Number(details.seconds)||COSTS[e.mode]));
  const record={...e,...details,grade,score:after.score,at:new Date(now).toISOString(),seconds,nextDueAt:after.dueAt};
  if(e.mode==='words')s.history.push({...record,id:crypto.randomUUID(),cardId:e.id,first:!previous});
- else if(e.mode==='grammar')s.grammarHistory.push({...record,id:crypto.randomUUID(),grammarId:e.id,correct:grade>=3});
+ else if(e.mode==='grammar')s.grammarHistory.push({...record,id:crypto.randomUUID(),grammarId:e.id,correct:typeof details.correct==='boolean'?details.correct:grade>=3});
  else s.skillHistory.push(record);
  s.settings.modeSeconds??={};s.settings.modeSeconds[e.mode]=.8*(s.settings.modeSeconds[e.mode]||COSTS[e.mode])+.2*seconds;
  session.spent[e.mode]=(session.spent[e.mode]||0)+seconds;

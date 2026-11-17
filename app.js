@@ -3,7 +3,8 @@ import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './ta
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
 import {contextsForWord} from './grammar-context.js';
 import {MODES,SHARES,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary,contextFor,modeCounts,availableModes,newVocabToday,newVocabRemaining,sessionAvailability,POOLS} from './study-engine.js';
-import {allParticles,particleCorrect,particleSentence} from './particles.js';
+import {allParticles,particleCorrect,particleSentence,particleError,particleLabel,OMIT} from './particles.js';
+import {characterEvidence,familyEvidence} from './learning-feedback.js';
 import {drawPad,attachPad} from './drawing.js';
 import {MASTER} from './master-data.js';
 import {replaceMaster} from './master.js';
@@ -61,7 +62,7 @@ const backupNeeded=()=>state.revision>state.backedUpRevision;
 const countReadyGrammar=()=>modeCounts(state,'grammar').available;
 const recall=s=>s?(retrievability(s)??0):0;
 const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.id]));
-const scoreGrammar=g=>grammarScores(g,state.cards,state.schedules,recall);
+const scoreGrammar=g=>grammarScores(g,state.cards,state.schedules,recall,state.grammarHistory);
 const tagsFor=kind=>tagNodes((kind==='words'?state.cards.map(c=>c.tags):state.grammar.map(g=>grammarTags(g,state.cards))).flat()).map(n=>n.path);
 const expandedTags={words:new Set(),grammar:new Set(),study:new Set()};
 const studyFilters={tags:{},search:''};let selectedPool='all',studyComposing=false;
@@ -293,7 +294,7 @@ function renderCollection(kind){
        `<div class="filter-line"><span>Last rating</span>
        <select aria-label="Rating comparison" data-filter="op" data-kind="words">${compareOptions(f.op)}</select>
        <select aria-label="Rating filter" data-filter="rating" data-kind="words">${options([['any','Any'],...ratingLabels.map((r,i)=>[i,r])],f.rating)}</select></div>`}</div>
-    ${grammar?`<p class="subtle">Knowledge is estimated from the sentence's vocabulary. Usage risk is 0% for now; grammar mistakes are recorded for future scoring. Combined ranking = knowledge × (1 − usage risk).</p>`:
+    ${grammar?`<p class="subtle">Knowledge is estimated from the sentence's vocabulary. Usage risk is the error rate over the last 20 checked attempts at this sentence. No attempts means no evidence; this is not a measure of overall Mandarin proficiency. Combined ranking = knowledge × (1 − usage risk).</p>`:
        `<p class="subtle">Again, Hard, Good, and Easy are review ratings, not linear learning stages. Filtering compares each word's <strong>most recent rating</strong>; Unseen is 0.</p>`}
     <div class="row" style="margin:15px 0 12px"><div id="browse-count" class="filter-count"></div>
       <button class="text-link" data-action="new-entry" data-kind="${kind}">${icon('plus')} Add ${grammar?'sentence':'word'}</button></div>
@@ -376,7 +377,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
-   <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences load automatically.</p><p class="subtle">Edits apply for this visit. Export one master file to keep changes, then load that file again after refreshing. Learning records save automatically and remain separate from the master content.</p></div>
+   <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences load automatically. This preview still has gaps in per-word example coverage.</p><p class="subtle">Edits apply for this visit. Export one master file to keep changes, then load that file again after refreshing. Learning records save automatically and remain separate from the master content.</p></div>
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
      <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Export full progress backup</button>
@@ -391,7 +392,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
    <div class="panel"><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
-     <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk is reserved at 0% until its future scoring model is designed.</p></div>`;
+     <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
 }
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
   app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();mountDrawing();}
@@ -444,7 +445,7 @@ function grammarDetails(id){const g=grammarById(id);if(!g)return;const scores=sc
     <div class="review-pinyin">${esc(g.pinyin)}</div><strong>${esc(g.english)}</strong></div>
     <div class="tags-wrap" style="margin:16px 0">${tags.map(tagHtml).join('')||'<span class="subtle">No inherited tags (add matching word cards)</span>'}</div>
     <div class="detail-stats"><div><strong>${percent(scores.knowledge)}</strong><span>Knowledge</span></div>
-      <div><strong>${percent(scores.usage)}</strong><span>Usage risk</span></div>
+      <div><strong>${scores.usageAttempts?percent(scores.usage):"—"}</strong><span>Usage risk · ${scores.usageAttempts} checked</span></div>
       <div><strong>${percent(scores.combined)}</strong><span>Combined</span></div>
       <div><strong>${history.length?`${correct}/${history.length}`:'0'}</strong><span>Grammar correct</span></div></div>
     <div class="panel stack" style="margin-bottom:15px"><strong>${modeCounts(state,'grammar').eligible.some(item=>item.id===id)?'Ready for grammar study':'Not yet unlocked'}</strong>
@@ -782,18 +783,18 @@ function practiceRender(){
  if(e.mode==='drawing'){
   const c=wordById(e.id),chars=[...c.hanzi],index=input.pad||0,g=grammarById(e.contextId);
   body=`<section class="panel stack drawing-prompt"><h2>${esc(c.pinyin)}</h2><strong>${esc(c.english)}</strong><span class="tag">${chars.length} character${chars.length===1?'':'s'}</span>${g?`<div class="drawing-context"><div class="eyebrow">WORD IN CONTEXT</div><p>${highlightPinyin(g.pinyin,c.pinyin)}</p><p>${esc(g.english)}</p><small>Target: ${esc(c.pinyin)} — ${esc(c.english)}</small></div>`:'<p class="subtle">No loaded example for this word. Word-only writing practice.</p>'}</section>`;
-  body+=input.revealed?`<div class="drawing-comparison">${chars.map((ch,i)=>`<div class="draw-pair"><canvas width="240" height="240" data-drawing-preview="${i}" aria-label="Your drawing ${i+1}"></canvas><span class="printed-character">${esc(ch)}</span><small>Character ${i+1}</small></div>`).join('')}</div><p class="subtle">Compare each drawing with the character beside it. You judge accuracy; there is no handwriting recognition.</p>${practiceRatings(e.mode,e.id)}`:
+  body+=input.revealed?`<div class="drawing-comparison">${chars.map((ch,i)=>`<div class="draw-pair"><canvas width="240" height="240" data-drawing-preview="${i}" aria-label="Your drawing ${i+1}"></canvas><span class="printed-character">${esc(ch)}</span><small>Character ${i+1}</small><div class="character-feedback" role="group" aria-label="Feedback for character ${i+1}">${['recalled','difficult','forgotten'].map(v=>`<button class="btn btn-secondary ${input.characterRatings?.[i]===v?'selected':''}" data-action="draw-feedback" data-index="${i}" data-rating="${v}" aria-pressed="${input.characterRatings?.[i]===v}">${{recalled:'Recalled',difficult:'Difficult',forgotten:'Forgotten'}[v]}</button>`).join('')}</div></div>`).join('')}</div><p class="subtle">Compare each drawing with the character beside it. You judge accuracy. Optionally mark individual characters, then grade the whole word below. Only these ratings are kept, never the sketches.</p>${practiceRatings(e.mode,e.id)}`:
   `<div class="drawing-nav"><button class="btn btn-secondary" data-action="draw-page" data-pad="${index-1}" ${index===0?'disabled':''} aria-label="Previous character">←</button><strong>Character ${index+1} of ${chars.length}</strong><button class="btn btn-secondary" data-action="draw-page" data-pad="${index+1}" ${index===chars.length-1?'disabled':''} aria-label="Next character">→</button></div><canvas id="drawing-pad" width="600" height="600" aria-label="Draw character ${index+1}"></canvas><div class="drawing-nav"><button class="btn btn-secondary" data-action="draw-undo">Undo stroke</button><button class="btn btn-secondary" data-action="draw-clear">Clear this character</button></div><button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal characters</button>`;
  }
  if(e.mode==='grammar'){
   const g=grammarById(e.id),bank=shuffledBank(g,s),picks=input.picks||[],tokens=parseSegments(g.markup).filter(t=>t.type==='token');
   body=`<section class="panel stack"><h2>${esc(g.english)}</h2><p class="subtle">Tap words in order or drag them to a slot. Tap a selected word to remove it.</p><div class="grammar-sentence">${parseSegments(g.markup).map(seg=>seg.type==='fixed'?`<span>${esc(seg.text)}</span>`:`<button class="sentence-slot ${picks[seg.index]?'filled':''}" data-action="practice-remove" data-index="${seg.index}" data-practice-slot="${seg.index}" data-practice-tile="${esc(picks[seg.index]||'')}" draggable="${!input.revealed&&!!picks[seg.index]}" ${input.revealed?'disabled':''}>${esc(bank.find(t=>t.id===picks[seg.index])?.word||String(seg.index+1))}</button>`).join('')}</div><div class="grammar-bank">${bank.map(t=>`<button class="bank-tile" data-action="practice-pick" data-tile="${esc(t.id)}" data-practice-tile="${esc(t.id)}" draggable="${!input.revealed&&!picks.includes(t.id)}" ${picks.includes(t.id)||input.revealed?'disabled':''}>${esc(t.word)}</button>`).join('')}</div></section>`;
-  body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct target order':'Compare with the target'}</strong><p>${esc(plainSentence(g.markup))}</p><p>${esc(g.pinyin)}</p><small>Other natural orders may exist. This exercise checks the authored target; choose a rating after comparing.</small></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${picks.filter(Boolean).length!==tokens.length?'disabled':''}>Check sentence</button>`;
+  body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct target order':'Compare with the target'}</strong><p>${esc(plainSentence(g.markup))}</p><p>${esc(g.pinyin)}</p><small>Explicitly accepted orders are checked. Other natural orders may still exist; a mismatch does not prove that your sentence is ungrammatical.</small></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${picks.filter(Boolean).length!==tokens.length?'disabled':''}>Check sentence</button>`;
  }
  if(e.mode==='particles'){
   const p=allParticles(state).find(p=>p.id===e.id);
-  body=`<section class="panel stack"><h2>${esc(p.focus)}</h2><p>${esc(p.prompt)}</p><div class="eyebrow">1. CHOOSE THE PARTICLE OR CLASSIFIER</div><div class="grammar-bank">${p.choices.map(c=>`<button class="bank-tile ${input.choice===c?'chosen':''}" data-action="particle-choice" data-choice="${esc(c)}" ${input.revealed?'disabled':''}>${esc(c)}</button>`).join('')}</div><div class="eyebrow">2. TAP ITS GAP IN THE SENTENCE</div><div class="particle-line">${Array.from({length:p.base.length+1},(_,i)=>`<button class="gap ${input.slot===i?'chosen':''}" data-action="particle-slot" data-slot="${i}" aria-label="Gap ${i+1}" ${input.revealed?'disabled':''}>${input.slot===i?esc(input.choice||'?'):'＋'}</button>${i<p.base.length?`<span>${esc(p.base[i])}</span>`:''}`).join('')}</div></section>`;
-  body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct':'One to revisit'}</strong><p>${esc(particleSentence(p))}</p><p>${esc(p.pinyin)}</p><p>${esc(p.explanation)}</p></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${!input.choice||!Number.isInteger(input.slot)?'disabled':''}>Check particle and placement</button>`;
+  body=`<section class="panel stack"><h2>${esc(p.focus)}</h2><p>${esc(p.prompt)}</p><div class="eyebrow">1. CHOOSE THE PARTICLE OR CLASSIFIER</div><div class="grammar-bank">${p.choices.map(c=>`<button class="bank-tile ${input.choice===c?'chosen':''}" data-action="particle-choice" data-choice="${esc(c)}" ${input.revealed?'disabled':''}>${esc(particleLabel(c))}</button>`).join('')}</div><div class="eyebrow">2. TAP ITS GAP (NOT NEEDED FOR NO PARTICLE)</div><div class="particle-line">${Array.from({length:p.base.length+1},(_,i)=>`<button class="gap ${input.slot===i?'chosen':''}" data-action="particle-slot" data-slot="${i}" aria-label="Gap ${i+1}" ${input.revealed?'disabled':''}>${input.slot===i?esc(input.choice||'?'):'＋'}</button>${i<p.base.length?`<span>${esc(p.base[i])}</span>`:''}`).join('')}</div></section>`;
+  body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct':'One to revisit'}</strong>${input.errorType?`<p>Error: ${esc({omission:'a required marker was omitted',unnecessary:'no particle was needed',placement:'right marker, wrong position',choice:'different marker needed'}[input.errorType])}</p>`:''}<p>${esc(particleSentence(p,input.correct?{choice:input.choice,slot:input.slot}:undefined))}</p><p>${esc(input.correct&&input.choice===OMIT&&p.accepted[0].choice!==OMIT?p.pinyin.replace(/ de /,' '):p.pinyin)}</p><p>${esc(p.explanation)}</p></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${!input.choice||(input.choice!==OMIT&&!Number.isInteger(input.slot))?'disabled':''}>Check particle and placement</button>`;
  }
  return top+`<div class="study-live-counts">${sessionCounts(s)}</div>`+body+sessionControls(s)+autoDistribution(s)+'<p class="study-captions">Answers save automatically. Export your progress after studying.</p>';
 }
@@ -825,7 +826,7 @@ async function gradePractice(grade){
  const done=await change(d=>{
   const a=d.activePractice;rememberAnswer(d,a);
   const tone=e.mode==='words'?wordToneCheck(wordById(e.id)):null;
-  recordExercise(d,a,grade,{toneResult:tone?{expected:tone.expected,selected:tone.chosen,correct:tone.wrong.length===0}:null,seconds:(Date.now()-a.itemStartedAt)/1000,choice:input.choice,slot:input.slot,correct:input.correct,mistakes:input.mistakes,selectedTiles:input.picks});
+  recordExercise(d,a,grade,{toneResult:tone?{expected:tone.expected,selected:tone.chosen,correct:tone.wrong.length===0}:null,seconds:(Date.now()-a.itemStartedAt)/1000,choice:input.choice,slot:input.slot,correct:input.correct,mistakes:input.mistakes,selectedTiles:input.picks,errorType:input.errorType,characters:e.mode==='drawing'?[...wordById(e.id).hanzi].flatMap((character,index)=>input.characterRatings?.[index]?[{character,rating:input.characterRatings[index]}]:[]):undefined});
   a.current=nextExercise(d,a);
   a.itemStartedAt=Date.now();
  },false);
@@ -850,16 +851,17 @@ async function practiceAction(action,el){
  const s=state.activePractice,e=s.current;
  if(!e)return false;
  if(['practice-reveal','reveal'].includes(action)){await practiceInput(i=>{i.revealed=true;});render();return true;}
+ if(action==='draw-feedback'&&e.mode==='drawing'&&s.input.revealed){const n=Number(el.dataset.index),v=el.dataset.rating;if(Number.isInteger(n)&&n>=0&&n<[...wordById(e.id).hanzi].length&&['recalled','difficult','forgotten'].includes(v)){await practiceInput(i=>{i.characterRatings??={};if(i.characterRatings[n]===v)delete i.characterRatings[n];else i.characterRatings[n]=v;});render();}return true;}
  if(s.input.revealed)return false;
  if(action==='draw-page'){const n=Number(el.dataset.pad);if(n>=0&&n<[...wordById(e.id).hanzi].length)await practiceInput(i=>{i.pad=n;});}
  else if(action==='draw-undo'||action==='draw-clear')await practiceInput(i=>{i.pads??=[];const n=i.pad||0;i.pads[n]??=[];if(action==='draw-clear')i.pads[n]=[];else i.pads[n].pop();});
  else if(action==='practice-pick')await practiceInput(i=>{i.picks??=[];const count=parseSegments(grammarById(e.id).markup).filter(x=>x.type==='token').length;const n=Array.from({length:count},(_,n)=>n).find(n=>!i.picks[n]);if(n!==undefined&&!i.picks.includes(el.dataset.tile))i.picks[n]=el.dataset.tile;});
  else if(action==='practice-remove')await practiceInput(i=>{if(i.picks)i.picks[Number(el.dataset.index)]=null;});
- else if(action==='particle-choice')await practiceInput(i=>{i.choice=el.dataset.choice;});
+ else if(action==='particle-choice')await practiceInput(i=>{i.choice=el.dataset.choice;if(i.choice===OMIT)i.slot=-1;else if(i.slot===-1)i.slot=null;});
  else if(action==='particle-slot')await practiceInput(i=>{i.slot=Number(el.dataset.slot);});
  else if(action==='practice-check')await practiceInput(i=>{
   if(e.mode==='grammar'){const g=grammarById(e.id);if((i.picks||[]).filter(Boolean).length!==parseSegments(g.markup).filter(x=>x.type==='token').length)return;i.mistakes=grammarMistakes(g,i.picks);i.correct=i.mistakes.length===0;}
-  else{const p=allParticles(state).find(x=>x.id===e.id);if(!p.choices.includes(i.choice)||!Number.isInteger(i.slot))return;i.correct=particleCorrect(p,i.choice,i.slot);}
+  else{const p=allParticles(state).find(x=>x.id===e.id);if(!p.choices.includes(i.choice)||(i.choice!==OMIT&&!Number.isInteger(i.slot)))return;i.correct=particleCorrect(p,i.choice,i.slot);i.errorType=particleError(p,i.choice,i.slot);}
   i.revealed=true;
  });else return false;
  render();return true;
@@ -870,7 +872,7 @@ function extendedStats(){
  const max=Math.max(1,...days.map(d=>d.count));
  const forecasts=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()+i);const key=formatDay(d);return {key,n:activeDueEntries().filter(x=>dateKey(x.dueAt)===key).length};});
  const trouble=allParticles(state).map(p=>{const h=state.skillHistory.filter(x=>x.mode==='particles'&&x.id===p.id);return {p,n:h.length,bad:h.filter(x=>x.correct===false).length};}).filter(x=>x.bad).sort((a,b)=>b.bad-a.bad).slice(0,6);
- return `${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
+ return `${feedbackStats()}${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
  <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${all.length} recorded attempts</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Next seven days</h2><div class="forecast">${forecasts.map(d=>`<div><small>${d.key.slice(5)}</small><strong>${d.n}</strong></div>`).join('')}</div><p class="subtle">Scheduled reviews only, excluding new items and overdue backlog. Dates will change as you study.</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="row"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect / ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
@@ -999,4 +1001,9 @@ function dueLabel(schedule,now=Date.now()){if(!schedule)return 'New';const secon
 function activeDueEntries(){
  const ids={words:state.cards.map(c=>c.id),drawing:state.cards.map(c=>c.id),grammar:state.grammar.map(g=>g.id),particles:allParticles(state).map(p=>p.id)};
  return Object.keys(MODES).flatMap(mode=>ids[mode].flatMap(id=>{const s=scheduleFor(state,mode,id),postponed=state.postponed?.[`${mode}:${id}`];if(!s&&!postponed)return [];const at=Math.max(s?Date.parse(s.dueAt):0,postponed?Date.parse(postponed):0);return [{mode,dueAt:new Date(at).toISOString()}];}));
+}
+
+function feedbackStats(){
+ const chars=characterEvidence(state).slice(0,20),families=[...familyEvidence(state)].sort((a,b)=>b[1].errors-a[1].errors);
+ return `<section class="panel stack"><h2>Character recall</h2><p class="subtle">Optional self-reports across vocabulary words. Unrated characters are not counted. No drawings are retained.</p>${chars.length?chars.map(x=>`<div class="row"><strong>${esc(x.character)}</strong><span>${x.difficult} difficult · ${x.forgotten} forgotten / ${x.total} rated · ${x.words} words</span></div>`).join(''):'<p>No character feedback yet. Mark characters after revealing a drawing.</p>'}</section><section class="panel stack"><h2>Grammar families</h2><p class="subtle">Last 20 checked Particle Zoo answers per family. Errors modestly increase selection weight among eligible exercises; due cards still come first.</p>${families.length?families.map(([name,x])=>`<div class="row"><strong>${esc(name)}</strong><span>${x.errors} errors / ${x.total} checked · ${Object.entries(x.types).map(([k,n])=>esc(k)+': '+n).join(' · ')}</span></div>`).join(''):'<p>Complete Particle Zoo exercises to see family feedback.</p>'}</section>`;
 }

@@ -1,0 +1,1517 @@
+[
+  {
+    "id": "particle-v06-le-finished-meal",
+    "family": "了",
+    "focus": "了 · I ate",
+    "base": [
+      "我",
+      "吃",
+      "饭"
+    ],
+    "prompt": "I ate. Mark the eating event as completed, immediately after 吃.",
+    "choices": [
+      "了",
+      "过",
+      "着"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 2
+      }
+    ],
+    "explanation": "了 marks completion here; 过 would describe experience and 着 an ongoing state.",
+    "pinyin": "Wǒ chī le fàn."
+  },
+  {
+    "id": "particle-v06-le-buy-ticket",
+    "family": "了",
+    "focus": "了 · She bought three tickets",
+    "base": [
+      "她",
+      "买",
+      "三",
+      "张",
+      "票"
+    ],
+    "prompt": "She bought three tickets. Mark the completed purchase directly after 买.",
+    "choices": [
+      "了",
+      "着",
+      "的"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 2
+      }
+    ],
+    "explanation": "了 follows 买 and precedes the quantity phrase 三张票.",
+    "pinyin": "Tā mǎi le sān zhāng piào."
+  },
+  {
+    "id": "particle-v06-le-change-weather",
+    "family": "了",
+    "focus": "了 · It has become cold now",
+    "base": [
+      "天",
+      "冷"
+    ],
+    "prompt": "It has become cold now. Add the sentence-final change-of-state marker.",
+    "choices": [
+      "了",
+      "过",
+      "着"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 2
+      }
+    ],
+    "explanation": "冷了 reports a new condition, not a completed action.",
+    "pinyin": "Tiān lěng le."
+  },
+  {
+    "id": "particle-v06-le-change-age",
+    "family": "了",
+    "focus": "了 · The child is three now",
+    "base": [
+      "孩子",
+      "三",
+      "岁"
+    ],
+    "prompt": "The child is three now. Mark the new situation at the end.",
+    "choices": [
+      "了",
+      "过",
+      "的"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 3
+      }
+    ],
+    "explanation": "Sentence-final 了 marks reaching a new age.",
+    "pinyin": "Háizi sān suì le."
+  },
+  {
+    "id": "particle-v06-le-no-longer",
+    "family": "了",
+    "focus": "了 · I no longer drink coffee",
+    "base": [
+      "我",
+      "不",
+      "喝",
+      "咖啡"
+    ],
+    "prompt": "I no longer drink coffee. Mark the change at the end.",
+    "choices": [
+      "了",
+      "过",
+      "着"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 4
+      }
+    ],
+    "explanation": "不了 here means the habit has changed; 不 does not prohibit change-of-state 了.",
+    "pinyin": "Wǒ bù hē kāfēi le."
+  },
+  {
+    "id": "particle-v06-le-about-to",
+    "family": "了",
+    "focus": "了 · The train is about to arrive",
+    "base": [
+      "火车",
+      "快",
+      "到"
+    ],
+    "prompt": "The train is about to arrive. Complete 快…了.",
+    "choices": [
+      "了",
+      "过",
+      "着"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 3
+      }
+    ],
+    "explanation": "快…了 describes an approaching event, showing that 了 is not simply past tense.",
+    "pinyin": "Huǒchē kuài dào le."
+  },
+  {
+    "id": "particle-v06-le-havent-eaten",
+    "family": "了",
+    "focus": "了 · I did not eat breakfast yesterday",
+    "base": [
+      "我",
+      "昨天",
+      "没",
+      "吃",
+      "早饭"
+    ],
+    "prompt": "I did not eat breakfast yesterday. Keep a neutral report of the uncompleted event; add nothing if needed.",
+    "choices": [
+      "了",
+      "着",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "没 negates the occurrence of eating. Do not insert perfective 了 in this neutral negative report.",
+    "pinyin": "Wǒ zuótiān méi chī zǎofàn."
+  },
+  {
+    "id": "particle-v06-le-habit",
+    "family": "了",
+    "focus": "了 · I drink tea every day",
+    "base": [
+      "我",
+      "每天",
+      "喝",
+      "茶"
+    ],
+    "prompt": "I drink tea every day. State only the unchanged habit, without adding experience or a new situation.",
+    "choices": [
+      "了",
+      "过",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "An ordinary unchanged habit needs no aspect particle here. Added 了 would change the intended meaning.",
+    "pinyin": "Wǒ měitiān hē chá."
+  },
+  {
+    "id": "particle-v06-le-future",
+    "family": "了",
+    "focus": "了 · I am going to Beijing tomorrow",
+    "base": [
+      "我",
+      "明天",
+      "去",
+      "北京"
+    ],
+    "prompt": "I am going to Beijing tomorrow. Give only this plain future statement, without a change-of-plan nuance.",
+    "choices": [
+      "过",
+      "着",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "A time expression can locate an event in the future without an aspect particle.",
+    "pinyin": "Wǒ míngtiān qù Běijīng."
+  },
+  {
+    "id": "particle-v06-guo-negative",
+    "family": "过",
+    "focus": "过 · I have never been to Shanghai",
+    "base": [
+      "我",
+      "没",
+      "去",
+      "上海"
+    ],
+    "prompt": "I have never been to Shanghai. Mark experience directly after 去.",
+    "choices": [
+      "过",
+      "了",
+      "着"
+    ],
+    "accepted": [
+      {
+        "choice": "过",
+        "slot": 3
+      }
+    ],
+    "explanation": "没去过 denies past experience. Unlike perfective 了, 过 is retained after 没.",
+    "pinyin": "Wǒ méi qù guo Shànghǎi."
+  },
+  {
+    "id": "particle-v06-guo-food",
+    "family": "过",
+    "focus": "过 · Have you ever eaten hotpot? Mark experience directly after 吃",
+    "base": [
+      "你",
+      "吃",
+      "火锅",
+      "吗"
+    ],
+    "prompt": "Have you ever eaten hotpot? Mark experience directly after 吃.",
+    "choices": [
+      "过",
+      "着",
+      "的"
+    ],
+    "accepted": [
+      {
+        "choice": "过",
+        "slot": 2
+      }
+    ],
+    "explanation": "吃过 asks about prior experience, rather than an ongoing meal.",
+    "pinyin": "Nǐ chī guo huǒguō ma?"
+  },
+  {
+    "id": "particle-v06-guo-book",
+    "family": "过",
+    "focus": "过 · I have read this book before",
+    "base": [
+      "我",
+      "看",
+      "这",
+      "本",
+      "书"
+    ],
+    "prompt": "I have read this book before. Insert the experiential marker after 看.",
+    "choices": [
+      "过",
+      "着",
+      "得"
+    ],
+    "accepted": [
+      {
+        "choice": "过",
+        "slot": 2
+      }
+    ],
+    "explanation": "看过 describes having the experience of reading this book.",
+    "pinyin": "Wǒ kàn guo zhè běn shū."
+  },
+  {
+    "id": "particle-v06-zhe-open",
+    "family": "着",
+    "focus": "着 · The door is standing open",
+    "base": [
+      "门",
+      "开"
+    ],
+    "prompt": "The door is standing open. Add the marker of the maintained state after 开.",
+    "choices": [
+      "着",
+      "过",
+      "了"
+    ],
+    "accepted": [
+      {
+        "choice": "着",
+        "slot": 2
+      }
+    ],
+    "explanation": "开着 describes the door remaining open. 开了 instead can report its opening or a new state.",
+    "pinyin": "Mén kāi zhe."
+  },
+  {
+    "id": "particle-v06-zhe-wear",
+    "family": "着",
+    "focus": "着 · He is wearing a coat",
+    "base": [
+      "他",
+      "穿",
+      "一",
+      "件",
+      "外套"
+    ],
+    "prompt": "He is wearing a coat. Mark the maintained state immediately after 穿.",
+    "choices": [
+      "着",
+      "过",
+      "了"
+    ],
+    "accepted": [
+      {
+        "choice": "着",
+        "slot": 2
+      }
+    ],
+    "explanation": "穿着 describes wearing; 穿了 can describe putting the coat on.",
+    "pinyin": "Tā chuān zhe yí jiàn wàitào."
+  },
+  {
+    "id": "particle-v06-zhe-hold",
+    "family": "着",
+    "focus": "着 · She is holding a book",
+    "base": [
+      "她",
+      "拿",
+      "一",
+      "本",
+      "书"
+    ],
+    "prompt": "She is holding a book. Mark the maintained state after 拿.",
+    "choices": [
+      "着",
+      "过",
+      "得"
+    ],
+    "accepted": [
+      {
+        "choice": "着",
+        "slot": 2
+      }
+    ],
+    "explanation": "拿着 means holding something, rather than having once taken it.",
+    "pinyin": "Tā ná zhe yì běn shū."
+  },
+  {
+    "id": "particle-v06-zhe-background",
+    "family": "着",
+    "focus": "着 · He speaks with a smile",
+    "base": [
+      "他",
+      "笑",
+      "说"
+    ],
+    "prompt": "He speaks with a smile. Mark smiling as the accompanying state after 笑.",
+    "choices": [
+      "着",
+      "了",
+      "过"
+    ],
+    "accepted": [
+      {
+        "choice": "着",
+        "slot": 2
+      }
+    ],
+    "explanation": "笑着说 presents smiling as accompanying the speech.",
+    "pinyin": "Tā xiào zhe shuō."
+  },
+  {
+    "id": "particle-v06-zhe-existence",
+    "family": "着",
+    "focus": "着 · There is a glass of water sitting on the table",
+    "base": [
+      "桌子",
+      "上",
+      "放",
+      "一",
+      "杯",
+      "水"
+    ],
+    "prompt": "There is a glass of water sitting on the table. Mark the continuing placement after 放.",
+    "choices": [
+      "着",
+      "过",
+      "得"
+    ],
+    "accepted": [
+      {
+        "choice": "着",
+        "slot": 3
+      }
+    ],
+    "explanation": "放着 describes the current arrangement on the table.",
+    "pinyin": "Zhuōzi shàng fàng zhe yì bēi shuǐ."
+  },
+  {
+    "id": "particle-v06-de-red",
+    "family": "的",
+    "focus": "的 · I like red clothes",
+    "base": [
+      "我",
+      "喜欢",
+      "红色",
+      "衣服"
+    ],
+    "prompt": "I like red clothes. Explicitly link 红色 to 衣服 with the attributive marker.",
+    "choices": [
+      "的",
+      "得",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "的",
+        "slot": 3
+      }
+    ],
+    "explanation": "的 connects the description 红色 to the noun 衣服.",
+    "pinyin": "Wǒ xǐhuan hóngsè de yīfu."
+  },
+  {
+    "id": "particle-v06-de-relative",
+    "family": "的",
+    "focus": "的 · This is the book I bought yesterday",
+    "base": [
+      "这",
+      "是",
+      "我",
+      "昨天",
+      "买",
+      "书"
+    ],
+    "prompt": "This is the book I bought yesterday. Link the relative clause to 书.",
+    "choices": [
+      "的",
+      "得",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "的",
+        "slot": 5
+      }
+    ],
+    "explanation": "我昨天买的 modifies the noun 书.",
+    "pinyin": "Zhè shì wǒ zuótiān mǎi de shū."
+  },
+  {
+    "id": "particle-v06-de-which",
+    "family": "的",
+    "focus": "的 · I want the big one",
+    "base": [
+      "我",
+      "要",
+      "大"
+    ],
+    "prompt": "I want the big one. Add the nominalizing particle after 大.",
+    "choices": [
+      "的",
+      "得",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "的",
+        "slot": 3
+      }
+    ],
+    "explanation": "大的 stands for the big one, with the noun understood from context.",
+    "pinyin": "Wǒ yào dà de."
+  },
+  {
+    "id": "particle-v06-de-mother",
+    "family": "的",
+    "focus": "的 · My mother is a teacher",
+    "base": [
+      "我",
+      "妈妈",
+      "是",
+      "老师"
+    ],
+    "prompt": "My mother is a teacher. An ordinary unmarked family relationship is intended. Select a valid form, with or without 的.",
+    "choices": [
+      "的",
+      "得",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "的",
+        "slot": 1
+      },
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "我妈妈 and 我的妈妈 are both valid here. 地 and 得 do not mark possession.",
+    "pinyin": "Wǒ de māma shì lǎoshī."
+  },
+  {
+    "id": "particle-v06-de-speak",
+    "family": "得",
+    "focus": "得 · He speaks very clearly",
+    "base": [
+      "他",
+      "说",
+      "很",
+      "清楚"
+    ],
+    "prompt": "He speaks very clearly. Link 说 to its degree complement 很清楚.",
+    "choices": [
+      "得",
+      "的",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "得",
+        "slot": 2
+      }
+    ],
+    "explanation": "得 follows the verb and introduces the degree or result description.",
+    "pinyin": "Tā shuō de hěn qīngchu."
+  },
+  {
+    "id": "particle-v06-de-tired",
+    "family": "得",
+    "focus": "得 · I am so tired that I do not want to speak",
+    "base": [
+      "我",
+      "累",
+      "不",
+      "想",
+      "说话"
+    ],
+    "prompt": "I am so tired that I do not want to speak. Link 累 to its result description.",
+    "choices": [
+      "得",
+      "的",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "得",
+        "slot": 2
+      }
+    ],
+    "explanation": "累得 introduces the consequence of being tired.",
+    "pinyin": "Wǒ lèi de bù xiǎng shuōhuà."
+  },
+  {
+    "id": "particle-v06-de-write",
+    "family": "得",
+    "focus": "得 · She writes very well",
+    "base": [
+      "她",
+      "写",
+      "很",
+      "好"
+    ],
+    "prompt": "She writes very well. Link 写 to 很好.",
+    "choices": [
+      "得",
+      "的",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "得",
+        "slot": 2
+      }
+    ],
+    "explanation": "写得很好 evaluates the quality of the writing.",
+    "pinyin": "Tā xiě de hěn hǎo."
+  },
+  {
+    "id": "particle-v06-de-happy",
+    "family": "地",
+    "focus": "地 · The child smiled happily",
+    "base": [
+      "孩子",
+      "高兴",
+      "笑",
+      "了"
+    ],
+    "prompt": "The child smiled happily. Explicitly mark 高兴 as modifying the action 笑.",
+    "choices": [
+      "地",
+      "的",
+      "得"
+    ],
+    "accepted": [
+      {
+        "choice": "地",
+        "slot": 2
+      }
+    ],
+    "explanation": "地 introduces the manner before the verb; 得 would belong after a verb.",
+    "pinyin": "Háizi gāoxìng de xiào le."
+  },
+  {
+    "id": "particle-v06-de-slow",
+    "family": "地",
+    "focus": "地 · Please speak slowly",
+    "base": [
+      "请",
+      "慢慢",
+      "说"
+    ],
+    "prompt": "Please speak slowly. Accept either the explicit manner marker or its natural omission.",
+    "choices": [
+      "地",
+      "得",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "地",
+        "slot": 2
+      },
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "慢慢地说 and 慢慢说 are both natural. 得 is not used before 说 here.",
+    "pinyin": "Qǐng mànmàn de shuō."
+  },
+  {
+    "id": "particle-v06-de-quiet",
+    "family": "地",
+    "focus": "地 · He sits there quietly",
+    "base": [
+      "他",
+      "安静",
+      "坐",
+      "在",
+      "那里"
+    ],
+    "prompt": "He sits there quietly. Use an explicit manner marker after 安静.",
+    "choices": [
+      "地",
+      "得",
+      "的"
+    ],
+    "accepted": [
+      {
+        "choice": "地",
+        "slot": 2
+      }
+    ],
+    "explanation": "安静地 modifies the following action 坐.",
+    "pinyin": "Tā ānjìng de zuò zài nàli."
+  },
+  {
+    "id": "particle-v06-ma-ready",
+    "family": "吗",
+    "focus": "吗 · Are you ready? Add a neutral yes/no question particle at the end",
+    "base": [
+      "你",
+      "准备",
+      "好",
+      "了"
+    ],
+    "prompt": "Are you ready? Add a neutral yes/no question particle at the end.",
+    "choices": [
+      "吗",
+      "呢",
+      "的"
+    ],
+    "accepted": [
+      {
+        "choice": "吗",
+        "slot": 4
+      }
+    ],
+    "explanation": "吗 turns this statement into a neutral yes/no question. The existing 了 stays.",
+    "pinyin": "Nǐ zhǔnbèi hǎo le ma?"
+  },
+  {
+    "id": "particle-v06-ma-where",
+    "family": "吗",
+    "focus": "吗 · Where are you going? Give a plain question-word question; no extra conversational nuance",
+    "base": [
+      "你",
+      "去",
+      "哪里"
+    ],
+    "prompt": "Where are you going? Give a plain question-word question; no extra conversational nuance.",
+    "choices": [
+      "吗",
+      "了",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "哪里 already asks for the destination. 吗 would not make this the intended neutral where-question.",
+    "pinyin": "Nǐ qù nǎli?"
+  },
+  {
+    "id": "particle-v06-ma-who",
+    "family": "吗",
+    "focus": "吗 · Who is he? Give a plain question-word question",
+    "base": [
+      "他",
+      "是",
+      "谁"
+    ],
+    "prompt": "Who is he? Give a plain question-word question.",
+    "choices": [
+      "吗",
+      "着",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "谁 already supplies the question; no 吗 is needed.",
+    "pinyin": "Tā shì shéi?"
+  },
+  {
+    "id": "particle-v06-ma-anot-a",
+    "family": "吗",
+    "focus": "吗 · Are you going or not? Keep this ordinary A-not-A question",
+    "base": [
+      "你",
+      "去",
+      "不",
+      "去"
+    ],
+    "prompt": "Are you going or not? Keep this ordinary A-not-A question.",
+    "choices": [
+      "吗",
+      "过",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "去不去 already forms an A-not-A question, so ordinary usage does not add 吗.",
+    "pinyin": "Nǐ qù bu qù?"
+  },
+  {
+    "id": "particle-v06-ne-topic",
+    "family": "呢",
+    "focus": "呢 · Where is my phone? Use the short topic-question particle at the end",
+    "base": [
+      "我",
+      "的",
+      "手机"
+    ],
+    "prompt": "Where is my phone? Use the short topic-question particle at the end.",
+    "choices": [
+      "呢",
+      "吗",
+      "了"
+    ],
+    "accepted": [
+      {
+        "choice": "呢",
+        "slot": 3
+      }
+    ],
+    "explanation": "我的手机呢 asks about the phone in a context where its location is at issue.",
+    "pinyin": "Wǒ de shǒujī ne?"
+  },
+  {
+    "id": "particle-v06-ne-ongoing",
+    "family": "呢",
+    "focus": "呢 · She is reading right now",
+    "base": [
+      "她",
+      "正在",
+      "看书"
+    ],
+    "prompt": "She is reading right now. Add the sentence-final particle emphasizing the ongoing situation.",
+    "choices": [
+      "呢",
+      "吗",
+      "过"
+    ],
+    "accepted": [
+      {
+        "choice": "呢",
+        "slot": 3
+      }
+    ],
+    "explanation": "正在…呢 emphasizes an ongoing activity.",
+    "pinyin": "Tā zhèngzài kànshū ne."
+  },
+  {
+    "id": "particle-v06-ba-suggest",
+    "family": "吧",
+    "focus": "吧 · Let us go",
+    "base": [
+      "我们",
+      "走"
+    ],
+    "prompt": "Let us go. Soften this suggestion with a sentence-final particle.",
+    "choices": [
+      "吧",
+      "吗",
+      "过"
+    ],
+    "accepted": [
+      {
+        "choice": "吧",
+        "slot": 2
+      }
+    ],
+    "explanation": "吧 makes this a suggestion rather than a bare command.",
+    "pinyin": "Wǒmen zǒu ba."
+  },
+  {
+    "id": "particle-v06-ba-request",
+    "family": "吧",
+    "focus": "吧 · You should rest first",
+    "base": [
+      "你",
+      "先",
+      "休息"
+    ],
+    "prompt": "You should rest first. Add the particle that softens the suggestion.",
+    "choices": [
+      "吧",
+      "吗",
+      "过"
+    ],
+    "accepted": [
+      {
+        "choice": "吧",
+        "slot": 3
+      }
+    ],
+    "explanation": "吧 can soften a request or suggestion.",
+    "pinyin": "Nǐ xiān xiūxi ba."
+  },
+  {
+    "id": "particle-v06-ba-guess",
+    "family": "吧",
+    "focus": "吧 · He should have arrived, I suppose",
+    "base": [
+      "他",
+      "应该",
+      "到",
+      "了"
+    ],
+    "prompt": "He should have arrived, I suppose. Mark tentative confirmation at the end.",
+    "choices": [
+      "吧",
+      "过",
+      "着"
+    ],
+    "accepted": [
+      {
+        "choice": "吧",
+        "slot": 4
+      }
+    ],
+    "explanation": "吧 signals a tentative inference or invites confirmation.",
+    "pinyin": "Tā yīnggāi dào le ba."
+  },
+  {
+    "id": "particle-v06-classifier-zhang",
+    "family": "Classifiers",
+    "focus": "Classifiers · I want two tickets",
+    "base": [
+      "我",
+      "要",
+      "两",
+      "票"
+    ],
+    "prompt": "I want two tickets. Insert the flat-object classifier before 票.",
+    "choices": [
+      "张",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "张",
+        "slot": 3
+      }
+    ],
+    "explanation": "张 counts flat objects such as tickets; 本 counts bound volumes and 条 long or flexible items.",
+    "pinyin": "Wǒ yào liǎng zhāng piào."
+  },
+  {
+    "id": "particle-v06-classifier-jian",
+    "family": "Classifiers",
+    "focus": "Classifiers · She bought one item of clothing",
+    "base": [
+      "她",
+      "买",
+      "了",
+      "一",
+      "衣服"
+    ],
+    "prompt": "She bought one item of clothing. Put its classifier before 衣服.",
+    "choices": [
+      "件",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "件",
+        "slot": 4
+      }
+    ],
+    "explanation": "件 counts individual items of clothing in this phrase.",
+    "pinyin": "Tā mǎi le yí jiàn yīfu."
+  },
+  {
+    "id": "particle-v06-classifier-tiao",
+    "family": "Classifiers",
+    "focus": "Classifiers · I bought a pair of trousers",
+    "base": [
+      "我",
+      "买",
+      "了",
+      "一",
+      "裤子"
+    ],
+    "prompt": "I bought a pair of trousers. Insert the conventional classifier before 裤子.",
+    "choices": [
+      "条",
+      "张",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "条",
+        "slot": 4
+      }
+    ],
+    "explanation": "条 is used for trousers; Chinese treats a pair as 一条裤子.",
+    "pinyin": "Wǒ mǎi le yì tiáo kùzi."
+  },
+  {
+    "id": "particle-v06-classifier-zhi",
+    "family": "Classifiers",
+    "focus": "Classifiers · There is a bird in the tree",
+    "base": [
+      "树",
+      "上",
+      "有",
+      "一",
+      "鸟"
+    ],
+    "prompt": "There is a bird in the tree. Use the animal classifier before 鸟.",
+    "choices": [
+      "只",
+      "本",
+      "张"
+    ],
+    "accepted": [
+      {
+        "choice": "只",
+        "slot": 4
+      }
+    ],
+    "explanation": "只 is a conventional classifier for birds and many other animals.",
+    "pinyin": "Shù shàng yǒu yì zhī niǎo."
+  },
+  {
+    "id": "particle-v06-classifier-liang",
+    "family": "Classifiers",
+    "focus": "Classifiers · There are two cars at the entrance",
+    "base": [
+      "门口",
+      "有",
+      "两",
+      "汽车"
+    ],
+    "prompt": "There are two cars at the entrance. Insert the vehicle classifier.",
+    "choices": [
+      "辆",
+      "张",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "辆",
+        "slot": 3
+      }
+    ],
+    "explanation": "辆 counts wheeled vehicles such as cars.",
+    "pinyin": "Ménkǒu yǒu liǎng liàng qìchē."
+  },
+  {
+    "id": "particle-v06-classifier-wei",
+    "family": "Classifiers",
+    "focus": "Classifiers · This is a teacher",
+    "base": [
+      "这",
+      "是",
+      "一",
+      "老师"
+    ],
+    "prompt": "This is a teacher. Use the respectful classifier for a person before 老师.",
+    "choices": [
+      "位",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "位",
+        "slot": 3
+      }
+    ],
+    "explanation": "位 respectfully counts people, including teachers.",
+    "pinyin": "Zhè shì yí wèi lǎoshī."
+  },
+  {
+    "id": "particle-v06-classifier-ke",
+    "family": "Classifiers",
+    "focus": "Classifiers · There is a tree in the courtyard",
+    "base": [
+      "院子",
+      "里",
+      "有",
+      "一",
+      "树"
+    ],
+    "prompt": "There is a tree in the courtyard. Insert the classifier for trees.",
+    "choices": [
+      "棵",
+      "颗",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "棵",
+        "slot": 4
+      }
+    ],
+    "explanation": "棵 counts trees and plants; 颗 counts small round things.",
+    "pinyin": "Yuànzi lǐ yǒu yì kē shù."
+  },
+  {
+    "id": "particle-v06-classifier-ke-round",
+    "family": "Classifiers",
+    "focus": "Classifiers · She found a pearl",
+    "base": [
+      "她",
+      "找到",
+      "了",
+      "一",
+      "珍珠"
+    ],
+    "prompt": "She found a pearl. Insert the classifier for small round objects.",
+    "choices": [
+      "颗",
+      "棵",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "颗",
+        "slot": 4
+      }
+    ],
+    "explanation": "颗 is used for pearls; 棵 is used for trees and plants.",
+    "pinyin": "Tā zhǎodào le yì kē zhēnzhū."
+  },
+  {
+    "id": "particle-v06-classifier-ci",
+    "family": "Classifiers",
+    "focus": "Classifiers · Please say it one more time",
+    "base": [
+      "请",
+      "再",
+      "说",
+      "一"
+    ],
+    "prompt": "Please say it one more time. Finish the action-count phrase.",
+    "choices": [
+      "次",
+      "个",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "次",
+        "slot": 4
+      }
+    ],
+    "explanation": "一次 means one occurrence of an action.",
+    "pinyin": "Qǐng zài shuō yí cì."
+  },
+  {
+    "id": "particle-v06-classifier-bian",
+    "family": "Classifiers",
+    "focus": "Classifiers · Please read the article all the way through once",
+    "base": [
+      "请",
+      "把",
+      "文章",
+      "读",
+      "一"
+    ],
+    "prompt": "Please read the article all the way through once. Add the measure word for one complete run-through.",
+    "choices": [
+      "遍",
+      "个",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "遍",
+        "slot": 5
+      }
+    ],
+    "explanation": "遍 emphasizes a complete pass through the article.",
+    "pinyin": "Qǐng bǎ wénzhāng dú yí biàn."
+  },
+  {
+    "id": "particle-v06-classifier-duo",
+    "family": "Classifiers",
+    "focus": "Classifiers · She gave me a flower",
+    "base": [
+      "她",
+      "送",
+      "我",
+      "一",
+      "花"
+    ],
+    "prompt": "She gave me a flower. Insert the classifier for a blossom.",
+    "choices": [
+      "朵",
+      "棵",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "朵",
+        "slot": 4
+      }
+    ],
+    "explanation": "朵 counts individual blossoms.",
+    "pinyin": "Tā sòng wǒ yì duǒ huā."
+  },
+  {
+    "id": "particle-v06-classifier-shuang",
+    "family": "Classifiers",
+    "focus": "Classifiers · I bought a pair of shoes",
+    "base": [
+      "我",
+      "买",
+      "了",
+      "一",
+      "鞋"
+    ],
+    "prompt": "I bought a pair of shoes. Insert the classifier specifically counting a pair.",
+    "choices": [
+      "双",
+      "只",
+      "本"
+    ],
+    "accepted": [
+      {
+        "choice": "双",
+        "slot": 4
+      }
+    ],
+    "explanation": "双 explicitly counts the pair; 只 would mean one shoe.",
+    "pinyin": "Wǒ mǎi le yì shuāng xié."
+  },
+  {
+    "id": "particle-v06-classifier-bei",
+    "family": "Classifiers",
+    "focus": "Classifiers · Please give me a cup of water",
+    "base": [
+      "请",
+      "给",
+      "我",
+      "一",
+      "水"
+    ],
+    "prompt": "Please give me a cup of water. Insert the measure word meaning cup.",
+    "choices": [
+      "杯",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "杯",
+        "slot": 4
+      }
+    ],
+    "explanation": "杯 measures the water by the cup.",
+    "pinyin": "Qǐng gěi wǒ yì bēi shuǐ."
+  },
+  {
+    "id": "particle-v06-classifier-fen",
+    "family": "Classifiers",
+    "focus": "Classifiers · I would like one serving of fried rice",
+    "base": [
+      "我",
+      "要",
+      "一",
+      "炒饭"
+    ],
+    "prompt": "I would like one serving of fried rice. Insert the serving measure word.",
+    "choices": [
+      "份",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "份",
+        "slot": 3
+      }
+    ],
+    "explanation": "份 counts servings of a dish.",
+    "pinyin": "Wǒ yào yí fèn chǎofàn."
+  },
+  {
+    "id": "particle-v06-classifier-feng",
+    "family": "Classifiers",
+    "focus": "Classifiers · I received a letter",
+    "base": [
+      "我",
+      "收到",
+      "了",
+      "一",
+      "信"
+    ],
+    "prompt": "I received a letter. Insert the classifier for letters.",
+    "choices": [
+      "封",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "封",
+        "slot": 4
+      }
+    ],
+    "explanation": "封 is the conventional classifier for letters.",
+    "pinyin": "Wǒ shōudào le yì fēng xìn."
+  },
+  {
+    "id": "particle-v06-classifier-suo",
+    "family": "Classifiers",
+    "focus": "Classifiers · There is a school nearby",
+    "base": [
+      "附近",
+      "有",
+      "一",
+      "学校"
+    ],
+    "prompt": "There is a school nearby. Insert the institutional building classifier.",
+    "choices": [
+      "所",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "所",
+        "slot": 3
+      }
+    ],
+    "explanation": "所 counts institutions such as schools.",
+    "pinyin": "Fùjìn yǒu yì suǒ xuéxiào."
+  },
+  {
+    "id": "particle-v06-classifier-chang",
+    "family": "Classifiers",
+    "focus": "Classifiers · We watched a match",
+    "base": [
+      "我们",
+      "看",
+      "了",
+      "一",
+      "比赛"
+    ],
+    "prompt": "We watched a match. Insert the classifier for an event or match.",
+    "choices": [
+      "场",
+      "本",
+      "条"
+    ],
+    "accepted": [
+      {
+        "choice": "场",
+        "slot": 4
+      }
+    ],
+    "explanation": "场 counts events such as matches.",
+    "pinyin": "Wǒmen kàn le yì chǎng bǐsài."
+  },
+  {
+    "id": "particle-v06-classifier-no-extra",
+    "family": "Classifiers",
+    "focus": "Classifiers · This bag of rice weighs five kilograms",
+    "base": [
+      "这",
+      "袋",
+      "米",
+      "重",
+      "五",
+      "公斤"
+    ],
+    "prompt": "This bag of rice weighs five kilograms. Do not add an extra classifier.",
+    "choices": [
+      "个",
+      "本",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "公斤 already functions as the unit after 五.",
+    "pinyin": "Zhè dài mǐ zhòng wǔ gōngjīn."
+  },
+  {
+    "id": "particle-v06-de-shi-time",
+    "family": "的",
+    "focus": "的 · It was yesterday that I came",
+    "base": [
+      "我",
+      "是",
+      "昨天",
+      "来"
+    ],
+    "prompt": "It was yesterday that I came. Complete the 是…的 construction at the end.",
+    "choices": [
+      "的",
+      "得",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "的",
+        "slot": 4
+      }
+    ],
+    "explanation": "是…的 highlights the time of an established event.",
+    "pinyin": "Wǒ shì zuótiān lái de."
+  },
+  {
+    "id": "particle-v06-de-shi-method",
+    "family": "的",
+    "focus": "的 · He came by subway",
+    "base": [
+      "他",
+      "是",
+      "坐",
+      "地铁",
+      "来"
+    ],
+    "prompt": "He came by subway. Complete 是…的 to emphasize the means of travel.",
+    "choices": [
+      "的",
+      "得",
+      "地"
+    ],
+    "accepted": [
+      {
+        "choice": "的",
+        "slot": 5
+      }
+    ],
+    "explanation": "是坐地铁来的 emphasizes how he came.",
+    "pinyin": "Tā shì zuò dìtiě lái de."
+  },
+  {
+    "id": "particle-v06-le-already",
+    "family": "了",
+    "focus": "了 · I have already eaten; the relevant situation is now settled",
+    "base": [
+      "我",
+      "已经",
+      "吃",
+      "过",
+      "饭"
+    ],
+    "prompt": "I have already eaten; the relevant situation is now settled. Add sentence-final 了.",
+    "choices": [
+      "了",
+      "着",
+      "得"
+    ],
+    "accepted": [
+      {
+        "choice": "了",
+        "slot": 5
+      }
+    ],
+    "explanation": "已经吃过饭了 combines experience/completion with the current relevance expressed by final 了.",
+    "pinyin": "Wǒ yǐjīng chī guo fàn le."
+  },
+  {
+    "id": "particle-v06-le-still",
+    "family": "了",
+    "focus": "了 · He has not returned yet",
+    "base": [
+      "他",
+      "还",
+      "没",
+      "回来"
+    ],
+    "prompt": "He has not returned yet. Keep the ordinary not-yet statement without any added nuance.",
+    "choices": [
+      "了",
+      "着",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "还没回来 already states that the return has not happened.",
+    "pinyin": "Tā hái méi huílai."
+  },
+  {
+    "id": "particle-v06-de-positive-adjective",
+    "family": "的",
+    "focus": "的 · The weather is good",
+    "base": [
+      "天气",
+      "很",
+      "好"
+    ],
+    "prompt": "The weather is good. Keep the ordinary adjective predicate without extra emphasis.",
+    "choices": [
+      "的",
+      "得",
+      "∅"
+    ],
+    "accepted": [
+      {
+        "choice": "∅",
+        "slot": -1
+      }
+    ],
+    "explanation": "很好 is already a complete adjective predicate here; no 的 or 得 is required.",
+    "pinyin": "Tiānqì hěn hǎo."
+  },
+  {
+    "id": "particle-v06-zhe-sit",
+    "family": "着",
+    "focus": "着 · Please wait seated",
+    "base": [
+      "请",
+      "坐",
+      "等"
+    ],
+    "prompt": "Please wait seated. Mark sitting as the accompanying state after 坐.",
+    "choices": [
+      "着",
+      "了",
+      "过"
+    ],
+    "accepted": [
+      {
+        "choice": "着",
+        "slot": 2
+      }
+    ],
+    "explanation": "坐着等 means to wait while seated.",
+    "pinyin": "Qǐng zuò zhe děng."
+  }
+]

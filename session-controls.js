@@ -2,7 +2,8 @@ import {scheduleFor,sessionAvailability} from './study-engine.js';
 export const itemKey=e=>`${e.mode}:${e.id}`;
 export function rememberAnswer(s,session){
  const e=session.current;
- const snapshot={current:structuredClone(e),input:structuredClone(session.input),itemStartedAt:session.itemStartedAt,
+ const savedInput=structuredClone(session.input);if(e.mode==='drawing')delete savedInput.pads;
+ const snapshot={current:structuredClone(e),input:savedInput,itemStartedAt:session.itemStartedAt,
   previous:structuredClone(scheduleFor(s,e.mode,e.id)||null),history:s.history.length,grammarHistory:s.grammarHistory.length,skillHistory:s.skillHistory.length,
   modeSeconds:structuredClone(s.settings.modeSeconds||{}),spent:structuredClone(session.spent),resultsLength:session.results.length,
   turn:session.turn||0,deferred:structuredClone(session.deferred||{}),skipped:structuredClone(session.skipped||[])};

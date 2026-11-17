@@ -50,9 +50,14 @@ export function normalizeGrammar(source,fallbackId=null) {
   const distractors=parseDistractors(source.distractors);
   if(distractors.length>20)throw new Error('Too many distractors');
   for(const d of distractors)if(!Number.isSafeInteger(d.index)||d.index<1||d.index>tokens.length||!d.word)throw new Error('Distractor index must identify a word token (starting at 1)');
+  const acceptedOrders=(source.acceptedOrders||[]).map(order=>{
+    if(!Array.isArray(order)||order.length!==tokens.length||order.some(w=>typeof w!=='string')||[...order].sort().join('\u0000')!==[...tokens].sort().join('\u0000'))throw new Error('Alternative order must use exactly the same word tiles');
+    return order.map(w=>clean(w,80));
+  });
+  if(acceptedOrders.length>12)throw new Error('Too many alternative orders');
   const id=clean(source.id||fallbackId||crypto.randomUUID(),120);if(id==='prototype'||Object.hasOwn(Object.prototype,id))throw new Error('Reserved grammar ID');
   return {id,markup,pinyin:clean(source.pinyin,900),english,
-    distractors,particleTests:(source.particleTests||[]).map(normalizeParticle),source:clean(source.source||'My grammar',80),createdAt:clean(source.createdAt||new Date().toISOString(),80)};
+    distractors,...(acceptedOrders.length?{acceptedOrders}:{}),particleTests:(source.particleTests||[]).map(normalizeParticle),source:clean(source.source||'My grammar',80),createdAt:clean(source.createdAt||new Date().toISOString(),80)};
 }
 export function initialGrammar(){return STARTER_GRAMMAR.map(g=>normalizeGrammar({...g,source:'Starter Mandarin',createdAt:'2026-11-16T00:00:00.000Z'}));}
 export function linkedWords(grammar,cards) {
@@ -73,13 +78,14 @@ export function wordKnowledge(schedule, recall=1) {
   const maturity=Math.min(1,.85+.075*Math.max(0,schedule.reps-1));
   return Math.max(0,Math.min(1,quality*maturity*Math.max(0,Math.min(1,recall||0))));
 }
-export function grammarScores(grammar,cards,schedules,getRecall) {
+export function grammarScores(grammar,cards,schedules,getRecall,history=[]) {
   const required=requiredWords(grammar,cards);
   const numbers=required.map(({card})=>card?wordKnowledge(schedules[card.id],getRecall(schedules[card.id])):0);
   const knowledge=numbers.length?numbers.reduce((a,b)=>a+b,0)/numbers.length:0;
-  const usage=0; // Reserved: future grammar-error penalty, not mastery-by-completion.
+  const attempts=history.filter(h=>h.grammarId===grammar.id&&typeof h.correct==='boolean').slice(-20);
+  const usage=attempts.length?attempts.filter(h=>!h.correct).length/attempts.length:0;
   const ready=required.length>0&&required.every(({card},i)=>card&&numbers[i]>=.75);
-  return {knowledge,usage,combined:knowledge*(1-usage),ready,required,weak:required.filter((_,i)=>numbers[i]<.75)};
+  return {knowledge,usage,usageAttempts:attempts.length,combined:knowledge*(1-usage),ready,required,weak:required.filter((_,i)=>numbers[i]<.75)};
 }
 
 // Tone detection is based on the card's written pinyin, not on Mandarin tone sandhi.
@@ -131,5 +137,6 @@ export function toneTargets(hanzi,pinyin) {
 export function grammarMistakes(grammar,picks){
   const tokens=grammarTokens(grammar);
   const bank=Object.fromEntries([...tokens.map((word,i)=>['t'+i,word]),...grammar.distractors.map((d,i)=>['d'+i,d.word])]);
-  return tokens.flatMap((word,i)=>bank[picks[i]]===word?[]:[i]);
+  const orders=[tokens,...(grammar.acceptedOrders||[])];
+  return orders.map(order=>order.flatMap((word,i)=>bank[picks[i]]===word?[]:[i])).sort((a,b)=>a.length-b.length)[0];
 }

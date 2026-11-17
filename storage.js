@@ -159,7 +159,8 @@ export function makeBackup(state){
  const content={...state,appVersion:APP_VERSION,backedUpRevision:state.revision,lastBackupAt:new Date().toISOString()};
  delete content.filters;delete content.studyFilters;
  if(content.activePractice){content.activePractice={...content.activePractice};delete content.activePractice.filters;delete content.activePractice.allowedWords;}
- if(content.lastPracticeUndo){content.lastPracticeUndo={...content.lastPracticeUndo};delete content.lastPracticeUndo.filters;delete content.lastPracticeUndo.allowedWords;}
+ if(content.lastPracticeUndo){content.lastPracticeUndo=structuredClone(content.lastPracticeUndo);delete content.lastPracticeUndo.filters;delete content.lastPracticeUndo.allowedWords;delete content.lastPracticeUndo.input?.pads;}
+ for(const session of [content.activePractice,content.lastPracticeUndo]){if(session?.undo)session.undo=session.undo.map(snap=>{const clean={...snap,input:{...snap.input}};delete clean.input.pads;return clean;});}
  return {format:'ciyan-backup',version:2,appVersion:APP_VERSION,exportedAt:new Date().toISOString(),state:content};
 }
 export function makeDeck(state){return {format:'ciyan-deck',version:2,records:false,

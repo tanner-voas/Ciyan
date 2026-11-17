@@ -1,3 +1,7 @@
+# v0.6.0 preview
+
+The combined feature implementation is available, but the full-vocabulary example milestone is incomplete. See [release status](RELEASE_v0.6.0_PREVIEW.md) and `content/coverage-v060.csv`. Rebuild new content with `python3 build_v06.py`; the older content builders are historical.
+
 # Cíyán (词言) v0.5.5
 
 Offline-first Mandarin flashcards for iPhone, with a single master dictionary,
