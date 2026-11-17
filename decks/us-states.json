@@ -12,8 +12,8 @@
       "pinyin": "ā lā bā mǎ zhōu",
       "english": "Alabama, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -24,8 +24,8 @@
       "pinyin": "ā lā sī jiā zhōu",
       "english": "Alaska, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -36,8 +36,8 @@
       "pinyin": "yà lì sāng nà zhōu",
       "english": "Arizona, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -48,8 +48,8 @@
       "pinyin": "ā kěn sè zhōu",
       "english": "Arkansas, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -60,9 +60,9 @@
       "pinyin": "jiā lì fú ní yà zhōu",
       "english": "California, USA (visited state)",
       "tags": [
-        "places",
-        "visited",
-        "us-states"
+        "Places/places",
+        "Places/visited",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -73,9 +73,9 @@
       "pinyin": "kē luó lā duō zhōu",
       "english": "Colorado, USA (visited state)",
       "tags": [
-        "places",
-        "visited",
-        "us-states"
+        "Places/places",
+        "Places/visited",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -86,8 +86,8 @@
       "pinyin": "kāng niè dí gé zhōu",
       "english": "Connecticut, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -98,8 +98,8 @@
       "pinyin": "tè lā huá zhōu",
       "english": "Delaware, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -110,8 +110,8 @@
       "pinyin": "fó luó lǐ dá zhōu",
       "english": "Florida, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -122,8 +122,8 @@
       "pinyin": "zuǒ zhì yà zhōu",
       "english": "Georgia, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -134,8 +134,8 @@
       "pinyin": "xià wēi yí zhōu",
       "english": "Hawaii, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -146,8 +146,8 @@
       "pinyin": "ài dá hé zhōu",
       "english": "Idaho, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -158,8 +158,8 @@
       "pinyin": "yī lì nuò yī zhōu",
       "english": "Illinois, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -170,8 +170,8 @@
       "pinyin": "yìn dì ān nà zhōu",
       "english": "Indiana, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -182,8 +182,8 @@
       "pinyin": "ài hé huá zhōu",
       "english": "Iowa, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -194,8 +194,8 @@
       "pinyin": "kān sà sī zhōu",
       "english": "Kansas, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -206,8 +206,8 @@
       "pinyin": "kěn tǎ jī zhōu",
       "english": "Kentucky, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -218,8 +218,8 @@
       "pinyin": "lù yì sī ān nà zhōu",
       "english": "Louisiana, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -230,8 +230,8 @@
       "pinyin": "miǎn yīn zhōu",
       "english": "Maine, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -242,8 +242,8 @@
       "pinyin": "mǎ lǐ lán zhōu",
       "english": "Maryland, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -254,8 +254,8 @@
       "pinyin": "mǎ sà zhū sài zhōu",
       "english": "Massachusetts, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -266,8 +266,8 @@
       "pinyin": "mì xiē gēn zhōu",
       "english": "Michigan, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -278,9 +278,9 @@
       "pinyin": "míng ní sū dá zhōu",
       "english": "Minnesota, USA (visited state)",
       "tags": [
-        "places",
-        "visited",
-        "us-states"
+        "Places/places",
+        "Places/visited",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -291,8 +291,8 @@
       "pinyin": "mì xī xī bǐ zhōu",
       "english": "Mississippi, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -303,9 +303,9 @@
       "pinyin": "mì sū lǐ zhōu",
       "english": "Missouri, USA (visited state)",
       "tags": [
-        "places",
-        "visited",
-        "us-states"
+        "Places/places",
+        "Places/visited",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -316,8 +316,8 @@
       "pinyin": "méng dà ná zhōu",
       "english": "Montana, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -328,8 +328,8 @@
       "pinyin": "nèi bù lā sī jiā zhōu",
       "english": "Nebraska, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -340,9 +340,9 @@
       "pinyin": "nèi huá dá zhōu",
       "english": "Nevada, USA (visited state)",
       "tags": [
-        "places",
-        "visited",
-        "us-states"
+        "Places/places",
+        "Places/visited",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -353,8 +353,8 @@
       "pinyin": "xīn hǎn bù shí ěr zhōu",
       "english": "New Hampshire, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -365,8 +365,8 @@
       "pinyin": "xīn zé xī zhōu",
       "english": "New Jersey, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -377,8 +377,8 @@
       "pinyin": "xīn mò xī gē zhōu",
       "english": "New Mexico, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -389,8 +389,8 @@
       "pinyin": "niǔ yuē zhōu",
       "english": "New York (state), USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -401,8 +401,8 @@
       "pinyin": "běi kǎ luó lái nà zhōu",
       "english": "North Carolina, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -413,8 +413,8 @@
       "pinyin": "běi dá kē tā zhōu",
       "english": "North Dakota, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -425,8 +425,8 @@
       "pinyin": "é hài é zhōu",
       "english": "Ohio, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -437,8 +437,8 @@
       "pinyin": "é kè lā hé mǎ zhōu",
       "english": "Oklahoma, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -449,8 +449,8 @@
       "pinyin": "é lè gāng zhōu",
       "english": "Oregon, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -461,8 +461,8 @@
       "pinyin": "bīn xī fǎ ní yà zhōu",
       "english": "Pennsylvania, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -473,8 +473,8 @@
       "pinyin": "luó dé dǎo zhōu",
       "english": "Rhode Island, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -485,8 +485,8 @@
       "pinyin": "nán kǎ luó lái nà zhōu",
       "english": "South Carolina, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -497,8 +497,8 @@
       "pinyin": "nán dá kē tā zhōu",
       "english": "South Dakota, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -509,8 +509,8 @@
       "pinyin": "tián nà xī zhōu",
       "english": "Tennessee, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -521,9 +521,9 @@
       "pinyin": "dé kè sà sī zhōu",
       "english": "Texas, USA (visited state)",
       "tags": [
-        "places",
-        "visited",
-        "us-states"
+        "Places/places",
+        "Places/visited",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -534,8 +534,8 @@
       "pinyin": "yóu tā zhōu",
       "english": "Utah, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -546,8 +546,8 @@
       "pinyin": "fó méng tè zhōu",
       "english": "Vermont, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -558,8 +558,8 @@
       "pinyin": "fú jí ní yà zhōu",
       "english": "Virginia, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -570,8 +570,8 @@
       "pinyin": "huá shèng dùn zhōu",
       "english": "Washington (state), USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -582,8 +582,8 @@
       "pinyin": "xī fú jí ní yà zhōu",
       "english": "West Virginia, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -594,8 +594,8 @@
       "pinyin": "wēi sī kāng xīng zhōu",
       "english": "Wisconsin, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -606,8 +606,8 @@
       "pinyin": "huái é míng zhōu",
       "english": "Wyoming, USA",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -618,8 +618,8 @@
       "pinyin": "huá shèng dùn tè qū",
       "english": "Washington, DC, USA (federal district, not a state)",
       "tags": [
-        "places",
-        "us-states"
+        "Places/places",
+        "Places/us-states"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -630,11 +630,11 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -645,11 +645,11 @@
       "pinyin": "qù",
       "english": "Go",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -660,11 +660,11 @@
       "pinyin": "kě yǐ",
       "english": "Can; may; be allowed to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -675,11 +675,11 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -690,11 +690,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -705,11 +705,11 @@
       "pinyin": "xiǎng",
       "english": "Want to; think; miss someone",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -720,11 +720,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -735,11 +735,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -750,9 +750,9 @@
       "pinyin": "lǚ yóu",
       "english": "Travel for leisure",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -763,11 +763,11 @@
       "pinyin": "lǚ xíng",
       "english": "Travel",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -778,9 +778,9 @@
       "pinyin": "jì huà",
       "english": "Plan",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -791,9 +791,9 @@
       "pinyin": "guo",
       "english": "Past experience marker",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

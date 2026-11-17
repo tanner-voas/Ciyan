@@ -55,14 +55,14 @@ test('all generated pinyin matches character count and explicit syllable tones',
 test('exactly one canonical HSK band is used by every matching vocabulary word',()=>{
  const ref=JSON.parse(fs.readFileSync(new URL('../content/hsk-levels-032.json',import.meta.url)));
  const all=read('all-decks');
- const bands=new Set(['hsk1','hsk2','hsk3','hsk4','hsk5','hsk6','hsk7-9']);
+ const bands=new Set(['hsk1','hsk2','hsk3','hsk4','hsk5','hsk6','hsk7-9'].map(x=>'HSK/'+x.toUpperCase()));
  for(const c of all.cards){
-  const matching=c.tags.filter(t=>bands.has(t));
+  const matching=c.tags.filter(t=>bands.has(t)).map(t=>t.split("/")[1].toLowerCase());
   assert.deepEqual(matching,ref[c.hanzi]?[ref[c.hanzi].toLowerCase()]:[],c.hanzi);
   assert.ok(c.tags.every(t=>!t.startsWith('hsk-2021')&&t!=='hsk'&&!t.includes('3.0')),c.hanzi);
  }
  for(const band of bands){
-  const d=read(band);
+  const d=read(band.split("/")[1].toLowerCase());
   const tagged=all.cards.filter(c=>c.tags.includes(band));
   assert.ok(tagged.length>0,band);
   const names=new Set(d.cards.map(c=>c.hanzi));

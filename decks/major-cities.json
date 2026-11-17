@@ -12,9 +12,9 @@
       "pinyin": "niǔ yuē",
       "english": "New York",
       "tags": [
-        "places",
-        "cities",
-        "major-cities"
+        "Places/places",
+        "Places/cities",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -25,8 +25,8 @@
       "pinyin": "zhī jiā gē",
       "english": "Chicago, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -37,8 +37,8 @@
       "pinyin": "bō shì dùn",
       "english": "Boston, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -49,8 +49,8 @@
       "pinyin": "xī yǎ tú",
       "english": "Seattle, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -61,8 +61,8 @@
       "pinyin": "bō tè lán",
       "english": "Portland, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -73,8 +73,8 @@
       "pinyin": "mài ā mì",
       "english": "Miami, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -85,8 +85,8 @@
       "pinyin": "fèi chéng",
       "english": "Philadelphia, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -97,8 +97,8 @@
       "pinyin": "yà tè lán dà",
       "english": "Atlanta, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -109,8 +109,8 @@
       "pinyin": "xīn ào ěr liáng",
       "english": "New Orleans, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -121,8 +121,8 @@
       "pinyin": "fèng huáng chéng",
       "english": "Phoenix, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -133,8 +133,8 @@
       "pinyin": "yán hú chéng",
       "english": "Salt Lake City, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -145,8 +145,8 @@
       "pinyin": "dǐ tè lǜ",
       "english": "Detroit, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -157,8 +157,8 @@
       "pinyin": "kè lì fū lán",
       "english": "Cleveland, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -169,8 +169,8 @@
       "pinyin": "pǐ zī bǎo",
       "english": "Pittsburgh, USA",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -181,8 +181,8 @@
       "pinyin": "méng tè lì ěr",
       "english": "Montréal, Canada",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -193,8 +193,8 @@
       "pinyin": "wò tài huá",
       "english": "Ottawa — capital of Canada",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -205,8 +205,8 @@
       "pinyin": "kuí běi kè chéng",
       "english": "Québec City, Canada",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -217,8 +217,8 @@
       "pinyin": "kǎ ěr jiā lǐ",
       "english": "Calgary, Canada",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -229,8 +229,8 @@
       "pinyin": "ào kè lán",
       "english": "Auckland, New Zealand",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -241,8 +241,8 @@
       "pinyin": "jī dū chéng",
       "english": "Christchurch, New Zealand",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -253,8 +253,8 @@
       "pinyin": "dé lǐ",
       "english": "Delhi, India",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -265,8 +265,8 @@
       "pinyin": "mèng mǎi",
       "english": "Mumbai, India",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -277,8 +277,8 @@
       "pinyin": "xīn dé lǐ",
       "english": "New Delhi — capital of India",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -289,8 +289,8 @@
       "pinyin": "yī sī tǎn bù ěr",
       "english": "Istanbul, Türkiye",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -301,8 +301,8 @@
       "pinyin": "ān kǎ lā",
       "english": "Ankara — capital of Türkiye",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -313,8 +313,8 @@
       "pinyin": "shèng bǐ dé bǎo",
       "english": "Saint Petersburg, Russia",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -325,8 +325,8 @@
       "pinyin": "yuē hàn nèi sī bǎo",
       "english": "Johannesburg, South Africa",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -337,8 +337,8 @@
       "pinyin": "kāi luó",
       "english": "Cairo — capital of Egypt",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -349,8 +349,8 @@
       "pinyin": "hú zhì míng shì",
       "english": "Ho Chi Minh City, Vietnam",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -361,8 +361,8 @@
       "pinyin": "xiàn gǎng",
       "english": "Da Nang, Vietnam",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -373,8 +373,8 @@
       "pinyin": "qīng mài",
       "english": "Chiang Mai, Thailand",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -385,8 +385,8 @@
       "pinyin": "pǔ jí dǎo",
       "english": "Phuket Island, Thailand",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -397,8 +397,8 @@
       "pinyin": "bā lí dǎo",
       "english": "Bali, Indonesia",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -409,8 +409,8 @@
       "pinyin": "sì shuǐ",
       "english": "Surabaya, Indonesia",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -421,8 +421,8 @@
       "pinyin": "bīn chéng",
       "english": "Penang, Malaysia",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -433,8 +433,8 @@
       "pinyin": "sù wù",
       "english": "Cebu, Philippines",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -445,8 +445,8 @@
       "pinyin": "cháng tān dǎo",
       "english": "Boracay, Philippines",
       "tags": [
-        "places",
-        "major-cities"
+        "Places/places",
+        "Places/major-cities"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -457,11 +457,11 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -472,11 +472,11 @@
       "pinyin": "qù",
       "english": "Go",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -487,11 +487,11 @@
       "pinyin": "kě yǐ",
       "english": "Can; may; be allowed to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -502,11 +502,11 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -517,11 +517,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -532,11 +532,11 @@
       "pinyin": "xiǎng",
       "english": "Want to; think; miss someone",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -547,11 +547,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -562,11 +562,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -577,9 +577,9 @@
       "pinyin": "lǚ yóu",
       "english": "Travel for leisure",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -590,11 +590,11 @@
       "pinyin": "lǚ xíng",
       "english": "Travel",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -605,9 +605,9 @@
       "pinyin": "jì huà",
       "english": "Plan",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -618,9 +618,9 @@
       "pinyin": "guo",
       "english": "Past experience marker",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

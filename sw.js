@@ -1,6 +1,6 @@
 // App shell is cached for offline study after the first successful online visit.
-const CACHE = 'ciyan-shell-v3.2';
-const ASSETS = ['./','./index.html','./styles.css','./app.js','./fsrs.js','./storage.js',
+const CACHE = 'ciyan-shell-v4';
+const ASSETS = ['./','./index.html','./styles.css','./app.js','./study-engine.js','./review-scheduler.js','./particles.js','./tags.js','./drawing.js','./fsrs.js','./storage.js',
   './cards.js','./grammar.js','./deck-catalog.js','./hsk-tag-map.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png',
   './icons/apple-touch-icon.png'];
 self.addEventListener('install', event => {

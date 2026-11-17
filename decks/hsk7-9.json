@@ -12,9 +12,9 @@
       "pinyin": "fěn sī",
       "english": "Glass noodles; also fans of a person",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -25,9 +25,9 @@
       "pinyin": "dòu jiāng",
       "english": "Soy milk",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -38,9 +38,9 @@
       "pinyin": "zòng zi",
       "english": "Leaf-wrapped sticky rice dumpling",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -51,9 +51,9 @@
       "pinyin": "tāng yuán",
       "english": "Glutinous rice balls, often filled",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -64,9 +64,9 @@
       "pinyin": "huǒ guō",
       "english": "Hot pot",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -77,9 +77,9 @@
       "pinyin": "shāo kǎo",
       "english": "Barbecue; grilled food",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -90,9 +90,9 @@
       "pinyin": "lǔ wèi",
       "english": "Foods braised in seasoned master stock",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -103,9 +103,9 @@
       "pinyin": "xiā",
       "english": "Shrimp; prawns",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -116,9 +116,9 @@
       "pinyin": "zhī ma",
       "english": "Sesame",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -129,9 +129,9 @@
       "pinyin": "hé tao",
       "english": "Walnut",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -142,9 +142,9 @@
       "pinyin": "miàn fěn",
       "english": "Wheat flour",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -155,9 +155,9 @@
       "pinyin": "diàn fěn",
       "english": "Starch",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -168,9 +168,9 @@
       "pinyin": "hóng shǔ",
       "english": "Sweet potato",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -181,9 +181,9 @@
       "pinyin": "nán guā",
       "english": "Pumpkin; squash",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -194,9 +194,9 @@
       "pinyin": "mó gu",
       "english": "Mushroom",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -207,9 +207,9 @@
       "pinyin": "cōng",
       "english": "Scallion; spring onion",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -220,9 +220,9 @@
       "pinyin": "jiāng",
       "english": "Ginger",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -233,9 +233,9 @@
       "pinyin": "suàn",
       "english": "Garlic",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -246,9 +246,9 @@
       "pinyin": "là jiāo",
       "english": "Chili pepper",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -259,9 +259,9 @@
       "pinyin": "jú zi",
       "english": "Mandarin orange",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -272,9 +272,9 @@
       "pinyin": "yē zi",
       "english": "Coconut",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -285,9 +285,9 @@
       "pinyin": "shì zi",
       "english": "Persimmon",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -298,9 +298,9 @@
       "pinyin": "zǎo",
       "english": "Jujube; Chinese date",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -311,9 +311,9 @@
       "pinyin": "má",
       "english": "Numbing; tingling",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -324,9 +324,9 @@
       "pinyin": "qīng dàn",
       "english": "Lightly seasoned",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -337,9 +337,9 @@
       "pinyin": "nèn",
       "english": "Tender",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -350,9 +350,9 @@
       "pinyin": "tàng",
       "english": "Scalding hot",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -363,9 +363,9 @@
       "pinyin": "cháng wēn",
       "english": "Room temperature",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -376,9 +376,9 @@
       "pinyin": "sù shí",
       "english": "Vegetarian food or diet",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -389,9 +389,9 @@
       "pinyin": "jì kǒu",
       "english": "Dietary restrictions; avoid particular foods",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -402,9 +402,9 @@
       "pinyin": "zhēng",
       "english": "Steam",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -415,9 +415,9 @@
       "pinyin": "jiān",
       "english": "Pan-fry",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -428,9 +428,9 @@
       "pinyin": "kǎo",
       "english": "Roast; bake; grill",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -441,9 +441,9 @@
       "pinyin": "dùn",
       "english": "Stew; simmer",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -454,9 +454,9 @@
       "pinyin": "bàn",
       "english": "Mix; toss",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -467,9 +467,9 @@
       "pinyin": "lěng dòng",
       "english": "Freeze; frozen",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -480,9 +480,9 @@
       "pinyin": "bǎo zhì qī",
       "english": "Shelf life",
       "tags": [
-        "food",
-        "ordering",
-        "hsk7-9"
+        "Food/food",
+        "Food/ordering",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -493,9 +493,9 @@
       "pinyin": "zhī shì",
       "english": "Cheese (loanword)",
       "tags": [
-        "food",
-        "global-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/global-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -506,9 +506,9 @@
       "pinyin": "dàn bái zhì",
       "english": "Protein",
       "tags": [
-        "food",
-        "global-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/global-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -519,9 +519,9 @@
       "pinyin": "zhī fáng",
       "english": "Fat",
       "tags": [
-        "food",
-        "global-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/global-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -532,9 +532,9 @@
       "pinyin": "tú bù",
       "english": "Hike; travel on foot",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -545,9 +545,9 @@
       "pinyin": "qián shuǐ",
       "english": "Dive; diving",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -558,9 +558,9 @@
       "pinyin": "chōng làng",
       "english": "Surf",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -571,9 +571,9 @@
       "pinyin": "huá xuě",
       "english": "Ski; snow sports",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -584,9 +584,9 @@
       "pinyin": "huá bīng",
       "english": "Ice skate",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -597,9 +597,9 @@
       "pinyin": "pīng pāng qiú",
       "english": "Table tennis",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -610,9 +610,9 @@
       "pinyin": "bàng qiú",
       "english": "Baseball",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -623,9 +623,9 @@
       "pinyin": "jǔ zhòng",
       "english": "Weightlifting",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -636,9 +636,9 @@
       "pinyin": "gàng líng",
       "english": "Barbell",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -649,9 +649,9 @@
       "pinyin": "yě cān",
       "english": "Picnic",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -662,9 +662,9 @@
       "pinyin": "yuè qì",
       "english": "Musical instrument",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -675,9 +675,9 @@
       "pinyin": "jí tā",
       "english": "Guitar",
       "tags": [
-        "activities",
-        "sports",
-        "hsk7-9"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -688,9 +688,9 @@
       "pinyin": "guān jié",
       "english": "Joint",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -701,9 +701,9 @@
       "pinyin": "bó zi",
       "english": "Neck",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -714,9 +714,9 @@
       "pinyin": "jiān bǎng",
       "english": "Shoulder",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -727,9 +727,9 @@
       "pinyin": "fù bù",
       "english": "Abdomen",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -740,9 +740,9 @@
       "pinyin": "shǒu bì",
       "english": "Arm",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -753,9 +753,9 @@
       "pinyin": "shǒu wàn",
       "english": "Wrist",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -766,9 +766,9 @@
       "pinyin": "shǒu zhǎng",
       "english": "Palm",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -779,9 +779,9 @@
       "pinyin": "xī gài",
       "english": "Knee",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -792,9 +792,9 @@
       "pinyin": "pí láo",
       "english": "Fatigue",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -805,9 +805,9 @@
       "pinyin": "jí bié",
       "english": "Grade; level",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -818,9 +818,9 @@
       "pinyin": "tuō luò",
       "english": "Come off; fall off",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -831,9 +831,9 @@
       "pinyin": "luò dì",
       "english": "Land; reach the ground",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -844,9 +844,9 @@
       "pinyin": "diàn zi",
       "english": "Mat; pad",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -857,9 +857,9 @@
       "pinyin": "zhòng xīn",
       "english": "Center of gravity",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -870,9 +870,9 @@
       "pinyin": "dēng",
       "english": "Push with the legs; step forcefully",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -883,9 +883,9 @@
       "pinyin": "niē",
       "english": "Pinch",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -896,9 +896,9 @@
       "pinyin": "gōu",
       "english": "Hook",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -909,9 +909,9 @@
       "pinyin": "suǒ dìng",
       "english": "Lock off; lock in place",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -922,9 +922,9 @@
       "pinyin": "fù kuǎn",
       "english": "Make a payment",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -935,9 +935,9 @@
       "pinyin": "shōu jù",
       "english": "Receipt",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -948,9 +948,9 @@
       "pinyin": "xiǎo qū",
       "english": "Residential complex",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -961,9 +961,9 @@
       "pinyin": "yào shi",
       "english": "Key",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -974,9 +974,9 @@
       "pinyin": "tíng diàn",
       "english": "Power outage",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -987,9 +987,9 @@
       "pinyin": "biàn lì diàn",
       "english": "Convenience store",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1000,9 +1000,9 @@
       "pinyin": "cài shì chǎng",
       "english": "Fresh-food market",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1013,9 +1013,9 @@
       "pinyin": "shī dù",
       "english": "Humidity",
       "tags": [
-        "daily",
-        "practical",
-        "hsk7-9"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1026,10 +1026,10 @@
       "pinyin": "bú xiàng huà",
       "english": "Outrageous; unreasonable; that's not okay (informal criticism)",
       "tags": [
-        "slang",
-        "social",
-        "friend-chat",
-        "hsk7-9"
+        "Conversation/slang",
+        "Conversation/social",
+        "Conversation/friend-chat",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1040,10 +1040,10 @@
       "pinyin": "hǎo jiā huo",
       "english": "Wow; goodness; well, look at that",
       "tags": [
-        "slang",
-        "social",
-        "modern",
-        "hsk7-9"
+        "Conversation/slang",
+        "Conversation/social",
+        "Conversation/modern",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1054,10 +1054,10 @@
       "pinyin": "shàng tóu",
       "english": "Addictive; totally caught up in something",
       "tags": [
-        "slang",
-        "social",
-        "modern",
-        "hsk7-9"
+        "Conversation/slang",
+        "Conversation/social",
+        "Conversation/modern",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1068,9 +1068,9 @@
       "pinyin": "tuī jiàn",
       "english": "Recommend",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1081,9 +1081,9 @@
       "pinyin": "huá suàn",
       "english": "Worth it; good value",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1094,9 +1094,9 @@
       "pinyin": "hǎo xiào",
       "english": "Funny; laughable",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1107,9 +1107,9 @@
       "pinyin": "xíng zhèng",
       "english": "Administration; administrative",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1120,9 +1120,9 @@
       "pinyin": "dì lǐ",
       "english": "Geography",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1133,9 +1133,9 @@
       "pinyin": "zhēng",
       "english": "Open one's eyes",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1146,9 +1146,9 @@
       "pinyin": "jìn dù",
       "english": "Progress; project status",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1159,9 +1159,9 @@
       "pinyin": "duō kuī",
       "english": "Thanks to; fortunately because of",
       "tags": [
-        "conversation",
-        "fluency",
-        "hsk7-9"
+        "Conversation/conversation",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1172,9 +1172,9 @@
       "pinyin": "shùn biàn",
       "english": "While you're at it; conveniently",
       "tags": [
-        "conversation",
-        "fluency",
-        "hsk7-9"
+        "Conversation/conversation",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1185,9 +1185,9 @@
       "pinyin": "bēng kuì",
       "english": "Break down; feel overwhelmed",
       "tags": [
-        "social",
-        "fluency",
-        "hsk7-9"
+        "Conversation/social",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1198,9 +1198,9 @@
       "pinyin": "biè niu",
       "english": "Awkward; uncomfortable; unnatural",
       "tags": [
-        "social",
-        "fluency",
-        "hsk7-9"
+        "Conversation/social",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1211,9 +1211,9 @@
       "pinyin": "gān gà",
       "english": "Awkward; embarrassing",
       "tags": [
-        "social",
-        "fluency",
-        "hsk7-9"
+        "Conversation/social",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1224,9 +1224,9 @@
       "pinyin": "pí bèi",
       "english": "Exhausted; worn out",
       "tags": [
-        "social",
-        "fluency",
-        "hsk7-9"
+        "Conversation/social",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1237,9 +1237,9 @@
       "pinyin": "còu he",
       "english": "Make do; get by",
       "tags": [
-        "social",
-        "fluency",
-        "hsk7-9"
+        "Conversation/social",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1250,9 +1250,9 @@
       "pinyin": "láo dao",
       "english": "Nag; talk at length",
       "tags": [
-        "social",
-        "fluency",
-        "hsk7-9"
+        "Conversation/social",
+        "Conversation/fluency",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1263,9 +1263,9 @@
       "pinyin": "qián tái",
       "english": "Reception desk; front desk",
       "tags": [
-        "daily",
-        "work",
-        "hsk7-9"
+        "Everyday/daily",
+        "Work/work",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1276,11 +1276,11 @@
       "pinyin": "yī",
       "english": "One",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1291,8 +1291,8 @@
       "pinyin": "yí xià",
       "english": "Briefly; a little",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1303,8 +1303,8 @@
       "pinyin": "yì tiān",
       "english": "One day; a whole day",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1315,11 +1315,11 @@
       "pinyin": "yī qǐ",
       "english": "Together",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1330,11 +1330,11 @@
       "pinyin": "bù",
       "english": "Not; no",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1345,8 +1345,8 @@
       "pinyin": "bù néng",
       "english": "Cannot; not able to",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1357,9 +1357,9 @@
       "pinyin": "dōng xi",
       "english": "Thing; something",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1370,11 +1370,11 @@
       "pinyin": "ge",
       "english": "General classifier",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1385,7 +1385,7 @@
       "pinyin": "zhōng xīn",
       "english": "center; heart; core",
       "tags": [
-        "hsk2"
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1396,9 +1396,9 @@
       "pinyin": "zhōng wén",
       "english": "Chinese language",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1409,9 +1409,9 @@
       "pinyin": "zhī hòu",
       "english": "After",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1422,11 +1422,11 @@
       "pinyin": "yě",
       "english": "Also; too",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1437,11 +1437,11 @@
       "pinyin": "mǎi",
       "english": "Buy",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1452,11 +1452,11 @@
       "pinyin": "le",
       "english": "Completion or change-of-state particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1467,7 +1467,7 @@
       "pinyin": "liǎo jiě",
       "english": "to understand; to realize; to find out",
       "tags": [
-        "hsk4"
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1478,9 +1478,9 @@
       "pinyin": "shì qing",
       "english": "Matter; thing",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1491,11 +1491,11 @@
       "pinyin": "jīn tiān",
       "english": "Today",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1506,11 +1506,11 @@
       "pinyin": "tā",
       "english": "He; him",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1521,9 +1521,9 @@
       "pinyin": "yǐ hòu",
       "english": "After; afterwards",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1534,11 +1534,11 @@
       "pinyin": "huì",
       "english": "Know how to; will; be likely to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1549,7 +1549,7 @@
       "pinyin": "dàn",
       "english": "But; however",
       "tags": [
-        "hsk2"
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1560,11 +1560,11 @@
       "pinyin": "dàn shì",
       "english": "But; however",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1575,7 +1575,7 @@
       "pinyin": "zuò yòng",
       "english": "Effect; function; role",
       "tags": [
-        "hsk2"
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1586,11 +1586,11 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1601,9 +1601,9 @@
       "pinyin": "zuò fàn",
       "english": "Cook a meal",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1614,9 +1614,9 @@
       "pinyin": "xiān",
       "english": "First",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1627,8 +1627,8 @@
       "pinyin": "mào cài",
       "english": "Sichuan ingredients cooked in seasoned broth",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1639,9 +1639,9 @@
       "pinyin": "dōng tiān",
       "english": "Winter",
       "tags": [
-        "travel",
-        "activities",
-        "hsk2"
+        "Travel/travel",
+        "Activities/activities",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1652,8 +1652,8 @@
       "pinyin": "dōng guā",
       "english": "Winter melon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1664,9 +1664,9 @@
       "pinyin": "zhǔn bèi",
       "english": "Prepare",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1677,9 +1677,9 @@
       "pinyin": "jǐ",
       "english": "How many; a few",
       "tags": [
-        "daily",
-        "numbers",
-        "hsk1"
+        "Everyday/daily",
+        "Everyday/numbers",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1690,7 +1690,7 @@
       "pinyin": "yī shēng",
       "english": "doctor",
       "tags": [
-        "hsk1"
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1701,11 +1701,11 @@
       "pinyin": "qù",
       "english": "Go",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1716,8 +1716,8 @@
       "pinyin": "qù bīng",
       "english": "No ice",
       "tags": [
-        "food",
-        "ordering"
+        "Food/food",
+        "Food/ordering"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1728,8 +1728,8 @@
       "pinyin": "fā lì",
       "english": "Apply force; generate power",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1740,9 +1740,9 @@
       "pinyin": "qǔ",
       "english": "Take; collect; fetch",
       "tags": [
-        "work",
-        "professional",
-        "hsk2"
+        "Work/work",
+        "Work/professional",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1753,9 +1753,9 @@
       "pinyin": "jù",
       "english": "Sentence (classifier); sentence or phrase",
       "tags": [
-        "language",
-        "study",
-        "hsk2"
+        "Learning/language",
+        "Learning/study",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1766,11 +1766,11 @@
       "pinyin": "kě yǐ",
       "english": "Can; may; be allowed to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1781,11 +1781,11 @@
       "pinyin": "chī",
       "english": "Eat",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1796,10 +1796,10 @@
       "pinyin": "jí lóng pō",
       "english": "Kuala Lumpur",
       "tags": [
-        "places",
-        "cities",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/cities",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1810,9 +1810,9 @@
       "pinyin": "míng zi",
       "english": "Name",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1823,11 +1823,11 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1838,9 +1838,9 @@
       "pinyin": "ba",
       "english": "Suggestion particle",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1851,8 +1851,8 @@
       "pinyin": "tīng qǐ lai",
       "english": "Sound as if; appear from hearing",
       "tags": [
-        "grammar",
-        "conversation"
+        "Grammar/grammar",
+        "Conversation/conversation"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1863,11 +1863,11 @@
       "pinyin": "zhōu mò",
       "english": "Weekend",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1878,11 +1878,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1893,9 +1893,9 @@
       "pinyin": "xǐ huan",
       "english": "Like",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1906,11 +1906,11 @@
       "pinyin": "hē",
       "english": "Drink",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1921,9 +1921,9 @@
       "pinyin": "tuán gòu",
       "english": "Group-buy deal",
       "tags": [
-        "slang",
-        "social",
-        "modern"
+        "Conversation/slang",
+        "Conversation/social",
+        "Conversation/modern"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1934,9 +1934,9 @@
       "pinyin": "zài",
       "english": "At; in; ongoing action",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1947,11 +1947,11 @@
       "pinyin": "duō",
       "english": "Many; much; more",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1962,9 +1962,9 @@
       "pinyin": "tài",
       "english": "Too; very",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1975,11 +1975,11 @@
       "pinyin": "hǎo",
       "english": "Good; okay",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1990,9 +1990,9 @@
       "pinyin": "xué xí",
       "english": "Study",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2003,9 +2003,9 @@
       "pinyin": "wán chéng",
       "english": "Finish; complete",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2016,11 +2016,11 @@
       "pinyin": "jiā",
       "english": "Home; family",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2031,8 +2031,8 @@
       "pinyin": "bù chéng",
       "english": "Putrajaya — Malaysia's federal administrative center",
       "tags": [
-        "places",
-        "world-capitals"
+        "Places/places",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2043,9 +2043,9 @@
       "pinyin": "dài",
       "english": "Bring",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2056,9 +2056,9 @@
       "pinyin": "bāng máng",
       "english": "Help; lend a hand",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2069,9 +2069,9 @@
       "pinyin": "kāi",
       "english": "Open; turn on; drive",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2082,11 +2082,11 @@
       "pinyin": "hěn",
       "english": "Very; quite",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2097,9 +2097,9 @@
       "pinyin": "wàng",
       "english": "Forget",
       "tags": [
-        "daily",
-        "conversation",
-        "hsk1"
+        "Everyday/daily",
+        "Conversation/conversation",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2110,9 +2110,9 @@
       "pinyin": "kuài",
       "english": "Fast; quick",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2123,11 +2123,11 @@
       "pinyin": "zěn me yàng",
       "english": "How; what is it like",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2",
-        "grammar",
-        "conversation"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2",
+        "Grammar/grammar",
+        "Conversation/conversation"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2138,11 +2138,11 @@
       "pinyin": "xiǎng",
       "english": "Want to; think; miss someone",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2153,9 +2153,9 @@
       "pinyin": "yì si",
       "english": "Meaning; idea",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2166,11 +2166,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2181,11 +2181,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2196,9 +2196,9 @@
       "pinyin": "shǒu zhǐ",
       "english": "Finger",
       "tags": [
-        "body",
-        "fitness",
-        "hsk3"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2209,11 +2209,11 @@
       "pinyin": "cái",
       "english": "Only then; not until; only (context dependent)",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2224,11 +2224,11 @@
       "pinyin": "dǎ suàn",
       "english": "Plan; intend",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2",
-        "social",
-        "conversation"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2",
+        "Conversation/social",
+        "Conversation/conversation"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2239,9 +2239,9 @@
       "pinyin": "jì shù",
       "english": "Technique; skill",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2252,9 +2252,9 @@
       "pinyin": "bǎ",
       "english": "Object disposal construction marker",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk3"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2265,9 +2265,9 @@
       "pinyin": "zhuā",
       "english": "Grab; grip",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2278,9 +2278,9 @@
       "pinyin": "pái qiú",
       "english": "Volleyball",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2291,8 +2291,8 @@
       "pinyin": "pān yán",
       "english": "Rock climbing",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2303,9 +2303,9 @@
       "pinyin": "gù shi",
       "english": "Story",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2316,9 +2316,9 @@
       "pinyin": "jiào liàn",
       "english": "Coach",
       "tags": [
-        "activities",
-        "sports",
-        "hsk3"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2329,11 +2329,11 @@
       "pinyin": "shí hou",
       "english": "Time; occasion; when",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2344,11 +2344,11 @@
       "pinyin": "shì",
       "english": "Be; is; am; are",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2359,9 +2359,9 @@
       "pinyin": "gèng",
       "english": "More; even more",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2372,9 +2372,9 @@
       "pinyin": "yuè bǐng",
       "english": "Mooncake",
       "tags": [
-        "food",
-        "china-food",
-        "hsk5"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2385,11 +2385,11 @@
       "pinyin": "yǒu",
       "english": "Have; there is",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2400,9 +2400,9 @@
       "pinyin": "yǒu shí hou",
       "english": "Sometimes",
       "tags": [
-        "daily",
-        "conversation",
-        "hsk1"
+        "Everyday/daily",
+        "Conversation/conversation",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2413,8 +2413,8 @@
       "pinyin": "yǒu diǎn",
       "english": "A bit (often undesirable)",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2425,9 +2425,9 @@
       "pinyin": "yǒu qù",
       "english": "Interesting; engaging",
       "tags": [
-        "daily",
-        "conversation",
-        "hsk4"
+        "Everyday/daily",
+        "Conversation/conversation",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2438,8 +2438,8 @@
       "pinyin": "xìng rén",
       "english": "Almond or apricot kernel, depending on product",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2450,8 +2450,8 @@
       "pinyin": "yòu zi",
       "english": "Pomelo",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2462,7 +2462,7 @@
       "pinyin": "zhèng zài",
       "english": "just at (that time); right in (that place); right in the middle of (doing sth)",
       "tags": [
-        "hsk1"
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2473,8 +2473,8 @@
       "pinyin": "měi tiān",
       "english": "Every day",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2485,9 +2485,9 @@
       "pinyin": "zhù yì",
       "english": "Pay attention",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk3"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2498,7 +2498,7 @@
       "pinyin": "yóu xì",
       "english": "game; to play",
       "tags": [
-        "hsk3"
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2509,9 +2509,9 @@
       "pinyin": "diǎn",
       "english": "Order; point; o'clock",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2522,10 +2522,10 @@
       "pinyin": "diǎn cài",
       "english": "Order dishes",
       "tags": [
-        "food",
-        "ordering",
-        "grammar-support",
-        "basics"
+        "Food/food",
+        "Food/ordering",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2536,8 +2536,8 @@
       "pinyin": "kǎo chuàn",
       "english": "Grilled skewers",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2548,8 +2548,8 @@
       "pinyin": "yàn mài",
       "english": "Oats",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2560,9 +2560,9 @@
       "pinyin": "pá",
       "english": "Climb; crawl",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2573,9 +2573,9 @@
       "pinyin": "niú nǎi",
       "english": "Milk",
       "tags": [
-        "food",
-        "global-food",
-        "hsk1"
+        "Food/food",
+        "Food/global-food",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2586,8 +2586,8 @@
       "pinyin": "niú yóu guǒ",
       "english": "Avocado",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2598,8 +2598,8 @@
       "pinyin": "tè bié xíng zhèng qū",
       "english": "Special administrative region",
       "tags": [
-        "places",
-        "china-regions"
+        "Places/places",
+        "Places/china-regions"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2610,9 +2610,9 @@
       "pinyin": "yòng",
       "english": "Use",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2623,9 +2623,9 @@
       "pinyin": "diàn tī",
       "english": "Elevator; lift",
       "tags": [
-        "daily",
-        "practical",
-        "hsk4"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2636,11 +2636,11 @@
       "pinyin": "de",
       "english": "Possessive or attributive particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2651,8 +2651,8 @@
       "pinyin": "gài jiāo fàn",
       "english": "Rice topped with a cooked dish",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2663,7 +2663,7 @@
       "pinyin": "zhēn",
       "english": "really; truly; indeed",
       "tags": [
-        "hsk1"
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2674,7 +2674,7 @@
       "pinyin": "yǎn",
       "english": "eye; small hole; crux (of a matter)",
       "tags": [
-        "hsk2"
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2685,9 +2685,9 @@
       "pinyin": "zhī shi",
       "english": "Knowledge",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2698,11 +2698,11 @@
       "pinyin": "duǎn",
       "english": "Short (length)",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2713,8 +2713,8 @@
       "pinyin": "shí liu",
       "english": "Pomegranate",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2725,7 +2725,7 @@
       "pinyin": "jìng rán",
       "english": "unexpectedly; to one's surprise; in spite of everything",
       "tags": [
-        "hsk4"
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2736,9 +2736,9 @@
       "pinyin": "xiào sǐ",
       "english": "I'm dying laughing; LOL",
       "tags": [
-        "slang",
-        "social",
-        "modern"
+        "Conversation/slang",
+        "Conversation/social",
+        "Conversation/modern"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2749,8 +2749,8 @@
       "pinyin": "mǐ fěn",
       "english": "Rice noodles; rice flour",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2761,8 +2761,8 @@
       "pinyin": "nuò mǐ",
       "english": "Glutinous rice",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2773,9 +2773,9 @@
       "pinyin": "xiàn",
       "english": "Line; route",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk3"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2786,11 +2786,11 @@
       "pinyin": "liàn xí",
       "english": "Practice; rehearse",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2",
-        "work",
-        "professional"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2",
+        "Work/work",
+        "Work/professional"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2801,9 +2801,9 @@
       "pinyin": "jié gòu",
       "english": "Structure",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2814,9 +2814,9 @@
       "pinyin": "wǎng qiú",
       "english": "Tennis",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2827,8 +2827,8 @@
       "pinyin": "zhǒu bù",
       "english": "Elbow region",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2839,11 +2839,11 @@
       "pinyin": "néng",
       "english": "Can; be able to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2854,8 +2854,8 @@
       "pinyin": "jiǎo huái",
       "english": "Ankle",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2866,8 +2866,8 @@
       "pinyin": "tún bù",
       "english": "Buttocks; gluteal region",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2878,8 +2878,8 @@
       "pinyin": "yù tou",
       "english": "Taro",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2890,9 +2890,9 @@
       "pinyin": "huā shēng",
       "english": "Peanuts",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk6"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2903,8 +2903,8 @@
       "pinyin": "chá yè dàn",
       "english": "Tea egg",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2915,9 +2915,9 @@
       "pinyin": "cài",
       "english": "Dish; vegetables",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2928,11 +2928,11 @@
       "pinyin": "suī rán",
       "english": "Although",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2943,11 +2943,11 @@
       "pinyin": "yào",
       "english": "Want; need; be going to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2958,11 +2958,11 @@
       "pinyin": "jué de",
       "english": "Feel; think; find",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2973,9 +2973,9 @@
       "pinyin": "tǎo lùn",
       "english": "Discuss",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2986,7 +2986,7 @@
       "pinyin": "ràng",
       "english": "Let; allow; ask someone to; yield",
       "tags": [
-        "hsk2"
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -2997,11 +2997,11 @@
       "pinyin": "xùn liàn",
       "english": "Training; train",
       "tags": [
-        "activities",
-        "sports",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3012,8 +3012,8 @@
       "pinyin": "shì shi",
       "english": "Give it a try",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3024,7 +3024,7 @@
       "pinyin": "qǐng",
       "english": "to ask; to invite; please (do sth)",
       "tags": [
-        "hsk1"
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3035,8 +3035,8 @@
       "pinyin": "wān dòu",
       "english": "Peas",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3047,12 +3047,12 @@
       "pinyin": "chāo shì",
       "english": "Supermarket",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics",
-        "errands"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "Everyday/errands"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3063,8 +3063,8 @@
       "pinyin": "tiào shéng",
       "english": "Jump rope",
       "tags": [
-        "activities",
-        "sports"
+        "Activities/activities",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3075,9 +3075,9 @@
       "pinyin": "yùn dòng",
       "english": "Exercise; sport",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3088,11 +3088,11 @@
       "pinyin": "hái shi",
       "english": "Or (in choices/questions); still",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3103,9 +3103,9 @@
       "pinyin": "zhè",
       "english": "This",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3116,10 +3116,10 @@
       "pinyin": "zhè ge",
       "english": "This one",
       "tags": [
-        "daily",
-        "practical",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3130,8 +3130,8 @@
       "pinyin": "zhè me duō",
       "english": "So many; so much",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3142,9 +3142,9 @@
       "pinyin": "xuǎn",
       "english": "Choose",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3155,9 +3155,9 @@
       "pinyin": "dào",
       "english": "Dish classifier; path; way",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3168,11 +3168,11 @@
       "pinyin": "dōu",
       "english": "All; both; in every case",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3183,9 +3183,9 @@
       "pinyin": "yín háng kǎ",
       "english": "Bank card",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3196,8 +3196,8 @@
       "pinyin": "lù yíng",
       "english": "Camp; camping",
       "tags": [
-        "activities",
-        "sports"
+        "Activities/activities",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3208,8 +3208,8 @@
       "pinyin": "qīng jiāo",
       "english": "Green pepper",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3220,7 +3220,7 @@
       "pinyin": "xiàng mù",
       "english": "item; project; (sports) event",
       "tags": [
-        "hsk4"
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3231,9 +3231,9 @@
       "pinyin": "cān tīng",
       "english": "Restaurant",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk5"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3244,11 +3244,11 @@
       "pinyin": "shǒu dū",
       "english": "Capital city",
       "tags": [
-        "places",
-        "countries",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Places/places",
+        "Places/countries",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3259,8 +3259,8 @@
       "pinyin": "xiāng cài",
       "english": "Cilantro; coriander leaves",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3271,10 +3271,10 @@
       "pinyin": "mǎ lái xī yà",
       "english": "Malaysia",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3285,9 +3285,9 @@
       "pinyin": "gǔ tou",
       "english": "Bone",
       "tags": [
-        "body",
-        "fitness",
-        "hsk4"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3298,8 +3298,8 @@
       "pinyin": "kuān guān jié",
       "english": "Hip joint",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3310,11 +3310,11 @@
       "pinyin": "gāo",
       "english": "Tall; high",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3325,9 +3325,9 @@
       "pinyin": "yú",
       "english": "Fish",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk2"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -3338,8 +3338,8 @@
       "pinyin": "huáng yóu",
       "english": "Butter",
       "tags": [
-        "food",
-        "global-food"
+        "Food/food",
+        "Food/global-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

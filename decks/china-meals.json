@@ -12,9 +12,9 @@
       "pinyin": "mǐ fàn",
       "english": "Cooked rice",
       "tags": [
-        "food",
-        "china-food",
-        "hsk1"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -25,8 +25,8 @@
       "pinyin": "miàn tiáo",
       "english": "Noodles",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -37,8 +37,8 @@
       "pinyin": "chǎo fàn",
       "english": "Fried rice",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -49,8 +49,8 @@
       "pinyin": "chǎo miàn",
       "english": "Stir-fried noodles",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -61,8 +61,8 @@
       "pinyin": "tāng miàn",
       "english": "Noodles in soup",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -73,8 +73,8 @@
       "pinyin": "bàn miàn",
       "english": "Noodles mixed with sauce",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -85,8 +85,8 @@
       "pinyin": "lā miàn",
       "english": "Hand-pulled noodles",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -97,8 +97,8 @@
       "pinyin": "dāo xiāo miàn",
       "english": "Knife-cut noodles",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -109,8 +109,8 @@
       "pinyin": "mǐ fěn",
       "english": "Rice noodles; rice flour",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -121,9 +121,9 @@
       "pinyin": "fěn sī",
       "english": "Glass noodles; also fans of a person",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -134,8 +134,8 @@
       "pinyin": "hé fěn",
       "english": "Wide flat rice noodles",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -146,8 +146,8 @@
       "pinyin": "liáng pí",
       "english": "Cold wheat or rice starch noodles",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -158,8 +158,8 @@
       "pinyin": "hún tun",
       "english": "Wontons",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -170,9 +170,9 @@
       "pinyin": "jiǎo zi",
       "english": "Dumplings",
       "tags": [
-        "food",
-        "china-food",
-        "hsk2"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -183,8 +183,8 @@
       "pinyin": "shuǐ jiǎo",
       "english": "Boiled dumplings",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -195,8 +195,8 @@
       "pinyin": "zhēng jiǎo",
       "english": "Steamed dumplings",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -207,8 +207,8 @@
       "pinyin": "guō tiē",
       "english": "Pan-fried dumplings",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -219,9 +219,9 @@
       "pinyin": "bāo zi",
       "english": "Filled steamed buns",
       "tags": [
-        "food",
-        "china-food",
-        "hsk1"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -232,9 +232,9 @@
       "pinyin": "mán tou",
       "english": "Plain steamed buns",
       "tags": [
-        "food",
-        "china-food",
-        "hsk6"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -245,8 +245,8 @@
       "pinyin": "xiǎo lóng bāo",
       "english": "Small soup-filled steamed buns",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -257,8 +257,8 @@
       "pinyin": "shēng jiān bāo",
       "english": "Pan-fried soup buns",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -269,8 +269,8 @@
       "pinyin": "shāo mài",
       "english": "Open-topped steamed dumplings",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -281,8 +281,8 @@
       "pinyin": "yóu tiáo",
       "english": "Fried dough sticks",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -293,9 +293,9 @@
       "pinyin": "dòu jiāng",
       "english": "Soy milk",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -306,8 +306,8 @@
       "pinyin": "dòu fu nǎo",
       "english": "Soft tofu pudding",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -318,8 +318,8 @@
       "pinyin": "jiān bǐng",
       "english": "Chinese griddle pancake or crepe",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -330,8 +330,8 @@
       "pinyin": "cōng yóu bǐng",
       "english": "Scallion pancake",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -342,8 +342,8 @@
       "pinyin": "shǒu zhuā bǐng",
       "english": "Flaky griddle flatbread",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -354,8 +354,8 @@
       "pinyin": "ròu jiā mó",
       "english": "Meat-filled flatbread",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -366,9 +366,9 @@
       "pinyin": "zhōu",
       "english": "Congee; rice porridge",
       "tags": [
-        "food",
-        "china-food",
-        "hsk6"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -379,8 +379,8 @@
       "pinyin": "bā bǎo zhōu",
       "english": "Mixed-grain sweet porridge",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -391,8 +391,8 @@
       "pinyin": "chá yè dàn",
       "english": "Tea egg",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -403,9 +403,9 @@
       "pinyin": "zòng zi",
       "english": "Leaf-wrapped sticky rice dumpling",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -416,9 +416,9 @@
       "pinyin": "tāng yuán",
       "english": "Glutinous rice balls, often filled",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -429,9 +429,9 @@
       "pinyin": "yuè bǐng",
       "english": "Mooncake",
       "tags": [
-        "food",
-        "china-food",
-        "hsk5"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -442,8 +442,8 @@
       "pinyin": "má là tàng",
       "english": "Ingredients cooked in a spicy broth",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -454,8 +454,8 @@
       "pinyin": "má là xiāng guō",
       "english": "Spicy dry-pot stir-fry",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -466,9 +466,9 @@
       "pinyin": "huǒ guō",
       "english": "Hot pot",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -479,8 +479,8 @@
       "pinyin": "mào cài",
       "english": "Sichuan ingredients cooked in seasoned broth",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -491,8 +491,8 @@
       "pinyin": "kǎo chuàn",
       "english": "Grilled skewers",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -503,9 +503,9 @@
       "pinyin": "shāo kǎo",
       "english": "Barbecue; grilled food",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -516,9 +516,9 @@
       "pinyin": "kǎo yā",
       "english": "Roast duck",
       "tags": [
-        "food",
-        "china-food",
-        "hsk5"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -529,8 +529,8 @@
       "pinyin": "bái qiē jī",
       "english": "Poached chicken served sliced",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -541,8 +541,8 @@
       "pinyin": "hóng shāo ròu",
       "english": "Red-braised pork",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -553,8 +553,8 @@
       "pinyin": "huí guō ròu",
       "english": "Twice-cooked pork",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -565,8 +565,8 @@
       "pinyin": "gōng bǎo jī dīng",
       "english": "Kung pao chicken",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -577,8 +577,8 @@
       "pinyin": "yú xiāng ròu sī",
       "english": "Shredded pork in Sichuan fish-fragrant sauce",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -589,8 +589,8 @@
       "pinyin": "má pó dòu fu",
       "english": "Mapo tofu",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -601,8 +601,8 @@
       "pinyin": "fān qié chǎo dàn",
       "english": "Stir-fried tomato and egg",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -613,8 +613,8 @@
       "pinyin": "suān cài yú",
       "english": "Fish with pickled mustard greens",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -625,8 +625,8 @@
       "pinyin": "shuǐ zhǔ yú",
       "english": "Sichuan fish in a chili-oil broth",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -637,8 +637,8 @@
       "pinyin": "táng cù lǐ jǐ",
       "english": "Sweet-and-sour pork tenderloin",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -649,8 +649,8 @@
       "pinyin": "zhá jiàng miàn",
       "english": "Noodles with fried bean sauce",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -661,8 +661,8 @@
       "pinyin": "niú ròu miàn",
       "english": "Beef noodle soup",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -673,8 +673,8 @@
       "pinyin": "luó sī fěn",
       "english": "Liuzhou rice noodles in river-snail broth",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -685,8 +685,8 @@
       "pinyin": "cháng fěn",
       "english": "Steamed rice noodle rolls",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -697,8 +697,8 @@
       "pinyin": "chā shāo",
       "english": "Cantonese barbecued pork",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -709,8 +709,8 @@
       "pinyin": "là ròu",
       "english": "Cured pork",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -721,8 +721,8 @@
       "pinyin": "chòu dòu fu",
       "english": "Fermented stinky tofu",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -733,9 +733,9 @@
       "pinyin": "lǔ wèi",
       "english": "Foods braised in seasoned master stock",
       "tags": [
-        "food",
-        "china-food",
-        "hsk7-9"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -746,8 +746,8 @@
       "pinyin": "gài jiāo fàn",
       "english": "Rice topped with a cooked dish",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -758,9 +758,9 @@
       "pinyin": "hé fàn",
       "english": "Boxed meal",
       "tags": [
-        "food",
-        "china-food",
-        "hsk5"
+        "Food/food",
+        "Food/china-food",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -771,8 +771,8 @@
       "pinyin": "biàn dāng",
       "english": "Packed lunch; bento",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -783,8 +783,8 @@
       "pinyin": "zì zhù cān",
       "english": "Buffet",
       "tags": [
-        "food",
-        "china-food"
+        "Food/food",
+        "Food/china-food"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -795,11 +795,11 @@
       "pinyin": "le",
       "english": "Completion or change-of-state particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -810,11 +810,11 @@
       "pinyin": "jīn tiān",
       "english": "Today",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -825,11 +825,11 @@
       "pinyin": "tā",
       "english": "He; him",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -840,11 +840,11 @@
       "pinyin": "dàn shì",
       "english": "But; however",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -855,11 +855,11 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -870,11 +870,11 @@
       "pinyin": "chī",
       "english": "Eat",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -885,11 +885,11 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -900,11 +900,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -915,9 +915,9 @@
       "pinyin": "xǐ huan",
       "english": "Like",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -928,11 +928,11 @@
       "pinyin": "hē",
       "english": "Drink",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -943,8 +943,8 @@
       "pinyin": "cháng chang",
       "english": "Try/taste (food)",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -955,11 +955,11 @@
       "pinyin": "xiǎng",
       "english": "Want to; think; miss someone",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -970,11 +970,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -985,11 +985,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1000,9 +1000,9 @@
       "pinyin": "gèng",
       "english": "More; even more",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1013,9 +1013,9 @@
       "pinyin": "diǎn",
       "english": "Order; point; o'clock",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1026,11 +1026,11 @@
       "pinyin": "hái shi",
       "english": "Or (in choices/questions); still",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

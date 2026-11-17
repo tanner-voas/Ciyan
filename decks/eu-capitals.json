@@ -12,10 +12,10 @@
       "pinyin": "ào dì lì",
       "english": "Austria",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -26,9 +26,9 @@
       "pinyin": "wéi yě nà",
       "english": "Vienna, Austria",
       "tags": [
-        "places",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -39,10 +39,10 @@
       "pinyin": "bǐ lì shí",
       "english": "Belgium",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -53,9 +53,9 @@
       "pinyin": "bù lǔ sài ěr",
       "english": "Brussels, Belgium",
       "tags": [
-        "places",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -66,8 +66,8 @@
       "pinyin": "bǎo jiā lì yà",
       "english": "Bulgaria — capital Sofia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -78,8 +78,8 @@
       "pinyin": "suǒ fēi yà",
       "english": "Sofia — capital of Bulgaria",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -90,8 +90,8 @@
       "pinyin": "kè luó dì yà",
       "english": "Croatia — capital Zagreb",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -102,8 +102,8 @@
       "pinyin": "sà gé lè bù",
       "english": "Zagreb — capital of Croatia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -114,8 +114,8 @@
       "pinyin": "sài pǔ lù sī",
       "english": "Cyprus — capital Nicosia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -126,8 +126,8 @@
       "pinyin": "ní kē xī yà",
       "english": "Nicosia — capital of Cyprus",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -138,10 +138,10 @@
       "pinyin": "jié kè",
       "english": "Czechia",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -152,9 +152,9 @@
       "pinyin": "bù lā gé",
       "english": "Prague, Czechia",
       "tags": [
-        "places",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -165,9 +165,9 @@
       "pinyin": "dān mài",
       "english": "Denmark",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -178,8 +178,8 @@
       "pinyin": "gē běn hā gēn",
       "english": "Copenhagen — capital of Denmark",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -190,8 +190,8 @@
       "pinyin": "ài shā ní yà",
       "english": "Estonia — capital Tallinn",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -202,8 +202,8 @@
       "pinyin": "tǎ lín",
       "english": "Tallinn — capital of Estonia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -214,9 +214,9 @@
       "pinyin": "fēn lán",
       "english": "Finland",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -227,8 +227,8 @@
       "pinyin": "hè ěr xīn jī",
       "english": "Helsinki — capital of Finland",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -239,10 +239,10 @@
       "pinyin": "fǎ guó",
       "english": "France",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -253,10 +253,10 @@
       "pinyin": "bā lí",
       "english": "Paris",
       "tags": [
-        "places",
-        "cities",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/cities",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -267,10 +267,10 @@
       "pinyin": "dé guó",
       "english": "Germany",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -281,10 +281,10 @@
       "pinyin": "bó lín",
       "english": "Berlin",
       "tags": [
-        "places",
-        "cities",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/cities",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -295,9 +295,9 @@
       "pinyin": "xī là",
       "english": "Greece",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -308,8 +308,8 @@
       "pinyin": "yǎ diǎn",
       "english": "Athens — capital of Greece",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -320,10 +320,10 @@
       "pinyin": "xiōng yá lì",
       "english": "Hungary",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -334,9 +334,9 @@
       "pinyin": "bù dá pèi sī",
       "english": "Budapest, Hungary",
       "tags": [
-        "places",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -347,9 +347,9 @@
       "pinyin": "ài ěr lán",
       "english": "Ireland",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -360,8 +360,8 @@
       "pinyin": "dū bó lín",
       "english": "Dublin — capital of Ireland",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -372,10 +372,10 @@
       "pinyin": "yì dà lì",
       "english": "Italy",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -386,10 +386,10 @@
       "pinyin": "luó mǎ",
       "english": "Rome",
       "tags": [
-        "places",
-        "cities",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/cities",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -400,8 +400,8 @@
       "pinyin": "lā tuō wéi yà",
       "english": "Latvia — capital Riga",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -412,8 +412,8 @@
       "pinyin": "lǐ jiā",
       "english": "Riga — capital of Latvia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -424,8 +424,8 @@
       "pinyin": "lì táo wǎn",
       "english": "Lithuania — capital Vilnius",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -436,8 +436,8 @@
       "pinyin": "wéi ěr niǔ sī",
       "english": "Vilnius — capital of Lithuania",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -448,8 +448,8 @@
       "pinyin": "lú sēn bǎo",
       "english": "Luxembourg — capital Luxembourg City",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -460,8 +460,8 @@
       "pinyin": "lú sēn bǎo shì",
       "english": "Luxembourg City — capital of Luxembourg",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -472,8 +472,8 @@
       "pinyin": "mǎ ěr tā",
       "english": "Malta — capital Valletta",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -484,8 +484,8 @@
       "pinyin": "wǎ lái tǎ",
       "english": "Valletta — capital of Malta",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -496,10 +496,10 @@
       "pinyin": "hé lán",
       "english": "Netherlands",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -510,9 +510,9 @@
       "pinyin": "ā mǔ sī tè dān",
       "english": "Amsterdam, Netherlands",
       "tags": [
-        "places",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -523,9 +523,9 @@
       "pinyin": "bō lán",
       "english": "Poland",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -536,8 +536,8 @@
       "pinyin": "huá shā",
       "english": "Warsaw — capital of Poland",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -548,10 +548,10 @@
       "pinyin": "pú táo yá",
       "english": "Portugal",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -562,9 +562,9 @@
       "pinyin": "lǐ sī běn",
       "english": "Lisbon, Portugal",
       "tags": [
-        "places",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -575,8 +575,8 @@
       "pinyin": "luó mǎ ní yà",
       "english": "Romania — capital Bucharest",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -587,8 +587,8 @@
       "pinyin": "bù jiā lè sī tè",
       "english": "Bucharest — capital of Romania",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -599,8 +599,8 @@
       "pinyin": "sī luò fá kè",
       "english": "Slovakia — capital Bratislava",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -611,8 +611,8 @@
       "pinyin": "bù lā dí sī lā fā",
       "english": "Bratislava — capital of Slovakia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -623,8 +623,8 @@
       "pinyin": "sī luò wén ní yà",
       "english": "Slovenia — capital Ljubljana",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -635,8 +635,8 @@
       "pinyin": "lú bù ěr yǎ nà",
       "english": "Ljubljana — capital of Slovenia",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -647,10 +647,10 @@
       "pinyin": "xī bān yá",
       "english": "Spain",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -661,10 +661,10 @@
       "pinyin": "mǎ dé lǐ",
       "english": "Madrid",
       "tags": [
-        "places",
-        "cities",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/cities",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -675,9 +675,9 @@
       "pinyin": "ruì diǎn",
       "english": "Sweden",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -688,8 +688,8 @@
       "pinyin": "sī dé gē ěr mó",
       "english": "Stockholm — capital of Sweden",
       "tags": [
-        "places",
-        "eu-capitals"
+        "Places/places",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -700,11 +700,11 @@
       "pinyin": "shì",
       "english": "Be; is; am; are",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -715,11 +715,11 @@
       "pinyin": "de",
       "english": "Possessive or attributive particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -730,11 +730,11 @@
       "pinyin": "shǒu dū",
       "english": "Capital city",
       "tags": [
-        "places",
-        "countries",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Places/places",
+        "Places/countries",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

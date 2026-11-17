@@ -1,4 +1,18 @@
-# Cíyán (词言) — Mandarin SRS PWA, v0.3.2
+# Cíyán (词言) — Mandarin SRS PWA, v0.4
+
+Current release: **v0.4**, based on v0.3.2 with its expanded decks. See
+[STUDY_DESIGN_v0.4.md](STUDY_DESIGN_v0.4.md) for the authoritative current study,
+scheduling, tag-tree and statistics behavior; [PARTICLE_AUTHORING.md](PARTICLE_AUTHORING.md)
+for importable particle tests; and [AUDIT_v0.4.md](AUDIT_v0.4.md) for validation.
+
+Use **Study** for Vocabulary, Grammar, Drawing or Particle Zoo. **Auto Study** mixes
+enabled modes. **Settings → Review timing** configures 0–3 score intervals or FSRS.
+**Stats → Overdue → next due** shows the adaptive workload histogram. Tags now use
+slash-separated paths in JSON. The expanded deck content is retained unchanged
+apart from these tag paths.
+
+The notes below include earlier release behavior; the v0.4 design above supersedes
+statements about two study modes and FSRS being the only scheduling policy.
 
 A dependency-free, offline-first Mandarin flashcard PWA for iPhone. Two independent card types: **vocabulary words** and **grammar sentence puzzles**. Review records, FSRS scheduling, settings, vocabulary and grammar all live in the device's IndexedDB database. You export an independent JSON backup to the iPhone **Files** app after every study session.
 
@@ -14,7 +28,7 @@ python3 package.py
 
 This regenerates **`dist/ciyan/`**, including `index.html` at its root. The entire `dist/` directory is Git-ignored. You can upload the folder to **Cloudflare Pages → Direct Upload**, or zip the contents of `dist/ciyan/` (not the `ciyan` parent directory) and upload that ZIP. No Node modules, bundler or Python packages are required for production.
 
-**Upgrading a development installation:** If you have no study data, there is nothing to migrate. You can clear the website data and reload to start fresh. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. Settings shows v0.3.2; the vocabulary data and HSK tag source are refreshed. The new worker waits for old windows to close so a release does not swap scripts mid-session. Optional decks are never added automatically. There is no new historical data migration in this release.
+**Upgrading a development installation:** If you have no study data, there is nothing to migrate. You can clear the website data and reload to start fresh. Upload the new distribution to the same Cloudflare project/URL. Open online once so the new service worker can install, then close every open Cíyán window (including Safari tabs and the Home Screen app) and reopen. Settings shows v0.4; the vocabulary data and HSK tag source are refreshed. The new worker waits for old windows to close so a release does not swap scripts mid-session. Optional decks are never added automatically. There is no new historical data migration in this release.
 
 ## Earlier geography and slang additions (v0.3.1)
 

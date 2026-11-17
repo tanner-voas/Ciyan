@@ -1,3 +1,4 @@
+import {normalizeParticle} from './particles.js';
 // Independent, editable sentence cards. Curly braces delimit draggable word tiles;
 // punctuation and spaces outside braces are fixed in the answer strip.
 export const STARTER_GRAMMAR = [
@@ -25,7 +26,10 @@ export function parseSegments(markup) {
   }
   return segments;
 }
-export const grammarTokens = g => parseSegments(g.markup).filter(x=>x.type==='token').map(x=>x.text);
+const tokenCache=new WeakMap();
+export function grammarTokens(g){const cached=tokenCache.get(g);if(cached?.markup===g.markup)return cached.tokens;const tokens=parseSegments(g.markup).filter(x=>x.type==='token').map(x=>x.text);tokenCache.set(g,{markup:g.markup,tokens});return tokens;}
+const vocabCache=new WeakMap();
+function vocabIndex(cards){let cached=vocabCache.get(cards);if(!cached||cached.size!==cards.length){cached={size:cards.length,map:new Map(cards.map(c=>[c.hanzi,c]))};vocabCache.set(cards,cached);}return cached.map;}
 export const plainSentence = markup => String(markup||'').replace(/[{}]/g,'');
 const clean=(v,max=600)=>String(v??'').trim().slice(0,max);
 export function parseDistractors(raw) {
@@ -46,8 +50,9 @@ export function normalizeGrammar(source,fallbackId=null) {
   const distractors=parseDistractors(source.distractors);
   if(distractors.length>20)throw new Error('Too many distractors');
   for(const d of distractors)if(!Number.isSafeInteger(d.index)||d.index<1||d.index>tokens.length||!d.word)throw new Error('Distractor index must identify a word token (starting at 1)');
-  return {id:clean(source.id||fallbackId||crypto.randomUUID(),120),markup,pinyin:clean(source.pinyin,900),english,
-    distractors,source:clean(source.source||'My grammar',80),createdAt:clean(source.createdAt||new Date().toISOString(),80)};
+  const id=clean(source.id||fallbackId||crypto.randomUUID(),120);if(id==='prototype'||Object.hasOwn(Object.prototype,id))throw new Error('Reserved grammar ID');
+  return {id,markup,pinyin:clean(source.pinyin,900),english,
+    distractors,particleTests:(source.particleTests||[]).map(normalizeParticle),source:clean(source.source||'My grammar',80),createdAt:clean(source.createdAt||new Date().toISOString(),80)};
 }
 export function initialGrammar(){return STARTER_GRAMMAR.map(g=>normalizeGrammar({...g,source:'Starter Mandarin',createdAt:'2026-11-16T00:00:00.000Z'}));}
 export function linkedWords(grammar,cards) {
@@ -59,7 +64,7 @@ export function grammarTags(grammar,cards) {
 }
 export function requiredWords(grammar,cards) {
   const terms=[...new Set([...grammarTokens(grammar),...grammar.distractors.map(d=>d.word)])];
-  return terms.map(word=>({word,card:cards.find(c=>c.hanzi===word)||null}));
+  const index=vocabIndex(cards);return terms.map(word=>({word,card:index.get(word)||null}));
 }
 export function wordKnowledge(schedule, recall=1) {
   if(!schedule?.reps)return 0;

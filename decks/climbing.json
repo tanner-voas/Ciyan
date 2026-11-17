@@ -12,8 +12,8 @@
       "pinyin": "pān yán",
       "english": "Rock climbing",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -24,8 +24,8 @@
       "pinyin": "bào shí",
       "english": "Bouldering",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -36,8 +36,8 @@
       "pinyin": "pān yán guǎn",
       "english": "Climbing gym",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -48,8 +48,8 @@
       "pinyin": "yán bì",
       "english": "Rock face; climbing wall",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -60,8 +60,8 @@
       "pinyin": "yán diǎn",
       "english": "Climbing hold",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -72,8 +72,8 @@
       "pinyin": "shǒu diǎn",
       "english": "Handhold",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -84,8 +84,8 @@
       "pinyin": "jiǎo diǎn",
       "english": "Foothold",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -96,9 +96,9 @@
       "pinyin": "xiàn lù",
       "english": "Climbing route; route",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk6"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -109,8 +109,8 @@
       "pinyin": "dìng xiàn",
       "english": "Set climbing routes",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -121,8 +121,8 @@
       "pinyin": "dìng xiàn yuán",
       "english": "Route setter",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -133,9 +133,9 @@
       "pinyin": "nán dù",
       "english": "Difficulty",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -146,9 +146,9 @@
       "pinyin": "jí bié",
       "english": "Grade; level",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -159,9 +159,9 @@
       "pinyin": "qǐ diǎn",
       "english": "Starting point",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk6"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -172,9 +172,9 @@
       "pinyin": "zhōng diǎn",
       "english": "Finish; endpoint",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk5"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -185,8 +185,8 @@
       "pinyin": "wán pān",
       "english": "Complete a climb",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -197,9 +197,9 @@
       "pinyin": "cháng shì",
       "english": "Attempt; try",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk5"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -210,8 +210,8 @@
       "pinyin": "rè shēn xiàn",
       "english": "Warm-up route",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -222,8 +222,8 @@
       "pinyin": "pān yán xié",
       "english": "Climbing shoes",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -234,8 +234,8 @@
       "pinyin": "měi fěn",
       "english": "Climbing chalk (literally magnesium powder)",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -246,8 +246,8 @@
       "pinyin": "fěn dài",
       "english": "Chalk bag",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -258,9 +258,9 @@
       "pinyin": "shuā zi",
       "english": "Brush",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk4"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -271,8 +271,8 @@
       "pinyin": "zhǐ lì bǎn",
       "english": "Hangboard; fingerboard",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -283,8 +283,8 @@
       "pinyin": "bào shí diàn",
       "english": "Bouldering crash pad",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -295,8 +295,8 @@
       "pinyin": "ān quán dài",
       "english": "Harness; safety belt",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -307,8 +307,8 @@
       "pinyin": "tóu kuī",
       "english": "Helmet",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -319,8 +319,8 @@
       "pinyin": "dòng lì shéng",
       "english": "Dynamic climbing rope",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -331,8 +331,8 @@
       "pinyin": "bǎo hù qì",
       "english": "Belay device",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -343,8 +343,8 @@
       "pinyin": "kuài guà",
       "english": "Quickdraw",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -355,8 +355,8 @@
       "pinyin": "zhǔ suǒ",
       "english": "Locking carabiner",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -367,8 +367,8 @@
       "pinyin": "guà piàn",
       "english": "Bolt hanger",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -379,8 +379,8 @@
       "pinyin": "biǎn dài",
       "english": "Webbing; sling",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -391,8 +391,8 @@
       "pinyin": "bā zì jié",
       "english": "Figure-eight knot",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -403,9 +403,9 @@
       "pinyin": "bǎo hù",
       "english": "Belay; protect",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -416,8 +416,8 @@
       "pinyin": "bǎo hù yuán",
       "english": "Belayer",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -428,8 +428,8 @@
       "pinyin": "dǐng shéng",
       "english": "Top rope; top-roping",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -440,8 +440,8 @@
       "pinyin": "xiān fēng pān dēng",
       "english": "Lead climbing",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -452,8 +452,8 @@
       "pinyin": "guà shéng",
       "english": "Clip the rope",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -464,8 +464,8 @@
       "pinyin": "shōu shéng",
       "english": "Take in rope",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -476,8 +476,8 @@
       "pinyin": "fàng shéng",
       "english": "Pay out rope; give slack",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -488,9 +488,9 @@
       "pinyin": "xià jiàng",
       "english": "Descend; descent",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk4"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -501,8 +501,8 @@
       "pinyin": "zhuì luò",
       "english": "Fall",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -513,9 +513,9 @@
       "pinyin": "tuō luò",
       "english": "Come off; fall off",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -526,9 +526,9 @@
       "pinyin": "luò dì",
       "english": "Land; reach the ground",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -539,9 +539,9 @@
       "pinyin": "diàn zi",
       "english": "Mat; pad",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -552,8 +552,8 @@
       "pinyin": "cǎi diǎn",
       "english": "Place a foot on a hold",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -564,8 +564,8 @@
       "pinyin": "huàn jiǎo",
       "english": "Switch feet",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -576,8 +576,8 @@
       "pinyin": "huàn shǒu",
       "english": "Switch hands",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -588,8 +588,8 @@
       "pinyin": "bìng shǒu",
       "english": "Match hands on a hold",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -600,9 +600,9 @@
       "pinyin": "zhòng xīn",
       "english": "Center of gravity",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -613,8 +613,8 @@
       "pinyin": "fā lì",
       "english": "Apply force; generate power",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -625,9 +625,9 @@
       "pinyin": "dēng",
       "english": "Push with the legs; step forcefully",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -638,9 +638,9 @@
       "pinyin": "lā",
       "english": "Pull",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk2"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -651,9 +651,9 @@
       "pinyin": "tuī",
       "english": "Push",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk2"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -664,9 +664,9 @@
       "pinyin": "zhuā",
       "english": "Grab; grip",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -677,9 +677,9 @@
       "pinyin": "niē",
       "english": "Pinch",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -690,9 +690,9 @@
       "pinyin": "gōu",
       "english": "Hook",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -703,9 +703,9 @@
       "pinyin": "suǒ dìng",
       "english": "Lock off; lock in place",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk7-9"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -716,9 +716,9 @@
       "pinyin": "dòng tài",
       "english": "Dynamic movement; dynamic",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk5"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -729,8 +729,8 @@
       "pinyin": "jìng tài",
       "english": "Static; controlled movement",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -741,8 +741,8 @@
       "pinyin": "héng yí",
       "english": "Traverse; move sideways",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -753,8 +753,8 @@
       "pinyin": "yǎng jiǎo",
       "english": "Overhanging angle (climbing context)",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -765,8 +765,8 @@
       "pinyin": "xié bǎn",
       "english": "Slab; inclined wall",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -777,8 +777,8 @@
       "pinyin": "mó cā lì",
       "english": "Friction",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -789,8 +789,8 @@
       "pinyin": "zhǐ lì",
       "english": "Finger strength",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -801,9 +801,9 @@
       "pinyin": "jì shù",
       "english": "Technique; skill",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -814,11 +814,11 @@
       "pinyin": "dòng zuò",
       "english": "Movement; move",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -829,9 +829,9 @@
       "pinyin": "jié zòu",
       "english": "Rhythm; pacing",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk6"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -842,8 +842,8 @@
       "pinyin": "bǎo hù zhàn",
       "english": "Belay anchor station",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -854,9 +854,9 @@
       "pinyin": "jiǎn chá",
       "english": "Check; inspect",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk2"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -867,8 +867,8 @@
       "pinyin": "jì jǐn",
       "english": "Fasten tightly; tie securely",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -879,9 +879,9 @@
       "pinyin": "sōng",
       "english": "Loose; loosen",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk4"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -892,9 +892,9 @@
       "pinyin": "jǐn",
       "english": "Tight",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -905,9 +905,9 @@
       "pinyin": "jiā yóu",
       "english": "Come on! Keep going!",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk2"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -918,8 +918,8 @@
       "pinyin": "wěn zhù",
       "english": "Stay steady; hold it",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -930,9 +930,9 @@
       "pinyin": "xià lái",
       "english": "Come down",
       "tags": [
-        "climbing",
-        "sports",
-        "hsk3"
+        "Activities/climbing",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -943,8 +943,8 @@
       "pinyin": "xiū xi yī xià",
       "english": "Rest for a moment",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -955,9 +955,9 @@
       "pinyin": "zhī qián",
       "english": "Before",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -968,7 +968,7 @@
       "pinyin": "liǎo jiě",
       "english": "to understand; to realize; to find out",
       "tags": [
-        "hsk4"
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -979,11 +979,11 @@
       "pinyin": "jīn tiān",
       "english": "Today",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -994,9 +994,9 @@
       "pinyin": "xiān",
       "english": "First",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1007,9 +1007,9 @@
       "pinyin": "chū mén",
       "english": "Go out; leave home",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1020,11 +1020,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1035,9 +1035,9 @@
       "pinyin": "xué xí",
       "english": "Study",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1048,9 +1048,9 @@
       "pinyin": "yì si",
       "english": "Meaning; idea",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1061,11 +1061,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1076,11 +1076,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1091,9 +1091,9 @@
       "pinyin": "jiào liàn",
       "english": "Coach",
       "tags": [
-        "activities",
-        "sports",
-        "hsk3"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1104,11 +1104,11 @@
       "pinyin": "shí hou",
       "english": "Time; occasion; when",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1119,9 +1119,9 @@
       "pinyin": "zhù yì",
       "english": "Pay attention",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk3"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1132,11 +1132,11 @@
       "pinyin": "de",
       "english": "Possessive or attributive particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1147,11 +1147,11 @@
       "pinyin": "liàn xí",
       "english": "Practice; rehearse",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2",
-        "work",
-        "professional"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2",
+        "Work/work",
+        "Work/professional"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1162,11 +1162,11 @@
       "pinyin": "yào",
       "english": "Want; need; be going to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1177,11 +1177,11 @@
       "pinyin": "shuō",
       "english": "Say; speak",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1192,11 +1192,11 @@
       "pinyin": "xū yào",
       "english": "Need",
       "tags": [
-        "daily",
-        "practical",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

@@ -58,7 +58,7 @@ test('invalid backups rejected without affecting user data', () => {
 test('user cards are sanitized, validated, and tagged', () => {
   const c=normalizeCard({hanzi:' 测试 ',english:' Test ',tags:['Food','food',' Work ']},'test-1');
   assert.equal(c.hanzi,'测试');
-  assert.deepEqual(c.tags,['food','work','hsk4']);
+  assert.deepEqual(c.tags,['Food','Food/food','Work','HSK/HSK4']);
   assert.throws(()=>normalizeCard({hanzi:'',english:'meaning'}));
 });
 
@@ -80,7 +80,7 @@ test('grammar readiness requires every answer and confusing word known', () => {
  assert.ok(score.knowledge>.75);
  assert.equal(score.usage,0);
  assert.equal(score.combined,score.knowledge);
- assert.ok(grammarTags(g,s.cards).includes('food'));
+ assert.ok(grammarTags(g,s.cards).includes('Food/food'));
 });
 test('tone parser aligns tone marks and neutral syllables per character',()=>{
  assert.deepEqual(toneTargets('你好','nǐ hǎo'),[3,3]);
@@ -102,7 +102,7 @@ test('importing record-bearing backups as decks only merges new words, grammar a
  assert.equal(merged.addedGrammar,1);
  assert.equal(merged.tagsUpdated,1);
  assert.equal(merged.draft.cards.find(c=>c.hanzi==='随便').english,'Whatever; any is fine');
- assert.ok(merged.draft.cards.find(c=>c.hanzi==='随便').tags.includes('new-tag'));
+ assert.ok(merged.draft.cards.find(c=>c.hanzi==='随便').tags.includes('Topics/new-tag'));
  assert.equal(merged.draft.history.length,1);
  assert.equal(merged.draft.schedules[id].reps,1);
  assert.equal('history' in makeDeck(old),false);

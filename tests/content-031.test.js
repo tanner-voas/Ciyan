@@ -69,8 +69,8 @@ test('user-provided visited places are tagged, without tagging all newly added p
   assert.ok(visited.cards.some(c=>c.hanzi===name),name);
  }
  const words=new Map(big.cards.map(c=>[c.hanzi,c]));
- for(const w of ['恩施','南昌'])assert.ok(words.get(w)?.tags.includes('visited'),w);
- assert.ok(!words.get('波士顿')?.tags.includes('visited'));
+ for(const w of ['恩施','南昌'])assert.ok(words.get(w)?.tags.includes('Places/visited'),w);
+ assert.ok(!words.get('波士顿')?.tags.includes('Places/visited'));
 });
 test('friend-chat expressions and broader contemporary, non-rude slang exist',()=>{
  const slang=deck('slang-friends');const modern=deck('slang-modern');

@@ -12,8 +12,8 @@
       "pinyin": "zhū ròu",
       "english": "Pork",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -24,8 +24,8 @@
       "pinyin": "niú ròu",
       "english": "Beef",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -36,8 +36,8 @@
       "pinyin": "yáng ròu",
       "english": "Lamb or mutton",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -48,8 +48,8 @@
       "pinyin": "jī ròu",
       "english": "Chicken meat",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -60,8 +60,8 @@
       "pinyin": "yā ròu",
       "english": "Duck meat",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -72,8 +72,8 @@
       "pinyin": "pái gǔ",
       "english": "Ribs",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -84,8 +84,8 @@
       "pinyin": "wǔ huā ròu",
       "english": "Pork belly",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -96,8 +96,8 @@
       "pinyin": "lǐ jǐ",
       "english": "Tenderloin",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -108,8 +108,8 @@
       "pinyin": "ròu mò",
       "english": "Minced meat",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -120,9 +120,9 @@
       "pinyin": "xiāng cháng",
       "english": "Sausage",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk5"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -133,9 +133,9 @@
       "pinyin": "huǒ tuǐ",
       "english": "Ham",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk5"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -146,8 +146,8 @@
       "pinyin": "péi gēn",
       "english": "Bacon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -158,9 +158,9 @@
       "pinyin": "yú",
       "english": "Fish",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk2"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -171,9 +171,9 @@
       "pinyin": "xiā",
       "english": "Shrimp; prawns",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -184,8 +184,8 @@
       "pinyin": "páng xiè",
       "english": "Crab",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -196,8 +196,8 @@
       "pinyin": "bèi lèi",
       "english": "Shellfish",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -208,8 +208,8 @@
       "pinyin": "gé lí",
       "english": "Clams",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -220,8 +220,8 @@
       "pinyin": "yóu yú",
       "english": "Squid",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -232,8 +232,8 @@
       "pinyin": "sān wén yú",
       "english": "Salmon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -244,8 +244,8 @@
       "pinyin": "jīn qiāng yú",
       "english": "Tuna",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -256,9 +256,9 @@
       "pinyin": "hǎi xiān",
       "english": "Seafood",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk4"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -269,9 +269,9 @@
       "pinyin": "jī dàn",
       "english": "Chicken egg",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk1"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -282,8 +282,8 @@
       "pinyin": "yā dàn",
       "english": "Duck egg",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -294,8 +294,8 @@
       "pinyin": "pí dàn",
       "english": "Preserved century egg",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -306,8 +306,8 @@
       "pinyin": "xián dàn",
       "english": "Salted egg",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -318,9 +318,9 @@
       "pinyin": "dòu fu",
       "english": "Tofu",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk4"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -331,8 +331,8 @@
       "pinyin": "dòu gān",
       "english": "Firm pressed tofu",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -343,8 +343,8 @@
       "pinyin": "fǔ zhú",
       "english": "Dried tofu-skin sticks",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -355,8 +355,8 @@
       "pinyin": "huáng dòu",
       "english": "Soybeans",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -367,8 +367,8 @@
       "pinyin": "lǜ dòu",
       "english": "Mung beans",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -379,8 +379,8 @@
       "pinyin": "hóng dòu",
       "english": "Adzuki beans",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -391,8 +391,8 @@
       "pinyin": "máo dòu",
       "english": "Edamame; young soybeans",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -403,9 +403,9 @@
       "pinyin": "huā shēng",
       "english": "Peanuts",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk6"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -416,9 +416,9 @@
       "pinyin": "zhī ma",
       "english": "Sesame",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -429,9 +429,9 @@
       "pinyin": "hé tao",
       "english": "Walnut",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -442,8 +442,8 @@
       "pinyin": "xìng rén",
       "english": "Almond or apricot kernel, depending on product",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -454,8 +454,8 @@
       "pinyin": "yāo guǒ",
       "english": "Cashew",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -466,9 +466,9 @@
       "pinyin": "dà mǐ",
       "english": "Uncooked rice",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk6"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -479,8 +479,8 @@
       "pinyin": "nuò mǐ",
       "english": "Glutinous rice",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -491,9 +491,9 @@
       "pinyin": "miàn fěn",
       "english": "Wheat flour",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -504,9 +504,9 @@
       "pinyin": "diàn fěn",
       "english": "Starch",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -517,8 +517,8 @@
       "pinyin": "yàn mài",
       "english": "Oats",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -529,9 +529,9 @@
       "pinyin": "yù mǐ",
       "english": "Corn",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk4"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -542,9 +542,9 @@
       "pinyin": "tǔ dòu",
       "english": "Potato",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk5"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -555,9 +555,9 @@
       "pinyin": "hóng shǔ",
       "english": "Sweet potato",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -568,8 +568,8 @@
       "pinyin": "yù tou",
       "english": "Taro",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -580,8 +580,8 @@
       "pinyin": "shān yao",
       "english": "Chinese yam",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -592,8 +592,8 @@
       "pinyin": "lián ǒu",
       "english": "Lotus root",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -604,8 +604,8 @@
       "pinyin": "hú luó bo",
       "english": "Carrot",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -616,8 +616,8 @@
       "pinyin": "bái luó bo",
       "english": "White radish; daikon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -628,9 +628,9 @@
       "pinyin": "huáng guā",
       "english": "Cucumber",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk4"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -641,9 +641,9 @@
       "pinyin": "fān qié",
       "english": "Tomato",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk6"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -654,9 +654,9 @@
       "pinyin": "xī hóng shì",
       "english": "Tomato (another common name)",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk5"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -667,9 +667,9 @@
       "pinyin": "qié zi",
       "english": "Eggplant",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk6"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -680,9 +680,9 @@
       "pinyin": "nán guā",
       "english": "Pumpkin; squash",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -693,8 +693,8 @@
       "pinyin": "dōng guā",
       "english": "Winter melon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -705,8 +705,8 @@
       "pinyin": "sī guā",
       "english": "Loofah gourd",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -717,8 +717,8 @@
       "pinyin": "kǔ guā",
       "english": "Bitter melon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -729,8 +729,8 @@
       "pinyin": "xī hú lu",
       "english": "Zucchini; courgette",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -741,9 +741,9 @@
       "pinyin": "bái cài",
       "english": "Chinese cabbage",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk3"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -754,8 +754,8 @@
       "pinyin": "qīng cài",
       "english": "Leafy greens; often bok choy locally",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -766,8 +766,8 @@
       "pinyin": "bō cài",
       "english": "Spinach",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -778,8 +778,8 @@
       "pinyin": "shēng cài",
       "english": "Lettuce",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -790,8 +790,8 @@
       "pinyin": "qín cài",
       "english": "Celery",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -802,8 +802,8 @@
       "pinyin": "jiǔ cài",
       "english": "Chinese chives",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -814,8 +814,8 @@
       "pinyin": "kōng xīn cài",
       "english": "Water spinach",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -826,8 +826,8 @@
       "pinyin": "xī lán huā",
       "english": "Broccoli",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -838,8 +838,8 @@
       "pinyin": "huā cài",
       "english": "Cauliflower",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -850,8 +850,8 @@
       "pinyin": "dòu yá",
       "english": "Bean sprouts",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -862,8 +862,8 @@
       "pinyin": "sì jì dòu",
       "english": "Green beans",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -874,8 +874,8 @@
       "pinyin": "wān dòu",
       "english": "Peas",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -886,9 +886,9 @@
       "pinyin": "mó gu",
       "english": "Mushroom",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -899,8 +899,8 @@
       "pinyin": "xiāng gū",
       "english": "Shiitake mushroom",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -911,8 +911,8 @@
       "pinyin": "jīn zhēn gū",
       "english": "Enoki mushroom",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -923,8 +923,8 @@
       "pinyin": "mù ěr",
       "english": "Wood-ear fungus",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -935,8 +935,8 @@
       "pinyin": "hǎi dài",
       "english": "Kelp",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -947,8 +947,8 @@
       "pinyin": "zǐ cài",
       "english": "Edible laver seaweed",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -959,8 +959,8 @@
       "pinyin": "yáng cōng",
       "english": "Onion",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -971,9 +971,9 @@
       "pinyin": "cōng",
       "english": "Scallion; spring onion",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -984,9 +984,9 @@
       "pinyin": "jiāng",
       "english": "Ginger",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -997,9 +997,9 @@
       "pinyin": "suàn",
       "english": "Garlic",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1010,8 +1010,8 @@
       "pinyin": "xiāng cài",
       "english": "Cilantro; coriander leaves",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1022,9 +1022,9 @@
       "pinyin": "là jiāo",
       "english": "Chili pepper",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1035,8 +1035,8 @@
       "pinyin": "qīng jiāo",
       "english": "Green pepper",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1047,8 +1047,8 @@
       "pinyin": "huā jiāo",
       "english": "Sichuan pepper",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1059,9 +1059,9 @@
       "pinyin": "píng guǒ",
       "english": "Apple",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk3"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1072,9 +1072,9 @@
       "pinyin": "xiāng jiāo",
       "english": "Banana",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk3"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1085,8 +1085,8 @@
       "pinyin": "chéng zi",
       "english": "Orange",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1097,9 +1097,9 @@
       "pinyin": "jú zi",
       "english": "Mandarin orange",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1110,8 +1110,8 @@
       "pinyin": "yòu zi",
       "english": "Pomelo",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1122,8 +1122,8 @@
       "pinyin": "níng méng",
       "english": "Lemon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1134,9 +1134,9 @@
       "pinyin": "lí",
       "english": "Pear",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk5"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1147,8 +1147,8 @@
       "pinyin": "táo zi",
       "english": "Peach",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1159,9 +1159,9 @@
       "pinyin": "pú tao",
       "english": "Grapes",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk5"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1172,8 +1172,8 @@
       "pinyin": "cǎo méi",
       "english": "Strawberry",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1184,8 +1184,8 @@
       "pinyin": "lán méi",
       "english": "Blueberry",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1196,9 +1196,9 @@
       "pinyin": "xī guā",
       "english": "Watermelon",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk4"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1209,8 +1209,8 @@
       "pinyin": "hā mì guā",
       "english": "Hami melon; cantaloupe-type melon",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1221,8 +1221,8 @@
       "pinyin": "máng guǒ",
       "english": "Mango",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1233,8 +1233,8 @@
       "pinyin": "bō luó",
       "english": "Pineapple",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1245,8 +1245,8 @@
       "pinyin": "mí hóu táo",
       "english": "Kiwifruit",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1257,8 +1257,8 @@
       "pinyin": "huǒ lóng guǒ",
       "english": "Dragon fruit",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1269,8 +1269,8 @@
       "pinyin": "liú lián",
       "english": "Durian",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1281,8 +1281,8 @@
       "pinyin": "lì zhī",
       "english": "Lychee",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1293,8 +1293,8 @@
       "pinyin": "lóng yǎn",
       "english": "Longan",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1305,8 +1305,8 @@
       "pinyin": "shān zhú",
       "english": "Mangosteen",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1317,9 +1317,9 @@
       "pinyin": "yē zi",
       "english": "Coconut",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1330,8 +1330,8 @@
       "pinyin": "niú yóu guǒ",
       "english": "Avocado",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1342,8 +1342,8 @@
       "pinyin": "shí liu",
       "english": "Pomegranate",
       "tags": [
-        "food",
-        "ingredients"
+        "Food/food",
+        "Food/ingredients"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1354,9 +1354,9 @@
       "pinyin": "shì zi",
       "english": "Persimmon",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1367,9 +1367,9 @@
       "pinyin": "zǎo",
       "english": "Jujube; Chinese date",
       "tags": [
-        "food",
-        "ingredients",
-        "hsk7-9"
+        "Food/food",
+        "Food/ingredients",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1380,11 +1380,11 @@
       "pinyin": "mǎi",
       "english": "Buy",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1395,11 +1395,11 @@
       "pinyin": "le",
       "english": "Completion or change-of-state particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1410,11 +1410,11 @@
       "pinyin": "jīn tiān",
       "english": "Today",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1425,11 +1425,11 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1440,9 +1440,9 @@
       "pinyin": "zuò fàn",
       "english": "Cook a meal",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1453,9 +1453,9 @@
       "pinyin": "zhǔn bèi",
       "english": "Prepare",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1466,11 +1466,11 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1481,11 +1481,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1496,9 +1496,9 @@
       "pinyin": "xǐ huan",
       "english": "Like",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1509,9 +1509,9 @@
       "pinyin": "zài",
       "english": "At; in; ongoing action",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1522,11 +1522,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1537,11 +1537,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1552,9 +1552,9 @@
       "pinyin": "yòng",
       "english": "Use",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1565,12 +1565,12 @@
       "pinyin": "chāo shì",
       "english": "Supermarket",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics",
-        "errands"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "Everyday/errands"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

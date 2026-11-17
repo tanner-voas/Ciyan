@@ -1,13 +1,15 @@
+import {allParticles} from './particles.js';
+import {retrySeconds,DEFAULT_RETRY} from './review-scheduler.js';
+import {normalizeTags} from './tags.js';
+import {ensureStudy} from './study-engine.js';
 import {initialCards,extraWords} from './cards.js';
 import {initialGrammar,normalizeGrammar} from './grammar.js';
 import {hskTagFor} from './hsk-tag-map.js';
 // Assign exactly one canonical HSK band based on the headword, regardless of
 // which topic deck supplies it. No migration of historical data is needed.
 export function canonicalHSKTags(hanzi,tags){
-  const cleaned=[...new Set((tags||[]).map(t=>String(t).trim().toLowerCase())
-    .filter(t=>t&&!/^hsk(?:$|[-.0-9])/i.test(t)))];
-  const level=hskTagFor(hanzi);
-  if(level)cleaned.push(level);
+  const cleaned=normalizeTags(tags||[]);
+  if(!cleaned.some(t=>/^HSK\//i.test(t))){const level=hskTagFor(hanzi);if(level)cleaned.push('HSK/'+level.toUpperCase());}
   return cleaned;
 }
 export const DB_NAME='ciyan-mandarin';
@@ -24,12 +26,12 @@ function database(){
   });
   return databasePromise;
 }
-export function defaultState(){return {
+export function defaultState(){return ensureStudy({
   schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
   settings:{sessionSize:12,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
-};}
+});}
 export async function loadState(){const db=await database();return new Promise((resolve,reject)=>{
   const r=db.transaction(STORE,'readonly').objectStore(STORE).get('main');
   r.onsuccess=()=>resolve(r.result||null);
@@ -56,7 +58,7 @@ export function normalizeCard(source,fallbackId=null){
   const hanzi=string(source.hanzi,120),english=string(source.english,500);
   if(!hanzi||!english)throw new Error('Every word needs Chinese and English');
   const rawTags=Array.isArray(source.tags)?source.tags:String(source.tags||'').split(',');
-  const tags=canonicalHSKTags(hanzi,[...new Set(rawTags.map(t=>string(t,36).toLowerCase()).filter(Boolean))].slice(0,24));
+  const tags=canonicalHSKTags(hanzi,[...new Set(rawTags.map(t=>string(t,160)).filter(Boolean))].slice(0,24));
   return {id,hanzi,pinyin:string(source.pinyin,160),english,tags,
     source:string(source.source||'My cards',80),createdAt:string(source.createdAt||new Date().toISOString(),80)};
 }
@@ -76,11 +78,11 @@ export function migrateState(input){
   if(!input||typeof input!=='object')throw new Error('Stored data is not a Cíyán database');
   if((input.schemaVersion||1)>2)throw new Error('This database needs a newer version of Cíyán');
   if((input.schemaVersion||1)===2){
-    return {...input,grammar:Array.isArray(input.grammar)?input.grammar:[],
+    return ensureStudy({...input,cards:input.cards.map(c=>({...c,tags:normalizeTags(c.tags||[])})),grammar:Array.isArray(input.grammar)?input.grammar:[],
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,
-      settings:{...defaultState().settings,...input.settings}};
+      settings:{...defaultState().settings,...input.settings}});
   }
   const oldCards=Array.isArray(input.cards)?input.cards:[];
   const migratedCards=oldCards.map(c=>normalizeCard(c));
@@ -118,13 +120,15 @@ export function parseBackup(data){
   const s=source.settings||{};
   const settings={sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
-    showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones};
+    scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones};
+  retrySeconds(settings.retryIntervals);
   const activeSession=source.activeSession&&Array.isArray(source.activeSession.queue)&&Array.isArray(source.activeSession.results)
     ?{...source.activeSession,queue:source.activeSession.queue.filter(id=>ids.has(id)),results:source.activeSession.results.filter(r=>ids.has(r.cardId))}:null;
   const activeGrammarSession=source.activeGrammarSession&&Array.isArray(source.activeGrammarSession.queue)&&Array.isArray(source.activeGrammarSession.results)
     ?{...source.activeGrammarSession,queue:source.activeGrammarSession.queue.filter(id=>grammarIds.has(id)),results:source.activeGrammarSession.results.filter(r=>grammarIds.has(r.grammarId))}:null;
   const revision=Math.max(0,Math.floor(Number(source.revision)||0));
   return {...defaults,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
+    skillSchedules:validateSkillSchedules(source.skillSchedules,ids,grammarIds),skillHistory:(source.skillHistory||[]).filter(h=>h&&[1,2,3,4].includes(h.grade)&&validDate(h.at)).slice(-500000),mixedSessions:(source.mixedSessions||[]).filter(s=>validDate(s.endedAt)).slice(-50000),activePractice:validatePractice(source.activePractice,ids,grammarIds,new Set(allParticles({grammar}).map(p=>p.id))),
     activeSession:activeSession?.queue?.length?activeSession:null,
     activeGrammarSession:activeGrammarSession?.queue?.length?activeGrammarSession:null,
     revision,backedUpRevision:revision,lastBackupAt:new Date().toISOString(),createdAt:source.createdAt||defaults.createdAt};
@@ -167,6 +171,33 @@ export function mergeDeck(current,content){
   return {draft,addedWords,addedGrammar,tagsUpdated};
 }
 export function clearLearningRecords(d){
-  d.schedules={};d.history=[];d.sessions=[];d.activeSession=null;
+  d.skillSchedules={grammar:{},drawing:{},particles:{}};d.skillHistory=[];d.mixedSessions=[];d.activePractice=null;d.schedules={};d.history=[];d.sessions=[];d.activeSession=null;
   d.grammarHistory=[];d.grammarSessions=[];d.activeGrammarSession=null;
+}
+
+function validateSkillSchedules(input,words,grammar){
+ const out={grammar:{},drawing:{},particles:{}};
+ for(const mode of Object.keys(out))for(const [id,s] of Object.entries(input?.[mode]||{})){
+  if(Object.hasOwn(Object.prototype,id)||id==='prototype')throw new Error('Invalid skill ID');
+  if(mode==='drawing'&&!words.has(id)||mode==='grammar'&&!grammar.has(id))continue;
+  if(!s||!validDate(s.dueAt)||!validDate(s.lastReviewedAt)||!Number.isFinite(s.stability)||s.stability<=0||s.stability>36500||!Number.isFinite(s.difficulty)||s.difficulty<1||s.difficulty>10||![1,2,3,4].includes(s.lastRating)||!Number.isSafeInteger(s.reps)||s.reps<1)throw new Error('Invalid skill schedule');
+  out[mode][id]={...s};
+ }
+ return out;
+}
+
+function validatePractice(input,words,grammar,particles){
+ if(!input)return null;
+ const e=input.current;
+ if(!e||!['words','grammar','drawing','particles'].includes(e.mode)||!['auto','words','grammar','drawing','particles'].includes(input.mode)||!Array.isArray(input.results)||input.results.length>500)return null;
+ if(e.mode==='particles'&&!particles.has(e.id))return null;
+ if(['words','drawing'].includes(e.mode)&&!words.has(e.id)||e.mode==='grammar'&&!grammar.has(e.id))return null;
+ const result=structuredClone(input);result.limit=Math.max(1,Math.min(500,Number(result.limit)||12));result.spent??={};result.input??={};
+ if(result.input.pads){
+  if(!Array.isArray(result.input.pads)||result.input.pads.length>120)throw new Error('Invalid drawing pads');
+  for(const pad of result.input.pads){if(pad==null)continue;if(!Array.isArray(pad)||pad.length>1000)throw new Error('Invalid drawing strokes');
+   for(const stroke of pad)if(!Array.isArray(stroke)||stroke.length>4000||stroke.some(point=>!Array.isArray(point)||point.length!==2||point.some(n=>!Number.isFinite(n)||n<0||n>1)))throw new Error('Invalid drawing coordinates');
+  }
+ }
+ result.itemStartedAt=Date.now();return result;
 }

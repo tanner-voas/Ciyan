@@ -12,9 +12,9 @@
       "pinyin": "shēn tǐ",
       "english": "Body",
       "tags": [
-        "body",
-        "fitness",
-        "hsk1"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -25,9 +25,9 @@
       "pinyin": "jī ròu",
       "english": "Muscle",
       "tags": [
-        "body",
-        "fitness",
-        "hsk5"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -38,9 +38,9 @@
       "pinyin": "gǔ tou",
       "english": "Bone",
       "tags": [
-        "body",
-        "fitness",
-        "hsk4"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -51,9 +51,9 @@
       "pinyin": "guān jié",
       "english": "Joint",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -64,8 +64,8 @@
       "pinyin": "jī jiàn",
       "english": "Tendon",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -76,8 +76,8 @@
       "pinyin": "rèn dài",
       "english": "Ligament",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -88,9 +88,9 @@
       "pinyin": "pí fū",
       "english": "Skin",
       "tags": [
-        "body",
-        "fitness",
-        "hsk5"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -101,9 +101,9 @@
       "pinyin": "tóu",
       "english": "Head",
       "tags": [
-        "body",
-        "fitness",
-        "hsk2"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -114,9 +114,9 @@
       "pinyin": "bó zi",
       "english": "Neck",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -127,9 +127,9 @@
       "pinyin": "jiān bǎng",
       "english": "Shoulder",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -140,8 +140,8 @@
       "pinyin": "jiān jiǎ gǔ",
       "english": "Shoulder blade",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -152,8 +152,8 @@
       "pinyin": "xiōng",
       "english": "Chest",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -164,9 +164,9 @@
       "pinyin": "bèi",
       "english": "Back (body part)",
       "tags": [
-        "body",
-        "fitness",
-        "hsk2"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -177,9 +177,9 @@
       "pinyin": "yāo",
       "english": "Waist; lower back",
       "tags": [
-        "body",
-        "fitness",
-        "hsk4"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -190,9 +190,9 @@
       "pinyin": "fù bù",
       "english": "Abdomen",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -203,8 +203,8 @@
       "pinyin": "tún bù",
       "english": "Buttocks; gluteal region",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -215,8 +215,8 @@
       "pinyin": "kuān guān jié",
       "english": "Hip joint",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -227,9 +227,9 @@
       "pinyin": "shǒu bì",
       "english": "Arm",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -240,8 +240,8 @@
       "pinyin": "shàng bì",
       "english": "Upper arm",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -252,8 +252,8 @@
       "pinyin": "qián bì",
       "english": "Forearm",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -264,8 +264,8 @@
       "pinyin": "zhǒu bù",
       "english": "Elbow region",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -276,9 +276,9 @@
       "pinyin": "shǒu wàn",
       "english": "Wrist",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -289,9 +289,9 @@
       "pinyin": "shǒu zhǎng",
       "english": "Palm",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -302,9 +302,9 @@
       "pinyin": "shǒu zhǐ",
       "english": "Finger",
       "tags": [
-        "body",
-        "fitness",
-        "hsk3"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -315,8 +315,8 @@
       "pinyin": "mǔ zhǐ",
       "english": "Thumb",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -327,8 +327,8 @@
       "pinyin": "shí zhǐ",
       "english": "Index finger",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -339,8 +339,8 @@
       "pinyin": "zhōng zhǐ",
       "english": "Middle finger",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -351,8 +351,8 @@
       "pinyin": "wú míng zhǐ",
       "english": "Ring finger",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -363,8 +363,8 @@
       "pinyin": "xiǎo zhǐ",
       "english": "Little finger",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -375,8 +375,8 @@
       "pinyin": "zhǐ jiān",
       "english": "Fingertip",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -387,9 +387,9 @@
       "pinyin": "zhǐ jia",
       "english": "Fingernail; toenail",
       "tags": [
-        "body",
-        "fitness",
-        "hsk5"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -400,9 +400,9 @@
       "pinyin": "tuǐ",
       "english": "Leg",
       "tags": [
-        "body",
-        "fitness",
-        "hsk2"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -413,8 +413,8 @@
       "pinyin": "dà tuǐ",
       "english": "Thigh",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -425,8 +425,8 @@
       "pinyin": "xiǎo tuǐ",
       "english": "Lower leg; calf region",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -437,9 +437,9 @@
       "pinyin": "xī gài",
       "english": "Knee",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -450,8 +450,8 @@
       "pinyin": "jiǎo huái",
       "english": "Ankle",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -462,9 +462,9 @@
       "pinyin": "jiǎo",
       "english": "Foot",
       "tags": [
-        "body",
-        "fitness",
-        "hsk2"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -475,8 +475,8 @@
       "pinyin": "jiǎo zhǐ",
       "english": "Toe",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -487,8 +487,8 @@
       "pinyin": "jiǎo gēn",
       "english": "Heel",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -499,8 +499,8 @@
       "pinyin": "jiǎo jiān",
       "english": "Tip of the foot; toes",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -511,9 +511,9 @@
       "pinyin": "hé xīn",
       "english": "Core; central part",
       "tags": [
-        "body",
-        "fitness",
-        "hsk6"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -524,8 +524,8 @@
       "pinyin": "fù jī",
       "english": "Abdominal muscles",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -536,8 +536,8 @@
       "pinyin": "xiōng jī",
       "english": "Pectoral muscles",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -548,8 +548,8 @@
       "pinyin": "bèi kuò jī",
       "english": "Latissimus dorsi; lats",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -560,8 +560,8 @@
       "pinyin": "xié fāng jī",
       "english": "Trapezius; traps",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -572,8 +572,8 @@
       "pinyin": "sān jiǎo jī",
       "english": "Deltoid",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -584,8 +584,8 @@
       "pinyin": "gōng èr tóu jī",
       "english": "Biceps brachii",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -596,8 +596,8 @@
       "pinyin": "gōng sān tóu jī",
       "english": "Triceps brachii",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -608,8 +608,8 @@
       "pinyin": "tún dà jī",
       "english": "Gluteus maximus",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -620,8 +620,8 @@
       "pinyin": "gǔ sì tóu jī",
       "english": "Quadriceps",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -632,8 +632,8 @@
       "pinyin": "guó shéng jī",
       "english": "Hamstrings",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -644,8 +644,8 @@
       "pinyin": "féi cháng jī",
       "english": "Gastrocnemius; major calf muscle",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -656,8 +656,8 @@
       "pinyin": "bǐ mù yú jī",
       "english": "Soleus",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -668,8 +668,8 @@
       "pinyin": "wò lì",
       "english": "Grip strength",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -680,8 +680,8 @@
       "pinyin": "suān tòng",
       "english": "Soreness; aching",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -692,11 +692,11 @@
       "pinyin": "téng",
       "english": "Hurt; painful",
       "tags": [
-        "body",
-        "fitness",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -707,9 +707,9 @@
       "pinyin": "tòng",
       "english": "Pain; painful",
       "tags": [
-        "body",
-        "fitness",
-        "hsk3"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -720,9 +720,9 @@
       "pinyin": "shòu shāng",
       "english": "Get injured",
       "tags": [
-        "body",
-        "fitness",
-        "hsk3"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -733,8 +733,8 @@
       "pinyin": "lā shāng",
       "english": "Muscle or tendon strain",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -745,8 +745,8 @@
       "pinyin": "niǔ shāng",
       "english": "Sprain",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -757,10 +757,10 @@
       "pinyin": "zhǒng",
       "english": "Swollen",
       "tags": [
-        "body",
-        "fitness",
-        "hsk6",
-        "health"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK6",
+        "Health/health"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -771,8 +771,8 @@
       "pinyin": "chōu jīn",
       "english": "Muscle cramp",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -783,8 +783,8 @@
       "pinyin": "jiāng yìng",
       "english": "Stiff",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -795,9 +795,9 @@
       "pinyin": "pí láo",
       "english": "Fatigue",
       "tags": [
-        "body",
-        "fitness",
-        "hsk7-9"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -808,9 +808,9 @@
       "pinyin": "kāng fù",
       "english": "Rehabilitation; recover",
       "tags": [
-        "body",
-        "fitness",
-        "hsk6"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK6"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -821,9 +821,9 @@
       "pinyin": "àn mó",
       "english": "Massage",
       "tags": [
-        "body",
-        "fitness",
-        "hsk5"
+        "Health/body",
+        "Activities/fitness",
+        "HSK/HSK5"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -834,8 +834,8 @@
       "pinyin": "bīng fū",
       "english": "Apply a cold compress",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -846,8 +846,8 @@
       "pinyin": "rè fū",
       "english": "Apply a warm compress",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -858,8 +858,8 @@
       "pinyin": "hù wàn",
       "english": "Wrist support",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -870,8 +870,8 @@
       "pinyin": "hù xī",
       "english": "Knee support",
       "tags": [
-        "body",
-        "fitness"
+        "Health/body",
+        "Activities/fitness"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -882,7 +882,7 @@
       "pinyin": "bù yào",
       "english": "don't!; must not",
       "tags": [
-        "hsk2"
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -893,9 +893,9 @@
       "pinyin": "zhī qián",
       "english": "Before",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -906,9 +906,9 @@
       "pinyin": "zhī hòu",
       "english": "After",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -919,11 +919,11 @@
       "pinyin": "jīn tiān",
       "english": "Today",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -934,11 +934,11 @@
       "pinyin": "huì",
       "english": "Know how to; will; be likely to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -949,7 +949,7 @@
       "pinyin": "yī shēng",
       "english": "doctor",
       "tags": [
-        "hsk1"
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -960,11 +960,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -975,11 +975,11 @@
       "pinyin": "hǎo",
       "english": "Good; okay",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -990,9 +990,9 @@
       "pinyin": "xué xí",
       "english": "Study",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1003,7 +1003,7 @@
       "pinyin": "jiàn yì",
       "english": "to propose; to suggest; to recommend; proposal; suggestion; recommendation",
       "tags": [
-        "hsk3"
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1014,11 +1014,11 @@
       "pinyin": "hěn",
       "english": "Very; quite",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1029,11 +1029,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1044,11 +1044,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1059,9 +1059,9 @@
       "pinyin": "dài",
       "english": "Wear (accessories)",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1072,8 +1072,8 @@
       "pinyin": "pān yán",
       "english": "Rock climbing",
       "tags": [
-        "climbing",
-        "sports"
+        "Activities/climbing",
+        "Activities/sports"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1084,11 +1084,11 @@
       "pinyin": "shí hou",
       "english": "Time; occasion; when",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1099,9 +1099,9 @@
       "pinyin": "zhù yì",
       "english": "Pay attention",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk3"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK3"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1112,11 +1112,11 @@
       "pinyin": "de",
       "english": "Possessive or attributive particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1127,9 +1127,9 @@
       "pinyin": "jié gòu",
       "english": "Structure",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk4"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK4"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1140,11 +1140,11 @@
       "pinyin": "yào",
       "english": "Want; need; be going to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1155,11 +1155,11 @@
       "pinyin": "jué de",
       "english": "Feel; think; find",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1170,11 +1170,11 @@
       "pinyin": "xùn liàn",
       "english": "Training; train",
       "tags": [
-        "activities",
-        "sports",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1185,8 +1185,8 @@
       "pinyin": "shì shi",
       "english": "Give it a try",
       "tags": [
-        "grammar-support",
-        "basics"
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1197,9 +1197,9 @@
       "pinyin": "yùn dòng",
       "english": "Exercise; sport",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1210,9 +1210,9 @@
       "pinyin": "jìn xíng",
       "english": "Conduct; carry out",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1223,11 +1223,11 @@
       "pinyin": "xū yào",
       "english": "Need",
       "tags": [
-        "daily",
-        "practical",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

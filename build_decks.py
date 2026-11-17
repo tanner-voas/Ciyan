@@ -243,3 +243,7 @@ dump(OUT/'manifest.json',catalog)
     + 'export const hskTagFor = word => HSK_LEVELS[word] || null;\n')
 print('Unique optional words:',len(allwords),'Grammar:',len(all_grammar),'Individual decks:',len(decks)-1)
 for d in catalog:print(d['id'],d['wordCount'],d['grammarCount'])
+
+# v0.4 stores slash-delimited tag paths in the JSON itself.
+import subprocess
+subprocess.run(['node', str(ROOT/'normalize-deck-tags.mjs')], check=True)

@@ -9,8 +9,8 @@
       "pinyin": "nǐ hǎo",
       "english": "Hello",
       "tags": [
-        "greetings",
-        "basics"
+        "Topics/greetings",
+        "Everyday/basics"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -21,8 +21,8 @@
       "pinyin": "xièxie",
       "english": "Thank you",
       "tags": [
-        "greetings",
-        "basics"
+        "Topics/greetings",
+        "Everyday/basics"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -33,8 +33,8 @@
       "pinyin": "bù hǎoyìsi",
       "english": "Excuse me; sorry",
       "tags": [
-        "greetings",
-        "social"
+        "Topics/greetings",
+        "Conversation/social"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -45,8 +45,8 @@
       "pinyin": "méi guānxi",
       "english": "It's okay; no problem",
       "tags": [
-        "greetings",
-        "social"
+        "Topics/greetings",
+        "Conversation/social"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -57,8 +57,8 @@
       "pinyin": "zuìjìn",
       "english": "Recently; lately",
       "tags": [
-        "social",
-        "time"
+        "Conversation/social",
+        "Everyday/time"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -69,8 +69,8 @@
       "pinyin": "zhōumò",
       "english": "Weekend",
       "tags": [
-        "social",
-        "time"
+        "Conversation/social",
+        "Everyday/time"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -81,7 +81,7 @@
       "pinyin": "yuē",
       "english": "To arrange to meet",
       "tags": [
-        "social"
+        "Conversation/social"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -92,8 +92,8 @@
       "pinyin": "fāngbiàn",
       "english": "Convenient",
       "tags": [
-        "social",
-        "work"
+        "Conversation/social",
+        "Work/work"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -104,8 +104,8 @@
       "pinyin": "suíbiàn",
       "english": "Whatever; any is fine",
       "tags": [
-        "social",
-        "food"
+        "Conversation/social",
+        "Food/food"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -116,8 +116,8 @@
       "pinyin": "dāngrán",
       "english": "Of course",
       "tags": [
-        "basics",
-        "social"
+        "Everyday/basics",
+        "Conversation/social"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -128,7 +128,7 @@
       "pinyin": "yǒudiǎnr",
       "english": "A little (often negative)",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -139,8 +139,8 @@
       "pinyin": "chàbuduō",
       "english": "Almost; about the same",
       "tags": [
-        "basics",
-        "time"
+        "Everyday/basics",
+        "Everyday/time"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -151,8 +151,8 @@
       "pinyin": "dǎsuàn",
       "english": "To plan; intend",
       "tags": [
-        "social",
-        "time"
+        "Conversation/social",
+        "Everyday/time"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -163,8 +163,8 @@
       "pinyin": "gǎnjué",
       "english": "To feel; feeling",
       "tags": [
-        "social",
-        "basics"
+        "Conversation/social",
+        "Everyday/basics"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -175,8 +175,8 @@
       "pinyin": "tuījiàn",
       "english": "To recommend",
       "tags": [
-        "food",
-        "social"
+        "Food/food",
+        "Conversation/social"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -187,8 +187,8 @@
       "pinyin": "diǎncài",
       "english": "To order food",
       "tags": [
-        "food",
-        "restaurant"
+        "Food/food",
+        "Topics/restaurant"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -199,9 +199,9 @@
       "pinyin": "càidān",
       "english": "Menu",
       "tags": [
-        "food",
-        "restaurant",
-        "reading"
+        "Food/food",
+        "Topics/restaurant",
+        "Topics/reading"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -212,8 +212,8 @@
       "pinyin": "dǎbāo",
       "english": "To pack food to go",
       "tags": [
-        "food",
-        "restaurant"
+        "Food/food",
+        "Topics/restaurant"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -224,9 +224,9 @@
       "pinyin": "wēilà",
       "english": "Mildly spicy",
       "tags": [
-        "food",
-        "restaurant",
-        "reading"
+        "Food/food",
+        "Topics/restaurant",
+        "Topics/reading"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -237,7 +237,7 @@
       "pinyin": "jiābān",
       "english": "To work overtime",
       "tags": [
-        "work"
+        "Work/work"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -248,8 +248,8 @@
       "pinyin": "kāihuì",
       "english": "To have a meeting",
       "tags": [
-        "work",
-        "time"
+        "Work/work",
+        "Everyday/time"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -260,7 +260,7 @@
       "pinyin": "jìndù",
       "english": "Progress; status",
       "tags": [
-        "work"
+        "Work/work"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -271,8 +271,8 @@
       "pinyin": "wèntí",
       "english": "Question; problem",
       "tags": [
-        "work",
-        "basics"
+        "Work/work",
+        "Everyday/basics"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -283,7 +283,7 @@
       "pinyin": "jiějué",
       "english": "To solve; resolve",
       "tags": [
-        "work"
+        "Work/work"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -294,8 +294,8 @@
       "pinyin": "dìtiě",
       "english": "Subway; metro",
       "tags": [
-        "city",
-        "transport"
+        "Topics/city",
+        "Travel/transport"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -306,9 +306,9 @@
       "pinyin": "huànchéng",
       "english": "To transfer (transport)",
       "tags": [
-        "city",
-        "transport",
-        "reading"
+        "Topics/city",
+        "Travel/transport",
+        "Topics/reading"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -319,7 +319,7 @@
       "pinyin": "fùjìn",
       "english": "Nearby",
       "tags": [
-        "city"
+        "Topics/city"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -330,8 +330,8 @@
       "pinyin": "páiduì",
       "english": "To queue; line up",
       "tags": [
-        "city",
-        "restaurant"
+        "Topics/city",
+        "Topics/restaurant"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -342,7 +342,7 @@
       "pinyin": "pānyán",
       "english": "Rock climbing",
       "tags": [
-        "hobbies"
+        "Topics/hobbies"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -353,7 +353,7 @@
       "pinyin": "bàoshí",
       "english": "Bouldering",
       "tags": [
-        "hobbies"
+        "Topics/hobbies"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -364,7 +364,7 @@
       "pinyin": "nándù",
       "english": "Difficulty level",
       "tags": [
-        "hobbies"
+        "Topics/hobbies"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -375,8 +375,8 @@
       "pinyin": "jiānchí",
       "english": "To persist; keep at it",
       "tags": [
-        "hobbies",
-        "basics"
+        "Topics/hobbies",
+        "Everyday/basics"
       ],
       "source": "Starter Mandarin",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -387,8 +387,8 @@
       "pinyin": "chī",
       "english": "To eat",
       "tags": [
-        "food",
-        "basics"
+        "Food/food",
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -399,7 +399,7 @@
       "pinyin": "shénme",
       "english": "What",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -410,7 +410,7 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -421,8 +421,8 @@
       "pinyin": "dōu",
       "english": "All; both; in any case",
       "tags": [
-        "grammar",
-        "basics"
+        "Grammar/grammar",
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -433,7 +433,7 @@
       "pinyin": "duō",
       "english": "Many; much",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -444,7 +444,7 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -455,8 +455,8 @@
       "pinyin": "xiànzài",
       "english": "Now",
       "tags": [
-        "time",
-        "basics"
+        "Everyday/time",
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -467,7 +467,7 @@
       "pinyin": "yǒu",
       "english": "To have; there is",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -478,7 +478,7 @@
       "pinyin": "shíjiān",
       "english": "Time (duration or availability)",
       "tags": [
-        "time"
+        "Everyday/time"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -489,7 +489,7 @@
       "pinyin": "shíhou",
       "english": "Time; occasion; moment",
       "tags": [
-        "time"
+        "Everyday/time"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -500,8 +500,8 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "grammar",
-        "basics"
+        "Grammar/grammar",
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -512,7 +512,7 @@
       "pinyin": "xiǎng",
       "english": "To want; think",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -523,7 +523,7 @@
       "pinyin": "qù",
       "english": "To go",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -534,7 +534,7 @@
       "pinyin": "dànshì",
       "english": "But; however",
       "tags": [
-        "grammar"
+        "Grammar/grammar"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -545,7 +545,7 @@
       "pinyin": "jīntiān",
       "english": "Today",
       "tags": [
-        "time"
+        "Everyday/time"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -556,7 +556,7 @@
       "pinyin": "yào",
       "english": "To need; want; going to",
       "tags": [
-        "basics"
+        "Everyday/basics"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -567,7 +567,7 @@
       "pinyin": "huì",
       "english": "Can; will; know how to",
       "tags": [
-        "grammar"
+        "Grammar/grammar"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -578,8 +578,8 @@
       "pinyin": "yǐjīng",
       "english": "Already",
       "tags": [
-        "time",
-        "grammar"
+        "Everyday/time",
+        "Grammar/grammar"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -590,7 +590,7 @@
       "pinyin": "le",
       "english": "Completion/change particle",
       "tags": [
-        "grammar"
+        "Grammar/grammar"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"
@@ -601,8 +601,8 @@
       "pinyin": "hái",
       "english": "Still; yet",
       "tags": [
-        "grammar",
-        "time"
+        "Grammar/grammar",
+        "Everyday/time"
       ],
       "source": "Starter grammar vocabulary",
       "createdAt": "2026-11-16T00:00:00.000Z"

@@ -12,9 +12,9 @@
       "pinyin": "zhōng guó",
       "english": "China",
       "tags": [
-        "places",
-        "countries",
-        "hsk1"
+        "Places/places",
+        "Places/countries",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -25,8 +25,8 @@
       "pinyin": "měi guó",
       "english": "United States",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -37,9 +37,9 @@
       "pinyin": "yīng guó",
       "english": "United Kingdom",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -50,8 +50,8 @@
       "pinyin": "jiā ná dà",
       "english": "Canada",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -62,10 +62,10 @@
       "pinyin": "ào dà lì yà",
       "english": "Australia",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -76,9 +76,9 @@
       "pinyin": "xīn xī lán",
       "english": "New Zealand",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -89,9 +89,9 @@
       "pinyin": "rì běn",
       "english": "Japan",
       "tags": [
-        "places",
-        "countries",
-        "visited"
+        "Places/places",
+        "Places/countries",
+        "Places/visited"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -102,10 +102,10 @@
       "pinyin": "hán guó",
       "english": "South Korea",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -116,9 +116,9 @@
       "pinyin": "cháo xiǎn",
       "english": "North Korea; Korea in historical contexts",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -129,8 +129,8 @@
       "pinyin": "měng gǔ",
       "english": "Mongolia",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -141,9 +141,9 @@
       "pinyin": "é luó sī",
       "english": "Russia",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -154,8 +154,8 @@
       "pinyin": "yìn dù",
       "english": "India",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -166,8 +166,8 @@
       "pinyin": "bā jī sī tǎn",
       "english": "Pakistan",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -178,8 +178,8 @@
       "pinyin": "mèng jiā lā guó",
       "english": "Bangladesh",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -190,8 +190,8 @@
       "pinyin": "ní bó ěr",
       "english": "Nepal",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -202,8 +202,8 @@
       "pinyin": "sī lǐ lán kǎ",
       "english": "Sri Lanka",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -214,10 +214,10 @@
       "pinyin": "tài guó",
       "english": "Thailand",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -228,9 +228,9 @@
       "pinyin": "yuè nán",
       "english": "Vietnam",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -241,9 +241,9 @@
       "pinyin": "lǎo wō",
       "english": "Laos",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -254,10 +254,10 @@
       "pinyin": "jiǎn pǔ zhài",
       "english": "Cambodia",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -268,8 +268,8 @@
       "pinyin": "miǎn diàn",
       "english": "Myanmar",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -280,10 +280,10 @@
       "pinyin": "mǎ lái xī yà",
       "english": "Malaysia",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -294,10 +294,10 @@
       "pinyin": "xīn jiā pō",
       "english": "Singapore",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -308,9 +308,9 @@
       "pinyin": "yìn dù ní xī yà",
       "english": "Indonesia",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -321,9 +321,9 @@
       "pinyin": "fēi lǜ bīn",
       "english": "Philippines",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -334,10 +334,10 @@
       "pinyin": "fǎ guó",
       "english": "France",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -348,10 +348,10 @@
       "pinyin": "dé guó",
       "english": "Germany",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -362,10 +362,10 @@
       "pinyin": "yì dà lì",
       "english": "Italy",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -376,10 +376,10 @@
       "pinyin": "xī bān yá",
       "english": "Spain",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -390,10 +390,10 @@
       "pinyin": "pú táo yá",
       "english": "Portugal",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -404,10 +404,10 @@
       "pinyin": "hé lán",
       "english": "Netherlands",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -418,10 +418,10 @@
       "pinyin": "bǐ lì shí",
       "english": "Belgium",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -432,9 +432,9 @@
       "pinyin": "ruì shì",
       "english": "Switzerland",
       "tags": [
-        "places",
-        "countries",
-        "visited"
+        "Places/places",
+        "Places/countries",
+        "Places/visited"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -445,10 +445,10 @@
       "pinyin": "ào dì lì",
       "english": "Austria",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -459,9 +459,9 @@
       "pinyin": "ruì diǎn",
       "english": "Sweden",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -472,8 +472,8 @@
       "pinyin": "nuó wēi",
       "english": "Norway",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -484,9 +484,9 @@
       "pinyin": "dān mài",
       "english": "Denmark",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -497,9 +497,9 @@
       "pinyin": "fēn lán",
       "english": "Finland",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -510,8 +510,8 @@
       "pinyin": "bīng dǎo",
       "english": "Iceland",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -522,9 +522,9 @@
       "pinyin": "ài ěr lán",
       "english": "Ireland",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -535,9 +535,9 @@
       "pinyin": "bō lán",
       "english": "Poland",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -548,10 +548,10 @@
       "pinyin": "jié kè",
       "english": "Czechia",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -562,10 +562,10 @@
       "pinyin": "xiōng yá lì",
       "english": "Hungary",
       "tags": [
-        "places",
-        "countries",
-        "visited",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/visited",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -576,9 +576,9 @@
       "pinyin": "xī là",
       "english": "Greece",
       "tags": [
-        "places",
-        "countries",
-        "eu-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/eu-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -589,8 +589,8 @@
       "pinyin": "tǔ ěr qí",
       "english": "Türkiye; Turkey",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -601,8 +601,8 @@
       "pinyin": "wū kè lán",
       "english": "Ukraine",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -613,9 +613,9 @@
       "pinyin": "mò xī gē",
       "english": "Mexico",
       "tags": [
-        "places",
-        "countries",
-        "visited"
+        "Places/places",
+        "Places/countries",
+        "Places/visited"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -626,8 +626,8 @@
       "pinyin": "bā xī",
       "english": "Brazil",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -638,8 +638,8 @@
       "pinyin": "ā gēn tíng",
       "english": "Argentina",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -650,8 +650,8 @@
       "pinyin": "zhì lì",
       "english": "Chile",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -662,8 +662,8 @@
       "pinyin": "bì lǔ",
       "english": "Peru",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -674,8 +674,8 @@
       "pinyin": "gē lún bǐ yà",
       "english": "Colombia",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -686,9 +686,9 @@
       "pinyin": "nán fēi",
       "english": "South Africa",
       "tags": [
-        "places",
-        "countries",
-        "world-capitals"
+        "Places/places",
+        "Places/countries",
+        "Places/world-capitals"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -699,8 +699,8 @@
       "pinyin": "āi jí",
       "english": "Egypt",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -711,8 +711,8 @@
       "pinyin": "mó luò gē",
       "english": "Morocco",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -723,8 +723,8 @@
       "pinyin": "kěn ní yà",
       "english": "Kenya",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -735,8 +735,8 @@
       "pinyin": "ní rì lì yà",
       "english": "Nigeria",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -747,8 +747,8 @@
       "pinyin": "shā tè ā lā bó",
       "english": "Saudi Arabia",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -759,8 +759,8 @@
       "pinyin": "ā lián qiú",
       "english": "United Arab Emirates (abbreviation)",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -771,8 +771,8 @@
       "pinyin": "yī lǎng",
       "english": "Iran",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -783,8 +783,8 @@
       "pinyin": "yǐ sè liè",
       "english": "Israel",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -795,8 +795,8 @@
       "pinyin": "yà zhōu",
       "english": "Asia",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -807,8 +807,8 @@
       "pinyin": "ōu zhōu",
       "english": "Europe",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -819,8 +819,8 @@
       "pinyin": "fēi zhōu",
       "english": "Africa",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -831,8 +831,8 @@
       "pinyin": "běi měi zhōu",
       "english": "North America",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -843,8 +843,8 @@
       "pinyin": "nán měi zhōu",
       "english": "South America",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -855,8 +855,8 @@
       "pinyin": "dà yáng zhōu",
       "english": "Oceania",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -867,8 +867,8 @@
       "pinyin": "nán jí zhōu",
       "english": "Antarctica",
       "tags": [
-        "places",
-        "countries"
+        "Places/places",
+        "Places/countries"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -879,11 +879,11 @@
       "pinyin": "guó jiā",
       "english": "Country; state",
       "tags": [
-        "places",
-        "countries",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Places/places",
+        "Places/countries",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -894,11 +894,11 @@
       "pinyin": "shǒu dū",
       "english": "Capital city",
       "tags": [
-        "places",
-        "countries",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Places/places",
+        "Places/countries",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -909,11 +909,11 @@
       "pinyin": "chéng shì",
       "english": "City",
       "tags": [
-        "places",
-        "countries",
-        "hsk3",
-        "grammar-support",
-        "basics"
+        "Places/places",
+        "Places/countries",
+        "HSK/HSK3",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -924,11 +924,11 @@
       "pinyin": "jīn tiān",
       "english": "Today",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -939,11 +939,11 @@
       "pinyin": "nǐ",
       "english": "You",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -954,11 +954,11 @@
       "pinyin": "qù",
       "english": "Go",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -969,11 +969,11 @@
       "pinyin": "kě yǐ",
       "english": "Can; may; be allowed to",
       "tags": [
-        "daily",
-        "practical",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -984,11 +984,11 @@
       "pinyin": "ma",
       "english": "Question particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -999,11 +999,11 @@
       "pinyin": "hé",
       "english": "And; with",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1014,9 +1014,9 @@
       "pinyin": "dì lǐ",
       "english": "Geography",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk7-9"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK7-9"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1027,9 +1027,9 @@
       "pinyin": "xué xí",
       "english": "Study",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1040,11 +1040,11 @@
       "pinyin": "xiǎng",
       "english": "Want to; think; miss someone",
       "tags": [
-        "daily",
-        "practical",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/practical",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1055,11 +1055,11 @@
       "pinyin": "wǒ",
       "english": "I; me",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1070,11 +1070,11 @@
       "pinyin": "wǒ men",
       "english": "We; us",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1085,9 +1085,9 @@
       "pinyin": "lǚ yóu",
       "english": "Travel for leisure",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1098,11 +1098,11 @@
       "pinyin": "lǚ xíng",
       "english": "Travel",
       "tags": [
-        "activities",
-        "sports",
-        "hsk2",
-        "grammar-support",
-        "basics"
+        "Activities/activities",
+        "Activities/sports",
+        "HSK/HSK2",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1113,11 +1113,11 @@
       "pinyin": "de",
       "english": "Possessive or attributive particle",
       "tags": [
-        "daily",
-        "foundations",
-        "hsk1",
-        "grammar-support",
-        "basics"
+        "Everyday/daily",
+        "Everyday/foundations",
+        "HSK/HSK1",
+        "Grammar/grammar-support",
+        "Everyday/basics"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1128,9 +1128,9 @@
       "pinyin": "zhī shi",
       "english": "Knowledge",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1141,9 +1141,9 @@
       "pinyin": "jì huà",
       "english": "Plan",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk2"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK2"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"
@@ -1154,9 +1154,9 @@
       "pinyin": "guo",
       "english": "Past experience marker",
       "tags": [
-        "grammar-support",
-        "basics",
-        "hsk1"
+        "Grammar/grammar-support",
+        "Everyday/basics",
+        "HSK/HSK1"
       ],
       "source": "Ciyan optional decks v0.3.2",
       "createdAt": "2026-11-17T00:00:00.000Z"

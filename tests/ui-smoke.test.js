@@ -57,7 +57,7 @@ test('UI renders, reviews persist, session finishes with backup reminder',async(
   assert.match(mock.shell.innerHTML,/Protect your progress/);
   const state=mock.data.get('main');
   assert.equal(state.history.length,12);
-  assert.equal(state.sessions.length,1);
+  assert.equal(state.mixedSessions.length,1);
   assert.equal(state.activeSession,null);
   assert.ok(state.revision>state.backedUpRevision);
   await click('navigate',{page:'stats'});
@@ -87,14 +87,14 @@ test('grammar mode unlocks known sentences and saves ordering results',async()=>
     await delay();
   };
   await click('start',{mode:'grammar'});
-  assert.match(mock.shell.innerHTML,/GRAMMAR LAB/);
-  for(let i=0;i<5;i++)await click('grammar-pick',{tile:`t${i}`});
-  await click('grammar-check');
-  assert.match(mock.shell.innerHTML,/CORRECT SENTENCE/);
+  assert.match(mock.shell.innerHTML,/Grammar ·/);
+  for(let i=0;i<5;i++)await click('practice-pick',{tile:`t${i}`});
+  await click('practice-check');
+  assert.match(mock.shell.innerHTML,/Correct target order/);
+  await click('practice-grade',{grade:'3'});
   assert.equal(mock.data.get('main').grammarHistory[0].correct,true);
-  assert.equal(mock.data.get('main').activeGrammarSession.queue.length,3);
-  await click('next-grammar');
-  assert.match(mock.shell.innerHTML,/WORD BANK/);
+  assert.equal(mock.data.get('main').activePractice.results.length,1);
+  assert.match(mock.shell.innerHTML,/grammar-bank/);
 });
 
 test('tone enforcement prevents Easy and records an incorrect tone answer',async()=>{
@@ -134,10 +134,10 @@ test('optional deck UI imports additively, paginates, filters and studies a topi
   await click('navigate',{page:'browse'});
   assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,80);
   await click('more-words');assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,160);
-  await click('cycle-tag',{kind:'words',tag:'climbing'});
+  await click('cycle-tag',{kind:'words',tag:'Activities/climbing'});
   assert.ok((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length>=76);
   await click('study-filtered');
-  const saved=mock.data.get('main');assert.ok(saved.activeSession.queue.every(id=>saved.cards.find(c=>c.id===id).tags.includes('climbing')));
+  const saved=mock.data.get('main');assert.ok(saved.activeSession.queue.every(id=>saved.cards.find(c=>c.id===id).tags.includes('Activities/climbing')));
 });
 
 test('stale tab cannot overwrite a newer revision or advance its review queue',async()=>{
@@ -158,4 +158,52 @@ test('grammar detail escapes imported distractor text',async()=>{
   const el={dataset:{action:'grammar-detail',id:source.grammar[0].id}};
   await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});
   assert.ok(!modalContent.includes('<img'));assert.ok(modalContent.includes('&lt;img'));
+});
+
+test('drawing UI keeps per-character pads, reveals comparisons and records only writing',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const source=defaultState();source.cards=source.cards.filter(c=>[...c.hanzi].length>1);source.settings.sessionSize=1;
+ mock.data.set('main',source);await import('../app.js?smoke=drawing04');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('practice-start',{mode:'drawing'});
+ let saved=mock.data.get('main'),id=saved.activePractice.current.id,c=saved.cards.find(c=>c.id===id);
+ assert.match(mock.shell.innerHTML,/drawing-pad/);assert.ok(!mock.shell.innerHTML.includes(`printed-character">${c.hanzi[0]}`));
+ await click('draw-page',{pad:'1'});assert.equal(mock.data.get('main').activePractice.input.pad,1);
+ await click('draw-page',{pad:'0'});assert.equal(mock.data.get('main').activePractice.input.pad,0);
+ await click('practice-reveal');assert.match(mock.shell.innerHTML,/drawing-comparison/);assert.match(mock.shell.innerHTML,/printed-character/);
+ await click('practice-grade',{grade:'3'});saved=mock.data.get('main');
+ assert.equal(saved.skillSchedules.drawing[id].reps,1);assert.equal(saved.history.length,0);assert.equal(saved.activePractice,null);
+ assert.match(mock.shell.innerHTML,/Protect your progress/);
+});
+
+test('particle UI distinguishes a wrong choice from a correct placement and persists score',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {PARTICLES}=await import('../particles.js');const s=defaultState();s.settings.sessionSize=1;mock.data.set('main',s);
+ await import('../app.js?smoke=particles04');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('practice-start',{mode:'particles'});const id=mock.data.get('main').activePractice.current.id,p=PARTICLES.find(p=>p.id===id),a=p.accepted[0];
+ await click('particle-choice',{choice:p.choices.find(c=>c!==a.choice)});await click('particle-slot',{slot:String(a.slot)});await click('practice-check');
+ assert.equal(mock.data.get('main').activePractice.input.correct,false);assert.match(mock.shell.innerHTML,/One to revisit/);
+ await click('practice-grade',{grade:'4'});assert.equal(mock.data.get('main').skillHistory.length,0);
+ await click('practice-grade',{grade:'1'});assert.equal(mock.data.get('main').skillHistory[0].grade,1);assert.equal(mock.data.get('main').skillSchedules.particles[id].score,0);
+});
+
+test('tag tree expands branches, selects a parent and excludes its child',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=tree04');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('navigate',{page:'browse'});
+ assert.ok(!mock.browseNodes['#tag-filter'].innerHTML.includes('data-tag="HSK/HSK1"'));
+ await click('expand-tag',{kind:'words',tag:'HSK'});assert.match(mock.browseNodes['#tag-filter'].innerHTML,/data-tag="HSK\/HSK1"/);
+ await click('cycle-tag',{kind:'words',tag:'HSK'});assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/include/);
+ const before=(mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length;
+ await click('cycle-tag',{kind:'words',tag:'HSK/HSK1'});await click('cycle-tag',{kind:'words',tag:'HSK/HSK1'});
+ const after=(mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length;assert.ok(after<before);
+ await click('reset-tags',{kind:'words'});assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/No active tags/);
+});
+
+test('timing settings save unit controls and update existing due dates',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {scheduleReview}=await import('../review-scheduler.js');const s=defaultState(),c=s.cards[0],now=Date.now();s.schedules[c.id]=scheduleReview(null,4,now,s.settings);mock.data.set('main',s);
+ await import('../app.js?smoke=timing04');await delay(25);
+ const el={dataset:{action:'navigate',page:'settings'}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});assert.match(mock.shell.innerHTML,/Save review timing/);
+ const Original=globalThis.FormData;globalThis.FormData=class{get(key){return {scheduler:'score',value0:'5',unit0:'seconds',value1:'10',unit1:'minutes',value2:'3',unit2:'days',value3:'3',unit3:'weeks'}[key];}};
+ try{await mock.listeners.submit({target:{matches:q=>q==='#scheduler-form'},preventDefault(){}});await delay();}finally{globalThis.FormData=Original;}
+ const saved=mock.data.get('main');assert.equal(saved.settings.retryIntervals[0].unit,'seconds');assert.equal(Date.parse(saved.schedules[c.id].dueAt),now+21*86400000);
 });
