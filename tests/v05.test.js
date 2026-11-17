@@ -13,10 +13,10 @@ const groupWords=g=>[...new Set([...grammarTokens(g),...(g.distractors||[]).map(
 const prepareGroup=(s,words,score=2.2)=>{for(const w of words)seen(s,w,score);};
 
 test('v0.5 retry anchors, extrapolation and two-decimal outcome previews',()=>{
- assert.deepEqual(DEFAULT_RETRY,[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:2,unit:'days'},{value:2,unit:'weeks'}]);
+ assert.deepEqual(DEFAULT_RETRY,[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:3,unit:'days'},{value:2,unit:'weeks'}]);
  const s=state();assert.equal(interpolatedSeconds(0,s.settings.retryIntervals),600);
  assert.equal(interpolatedSeconds(1,s.settings.retryIntervals),21600);
- assert.equal(interpolatedSeconds(2,s.settings.retryIntervals),172800);
+ assert.equal(interpolatedSeconds(2,s.settings.retryIntervals),259200);
  assert.ok(Math.abs(interpolatedSeconds(3.2,s.settings.retryIntervals)-14*86400*1.2)<1e-7);
  assert.equal(interpolatedSeconds(4,s.settings.retryIntervals),28*86400);
  const previews=previewOutcomes(null,t,s.settings);assert.deepEqual(previews.map(p=>p.score.toFixed(2)),['0.00','0.18','0.36','0.54']);

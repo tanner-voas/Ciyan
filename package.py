@@ -17,6 +17,8 @@ STATIC_FILES = (
     "styles.css",
     "app.js",
     "study-engine.js",
+    "tag-weights.js",
+    "grammar-context.js",
     "review-scheduler.js",
     "particles.js",
     "tags.js",

@@ -250,3 +250,40 @@ test('v0.5 settings persist a zero daily word cap but default blank is unlimited
  await change('35');assert.equal(mock.data.get('main').settings.newWordsPerDay,35);
  await change('');assert.equal(mock.data.get('main').settings.newWordsPerDay,null);
 });
+
+test('v0.5.1 tag-weight settings apply only on submit, show exact odds, and persist in full backup',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=weights051');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('navigate',{page:'settings'});
+ assert.match(mock.shell.innerHTML,/New vocabulary · tag weights/);
+ assert.match(mock.shell.innerHTML,/New-card odds/);
+ assert.match(mock.shell.innerHTML,/Apply tag weights &amp; recalculate odds/);
+ const snapshot=mock.shell.innerHTML;
+ // Editing a field does not recompute percentages or write data before Apply.
+ await mock.listeners.input({target:{id:'',dataset:{tagWeight:'HSK/HSK1'},value:'25',closest:()=>null}});
+ assert.equal(mock.shell.innerHTML,snapshot);
+ const form={matches:q=>q==='#tag-weight-form',querySelectorAll:q=>q==='[data-tag-weight]'?[
+  {dataset:{tagWeight:'HSK/HSK1'},value:'25'},
+  {dataset:{tagWeight:'Food/food'},value:'2'}]:[]};
+ await mock.listeners.submit({target:form,preventDefault(){}});await delay();
+ const state=mock.data.get('main');assert.equal(state.settings.tagWeights['HSK/HSK1'],25);assert.equal(state.settings.tagWeights['Food/food'],2);
+ assert.notEqual(mock.shell.innerHTML,snapshot);
+ const {makeBackup}=await import('../storage.js');assert.equal(makeBackup(state).state.settings.tagWeights['HSK/HSK1'],25);
+});
+
+test('v0.5.1 Settings odds reflect a newly introduced word when returning to Settings',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=odds051');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('navigate',{page:'settings'});assert.match(mock.shell.innerHTML,/2278 unstudied words/);
+ await click('navigate',{page:'study'});await click('practice-start',{mode:'words'});await click('practice-reveal');await click('practice-grade',{grade:'3'});
+ await click('practice-finish');await click('navigate',{page:'settings'});
+ assert.match(mock.shell.innerHTML,/2277 unstudied words/);
+});
+
+test('v0.5.1 migration upgrades unchanged v0.5 retry default without moving existing due dates',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {scheduleReview}=await import('../review-scheduler.js');
+ const state=defaultState();state.settings.retryIntervals=[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:2,unit:'days'},{value:2,unit:'weeks'}];state.settings.retryDefaultsVersion='v0.5';
+ const card=state.cards[0],schedule=scheduleReview(null,3,Date.now(),state.settings);state.schedules[card.id]=schedule;mock.data.set('main',state);
+ await import('../app.js?smoke=migrate051');await delay(25);
+ const after=mock.data.get('main');assert.equal(after.settings.retryIntervals[2].value,3);assert.equal(after.settings.retryDefaultsVersion,'v0.5.1');assert.equal(after.schedules[card.id].dueAt,schedule.dueAt);
+});

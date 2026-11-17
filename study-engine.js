@@ -1,3 +1,4 @@
+import {weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.js';
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
 import {grammarTokens,wordKnowledge} from './grammar.js';
@@ -14,6 +15,8 @@ export function ensureStudy(s){
  s.postponed??={};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
  s.settings.autoShares={...SHARES,...s.settings.autoShares};
+ s.settings.tagWeights=validatedTagWeights(s.settings.tagWeights);
+ for(const tag of leafTagPaths(s.cards||[]))if(s.settings.tagWeights[tag]===undefined)s.settings.tagWeights[tag]=1;
  s.settings.autoModes={words:true,grammar:true,drawing:true,particles:true,...s.settings.autoModes};
  // Null means unlimited. Zero is a meaningful limit, unlike a blank field.
  const limit=s.settings.newWordsPerDay;
@@ -73,14 +76,15 @@ function info(s,mode,now,filters){
  return [];
 }
 export function candidates(s,mode,_auto=false,now=Date.now(),includeFuture=false,filters=null){
+ const newWeightLeaves=mode==='words'?new Set(leafTagPaths(s.cards)):null;
+ const wordMap=mode==='words'?new Map(s.cards.map(c=>[c.id,c])):null;
  return info(s,mode,now,filters).flatMap(item=>{
   const sched=scheduleFor(s,mode,item.id);
   if(!includeFuture&&sched&&Date.parse(sched.dueAt)>now)return [];
-  const interval=Math.max(60,(sched?.intervalMinutes||1)*60000);
-  const overdue=sched?Math.max(0,now-Date.parse(sched.dueAt)):0;
-  const r=sched?retrievability(sched,now):1;
-  const urgency=sched?1+Math.min(5,Math.log1p(overdue/interval))+Math.max(0,1-r):.5;
-  return [{...item,mode,urgency,reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
+  const interval=Math.max(1,(sched?.intervalMinutes||1)*60000);
+  const elapsed=sched?Math.max(0,now-Date.parse(sched.lastReviewedAt)):0;
+  const weight=sched?Math.max(.000001,elapsed/interval):mode==='words'?weightForNewCard(wordMap.get(item.id),s.settings.tagWeights,newWeightLeaves):1;
+  return [{...item,mode,urgency:weight,reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
  });
 }
 export function availableModes(s,session){return Object.keys(MODES).filter(m=>session?.mode==='auto'?s.settings.autoModes[m]:m===(session?.mode||'words'));}
@@ -133,7 +137,7 @@ export function nextExercise(s,session,now=Date.now(),rng=Math.random){
  if(!selected.length)return null;
  const choices=new Map();for(const entry of selected){if(!choices.has(entry.mode))choices.set(entry.mode,[]);choices.get(entry.mode).push(entry);}
  if(session.mode!=='auto')return pickWeighted(selected,rng);
- const weighted=[...choices].map(([mode,items])=>({mode,items,urgency:(s.settings.autoShares?.[mode]||SHARES[mode])*Math.max(.1,Math.min(4,items.reduce((n,x)=>n+x.urgency,0)/items.length))}));
+ const weighted=[...choices].map(([mode,items])=>({mode,items,urgency:(s.settings.autoShares?.[mode]||SHARES[mode])*(selected[0]?.dueAt?items.reduce((n,x)=>n+x.urgency,0)/items.length:1)}));
  const group=pickWeighted(weighted.map(x=>({urgency:x.urgency,...x})),rng);
  return pickWeighted(group.items,rng);
 }

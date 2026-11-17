@@ -1,3 +1,4 @@
+import {validatedTagWeights} from './tag-weights.js';
 import {allParticles} from './particles.js';
 import {retrySeconds,DEFAULT_RETRY} from './review-scheduler.js';
 import {normalizeTags} from './tags.js';
@@ -119,6 +120,7 @@ export function parseBackup(data){
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
   const settings={sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+    tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
     continuous:true,retryDefaultsVersion:s.retryDefaultsVersion||'v0.5',autoShares:{...defaults.settings.autoShares,...s.autoShares},scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones};

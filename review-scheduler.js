@@ -1,6 +1,6 @@
 import {scheduleReview as fsrsReview,previewIntervals as fsrsPreview} from './fsrs.js';
 export const UNITS={seconds:1,minutes:60,hours:3600,days:86400,weeks:604800};
-export const DEFAULT_RETRY=[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:2,unit:'days'},{value:2,unit:'weeks'}];
+export const DEFAULT_RETRY=[{value:10,unit:'minutes'},{value:6,unit:'hours'},{value:3,unit:'days'},{value:2,unit:'weeks'}];
 export function retrySeconds(config=DEFAULT_RETRY){
  if(!Array.isArray(config)||config.length!==4)throw new Error('Set all four retry intervals.');
  const values=config.map(x=>Number(x.value)*UNITS[x.unit]);
