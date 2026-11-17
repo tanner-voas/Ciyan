@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import {HSK_LEVELS} from '../hsk-tag-map.js';
 import {defaultState,mergeDeck,makeBackup,parseBackup,normalizeCard} from '../storage.js';
 import {linkedWords,grammarTags,grammarMistakes,toneTargets,requiredWords,normalizeGrammar} from '../grammar.js';
 import {scheduleReview} from '../fsrs.js';
@@ -8,7 +9,7 @@ import {DECKS} from '../deck-catalog.js';
 const read=id=>JSON.parse(fs.readFileSync(new URL('../decks/'+id+'.json',import.meta.url)));
 test('the bundled master validates and has unique word and grammar IDs',()=>{
  const all=read('all-decks');let state=defaultState();const result=mergeDeck(state,all);state=result.draft;
- assert.equal(all.cards.length,2278);assert.equal(all.grammar.length,1549);
+ assert.equal(all.cards.length,11760);assert.equal(all.grammar.length,1549);
  assert.equal(new Set(state.cards.map(c=>c.hanzi)).size,state.cards.length);
  assert.equal(new Set(state.cards.map(c=>c.id)).size,state.cards.length);
  assert.equal(new Set(state.grammar.map(g=>g.id)).size,state.grammar.length);
@@ -43,7 +44,7 @@ test('all generated pinyin matches character count and explicit syllable tones',
   const actual=toneTargets(c.hanzi,c.pinyin);
   assert.equal(actual?.length,[...c.hanzi].length,c.hanzi);
   if(syll.length===[...c.hanzi].length){
-    const expected=syll.map(s=>Math.max(0,...[...s].map(ch=>marks.includes(ch)?marks.indexOf(ch)%4+1:0)));
+    const expected=syll.map(s=>Math.max(0,...[...s.toLowerCase()].map(ch=>marks.includes(ch)?marks.indexOf(ch)%4+1:0)));
     assert.deepEqual(actual,expected,c.hanzi);
   }
  }
@@ -55,7 +56,8 @@ test('exactly one canonical HSK band is used by every matching vocabulary word',
  const bands=new Set(['hsk1','hsk2','hsk3','hsk4','hsk5','hsk6','hsk7-9'].map(x=>'HSK/'+x.toUpperCase()));
  for(const c of all.cards){
   const matching=c.tags.filter(t=>bands.has(t)).map(t=>t.split("/")[1].toLowerCase());
-  assert.deepEqual(matching,ref[c.hanzi]?[ref[c.hanzi].toLowerCase()]:[],c.hanzi);
+  assert.deepEqual(matching,HSK_LEVELS[c.hanzi]?[HSK_LEVELS[c.hanzi]]:[],c.hanzi);
+  if(ref[c.hanzi])assert.equal(matching[0],ref[c.hanzi].toLowerCase(),c.hanzi);
   assert.ok(c.tags.every(t=>!t.startsWith('hsk-2021')&&t!=='hsk'&&!t.includes('3.0')),c.hanzi);
  }
  for(const band of bands){
@@ -63,7 +65,7 @@ test('exactly one canonical HSK band is used by every matching vocabulary word',
   const tagged=all.cards.filter(c=>c.tags.includes(band));
   assert.ok(tagged.length>0,band);
   const names=new Set(d.cards.map(c=>c.hanzi));
-  for(const c of tagged)if(c.hanzi!=='地')assert.ok(names.has(c.hanzi),`${band}: ${c.hanzi}`);
+  for(const c of d.cards)if(c.tags.includes(band))assert.ok(tagged.some(w=>w.hanzi===c.hanzi),`${band}: ${c.hanzi}`);
  }
  for(let n=1;n<=4;n++){
   const original=fs.readFileSync(new URL(`../content/hsk-${n}.tsv`,import.meta.url),'utf8').trim().split('\n');

@@ -231,7 +231,7 @@ catalog=[]
 for d in decks:
     payload=dict(format='ciyan-deck',version=2,records=False,title=d['title'],description=d['description'],
       license='CC-BY-SA-4.0; see ATTRIBUTION.md',cards=d['cards'],grammar=d['grammar'])
-    dump(OUT/(d['id']+'.json'),payload)
+    if d['id']!='all-decks':dump(OUT/(d['id']+'.json'),payload)  # expanded master has its own source
     catalog.append(dict(id=d['id'],title=d['title'],description=d['description'],wordCount=len(d['cards']),grammarCount=len(d['grammar']),words=[c['hanzi'] for c in d['cards']]))
 # Delete obsolete generated HSK aliases after the catalog is complete.
 for old in OUT.glob('hsk-2021-*.json'):old.unlink()
@@ -249,4 +249,4 @@ import subprocess
 subprocess.run(['node', str(ROOT/'normalize-deck-tags.mjs')], check=True)
 # The shipped app contains only one master, regardless of internal content sources.
 import sys
-subprocess.run([sys.executable, str(ROOT/'build_master.py')], check=True)
+subprocess.run([sys.executable, str(ROOT/'build_expanded_dictionary.py')], check=True)

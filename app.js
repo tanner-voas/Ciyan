@@ -401,10 +401,21 @@ function modal(title,contents){closeModal();currentModal=document.createElement(
   currentModal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${icon('x')}</button></div><div class="modal-scroll">${contents}</div></div>`;
   document.body.append(currentModal);currentModal.querySelector('input:not([type=file]),button')?.focus();}
 function closeModal(){if(currentModal){currentModal.remove();currentModal=null;}}
-function wordDetails(id){const c=wordById(id);if(!c)return;const schedule=state.schedules[id],history=state.history.filter(h=>h.cardId===id);
+let wordDetailTrail=[];
+let wordDetailCurrent=null;
+function wordDetails(id,direction='root'){
+ const c=wordById(id);if(!c)return;
+ if(direction==='root')wordDetailTrail=[];
+ else if(direction==='synonym'&&wordDetailCurrent&&wordDetailCurrent!==id)wordDetailTrail.push(wordDetailCurrent);
+ wordDetailCurrent=id;
+ const schedule=state.schedules[id],history=state.history.filter(h=>h.cardId===id);
   const examples=state.grammar.filter(g=>linkedWords(g,[c]).length).sort((a,b)=>scoreGrammar(b).combined-scoreGrammar(a).combined);
   const knowledge=scoreWord(c);
-  modal('Word in context',`<div class="detail-hero"><div class="review-hanzi">${esc(c.hanzi)}</div><div class="review-pinyin">${esc(c.pinyin)}</div><div class="review-english">${esc(c.english)}</div></div>
+  // Resolve by stable word ID, never by substring or shared Hanzi characters.
+  const byId=new Map(state.cards.map(w=>[w.id,w]));
+  const synonyms=(c.synonyms||[]).map(entry=>({entry,card:byId.get(entry.id)})).filter(x=>x.card);
+  const back=wordDetailTrail.length?`<button class="btn btn-secondary synonym-back" data-action="synonym-back">${icon('arrow-left')} Back to ${esc(byId.get(wordDetailTrail.at(-1))?.hanzi||'previous word')}</button>`:'';
+  modal('Word in context',`${back}<div class="detail-hero"><div class="review-hanzi">${esc(c.hanzi)}</div><div class="review-pinyin">${esc(c.pinyin)}</div><div class="review-english">${esc(c.english)}</div></div>
     <div class="tags-wrap">${c.tags.map(tagHtml).join('')||'<span class="subtle">No tags</span>'}</div>
     <div class="detail-stats"><div><strong>${percent(knowledge)}</strong><span>Knowledge score</span></div>
       <div><strong>${history.length}</strong><span>Times encountered</span></div>
@@ -418,6 +429,8 @@ function wordDetails(id){const c=wordById(id);if(!c)return;const schedule=state.
     ${examples.length?examples.map(g=>`<button class="context-card" data-action="grammar-detail" data-id="${esc(g.id)}"><strong>${esc(plainSentence(g.markup))}</strong>
        <small>${esc(g.pinyin)}</small><span>${esc(g.english)}</span><div class="row"><span class="subtle">Combined: ${percent(scoreGrammar(g).combined)}</span>${icon('right')}</div></button>`).join(''):
       '<div class="notice">No grammar sentences containing this word yet. Add one from the Grammar page.</div>'}
+    <div class="section-row synonym-heading"><h3 class="section-title">Synonyms · ${synonyms.length}</h3><span class="subtle">Similarity · 0–1</span></div>
+    ${synonyms.length?`<div class="synonym-list">${synonyms.map(({entry,card})=>`<button class="synonym-card" data-action="synonym-detail" data-id="${esc(card.id)}" aria-label="View synonym ${esc(card.hanzi)}; similarity ${entry.similarity.toFixed(2)}"><span class="synonym-word">${esc(card.hanzi)}<small>${esc(card.pinyin)}</small></span><span class="synonym-score">${entry.similarity.toFixed(2)}</span>${icon('chevron-right')}</button>`).join('')}</div>`:'<p class="subtle">No close synonyms in the current dictionary.</p>'}
     <div class="modal-actions"><button class="btn btn-secondary" data-action="edit-card" data-id="${esc(id)}">${icon('edit')}Edit</button>
       <button class="btn btn-danger" data-action="delete-card" data-id="${esc(id)}">${icon('trash')}Delete</button></div>`);
 }
@@ -465,6 +478,7 @@ function grammarEditor(id=null){const g=id?grammarById(id):{markup:'',pinyin:'',
 async function saveWordEditor(form){const id=form.dataset.id||null,existing=id?wordById(id):null;
   let candidate;try{candidate=normalizeCard({...existing,...Object.fromEntries(new FormData(form)),id:id||undefined,source:existing?.source||'My words'});}catch(e){toast(e.message);return;}
   if(state.cards.some(c=>c.id!==id&&c.hanzi===candidate.hanzi)){toast('A word with this exact Chinese text already exists. Edit that word instead.');return;}
+  if(existing&&existing.hanzi!==candidate.hanzi)delete candidate.synonyms;
   if(existing?.hanzi!==candidate.hanzi&&state.schedules[id]&&
     !window.confirm('You changed the Chinese word of a studied card. Keep its existing memory history for the new spelling?'))return;
   const done=await change(d=>{if(id){const i=d.cards.findIndex(c=>c.id===id);if(i<0)throw new Error('Word no longer exists');d.cards[i]=candidate;}
@@ -645,6 +659,8 @@ document.addEventListener('click',async event=>{
       if(current===0)f.tags[tag]=1;else if(current===1)f.tags[tag]=-1;else delete f.tags[tag];updateCollection();break;}
     case 'reset-tags':filters[element.dataset.kind].tags={};updateCollection();break;
     case 'card-detail':wordDetails(element.dataset.id);break;
+    case 'synonym-detail':wordDetails(element.dataset.id,'synonym');break;
+    case 'synonym-back':{const previous=wordDetailTrail.pop();if(previous)wordDetails(previous,'back');break;}
     case 'grammar-detail':grammarDetails(element.dataset.id);break;
     case 'new-entry':element.dataset.kind==='grammar'?grammarEditor():wordEditor();break;
     case 'edit-card':wordEditor(element.dataset.id);break;

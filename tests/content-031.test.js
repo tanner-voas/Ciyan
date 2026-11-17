@@ -14,11 +14,13 @@ const geoPath=new URL('../content/geography-031.txt',import.meta.url);
 const geographicData=fs.readFileSync(geoPath,'utf8');
 const section=id=>geographicData.split('\n').slice(geographicData.split('\n').findIndex(l=>l.startsWith(`# ${id}|`))+1).filter(l=>l&&!l.startsWith('# '));
 
-test('every vocabulary card, including original starter cards, appears in an exact grammar token',()=>{
+test('all original vocabulary keeps its exact grammar usage; advanced words need no examples',()=>{
  assert.equal(allWords.size,big.cards.length);
- assert.equal(big.cards.length,2278);
+ assert.equal(big.cards.length,11760);
  assert.equal(big.grammar.length,1549);
- for(const w of allWords)assert.ok(covered.has(w),`Missing exact example: ${w}`);
+ const original=JSON.parse(fs.readFileSync(new URL('../content/v055_base_master.json',import.meta.url),'utf8'));
+ for(const w of original.cards.map(c=>c.hanzi))assert.ok(covered.has(w),`Missing original example: ${w}`);
+ assert.equal(big.cards.filter(c=>!covered.has(c.hanzi)).length>0,true,'New advanced words intentionally do not require authored grammar');
 });
 test('every grammar example is structurally valid and has complete vocabulary prerequisites',()=>{
  const ids=new Set();

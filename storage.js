@@ -61,8 +61,25 @@ export function normalizeCard(source,fallbackId=null){
   if(!hanzi||!english)throw new Error('Every word needs Chinese and English');
   const rawTags=Array.isArray(source.tags)?source.tags:String(source.tags||'').split(',');
   const tags=canonicalHSKTags(hanzi,[...new Set(rawTags.map(t=>string(t,160)).filter(Boolean))].slice(0,24));
+  // Only the minimal, scored synonym links belong in the master dictionary.
+  // Explanations, evidence, and derived rank totals are intentionally omitted.
+  let synonyms=[];
+  if(source.synonyms!==undefined){
+    if(!Array.isArray(source.synonyms)||source.synonyms.length>10000)throw new Error('Invalid synonym list');
+    const unique=new Set();
+    for(const item of source.synonyms){
+      if(!item||typeof item!=='object'||typeof item.id!=='string'||!item.id.trim()||
+         !Number.isFinite(item.similarity)||item.similarity<=0||item.similarity>1)
+        throw new Error('Invalid synonym relationship');
+      const target=item.id.trim().slice(0,120);
+      if(target===id||unique.has(target))continue;
+      unique.add(target);synonyms.push({id:target,similarity:item.similarity});
+    }
+    synonyms.sort((a,b)=>b.similarity-a.similarity||a.id.localeCompare(b.id));
+  }
   return {id,hanzi,pinyin:string(source.pinyin,160),english,tags,
-    source:string(source.source||'My cards',80),createdAt:string(source.createdAt||new Date().toISOString(),80)};
+    source:string(source.source||'My cards',80),createdAt:string(source.createdAt||new Date().toISOString(),80),
+    ...(synonyms.length?{synonyms}:{})};
 }
 function legacySentenceMarkup(sentence,cards){
   const words=[...new Set(cards.map(c=>c.hanzi))].sort((a,b)=>b.length-a.length);

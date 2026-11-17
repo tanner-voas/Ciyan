@@ -11,9 +11,9 @@ test('v0.5.4 full backup embeds exact app version separately from backup format 
  assert.equal(s.appVersion,APP_VERSION);
  const backup=makeBackup(s);
  assert.equal(backup.format,'ciyan-backup');assert.equal(backup.version,2);
- assert.equal(backup.appVersion,'0.5.4');assert.equal(backup.state.appVersion,APP_VERSION);
+ assert.equal(backup.appVersion,'0.5.5');assert.equal(backup.state.appVersion,APP_VERSION);
  const result=parseBackup(JSON.parse(JSON.stringify(backup)));
- assert.equal(result.appVersion,'0.5.4');
+ assert.equal(result.appVersion,'0.5.5');
 });
 
 test('versioned backup migration steps are sequential and do not touch unrelated settings',()=>{
@@ -22,12 +22,12 @@ test('versioned backup migration steps are sequential and do not touch unrelated
  const backup=makeBackup(s);backup.appVersion='0.5.2';backup.state.appVersion='0.5.2';
  const before=structuredClone(backup.state);
  const upgraded=prepareVersionedBackup(backup);
- assert.equal(upgraded.appVersion,'0.5.4');assert.deepEqual(upgraded.state,before);
+ assert.equal(upgraded.appVersion,'0.5.5');assert.deepEqual(upgraded.state,before);
  assert.equal(backup.appVersion,'0.5.2');
  const parsed=parseBackup(backup);
  assert.equal(parsed.settings.tagWeights['HSK/HSK1'],1);
  assert.deepEqual(parsed.settings.retryIntervals,previousRetry);
- assert.equal(parsed.appVersion,'0.5.4');
+ assert.equal(parsed.appVersion,'0.5.5');
 });
 
 test('unstamped legacy backup is accepted without guessing version-specific data edits',()=>{
@@ -45,7 +45,7 @@ test('unsupported future, malformed and missing migration steps fail without mod
  for(const input of [true,null,{},'0.5.3.1','new']){
   const fake={...backup,appVersion:input};assert.throws(()=>prepareVersionedBackup(fake));
  }
- assert.equal(normalizeAppVersion('v0.5.4'),'0.5.4');
+ assert.equal(normalizeAppVersion('v0.5.5'),'0.5.5');
  assert.throws(()=>prepareVersionedBackup({...backup,appVersion:'0.6.0'}),/newer Cíyán/);
  assert.throws(()=>prepareVersionedBackup({...backup,appVersion:'0.5.1'}),/No supported backup migration/);
  assert.deepEqual(backup,original);
@@ -62,12 +62,12 @@ test('current schema normalization never silently adjusts scores, retry anchors,
  assert.equal(normalized.schedules[id].dueAt,s.schedules[id].dueAt);
 });
 
-test('v0.5.3 to v0.5.4 is a strictly identity migration of backup data',()=>{
+test('v0.5.3 through v0.5.5 are identity migrations of backup data',()=>{
  const s=defaultState();s.settings.tagWeights['Food/china-food']=-2.25;s.settings.newWordsPerDay=5;
  s.history=[{id:'1',cardId:s.cards[0].id,at:'2026-11-17T08:15:00Z',grade:3}];
  const backup=makeBackup(s);backup.appVersion='0.5.3';backup.state.appVersion='0.5.3';
  const before=structuredClone(backup.state),source=structuredClone(backup);
  const migrated=prepareVersionedBackup(backup);
- assert.equal(migrated.appVersion,'0.5.4');assert.deepEqual(migrated.state,before);
+ assert.equal(migrated.appVersion,'0.5.5');assert.deepEqual(migrated.state,before);
  assert.deepEqual(backup,source);
 });
