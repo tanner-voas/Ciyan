@@ -1,18 +1,18 @@
-# v0.6.0 preview
+# Cíyán (词言) v0.6.1
 
-The combined feature implementation is available, but the full-vocabulary example milestone is incomplete. See [release status](RELEASE_v0.6.0_PREVIEW.md) and `content/coverage-v060.csv`. Rebuild new content with `python3 build_v06.py`; the older content builders are historical.
+Offline Mandarin practice for iPhone: vocabulary, grammar, drawing and Particle Zoo.
 
-# Cíyán (词言) v0.5.5
+This release adds four-grade character assessment, gradual shared character scores,
+character-aware drawing selection and weakest-link feedback. It retains the preview's
+72 Particle Zoo exercises, omission and alternative answers, error classification,
+family weakness targeting, measured grammar usage errors and familiar drawing contexts.
 
-Offline-first Mandarin flashcards for iPhone, with a single master dictionary,
-continuous study modes and independent vocabulary, drawing, grammar and
-particle progress. The bundled master now contains **11,760 vocabulary words**
-(most of HSK 3.0 levels 1–9) and **1,549 grammar entries**. Vocabulary details
-show **scored, clickable synonym links** and support back navigation.
+The master contains 11,893 vocabulary entries and 1,896 grammar examples.
+3,335 words have a linked example; 8,558 still lack one. Full-vocabulary grammar
+coverage remains unfinished. No rejected template candidates are in the study deck.
 
-See [RELEASE_v0.5.5.md](RELEASE_v0.5.5.md) for the current release notes,
-content counts, generation process, synonym format and data safety details.
-Previous releases' notes are historical and remain in the Git repository.
+See [release notes](RELEASE_v0.6.1.md) for algorithm details and validation.
+Rebuild content with `python3 build_v06.py`; older content builders are historical.
 
 ## Development and Cloudflare Pages
 

@@ -39,7 +39,7 @@ test('impact preview calculates additional due items without mutating schedules'
 });
 test('one master is complete, replaces content and preserves matched review IDs',()=>{
  const s=defaultState(),old=s.cards[0];s.schedules[old.id]=scheduleReview(null,3,now,s.settings);
- replaceMaster(s,MASTER);assert.equal(s.cards.length,11890);assert.equal(s.grammar.length,1846);assert.equal(s.cards.find(c=>c.hanzi===old.hanzi).id,old.id);assert.equal(s.schedules[old.id].reps,1);
+ replaceMaster(s,MASTER);assert.equal(s.cards.length,11893);assert.equal(s.grammar.length,1896);assert.equal(s.cards.find(c=>c.hanzi===old.hanzi).id,old.id);assert.equal(s.schedules[old.id].reps,1);
  const edited=structuredClone(MASTER);edited.cards[0].english='Custom wording';replaceMaster(s,edited);assert.equal(s.cards.find(c=>c.hanzi===edited.cards[0].hanzi).english,'Custom wording');replaceMaster(s,MASTER);assert.notEqual(s.cards.find(c=>c.hanzi===edited.cards[0].hanzi).english,'Custom wording');
  assert.throws(()=>replaceMaster(s,{cards:[...MASTER.cards,MASTER.cards[0]],grammar:MASTER.grammar}));
 });

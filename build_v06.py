@@ -34,7 +34,8 @@ for g in load('content/reviewed-draft-v06.json'):
 # Dictionary pinyin used only after explicit lexical segmentation. Contextual readings below.
 overrides={'琢磨':'zuó mo','地':'de','得':'de','了':'le','着':'zhe','过':'guo','为':'wèi','与':'yǔ','不':'bù','一':'yī','还':'hái','看似':'kàn sì','薄雾':'bó wù','炸焦':'zhá jiāo'}
 def pin(w):return overrides.get(w,v[w]['pinyin']).replace('-',' ')
-for i,line in enumerate((R/'content/grammar-v06.tsv').read_text().splitlines()):
+for i,line in enumerate(((R/'content/grammar-v06.tsv').read_text()+'\n'+(R/'content/grammar-v061.tsv').read_text()).strip().splitlines()):
+ if not line.strip():continue
  han,en=line.split('\t');tokens=[]
  for w in han.strip().split('|'):
   if re.fullmatch('[，。！？、；：]',w):tokens.append(w)
@@ -43,7 +44,9 @@ for i,line in enumerate((R/'content/grammar-v06.tsv').read_text().splitlines()):
  py=' '.join({'，':',','。':'.','！':'!','？':'?','、':',','；':';','：':':'}.get(w,pin(w) if w in v else w) for w in tokens)
  py=re.sub(r'\s+([,.!?;:])',r'\1',py);py=py[0].upper()+py[1:]
  # 为 is wéi in 以…为背景 and 不是…为; in the present authored set only one standalone occurrence.
- if '以|战争|为|背景' in han:py=py.replace('zhàn zhēng wèi','zhàn zhēng wéi')
+ if '以|' in han and '|为|背景' in han:py=py.replace(' wèi ', ' wéi ')
+ if '|过|海关|' in han:py=py.replace('guo hǎi guān','guò hǎi guān')
+ if '|大大|' in han:py=py.replace('dà da','dà dà')
  g={'id':'v060-context-'+hashlib.sha256(markup.encode()).hexdigest()[:20],'markup':markup,'pinyin':py,'english':en.strip(),'distractors':[],'source':'Ciyan v0.6 authored contexts','createdAt':'2026-11-17T00:00:00.000Z'}
  new.append(g)
 for p in load('content/particle-examples-v06.json'):
@@ -62,14 +65,14 @@ for g in new:
 seen={g['markup'] for g in d['grammar']}
 for g in new:
  if g['markup'] not in seen:d['grammar'].append(g);seen.add(g['markup'])
-d['title']='Ciyan v0.6.0 master';d['description']='Expanded vocabulary, synonyms, and reviewed usage examples. Full-vocabulary usage coverage remains incomplete.'
+d['title']='Ciyan v0.6.1 master';d['description']='Expanded vocabulary, synonyms, and reviewed usage examples. Full-vocabulary usage coverage remains incomplete.'
 (R/'master-data.js').write_text('// Bundled content; rebuild with python3 build_v06.py.\nexport const MASTER='+json.dumps(d,ensure_ascii=False,separators=(',',':'))+';\n')
 coverage={w:[] for w in v}
 for g in d['grammar']:
  for w in set(re.findall(r'\{([^{}]+)\}',g['markup'])):
   if w in coverage:coverage[w].append(g['id'])
 with (R/'content/coverage-v060.csv').open('w') as f:
- writer=csv.writer(f);writer.writerow(['id','hanzi','examples','grammar_ids'])
+ writer=csv.writer(f,lineterminator="\n");writer.writerow(['id','hanzi','examples','grammar_ids'])
  for w,c in v.items():writer.writerow([c['id'],w,len(coverage[w]),'|'.join(coverage[w])])
 summary={'vocabulary':len(d['cards']),'grammar':len(d['grammar']),'new_grammar':len(d['grammar'])-1549,'covered_words':sum(bool(x) for x in coverage.values()),'uncovered_words':sum(not x for x in coverage.values()),'template_candidates_excluded':9056}
 (R/'content/coverage-summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(summary)

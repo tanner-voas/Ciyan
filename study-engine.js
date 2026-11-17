@@ -3,7 +3,7 @@ import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
 import {grammarTokens,wordKnowledge} from './grammar.js';
 import {allParticles,particleWords,particleFamily} from './particles.js';
-import {familyEvidence,weaknessWeight} from './learning-feedback.js';
+import {familyEvidence,weaknessWeight,characterEvidence,drawingProfile} from './learning-feedback.js';
 import {matchesTagFilters} from './tags.js';
 export const MODES={words:'Vocabulary',grammar:'Grammar',drawing:'Drawing',particles:'Particle Zoo'};
 export const SHARES={words:.60,grammar:.20,drawing:.12,particles:.08};
@@ -80,15 +80,17 @@ function info(s,mode,now,filters){
 }
 export function candidates(s,mode,_auto=false,now=Date.now(),includeFuture=false,filters=null){
  const newWeightLeaves=mode==='words'?new Set(leafTagPaths(s.cards)):null;
- const wordMap=mode==='words'?new Map(s.cards.map(c=>[c.id,c])):null;
+ const wordMap=['words','drawing'].includes(mode)?new Map(s.cards.map(c=>[c.id,c])):null;
  const evidence=mode==='particles'?familyEvidence(s):null;
+ const chars=mode==='drawing'?new Map(characterEvidence(s).map(x=>[x.character,x])):null;
  return info(s,mode,now,filters).flatMap(item=>{
   const sched=scheduleFor(s,mode,item.id);
   if(!includeFuture&&sched&&Date.parse(sched.dueAt)>now)return [];
   const interval=Math.max(1,(sched?.intervalMinutes||1)*60000);
   const elapsed=sched?Math.max(0,now-Date.parse(sched.lastReviewedAt)):0;
   const weight=sched?Math.max(.000001,elapsed/interval):mode==='words'?weightForNewCard(wordMap.get(item.id),s.settings.tagWeights,newWeightLeaves):1;
-  return [{...item,mode,urgency:weight*(evidence?weaknessWeight(evidence.get(item.family)):1),reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
+  const drawing=chars?drawingProfile(wordMap.get(item.id),sched,chars):null;
+  return [{...item,mode,drawingWeight:drawing?.weight,urgency:weight*(drawing?.weight||1)*(evidence?weaknessWeight(evidence.get(item.family)):1),reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
  });
 }
 export function availableModes(s,session){return Object.keys(MODES).filter(m=>session?.mode==='auto'?s.settings.autoModes[m]:m===(session?.mode||'words'));}
