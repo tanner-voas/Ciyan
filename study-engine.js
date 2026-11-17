@@ -15,8 +15,13 @@ export function ensureStudy(s){
  s.postponed??={};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
  s.settings.autoShares={...SHARES,...s.settings.autoShares};
+ const legacyTagWeights=s.settings.tagWeightDefaultsVersion!=='v0.5.2';
  s.settings.tagWeights=validatedTagWeights(s.settings.tagWeights);
- for(const tag of leafTagPaths(s.cards||[]))if(s.settings.tagWeights[tag]===undefined)s.settings.tagWeights[tag]=1;
+ // v0.5.1 explicitly populated every leaf with 1. Interpret those original
+ // defaults as neutral (0), while keeping custom non-default preferences.
+ if(legacyTagWeights)for(const tag of Object.keys(s.settings.tagWeights))if(s.settings.tagWeights[tag]===1)s.settings.tagWeights[tag]=0;
+ s.settings.tagWeightDefaultsVersion='v0.5.2';
+ for(const tag of leafTagPaths(s.cards||[]))if(s.settings.tagWeights[tag]===undefined)s.settings.tagWeights[tag]=0;
  s.settings.autoModes={words:true,grammar:true,drawing:true,particles:true,...s.settings.autoModes};
  // Null means unlimited. Zero is a meaningful limit, unlike a blank field.
  const limit=s.settings.newWordsPerDay;
@@ -106,7 +111,9 @@ export function modeCounts(s,mode,filters=null,now=Date.now(),session=null){
  const due=all.filter(x=>x.dueAt&&Date.parse(x.dueAt)<=now);
  const started=all.filter(x=>x.dueAt&&Date.parse(x.dueAt)>now);
  const fresh=all.filter(x=>!x.dueAt);
- return {mode,due:due.length,started:started.length,new:fresh.length,available:all.length,eligible:all,blocked:Math.max(0,(mode==='words'?s.cards.length:mode==='grammar'?s.grammar.length:mode==='drawing'?s.cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin).length:allParticles(s).length)-all.length)};
+ const newCount=mode==='words'?Math.min(fresh.length,newVocabRemaining(s,now)):fresh.length;
+ // Future-due exercises are shown separately but cannot be selected now.
+ return {mode,due:due.length,started:started.length,new:newCount,newTotal:fresh.length,available:due.length+newCount,eligible:all,blocked:Math.max(0,(mode==='words'?s.cards.length:mode==='grammar'?s.grammar.length:mode==='drawing'?s.cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin).length:allParticles(s).length)-all.length)};
 }
 export function sessionAvailability(s,session,now=Date.now()){
  const modes=availableModes(s,session).map(m=>modeCounts(s,m,session?.filters||null,now,session));
@@ -118,7 +125,8 @@ export function sessionAvailability(s,session,now=Date.now()){
   keySet.add(`${item.mode}:${item.id}`);
  }
  const remaining=newVocabRemaining(s,now),due=modes.reduce((sum,x)=>sum+x.due,0),fresh=modes.reduce((sum,x)=>sum+x.new,0);
- return {modes,due,new:fresh,started:modes.reduce((sum,x)=>sum+x.started,0),available:modes.reduce((sum,x)=>sum+x.available,0),nextAt:earliest,remaining,blocked:modes.some(m=>m.blocked),skipped:session?.skipped?.length||0};
+ const pool=currentPool(session);
+ return {modes,due,new:fresh,started:modes.reduce((sum,x)=>sum+x.started,0),available:pool==='due'?due:pool==='new'?fresh:due+fresh,nextAt:earliest,remaining,blocked:modes.some(m=>m.blocked),skipped:session?.skipped?.length||0};
 }
 function pickWeighted(pool,rng){
  const list=pool.map(p=>({p,w:Math.max(.001,Number(p.urgency)||1)})),total=list.reduce((n,x)=>n+x.w,0);

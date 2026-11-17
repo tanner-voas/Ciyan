@@ -158,7 +158,8 @@ function studyFilterTree(){
  return `<section class="panel stack study-filter-panel"><div class="row"><h2>Session filters</h2><button class="text-link" data-action="study-clear-filters">Reset</button></div><p class="subtle">A word must match the chosen tags. A grammar or particle exercise needs only one matching word with score ≥ 2.0; other words don't exclude the sentence.</p><label class="search-field">${icon('search')}<input id="study-search" placeholder="Search words or tags…" value="${esc(studyFilters.search)}" autocomplete="off"></label><div class="active-tags">${selected.map(([t,v])=>`<button class="pill ${v===1?'include':'exclude'}" data-action="study-tag" data-tag="${esc(t)}">${v===1?'✓':'−'} ${esc(tagLabel(t))}</button>`).join('')||'<span class="subtle">All topics included</span>'}</div><div class="tag-tree">${visible.map(n=>{const children=tags.some(t=>t.startsWith(n.path+'/')),v=studyFilters.tags[n.path]||0;
   return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="study-expand-tag" data-tag="${esc(n.path)}" aria-expanded="${expandedTags.study.has(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}">${expandedTags.study.has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="study-tag" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}</button></div>`;}).join('')}</div><p class="subtle">Tap tag to require → exclude → neutral. Expand branches with arrows. Filters apply only to the session, not your backup.</p></section>`;
 }
-function studySummary(mode,filter=studyFilters){const counts=modeCounts(state,mode,filter);return `<div class="study-counts"><span><strong>${counts.due}</strong><small>Due now</small></span><span><strong>${counts.started}</strong><small>Started · not due</small></span><span><strong>${counts.available}</strong><small>Eligible total</small></span></div><p class="subtle">${counts.new} new eligible · ${counts.blocked} excluded or awaiting prerequisites</p>`;}
+function selectedCount(counts,pool=selectedPool){return pool==='due'?counts.due:pool==='new'?counts.new:counts.available;}
+function studySummary(mode,filter=studyFilters){const counts=modeCounts(state,mode,filter);return `<div class="study-counts"><span><strong>${counts.due}</strong><small>Due now</small></span><span><strong>${counts.started}</strong><small>Started · not due</small></span><span><strong>${selectedCount(counts)}</strong><small>Available to study</small></span></div><p class="subtle">${counts.new} new available${mode==='words'?` of ${counts.newTotal} unstarted matching words`: ''} · ${counts.blocked} excluded or awaiting prerequisites</p>`;}
 function renderStudyIntro(){
  const today=newVocabToday(state),left=newVocabRemaining(state),enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),all=enabled.map(m=>modeCounts(state,m,studyFilters));
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
@@ -168,7 +169,7 @@ function renderStudyIntro(){
  ${backupBanner()}`;
 }
 function modeStartable(mode,counts){
- const permitted=selectedPool==='due'?counts.due:selectedPool==='new'?counts.new:counts.due||counts.new;
+ const permitted=selectedCount(counts);
  if(!permitted)return false;
  if(mode==='words'&&selectedPool==='new'&&newVocabRemaining(state)<=0)return false;
  if(mode==='words'&&selectedPool==='all'&&!counts.due&&newVocabRemaining(state)<=0)return false;
@@ -388,7 +389,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.5.1 · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v0.5.2 · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk is reserved at 0% until its future scoring model is designed.</p></div>`;
 }
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
@@ -541,7 +542,7 @@ async function importDeck(content){
  if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);})){invalidateTagOdds();closeModal();toast('Master collection loaded for this visit.');}
 }
 function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
- downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-master-v0.5.1.json');toast('Complete master file prepared');}
+ downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),'ciyan-master-v0.5.2.json');toast('Complete master file prepared');}
 function downloadTemplate(){const sample={format:'ciyan-deck',version:2,records:false,
   cards:[{id:'deck-coffee',hanzi:'咖啡',pinyin:'kāfēi',english:'Coffee',tags:['food']}],
   grammar:[{id:'deck-sentence-001',markup:'{我}{想}{喝}{咖啡}。',pinyin:'Wǒ xiǎng hē kāfēi.',english:'I want to drink coffee.',distractors:[{index:2,word:'要'}]}]};
@@ -706,6 +707,7 @@ document.addEventListener('keydown',event=>{
 });
 async function boot(){try{
   const loaded=await loadState();
+  const migratedTagDefaults=!!loaded&&loaded.settings?.tagWeightDefaultsVersion!=='v0.5.2';
   if(!loaded){state=defaultState();await saveState(state);}
   else {
     state=migrateState(loaded);
@@ -716,7 +718,7 @@ async function boot(){try{
   const migration=migrateRetryDefaults(state);const upgraded=upgradeScores(state);
   const beforeWeightCount=Object.keys(state.settings.tagWeights||{}).length;ensureStudy(state);
   const weightsChanged=Object.keys(state.settings.tagWeights).length!==beforeWeightCount;
-  if(migration||upgraded||weightsChanged){const previous=state.revision;state.revision++;await saveState(state,previous);}
+  if(migration||upgraded||weightsChanged||migratedTagDefaults){const previous=state.revision;state.revision++;await saveState(state,previous);}
   studyMode=state.activeGrammarSession?'grammar':'words';render();
   if(state.activePractice&&!state.activePractice.current)void settlePractice();
   if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
@@ -734,9 +736,9 @@ async function startFilteredSession(){
 }
 function autoControls(){
  const enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),rows=enabled.map(m=>modeCounts(state,m,studyFilters));
- const due=rows.reduce((n,x)=>n+x.due,0),started=rows.reduce((n,x)=>n+x.started,0),total=rows.reduce((n,x)=>n+x.available,0),newCards=rows.reduce((n,x)=>n+x.new,0);
+ const due=rows.reduce((n,x)=>n+x.due,0),started=rows.reduce((n,x)=>n+x.started,0),total=rows.reduce((n,x)=>n+selectedCount(x),0),newCards=rows.reduce((n,x)=>n+x.new,0);
  const canStart=!!enabled.length&&(selectedPool==='due'?due>0:selectedPool==='new'?newCards>0:due+newCards>0)&&(selectedPool==='due'||due>0||enabled.some(m=>m!=='words')||newVocabRemaining(state)>0);
- return `<section class="panel stack auto-panel"><div class="eyebrow">MIXED PRACTICE</div><h2>Auto Study</h2><p>Weighted-random modes and overdue cards, using your preferred weights. No fixed session length.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${state.settings.autoModes[m]?'checked':''}> ${label}</label>`).join('')}</div><div class="study-counts"><span><strong>${due}</strong><small>Due now</small></span><span><strong>${started}</strong><small>Started · not due</small></span><span><strong>${total}</strong><small>Eligible total</small></span></div><p class="subtle">${newCards} new eligible across enabled modes</p><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${canStart?'':'disabled'}>Start Auto Study</button></section>`;
+ return `<section class="panel stack auto-panel"><div class="eyebrow">MIXED PRACTICE</div><h2>Auto Study</h2><p>Weighted-random modes and overdue cards, using your preferred weights. No fixed session length.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${state.settings.autoModes[m]?'checked':''}> ${label}</label>`).join('')}</div><div class="study-counts"><span><strong>${due}</strong><small>Due now</small></span><span><strong>${started}</strong><small>Started · not due</small></span><span><strong>${total}</strong><small>Available to study</small></span></div><p class="subtle">${newCards} new available across enabled modes</p><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${canStart?'':'disabled'}>Start Auto Study</button></section>`;
 }
 async function startPractice(mode,allowedWords=null){
  if(state.activeSession||state.activeGrammarSession){await startSession();return;}
@@ -883,12 +885,12 @@ document.addEventListener('touchend',async event=>{const touch=practiceTouch;pra
 function tagWeightSettings(){
  const odds=appliedNewWordOdds();const weights=state.settings.tagWeights||{};
  const grouped=new Map();for(const tag of odds.leaves){const root=tag.split('/')[0];if(!grouped.has(root))grouped.set(root,[]);grouped.get(root).push(tag);}
- return `<section class="panel stack tag-weight-settings"><div class="row"><h2>New vocabulary · tag weights</h2></div><p class="subtle">Each unstudied word's introduction weight is the sum of its leaf-tag weights (minimum 1 per tag). Tags on the same word share that word's selection chance, so their inclusive odds can add to more than 100%. Untagged words have weight 1.</p><p class="subtle">${odds.newCount} unstudied words · ${odds.totalWeight.toFixed(1)} total weighted tickets · ${odds.untagged} untagged. Odds reflect the currently <strong>applied</strong> weights, not pending edits.</p><form id="tag-weight-form"><div class="tag-weight-groups">${[...grouped].map(([root,tags])=>`<details class="tag-weight-group"><summary>${esc(tagLabel(root))} <small>${tags.length} tags</small></summary><div class="tag-weight-table"><div class="tag-weight-head"><span>Leaf tag</span><span>Weight</span><span>New-card odds</span></div>${tags.map(t=>`<div class="tag-weight-row"><label for="weight-${esc(t)}">${esc(tagLabel(t.split('/').at(-1)))} <small>${odds.counts[t]} new</small></label><input id="weight-${esc(t)}" data-tag-weight="${esc(t)}" type="number" min="1" max="1000000" step="any" value="${esc(weights[t]??1)}" required aria-label="Weight for ${esc(tagLabel(t))}"><output>${odds.odds[t].toFixed(2)}%</output></div>`).join('')}</div></details>`).join('')}</div><button type="submit" class="btn btn-primary btn-full">Apply tag weights &amp; recalculate odds</button></form><p class="subtle">New tags start at weight 1. These preferences are stored in settings and the full progress backup, not the master collection. Due reviews ignore introduction weights.</p></section>`;
+ return `<section class="panel stack tag-weight-settings"><div class="row"><h2>New vocabulary · tag weights</h2></div><p class="subtle">Each unstudied word has weight max(1, 1 + the sum of its leaf-tag weights). Weights may be negative or decimal; zero is neutral. Tags on the same word share that word's selection chance, so their inclusive odds can add to more than 100%. Untagged words have weight 1.</p><p class="subtle">${odds.newCount} unstudied words · ${odds.totalWeight.toFixed(1)} total weighted tickets · ${odds.untagged} untagged. Odds reflect the currently <strong>applied</strong> weights, not pending edits.</p><form id="tag-weight-form"><div class="tag-weight-groups">${[...grouped].map(([root,tags])=>`<details class="tag-weight-group"><summary>${esc(tagLabel(root))} <small>${tags.length} tags</small></summary><div class="tag-weight-table"><div class="tag-weight-head"><span>Leaf tag</span><span>Weight</span><span>New-card odds</span></div>${tags.map(t=>`<div class="tag-weight-row"><label for="weight-${esc(t)}">${esc(tagLabel(t.split('/').at(-1)))} <small>${odds.counts[t]} new</small></label><input id="weight-${esc(t)}" data-tag-weight="${esc(t)}" type="number" step="any" value="${esc(weights[t]??0)}" required aria-label="Weight for ${esc(tagLabel(t))}"><output>${odds.odds[t].toFixed(2)}%</output></div>`).join('')}</div></details>`).join('')}</div><button type="submit" class="btn btn-primary btn-full">Apply tag weights &amp; recalculate odds</button></form><p class="subtle">New tags start at weight 0. These preferences are stored in settings and the full progress backup, not the master collection. Due reviews ignore introduction weights.</p></section>`;
 }
 async function saveTagWeights(form){try{
  const weights={...state.settings.tagWeights};
  const nodes=[...form.querySelectorAll('[data-tag-weight]')];
- for(const input of nodes){const value=Number(input.value);if(!Number.isFinite(value)||value<1||value>1000000)throw new Error('Each tag weight must be between 1 and 1,000,000.');weights[input.dataset.tagWeight]=value;}
+ for(const input of nodes){const value=Number(input.value);if(input.value.trim()===''||!Number.isFinite(value))throw new Error('Each tag weight must be a finite number.');weights[input.dataset.tagWeight]=value;}
  const clean=validatedTagWeights(weights);
  if(await change(d=>{d.settings.tagWeights=clean;})){invalidateTagOdds();render();toast('New-card weights applied; probabilities recalculated.');}
  }catch(e){toast(e.message);}
@@ -918,7 +920,7 @@ function autoDistribution(s){
  return `<details class="panel auto-distribution"><summary>Auto Study balance · actual vs preferred</summary><p class="subtle">Shares use practice time, not card count. Due/relearning reviews take priority; vocabulary prerequisites can block other modes.</p><table class="skill-table"><tr><th>Mode</th><th>Actual</th><th>Preferred</th><th>Ready now</th></tr>${Object.entries(MODES).map(([m,n])=>`<tr><th>${n}</th><td>${percent(sum?(s.spent[m]||0)/sum:0)}</td><td>${state.settings.autoModes[m]?percent(weights[m]/total):'Off'}</td><td>${status.modes.find(x=>x.mode===m)?.due||0}</td></tr>`).join('')}</table>${status.modes.filter(m=>m.blocked).map(m=>`<p class="subtle">${MODES[m.mode]}: ${m.blocked} excluded by session filters or waiting on vocabulary scores.</p>`).join('')}</details>`;
 }
 let waitTimer;
-function sessionCounts(session){const info=sessionAvailability(state,session);return `<div class="study-counts"><span><strong>${info.due}</strong><small>Due now</small></span><span><strong>${info.started}</strong><small>Started · not due</small></span><span><strong>${info.available}</strong><small>Eligible total</small></span></div>`;}
+function sessionCounts(session){const info=sessionAvailability(state,session);return `<div class="study-counts"><span><strong>${info.due}</strong><small>Due now</small></span><span><strong>${info.started}</strong><small>Started · not due</small></span><span><strong>${info.available}</strong><small>Available to study</small></span></div>`;}
 function waitingPractice(s){
  const a=sessionAvailability(state,s),seconds=a.nextAt?Math.max(0,(a.nextAt-Date.now())/1000):null;
  clearTimeout(waitTimer);

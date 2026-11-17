@@ -18,21 +18,22 @@ test('leaf paths use actual loaded tags; a card sums its leaf weights',()=>{
  const cards=[card('a',['Food/Chinese/Noodles','HSK/HSK2']),card('b',['Food/Chinese/Soup']),card('c',[])];
  assert.deepEqual(leafTagPaths(cards),['Food/Chinese/Noodles','Food/Chinese/Soup','HSK/HSK2']);
  const weights={'Food/Chinese/Noodles':3,'HSK/HSK2':2,'Food/Chinese/Soup':4};
- assert.equal(weightForNewCard(cards[0],weights),5);assert.equal(weightForNewCard(cards[1],weights),4);assert.equal(weightForNewCard(cards[2],weights),1);
- const all=newWordOdds(cards,{},weights);assert.equal(all.totalWeight,10);assert.equal(all.untagged,1);
- assert.equal(all.odds['Food/Chinese/Noodles'],50);assert.equal(all.odds['HSK/HSK2'],50);assert.equal(all.odds['Food/Chinese/Soup'],40);
+ assert.equal(weightForNewCard(cards[0],weights),6);assert.equal(weightForNewCard(cards[1],weights),5);assert.equal(weightForNewCard(cards[2],weights),1);
+ const all=newWordOdds(cards,{},weights);assert.equal(all.totalWeight,12);assert.equal(all.untagged,1);
+ assert.equal(all.odds['Food/Chinese/Noodles'],50);assert.equal(all.odds['HSK/HSK2'],50);assert.equal(all.odds['Food/Chinese/Soup'],100*5/12);
  assert.equal(all.newCount,3); // Inclusive tag percentages overlap by design.
 });
 test('odds decline as tagged words are introduced, without modifying saved preferences',()=>{
  const cards=[card('a',['HSK/HSK1']),card('b',['HSK/HSK1']),card('c',['Food/food'])],prefs={'HSK/HSK1':4,'Food/food':1};
- const initial=newWordOdds(cards,{},prefs);assert.equal(initial.odds['HSK/HSK1'],800/9/1); // 8 / 9
+ const initial=newWordOdds(cards,{},prefs);assert.equal(initial.odds['HSK/HSK1'],100*10/12); // 8 / 9
  const remaining=newWordOdds(cards,{a:{dueAt:new Date(at).toISOString()}},prefs);
- assert.equal(remaining.odds['HSK/HSK1'],80);assert.equal(remaining.newCount,2);assert.deepEqual(prefs,{'HSK/HSK1':4,'Food/food':1});
+ assert.equal(remaining.odds['HSK/HSK1'],100*5/7);assert.equal(remaining.newCount,2);assert.deepEqual(prefs,{'HSK/HSK1':4,'Food/food':1});
  const empty=newWordOdds(cards,Object.fromEntries(cards.map(c=>[c.id,{}])),prefs);
  assert.equal(empty.totalWeight,0);assert.equal(empty.odds['HSK/HSK1'],0);
 });
-test('tag settings validate 1 minimum and protect against malicious keys',()=>{
- for(const v of [0,-1,NaN,Infinity,1000001,'abc'])assert.throws(()=>validatedTagWeights({'Food/food':v}));
+test('tag settings accept all finite real values and protect against malicious keys',()=>{
+ for(const v of [NaN,Infinity,-Infinity,'abc',''])assert.throws(()=>validatedTagWeights({'Food/food':v}));
+ for(const v of [0,-1,-2.5,0.125,1000001])assert.equal(validatedTagWeights({'Food/food':v})['Food/food'],v);
  assert.equal(validatedTagWeights({'Food/food':2.5})['Food/food'],2.5);
  assert.throws(()=>validatedTagWeights(JSON.parse('{"__proto__": 2}')));
 });
@@ -40,7 +41,7 @@ test('new vocabulary selections use total tag weight, not per-tag frequency alon
  const s=defaultState();s.cards=[card('a',['Food/food','HSK/HSK1']),card('b',['Food/food']),card('c',[])];s.grammar=[];
  s.settings.tagWeights={'Food/food':2,'HSK/HSK1':3};
  const items=candidates(s,'words',false,at);
- assert.deepEqual(items.map(x=>x.urgency),[5,2,1]);
+ assert.deepEqual(items.map(x=>x.urgency),[6,3,1]);
  assert.equal(nextExercise(s,session('words','new'),at,()=>0).id,'a');
  assert.equal(nextExercise(s,session('words','new'),at,()=>.8).id,'b');
  assert.equal(nextExercise(s,session('words','new'),at,()=>.99).id,'c');
@@ -87,12 +88,12 @@ test('no qualified context uses one top-scoring example and randomizes exact tie
  assert.equal(contextsForWord(s,a,()=>.99)[0].grammar.id,'g2');
  s.schedules.b.score=1.5;assert.equal(contextsForWord(s,a,()=>.99)[0].grammar.id,'g1');
 });
-test('tag preferences live in full backups, not master files, and missing tags initialize to 1',()=>{
+test('tag preferences live in full backups, not master files, and missing tags initialize to 0',()=>{
  const s=defaultState();s.settings.tagWeights={'HSK/HSK1':7,'Food/china-food':2};
  const restored=parseBackup(makeBackup(s));assert.equal(restored.settings.tagWeights['HSK/HSK1'],7);
  assert.equal(restored.settings.tagWeights['Food/china-food'],2);
  assert.equal(restored.cards[0].tagWeights,undefined);
  const fresh=defaultState();fresh.cards.push(card('new',['Topics/NewTopic']));ensureStudy(fresh);
- assert.equal(fresh.settings.tagWeights['Topics/NewTopic'],1);
- const bad=makeBackup(s);bad.state.settings.tagWeights['HSK/HSK1']=0;assert.throws(()=>parseBackup(bad));
+ assert.equal(fresh.settings.tagWeights['Topics/NewTopic'],0);
+ const bad=makeBackup(s);bad.state.settings.tagWeights['HSK/HSK1']=Infinity;assert.throws(()=>parseBackup(bad));
 });

@@ -71,8 +71,8 @@ test('filtered particles use qualifying vocabulary anchors, not full-sentence ex
 test('per-mode counters distinguish due, started future, new and eligible total',()=>{
  const s=state(),words=s.cards.slice(0,3);s.cards=words;
  seen(s,words[0].hanzi,2,t-1);seen(s,words[1].hanzi,2,t+86400000);
- const counts=modeCounts(s,'words',null,t);assert.deepEqual([counts.due,counts.started,counts.new,counts.available],[1,1,1,3]);
- s.settings.newWordsPerDay=0;assert.deepEqual([modeCounts(s,'words',null,t).due,modeCounts(s,'words',null,t).available],[1,3]);
+ const counts=modeCounts(s,'words',null,t);assert.deepEqual([counts.due,counts.started,counts.new,counts.available],[1,1,1,2]);
+ s.settings.newWordsPerDay=0;assert.deepEqual([modeCounts(s,'words',null,t).due,modeCounts(s,'words',null,t).available],[1,1]);
 });
 test('daily vocabulary quota is local-date based, unique and undo-aware',()=>{
  const s=state(),c=s.cards[0];assert.equal(newVocabRemaining(s,t),Infinity);

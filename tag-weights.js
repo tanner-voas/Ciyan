@@ -6,7 +6,7 @@ export function leafTagPaths(cards){
 }
 export function validTagWeight(value){
  const weight=Number(value);
- if(!Number.isFinite(weight)||weight<1||weight>1000000)throw new Error('Tag weights must be between 1 and 1,000,000.');
+ if(value===null||value===undefined||String(value).trim()===''||!Number.isFinite(weight))throw new Error('Tag weights must be finite numbers (negative and decimal values are allowed).');
  return weight;
 }
 export function validatedTagWeights(input){
@@ -22,7 +22,7 @@ export function validatedTagWeights(input){
 export function weightForNewCard(card,weights={},leaves=null){
  const allowed=leaves instanceof Set?leaves:leaves?new Set(leaves):null;
  const tags=[...new Set(card.tags||[])].filter(t=>!allowed||allowed.has(t));
- return tags.length?tags.reduce((sum,t)=>sum+(weights[t]??1),0):1;
+ return Math.max(1,1+tags.reduce((sum,t)=>sum+(weights[t]??0),0));
 }
 export function newWordOdds(cards,schedules={},weights={}){
  const leaves=leafTagPaths(cards),leafSet=new Set(leaves),weighted=Object.fromEntries(leaves.map(t=>[t,0]));
@@ -31,7 +31,7 @@ export function newWordOdds(cards,schedules={},weights={}){
   if(schedules[card.id])continue;
   newCount++;
   const own=[...new Set(card.tags||[])].filter(t=>leafSet.has(t));
-  const cardWeight=own.length?own.reduce((sum,t)=>sum+(weights[t]??1),0):1;
+  const cardWeight=weightForNewCard(card,weights,leafSet);
   totalWeight+=cardWeight;
   if(!own.length)untagged++;
   for(const t of own){weighted[t]+=cardWeight;counts[t]++;}

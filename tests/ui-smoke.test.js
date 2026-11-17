@@ -78,7 +78,7 @@ test('grammar mode unlocks only after required continuous vocabulary scores and 
  const mock=mockBrowser();const {defaultState}=await import('../storage.js');const {replaceMaster}=await import('../master.js');const {MASTER}=await import('../master-data.js');const {scheduleReview}=await import('../review-scheduler.js');
  const s=defaultState();replaceMaster(s,MASTER);for(const c of s.cards)s.schedules[c.id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.5};mock.data.set('main',s);
  await import('../app.js?smoke=grammar');await delay(25);
- assert.match(mock.shell.innerHTML,/Eligible total/);
+ assert.match(mock.shell.innerHTML,/Available to study/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('practice-start',{mode:'grammar'});assert.match(mock.shell.innerHTML,/Grammar ·/);
  const g=mock.data.get('main').grammar.find(g=>g.id===mock.data.get('main').activePractice.current.id);
@@ -286,4 +286,35 @@ test('v0.5.1 migration upgrades unchanged v0.5 retry default without moving exis
  const card=state.cards[0],schedule=scheduleReview(null,3,Date.now(),state.settings);state.schedules[card.id]=schedule;mock.data.set('main',state);
  await import('../app.js?smoke=migrate051');await delay(25);
  const after=mock.data.get('main');assert.equal(after.settings.retryIntervals[2].value,3);assert.equal(after.settings.retryDefaultsVersion,'v0.5.1');assert.equal(after.schedules[card.id].dueAt,schedule.dueAt);
+});
+
+test('v0.5.2 Study landing displays daily-capped vocabulary counts, not the master total',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');
+ const s=defaultState();s.settings.newWordsPerDay=5;mock.data.set('main',s);
+ await import('../app.js?smoke=counts052');await delay(25);
+ assert.match(mock.shell.innerHTML,/<strong>5<\/strong><small>Available to study<\/small>/);
+ assert.match(mock.shell.innerHTML,/5 new available of 2278 unstarted matching words/);
+ assert.match(mock.shell.innerHTML,/5 new available across enabled modes/);
+ assert.doesNotMatch(mock.shell.innerHTML,/>2278<\/strong><small>Available to study/);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('study-pool',{pool:'due'});
+ assert.match(mock.shell.innerHTML,/<strong>0<\/strong><small>Available to study<\/small>/);
+ await click('study-pool',{pool:'new'});
+ assert.match(mock.shell.innerHTML,/<strong>5<\/strong><small>Available to study<\/small>/);
+});
+
+test('v0.5.2 Settings accepts negative and fractional tag weights and applies odds on submit',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=negative052');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('navigate',{page:'settings'});
+ assert.match(mock.shell.innerHTML,/zero is neutral/);
+ assert.match(mock.shell.innerHTML,/New tags start at weight 0/);
+ assert.match(mock.shell.innerHTML,/type="number" step="any" value="0"/);
+ const form={matches:q=>q==='#tag-weight-form',querySelectorAll:q=>q==='[data-tag-weight]'?[
+   {dataset:{tagWeight:'Food/food'},value:'-1.75'},
+   {dataset:{tagWeight:'HSK/HSK1'},value:'0.125'}]:[]};
+ await mock.listeners.submit({target:form,preventDefault(){}});await delay();
+ const state=mock.data.get('main');assert.equal(state.settings.tagWeights['Food/food'],-1.75);
+ assert.equal(state.settings.tagWeights['HSK/HSK1'],.125);
+ const {makeBackup}=await import('../storage.js');assert.equal(makeBackup(state).state.settings.tagWeights['Food/food'],-1.75);
 });
