@@ -16,7 +16,7 @@ function checkIds(ids,items){
  check(Array.isArray(ids)&&new Set(ids).size===ids.length&&ids.every(k=>safeKey(k)&&Object.hasOwn(items,k)),'Invalid reader study list');
 }
 export function validateChapter(p){
- check(p?.format==='ciyan-chapter'&&p.version===1,'Choose a version 1 .ciyan chapter file');
+ check(p?.format==='ciyan-chapter'&&p.version===1,'Choose a version 1 .json chapter file');
  check(safeKey(p.novel)&&/^[a-z0-9-]+$/.test(p.novel)&&integer(p.number)&&integer(p.revision)&&string(p.book,120)&&string(p.title,200),'Invalid chapter identity');
  validateItems(p.items);checkIds(p.authored,p.items);
  check(Array.isArray(p.paragraphs)&&p.paragraphs.length>0,'This chapter has no paragraphs');
@@ -67,31 +67,42 @@ export function validateReader(books={}){
   for(const [i,c] of b.chapters.entries()){
    check(c.number===i+1&&integer(c.revision)&&/^[a-f0-9]{64}$/.test(c.digest)&&string(c.title,200)&&typeof c.unlocked==='boolean'&&typeof c.complete==='boolean','Invalid saved chapter');
    checkIds(c.all,b.items);checkIds(c.authored,b.items);
-   if(c.position)check(safeKey(c.position.id)&&Number.isInteger(c.position.index)&&c.position.index>=0&&Number.isInteger(c.position.offset)&&c.position.offset>=0,'Invalid bookmark');
+   if(c.position)check(safeKey(c.position.id)&&Number.isInteger(c.position.index)&&c.position.index>=0&&Number.isInteger(c.position.offset)&&c.position.offset>=0&&
+    (c.position.wordIndex===undefined||Number.isSafeInteger(c.position.wordIndex)&&c.position.wordIndex>=0)&&
+    (c.position.guided===undefined||typeof c.position.guided==='boolean'),'Invalid bookmark');
   }
   for(const [key,r] of Object.entries(b.progress))check(Object.hasOwn(b.items,key)&&Number.isFinite(r.score)&&Number.isFinite(Date.parse(r.dueAt)),'Invalid reader schedule');
   for(const h of b.history)check(Object.hasOwn(b.items,h.key)&&integer(h.grade)&&h.grade<=4&&Number.isFinite(Date.parse(h.at)),'Invalid reader review');
  }
  return books;
 }
-export function readerAnalysis(s,b,c,now=Date.now()){
+// Evidence lives in the reader controller for the lifetime of this document.
+export function recordPractice(evidence,key,grade){
+ const previous=evidence.get(key)||{goods:0,easy:false,turn:0};
+ evidence.set(key,{goods:previous.goods+Number(grade===3),easy:previous.easy||grade===4,turn:previous.turn+1});
+}
+export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const byWord=new Map([...(s.archived?.cards||[]),...s.cards].map(w=>[w.hanzi,w.id]));
  const schedule=key=>{const w=b.items[key];return w.kind==='vocab'?s.schedules[byWord.get(w.hanzi)]:b.progress[key];};
  const score=key=>schedule(key)?.score||0;
  const keys=s.settings.readerGate==='auto'?c.all:c.authored;
- const average=keys.reduce((sum,k)=>sum+score(k),0)/keys.length;
- const weak=keys.filter(k=>score(k)<1.5),ready=average>=2&&!weak.length;
- const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...ch.authored]));
- const current=new Set([...keys,...c.authored]);
+ const qualifies=k=>score(k)>=1.5||evidence.get(k)?.goods>=3||evidence.get(k)?.easy;
  const due=k=>schedule(k)&&Date.parse(schedule(k).dueAt)<=now;
- const earlier=[...previous].filter(k=>!current.has(k)&&due(k));
- const rank=arr=>arr.sort((a,b)=>score(a)-score(b)||Date.parse(schedule(a)?.lastReviewedAt||'1970')-Date.parse(schedule(b)?.lastReviewedAt||'1970'));
- const weakSet=new Set(weak);
- const queue=[...rank(weak),...rank(keys.filter(k=>!weakSet.has(k)&&(!ready&&score(k)<3||due(k)))),...rank(earlier),...c.authored.filter(k=>!keys.includes(k)&&(!schedule(k)||due(k)))];
- return {average,weak,ready,keys,earlier,queue,score};
+ const group=k=>due(k)?0:schedule(k)?2:1;
+ const order=(a,b)=>group(a)-group(b)||(evidence.get(a)?.turn||0)-(evidence.get(b)?.turn||0)||
+  (Date.parse(schedule(a)?.dueAt)||0)-(Date.parse(schedule(b)?.dueAt)||0);
+ const weak=keys.filter(k=>!qualifies(k)).sort(order);
+ const selected=new Set(keys);
+ const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...ch.authored]));
+ const earlier=[...previous].filter(k=>!selected.has(k)&&due(k)).sort(order);
+ const queue=[...new Set([...earlier,...keys.filter(k=>due(k)||!qualifies(k))])].sort(order);
+ return {weak,ready:weak.length===0,keys,earlier,queue,score,group};
 }
 export function gradeReader(s,b,key,grade,now=Date.now()){
  const item=b.items[key];check(item&&integer(grade)&&grade<=4,'Invalid reader grade');
+ const existing=item.kind==='vocab'?(s.cards.find(c=>c.hanzi===item.hanzi)||s.archived?.cards?.find(c=>c.hanzi===item.hanzi)):null;
+ const previous=item.kind==='vocab'?s.schedules[existing?.id]:b.progress[key];
+ if(previous&&Date.parse(previous.dueAt)>now)return false;
  const at=new Date(now).toISOString();
  if(item.kind==='vocab'){
   const tag='Reader/'+b.title;
@@ -112,6 +123,7 @@ export function gradeReader(s,b,key,grade,now=Date.now()){
   s.history.push({id:crypto.randomUUID(),cardId:card.id,mode:'words',grade,score:after.score,at,first:!prev,nextDueAt:after.dueAt,source:'Reader'});
  }else b.progress[key]=scheduleReview(b.progress[key],grade,now,s.settings);
  b.history.push({key,grade,at});
+ return true;
 }
 export function resetReaderProgress(s){
  for(const b of Object.values(s.reader||{})){

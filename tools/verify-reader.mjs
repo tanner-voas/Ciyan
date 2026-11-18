@@ -11,7 +11,7 @@ for(const [stem,sha] of Object.entries(locks)){
  const reference=read('reference/'+stem+'.txt');
  assert.equal(createHash('sha256').update(reference).digest('hex'),sha,'Reference lock changed: '+stem);
  assert.equal(clean,reference,'Unexpected edits to source: '+stem);
- const p=JSON.parse(read('chapters/'+stem+'.ciyan'));
+ const p=JSON.parse(read('chapters/'+stem+'.json'));
  const all=validateChapter(p);
  assert.equal(p.number,Number(stem));assert.equal(p.novel,'panlong');
  assert.equal(chapterText(p),reference,'Reading text drift: '+stem);

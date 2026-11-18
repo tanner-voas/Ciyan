@@ -1,13 +1,15 @@
-# Cíyán (词言) v0.7.0
+# Cíyán (词言) v0.7.1
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.
 
 ## Latest release
 
-Open **Reader → Load chapter file** and select the first `.ciyan` package. The three 《盘龙》 packages are in `reader/panlong/chapters/`. Import new chapters in order. You can reload an earlier chapter at any time.
+Open **Reader → Load chapter file** and select the first `.json` package. The three 《盘龙》 packages are in `reader/panlong/chapters/`. Import new chapters in order. You can reload an earlier chapter at any time.
 
-**Settings → Reader** selects the reading gate. Authored uses the writer’s selection of vocabulary, terms and grammar. Auto checks all distinct annotated words and terms. Both require an average of 2.0 and a minimum of 1.5. Study lists also offer earlier due items and full-chapter preparation. Vocabulary reviews use the main vocabulary schedule. Terms and grammar belong to the novel. Opening an eligible chapter unlocks it permanently. Reading progress and flashcards travel in the full backup. Reading text stays in the chapter package and device cache.
+**Settings → Reader** selects the reading gate. Authored uses the writer’s selection of vocabulary, terms and grammar. Auto checks all distinct annotated words and terms. Each required item qualifies with a saved score of 1.5, three Good grades or one Easy during this app run. Study prioritizes due reviews, new items and then early practice. Early practice leaves the saved schedule and history untouched. Study lists also offer earlier due items and full-chapter preparation. Vocabulary reviews use the main vocabulary schedule. Terms and grammar belong to the novel. Opening an eligible chapter unlocks it permanently. Reading progress and flashcards travel in the full backup. Reading text stays in the chapter package and device cache.
+
+The optional Reading guide starts paused at 120 characters per minute. Step through words or play continuously. Double-tap a word for its definition, or hold for three seconds to move the guide. With the guide active, the bookmark follows the highlighted word. Manual scrolling saves the first visible paragraph.
 
 In Settings, **Clear learning records** resets review data and reading progress, **Clear settings** restores default preferences, and **Clear dictionary** keeps vocabulary and grammar entries with learning evidence. **Reload cards** restores the bundled master. The backup carries the records of studied custom items removed by Reload cards.
 

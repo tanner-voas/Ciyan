@@ -11,9 +11,9 @@ test('v0.5.4 full backup embeds exact app version separately from backup format 
  assert.equal(s.appVersion,APP_VERSION);
  const backup=makeBackup(s);
  assert.equal(backup.format,'ciyan-backup');assert.equal(backup.version,2);
- assert.equal(backup.appVersion,'0.7.0');assert.equal(backup.state.appVersion,APP_VERSION);
+ assert.equal(backup.appVersion,'0.7.1');assert.equal(backup.state.appVersion,APP_VERSION);
  const result=parseBackup(JSON.parse(JSON.stringify(backup)));
- assert.equal(result.appVersion,'0.7.0');
+ assert.equal(result.appVersion,'0.7.1');
 });
 
 test('versioned backup migration steps are sequential and do not touch unrelated settings',()=>{
@@ -22,12 +22,12 @@ test('versioned backup migration steps are sequential and do not touch unrelated
  const backup=makeBackup(s);backup.appVersion='0.5.2';backup.state.appVersion='0.5.2';
  const before=structuredClone(backup.state);
  const upgraded=prepareVersionedBackup(backup);
- assert.equal(upgraded.appVersion,'0.7.0');assert.deepEqual(upgraded.state,before);
+ assert.equal(upgraded.appVersion,'0.7.1');assert.deepEqual(upgraded.state,before);
  assert.equal(backup.appVersion,'0.5.2');
  const parsed=parseBackup(backup);
  assert.equal(parsed.settings.tagWeights['HSK/HSK1'],1);
  assert.deepEqual(parsed.settings.retryIntervals,previousRetry);
- assert.equal(parsed.appVersion,'0.7.0');
+ assert.equal(parsed.appVersion,'0.7.1');
 });
 
 test('unstamped legacy backup is accepted without guessing version-specific data edits',()=>{
@@ -46,7 +46,7 @@ test('unsupported future, malformed and missing migration steps fail without mod
   const fake={...backup,appVersion:input};assert.throws(()=>prepareVersionedBackup(fake));
  }
  assert.equal(normalizeAppVersion('v0.5.5'),'0.5.5');
- assert.throws(()=>prepareVersionedBackup({...backup,appVersion:'0.7.1'}),/newer Cíyán/);
+ assert.throws(()=>prepareVersionedBackup({...backup,appVersion:'0.7.2'}),/newer Cíyán/);
  assert.throws(()=>prepareVersionedBackup({...backup,appVersion:'0.5.1'}),/No supported backup migration/);
  assert.deepEqual(backup,original);
 });
@@ -68,6 +68,6 @@ test('v0.5.3 through v0.5.5 are identity migrations of backup data',()=>{
  const backup=makeBackup(s);backup.appVersion='0.5.3';backup.state.appVersion='0.5.3';
  const before=structuredClone(backup.state),source=structuredClone(backup);
  const migrated=prepareVersionedBackup(backup);
- assert.equal(migrated.appVersion,'0.7.0');assert.deepEqual(migrated.state,before);
+ assert.equal(migrated.appVersion,'0.7.1');assert.deepEqual(migrated.state,before);
  assert.deepEqual(backup,source);
 });

@@ -541,12 +541,32 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
    <div class="panel"><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
 }
+let lastStudyFocus='',lastScreen='';
+function positionStudyScreen(){
+ const active=state.activePractice,legacy=state.activeSession||state.activeGrammarSession;
+ const readerCard=page==='reader'?document.querySelector('.reader-study-card'):null;
+ let target=null,key='';
+ if(page==='study'&&(active?.current||legacy||grammarFeedback)){
+  target=app.querySelector?.('.drawing-prompt,.review-card,.grammar-puzzle,.study-live-counts + section,.grammar-sentence')||null;
+  key=JSON.stringify([page,active?.id||legacy?.id,active?.current?.id||legacy?.queue?.[0],active?.current?.mode,
+   active?.results?.length||legacy?.results?.length||0,!!(active?.input?.revealed||revealed||grammarFeedback)]);
+ }else if(readerCard){
+  target=readerCard;key=page+':'+readerCard.dataset.studyKey+':'+!!readerCard.querySelector('[data-action="reader-grade"]');
+ }
+ if(target)target.classList.add('study-scroll-anchor');
+ if(target&&key!==lastStudyFocus){
+  globalThis.requestAnimationFrame?.(()=>{if(target.isConnected)target.scrollIntoView({block:'start',behavior:'instant'});});
+ }else if(!target&&(lastScreen!==page||lastStudyFocus)&&!document.querySelector('#reader-pages')){
+  window.scrollTo?.({top:0,behavior:'instant'});
+ }
+ lastScreen=page;lastStudyFocus=key;
+}
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
-  app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();if(page==='reader')reader.mount();}
+  reader.unmount();app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();if(page==='reader')reader.mount();positionStudyScreen();}
 function navigate(dest){if(!['study','browse','grammar','reader','stats','settings','complete'].includes(dest))return;
   if(dest==='settings'&&page!=='settings')pendingFont=cloneFont(lastAcceptedFont);
   if(dest!=='settings')pendingFont=null;
-  page=dest;revealed=false;render();window.scrollTo({top:0,behavior:'instant'});}
+  page=dest;revealed=false;render();}
 function modal(title,contents){closeModal();currentModal=document.createElement('div');currentModal.className='modal-backdrop';
   currentModal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${icon('x')}</button></div><div class="modal-scroll">${contents}</div></div>`;
   document.body.append(currentModal);applyFontToRoot(currentModal,state.settings);currentModal.querySelector('input:not([type=file]),button')?.focus();}

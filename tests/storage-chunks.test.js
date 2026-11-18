@@ -52,7 +52,7 @@ test('reader catalog is committed atomically and reused for bookmarks and review
  const {data,writes}=fakeIndexedDb();
  const {acceptChapter,gradeReader}=await import('../reader-core.js');
  const {readFileSync}=await import('node:fs');
- const chapter=JSON.parse(readFileSync(new URL('../reader/panlong/chapters/001.ciyan',import.meta.url)));
+ const chapter=JSON.parse(readFileSync(new URL('../reader/panlong/chapters/001.json',import.meta.url)));
  const s=store.defaultState();acceptChapter(s,chapter,'a'.repeat(64));await store.saveState(s);
  assert.ok(data.get('reader-catalog:panlong'));writes.length=0;
  const active=store.cloneProgressState(await store.loadState());

@@ -7,7 +7,7 @@
   -webkit-font-smoothing:antialiased;
 }
 * {box-sizing:border-box}
-html{background:var(--cream);min-height:100%;scroll-behavior:smooth}
+html{background:var(--cream);min-height:100%;scroll-behavior:auto}
 body{margin:0;min-height:100dvh;color:var(--ink);overscroll-behavior-y:contain}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -341,7 +341,7 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 
 /* v0.6.6: verified locally installed Chinese fonts. The selectable faces
    and no-span Mixed unicode ranges are in mixed-fonts.css. */
-#app,.modal-backdrop{font-family:var(--ciyan-zh-font,"CiyanPrint"),-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC",sans-serif}
+
 .font-settings .font-control{display:grid;gap:8px;font-size:13px;font-weight:700;color:var(--forest)}
 .font-settings .font-control select{width:100%;max-width:100%;min-height:46px;padding:10px 12px;border:1px solid #d4e2d6;border-radius:12px;background:#fff;color:var(--ink);font:inherit}
 .font-sample{min-width:0;border:1px solid #dfe8df;border-radius:16px;padding:17px;background:#f8faf7}
@@ -430,11 +430,22 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .reader-tabs{margin:1rem 0}.reader-tabs button{flex:1}
 .reader-tabs [aria-pressed=true]{background:#264b3e;color:white}
 .reader-metrics{align-items:stretch;justify-content:space-between}.reader-metrics span{display:grid;font-size:.8rem}.reader-metrics strong{font-size:1.35rem}
-#reader-pages{height:65vh;height:64dvh;overflow:auto;overscroll-behavior:contain;padding:1rem;background:#fffef9;border:1px solid #d9dfd6;border-radius:1rem}
-#reader-pages article p{font-family:var(--ciyan-zh-font),sans-serif;line-height:1.95;font-size:1.16rem;margin:0 0 .85em}
+#reader-pages{scroll-padding-top:calc(env(safe-area-inset-top, 0px) + 12px);padding:1rem;background:#fffef9;border:1px solid #d9dfd6;border-radius:1rem}
+#reader-pages article p{line-height:1.95;font-size:1.16rem;margin:0 0 .85em}
 #reader-pages article h2{margin:0 0 .85rem}
 #reader-pages [data-key]{cursor:pointer}
 .reader-weak{text-decoration:underline dotted #94783f;text-underline-offset:.2em}
 #reader-boundary{margin:1rem 0}
 .reader-metrics button{display:grid;gap:.15rem;text-align:left;padding:.35rem .5rem;background:#eff4ed;border:0;border-radius:.45rem;color:inherit;font:inherit;font-size:.8rem;cursor:pointer}
 .reader-scope{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:.5rem 0 1rem}.reader-scope select{padding:.55rem}
+
+.study-scroll-anchor{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 12px)}
+#main:has(.study-scroll-anchor){padding-bottom:32vh}
+#reader-pages{padding-bottom:65vh;overflow-anchor:none}
+.reader-guide-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:#fffef9;padding:5px 0;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
+.reader-guide-bar button{min-height:40px;padding:5px 9px;border-radius:10px;color:var(--forest);background:#f0f5ef;font-weight:650}
+.reader-guide-bar [data-guide-controls]:not([hidden]){display:flex;align-items:center;gap:3px}
+.reader-guide-bar output{font-size:.78rem;white-space:nowrap;font-variant-numeric:tabular-nums}
+#reader-pages [data-word-index]{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+#reader-pages .reader-current{background:#d9ebcd;border-radius:.2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+#reader-pages.guided article:first-of-type{padding-top:45dvh}

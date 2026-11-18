@@ -86,7 +86,7 @@ const LEARNING_SELECTOR=[
  '.grammar-detail-hanzi','.printed-character','.grammar-sentence',
  '.sentence-slot','.bank-tile','.particle-line','.vocab-example strong',
  '.context-card strong','.font-sample-chinese','.font-sample p',
- '.drawing-context','.synonym-word','.drawing-prompt h2',
+ '.drawing-grade-character','.notice p','.drawing-context','.synonym-word','.drawing-prompt h2',
  '.detail-hero .review-hanzi','.grammar-puzzle h2'
 ].join(',');
 export function isLearningFontText(element){
@@ -133,7 +133,7 @@ export function mixChineseText(root,fonts,rng=Math.random,settings={}){
  if(!doc?.createTreeWalker)return 0;
  const sizes=normalizeFontSizing(settings);
  const single=fonts.length===1;
- if(single&&Math.abs(sizes.fontMasterScale*sizes.fontScales[fonts[0]]-1)<0.00001)return 0;
+ if(single&&fonts[0]==='print'&&Math.abs(sizes.fontMasterScale*sizes.fontScales[fonts[0]]-1)<0.00001)return 0;
  const walker=doc.createTreeWalker(root,4); // NodeFilter.SHOW_TEXT
  const nodes=[];let node;
  while((node=walker.nextNode())){
@@ -143,7 +143,7 @@ export function mixChineseText(root,fonts,rng=Math.random,settings={}){
    if(SKIP_ELEMENTS.has(el.tagName)||el.isContentEditable||el.dataset?.ciyanGlyph==='1'){excluded=true;break;}
    if(el===root)break;
   }
-  if(!excluded&&(!single||isLearningFontText(node.parentElement)))nodes.push(node);
+  if(!excluded&&isLearningFontText(node.parentElement))nodes.push(node);
  }
  let changed=0;
  for(const textNode of nodes)changed+=Number(mixTextNode(textNode,fonts,rng,settings));
@@ -156,5 +156,5 @@ export function applyFontToRoot(root,settings,rng=Math.random){
  root.dataset.fontSelection=fonts.join(',');
  const sizes=normalizeFontSizing(settings);
  root.dataset.fontMasterScale=String(sizes.fontMasterScale);
- if(fonts.length>1||Math.abs(fontScaleFor(settings,fonts[0])-1)>0.00001)mixChineseText(root,fonts,rng,settings);
+ if(fonts[0]!=='print'||fonts.length>1||Math.abs(fontScaleFor(settings,fonts[0])-1)>0.00001)mixChineseText(root,fonts,rng,settings);
 }

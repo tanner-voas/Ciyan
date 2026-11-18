@@ -46,7 +46,7 @@ for(let number=1;number<=3;number++){
  for(const entry of spec.grammar){const id='grammar-'+entry.hanzi;items[id]={kind:'grammar',...entry};authored.push(id);}
  if(!missing.size){
   for(const id of authored)if(!items[id])throw Error('Absent authored item '+id);
-  fs.writeFileSync(dir+'chapters/'+stem+'.ciyan',JSON.stringify({format:'ciyan-chapter',version:1,novel:'panlong',book:'盘龙',number,title,revision:1,paragraphs,items,authored}));
+  fs.writeFileSync(dir+'chapters/'+stem+'.json',JSON.stringify({format:'ciyan-chapter',version:1,novel:'panlong',book:'盘龙',number,title,revision:1,paragraphs,items,authored}));
  }
 }
 if(missing.size){console.error([...missing].join(' '));process.exitCode=1;}
