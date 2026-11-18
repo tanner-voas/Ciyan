@@ -6,10 +6,11 @@ export function prepareVerifiedBackup(state){
  const object=makeBackup(state);
  const json=JSON.stringify(object);
  const bytes=new Blob([json]).size;
- if(bytes>40*1024*1024)throw new Error('Backup exceeds the 40 MB import limit. Export cannot be verified for a future restore.');
+ if(bytes>128*1024*1024)throw new Error('Backup exceeds the 128 MiB import limit. Export cannot be verified for a future restore.');
  let decoded;
  try{decoded=JSON.parse(json);}catch{throw new Error('Could not serialize the full backup as valid JSON.');}
  const restored=parseBackup(decoded);
+ for(const field of ['reader','archived'])if(state[field]&&JSON.stringify(state[field])!==JSON.stringify(restored[field]))throw Error('Backup integrity error: '+field+' changed');
  const fields=['cards','grammar','history','grammarHistory','skillHistory','sessions','grammarSessions','mixedSessions'];
  for(const field of fields){
   if(restored[field].length!==state[field].length)throw new Error(`Backup integrity error: ${field} count changed (${state[field].length} → ${restored[field].length}).`);

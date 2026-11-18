@@ -1,17 +1,31 @@
-# Cíyán (词言) v0.6.9
+# Cíyán (词言) v0.7.0
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.
 
 ## Latest release
 
-See [v0.6.9 release notes](RELEASE_v0.6.9.md). The existing seven-font
-checklist now supports **one master Chinese-text size** (default 1.00×) and
-**an independently adjustable size per font**. No selection or size change
-is applied until **Apply font** is pressed; **Discard changes** restores the
-last accepted values. Chinese learning text is scaled, but navigation and
-ordinary UI controls remain their normal size. Character-by-character random
-mixing from v0.6.8 is preserved.
+Open **Reader → Load chapter file** and select the first `.ciyan` package. The three 《盘龙》 packages are in `reader/panlong/chapters/`. Import new chapters in order. You can reload an earlier chapter at any time.
+
+**Settings → Reader** selects the reading gate. Authored uses the writer’s selection of vocabulary, terms and grammar. Auto checks all distinct annotated words and terms. Both require an average of 2.0 and a minimum of 1.5. Study lists also offer earlier due items and full-chapter preparation. Vocabulary reviews use the main vocabulary schedule. Terms and grammar belong to the novel. Opening an eligible chapter unlocks it permanently. Reading progress and flashcards travel in the full backup. Reading text stays in the chapter package and device cache.
+
+In Settings, **Clear learning records** resets review data and reading progress, **Clear settings** restores default preferences, and **Clear dictionary** keeps vocabulary and grammar entries with learning evidence. **Reload cards** restores the bundled master. The backup carries the records of studied custom items removed by Reload cards.
+
+### Chapter authoring and verification
+
+The package is UTF-8 JSON. Each paragraph is a stable ID and a token sequence. Literal strings supply punctuation and spacing. A one-element array identifies a dictionary entry whose Chinese headword supplies the visible text. An optional second array element preserves an alias such as a full name while sharing the same item and score. The authored list can include grammar prompts. Auto derives its list from every nonliteral span. Novel IDs and item IDs should be reused across chapters. Increment the revision when changing a released file.
+
+The exact uploads are in `reader/panlong/original/`. Clean references remove paragraph-end website counters, trim surrounding indentation and use one blank line between paragraphs. Dates and numbers within the narrative are preserved. SHA-256 digests in `locked.json` pin those references. Run from the repository root:
+
+```sh
+node tools/verify-reader.mjs
+node tools/build-reader.mjs
+node tools/verify-reader.mjs
+npm test
+python3 package.py
+```
+
+The builder uses the bundled vocabulary, authored study lists, supplemental glossaries and Node’s Mandarin word segmenter. The committed packages can be imported directly. Use Node 24 to rebuild. The verifier checks both the raw-to-clean transformation and reconstruction through the reader’s own token model.
 
 Fonts continue to download and cache on demand, with a manual upload fallback.
 Font bytes are not part of the Git ZIP, deployment or learning backup.

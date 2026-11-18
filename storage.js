@@ -1,3 +1,4 @@
+import {validateReader,resetReaderProgress} from './reader-core.js';
 import {APP_VERSION,prepareVersionedBackup} from './backup-versions.js';
 import {normalizeTypographySettings} from './fonts.js';
 import {validatedTagWeights} from './tag-weights.js';
@@ -33,7 +34,7 @@ export function deleteConfirmationValid(value){return String(value??'').trim().t
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
+  reader:{},settings:{continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -42,8 +43,10 @@ export function defaultState(){return ensureStudy({
 const CONTENT_KEY='master-content';
 let savedContent=null;
 export function cloneProgressState(state,includeContent=false){
- const {cards,grammar,history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions,...progress}=state;
+ const {reader={},cards,grammar,history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions,...progress}=state;
  const copy=structuredClone(progress);
+ // Definitions and membership arrays are immutable after import. A review changes only progress.
+ copy.reader=Object.fromEntries(Object.entries(reader).map(([id,b])=>[id,{...b,chapters:b.chapters.map(c=>({...c})),progress:{...b.progress},history:b.history.slice()}]));
  // Existing log entries are immutable. Shallow-copy the arrays so push, undo,
  // truncation and deletion cannot mutate the previous committed state.
  for(const [key,array] of Object.entries({history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions}))
@@ -54,7 +57,7 @@ export function cloneProgressState(state,includeContent=false){
 }
 const LOG_FIELDS=['history','grammarHistory','skillHistory'];
 const LOG_CHUNK=256;
-let savedHistory=null;
+let savedHistory=null,savedReaderCatalog=new Map();
 // A progress write updates only changed 256-record log blocks. Together with
 // the separate master-content record, this prevents multi-megabyte writes for
 // each answer, while retaining a single IndexedDB transaction for durability.
@@ -75,7 +78,7 @@ export async function loadState(){const db=await database();return new Promise((
    if(logChunks){for(const field of LOG_FIELDS)restored[field]=logs[field].flat();savedHistory=Object.fromEntries(LOG_FIELDS.map(k=>[k,restored[k]]));}
    else savedHistory=null;
    if(contentSplit)savedContent={cards:restored.cards,grammar:restored.grammar};else savedContent=null;
-   delete restored.__splitContent;delete restored.__historyChunks;
+   delete restored.__splitContent;delete restored.__historyChunks;delete restored.__readerCatalog;
    resolve(restored);
   };
   const fetch=(key,callback)=>{
@@ -85,6 +88,15 @@ export async function loadState(){const db=await database();return new Promise((
   };
   // Reserve all pending requests before the first callback runs.
   if(contentSplit)fetch(CONTENT_KEY,result=>{if(result){restored.cards=result.cards;restored.grammar=result.grammar;}});
+  savedReaderCatalog=new Map();
+  if(value.__readerCatalog)for(const [id,b] of Object.entries(restored.reader)){
+   fetch('reader-catalog:'+id,catalog=>{
+    if(!catalog||catalog.lists.length!==b.chapters.length){fail(Error('Saved reader catalog is incomplete'));return;}
+    b.items=catalog.items;
+    b.chapters.forEach((c,i)=>Object.assign(c,catalog.lists[i]));
+    savedReaderCatalog.set(id,catalog);
+   });
+  }
   if(logChunks){for(const field of LOG_FIELDS){
    const count=logChunks[field];
    if(!Number.isSafeInteger(count)||count<0||count>2000){fail(new Error('Invalid saved history chunk index'));return;}
@@ -103,12 +115,24 @@ export async function saveState(state,expectedRevision=null){const db=await data
  const contentChanged=!savedContent||savedContent.cards!==state.cards||savedContent.grammar!==state.grammar;
  const {cards,grammar,history,grammarHistory,skillHistory,...progress}=state;
  progress.__splitContent=true;
+ const catalogs=new Map();
+ progress.__readerCatalog=true;
+ progress.reader=Object.fromEntries(Object.entries(state.reader||{}).map(([id,b])=>{
+  const lists=b.chapters.map(({all,authored})=>({all,authored}));
+  catalogs.set(id,{items:b.items,lists});
+  return [id,{...b,items:undefined,chapters:b.chapters.map(({all,authored,...meta})=>meta)}];
+ }));
  const logs={history,grammarHistory,skillHistory};
  const chunks=Object.fromEntries(LOG_FIELDS.map(field=>[field,Math.ceil((logs[field]||[]).length/LOG_CHUNK)]));
  progress.__historyChunks=chunks;
  let finished=false;
  const fail=e=>{if(finished)return;finished=true;reject(e);};
  const write=()=>{
+  for(const [id,catalog] of catalogs){
+   const old=savedReaderCatalog.get(id);
+   if(old?.items!==catalog.items||old.lists.length!==catalog.lists.length||catalog.lists.some((l,i)=>old.lists[i].all!==l.all||old.lists[i].authored!==l.authored))store.put(catalog,'reader-catalog:'+id);
+  }
+  for(const id of savedReaderCatalog.keys())if(!catalogs.has(id))store.delete('reader-catalog:'+id);
   if(contentChanged)store.put({cards,grammar},CONTENT_KEY);
   for(const field of LOG_FIELDS){
    const entries=logs[field]||[],prior=savedHistory?.[field],oldCount=Math.ceil((prior?.length||0)/LOG_CHUNK),newCount=chunks[field];
@@ -127,7 +151,7 @@ export async function saveState(state,expectedRevision=null){const db=await data
   write();
  };read.onerror=()=>fail(read.error||new Error('Cannot verify stored revision'));}
  tx.oncomplete=()=>{
-  savedContent={cards,grammar};savedHistory=logs;
+  savedContent={cards,grammar};savedHistory=logs;savedReaderCatalog=catalogs;
   if(!finished){finished=true;resolve();}
  };
  tx.onerror=()=>fail(tx.error||new Error('Cannot save progress'));
@@ -214,6 +238,9 @@ export function parseBackup(data){
   const ids=new Set(),names=new Set();
   const cards=source.cards.map(c=>{const card=normalizeCard(c);if(ids.has(card.id)||names.has(card.hanzi))throw new Error('Duplicate word in backup');ids.add(card.id);names.add(card.hanzi);return card;});
   const grammarIds=new Set();const grammar=source.grammar.map(g=>{const entry=normalizeGrammar(g);if(grammarIds.has(entry.id))throw new Error('Duplicate grammar ID');grammarIds.add(entry.id);return entry;});
+  const archived={cards:(source.archived?.cards||[]).map(c=>normalizeCard(c)),grammar:(source.archived?.grammar||[]).map(c=>normalizeGrammar(c))};
+  for(const c of archived.cards){if(ids.has(c.id)||names.has(c.hanzi))throw Error('Duplicate archived vocabulary');ids.add(c.id);names.add(c.hanzi);}
+  for(const g of archived.grammar){if(grammarIds.has(g.id))throw Error('Duplicate archived grammar');grammarIds.add(g.id);}
   const schedules={};
   for(const [id,s] of Object.entries(source.schedules||{}))if(ids.has(id)&&s&&validDate(s.dueAt)&&validDate(s.lastReviewedAt)){
     if(!Number.isFinite(s.stability)||s.stability<=0||s.stability>36500||!Number.isFinite(s.difficulty)||s.difficulty<1||s.difficulty>10||![1,2,3,4].includes(s.lastRating)||!Number.isSafeInteger(s.reps)||s.reps<1)throw new Error('Invalid memory schedule in backup');
@@ -224,7 +251,7 @@ export function parseBackup(data){
   const grammarHistory=source.grammarHistory.filter(h=>h&&grammarIds.has(h.grammarId)&&validDate(h.at)).slice(-500000);
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
-  const settings={sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+  const settings={readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
@@ -235,7 +262,7 @@ export function parseBackup(data){
   const activeGrammarSession=source.activeGrammarSession&&Array.isArray(source.activeGrammarSession.queue)&&Array.isArray(source.activeGrammarSession.results)
     ?{...source.activeGrammarSession,queue:source.activeGrammarSession.queue.filter(id=>grammarIds.has(id)),results:source.activeGrammarSession.results.filter(r=>grammarIds.has(r.grammarId))}:null;
   const revision=Math.max(0,Math.floor(Number(source.revision)||0));
-  return {...defaults,appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
+  return {...defaults,archived,explicitDictionary:source.explicitDictionary===true,reader:validateReader(source.reader),appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
     postponed:Object.fromEntries(Object.entries(source.postponed||{}).filter(([k,v])=>!Object.hasOwn(Object.prototype,k)&&validDate(v))),skillSchedules:validateSkillSchedules(source.skillSchedules,ids,grammarIds),skillHistory:(source.skillHistory||[]).filter(h=>h&&[1,2,3,4].includes(h.grade)&&validDate(h.at)).slice(-500000),mixedSessions:(source.mixedSessions||[]).filter(s=>validDate(s.endedAt)).slice(-50000),activePractice:validatePractice(source.activePractice,ids,grammarIds,new Set(allParticles({grammar}).map(p=>p.id))),
     activeSession:activeSession?.queue?.length?activeSession:null,
     activeGrammarSession:activeGrammarSession?.queue?.length?activeGrammarSession:null,
@@ -285,6 +312,7 @@ export function mergeDeck(current,content){
   return {draft,addedWords,addedGrammar,tagsUpdated};
 }
 export function clearLearningRecords(d){
+  resetReaderProgress(d);d.archived={cards:[],grammar:[]};
   d.lastPracticeUndo=null;d.postponed={};d.skillSchedules={grammar:{},drawing:{},particles:{}};d.skillHistory=[];d.mixedSessions=[];d.activePractice=null;d.schedules={};d.history=[];d.sessions=[];d.activeSession=null;
   d.grammarHistory=[];d.grammarSessions=[];d.activeGrammarSession=null;
 }

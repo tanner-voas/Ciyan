@@ -82,7 +82,7 @@ const SKIP_ELEMENTS=new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT','SEL
 // menus, navigation, action buttons, labels, grades, or statistics controls.
 // Learning-content buttons such as grammar word tiles are intentionally listed.
 const LEARNING_SELECTOR=[
- '.review-hanzi','.tone-char','.list-hanzi','.grammar-preview',
+ '#reader-pages article p','.review-hanzi','.tone-char','.list-hanzi','.grammar-preview',
  '.grammar-detail-hanzi','.printed-character','.grammar-sentence',
  '.sentence-slot','.bank-tile','.particle-line','.vocab-example strong',
  '.context-card strong','.font-sample-chinese','.font-sample p',

@@ -1,0 +1,16 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {parseBackup,defaultState} from '../storage.js';
+import {ensureStudy} from '../study-engine.js';
+import {prepareVerifiedBackup} from '../backup-integrity.js';
+import {MASTER} from '../master-data.js';
+import {mergeRestoredContent} from '../backup-restore.js';
+const [input,output]=process.argv.slice(2);
+if(!input||!output)throw Error('Usage: node tools/refresh-mock.mjs input.json output.json');
+const src=JSON.parse(fs.readFileSync(input)),s=parseBackup(src);
+mergeRestoredContent(s,{cards:[],grammar:[]},MASTER);
+s.settings=defaultState().settings;ensureStudy(s);s.bundledMasterVersion='0.7.0';
+const {json}=prepareVerifiedBackup(s),r=parseBackup(JSON.parse(json));
+for(const key of ['history','grammarHistory','skillHistory','schedules','skillSchedules','sessions','mixedSessions','grammarSessions'])assert.deepEqual(r[key],src.state[key]);
+assert.deepEqual(r.settings,s.settings);fs.writeFileSync(output,json);
+console.log(r.cards.length,'words,',r.grammar.length,'grammar entries,',r.history.length,'vocabulary reviews');

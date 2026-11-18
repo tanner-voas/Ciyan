@@ -1,3 +1,5 @@
+import {createReader} from './reader-ui.js';
+import {clearDictionary,reloadCards} from './collection-reset.js';
 import {APP_VERSION} from './backup-versions.js';
 import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './tags.js';
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
@@ -94,6 +96,7 @@ function discardPendingFont(){++fontSelectionCounter;pendingFont=cloneFont(lastA
 
 const app=$('#app'),toastNode=$('#toast');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const reader=createReader({state:()=>state,change,render,esc,modal,toast,applyFonts:el=>applyFontToRoot(el,state.settings)});
 const shapes={
  home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-8h6v8"/>',
  cards:'<rect x="5" y="4" width="15" height="17" rx="3"/><path d="M9 8h7M9 12h7M4 8H3M4 12H3"/>',
@@ -179,7 +182,7 @@ async function change(mutator,shouldRender=true,contentChange=false){
   finally{saving=false;}
 }
 function shell(content){
-  const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['stats','chart','Stats']];
+  const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['reader','book','Reader'],['stats','chart','Stats']];
   const hideNav=page==='complete'||!!state.activePractice||(page==='study'&&(state.activeSession||state.activeGrammarSession));
   return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span>Cíyán<small>Words that stay</small></span></div><div class="header-actions">
       <button class="icon-btn" data-action="backup" aria-label="Backup progress">${icon('archive')}${backupNeeded()?'<span class="dot"></span>':''}</button>
@@ -510,6 +513,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
+   <div class="section-row"><h2 class="section-title">Reader</h2></div><div class="panel stack"><label class="settings-row"><span><strong>Reading gate</strong><small>Auto includes every distinct word and term. Authored uses the chapter’s selected vocabulary, terms and grammar.</small></span><select data-setting="readerGate">${options([['authored','Authored'],['auto','Auto']],s.readerGate)}</select></label><label class="settings-row"><strong>Underline weak words while reading</strong><input type="checkbox" data-setting="readerHighlight" ${s.readerHighlight?'checked':''}></label></div>
    <div class="section-row"><h2 class="section-title">Chinese typography</h2></div>
    <div class="panel stack font-settings"><p class="subtle">Choose any combination of fonts. Set a master size and each font’s relative size to balance their appearance. Size adjustments affect Chinese learning text only, not the app controls. Each Chinese character occurrence independently receives a random checked font. Nothing changes until you tap <strong>Apply font</strong>.</p>
      ${fontChecklistMarkup(draft)}
@@ -529,14 +533,17 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
      <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
    <div class="section-row"><h2 class="section-title">Danger zone</h2></div>
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
-     <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button></div>
+     <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button>
+     <button class="btn btn-danger" data-action="clear-settings">Clear settings</button>
+     <button class="btn btn-danger" data-action="clear-dictionary">Clear dictionary</button>
+     <button class="btn btn-secondary" data-action="reload-cards">Reload cards from default master</button></div>
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
    <div class="panel"><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
 }
-function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
-  app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();}
-function navigate(dest){if(!['study','browse','grammar','stats','settings','complete'].includes(dest))return;
+function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
+  app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();if(page==='reader')reader.mount();}
+function navigate(dest){if(!['study','browse','grammar','reader','stats','settings','complete'].includes(dest))return;
   if(dest==='settings'&&page!=='settings')pendingFont=cloneFont(lastAcceptedFont);
   if(dest!=='settings')pendingFont=null;
   page=dest;revealed=false;render();window.scrollTo({top:0,behavior:'instant'});}
@@ -660,7 +667,7 @@ function clearDataModal(){modal('Clear learning records?',`<div class="notice er
     <button class="btn btn-danger" id="clear-confirm-button" data-action="confirm-clear" disabled>Clear records</button></div>`);}
 async function clearData(){if(!deleteConfirmationValid($('#clear-confirm')?.value))return;
   const done=await change(d=>clearLearningRecords(d),false);
-  if(done){closeModal();lastFinished=null;grammarFeedback=null;revealed=false;page='study';render();toast('Learning records cleared; cards retained. Export your new backup.');}
+  if(done){reader.reset();closeModal();lastFinished=null;grammarFeedback=null;revealed=false;page='study';render();toast('Learning records cleared; cards retained. Export your new backup.');}
 }
 function backupModal(){pendingBackupRevision=null;
   modal('Protect your progress',`<p class="lead" style="font-size:14px;margin-bottom:14px">This backup contains every word, grammar card, learning record, and setting. Save the JSON to your iPhone Files app or iCloud Drive.</p>
@@ -688,21 +695,21 @@ async function confirmBackup(){if(pendingBackupRevision===null||saving)return;
   try{await saveState(candidate,state.revision);state=candidate;pendingBackupRevision=null;closeModal();render();toast('Export confirmed. Keep that JSON file safe.');}
   catch(e){toast(`Could not save backup status: ${e.message}`);}
 }
-async function readJsonFile(file){if(!file)return null;if(file.size>40*1024*1024)throw new Error('JSON file exceeds 40 MB');
+async function readJsonFile(file){if(!file)return null;if(file.size>128*1024*1024)throw new Error('JSON file exceeds 128 MiB');
   try{return JSON.parse(await file.text());}catch{throw new Error('The file is not valid JSON');}}
 function requestFile(kind){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.className='fileinput';document.body.append(input);
   input.addEventListener('change',async()=>{try{const content=await readJsonFile(input.files?.[0]);if(content){if(kind==='restore')await restoreBackup(content);else await importDeck(content);}}
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
 
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
-  if(!window.confirm(`Restore learning records and settings from this backup? Existing and current master vocabulary/grammar entries will be retained; current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{ensureStudy(parsed);mergeRestoredContent(parsed,state,MASTER);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(fontChoice);pendingFont=cloneFont(lastAcceptedFont);toast('Full backup restored.');}
+  if(!window.confirm(`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
+  try{ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
- const draft=replaceMaster(structuredClone(state),content);
+ const draft=structuredClone(state);reloadCards(draft,content,replaceMaster);
  if(!window.confirm(`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. The imported master persists after restarting the app.`))return;
- if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.bundledMasterVersion=APP_VERSION;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection saved locally.');}
+ if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.archived=draft.archived;d.explicitDictionary=true;d.bundledMasterVersion=APP_VERSION;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection saved locally.');}
 }
 function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
  downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),`ciyan-master-v${APP_VERSION}.json`);toast('Complete master file prepared');}
@@ -794,6 +801,8 @@ document.addEventListener('click',async event=>{
   if(suppressTileClick&&event.target.closest('[data-tile],[data-drop-slot]')){event.preventDefault();return;}
   const element=event.target.closest('[data-action]');if(!element)return;
   const action=element.dataset.action;
+  if(action.startsWith('reader-')){await reader.action(action.slice(7),element);return;}
+  if(page==='reader'&&action==='navigate')await reader.flush();
   if(await practiceAction(action,element))return;
   switch(action){
     case 'navigate':closeModal();navigate(element.dataset.page);break;
@@ -845,6 +854,14 @@ document.addEventListener('click',async event=>{
     case 'import-deck':requestFile('deck');break;
     case 'export-deck':exportDeck();break;
     case 'template':downloadTemplate();break;
+    case 'clear-settings':
+     if(window.confirm('Restore all settings, including fonts and the reader gate, to their defaults?')&&await change(d=>{d.settings=defaultState().settings;ensureStudy(d);},false)){
+      lastAcceptedFont=cloneFont(state.settings);pendingFont=cloneFont(lastAcceptedFont);render();toast('Default settings restored.');
+     }break;
+    case 'clear-dictionary':
+     if(window.confirm('Remove words and grammar cards with no learning records? Active study sessions will end.'))await change(clearDictionary);break;
+    case 'reload-cards':
+     if(window.confirm('Replace your dictionary with the default master cards? Learning records are kept. Active study sessions will end.'))await change(d=>reloadCards(d,MASTER,replaceMaster));break;
     case 'clear-data':clearDataModal();break;
     case 'confirm-clear':await clearData();break;
     case 'grammar-pick':await pickGrammarTile(element.dataset.tile);break;
@@ -890,6 +907,7 @@ document.addEventListener('change',async event=>{
   const key=event.target.dataset.setting;if(!key)return;
   let value=event.target.type==='checkbox'?event.target.checked:Number(event.target.value);
   if(key==='newWordsPerDay')value=event.target.value.trim()===''?null:Math.max(0,Math.min(20000,Math.round(Number(event.target.value)||0)));
+  if(key==='readerGate')value=event.target.value==='auto'?'auto':'authored';
   if(key==='sessionSize')value=Math.max(1,Math.min(500,Math.round(value)||12));
   if(key==='desiredRetention')value=[.85,.9,.95].includes(value)?value:.9;
   await change(d=>{d.settings[key]=value;});
@@ -916,7 +934,7 @@ async function boot(){try{
     state.revision=Number(loaded.revision)||0;
     // Once per release, merge any newly bundled content; NEVER overwrite or
     // drop locally imported cards, custom sentences, IDs or score records.
-    if(state.bundledMasterVersion!==APP_VERSION){
+    if(!state.explicitDictionary&&state.bundledMasterVersion!==APP_VERSION){
       const merge=reconcileBundledMaster(state,MASTER);
       changedContent=merge.changed;
       state.bundledMasterVersion=APP_VERSION;
