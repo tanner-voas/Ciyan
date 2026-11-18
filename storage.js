@@ -34,7 +34,7 @@ export function deleteConfirmationValid(value){return String(value??'').trim().t
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  reader:{},settings:{continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
+  reader:{},settings:{continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -251,7 +251,7 @@ export function parseBackup(data){
   const grammarHistory=source.grammarHistory.filter(h=>h&&grammarIds.has(h.grammarId)&&validDate(h.at)).slice(-500000);
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
-  const settings={readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+  const settings={readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),

@@ -182,6 +182,7 @@ async function change(mutator,shouldRender=true,contentChange=false){
   finally{saving=false;}
 }
 function shell(content){
+  if(page==='reader'&&reader.isReading())return '<main id="main" class="immersive-reader">'+content+'</main>';
   const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['reader','book','Reader'],['stats','chart','Stats']];
   const hideNav=page==='complete'||!!state.activePractice||(page==='study'&&(state.activeSession||state.activeGrammarSession));
   return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span>Cíyán<small>Words that stay</small></span></div><div class="header-actions">
@@ -547,7 +548,7 @@ function positionStudyScreen(){
  const readerCard=page==='reader'?document.querySelector('.reader-study-card'):null;
  let target=null,key='';
  if(page==='study'&&(active?.current||legacy||grammarFeedback)){
-  target=app.querySelector?.('.drawing-prompt,.review-card,.grammar-puzzle,.study-live-counts + section,.grammar-sentence')||null;
+  target=app.querySelector?.('.drawing-comparison')||app.querySelector?.('.drawing-prompt,.review-card,.grammar-puzzle,.study-live-counts + section,.grammar-sentence')||null;
   key=JSON.stringify([page,active?.id||legacy?.id,active?.current?.id||legacy?.queue?.[0],active?.current?.mode,
    active?.results?.length||legacy?.results?.length||0,!!(active?.input?.revealed||revealed||grammarFeedback)]);
  }else if(readerCard){

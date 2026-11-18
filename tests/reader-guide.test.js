@@ -13,18 +13,18 @@ test('guide gestures, word-length timing, centered position and manual bookmarks
  }
  const win=element(),doc=element(),pages=element(),bar=element(),toolbar=element(),play=element(),output=element(),toggle=element();
  let y=0;
- Object.assign(win,{innerHeight:800,scrollBy(x,dy){y+=dy;},getComputedStyle:()=>({getPropertyValue:()=> '12px'}),
+ Object.assign(win,{innerHeight:800,scrollTo(x,dy){y=dy;},scrollBy(x,dy){y+=dy;},getComputedStyle:()=>({getPropertyValue:()=> '12px'}),
   requestAnimationFrame:fn=>{queueMicrotask(fn);return 1;},cancelAnimationFrame(){}});
  doc.defaultView=win;pages.ownerDocument=doc;
  bar.getBoundingClientRect=()=>({top:688,bottom:730});bar.offsetHeight=40;
  toolbar.querySelector=q=>q==='output'?output:play;
  pages.querySelector=q=>q==='.reader-guide-bar'?bar:q.startsWith('article')?article:q.includes('controls')?toolbar:toggle;
  const row=element({pid:'p1',index:'0'}),article=element({readerNumber:'1'});
- article.getBoundingClientRect=()=>({top:480-y,bottom:1800-y});
- row.closest=()=>article;row.getBoundingClientRect=()=>({top:500-y,bottom:700-y});
+ article.getBoundingClientRect=()=>({top:12-y,bottom:1800-y});
+ row.closest=()=>article;row.getBoundingClientRect=()=>({top:32-y,bottom:700-y});
  const words=['我','喜欢','书'].map((text,i)=>{
   const w=element({wordIndex:String(i),offset:String([0,1,3][i])});w.textContent=text;
-  w.getBoundingClientRect=()=>({top:500+20*i-y,height:20});
+  w.getBoundingClientRect=()=>({top:32+20*i-y,height:20});
   w.closest=q=>q==='[data-pid]'?row:q==='[data-word-index]'?w:null;
   return w;
  });

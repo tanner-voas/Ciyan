@@ -119,6 +119,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const spans=row?Array.from(row.querySelectorAll('[data-word-index]')):[];
  const resume=position?.wordIndex!=null?spans[position.wordIndex]:spans.find(w=>+w.dataset.offset>=position?.offset);
  if(position?.guided&&resume)switchGuide(true,resume);
+ else if(!position)win.scrollTo?.(0,0);
  else if(row)win.scrollBy(0,row.getBoundingClientRect().top-parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top')||0));
  return ()=>{stopped=true;listeners.abort();pause();cancelHold();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
 }

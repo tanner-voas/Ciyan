@@ -3,7 +3,7 @@ import {acceptChapter,validateChapter,readerAnalysis,gradeReader,recordPractice}
 
 export function createReader({state,change,render,esc,modal,toast,applyFonts}){
  let novel='',number=1,mode='review',scope='gate',revealed=false,shown='',busy=false,epoch=0,observer=null,timer=null,pending=null;
- let disposeGuide=null,rate=120,writingPosition=null;
+ let disposeGuide=null,pendingRate=null,writingPosition=null;
  const sessions=new Map();
  function evidence(){if(!sessions.has(novel))sessions.set(novel,new Map());return sessions.get(novel);}
  const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now(),evidence());
@@ -40,15 +40,16 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   ${c.unlocked||a.ready?btn('read','Read chapter'):''}</div>`;
  }
  function article(p,a){
-  return `<article data-reader-number="${p.number}"><h2>${esc(p.title)}</h2>${p.paragraphs.map((row,index)=>{
+  return `<article data-reader-number="${p.number}">${btn('exit','Exit reader',`data-number="${p.number}"`)}<h2>${esc(p.title)}</h2>${p.paragraphs.map((row,index)=>{
    let offset=0,wordIndex=0;
    return `<p data-pid="${esc(row.id)}" data-index="${index}">${row.tokens.map(t=>{
     if(typeof t==='string'){offset+=t.length;return esc(t);}
     const k=t[0],surface=t[1]??p.items[k].hanzi,start=offset;offset+=surface.length;
-    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-offset="${start}" class="${state().settings.readerHighlight&&a.score(k)<1.5?'reader-weak':''}">${esc(surface)}</span>`;
+    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-offset="${start}" class="${a.score(k)<1.5?'reader-weak':''}">${esc(surface)}</span>`;
    }).join('')}</p>`;
-  }).join('')}${btn('finish','Mark chapter finished',`data-number="${p.number}"`)}</article>`;
+  }).join('')}${btn('finish','Mark chapter finished',`data-number="${p.number}"`)}${btn('exit','Exit reader',`data-number="${p.number}"`)}</article>`;
  }
+ function isReading(){return mode==='read'&&chapter()?.unlocked&&memory.has(chapter().digest);}
  function view(){
   selectBook();
   const b=book(),c=chapter();
@@ -57,7 +58,8 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   const a=analysis(state(),b,c);
   const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),x==='read'&&!c.unlocked&&!a.ready?'disabled':`aria-pressed="${mode===x}"`)).join('');
   const p=memory.get(c.digest);
-  const body=mode==='study'?study(b,c,a):mode==='read'&&c.unlocked?p?`<div id="reader-pages"><div class="reader-guide-bar"><button class="btn btn-secondary" data-guide="toggle" aria-expanded="false">Reading guide</button><div data-guide-controls hidden><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Decrease reading speed">−</button><output></output><button data-guide="faster" aria-label="Increase reading speed">+</button></div></div>${article(p,a)}<div id="reader-boundary"></div></div>`:`<div class="panel stack"><h2>Reload chapter ${number}</h2><p>Your bookmark and study records are saved. Choose the chapter file to read its text on this device.</p>${importBtn}</div>`:review(b,c,a);
+  const body=mode==='study'?study(b,c,a):mode==='read'&&c.unlocked?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''}"><details class="reader-guide-bar"><summary aria-label="Reader controls" title="Reader controls"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h5m4 0h9M3 17h10m4 0h4"/><circle cx="10" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></summary><div class="reader-menu"><button class="btn btn-secondary" data-guide="toggle" aria-expanded="false">Reading guide</button><div data-guide-controls hidden><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Decrease reading speed">−</button><output></output><button data-guide="faster" aria-label="Increase reading speed">+</button></div><label><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label>${btn('exit','Exit reader')}</div></details>${article(p,a)}<div id="reader-boundary"></div></div>`:`<div class="panel stack"><h2>Reload chapter ${number}</h2><p>Your bookmark and study records are saved. Choose the chapter file to read its text on this device.</p>${importBtn}</div>`:review(b,c,a);
+  if(isReading())return body;
   return `<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${Object.entries(state().reader).map(([k,v])=>`<option value="${esc(k)}" ${k===novel?'selected':''}>${esc(v.title)}</option>`).join('')}</select></label><label>Chapter<select id="reader-chapter">${b.chapters.map(ch=>`<option value="${ch.number}" ${ch.number===number?'selected':''}>${esc(ch.title)}</option>`).join('')}</select></label></div><div class="reader-tabs">${tabs}</div>${body}`;
  }
  async function cached(c){
@@ -68,12 +70,13 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
    const p=JSON.parse(new TextDecoder().decode(bytes));validateChapter(p);memory.set(c.digest,p);return p;}
  }
  async function flush(){
-  if(writingPosition)await writingPosition;
-  clearTimeout(timer);const pos=pending;if(!pos)return;
+  while(writingPosition)await writingPosition;
+  clearTimeout(timer);const pos=pending,cpm=pendingRate;if(!pos&&cpm===null)return;
+  pendingRate=null;
   pending=null;
-  writingPosition=change(d=>{const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
+  writingPosition=change(d=>{if(cpm!==null)d.settings.readerCpm=cpm;if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
   const ok=await writingPosition;writingPosition=null;
-  if(!ok&&!pending){pending=pos;timer=setTimeout(flush,400);}
+  if(!ok){if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
  }
  function unmount(){disposeGuide?.();disposeGuide=null;observer?.disconnect();epoch++;}
  function mount(){
@@ -98,7 +101,7 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   }
   observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))void extend();},{rootMargin:'200px'});
   observer.observe(edge);
-  disposeGuide=mountReadingGuide(el,{position:c.position,initialRate:rate,rateChanged:value=>rate=value,extend,
+  disposeGuide=mountReadingGuide(el,{position:c.position,initialRate:pendingRate??state().settings.readerCpm??120,rateChanged:value=>{pendingRate=value;void flush();},extend,
    define:word=>void action('define',word),
    save:(n,position)=>{
     position.guided=el.classList.contains('guided');
@@ -141,6 +144,7 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
    const b=book(),c=chapter();if(!c)return;
    if(name==='define'){const item=b.items[el.dataset.key];modal(el.textContent||item.hanzi,`<p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small>`);return;}
    await flush();
+   if(name==='exit'){await choose(novel,Number(el.dataset.number)||book().current);globalThis.scrollTo?.(0,0);return;}
    if(name==='next'){await choose(novel,Number(el.dataset.number));return;}
    if(name==='finish'){
     const index=+el.dataset.number-1;
@@ -171,12 +175,17 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
    render();
   }catch(e){toast(e.message);}finally{busy=false;}
  }
- document.addEventListener('change',e=>{
+ document.addEventListener('change',async e=>{
+  if(e.target.id==='reader-highlight-in-book'){
+   const checked=e.target.checked;await flush();
+   if(await change(d=>{d.settings.readerHighlight=checked;},false))document.querySelector('#reader-pages')?.classList.toggle('show-weak',checked);
+   else e.target.checked=state().settings.readerHighlight;
+  }
   if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;render();}
   if(e.target.id==='reader-chapter')void choose(novel,+e.target.value);
   if(e.target.id==='reader-novel')void choose(e.target.value,state().reader[e.target.value].current);
  });
  globalThis.addEventListener?.('pagehide',()=>void flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)void flush();});
- return {view,mount,unmount,action,flush,reset(){unmount();sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';}};
+ return {view,isReading,mount,unmount,action,flush,reset(){unmount();pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';}};
 }

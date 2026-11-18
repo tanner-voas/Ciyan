@@ -101,3 +101,10 @@ test('early practice leaves scores, schedules and histories untouched; evidence 
  assert.deepEqual(a.queue.map(a.group),a.queue.map(a.group).sort());
  recordPractice(session,vocab,4);assert.ok(!readerAnalysis(s,b,c,now,session).weak.includes(vocab));
 });
+
+test('global reading speed survives verified full backup and defaults to 120 in older backups',()=>{
+ const s=defaultState();assert.equal(s.settings.readerCpm,120);
+ s.settings.readerCpm=300;assert.equal(restored(s).settings.readerCpm,300);
+ const old=JSON.parse(prepareVerifiedBackup(s).json);delete old.state.settings.readerCpm;
+ assert.equal(parseBackup(old).settings.readerCpm,120);
+});

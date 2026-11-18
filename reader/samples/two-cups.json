@@ -1,0 +1,483 @@
+{
+  "format": "ciyan-chapter",
+  "version": 1,
+  "novel": "two-cups",
+  "book": "两杯水 · HSK1 · TSK1 practice",
+  "title": "两杯水",
+  "number": 1,
+  "revision": 1,
+  "paragraphs": [
+    {
+      "id": "p1",
+      "tokens": [
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-和"
+        ],
+        [
+          "vocab-朋友"
+        ],
+        [
+          "vocab-一起"
+        ],
+        [
+          "vocab-去"
+        ],
+        [
+          "vocab-吃饭"
+        ],
+        "。",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-问"
+        ],
+        [
+          "vocab-他"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-你"
+        ],
+        [
+          "vocab-想"
+        ],
+        [
+          "vocab-喝"
+        ],
+        [
+          "vocab-茶"
+        ],
+        [
+          "vocab-吗"
+        ],
+        "？",
+        "”"
+      ]
+    },
+    {
+      "id": "p2",
+      "tokens": [
+        [
+          "vocab-他"
+        ],
+        [
+          "vocab-说"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-想"
+        ],
+        [
+          "vocab-喝"
+        ],
+        [
+          "vocab-水"
+        ],
+        "。",
+        "”",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-也"
+        ],
+        [
+          "vocab-想"
+        ],
+        [
+          "vocab-喝"
+        ],
+        [
+          "vocab-水"
+        ],
+        "。",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-说"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-请"
+        ],
+        [
+          "vocab-给"
+        ],
+        [
+          "vocab-我们"
+        ],
+        [
+          "vocab-两"
+        ],
+        [
+          "vocab-杯"
+        ],
+        [
+          "vocab-水"
+        ],
+        "。",
+        "”"
+      ]
+    },
+    {
+      "id": "p3",
+      "tokens": [
+        [
+          "vocab-水"
+        ],
+        [
+          "vocab-来"
+        ],
+        [
+          "vocab-了"
+        ],
+        "。",
+        [
+          "vocab-他"
+        ],
+        [
+          "vocab-看看"
+        ],
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-的"
+        ],
+        [
+          "vocab-杯子"
+        ],
+        "，",
+        [
+          "vocab-笑"
+        ],
+        [
+          "vocab-了"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-你"
+        ],
+        [
+          "vocab-的"
+        ],
+        [
+          "vocab-水"
+        ],
+        [
+          "vocab-比"
+        ],
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-的"
+        ],
+        [
+          "vocab-多"
+        ],
+        "！",
+        "”"
+      ]
+    },
+    {
+      "id": "p4",
+      "tokens": [
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-把"
+        ],
+        [
+          "vocab-两"
+        ],
+        [
+          "vocab-个"
+        ],
+        [
+          "vocab-杯子"
+        ],
+        [
+          "vocab-换"
+        ],
+        [
+          "vocab-了"
+        ],
+        [
+          "vocab-一下"
+        ],
+        "。",
+        [
+          "vocab-他"
+        ],
+        [
+          "vocab-看看"
+        ],
+        [
+          "vocab-我"
+        ],
+        "，",
+        [
+          "vocab-又"
+        ],
+        [
+          "vocab-看看"
+        ],
+        [
+          "vocab-水"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-现在"
+        ],
+        [
+          "vocab-好"
+        ],
+        [
+          "vocab-了"
+        ],
+        "。",
+        "”"
+      ]
+    }
+  ],
+  "items": {
+    "vocab-我": {
+      "kind": "vocab",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me"
+    },
+    "vocab-和": {
+      "kind": "vocab",
+      "hanzi": "和",
+      "pinyin": "hé",
+      "english": "And; with"
+    },
+    "vocab-朋友": {
+      "kind": "vocab",
+      "hanzi": "朋友",
+      "pinyin": "péng you",
+      "english": "Friend"
+    },
+    "vocab-一起": {
+      "kind": "vocab",
+      "hanzi": "一起",
+      "pinyin": "yī qǐ",
+      "english": "Together"
+    },
+    "vocab-去": {
+      "kind": "vocab",
+      "hanzi": "去",
+      "pinyin": "qù",
+      "english": "Go"
+    },
+    "vocab-吃饭": {
+      "kind": "vocab",
+      "hanzi": "吃饭",
+      "pinyin": "chī fàn",
+      "english": "Eat a meal"
+    },
+    "vocab-问": {
+      "kind": "vocab",
+      "hanzi": "问",
+      "pinyin": "wèn",
+      "english": "Ask"
+    },
+    "vocab-他": {
+      "kind": "vocab",
+      "hanzi": "他",
+      "pinyin": "tā",
+      "english": "He; him"
+    },
+    "vocab-你": {
+      "kind": "vocab",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You"
+    },
+    "vocab-想": {
+      "kind": "vocab",
+      "hanzi": "想",
+      "pinyin": "xiǎng",
+      "english": "Want to; think; miss someone"
+    },
+    "vocab-喝": {
+      "kind": "vocab",
+      "hanzi": "喝",
+      "pinyin": "hē",
+      "english": "Drink"
+    },
+    "vocab-茶": {
+      "kind": "vocab",
+      "hanzi": "茶",
+      "pinyin": "chá",
+      "english": "Tea"
+    },
+    "vocab-吗": {
+      "kind": "vocab",
+      "hanzi": "吗",
+      "pinyin": "ma",
+      "english": "Question particle"
+    },
+    "vocab-说": {
+      "kind": "vocab",
+      "hanzi": "说",
+      "pinyin": "shuō",
+      "english": "Say; speak"
+    },
+    "vocab-水": {
+      "kind": "vocab",
+      "hanzi": "水",
+      "pinyin": "shuǐ",
+      "english": "Water"
+    },
+    "vocab-也": {
+      "kind": "vocab",
+      "hanzi": "也",
+      "pinyin": "yě",
+      "english": "Also; too"
+    },
+    "vocab-请": {
+      "kind": "vocab",
+      "hanzi": "请",
+      "pinyin": "qǐng",
+      "english": "to ask; to invite; please (do sth)"
+    },
+    "vocab-给": {
+      "kind": "vocab",
+      "hanzi": "给",
+      "pinyin": "gěi",
+      "english": "to give; to or for someone"
+    },
+    "vocab-我们": {
+      "kind": "vocab",
+      "hanzi": "我们",
+      "pinyin": "wǒ men",
+      "english": "We; us"
+    },
+    "vocab-两": {
+      "kind": "vocab",
+      "hanzi": "两",
+      "pinyin": "liǎng",
+      "english": "Two (before most classifiers)"
+    },
+    "vocab-杯": {
+      "kind": "vocab",
+      "hanzi": "杯",
+      "pinyin": "bēi",
+      "english": "Cup; measure word"
+    },
+    "vocab-来": {
+      "kind": "vocab",
+      "hanzi": "来",
+      "pinyin": "lái",
+      "english": "Come"
+    },
+    "vocab-了": {
+      "kind": "vocab",
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "marks completion or a change of state"
+    },
+    "vocab-看看": {
+      "kind": "vocab",
+      "hanzi": "看看",
+      "pinyin": "kànkan",
+      "english": "to take a look"
+    },
+    "vocab-的": {
+      "kind": "vocab",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle"
+    },
+    "vocab-杯子": {
+      "kind": "vocab",
+      "hanzi": "杯子",
+      "pinyin": "bēi zi",
+      "english": "Cup; glass"
+    },
+    "vocab-笑": {
+      "kind": "vocab",
+      "hanzi": "笑",
+      "pinyin": "xiào",
+      "english": "Smile; laugh"
+    },
+    "vocab-比": {
+      "kind": "vocab",
+      "hanzi": "比",
+      "pinyin": "bǐ",
+      "english": "than (in a comparison)"
+    },
+    "vocab-多": {
+      "kind": "vocab",
+      "hanzi": "多",
+      "pinyin": "duō",
+      "english": "Many; much; more"
+    },
+    "vocab-把": {
+      "kind": "vocab",
+      "hanzi": "把",
+      "pinyin": "bǎ",
+      "english": "marks the object being acted on"
+    },
+    "vocab-个": {
+      "kind": "vocab",
+      "hanzi": "个",
+      "pinyin": "ge",
+      "english": "General classifier"
+    },
+    "vocab-换": {
+      "kind": "vocab",
+      "hanzi": "换",
+      "pinyin": "huàn",
+      "english": "to exchange; to change (clothes etc); to substitute"
+    },
+    "vocab-一下": {
+      "kind": "vocab",
+      "hanzi": "一下",
+      "pinyin": "yíxià",
+      "english": "briefly; for a moment"
+    },
+    "vocab-又": {
+      "kind": "vocab",
+      "hanzi": "又",
+      "pinyin": "yòu",
+      "english": "Again; also, often for a repeated event"
+    },
+    "vocab-现在": {
+      "kind": "vocab",
+      "hanzi": "现在",
+      "pinyin": "xiàn zài",
+      "english": "Now"
+    },
+    "vocab-好": {
+      "kind": "vocab",
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "english": "Good; okay"
+    }
+  },
+  "authored": [
+    "vocab-杯",
+    "vocab-水",
+    "vocab-茶",
+    "vocab-朋友",
+    "vocab-一起"
+  ]
+}

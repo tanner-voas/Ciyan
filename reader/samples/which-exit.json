@@ -1,0 +1,486 @@
+{
+  "format": "ciyan-chapter",
+  "version": 1,
+  "novel": "which-exit",
+  "book": "哪个出口？ · HSK1–2 · TSK1–2 practice",
+  "title": "哪个出口？",
+  "number": 1,
+  "revision": 1,
+  "paragraphs": [
+    {
+      "id": "p1",
+      "tokens": [
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-到"
+        ],
+        [
+          "vocab-了"
+        ],
+        [
+          "vocab-地铁站"
+        ],
+        "，",
+        [
+          "vocab-给"
+        ],
+        [
+          "vocab-朋友"
+        ],
+        [
+          "vocab-打电话"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-到"
+        ],
+        [
+          "vocab-了"
+        ],
+        "。",
+        [
+          "vocab-你"
+        ],
+        [
+          "vocab-在"
+        ],
+        [
+          "vocab-哪里"
+        ],
+        "？",
+        "”"
+      ]
+    },
+    {
+      "id": "p2",
+      "tokens": [
+        "“",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-在"
+        ],
+        [
+          "vocab-出口"
+        ],
+        [
+          "vocab-右边"
+        ],
+        "。",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-穿"
+        ],
+        [
+          "vocab-着"
+        ],
+        [
+          "vocab-一"
+        ],
+        [
+          "vocab-件"
+        ],
+        [
+          "vocab-红色"
+        ],
+        [
+          "vocab-的"
+        ],
+        [
+          "vocab-衣服"
+        ],
+        "。",
+        "”"
+      ]
+    },
+    {
+      "id": "p3",
+      "tokens": [
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-看"
+        ],
+        [
+          "vocab-了"
+        ],
+        [
+          "vocab-看"
+        ],
+        [
+          "vocab-左边"
+        ],
+        "，",
+        [
+          "vocab-又"
+        ],
+        [
+          "vocab-看"
+        ],
+        [
+          "vocab-了"
+        ],
+        [
+          "vocab-看"
+        ],
+        [
+          "vocab-右边"
+        ],
+        "。",
+        [
+          "vocab-没有"
+        ],
+        [
+          "vocab-人"
+        ],
+        [
+          "vocab-穿"
+        ],
+        [
+          "vocab-红色"
+        ],
+        [
+          "vocab-的"
+        ],
+        [
+          "vocab-衣服"
+        ],
+        "。",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-问"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-你"
+        ],
+        [
+          "vocab-在"
+        ],
+        [
+          "vocab-哪个"
+        ],
+        [
+          "vocab-出口"
+        ],
+        "？",
+        "”"
+      ]
+    },
+    {
+      "id": "p4",
+      "tokens": [
+        [
+          "vocab-电话"
+        ],
+        [
+          "vocab-里"
+        ],
+        [
+          "vocab-安静"
+        ],
+        [
+          "vocab-了"
+        ],
+        [
+          "vocab-一下"
+        ],
+        "。",
+        "“",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-在"
+        ],
+        [
+          "vocab-二"
+        ],
+        [
+          "vocab-号"
+        ],
+        [
+          "vocab-出口"
+        ],
+        "。",
+        "”",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-笑"
+        ],
+        [
+          "vocab-了"
+        ],
+        "：",
+        "“",
+        [
+          "vocab-那"
+        ],
+        [
+          "vocab-你"
+        ],
+        [
+          "vocab-等"
+        ],
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-一下"
+        ],
+        "。",
+        [
+          "vocab-我"
+        ],
+        [
+          "vocab-在"
+        ],
+        [
+          "vocab-一"
+        ],
+        [
+          "vocab-号"
+        ],
+        [
+          "vocab-出口"
+        ],
+        "！",
+        "”"
+      ]
+    }
+  ],
+  "items": {
+    "vocab-我": {
+      "kind": "vocab",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I; me"
+    },
+    "vocab-到": {
+      "kind": "vocab",
+      "hanzi": "到",
+      "pinyin": "dào",
+      "english": "To; arrive"
+    },
+    "vocab-了": {
+      "kind": "vocab",
+      "hanzi": "了",
+      "pinyin": "le",
+      "english": "marks completion or a change of state"
+    },
+    "vocab-地铁站": {
+      "kind": "vocab",
+      "hanzi": "地铁站",
+      "pinyin": "dì tiě zhàn",
+      "english": "Metro station"
+    },
+    "vocab-给": {
+      "kind": "vocab",
+      "hanzi": "给",
+      "pinyin": "gěi",
+      "english": "to give; to or for someone"
+    },
+    "vocab-朋友": {
+      "kind": "vocab",
+      "hanzi": "朋友",
+      "pinyin": "péng you",
+      "english": "Friend"
+    },
+    "vocab-打电话": {
+      "kind": "vocab",
+      "hanzi": "打电话",
+      "pinyin": "dǎ diàn huà",
+      "english": "Make a phone call"
+    },
+    "vocab-你": {
+      "kind": "vocab",
+      "hanzi": "你",
+      "pinyin": "nǐ",
+      "english": "You"
+    },
+    "vocab-在": {
+      "kind": "vocab",
+      "hanzi": "在",
+      "pinyin": "zài",
+      "english": "At; in; ongoing action"
+    },
+    "vocab-哪里": {
+      "kind": "vocab",
+      "hanzi": "哪里",
+      "pinyin": "nǎ lǐ",
+      "english": "Where"
+    },
+    "vocab-出口": {
+      "kind": "vocab",
+      "hanzi": "出口",
+      "pinyin": "chū kǒu",
+      "english": "Exit"
+    },
+    "vocab-右边": {
+      "kind": "vocab",
+      "hanzi": "右边",
+      "pinyin": "yòu biān",
+      "english": "Right side"
+    },
+    "vocab-穿": {
+      "kind": "vocab",
+      "hanzi": "穿",
+      "pinyin": "chuān",
+      "english": "to wear; to put on; to dress"
+    },
+    "vocab-着": {
+      "kind": "vocab",
+      "hanzi": "着",
+      "pinyin": "zhe",
+      "english": "marks a continuing action or state"
+    },
+    "vocab-一": {
+      "kind": "vocab",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "english": "One"
+    },
+    "vocab-件": {
+      "kind": "vocab",
+      "hanzi": "件",
+      "pinyin": "jiàn",
+      "english": "classifier for items of clothing"
+    },
+    "vocab-红色": {
+      "kind": "vocab",
+      "hanzi": "红色",
+      "pinyin": "hóng sè",
+      "english": "Red"
+    },
+    "vocab-的": {
+      "kind": "vocab",
+      "hanzi": "的",
+      "pinyin": "de",
+      "english": "Possessive or attributive particle"
+    },
+    "vocab-衣服": {
+      "kind": "vocab",
+      "hanzi": "衣服",
+      "pinyin": "yī fu",
+      "english": "Clothes"
+    },
+    "vocab-看": {
+      "kind": "vocab",
+      "hanzi": "看",
+      "pinyin": "kàn",
+      "english": "Look; watch; read"
+    },
+    "vocab-左边": {
+      "kind": "vocab",
+      "hanzi": "左边",
+      "pinyin": "zuǒ biān",
+      "english": "Left side"
+    },
+    "vocab-又": {
+      "kind": "vocab",
+      "hanzi": "又",
+      "pinyin": "yòu",
+      "english": "Again; also, often for a repeated event"
+    },
+    "vocab-没有": {
+      "kind": "vocab",
+      "hanzi": "没有",
+      "pinyin": "méi yǒu",
+      "english": "Not have; there is no; have not"
+    },
+    "vocab-人": {
+      "kind": "vocab",
+      "hanzi": "人",
+      "pinyin": "rén",
+      "english": "Person; people"
+    },
+    "vocab-问": {
+      "kind": "vocab",
+      "hanzi": "问",
+      "pinyin": "wèn",
+      "english": "Ask"
+    },
+    "vocab-哪个": {
+      "kind": "vocab",
+      "hanzi": "哪个",
+      "pinyin": "nǎ ge",
+      "english": "Which one"
+    },
+    "vocab-电话": {
+      "kind": "vocab",
+      "hanzi": "电话",
+      "pinyin": "diàn huà",
+      "english": "telephone; phone call; phone number"
+    },
+    "vocab-里": {
+      "kind": "vocab",
+      "hanzi": "里",
+      "pinyin": "lǐ",
+      "english": "Inside; within"
+    },
+    "vocab-安静": {
+      "kind": "vocab",
+      "hanzi": "安静",
+      "pinyin": "ān jìng",
+      "english": "Quiet"
+    },
+    "vocab-一下": {
+      "kind": "vocab",
+      "hanzi": "一下",
+      "pinyin": "yíxià",
+      "english": "briefly; for a moment"
+    },
+    "vocab-二": {
+      "kind": "vocab",
+      "hanzi": "二",
+      "pinyin": "èr",
+      "english": "Two (number)"
+    },
+    "vocab-号": {
+      "kind": "vocab",
+      "hanzi": "号",
+      "pinyin": "hào",
+      "english": "number (as in exit number two)"
+    },
+    "vocab-笑": {
+      "kind": "vocab",
+      "hanzi": "笑",
+      "pinyin": "xiào",
+      "english": "Smile; laugh"
+    },
+    "vocab-那": {
+      "kind": "vocab",
+      "hanzi": "那",
+      "pinyin": "nà",
+      "english": "That"
+    },
+    "vocab-等": {
+      "kind": "vocab",
+      "hanzi": "等",
+      "pinyin": "děng",
+      "english": "Wait"
+    }
+  },
+  "authored": [
+    "vocab-出口",
+    "vocab-地铁站",
+    "vocab-左边",
+    "vocab-右边",
+    "vocab-打电话"
+  ]
+}
