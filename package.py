@@ -20,6 +20,7 @@ STATIC_FILES = (
     "study-engine.js",
     "tag-weights.js",
     "grammar-context.js",
+    "context-matching.js",
     "review-scheduler.js",
     "particles.js", "particle-content.js", "learning-feedback.js",
     "tags.js",

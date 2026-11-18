@@ -1,0 +1,767 @@
+[
+ {
+  "id": "v062-grammar-f1f056db28d0f576edab",
+  "markup": "{你}{不必}{担心}，{我}{已经}{买}{好}{保险}{了}。",
+  "pinyin": "Nǐ bù bì dān xīn, wǒ yǐ jīng mǎi hǎo bǎo xiǎn le.",
+  "english": "You needn't worry; I've already bought insurance.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-a45d4a8dff04068fcde0",
+  "markup": "{如果}{你}{有}{把握}，{就}{大胆}{地}{试}{一}{次}。",
+  "pinyin": "Rú guǒ nǐ yǒu bǎ wò, jiù dà dǎn de shì yí cì.",
+  "english": "If you're confident, go ahead and give it a try.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-f3507369d62d6f84db0e",
+  "markup": "{请}{先}{在}{前台}{报到}，{然后}{到}{会议}{室}{等候}。",
+  "pinyin": "Qǐng xiān zài qián tái bào dào, rán hòu dào huì yì shì děng hòu.",
+  "english": "Please check in at reception first, then wait in the meeting room.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-a103eb0a11b13e634603",
+  "markup": "{这}{家}{商店}{主要}{销售}{被子}、{衬衣}{和}{其他}{日常}{用品}。",
+  "pinyin": "Zhè jiā shāng diàn zhǔ yào xiāo shòu bèi zi, chèn yī hé qí tā rì cháng yòng pǐn.",
+  "english": "This shop mainly sells quilts, shirts and other household goods.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-b340a4ea57fb48127c6c",
+  "markup": "{这个}{孩子}{很}{有}{本领}，{八}{岁}{就}{会}{弹}{钢琴}。",
+  "pinyin": "Zhè ge hái zi hěn yǒu běn lǐng, bā suì jiù huì dàn gāng qín.",
+  "english": "This child is very talented; he could play the piano at eight.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-2e0d51611a6316f08851",
+  "markup": "{学生}{的}{人数}{比例}{发生}{了}{变化}，{学校}{需要}{调整}{计划}。",
+  "pinyin": "Xué sheng de rén shù bǐ lì fā shēng le biàn huà, xué xiào xū yào tiáo zhěng jì huà.",
+  "english": "The proportion of students has changed, so the school needs to adjust its plans.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-ecbf8fe0b42d44333e76",
+  "markup": "{这些}{技术}{变化}{必然}{会}{带来}{新的}{挑战}。",
+  "pinyin": "Zhè xiē jì shù biàn huà bì rán huì dài lái xīn de tiǎo zhàn.",
+  "english": "These technological changes will inevitably bring new challenges.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-c4badf3970c926f7a246",
+  "markup": "{她}{把}{文章}{的}{标题}{改}{得}{更}{简洁}{了}。",
+  "pinyin": "Tā bǎ wén zhāng de biāo tí gǎi de gèng jiǎn jié le.",
+  "english": "She revised the article's title to make it more concise.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-5e0982c817a736559e0a",
+  "markup": "{这}{部}{电视剧}{每}{周}{播出}{两}{集}，{可以}{在}{网上}{观看}。",
+  "pinyin": "Zhè bù diàn shì jù měi zhōu bō chū liǎng jí, kě yǐ zài wǎng shàng guān kàn.",
+  "english": "Two episodes of this drama air each week, and you can watch it online.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-d6d09b45c49bac3283ca",
+  "markup": "{请}{把}{音乐}{播放}{出来}，{让}{大家}{都}{听}{一}{听}。",
+  "pinyin": "Qǐng bǎ yīn yuè bō fàng chū lái, ràng dà jiā dōu tīng yì tīng.",
+  "english": "Please play the music so everyone can listen.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-d5127fa60d95b43bc9db",
+  "markup": "{无论}{遇到}{什么}{困难}，{他}{都}{不}{会}{轻易}{放弃}。",
+  "pinyin": "Wú lùn yù dào shén me kùn nan, tā dōu bú huì qīng yi fàng qì.",
+  "english": "No matter what difficulties he encounters, he never gives up easily.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-8884349c28741ae90fd9",
+  "markup": "{听到}{这个}{消息}，{我}{不仅}{吃惊}，{还}{有}{一}{点}{不安}。",
+  "pinyin": "Tīng dào zhè ge xiāo xi, wǒ bù jǐn chī jīng, hái yǒu yì diǎn bù ān.",
+  "english": "Hearing the news, I was not only surprised but also a little uneasy.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-57595566c48b97ee19a4",
+  "markup": "{他}{不光}{懂}{汉语}，{还}{会}{说}{英语}{和}{法语}。",
+  "pinyin": "Tā bù guāng dǒng Hàn yǔ, hái huì shuō yīng yǔ hé Fǎ yǔ.",
+  "english": "He knows not only Chinese but also English and French.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-4e9313f0a1fe4007b247",
+  "markup": "{我}{第}{一}{次}{登}{上}{长城}，{才}{真正}{理解}{它}{有}{多么}{壮观}。",
+  "pinyin": "Wǒ dì yí cì dēng shàng Cháng chéng, cái zhēn zhèng lǐ jiě tā yǒu duō me zhuàng guān.",
+  "english": "I didn't truly understand how magnificent the Great Wall is until I climbed it.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-c7a4521d65a5f3e7ac59",
+  "markup": "{不要}{只}{看}{自己}{的}{长处}，{也}{要}{了解}{自己}{的}{短处}。",
+  "pinyin": "Bù yào zhǐ kàn zì jǐ de cháng chu, yě yào liǎo jiě zì jǐ de duǎn chu.",
+  "english": "Don't just focus on your strengths; understand your weaknesses too.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-e286f33e28d3acde4337",
+  "markup": "{他}{从前}{经常}{和}{同学}{吵架}，{现在}{成熟}{了}{很多}。",
+  "pinyin": "Tā cóng qián jīng cháng hé tóng xué chǎo jià, xiàn zài chéng shú le hěn duō.",
+  "english": "He used to quarrel with classmates often, but now he's much more mature.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-49c705bc58edcbc2c5b7",
+  "markup": "{这}{个}{小}{厂}{虽然}{不}{大}，{生产}{的}{产品}{却}{很}{有名}。",
+  "pinyin": "Zhè ge xiǎo chǎng suī rán bú dà, shēng chǎn de chǎn pǐn què hěn yǒu míng.",
+  "english": "Although this factory is small, its products are well known.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-31762023fa193ec4bcc5",
+  "markup": "{我}{听说}{了}{这个}{场所}{的}{安全}{规定}，{决定}{遵守}。",
+  "pinyin": "Wǒ tīng shuō le zhè ge chǎng suǒ de ān quán guī dìng, jué dìng zūn shǒu.",
+  "english": "I've heard about this venue's safety rules and decided to follow them.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-24e37b8d28e9d0ee76f6",
+  "markup": "{她}{从}{初中}{开始}{学}{美术}，{后来}{选择}{从事}{设计}{工作}。",
+  "pinyin": "Tā cóng chū zhōng kāi shǐ xué měi shù, hòu lái xuǎn zé cóng shì shè jì gōng zuò.",
+  "english": "She studied art from middle school and later decided to work in design.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-a5ba4bf83051c7ff501d",
+  "markup": "{老师}{希望}{通过}{这}{门}{课程}{培养}{学生}{的}{创造}{能力}。",
+  "pinyin": "Lǎo shī xī wàng tōng guò zhè mén kè chéng péi yǎng xué sheng de chuàng zào néng lì.",
+  "english": "The teacher hopes this course will develop students' creativity.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-a2d2eb9aef366d883cd0",
+  "markup": "{这}{位}{作家}{每天}{坚持}{创作}，{已经}{写}{了}{十}{部}{小说}。",
+  "pinyin": "Zhè wèi zuò jiā měi tiān jiān chí chuàng zuò, yǐ jīng xiě le shí bù xiǎo shuō.",
+  "english": "This author writes every day and has already written ten novels.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-4ef0a1c2db9ee30edd9a",
+  "markup": "{他}{的}{父亲}{曾经}{创业}，{所以}{很}{了解}{开}{公司}{的}{风险}。",
+  "pinyin": "Tā de fù qin céng jīng chuàng yè, suǒ yǐ hěn liǎo jiě kāi gōng sī de fēng xiǎn.",
+  "english": "His father once started a business, so he understands the risks of running a company.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-10375a615b9bae805064",
+  "markup": "{外面}{突然}{传来}{一阵}{哭}{的}{声音}，{大家}{都}{跑}{出去}{看}。",
+  "pinyin": "Wài miàn tū rán chuán lái yī zhèn kū de shēng yīn, dà jiā dōu pǎo chū qù kàn.",
+  "english": "A burst of crying suddenly came from outside, and everyone ran out to look.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-ddcf48aec06e457aab08",
+  "markup": "{她}{鼓}{起}{勇气}，{终于}{打破}{了}{长期}{的}{沉默}。",
+  "pinyin": "Tā gǔ qǐ yǒng qì, zhōng yú dǎ po le cháng qī de chén mò.",
+  "english": "She found the courage to finally break her long silence.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-9af26f342074cb3b7676",
+  "markup": "{请}{帮}{我}{打听}{一下}，{附近}{有}{没有}{可靠}{的}{修理}{店}。",
+  "pinyin": "Qǐng bāng wǒ dǎ ting yí xià, fù jìn yǒu méi yǒu kě kào de xiū lǐ diàn.",
+  "english": "Could you ask around and find out whether there's a reliable repair shop nearby?",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-3fd933a1737dea8e4ef9",
+  "markup": "{我}{大概}{需要}{半}{小时}，{才能}{把}{这些}{文件}{整理}{好}。",
+  "pinyin": "Wǒ dà gài xū yào bàn xiǎo shí, cái néng bǎ zhè xiē wén jiàn zhěng lǐ hǎo.",
+  "english": "I'll probably need half an hour to organize these documents.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-7f49f0255229e895ac6a",
+  "markup": "{申请}{签证}{时}，{他}{还}{需要}{去}{大使馆}{提交}{材料}。",
+  "pinyin": "Shēn qǐng qiān zhèng shí, tā hái xū yào qù dà shǐ guǎn tí jiāo cái liào.",
+  "english": "When applying for a visa, he also needs to submit documents at the embassy.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-a0bee1999f99016ecade",
+  "markup": "{这个}{工作}{大约}{要}{三}{天}{完成}，{但}{具体}{时间}{还}{没}{确定}。",
+  "pinyin": "Zhè ge gōng zuò dà yuē yào sān tiān wán chéng, dàn jù tǐ shí jiān hái méi què dìng.",
+  "english": "The work will take roughly three days, but the exact timing hasn't been fixed.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-bd2457f4044667661903",
+  "markup": "{她}{的}{大夫}{建议}{她}{多}{休息}，{不要}{熬夜}。",
+  "pinyin": "Tā de dà fū jiàn yì tā duō xiū xi, bù yào áo yè.",
+  "english": "Her doctor advised her to rest more and avoid staying up late.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-6f27d331c7933687c73b",
+  "markup": "{代表团}{抵达}{机场}{以后}，{工作}{人员}{安排}{了}{接待}。",
+  "pinyin": "Dài biǎo tuán dǐ dá jī chǎng yǐ hòu, gōng zuò rén yuán ān pái le jiē dài.",
+  "english": "After the delegation arrived at the airport, staff arranged the reception.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-57f603ea206ba7c8c109",
+  "markup": "{这}{项}{新}{政策}{带动}{了}{当地}{旅游}{行业}{的}{发展}。",
+  "pinyin": "Zhè xiàng xīn zhèng cè dài dòng le dāng dì lǚ yóu háng yè de fā zhǎn.",
+  "english": "The new policy stimulated growth in local tourism.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-043eadbcc724f92b4853",
+  "markup": "{这}{位}{年轻}{教师}{带领}{学生}{参加}{了}{全国}{比赛}。",
+  "pinyin": "Zhè wèi nián qīng jiào shī dài lǐng xué sheng cān jiā le quán guó bǐ sài.",
+  "english": "The young teacher led the students in a national competition.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-2a9edf4925f9b2dd388a",
+  "markup": "{每}{个}{单元}{结束}{以后}，{老师}{都会}{安排}{一}{次}{复习}。",
+  "pinyin": "Měi ge dān yuán jié shù yǐ hòu, lǎo shī dū huì ān pái yí cì fù xí.",
+  "english": "At the end of each unit, the teacher arranges a review.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-e30134015f0c7843a8c5",
+  "markup": "{当初}{他}{没}{想到}{这}{个}{简单}{决定}{会}{改变}{自己}{的}{生活}。",
+  "pinyin": "Dāng chū tā méi xiǎng dào zhè ge jiǎn dān jué dìng huì gǎi biàn zì jǐ de shēng huó.",
+  "english": "When he made the decision, he never imagined it would change his life.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-b12175fa41e7ac1f9a31",
+  "markup": "{那}{块}{石头}{底下}{藏}{着}{一}{只}{小}{虫子}。",
+  "pinyin": "Nà kuài shí tou dǐ xia cáng zhe yì zhǐ xiǎo chóng zi.",
+  "english": "A small insect is hiding under that rock.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-218b6bb7c50cc9ee7d6b",
+  "markup": "{请}{在}{邮件}{里}{说明}{你}{的}{要求}，{我}{明天}{回复}。",
+  "pinyin": "Qǐng zài yóu jiàn lǐ shuō míng nǐ de yāo qiú, wǒ míng tiān huí fù.",
+  "english": "Explain your requirements in the email, and I'll reply tomorrow.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-cb56030f2dcb2a6c1613",
+  "markup": "{他}{经常}{听}{广播}，{也}{喜欢}{收听}{新闻}{节目}。",
+  "pinyin": "Tā jīng cháng tīng guǎng bō, yě xǐ huan shōu tīng xīn wén jié mù.",
+  "english": "He listens to the radio frequently and enjoys news programs.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-d58e83386490f193e139",
+  "markup": "{这}{个}{地方}{有}{不少}{美丽}{的}{风景}，{很}{适合}{摄影}。",
+  "pinyin": "Zhè ge dì fang yǒu bù shǎo měi lì de fēng jǐng, hěn shì hé shè yǐng.",
+  "english": "This area has plenty of beautiful scenery and is ideal for photography.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-286f7f3323faf4abab61",
+  "markup": "{他}{的}{新}{发明}{获得}{了}{一}{项}{技术}{奖}。",
+  "pinyin": "Tā de xīn fā míng huò dé le yí xiàng jì shù jiǎng.",
+  "english": "His new invention won a technology prize.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-8b77a8da733a7fd34f61",
+  "markup": "{他}{昨天}{发送}{了}{电子邮件}，{还}{附}{上}{了}{文件}。",
+  "pinyin": "Tā zuó tiān fā song le diàn zǐ yóu jiàn, hái fù shàng le wén jiàn.",
+  "english": "He sent an email yesterday and attached the documents.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-812f1b2805a473bd3857",
+  "markup": "{这}{项}{计划}{的}{范围}{很}{广}，{涉及}{多}{个}{部门}。",
+  "pinyin": "Zhè xiàng jì huà de fàn wéi hěn guǎng, shè jí duō ge bù mén.",
+  "english": "The plan covers a broad range of areas and involves several departments.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-ff8d5adff5f42dbbb641",
+  "markup": "{新闻}{记者}{正在}{访问}{一}{位}{刚}{回国}{的}{科学}{家}。",
+  "pinyin": "Xīn wén jì zhě zhèng zài fǎng wèn yí wèi gāng huí guó de kē xué jiā.",
+  "english": "A reporter is interviewing a scientist who has just returned from abroad.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-187a517ce760e58775e5",
+  "markup": "{飞机}{飞行}{期间}{请}{关闭}{手机}{的}{无线}{功能}。",
+  "pinyin": "Fēi jī fēi xíng qī jiān qǐng guān bì shǒu jī de wú xiàn gōng néng.",
+  "english": "Please turn off your phone's wireless functions during the flight.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-629ccbaa0af82f3c7a6b",
+  "markup": "{这}{份}{工作}{的}{费用}{比}{预期}{高}，{需要}{调整}{预算}。",
+  "pinyin": "Zhè fèn gōng zuò de fèi yong bǐ yù qī gāo, xū yào tiáo zhěng yù suàn.",
+  "english": "The cost of this job is higher than expected, so the budget needs adjusting.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-966b3b4af3d09029bc56",
+  "markup": "{我们}{决定}{分组}{讨论}，{每}{组}{负责}{不同}{的}{问题}。",
+  "pinyin": "Wǒ men jué dìng fēn zǔ tǎo lùn, měi zǔ fù zé bù tóng de wèn tí.",
+  "english": "We decided to discuss in groups, with each group responsible for a different issue.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-7aadf25889cf032243ac",
+  "markup": "{老师}{没有}{否定}{他}{的}{想法}，{只是}{要求}{更多}{证据}。",
+  "pinyin": "Lǎo shī méi yǒu fǒu dìng tā de xiǎng fǎ, zhǐ shì yāo qiú gèng duō zhèng jù.",
+  "english": "The teacher didn't dismiss his idea; she just asked for more evidence.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-0190f5d5e21f9e0dc530",
+  "markup": "{他}{否认}{自己}{参与}{了}{那}{次}{事件}。",
+  "pinyin": "Tā fǒu rèn zì jǐ cān yù le nà cì shì jiàn.",
+  "english": "He denied taking part in that incident.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-1f49867f98c882c9b32b",
+  "markup": "{这}{家}{公司}{设计}{的}{服装}{很}{适合}{年轻}{人}。",
+  "pinyin": "Zhè jiā gōng sī shè jì de fú zhuāng hěn shì hé nián qīng rén.",
+  "english": "The clothes designed by this company are well suited to young people.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-1dc7ce6daf5c1b3aa717",
+  "markup": "{我}{需要}{复印}{这}{份}{文件}，{请问}{附近}{哪里}{有}{复印}{店}？",
+  "pinyin": "Wǒ xū yào fù yìn zhè fèn wén jiàn, qǐng wèn fù jìn nǎ lǐ yǒu fù yìn diàn?",
+  "english": "I need to photocopy this document. Is there a copy shop nearby?",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-7973376877077b6017a3",
+  "markup": "{你}{赶快}{过来}{吧}，{比赛}{马上}{就}{开始}{了}。",
+  "pinyin": "Nǐ gǎn kuài guò lai ba, bǐ sài mǎ shàng jiù kāi shǐ le.",
+  "english": "Come over quickly; the match is about to begin.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-3419b1593849916028d5",
+  "markup": "{你}{干吗}{这么}{着急}？{现在}{还有}{很多}{时间}。",
+  "pinyin": "Nǐ gàn má zhè me zháo jí? xiàn zài hái yǒu hěn duō shí jiān.",
+  "english": "Why are you in such a hurry? We still have plenty of time.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-6604aa66097079a8da96",
+  "markup": "{交警}{让}{司机}{靠}{边}{停车}，{检查}{车辆}{的}{证件}。",
+  "pinyin": "Jiāo jǐng ràng sī jī kào biān tíng chē, jiǎn chá chē liàng de zhèng jiàn.",
+  "english": "The traffic police asked the driver to pull over and checked the vehicle documents.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-c7969e0793fb28b9b839",
+  "markup": "{所有}{公民}{都}{有}{权利}{表达}{自己}{的}{意见}。",
+  "pinyin": "Suǒ yǒu gōng mín dōu yǒu quán lì biǎo dá zì jǐ de yì jian.",
+  "english": "Every citizen has the right to express their views.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-87c49483a4c2f46f3f41",
+  "markup": "{她}{的}{普通话}{说}{得}{很}{好}，{也}{了解}{当地}{方言}。",
+  "pinyin": "Tā de pǔ tōng huà shuō de hěn hǎo, yě liǎo jiě dāng dì fāng yán.",
+  "english": "She speaks Mandarin well and also understands the local dialect.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-f41fca9d74db48beddfd",
+  "markup": "{虽然}{这个}{方法}{很}{简单}，{但}{并}{不}{适用}{于}{所有}{情况}。",
+  "pinyin": "Suī rán zhè ge fāng fǎ hěn jiǎn dān, dàn bìng bú shì yòng yú suǒ yǒu qíng kuàng.",
+  "english": "Although this method is simple, it isn't suitable in every situation.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-6e780a2933f10aad1ca2",
+  "markup": "{请}{按}{规则}{排队}，{不要}{随便}{插}{队}。",
+  "pinyin": "Qǐng àn guī zé pái duì, bù yào suí biàn chā duì.",
+  "english": "Please queue according to the rules; don't cut in line.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-64247f4c18c6651404a3",
+  "markup": "{两}{国}{之间}{已经}{建立}{合法}{的}{商业}{合作}{关系}。",
+  "pinyin": "Liǎng guó zhī jiān yǐ jīng jiàn lì hé fǎ de shāng yè hé zuò guān xi.",
+  "english": "The two countries have established a lawful commercial partnership.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-28585660fd0e83ea526b",
+  "markup": "{这}{批}{产品}{经}{检查}{合格}，{可以}{正式}{出售}{了}。",
+  "pinyin": "Zhè pī chǎn pǐn jīng jiǎn chá hé gé, kě yǐ zhèng shì chū shòu le.",
+  "english": "This batch of products passed inspection and can now be sold.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-fe67ca172ae03060830e",
+  "markup": "{他}{端}{起}{杯子}{喝}{了}{一}{口}{红酒}，{然后}{继续}{聊天}。",
+  "pinyin": "Tā duān qǐ bēi zi hē le yì kǒu hóng jiǔ, rán hòu jì xù liáo tiān.",
+  "english": "He lifted his glass, took a sip of red wine, and continued chatting.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-92d0b4df29ed48584870",
+  "markup": "{我们}{计划}{后年}{去}{欧洲}{旅行}，{今年}{先}{攒}{钱}。",
+  "pinyin": "Wǒ men jì huà hòu nián qù ōu zhōu lǚ xíng, jīn nián xiān zǎn qián.",
+  "english": "We plan to travel to Europe the year after next and are saving money this year.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-7da25312ce8043463319",
+  "markup": "{小时候}{我}{经常}{和}{父亲}{在}{湖}{上}{划船}。",
+  "pinyin": "Xiǎo shí hou wǒ jīng cháng hé fù qin zài hú shàng huá chuán.",
+  "english": "When I was young, I often went rowing on the lake with my father.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-372d5866e966812a20fd",
+  "markup": "{这个}{节日}{吸引}{了}{很多}{华人}{来}{参加}{活动}。",
+  "pinyin": "Zhè ge jié rì xī yǐn le hěn duō huá rén lái cān jiā huó dòng.",
+  "english": "This festival attracted many people of Chinese descent to participate.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-dfaca9f6cb38632fee54",
+  "markup": "{她}{很}{高兴}{看到}{孩子}{们}{脸}{上}{充满}{欢乐}。",
+  "pinyin": "Tā hěn gāo xìng kàn dào hái zi men liǎn shàng chōng mǎn huān lè.",
+  "english": "She was delighted to see the children's faces full of joy.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-471829aca3e81e899f90",
+  "markup": "{学生}{需要}{在}{一}{周}{内}{完成}{所有}{功课}。",
+  "pinyin": "Xué sheng xū yào zài yì zhōu nèi wán chéng suǒ yǒu gōng kè.",
+  "english": "Students need to complete all their homework within a week.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-939f62df7e42c11cebfe",
+  "markup": "{这个}{软件}{的}{功能}{很多}，{需要}{慢慢}{学习}。",
+  "pinyin": "Zhè ge ruǎn jiàn de gōng néng hěn duō, xū yào màn màn xué xí.",
+  "english": "This software has many functions that take time to learn.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-d73efd09a0d33e3261a2",
+  "markup": "{这}{位}{姑娘}{主动}{帮}{老人}{找}{路}，{十分}{热心}。",
+  "pinyin": "Zhè wèi gū niang zhǔ dòng bāng lǎo ren zhǎo lù, shí fēn rè xīn.",
+  "english": "The young woman kindly took the initiative to help the elderly person find the way.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-5da0f2f3f1d80220a3e0",
+  "markup": "{国庆}{假期}{我们}{打算}{带}{家人}{去}{海边}。",
+  "pinyin": "Guó qìng jià qī wǒ men dǎ suàn dài jiā rén qù hǎi biān.",
+  "english": "We're planning to take the family to the seaside during the National Day holiday.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-8ca4af0a51736c4b43ec",
+  "markup": "{我}{果然}{没有}{猜}{错}，{他}{真的}{赢}{了}{比赛}。",
+  "pinyin": "Wǒ guǒ rán méi yǒu cāi cuò, tā zhēn de yíng le bǐ sài.",
+  "english": "Just as I thought, he really did win the match.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-5ef53ede24523b6474ba",
+  "markup": "{她}{的}{设计}{获得}{了}{金牌}，{大家}{都}{替}{她}{高兴}。",
+  "pinyin": "Tā de shè jì huò dé le jīn pái, dà jiā dōu tì tā gāo xìng.",
+  "english": "Her design won a gold medal, and everyone was happy for her.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-a9bb764a94a5aa0e68a1",
+  "markup": "{他们}{参加}{比赛}{仅仅}{为了}{学习}{经验}，{并}{不}{在乎}{排名}。",
+  "pinyin": "Tā men cān jiā bǐ sài jǐn jǐn wèi le xué xí jīng yàn, bìng bú zài hu pái míng.",
+  "english": "They joined the competition purely to gain experience and don't care about ranking.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-0fd6f83bb9ad1788f934",
+  "markup": "{这}{次}{演出}{非常}{精彩}，{观众}{一直}{热情}{鼓掌}。",
+  "pinyin": "Zhè cì yǎn chū fēi cháng jīng cǎi, guān zhòng yī zhí rè qíng gǔ zhǎng.",
+  "english": "The performance was wonderful, and the audience applauded enthusiastically throughout.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-f3b05c34b11f6cec155b",
+  "markup": "{这}{项}{计划}{需要}{足够}{的}{决心}，{不能}{轻易}{放弃}。",
+  "pinyin": "Zhè xiàng jì huà xū yào zú gòu de jué xīn, bù néng qīng yi fàng qì.",
+  "english": "The plan requires real determination; we can't give up easily.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-c16cb14bdf12f29c59b4",
+  "markup": "{他}{在}{大学}{学习}{科技}{管理}，{毕业}{后}{进入}{一}{家}{公司}。",
+  "pinyin": "Tā zài dà xué xué xí kē jì guǎn lǐ, bì yè hòu jìn rù yì jiā gōng sī.",
+  "english": "He studied technology management at university and joined a company after graduation.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-bceb4e1f2f2c7dd8b9da",
+  "markup": "{这样}{的}{改变}{恐怕}{需要}{很}{长}{时间}{才能}{实现}。",
+  "pinyin": "Zhè yàng de gǎi biàn kǒng pà xū yào hěn cháng shí jiān cái néng shí xiàn.",
+  "english": "I'm afraid a change like this may take a long time to achieve.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-b04537d37874d43788be",
+  "markup": "{这个}{故事}{让}{老百姓}{很}{感动}，{大家}{都}{在}{讨论}。",
+  "pinyin": "Zhè ge gù shi ràng lǎo bǎi xìng hěn gǎn dòng, dà jiā dōu zài tǎo lùn.",
+  "english": "The story moved ordinary people, and everyone is discussing it.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-831604544e715eaee530",
+  "markup": "{这}{位}{老太太}{每天}{到}{公园}{散步}，{身体}{很}{好}。",
+  "pinyin": "Zhè wèi lǎo tài tai měi tiān dào gōng yuán sàn bù, shēn tǐ hěn hǎo.",
+  "english": "This elderly woman walks in the park every day and is in good health.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-fd19e6f40701e19db20e",
+  "markup": "{他}{的}{功夫}{很}{好}，{可以}{完成}{不少}{困难}{的}{动作}。",
+  "pinyin": "Tā de gōng fu hěn hǎo, kě yǐ wán chéng bù shǎo kùn nan de dòng zuò.",
+  "english": "His martial arts skills are excellent, and he can perform many difficult movements.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-0036f0f361e7700b4429",
+  "markup": "{没有}{训练}{经验}{的}{人}，{不要}{随便}{尝试}{这}{种}{动作}。",
+  "pinyin": "Méi yǒu xùn liàn jīng yàn de rén, bù yào suí biàn cháng shì zhè zhǒng dòng zuò.",
+  "english": "People without training experience shouldn't try this movement casually.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-1b8576e6822c11e85931",
+  "markup": "{她}{对}{这个}{问题}{不}{太}{有}{把握}，{决定}{再}{查}{一些}{资料}。",
+  "pinyin": "Tā duì zhè ge wèn tí bú tài yǒu bǎ wò, jué dìng zài chá yī xiē zī liào.",
+  "english": "She's unsure about the issue and decided to consult more information.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-6a102e48176453ce4735",
+  "markup": "{他们}{面对}{生活}{中}{的}{各种}{困难}，{始终}{保持}{乐观}。",
+  "pinyin": "Tā men miàn duì shēng huó zhōng de gè zhǒng kùn nan, shǐ zhōng bǎo chí lè guān.",
+  "english": "They remain optimistic in the face of life's many difficulties.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-807886ca12235e5e6c21",
+  "markup": "{无论}{是}{学生}{还是}{教师}，{都}{应该}{互相}{尊重}。",
+  "pinyin": "Wú lùn shì xué sheng hái shi jiào shī, dōu yīng gāi hù xiāng zūn zhòng.",
+  "english": "Students and teachers alike should respect one another.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-4173ed09b94556df0266",
+  "markup": "{我}{刚刚}{理发}，{你}{觉得}{怎么样}？",
+  "pinyin": "Wǒ gāng gang lǐ fà, nǐ jué de zěn me yàng?",
+  "english": "I just got a haircut. What do you think?",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-166d3e568520c38ce63b",
+  "markup": "{这个}{产品}{的}{价格}{很}{合理}，{但是}{质量}{还有}{待}{提高}。",
+  "pinyin": "Zhè ge chǎn pǐn de jià gé hěn hé lǐ, dàn shì zhì liàng hái yǒu dài tí gāo.",
+  "english": "The product is reasonably priced, but the quality could still be improved.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-96d6cc3e90887b5d1b55",
+  "markup": "{对不起}，{我}{迟到}{了}。{没关系}，{我们}{还}{没}{开始}。",
+  "pinyin": "Duì bu qǐ, wǒ chí dào le. méi guān xi, wǒ men hái méi kāi shǐ.",
+  "english": "Sorry I’m late. No problem, we haven’t started yet.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ },
+ {
+  "id": "v062-grammar-abc7fac273a2fc6b0d2f",
+  "markup": "{谢谢}{你}{帮}{我}{搬}{东西}。{不客气}，{这}{是}{我}{应该}{做}{的}。",
+  "pinyin": "Xiè xie nǐ bāng wǒ bān dōng xi. bù kè qi, zhè shì wǒ yīng gāi zuò de.",
+  "english": "Thank you for helping me move my things. You're welcome; it's what I should do.",
+  "distractors": [],
+  "source": "Ciyan v0.6.2 authored usage",
+  "createdAt": "2026-11-18T00:00:00.000Z"
+ }
+]

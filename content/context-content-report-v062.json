@@ -1,0 +1,9 @@
+{
+  "vocabulary": 11893,
+  "grammarBeforePruning": 2701,
+  "prunedGrammar": 25,
+  "newGrammar": 85,
+  "grammar": 2761,
+  "baselineV061": 1896,
+  "importedV061": 805
+}

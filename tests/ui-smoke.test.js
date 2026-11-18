@@ -345,7 +345,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.6.1');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.2');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -359,8 +359,8 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.1');
- assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,1896);
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.2');
+ assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,2761);
  assert.equal(saved.history.length,0);
 });
 
@@ -371,7 +371,7 @@ test('v0.5.5 word details show scored synonyms after context and navigate with a
  assert.ok(tomato&&other&&tomato.synonyms.some(x=>x.id===other.id));
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('card-detail',{id:tomato.id});
- let view=dialogs.at(-1);assert.match(view,/In context/);assert.match(view,/Synonyms ·/);assert.ok(view.indexOf('In context')<view.indexOf('Synonyms ·'));
+ let view=dialogs.at(-1);assert.match(view,/In context/);assert.match(view,/Original tokens:/);assert.match(view,/Exact token/);assert.match(view,/Synonyms ·/);assert.ok(view.indexOf('In context')<view.indexOf('Synonyms ·'));
  assert.match(view,/data-action="synonym-detail"/);assert.match(view,/0\.99/);assert.doesNotMatch(view,/shared_sense|evidence|confidence_band/);
  await click('synonym-detail',{id:other.id});view=dialogs.at(-1);assert.match(view,/Back to 番茄/);assert.match(view,/西红柿/);
  await click('synonym-back');view=dialogs.at(-1);assert.match(view,/番茄/);assert.doesNotMatch(view,/data-action="synonym-back"/);

@@ -303,3 +303,5 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .synonym-back svg{width:17px;height:17px}
 
 .character-feedback{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.character-feedback button{min-height:44px;padding:7px;font-size:12px}.character-feedback .selected{background:#245e50;color:white}.draw-pair{min-width:0}
+
+.context-match-trace{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0;padding:8px 10px;background:var(--surface-alt,#edf5f2);border:1px solid var(--border,#dae3df);border-radius:10px;font-size:12px;overflow-wrap:anywhere;text-align:left}.context-match-trace strong{font-weight:700}.context-match-trace small{font-size:12px;opacity:.85}

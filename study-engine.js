@@ -2,6 +2,7 @@ import {weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.j
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
 import {grammarTokens,wordKnowledge} from './grammar.js';
+import {contextMatches} from './context-matching.js';
 import {allParticles,particleWords,particleFamily} from './particles.js';
 import {familyEvidence,weaknessWeight,characterEvidence,drawingProfile} from './learning-feedback.js';
 import {matchesTagFilters} from './tags.js';
@@ -27,15 +28,18 @@ export function ensureStudy(s){
 export function scheduleFor(s,mode,id){return mode==='words'?s.schedules[id]:s.skillSchedules?.[mode]?.[id];}
 export function netScore(s,wordId){const x=s.schedules[wordId]?.score;return Number.isFinite(x)?Math.max(0,x):0;}
 export function knowledge(s,c,now=Date.now()){return c?wordKnowledge(s.schedules[c.id],retrievability(s.schedules[c.id],now)):0;}
-export function contextFor(s,card,now=Date.now(),index=null,lookup=null){
+export function contextFor(s,card,now=Date.now(),_index=null,lookup=null){
  const byWord=lookup||new Map(s.cards.map(c=>[c.hanzi,c]));
  const targetChars=new Set([...card.hanzi]);
- const contexts=(index?(index.get(card.hanzi)||[]):s.grammar.filter(g=>g.pinyin&&grammarTokens(g).includes(card.hanzi))).filter(g=>grammarTokens(g).filter(w=>w!==card.hanzi).every(w=>![...w].some(ch=>targetChars.has(ch))));
- return contexts.map(g=>{
-  const other=[...new Set(grammarTokens(g).filter(w=>w!==card.hanzi))];
+ const matches=contextMatches(s,card).filter(m=>m.grammar.pinyin&&
+  grammarTokens(m.grammar).filter((_,i)=>i<m.start||i>m.end)
+   .every(w=>![...w].some(ch=>targetChars.has(ch))));
+ return matches.map(m=>{
+  const other=[...new Set(grammarTokens(m.grammar).filter((_,i)=>i<m.start||i>m.end))];
   const familiarity=other.length?other.reduce((n,w)=>n+knowledge(s,byWord.get(w),now),0)/other.length:1;
-  return {grammar:g,familiarity};
- }).sort((a,b)=>b.familiarity-a.familiarity||grammarTokens(a.grammar).length-grammarTokens(b.grammar).length)[0]||null;
+  return {...m,familiarity};
+ }).sort((a,b)=>(a.rule==='exact'?0:a.rule==='whole'?1:2)-(b.rule==='exact'?0:b.rule==='whole'?1:2)||
+  b.familiarity-a.familiarity||grammarTokens(a.grammar).length-grammarTokens(b.grammar).length)[0]||null;
 }
 const dayKey=(date)=>{const d=new Date(date);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 export function newVocabToday(s,now=Date.now()){
@@ -68,11 +72,7 @@ function info(s,mode,now,filters){
  };
  if(mode==='words')return cards.filter(c=>anchorMatches(c,filters)).map(c=>({id:c.id,wordIds:[c.id]}));
  if(mode==='drawing'){
-  const index=new Map();for(const g of s.grammar){if(!g.pinyin)continue;for(const w of new Set(grammarTokens(g))){if(!index.has(w))index.set(w,[]);index.get(w).push(g);}}
-  return cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin&&netScore(s,c.id)>=2&&anchorMatches(c,filters)).map(c=>{
-   const ctx=contextFor(s,c,now,index,byWord);
-   return {id:c.id,contextId:ctx?.grammar.id||null,wordIds:[c.id]};
-  });
+  return cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin&&netScore(s,c.id)>=2&&anchorMatches(c,filters)).map(c=>({id:c.id,wordIds:[c.id]}));
  }
  if(mode==='grammar')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
  if(mode==='particles')return allParticles(s).filter(p=>acceptsGroup(particleWords(p))).map(p=>({id:p.id,family:particleFamily(p),wordIds:[...new Set(particleWords(p))].map(w=>toCard(w)?.id).filter(Boolean)}));
@@ -145,10 +145,11 @@ export function nextExercise(s,session,now=Date.now(),rng=Math.random){
  const selected=pool==='due'?due:pool==='new'?fresh:due.length?due:fresh;
  if(!selected.length)return null;
  const choices=new Map();for(const entry of selected){if(!choices.has(entry.mode))choices.set(entry.mode,[]);choices.get(entry.mode).push(entry);}
- if(session.mode!=='auto')return pickWeighted(selected,rng);
+ const selectedContext=item=>{if(item?.mode!=='drawing')return item;const card=s.cards.find(c=>c.id===item.id);const ctx=card?contextFor(s,card,now):null;return {...item,contextId:ctx?.grammar.id||null,contextRule:ctx?.rule||null};};
+ if(session.mode!=='auto')return selectedContext(pickWeighted(selected,rng));
  const weighted=[...choices].map(([mode,items])=>({mode,items,urgency:(s.settings.autoShares?.[mode]||SHARES[mode])*(selected[0]?.dueAt?items.reduce((n,x)=>n+x.urgency,0)/items.length:1)}));
  const group=pickWeighted(weighted.map(x=>({urgency:x.urgency,...x})),rng);
- return pickWeighted(group.items,rng);
+ return selectedContext(pickWeighted(group.items,rng));
 }
 export function recordExercise(s,session,grade,details={},now=Date.now()){
  const e=session.current,previous=scheduleFor(s,e.mode,e.id),after=scheduleReview(previous,grade,now,s.settings);

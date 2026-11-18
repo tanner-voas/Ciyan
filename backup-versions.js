@@ -1,6 +1,6 @@
 // Backup format and app version are distinct. The former describes JSON shape;
 // the latter selects explicitly ordered, content-aware transformations.
-export const APP_VERSION='0.6.1';
+export const APP_VERSION='0.6.2';
 
 // Add only intentional, reviewed transformations here in subsequent releases.
 // Entries are adjacent application releases, including explicit identity steps.
@@ -11,7 +11,8 @@ const STEPS=new Map([
  ['0.5.3',{next:'0.5.4',apply:document=>document}],
  ['0.5.4',{next:'0.5.5',apply:document=>document}],
  ['0.5.5',{next:'0.6.0',apply:document=>document}],
- ['0.6.0',{next:'0.6.1',apply:document=>document}]
+ ['0.6.0',{next:'0.6.1',apply:document=>document}],
+ ['0.6.1',{next:'0.6.2',apply:document=>document}]
 ]);
 
 export function normalizeAppVersion(value){

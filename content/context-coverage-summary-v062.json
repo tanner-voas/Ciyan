@@ -1,0 +1,71 @@
+{
+  "appVersion": "0.6.2",
+  "vocabulary": 11893,
+  "grammar": 2761,
+  "covered": 5375,
+  "coveragePercent": 45.19,
+  "primaryRule": {
+    "exact": 4784,
+    "whole": 31,
+    "within": 560,
+    "unmatched": 6518
+  },
+  "byHSK": {
+    "HSK/HSK1": {
+      "vocabulary": 497,
+      "exact": 495,
+      "whole": 0,
+      "within": 2,
+      "unmatched": 0
+    },
+    "HSK/HSK2": {
+      "vocabulary": 747,
+      "exact": 747,
+      "whole": 0,
+      "within": 0,
+      "unmatched": 0
+    },
+    "HSK/HSK3": {
+      "vocabulary": 948,
+      "exact": 735,
+      "whole": 3,
+      "within": 70,
+      "unmatched": 140
+    },
+    "HSK/HSK4": {
+      "vocabulary": 972,
+      "exact": 480,
+      "whole": 8,
+      "within": 72,
+      "unmatched": 412
+    },
+    "HSK/HSK5": {
+      "vocabulary": 1057,
+      "exact": 360,
+      "whole": 5,
+      "within": 86,
+      "unmatched": 606
+    },
+    "HSK/HSK6": {
+      "vocabulary": 1119,
+      "exact": 212,
+      "whole": 5,
+      "within": 111,
+      "unmatched": 791
+    },
+    "HSK/HSK7-9": {
+      "vocabulary": 5601,
+      "exact": 803,
+      "whole": 10,
+      "within": 219,
+      "unmatched": 4569
+    },
+    "Other": {
+      "vocabulary": 952,
+      "exact": 952,
+      "whole": 0,
+      "within": 0,
+      "unmatched": 0
+    }
+  }
+}

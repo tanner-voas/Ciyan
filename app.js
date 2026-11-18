@@ -2,6 +2,7 @@ import {APP_VERSION} from './backup-versions.js';
 import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './tags.js';
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
 import {contextsForWord} from './grammar-context.js';
+import {contextMatches,contextSort,contextMatchLabel,literalGrammarTokens} from './context-matching.js';
 import {MODES,SHARES,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary,contextFor,modeCounts,availableModes,newVocabToday,newVocabRemaining,sessionAvailability,POOLS} from './study-engine.js';
 import {allParticles,particleCorrect,particleSentence,particleError,particleLabel,OMIT} from './particles.js';
 import {characterEvidence,familyEvidence,drawingProfile} from './learning-feedback.js';
@@ -201,7 +202,7 @@ function renderWordStudy(){
         ${tone?`<div class="tone-result ${badTone?'incorrect':'correct'}">${badTone?`Tone mismatch (${tone.wrong.length} of ${tone.expected.length}): expected ${tone.expected.join(' · ')}; selected ${tone.chosen.join(' · ')}.`:'Tones matched!'}${badTone&&state.settings.enforceTones?' Easy is capped at Good.':''}</div>`:''}
         <button class="text-link" data-action="card-detail" data-id="${esc(card.id)}" style="margin-top:15px">View in-context sentences ${icon('right')}</button>`:
         `<div class="review-prompt">Remember the meaning${state.settings.toneTest?' and select tones':''}, then reveal</div>`}</div>
-    ${revealed?`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT</div>${contextsForWord(state,card).map(({grammar:g})=>`<div class="vocab-example"><strong>${esc(plainSentence(g.markup))}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p></div>`).join('')||'<p class="subtle">No linked grammar examples.</p>'}</section>`:''}
+    ${revealed?`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT</div>${contextsForWord(state,card).map(m=>{const g=m.grammar;return `<div class="vocab-example"><strong>${esc(plainSentence(g.markup))}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p>${matchTrace(m)}</div>`;}).join('')||'<p class="subtle">No linked grammar examples.</p>'}</section>`:''}
     ${revealed?`<div class="eyebrow" style="text-align:center">HOW WELL DID YOU REMEMBER?</div><div class="review-controls">${ratingOptions.map(([cls,label,grade],i)=>
       `<button class="grade ${cls}" data-action="grade" data-grade="${grade}" ${grade===4&&state.settings.enforceTones&&badTone?'disabled':''}><strong>${label}</strong><span>${intervals[i]}</span></button>`).join('')}</div>
       <p class="study-captions">Again: forgot · Hard: struggled · Good: recalled · Easy: effortless</p>`:
@@ -404,13 +405,16 @@ function modal(title,contents){closeModal();currentModal=document.createElement(
 function closeModal(){if(currentModal){currentModal.remove();currentModal=null;}}
 let wordDetailTrail=[];
 let wordDetailCurrent=null;
+let wordContextLimit=12;
+const matchTrace=m=>`<div class="context-match-trace"><strong>${esc(contextMatchLabel(m))}</strong><small>Original tokens: ${esc(m.matchedTokens.map(t=>`{${t}}`).join(''))}</small>${m.rule==='within'?`<small>Matched inside token: ${esc(m.matchedText)}</small>`:m.rule==='whole'?`<small>Whole-token phrase: ${esc(m.matchedText)}</small>`:''}</div>`;
 function wordDetails(id,direction='root'){
  const c=wordById(id);if(!c)return;
  if(direction==='root')wordDetailTrail=[];
  else if(direction==='synonym'&&wordDetailCurrent&&wordDetailCurrent!==id)wordDetailTrail.push(wordDetailCurrent);
+ if(direction!=='more')wordContextLimit=12;
  wordDetailCurrent=id;
  const schedule=state.schedules[id],history=state.history.filter(h=>h.cardId===id);
-  const examples=state.grammar.filter(g=>linkedWords(g,[c]).length).sort((a,b)=>scoreGrammar(b).combined-scoreGrammar(a).combined);
+  const examples=contextMatches(state,c).map(m=>({...m,qualified:!!scoreGrammar(m.grammar).ready,knowledge:scoreGrammar(m.grammar).combined})).sort(contextSort);
   const knowledge=scoreWord(c);
   // Resolve by stable word ID, never by substring or shared Hanzi characters.
   const byId=new Map(state.cards.map(w=>[w.id,w]));
@@ -427,9 +431,9 @@ function wordDetails(id,direction='root'){
       <div class="row"><span class="subtle">Memory lapses</span><strong>${schedule?.lapses||0}</strong></div></div>
     <div class="panel stack"><div class="row"><span>History score (0–3)</span><strong>${schedule?(schedule.score??schedule.lastRating-1).toFixed(2):'Unseen'}</strong></div><div class="row"><span>Drawing reviews</span><strong>${state.skillSchedules.drawing[id]?.reps||0}</strong></div><div class="row"><span>Drawing score / due</span><strong>${state.skillSchedules.drawing[id]?`${(state.skillSchedules.drawing[id].score??0).toFixed(2)} / ${esc(dueLabel(state.skillSchedules.drawing[id]))}`:'Unseen'}</strong></div></div>
     <div class="section-row"><h3 class="section-title">In context · ${examples.length} sentences</h3></div>
-    ${examples.length?examples.map(g=>`<button class="context-card" data-action="grammar-detail" data-id="${esc(g.id)}"><strong>${esc(plainSentence(g.markup))}</strong>
-       <small>${esc(g.pinyin)}</small><span>${esc(g.english)}</span><div class="row"><span class="subtle">Combined: ${percent(scoreGrammar(g).combined)}</span>${icon('right')}</div></button>`).join(''):
-      '<div class="notice">No grammar sentences containing this word yet. Add one from the Grammar page.</div>'}
+    ${examples.length?examples.slice(0,wordContextLimit).map(m=>{const g=m.grammar;return `<button class="context-card" data-action="grammar-detail" data-id="${esc(g.id)}"><strong>${esc(plainSentence(g.markup))}</strong>
+       <small>${esc(g.pinyin)}</small><span>${esc(g.english)}</span>${matchTrace(m)}<div class="row"><span class="subtle">Combined: ${percent(scoreGrammar(g).combined)}</span>${icon('right')}</div></button>`;}).join('')+(examples.length>wordContextLimit?`<button class="btn btn-secondary btn-full" data-action="context-more" data-id="${esc(id)}">Show more examples (${examples.length-wordContextLimit} remaining)</button>`:''):
+      '<div class="notice">No grammar sentence matches this word under the complete-token or single-token-substring rules.</div>'}
     <div class="section-row synonym-heading"><h3 class="section-title">Synonyms · ${synonyms.length}</h3><span class="subtle">Similarity · 0–1</span></div>
     ${synonyms.length?`<div class="synonym-list">${synonyms.map(({entry,card})=>`<button class="synonym-card" data-action="synonym-detail" data-id="${esc(card.id)}" aria-label="View synonym ${esc(card.hanzi)}; similarity ${entry.similarity.toFixed(2)}"><span class="synonym-word">${esc(card.hanzi)}<small>${esc(card.pinyin)}</small></span><span class="synonym-score">${entry.similarity.toFixed(2)}</span>${icon('chevron-right')}</button>`).join('')}</div>`:'<p class="subtle">No close synonyms in the current dictionary.</p>'}
     ${drawingDetail(c)}<div class="modal-actions"><button class="btn btn-secondary" data-action="edit-card" data-id="${esc(id)}">${icon('edit')}Edit</button>
@@ -442,7 +446,7 @@ function grammarDetails(id){const g=grammarById(id);if(!g)return;const scores=sc
   const mean=involved.reduce((n,w)=>n+wordScore(w),0)/Math.max(1,involved.length);
   const weakWords=involved.filter(w=>wordScore(w)<1);
   modal('Grammar in context',`<div class="panel stack"><div class="eyebrow">SENTENCE</div><div class="grammar-detail-hanzi">${esc(plainSentence(g.markup))}</div>
-    <div class="review-pinyin">${esc(g.pinyin)}</div><strong>${esc(g.english)}</strong></div>
+    <div class="review-pinyin">${esc(g.pinyin)}</div><strong>${esc(g.english)}</strong><p class="subtle">Original grammar tiles: ${esc(literalGrammarTokens(g))}</p></div>
     <div class="tags-wrap" style="margin:16px 0">${tags.map(tagHtml).join('')||'<span class="subtle">No inherited tags (add matching word cards)</span>'}</div>
     <div class="detail-stats"><div><strong>${percent(scores.knowledge)}</strong><span>Knowledge</span></div>
       <div><strong>${scores.usageAttempts?percent(scores.usage):"—"}</strong><span>Usage risk · ${scores.usageAttempts} checked</span></div>
@@ -496,7 +500,7 @@ async function saveGrammarEditor(form){const id=form.dataset.id||null,existing=i
   if(done){closeModal();toast(id?'Grammar edited':'Grammar card created');}
 }
 async function deleteWord(id){const c=wordById(id);if(!c)return;
-  const uses=state.grammar.filter(g=>linkedWords(g,[c]).length).length;
+  const uses=contextMatches(state,c).length;
   if(!window.confirm(`Delete “${c.hanzi}” and all of its vocabulary reviews? ${uses} linked grammar sentences will remain but may be locked until a replacement word is added. This is irreversible without a backup.`))return;
   if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.cards=d.cards.filter(c=>c.id!==id);delete d.schedules[id];delete d.skillSchedules.drawing[id];d.skillHistory=d.skillHistory.filter(h=>!(h.mode==='drawing'&&h.id===id));if(d.activePractice?.current?.id===id)d.activePractice=null;d.history=d.history.filter(h=>h.cardId!==id);
     d.activeSession?.queue&&(d.activeSession.queue=d.activeSession.queue.filter(x=>x!==id));
@@ -661,6 +665,7 @@ document.addEventListener('click',async event=>{
     case 'reset-tags':filters[element.dataset.kind].tags={};updateCollection();break;
     case 'card-detail':wordDetails(element.dataset.id);break;
     case 'synonym-detail':wordDetails(element.dataset.id,'synonym');break;
+    case 'context-more':wordContextLimit+=20;wordDetails(element.dataset.id,'more');break;
     case 'synonym-back':{const previous=wordDetailTrail.pop();if(previous)wordDetails(previous,'back');break;}
     case 'grammar-detail':grammarDetails(element.dataset.id);break;
     case 'new-entry':element.dataset.kind==='grammar'?grammarEditor():wordEditor();break;
@@ -781,10 +786,11 @@ function practiceRender(){
   const tone=wordToneCheck(c),cap=state.settings.enforceTones&&tone?.wrong.length?3:4;
   body=`<div class="review-card vocab-review"><div class="card-kicker">CHINESE → ENGLISH</div>${state.settings.toneTest?renderToneGrid(c):`<div class="review-hanzi">${esc(c.hanzi)}</div>`}${input.revealed||state.settings.showPinyinPrompt&&!state.settings.toneTest?`<div class="review-pinyin">${esc(c.pinyin)}</div>`:''}${input.revealed?`<div class="review-english">${esc(c.english)}</div>${tone?`<p class="subtle">Expected tones: ${tone.expected.join(' · ')}${cap===3?' · Easy unavailable':''}</p>`:''}`:'<p>Recall the meaning, then reveal.</p>'}</div>${input.revealed?practiceRatings(e.mode,e.id,cap):'<button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal answer</button>'}`;
  }
- if(e.mode==='words'&&input.revealed){const examples=contextsForWord(state,wordById(e.id));if(examples.length)body+=`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT · ${examples.filter(x=>x.qualified).length?`${examples.length} qualified example${examples.length===1?'':'s'}`:'best available example'}</div>${examples.map(({grammar:g})=>`<div class="vocab-example"><strong>${esc(plainSentence(g.markup))}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p></div>`).join('')}</section>`;}
+ if(e.mode==='words'&&input.revealed){const examples=contextsForWord(state,wordById(e.id));if(examples.length)body+=`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT · ${examples.filter(x=>x.qualified).length?`${examples.length} qualified example${examples.length===1?'':'s'}`:'best available example'}</div>${examples.map(m=>{const g=m.grammar;return `<div class="vocab-example"><strong>${esc(plainSentence(g.markup))}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p>${matchTrace(m)}</div>`;}).join('')}</section>`;}
  if(e.mode==='drawing'){
   const c=wordById(e.id),chars=[...c.hanzi],index=input.pad||0,g=grammarById(e.contextId),charMap=new Map(characterEvidence(state).map(x=>[x.character,x]));
-  body=`<section class="panel stack drawing-prompt"><h2>${esc(c.pinyin)}</h2><strong>${esc(c.english)}</strong><span class="tag">${chars.length} character${chars.length===1?'':'s'}</span>${g?`<div class="drawing-context"><div class="eyebrow">WORD IN CONTEXT</div><p>${highlightPinyin(g.pinyin,c.pinyin)}</p><p>${esc(g.english)}</p><small>Target: ${esc(c.pinyin)} — ${esc(c.english)}</small></div>`:'<p class="subtle">No loaded example for this word. Word-only writing practice.</p>'}</section>`;
+  const sourceMatch=g?contextMatches(state,c).find(m=>m.grammar.id===g.id):null;
+  body=`<section class="panel stack drawing-prompt"><h2>${esc(c.pinyin)}</h2><strong>${esc(c.english)}</strong><span class="tag">${chars.length} character${chars.length===1?'':'s'}</span>${g?`<div class="drawing-context"><div class="eyebrow">WORD IN CONTEXT</div><p>${highlightPinyin(g.pinyin,c.pinyin)}</p><p>${esc(g.english)}</p><small>Target: ${esc(c.pinyin)} — ${esc(c.english)}</small>${sourceMatch?matchTrace(sourceMatch):''}</div>`:'<p class="subtle">No loaded example for this word. Word-only writing practice.</p>'}</section>`;
   body+=input.revealed?`<div class="drawing-comparison">${chars.map((ch,i)=>`<div class="draw-pair"><canvas width="240" height="240" data-drawing-preview="${i}" aria-label="Your drawing ${i+1}"></canvas><span class="printed-character">${esc(ch)}</span><small>Character ${i+1} · ${characterScoreLabel(ch,charMap)}</small><div class="character-feedback" role="group" aria-label="Feedback for character ${i+1}">${['forgotten','difficult','recalled','easy'].map(v=>`<button class="btn btn-secondary ${input.characterRatings?.[i]===v?'selected':''}" data-action="draw-feedback" data-index="${i}" data-rating="${v}" aria-pressed="${input.characterRatings?.[i]===v}">${{recalled:'Good',difficult:'Hard',forgotten:'Again',easy:'Easy'}[v]}</button>`).join('')}</div></div>`).join('')}</div><p class="subtle">Compare each drawing with the character beside it. You judge accuracy. Grade any characters you want to track, then grade the whole word below. Unrated characters receive no inferred grade. Character grades improve selection across words; the whole-word grade sets this word’s next due date. Only ratings are kept, never sketches.</p>${drawingDetail(c)}${practiceRatings(e.mode,e.id)}`:
   `<div class="drawing-nav"><button class="btn btn-secondary" data-action="draw-page" data-pad="${index-1}" ${index===0?'disabled':''} aria-label="Previous character">←</button><strong>Character ${index+1} of ${chars.length}</strong><button class="btn btn-secondary" data-action="draw-page" data-pad="${index+1}" ${index===chars.length-1?'disabled':''} aria-label="Next character">→</button></div><canvas id="drawing-pad" width="600" height="600" aria-label="Draw character ${index+1}"></canvas><div class="drawing-nav"><button class="btn btn-secondary" data-action="draw-undo">Undo stroke</button><button class="btn btn-secondary" data-action="draw-clear">Clear this character</button></div><button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal characters</button>`;
  }
