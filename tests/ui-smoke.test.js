@@ -349,7 +349,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.6.6');
+ assert.equal(reconciled.bundledMasterVersion,'0.6.7');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -366,7 +366,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.6.6');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.7');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -380,7 +380,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.6');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.7');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -441,9 +441,11 @@ test('v0.6.5 puts session filters after study controls and restores readable set
   await mock.listeners.change({target:{dataset:{setting:key},type:'select-one',value,closest:()=>null}});await delay();
  };
  await change('fontDifficulty','advanced');
- assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
- assert.equal(mock.data.get('main').settings.fontChoice,'zhushi');
+ assert.equal(mock.data.get('main').settings.fontDifficulty,'beginner');
  await change('fontChoice','mixed');
+ assert.equal(mock.data.get('main').settings.fontChoice,'print');
+ await click('apply-font');
+ assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
  assert.equal(mock.data.get('main').settings.fontChoice,'mixed');
  await click('navigate',{page:'study'});
  assert.match(mock.shell.innerHTML,/Session filters/);
@@ -481,29 +483,41 @@ test('particle error stats render two readable lines instead of narrow grid colu
  assert.match(mock.shell.innerHTML,/1 incorrect · 1 attempts/);
 });
 
-test('v0.6.6 refuses a missing installed font and retains the last working preference, including Mixed',async()=>{
+test('v0.6.7 stages font changes and checks only the chosen final font on Apply',async()=>{
  const mock=mockBrowser();
- const {clearFontProbeCache}=await import('../fonts.js');
- clearFontProbeCache();
+ const {clearFontProbeCache}=await import('../fonts.js');clearFontProbeCache();
  const dialogs=[];document.body.append=node=>dialogs.push(node.innerHTML);
+ const checked=[];
  globalThis.FontFace=class {
   constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}
-  async load(){if(this.src.includes('Zhi Mang Xing'))throw new Error('No local font');this.status='loaded';return this;}
+  async load(){checked.push(this.src);if(this.src.includes('YRDZST')||this.src.includes('Zhi Mang Xing'))throw new Error('missing font');this.status='loaded';return this;}
  };
- await import('../app.js?smoke=fontrollback066');await delay(30);
- const change=async(setting,value)=>{
-  await mock.listeners.change({target:{dataset:{setting},type:'select-one',value,closest:()=>null}});await delay(10);
- };
- await change('fontDifficulty','expert');
- assert.equal(mock.data.get('main').settings.fontDifficulty,'expert');
- assert.equal(mock.data.get('main').settings.fontChoice,'muyao');
- const revision=mock.data.get('main').revision;
- await change('fontChoice','zhimang');
- assert.equal(mock.data.get('main').settings.fontChoice,'muyao');
- assert.equal(mock.data.get('main').revision,revision);
- assert.ok(dialogs.some(text=>text.includes('Font unavailable')));
- await change('fontChoice','mixed');
- assert.equal(mock.data.get('main').settings.fontChoice,'muyao');
- assert.equal(mock.data.get('main').revision,revision);
+ await import('../app.js?smoke=font067');await delay(30);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay(15);};
+ const change=async(setting,value)=>{await mock.listeners.change({target:{dataset:{setting},type:'select-one',value,closest:()=>null}});await delay(10);};
+ await click('navigate',{page:'settings'});
+ assert.match(mock.shell.innerHTML,/Apply font/);
+ const before=mock.data.get('main').revision;
+ await change('fontDifficulty','advanced');
+ assert.equal(mock.data.get('main').settings.fontDifficulty,'beginner');
+ assert.equal(mock.data.get('main').revision,before);
+ assert.equal(checked.length,0);
+ await change('fontChoice','mashan');
+ assert.equal(checked.length,0);
+ await click('apply-font');
+ assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
+ assert.equal(mock.data.get('main').settings.fontChoice,'mashan');
+ assert.ok(checked.some(x=>x.includes('Ma Shan Zheng')));
+ assert.ok(checked.every(x=>!x.includes('YRDZST')),'should not check the unselected default');
+ const savedRevision=mock.data.get('main').revision;
+ await change('fontChoice','zhushi');
+ assert.equal(mock.data.get('main').revision,savedRevision);
+ await click('apply-font');
+ assert.equal(mock.data.get('main').settings.fontChoice,'mashan');
+ assert.equal(mock.data.get('main').revision,savedRevision);
+ assert.ok(dialogs.some(x=>x.includes('Font unavailable')));
+ await change('fontDifficulty','expert');await change('fontChoice','mixed');await click('apply-font');
+ assert.equal(mock.data.get('main').settings.fontChoice,'mashan');
+ assert.equal(mock.data.get('main').revision,savedRevision);
  clearFontProbeCache();
 });

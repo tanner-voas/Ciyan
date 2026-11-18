@@ -81,11 +81,15 @@ storage can be evicted by iOS, so keep your independent JSON backups.
 
 Automated tests do not replace physical iPhone/Safari testing.
 
-## v0.6.6 font installation and content safety
+## v0.6.7 font installation and content safety
 
-See [`RELEASE_v0.6.6.md`](RELEASE_v0.6.6.md) and [font installation help](FONT_INSTALLATION_v0.6.6.md). Additional font choices refer
+See [`RELEASE_v0.6.7.md`](RELEASE_v0.6.7.md) and [font installation help](FONT_INSTALLATION_v0.6.7.md). Additional font choices refer
 only to user-installed Chinese typefaces from the screenshots. They are checked
 by the browser before selection; unavailable fonts explicitly fail and do not
 replace your working preference. Mixed fonts use pre-generated Unicode CSS
 ranges rather than thousands of extra character nodes. Bundled dictionary
 upgrades preserve existing user content instead of replacing it at startup.
+
+## v0.6.7 readiness
+
+The font controls now stage choices until **Apply font**, using the installed iPhone names listed in `FONT_INSTALLATION_v0.6.7.md`. See `RELEASE_v0.6.7.md` for backup, scheduling, and performance changes. Full backup export now checks the restore format and uses compact JSON. No reader content is shipped.

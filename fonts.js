@@ -1,21 +1,21 @@
-// Cíyán v0.6.6: explicit opt-in Chinese fonts seen in the supplied screenshots.
+// Cíyán v0.6.7: exact iOS installed-font aliases; explicit opt-in Chinese fonts seen in the supplied screenshots.
 // These names refer to *locally installed* fonts; no copyrighted binaries are
 // distributed. Browser support for installed iOS fonts varies, so a successful
 // load probe is required before saving a selected font.
 export const FONT_LEVELS=Object.freeze({
  beginner:[['print','iPhone default · Clean print']],
- intermediate:[['xiaowei','站酷小薇 LOGO 体 · ZCOOL XiaoWei'],['kuaile','站酷快乐体 · ZCOOL KuaiLe'],['mixed','Mixed · Intermediate']],
- advanced:[['zhushi','杨任东竹石体 · Yang Ren Dong Zhu Shi'],['mashan','马善政毛笔楷书 · Ma Shan Zheng'],['mixed','Mixed · Advanced']],
- expert:[['muyao','沐瑶软笔手写体 · Muyao Softbrush'],['zhimang','志莽行书 · Zhi Mang Xing'],['mixed','Mixed · Expert']]
+ intermediate:[['xiaowei','xiaowei · 站酷小薇 LOGO 体'],['kuaile','HappyZcool-2016 · 站酷快乐体'],['mixed','Mixed · Intermediate']],
+ advanced:[['zhushi','YRDZST · 杨任东竹石体'],['mashan','Ma Shan Zheng'],['mixed','Mixed · Advanced']],
+ expert:[['muyao','Muyao-Softbrush'],['zhimang','Zhi Mang Xing'],['mixed','Mixed · Expert']]
 });
 // Use several postscript/full family aliases, because installed-font apps
 // sometimes expose Chinese and English family names differently.
 export const FONT_CATALOG=Object.freeze({
- xiaowei:{face:'CiyanXiaoWei',aliases:['ZCOOL XiaoWei','ZCOOLXiaoWei-Regular','站酷小薇LOGO体','站酷小薇 LOGO 体']},
- kuaile:{face:'CiyanKuaiLe',aliases:['ZCOOL KuaiLe','ZCOOLKuaiLe-Regular','站酷快乐体']},
- zhushi:{face:'CiyanZhuShi',aliases:['杨任东竹石体','YangRenDongZhuShi','YangRenDongZhuShiTi','Yang Ren Dong Zhu Shi']},
+ xiaowei:{face:'CiyanXiaoWei',aliases:['xiaowei','ZCOOL XiaoWei','ZCOOLXiaoWei-Regular','站酷小薇LOGO体','站酷小薇 LOGO 体']},
+ kuaile:{face:'CiyanKuaiLe',aliases:['HappyZcool-2016','ZCOOL KuaiLe','ZCOOLKuaiLe-Regular','站酷快乐体']},
+ zhushi:{face:'CiyanZhuShi',aliases:['YRDZST','杨任东竹石体','YangRenDongZhuShi','YangRenDongZhuShiTi','Yang Ren Dong Zhu Shi']},
  mashan:{face:'CiyanMaShan',aliases:['Ma Shan Zheng','MaShanZheng-Regular','MaShanZheng']},
- muyao:{face:'CiyanMuYao',aliases:['沐瑶软笔手写体','Muyao Softbrush','Muyao-Softbrush','MuyaoSoftbrush']},
+ muyao:{face:'CiyanMuYao',aliases:['Muyao-Softbrush','沐瑶软笔手写体','Muyao Softbrush','MuyaoSoftbrush']},
  zhimang:{face:'CiyanZhiMang',aliases:['Zhi Mang Xing','ZhiMangXing-Regular','ZhiMangXing']}
 });
 export const FONT_LEVEL_FACES=Object.freeze({intermediate:'CiyanMixedIntermediate',advanced:'CiyanMixedAdvanced',expert:'CiyanMixedExpert'});

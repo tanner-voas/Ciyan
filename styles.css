@@ -375,3 +375,9 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 
 .font-error-message{color:#873b33;line-height:1.65;overflow-wrap:anywhere}
 .font-install-hint{font-size:12px;line-height:1.65;color:#677a6e}
+
+/* v0.6.7: stage typography settings without changing active font until Apply. */
+.font-apply-controls{display:grid;gap:10px;padding:12px 0 16px}
+.font-apply-controls .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.font-apply-controls .btn{min-height:46px;min-width:0}
+.font-apply-controls .btn:disabled{opacity:.48;cursor:default}

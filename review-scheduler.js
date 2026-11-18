@@ -29,7 +29,12 @@ export function scheduleReview(previous,grade,now=Date.now(),settings={}){
  const after=fsrsReview(previous,grade,now,settings.desiredRetention||.9);
  after.score=historyScore(previous,grade,now);after.scoreModel='gradual-v2';after.fsrsIntervalMinutes=after.intervalMinutes;
  if((settings.scheduler||'score')==='fsrs')return after;
- const seconds=interpolatedSeconds(after.score,settings.retryIntervals||DEFAULT_RETRY);
+ const targets=retrySeconds(settings.retryIntervals||DEFAULT_RETRY);
+ // A mature lapse must be retried promptly without destroying accumulated score.
+ // Hard/Again constrain the immediate interval; Good/Easy keep the score curve.
+ const seconds=grade===1?Math.min(interpolatedSeconds(after.score,settings.retryIntervals||DEFAULT_RETRY),targets[0]):
+  grade===2?Math.min(interpolatedSeconds(after.score,settings.retryIntervals||DEFAULT_RETRY),targets[1]):
+  interpolatedSeconds(after.score,settings.retryIntervals||DEFAULT_RETRY);
  return {...after,dueAt:new Date(now+seconds*1000).toISOString(),intervalMinutes:seconds/60,learning:grade<=2,scheduler:'score'};
 }
 export function intervalText(seconds){
@@ -47,7 +52,10 @@ export function previewIntervals(previous,now=Date.now(),settings={}){
 }
 export function rescheduleExisting(schedule,settings){
  const score=Number.isFinite(schedule.score)?schedule.score:Math.max(0,(schedule.lastRating||1)-1);
- const minutes=settings.scheduler==='fsrs'?(schedule.fsrsIntervalMinutes||schedule.intervalMinutes):interpolatedSeconds(score,settings.retryIntervals)/60;
+ const targets=retrySeconds(settings.retryIntervals||DEFAULT_RETRY);
+ const curved=interpolatedSeconds(score,settings.retryIntervals||DEFAULT_RETRY);
+ const adjusted=schedule.lastRating===1?Math.min(curved,targets[0]):schedule.lastRating===2?Math.min(curved,targets[1]):curved;
+ const minutes=settings.scheduler==='fsrs'?(schedule.fsrsIntervalMinutes||schedule.intervalMinutes):adjusted/60;
  return {...schedule,score,intervalMinutes:minutes,dueAt:new Date(Date.parse(schedule.lastReviewedAt)+minutes*60000).toISOString(),scheduler:settings.scheduler};
 }
 // One bin boundary is always now; each item goes in exactly one bucket.

@@ -28,6 +28,8 @@ STATIC_FILES = (
     "drawing.js",
     "drawing-grades.js",
     "fonts.js",
+    "backup-integrity.js",
+    "backup-restore.js",
     "fsrs.js",
     "storage.js",
     "cards.js",
