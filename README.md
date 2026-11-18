@@ -1,4 +1,6 @@
-# Cíyán (词言) v0.7.3
+# Cíyán (词言) v0.7.4
+
+In a chapter, open Reader controls → Reading guide, enable **Read aloud in Mandarin**, and press **Play**. Cíyán uses a local Mandarin voice exposed by the browser. When several are available, select one in the guide. The voice reads a sentence at a time. CPM is an approximate target during narration because voices vary and pause at punctuation.
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.

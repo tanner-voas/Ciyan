@@ -1,3 +1,4 @@
+import {mandarinVoices,createNarrator} from './reader-speech.js';
 // The document scrolls as one reading surface. Word indices count annotated
 // words in a paragraph, while offset keeps older character-based bookmarks usable.
 export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend}){
@@ -11,6 +12,33 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const rows=()=>pages.querySelectorAll('[data-pid]');
  let current=null,enabled=false,playing=false,rate=initialRate;
  let tick,hold,frame,lastTap=null,press=null,held=false,stopped=false;
+ const audio=pages.querySelector('[data-guide-audio]');
+ const speechStatus=pages.querySelector('[data-speech-status]');
+ const voiceSelect=pages.querySelector('[data-voice-select]');
+ let voices=[],aloud=false,sequence=0;
+ const synth=win.speechSynthesis;
+ const narrator=createNarrator(win,select,()=>void step(1),()=>{
+  pause();speechStatus.textContent='Speech stopped. Tap Play to retry or turn off Read aloud.';
+ });
+ function refreshVoices(){
+  voices=mandarinVoices(synth.getVoices());
+  voiceSelect.replaceChildren(...voices.map((v,i)=>{
+   const option=doc.createElement('option');option.value=String(i);option.textContent=v.name;return option;
+  }));
+  const match=voices.findIndex(v=>v.voiceURI===voiceSelect.dataset.selected);
+  if(match>=0)voiceSelect.value=String(match);
+  voiceSelect.hidden=!aloud||voices.length<2;
+  audio.disabled=!voices.length;
+  if(!voices.length&&aloud){aloud=false;audio.checked=false;pause();}
+  speechStatus.textContent=voices.length?'':'Install a Mandarin voice in iPhone accessibility speech settings, then reopen the reader.';
+ }
+ if(synth&&win.SpeechSynthesisUtterance){
+  refreshVoices();synth.addEventListener?.('voiceschanged',refreshVoices,options);
+  audio.addEventListener('change',()=>{aloud=audio.checked;voiceSelect.hidden=!aloud||voices.length<2;schedule();},options);
+  voiceSelect.addEventListener('change',()=>{voiceSelect.dataset.selected=voices[+voiceSelect.value]?.voiceURI;schedule();},options);
+ }else if(audio?.matches?.('[data-guide-audio]')){
+  audio.disabled=true;speechStatus.textContent='This browser does not provide speech playback.';
+ }
  const viewport=()=>win.visualViewport;
  function bookmark(row,word){
   if(row)save(+row.closest('article').dataset.readerNumber,{id:row.dataset.pid,index:+row.dataset.index,
@@ -54,17 +82,19 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   current?.classList.remove('reader-current');current=word;current.classList.add('reader-current');
   center();bookmark(current.closest('[data-pid]'),current);
  }
- function pause(){win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
+ function pause(){sequence++;narrator.cancel();win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
  function schedule(){
-  clearTimeout(tick);
+  sequence++;narrator.cancel();clearTimeout(tick);
+  if(playing&&current&&aloud){speechStatus.textContent='';narrator.speak(current,voices[+voiceSelect.value]||voices[0],rate);return;}
   if(playing&&current)tick=setTimeout(()=>void step(1),60000*[...current.textContent].length/rate);
  }
  async function step(direction){
   if(!current)return;
+  const request=++sequence;clearTimeout(tick);narrator.cancel();
   const source=current;
   if(!wordList.includes(source))wordList=Array.from(pages.querySelectorAll('[data-word-index]'));
   let index=wordList.indexOf(source)+direction;
-  if(index===wordList.length&&direction===1){await extend();if(stopped||!enabled||current!==source)return;wordList=Array.from(pages.querySelectorAll('[data-word-index]'));}
+  if(index===wordList.length&&direction===1){await extend();if(request!==sequence||stopped||!enabled||current!==source)return;wordList=Array.from(pages.querySelectorAll('[data-word-index]'));}
   if(!wordList[index]){pause();return;}
   select(wordList[index]);schedule();
  }
@@ -101,7 +131,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  },options);
  pages.addEventListener('click',e=>{
   const action=e.target.closest('[data-guide]')?.dataset.guide;
-  if(action==='toggle')switchGuide(!enabled);
+  if(action==='toggle'){if(!enabled&&synth&&win.SpeechSynthesisUtterance)refreshVoices();switchGuide(!enabled);}
   if(action==='play'){if(playing)pause();else{playing=true;play.textContent='Pause';schedule();}}
   if(action==='back'||action==='forward')void step(action==='back'?-1:1);
   if(action==='slower'||action==='faster'){

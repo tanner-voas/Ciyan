@@ -460,3 +460,7 @@ html,body{touch-action:pan-x pan-y}
 .reader-menu{padding:0 8px 8px;display:grid;gap:6px}
 .reader-menu label{padding:8px;font-size:.9rem}
 #reader-pages article>[data-action=reader-exit]{font-size:.8rem;padding:8px 12px;margin:6px 0}
+
+[data-guide-controls][hidden]+.reader-audio{display:none}
+.reader-audio select{max-width:100%;font-size:16px}
+.reader-audio small:not(:empty){display:block;margin-top:.35rem}

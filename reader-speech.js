@@ -1,0 +1,68 @@
+// Web Speech boundary indices and the reader's offsets both count UTF-16 code units.
+export function mandarinVoices(voices){
+ function rank(voice){
+  const lang=voice.lang.toLowerCase().replaceAll('_','-');
+  if(!voice.localService||!/^(zh|cmn)(-|$)/.test(lang)||/-(hk|mo|yue)(-|$)/.test(lang)||/cantonese|粤语|廣東話/i.test(voice.name))return -1;
+  return (/-(cn|hans)(-|$)/.test(lang)?4:0)+(/premium|enhanced|优质|增强/i.test(voice.name)?2:0)+(voice.default?1:0);
+ }
+ return voices.filter(v=>rank(v)>=0).sort((a,b)=>rank(b)-rank(a));
+}
+
+export function speechPassage(word){
+ const row=word.closest('[data-pid]'),start=+word.dataset.offset;
+ const rest=row.textContent.slice(start);
+ const stop=rest.match(/[。！？!?……]+[”’」』）]*/u);
+ const end=start+(stop?stop.index+stop[0].length:rest.length);
+ const words=Array.from(row.querySelectorAll('[data-word-index]')).filter(w=>+w.dataset.offset>=start&&+w.dataset.offset<end);
+ return {text:row.textContent.slice(start,end),start,words};
+}
+
+export function createNarrator(win,select,advance,failed){
+ let active=null,timer,startTimeout;
+ function cancel(){
+  clearTimeout(startTimeout);clearTimeout(timer);
+  if(active){active=null;win.speechSynthesis.cancel();}
+ }
+ function speak(word,voice,cpm){
+  cancel();
+  const {text,start,words}=speechPassage(word);
+  const utterance=new win.SpeechSynthesisUtterance(text);
+  active=utterance;
+  utterance.voice=voice;utterance.lang=voice.lang;
+  utterance.rate=Math.max(.4,Math.min(2.5,cpm/240));
+  let index=0;
+  function move(next){
+   if(next>index){index=next;select(words[index]);}
+  }
+  // Some system voices omit word events. In that case interpolate within the
+  // sentence, and always wait for the voice before advancing to the next one.
+  function estimate(){
+   clearTimeout(timer);
+   if(index+1>=words.length)return;
+   const chars=+words[index+1].dataset.offset-(+words[index].dataset.offset);
+   timer=setTimeout(()=>{if(active===utterance){move(index+1);estimate();}},chars*60000/(240*utterance.rate));
+  }
+  let hasBoundaries=false;
+  utterance.onstart=()=>{if(active===utterance){clearTimeout(startTimeout);if(!hasBoundaries)estimate();}};
+  utterance.onboundary=e=>{
+   if(active!==utterance||e.name==='sentence'||!Number.isFinite(e.charIndex))return;
+   clearTimeout(startTimeout);
+   const offset=start+e.charIndex;
+   // A lone initial boundary carries no timing information.
+   if(offset<=start)return;
+   hasBoundaries=true;clearTimeout(timer);
+   let next=index;
+   while(next+1<words.length&&+words[next+1].dataset.offset<=offset)next++;
+   move(next);
+  };
+  utterance.onend=()=>{
+   if(active!==utterance)return;
+   clearTimeout(startTimeout);clearTimeout(timer);active=null;move(words.length-1);advance();
+  };
+  function error(){if(active===utterance){cancel();failed();}}
+  utterance.onerror=error;
+  startTimeout=setTimeout(error,10000);
+  try{win.speechSynthesis.speak(utterance);}catch{error();}
+ }
+ return {cancel,speak};
+}
