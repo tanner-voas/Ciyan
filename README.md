@@ -1,17 +1,20 @@
-# Cíyán (词言) v0.6.8
+# Cíyán (词言) v0.6.9
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.
 
 ## Latest release
 
-See [v0.6.8 release notes](RELEASE_v0.6.8.md). The final planned pre-reader
-release replaces the two typography dropdowns with a **seven-font checklist**.
-Check fonts across any difficulty; no boxes checked means iPhone Beginner.
-Selected fonts do **not** change until Apply. Each *occurrence* of each Chinese
-character independently receives a random checked font. Fonts are downloaded
-and cached on demand (and can be uploaded if a source fails); font binaries
-are not included in the repository or progress backup.
+See [v0.6.9 release notes](RELEASE_v0.6.9.md). The existing seven-font
+checklist now supports **one master Chinese-text size** (default 1.00×) and
+**an independently adjustable size per font**. No selection or size change
+is applied until **Apply font** is pressed; **Discard changes** restores the
+last accepted values. Chinese learning text is scaled, but navigation and
+ordinary UI controls remain their normal size. Character-by-character random
+mixing from v0.6.8 is preserved.
+
+Fonts continue to download and cache on demand, with a manual upload fallback.
+Font bytes are not part of the Git ZIP, deployment or learning backup.
 
 The bundled master contains 11,893 vocabulary entries and 3,444 grammar
 examples. User content and learning records persist across releases and are
@@ -77,7 +80,7 @@ scheduling behavior or reset scores.
 
 For an existing Cloudflare installation, export a full backup first. Upload
 the new deployment to the **same project**, open it online, close any previous
-Safari or Home Screen app windows, and reopen to activate v0.6.5. Browser
+Safari or Home Screen app windows, and reopen to activate v0.6.9. Browser
 storage can be evicted by iOS, so keep your independent JSON backups.
 
 Automated tests do not replace physical iPhone/Safari testing.
@@ -92,4 +95,4 @@ v0.6.7.dev2 downloader is preserved and now provides all six custom web-fonts.
 The old `FONT_INSTALLATION_v0.6.7.md` and release notes remain as historical
 references, not instructions for the current font selector.
 
-See `RELEASE_v0.6.8.md` for the complete selection and backup policy.
+See `RELEASE_v0.6.9.md` for font-size controls and `RELEASE_v0.6.8.md` for the original checklist/mixing policy.

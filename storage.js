@@ -1,5 +1,5 @@
 import {APP_VERSION,prepareVersionedBackup} from './backup-versions.js';
-import {normalizeFontSettings} from './fonts.js';
+import {normalizeTypographySettings} from './fonts.js';
 import {validatedTagWeights} from './tag-weights.js';
 import {allParticles} from './particles.js';
 import {retrySeconds,DEFAULT_RETRY} from './review-scheduler.js';
@@ -33,7 +33,7 @@ export function deleteConfirmationValid(value){return String(value??'').trim().t
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print']},
+  settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -187,7 +187,7 @@ export function migrateState(input){
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,
-      settings:{...defaultState().settings,...input.settings,...normalizeFontSettings(input.settings)}});
+      settings:{...defaultState().settings,...input.settings,...normalizeTypographySettings(input.settings)}});
   }
   const oldCards=Array.isArray(input.cards)?input.cards:[];
   const migratedCards=oldCards.map(c=>normalizeCard(c));
@@ -228,7 +228,7 @@ export function parseBackup(data){
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
-    continuous:true,retryDefaultsVersion:s.retryDefaultsVersion||'v0.5',autoShares:{...defaults.settings.autoShares,...s.autoShares},scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones,...normalizeFontSettings(s)};
+    continuous:true,retryDefaultsVersion:s.retryDefaultsVersion||'v0.5',autoShares:{...defaults.settings.autoShares,...s.autoShares},scheduler:s.scheduler==='fsrs'?'fsrs':'score',retryIntervals:structuredClone(s.retryIntervals||DEFAULT_RETRY),autoModes:{...defaults.settings.autoModes,...s.autoModes},modeSeconds:s.modeSeconds||{},showPinyinPrompt:!!s.showPinyinPrompt,toneTest:!!s.toneTest,enforceTones:!!s.enforceTones,...normalizeTypographySettings(s)};
   retrySeconds(settings.retryIntervals);
   const activeSession=source.activeSession&&Array.isArray(source.activeSession.queue)&&Array.isArray(source.activeSession.results)
     ?{...source.activeSession,queue:source.activeSession.queue.filter(id=>ids.has(id)),results:source.activeSession.results.filter(r=>ids.has(r.cardId))}:null;

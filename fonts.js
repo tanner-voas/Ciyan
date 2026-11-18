@@ -20,6 +20,32 @@ export const FONT_CATALOG=Object.freeze({
  zhimang:{face:'CiyanZhiMang',aliases:['Zhi Mang Xing','ZhiMangXing-Regular','ZhiMangXing']}
 });
 export const FONT_IDS=Object.freeze(['print',...Object.keys(FONT_CATALOG)]);
+// 1.0 is the size of the containing learning text. These conservative
+// starting compensations reflect approximate visible glyph proportions;
+// actual iPhone rendering can be tuned independently for each face.
+export const DEFAULT_FONT_SCALES=Object.freeze({
+ print:1.00,xiaowei:1.05,kuaile:0.98,zhushi:1.04,
+ mashan:1.08,muyao:1.03,zhimang:1.10
+});
+export const FONT_SCALE_MIN=0.65,FONT_SCALE_MAX=1.60;
+export const MASTER_SCALE_MIN=0.70,MASTER_SCALE_MAX=1.60;
+const finiteScale=(value,defaultValue,min,max)=>{
+ const n=Number(value);
+ return value!==null&&value!==undefined&&value!==''&&Number.isFinite(n)
+  ?Math.min(max,Math.max(min,Math.round(n*100)/100)):defaultValue;
+};
+export function normalizeFontSizing(settings){
+ const raw=settings?.fontScales;
+ return {
+  fontMasterScale:finiteScale(settings?.fontMasterScale,1.00,MASTER_SCALE_MIN,MASTER_SCALE_MAX),
+  fontScales:Object.fromEntries(FONT_IDS.map(id=>[
+   id,finiteScale(raw&&Object.hasOwn(raw,id)?raw[id]:undefined,DEFAULT_FONT_SCALES[id],FONT_SCALE_MIN,FONT_SCALE_MAX)
+  ]))
+ };
+}
+export function normalizeTypographySettings(settings){return {...normalizeFontSettings(settings),...normalizeFontSizing(settings)};}
+export function fontScaleFor(settings,id){const sizes=normalizeFontSizing(settings);return sizes.fontMasterScale*sizes.fontScales[id];}
+
 export function fontChoices(level){return FONT_LEVELS[level]||FONT_LEVELS.beginner;}
 export function fontFace(id){return FONT_CATALOG[id]?.face||'CiyanPrint';}
 // A legacy setting can name a single font or an old within-level Mixed choice.
@@ -52,22 +78,46 @@ export function pickOccurrenceFont(fonts,rng=Math.random){
 }
 const HAN=/\p{Script=Han}/u;
 const SKIP_ELEMENTS=new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT','SELECT','OPTION','SVG','CANVAS','CODE','PRE','IFRAME']);
-// Only Chinese text nodes are touched. Adjacent characters assigned the same
-// face are coalesced into a single run so that mixed text avoids needless DOM.
-// Each Chinese *occurrence* receives an independent random draw, not a hash of
-// its Unicode code point: 子子子 can therefore contain three different faces.
-export function mixTextNode(node,fonts,rng=Math.random){
+// Font *size* adjustments are limited to Chinese learning text, never to
+// menus, navigation, action buttons, labels, grades, or statistics controls.
+// Learning-content buttons such as grammar word tiles are intentionally listed.
+const LEARNING_SELECTOR=[
+ '.review-hanzi','.tone-char','.list-hanzi','.grammar-preview',
+ '.grammar-detail-hanzi','.printed-character','.grammar-sentence',
+ '.sentence-slot','.bank-tile','.particle-line','.vocab-example strong',
+ '.context-card strong','.font-sample-chinese','.font-sample p',
+ '.drawing-context','.synonym-word','.drawing-prompt h2',
+ '.detail-hero .review-hanzi','.grammar-puzzle h2'
+].join(',');
+export function isLearningFontText(element){
+ for(let el=element;el;el=el.parentElement){
+  if(el.matches?.(LEARNING_SELECTOR))return true;
+ }
+ return false;
+}
+// Adjacent characters randomly assigned the same face are kept in one span.
+// Each Hanzi occurrence is sampled independently; identical code points may
+// therefore have different faces and scales.
+export function mixTextNode(node,fonts,rng=Math.random,settings={}){
  const value=node?.nodeValue||'';
  if(!HAN.test(value)||!node.parentNode?.replaceChild)return false;
  const doc=node.ownerDocument;
  if(!doc?.createDocumentFragment||!doc?.createElement||!doc?.createTextNode)return false;
+ const scalable=isLearningFontText(node.parentElement);
+ const sizes=normalizeFontSizing(settings),scale=id=>sizes.fontMasterScale*sizes.fontScales[id];
  const fragment=doc.createDocumentFragment();
  let buffer='',active=null,spans=0;
  const flush=()=>{
   if(!buffer)return;
   if(active===null)fragment.appendChild(doc.createTextNode(buffer));
-  else{const span=doc.createElement('span');span.className='ciyan-mixed-glyph';span.dataset.ciyanGlyph='1';span.style.fontFamily=fontFace(active)==='CiyanPrint'? '"PingFang SC",-apple-system,sans-serif':`"${fontFace(active)}","PingFang SC",sans-serif`;
-   span.appendChild(doc.createTextNode(buffer));fragment.appendChild(span);spans++;}
+  else{
+   const span=doc.createElement('span');span.className='ciyan-mixed-glyph';span.dataset.ciyanGlyph='1';
+   span.style.fontFamily=fontFace(active)==='CiyanPrint'?'"PingFang SC",-apple-system,sans-serif':`"${fontFace(active)}","PingFang SC",sans-serif`;
+   // em is relative to the *existing* contextual size. Pinyin and labels
+   // remain unchanged even when embedded next to Chinese text.
+   if(scalable&&Math.abs(scale(active)-1)>0.00001)span.style.fontSize=`${Number(scale(active).toFixed(4))}em`;
+   span.appendChild(doc.createTextNode(buffer));fragment.appendChild(span);spans++;
+  }
   buffer='';
  };
  for(const cp of value){
@@ -78,9 +128,12 @@ export function mixTextNode(node,fonts,rng=Math.random){
  flush();node.parentNode.replaceChild(fragment,node);
  return spans>0;
 }
-export function mixChineseText(root,fonts,rng=Math.random){
+export function mixChineseText(root,fonts,rng=Math.random,settings={}){
  const doc=root?.ownerDocument||globalThis.document;
- if(!doc?.createTreeWalker||fonts.length<=1)return 0;
+ if(!doc?.createTreeWalker)return 0;
+ const sizes=normalizeFontSizing(settings);
+ const single=fonts.length===1;
+ if(single&&Math.abs(sizes.fontMasterScale*sizes.fontScales[fonts[0]]-1)<0.00001)return 0;
  const walker=doc.createTreeWalker(root,4); // NodeFilter.SHOW_TEXT
  const nodes=[];let node;
  while((node=walker.nextNode())){
@@ -90,10 +143,10 @@ export function mixChineseText(root,fonts,rng=Math.random){
    if(SKIP_ELEMENTS.has(el.tagName)||el.isContentEditable||el.dataset?.ciyanGlyph==='1'){excluded=true;break;}
    if(el===root)break;
   }
-  if(!excluded)nodes.push(node);
+  if(!excluded&&(!single||isLearningFontText(node.parentElement)))nodes.push(node);
  }
  let changed=0;
- for(const textNode of nodes)changed+=Number(mixTextNode(textNode,fonts,rng));
+ for(const textNode of nodes)changed+=Number(mixTextNode(textNode,fonts,rng,settings));
  return changed;
 }
 export function applyFontToRoot(root,settings,rng=Math.random){
@@ -101,6 +154,7 @@ export function applyFontToRoot(root,settings,rng=Math.random){
  const fonts=selectedFonts(settings);
  root.style.setProperty('--ciyan-zh-font',JSON.stringify(fonts.length===1?fontFace(fonts[0]):'CiyanPrint'));
  root.dataset.fontSelection=fonts.join(',');
- // Without multiple fonts no per-character markup is created at all.
- if(fonts.length>1)mixChineseText(root,fonts,rng);
+ const sizes=normalizeFontSizing(settings);
+ root.dataset.fontMasterScale=String(sizes.fontMasterScale);
+ if(fonts.length>1||Math.abs(fontScaleFor(settings,fonts[0])-1)>0.00001)mixChineseText(root,fonts,rng,settings);
 }
