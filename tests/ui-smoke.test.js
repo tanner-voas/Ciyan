@@ -161,10 +161,13 @@ test('drawing UI requires score >=2, navigates pads and records independent writ
  assert.equal(id,c.id);assert.match(mock.shell.innerHTML,/drawing-pad/);
  await click('draw-page',{pad:'1'});assert.equal(mock.data.get('main').activePractice.input.pad,1);
  await click('draw-page',{pad:'0'});assert.equal(mock.data.get('main').activePractice.input.pad,0);
- await click('practice-reveal');assert.match(mock.shell.innerHTML,/drawing-comparison/);assert.match(mock.shell.innerHTML,/data-rating="easy"/);assert.match(mock.shell.innerHTML,/Drawing characters/);
+ await click('practice-reveal');assert.match(mock.shell.innerHTML,/drawing-comparison/);assert.match(mock.shell.innerHTML,/data-rating="easy"/);assert.match(mock.shell.innerHTML,/Grade each character/);
+ assert.equal((mock.shell.innerHTML.match(/class="drawing-grade-row"/g)||[]).length,2);
+ assert.doesNotMatch(mock.shell.innerHTML,/data-action="practice-grade"/);
  await click('draw-feedback',{index:'0',rating:'forgotten'});assert.equal(mock.data.get('main').activePractice.input.characterRatings[0],'forgotten');
- await click('practice-grade',{grade:'3'});
- const done=mock.data.get('main');assert.equal(done.skillSchedules.drawing[id].reps,1);assert.deepEqual(done.skillHistory[0].characters,[{character:'随',rating:'forgotten',grade:1}]);assert.equal(done.lastPracticeUndo.undo[0].input.pads,undefined);assert.equal(done.history.length,0);
+ assert.equal(mock.data.get('main').skillHistory.length,0);assert.match(mock.shell.innerHTML,/unselected/);
+ await click('draw-feedback',{index:'1',rating:'easy'});
+ const done=mock.data.get('main');assert.equal(done.skillSchedules.drawing[id].reps,1);assert.equal(done.skillHistory[0].grade,1);assert.deepEqual(done.skillHistory[0].characters,[{character:'随',rating:'forgotten',grade:1},{character:'便',rating:'easy',grade:4}]);assert.equal(done.lastPracticeUndo.undo[0].input.pads,undefined);assert.equal(done.history.length,0);
  assert.equal(done.activePractice,null);assert.match(mock.shell.innerHTML,/Protect your progress/);
 });
 
@@ -353,7 +356,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.6.4');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.5');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -367,7 +370,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.4');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.5');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -410,4 +413,60 @@ test('v0.6.4 pagination shows 20 rows, navigates in both collections, and resets
  await click('navigate',{page:'grammar'});assert.equal(count(),20);
  await click('collection-page',{kind:'grammar',dir:'next'});assert.equal(count(),20);
  assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>2<\/strong>/);
+});
+
+test('v0.6.5 puts session filters after study controls and restores readable settings',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=065-home');await delay(25);
+ const html=mock.shell.innerHTML;
+ assert.ok(html.indexOf('Session filters')>html.indexOf('Auto Study'));
+ assert.ok(html.indexOf('Session filters')>html.indexOf('Study particle zoo'));
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('navigate',{page:'settings'});
+ assert.match(mock.shell.innerHTML,/Chinese typography/);
+ assert.match(mock.shell.innerHTML,/data-setting="fontDifficulty"/);
+ assert.match(mock.shell.innerHTML,/data-setting="fontChoice"/);
+ assert.match(mock.shell.innerHTML,/file-action-icon/);
+ assert.equal((mock.shell.innerHTML.match(/class="file-action-icon"/g)||[]).length,4);
+ const change=async(key,value)=>{
+  await mock.listeners.change({target:{dataset:{setting:key},type:'select-one',value,closest:()=>null}});await delay();
+ };
+ await change('fontDifficulty','advanced');
+ assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
+ assert.equal(mock.data.get('main').settings.fontChoice,'pen');
+ await change('fontChoice','mixed');
+ assert.equal(mock.data.get('main').settings.fontChoice,'mixed');
+ await click('navigate',{page:'study'});
+ assert.match(mock.shell.innerHTML,/Session filters/);
+});
+
+test('single-character drawing completes on one rating, without a second word grade',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');
+ const {replaceMaster}=await import('../master.js');const {MASTER}=await import('../master-data.js');
+ const {scheduleReview}=await import('../review-scheduler.js');
+ const s=defaultState();replaceMaster(s,MASTER);
+ const c=s.cards.find(c=>c.hanzi==='我');assert.ok(c);
+ s.schedules[c.id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.5};mock.data.set('main',s);
+ await import('../app.js?smoke=065-single');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
+ await click('practice-start',{mode:'drawing'});
+ assert.equal(mock.data.get('main').activePractice.current.id,c.id);
+ await click('practice-reveal');assert.match(mock.shell.innerHTML,/Grade each character/);
+ assert.equal((mock.shell.innerHTML.match(/class="drawing-grade-row"/g)||[]).length,1);
+ await click('draw-feedback',{index:'0',rating:'easy'});
+ const d=mock.data.get('main');assert.equal(d.activePractice,null);
+ assert.equal(d.skillHistory.length,1);assert.equal(d.skillHistory[0].grade,4);
+ assert.deepEqual(d.skillHistory[0].characters,[{character:'我',rating:'easy',grade:4}]);
+ assert.equal(d.skillSchedules.drawing[c.id].reps,1);
+});
+
+test('particle error stats render two readable lines instead of narrow grid columns',async()=>{
+ const mock=mockBrowser();const {defaultState}=await import('../storage.js');
+ const {PARTICLES}=await import('../particles.js');
+ const s=defaultState();s.skillHistory=[{id:PARTICLES[0].id,mode:'particles',correct:false,grade:1,at:'2026-11-18T10:00:00.000Z'}];mock.data.set('main',s);
+ await import('../app.js?smoke=065-pstats');await delay(25);
+ const el={dataset:{action:'navigate',page:'stats'}};
+ await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();
+ assert.match(mock.shell.innerHTML,/Particles to revisit/);
+ assert.match(mock.shell.innerHTML,/class="particle-issue"/);
+ assert.match(mock.shell.innerHTML,/1 incorrect · 1 attempts/);
 });

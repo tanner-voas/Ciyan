@@ -25,6 +25,8 @@ STATIC_FILES = (
     "particles.js", "particle-content.js", "learning-feedback.js",
     "tags.js",
     "drawing.js",
+    "drawing-grades.js",
+    "fonts.js",
     "fsrs.js",
     "storage.js",
     "cards.js",

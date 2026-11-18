@@ -1,0 +1,11 @@
+Ciyan v0.6.5 validation
+
+Node / npm test: 160 tests, 160 pass, 0 fail.
+
+Real supplied v0.6.3 HSK4 mock backup parsed with 11,893 vocabulary, 3,469 grammar records, 23,527 vocabulary reviews, 792 grammar reviews and 656 skill reviews. An existing vocabulary score was preserved exactly. Re-export preserved all content. No user data was bundled.
+
+320px and 430px local Chromium static-layout inspections: no horizontal overflow in drawing grades, Particle Zoo stats, or file actions.
+
+Offline precache: all 28 listed assets found in dist/ciyan, including fonts.js and drawing-grades.js. Cache version ciyan-shell-v6.5.
+
+Not tested: physical iOS Safari and availability of optional native Chinese handwritten fonts. If a font is absent, CSS falls back to a readable Chinese face.

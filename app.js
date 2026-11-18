@@ -7,12 +7,14 @@ import {MODES,SHARES,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSu
 import {allParticles,particleCorrect,particleSentence,particleError,particleLabel,OMIT} from './particles.js';
 import {characterEvidence,familyEvidence,drawingProfile} from './learning-feedback.js';
 import {drawPad,attachPad} from './drawing.js';
+import {DRAWING_RATINGS,drawingResult,withDrawingRating} from './drawing-grades.js';
+import {FONT_LEVELS,fontChoices,normalizeFontSettings,applyFontToRoot} from './fonts.js';
 import {MASTER} from './master-data.js';
 import {replaceMaster} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
-import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords} from './storage.js';
+import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords,deleteConfirmationValid} from './storage.js';
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
@@ -182,9 +184,9 @@ function renderStudyIntro(){
  const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),all=enabled.map(m=>countsByMode[m]);
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
  return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Continuous recognition, grammar, character writing, and particles. Stop whenever you choose.</p></div>
- ${studyFilterTree()}<section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
+ <section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
  ${autoControls()}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=countsByMode[mode];return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode,c)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
- ${backupBanner()}`;
+ ${backupBanner()}${studyFilterTree()}`;
 }
 function modeStartable(mode,counts){
  const permitted=selectedCount(counts);
@@ -381,6 +383,7 @@ function updateCollectionPage(kind=page==='grammar'?'grammar':'words'){
   <small>${esc(tags.slice(0,4).map(t=>'#'+tagLabel(t)).join('  '))}</small></div><div class="list-meta"><strong>${percent(score.combined)}</strong>
   <small>${ready?'Ready':'Locked'}</small></div>${icon('right')}</button>`).join('');
  list.innerHTML=results.length?content+pageControl(kind,collectionPages[kind],results.length):`<div class="empty"><strong>No matching ${kind==='words'?'words':'sentences'}</strong>Adjust your search or filters.</div>`;
+ applyFontToRoot(list,state.settings);
 }
 
 let reviewDayCache=null;
@@ -429,13 +432,19 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
+   <div class="section-row"><h2 class="section-title">Chinese typography</h2></div>
+   <div class="panel stack font-settings"><p class="subtle">Choose a difficulty and then a font. The selection applies to Chinese text across Cíyán and is saved in full backups. Mixed assigns one of the level's styles to each individual character.</p>
+     <label class="font-control">Difficulty<select data-setting="fontDifficulty" aria-label="Chinese font difficulty">${options(Object.keys(FONT_LEVELS).map(level=>[level,level[0].toUpperCase()+level.slice(1)]),s.fontDifficulty)}</select></label>
+     <label class="font-control">Font<select data-setting="fontChoice" aria-label="Chinese font">${options(fontChoices(s.fontDifficulty),s.fontChoice)}</select></label>
+     <div class="font-sample"><div class="eyebrow">LIVE FONT PREVIEW</div><div class="font-sample-chinese" lang="zh-Hans">春风又绿江南岸，明月何时照我还？</div><p class="subtle">样式测试 · 春天的雨，山中的路，朋友的信。</p></div>
+     <p class="subtle">Fonts use locally installed Chinese typefaces on iPhone. An unavailable style falls back to a clean Chinese font; no web font or network connection is required.</p></div>
    <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences load automatically. This preview still has gaps in per-word example coverage.</p><p class="subtle">Edits apply for this visit. Export one master file to keep changes, then load that file again after refreshing. Learning records save automatically and remain separate from the master content.</p></div>
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
-     <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Export full progress backup</button>
-     <button class="btn btn-secondary btn-full" data-action="restore">${icon('upload')}Restore full backup (preserve master content)</button>
-     <button class="btn btn-secondary btn-full" data-action="import-deck">${icon('plus')}Load complete master file</button>
-     <button class="btn btn-secondary btn-full" data-action="export-deck">${icon('archive')}Export complete master (no review records)</button>
+     <button class="btn btn-primary btn-full file-action-btn" data-action="backup"><span class="file-action-icon">${icon('download')}</span><span class="file-action-label">Export full progress backup</span></button>
+     <button class="btn btn-secondary btn-full file-action-btn" data-action="restore"><span class="file-action-icon">${icon('upload')}</span><span class="file-action-label">Restore full backup (preserve master content)</span></button>
+     <button class="btn btn-secondary btn-full file-action-btn" data-action="import-deck"><span class="file-action-icon">${icon('plus')}</span><span class="file-action-label">Load complete master file</span></button>
+     <button class="btn btn-secondary btn-full file-action-btn" data-action="export-deck"><span class="file-action-icon">${icon('archive')}</span><span class="file-action-label">Export complete master (no review records)</span></button>
 
      <p class="subtle">Loading a master replaces the complete content for this visit. Matching words retain their learning records. Full backups contain content and progress; a master export contains only content.</p>
      <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
@@ -447,12 +456,12 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
 }
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
-  app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();mountDrawing();}
+  app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();}
 function navigate(dest){if(!['study','browse','grammar','stats','settings','complete'].includes(dest))return;
   page=dest;revealed=false;render();window.scrollTo({top:0,behavior:'instant'});}
 function modal(title,contents){closeModal();currentModal=document.createElement('div');currentModal.className='modal-backdrop';
   currentModal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${icon('x')}</button></div><div class="modal-scroll">${contents}</div></div>`;
-  document.body.append(currentModal);currentModal.querySelector('input:not([type=file]),button')?.focus();}
+  document.body.append(currentModal);applyFontToRoot(currentModal,state.settings);currentModal.querySelector('input:not([type=file]),button')?.focus();}
 function closeModal(){if(currentModal){currentModal.remove();currentModal=null;}}
 let wordDetailTrail=[];
 let wordDetailCurrent=null;
@@ -568,7 +577,7 @@ function clearDataModal(){modal('Clear learning records?',`<div class="notice er
   <input id="clear-confirm" placeholder="delete" autocomplete="off" spellcheck="false"></div>
   <div class="modal-actions"><button class="btn btn-secondary" data-action="close-modal">Cancel</button>
     <button class="btn btn-danger" id="clear-confirm-button" data-action="confirm-clear" disabled>Clear records</button></div>`);}
-async function clearData(){if($('#clear-confirm')?.value!=='delete')return;
+async function clearData(){if(!deleteConfirmationValid($('#clear-confirm')?.value))return;
   const done=await change(d=>clearLearningRecords(d),false);
   if(done){closeModal();lastFinished=null;grammarFeedback=null;revealed=false;page='study';render();toast('Learning records cleared; cards retained. Export your new backup.');}
 }
@@ -785,7 +794,7 @@ document.addEventListener('input',event=>{
   if(event.target.closest?.('#scheduler-form'))updateTimingPreview(event.target.closest('#scheduler-form'));
   if(event.target.id==='study-search'){studyFilters.search=event.target.value;const caret=event.target.selectionStart;if(!studyComposing){render();const search=$('#study-search');search?.focus?.({preventScroll:true});if(Number.isInteger(caret))search?.setSelectionRange?.(caret,caret);}return;}
   if(event.target.id==='collection-search') {const kind=page==='grammar'?'grammar':'words';filters[kind].search=event.target.value;updateCollection();}
-  if(event.target.id==='clear-confirm') {const b=$('#clear-confirm-button');if(b)b.disabled=event.target.value!=='delete';}
+  if(event.target.id==='clear-confirm') {const b=$('#clear-confirm-button');if(b)b.disabled=!deleteConfirmationValid(event.target.value);}
 });
 document.addEventListener('compositionstart',event=>{if(event.target.id==='study-search')studyComposing=true;});
 document.addEventListener('compositionend',event=>{if(event.target.id==='study-search'){studyComposing=false;studyFilters.search=event.target.value;render();const search=$('#study-search');search?.focus?.({preventScroll:true});}});
@@ -799,10 +808,12 @@ document.addEventListener('change',async event=>{
   if(event.target.dataset.filter){const kind=event.target.dataset.kind,key=event.target.dataset.filter;
     filters[kind][key]=key.endsWith('Value')?Number(event.target.value):event.target.value;updateCollection();return;}
   const key=event.target.dataset.setting;if(!key)return;
-  let value=event.target.type==='checkbox'?event.target.checked:Number(event.target.value);
+  let value=['fontDifficulty','fontChoice'].includes(key)?event.target.value:event.target.type==='checkbox'?event.target.checked:Number(event.target.value);
   if(key==='newWordsPerDay')value=event.target.value.trim()===''?null:Math.max(0,Math.min(20000,Math.round(Number(event.target.value)||0)));
   if(key==='sessionSize')value=Math.max(1,Math.min(500,Math.round(value)||12));
   if(key==='desiredRetention')value=[.85,.9,.95].includes(value)?value:.9;
+  if(key==='fontDifficulty'){if(!Object.hasOwn(FONT_LEVELS,value))return;await change(d=>{d.settings.fontDifficulty=value;d.settings.fontChoice=fontChoices(value)[0][0];});return;}
+  if(key==='fontChoice'){if(!fontChoices(state.settings.fontDifficulty).some(([id])=>id===value))return;}
   await change(d=>{d.settings[key]=value;});
 });
 document.addEventListener('keydown',event=>{
@@ -873,7 +884,10 @@ function practiceRender(){
   const c=wordById(e.id),chars=[...c.hanzi],index=input.pad||0,g=grammarById(e.contextId),charMap=new Map(characterEvidence(state).map(x=>[x.character,x]));
   const sourceMatch=g?contextMatches(state,c).find(m=>m.grammar.id===g.id):null;
   body=`<section class="panel stack drawing-prompt"><h2>${esc(c.pinyin)}</h2><strong>${esc(c.english)}</strong><span class="tag">${chars.length} character${chars.length===1?'':'s'}</span>${g?`<div class="drawing-context"><div class="eyebrow">WORD IN CONTEXT</div><p>${highlightPinyin(g.pinyin,c.pinyin)}</p><p>${esc(g.english)}</p><small>Target: ${esc(c.pinyin)} — ${esc(c.english)}</small>${sourceMatch?matchTrace(sourceMatch):''}</div>`:'<p class="subtle">No loaded example for this word. Word-only writing practice.</p>'}</section>`;
-  body+=input.revealed?`<div class="drawing-comparison">${chars.map((ch,i)=>`<div class="draw-pair"><canvas width="240" height="240" data-drawing-preview="${i}" aria-label="Your drawing ${i+1}"></canvas><span class="printed-character">${esc(ch)}</span><small>Character ${i+1} · ${characterScoreLabel(ch,charMap)}</small><div class="character-feedback" role="group" aria-label="Feedback for character ${i+1}">${['forgotten','difficult','recalled','easy'].map(v=>`<button class="btn btn-secondary ${input.characterRatings?.[i]===v?'selected':''}" data-action="draw-feedback" data-index="${i}" data-rating="${v}" aria-pressed="${input.characterRatings?.[i]===v}">${{recalled:'Good',difficult:'Hard',forgotten:'Again',easy:'Easy'}[v]}</button>`).join('')}</div></div>`).join('')}</div><p class="subtle">Compare each drawing with the character beside it. You judge accuracy. Grade any characters you want to track, then grade the whole word below. Unrated characters receive no inferred grade. Character grades improve selection across words; the whole-word grade sets this word’s next due date. Only ratings are kept, never sketches.</p>${drawingDetail(c)}${practiceRatings(e.mode,e.id)}`:
+  body+=input.revealed?`<div class="drawing-comparison">${chars.map((ch,i)=>`<div class="draw-pair"><canvas width="240" height="240" data-drawing-preview="${i}" aria-label="Your drawing ${i+1}"></canvas><span class="printed-character">${esc(ch)}</span><small>Character ${i+1} · ${characterScoreLabel(ch,charMap)}</small></div>`).join('')}</div>
+   <section class="panel stack drawing-grade-panel"><h2>Grade each character</h2><p class="subtle">Compare your drawing with the printed characters. Select one rating in each row. After the final selection the session continues automatically. The <strong>lowest character rating</strong> schedules the whole word; all individual ratings are retained. Sketches are never saved.</p>
+   <div class="drawing-grade-grid" role="group" aria-label="Character drawing grades">${chars.map((ch,i)=>`<div class="drawing-grade-row" role="group" aria-label="Character ${i+1}: ${esc(ch)}"><span class="drawing-grade-character" title="Character ${i+1}">${esc(ch)}</span>${DRAWING_RATINGS.map(v=>`<button class="grade ${v.label.toLowerCase()} drawing-grade-choice ${input.characterRatings?.[i]&&input.characterRatings[i]!==v.key?'unselected':''} ${input.characterRatings?.[i]===v.key?'selected':''}" data-action="draw-feedback" data-index="${i}" data-rating="${v.key}" aria-label="${ch}: ${v.label}" aria-pressed="${input.characterRatings?.[i]===v.key}"><strong>${v.label}</strong></button>`).join('')}</div>`).join('')}</div>
+   <p class="subtle" role="status">${chars.filter((_,i)=>input.characterRatings?.[i]).length} of ${chars.length} characters graded</p></section>`:
   `<div class="drawing-nav"><button class="btn btn-secondary" data-action="draw-page" data-pad="${index-1}" ${index===0?'disabled':''} aria-label="Previous character">←</button><strong>Character ${index+1} of ${chars.length}</strong><button class="btn btn-secondary" data-action="draw-page" data-pad="${index+1}" ${index===chars.length-1?'disabled':''} aria-label="Next character">→</button></div><canvas id="drawing-pad" width="600" height="600" aria-label="Draw character ${index+1}"></canvas><div class="drawing-nav"><button class="btn btn-secondary" data-action="draw-undo">Undo stroke</button><button class="btn btn-secondary" data-action="draw-clear">Clear this character</button></div><button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal characters</button>`;
  }
  if(e.mode==='grammar'){
@@ -911,6 +925,7 @@ async function finishPractice(){await drawingSave;const s=state.activePractice;i
 async function gradePractice(grade){
  await drawingSave;const s=state.activePractice;if(!s?.input?.revealed||saving||![1,2,3,4].includes(grade))return;
  const e=s.current,input=s.input;
+ if(e.mode==='drawing')return; // Drawing is graded only through character rows.
  if(['grammar','particles'].includes(e.mode)&&!input.correct&&grade>2)return;
  if(e.mode==='words'){toneSelections=input.tones||[];if(grade===4&&state.settings.enforceTones&&wordToneCheck(wordById(e.id))?.wrong.length)return;}
  const done=await change(d=>{
@@ -921,6 +936,30 @@ async function gradePractice(grade){
   a.itemStartedAt=Date.now();
  },false);
  if(done){revealed=false;await settlePractice();}
+}
+async function gradeDrawingCharacter(index,rating){
+ await drawingSave;
+ const current=state.activePractice;
+ if(saving||current?.current?.mode!=='drawing'||!current.input?.revealed)return;
+ const card=wordById(current.current.id),chars=[...card.hanzi];
+ const ratings=withDrawingRating(current.input.characterRatings,index,rating,chars.length);
+ if(!ratings)return;
+ const completed=drawingResult(card.hanzi,ratings);
+ const elapsed=(Date.now()-current.itemStartedAt)/1000;
+ const done=await change(d=>{
+  const active=d.activePractice;
+  active.input.characterRatings=ratings;
+  if(!completed)return;
+  // One atomic transaction commits all character evidence and the derived
+  // minimum word grade, then advances to the next eligible exercise.
+  rememberAnswer(d,active);
+  recordExercise(d,active,completed.grade,{seconds:elapsed,characters:completed.characters});
+  active.current=nextExercise(d,active);
+  active.itemStartedAt=Date.now();
+ },false);
+ if(!done)return;
+ if(completed){revealed=false;await settlePractice();}
+ else render();
 }
 async function practiceAction(action,el){
  if(Date.now()<ignorePracticeClickUntil&&['practice-pick','practice-remove'].includes(action))return true;
@@ -941,7 +980,7 @@ async function practiceAction(action,el){
  const s=state.activePractice,e=s.current;
  if(!e)return false;
  if(['practice-reveal','reveal'].includes(action)){await practiceInput(i=>{i.revealed=true;});render();return true;}
- if(action==='draw-feedback'&&e.mode==='drawing'&&s.input.revealed){const n=Number(el.dataset.index),v=el.dataset.rating;if(Number.isInteger(n)&&n>=0&&n<[...wordById(e.id).hanzi].length&&['recalled','difficult','forgotten','easy'].includes(v)){await practiceInput(i=>{i.characterRatings??={};if(i.characterRatings[n]===v)delete i.characterRatings[n];else i.characterRatings[n]=v;});render();}return true;}
+ if(action==='draw-feedback'&&e.mode==='drawing'&&s.input.revealed){await gradeDrawingCharacter(Number(el.dataset.index),el.dataset.rating);return true;}
  if(s.input.revealed)return false;
  if(action==='draw-page'){const n=Number(el.dataset.pad);if(n>=0&&n<[...wordById(e.id).hanzi].length)await practiceInput(i=>{i.pad=n;});}
  else if(action==='draw-undo'||action==='draw-clear')await practiceInput(i=>{i.pads??=[];const n=i.pad||0;i.pads[n]??=[];if(action==='draw-clear')i.pads[n]=[];else i.pads[n].pop();});
@@ -970,7 +1009,7 @@ function extendedStats(){
  return `${feedbackStats()}${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
  <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${total} recorded attempts</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Next seven days</h2><div class="forecast">${forecasts.map(d=>`<div><small>${d.key.slice(5)}</small><strong>${d.n}</strong></div>`).join('')}</div><p class="subtle">Scheduled reviews only, excluding new items and overdue backlog. Dates will change as you study.</p></section>
- <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="stat-feedback-row"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect / ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
+ <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="particle-issue"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect · ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
 }
 
 function highlightPinyin(sentence,word){

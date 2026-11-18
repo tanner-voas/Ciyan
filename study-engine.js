@@ -1,3 +1,4 @@
+import {normalizeFontSettings} from './fonts.js';
 import {weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.js';
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
@@ -15,6 +16,7 @@ export function ensureStudy(s){
  s.skillSchedules??={grammar:{},drawing:{},particles:{}};
  for(const m of ['grammar','drawing','particles'])s.skillSchedules[m]??={};
  s.postponed??={};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
+ Object.assign(s.settings,normalizeFontSettings(s.settings));
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
  s.settings.autoShares={...SHARES,...s.settings.autoShares};
  s.settings.tagWeights=validatedTagWeights(s.settings.tagWeights);

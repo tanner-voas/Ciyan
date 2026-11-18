@@ -1,7 +1,20 @@
-# Cíyán (词言) v0.6.2
+# Cíyán (词言) v0.6.5
 
 Offline Mandarin vocabulary, grammar, drawing and Particle Zoo, optimized for
 phone-based spaced repetition with local full-backup export.
+
+## Latest release
+
+[v0.6.5 release notes](RELEASE_v0.6.5.md): bottom-of-page Study filters,
+one colored grade row per drawn character (minimum grade schedules the word),
+mobile Particle Zoo and file-action alignment fixes, case-insensitive delete
+confirmation, and an app-wide Chinese font selector with Beginner,
+Intermediate, Advanced, and Expert difficulty plus mixed-character fonts.
+Chinese styles use device-local fonts and do not require the network.
+
+The **current bundled** master contains 11,893 vocabulary entries and
+3,444 grammar examples. The bundled master is unchanged from v0.6.4.
+Full backups can also preserve additional grammar entries from earlier imports.
 
 ## Context matching
 
@@ -15,12 +28,10 @@ Example: `{没}{关系}` can match 没关系, 没, 关系, 关, and 系, but not
 `{汉子}` can match 子. An existing independent `{没关系}` example remains
 preferred for that word.
 
-The bundled master preserves 11,893 vocabulary records, with 2,761 grammar
-examples (805 imported from the authored expansion, 25 low-quality examples
-removed, and 85 additional examples). The context index reaches 5,375 words
-(45.19%). HSK1 and HSK2 have 100% **structural match coverage**; 6,518 words
-still have no qualifying source. Contained-character matches indicate visible
-written usage, not necessarily the same standalone definition or pronunciation.
+At **v0.6.2**, the master contained 2,761 grammar examples; subsequent releases
+expanded this to 3,444. The context-matching rules remain unchanged. Contained-
+character matches indicate visible written usage, not necessarily the same
+standalone definition or pronunciation.
 
 See [v0.6.2 release notes](RELEASE_v0.6.2.md),
 [coverage report](content/context-coverage-summary-v062.json), and
@@ -65,7 +76,7 @@ scheduling behavior or reset scores.
 
 For an existing Cloudflare installation, export a full backup first. Upload
 the new deployment to the **same project**, open it online, close any previous
-Safari or Home Screen app windows, and reopen to activate v0.5.5. Browser
+Safari or Home Screen app windows, and reopen to activate v0.6.5. Browser
 storage can be evicted by iOS, so keep your independent JSON backups.
 
 Automated tests do not replace physical iPhone/Safari testing.
