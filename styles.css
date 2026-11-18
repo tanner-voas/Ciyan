@@ -328,3 +328,13 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .skill-table{min-width:440px;font-variant-numeric:tabular-nums}
 .skill-table th,.skill-table td{white-space:nowrap;padding:10px 8px}
 @media(max-width:390px){.due-controls{gap:8px}.stat-feedback-row{gap:10px}.stat-feedback-row span{font-size:12px}}
+
+/* v0.6.4 — exactly 20 collection records per page, no ever-growing DOM list. */
+.collection-pages{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:18px 0 22px;padding:12px;border:1px solid #dfe9e1;background:#f8faf7;border-radius:16px;align-items:stretch;min-width:0}
+.collection-page-status{grid-column:1/-1;grid-row:1;display:flex;align-items:center;justify-content:center;gap:4px;flex-wrap:wrap;font-size:14px;color:#234737;line-height:1.4;padding:3px 0 8px;font-variant-numeric:tabular-nums}
+.collection-page-status small{width:100%;text-align:center;color:#698071;font-size:11px}
+.collection-page-btn{min-width:0;min-height:40px;padding:7px 3px;background:#fff;color:#22553e;border:1px solid #cfdfd3;border-radius:9px;font:inherit;font-size:12px;font-weight:700;line-height:1.15;white-space:normal;cursor:pointer}
+.collection-page-btn:disabled{color:#a3b2a7;background:#f4f7f3;border-color:#e4ece6;cursor:default}
+.collection-page-btn:not(:disabled):active{background:#e2f0e7}
+.collection-page-btn:focus-visible{outline:2px solid #237357;outline-offset:2px}
+@media(max-width:360px){.collection-pages{gap:5px;padding:9px}.collection-page-btn{font-size:11px}}

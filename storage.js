@@ -34,23 +34,102 @@ export function defaultState(){return ensureStudy({
   settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
+// v0.6.4: content and progress live in the SAME IndexedDB store but in separate
+// atomic records. The 12k-card master is written only when it actually changes;
+// every study answer still commits its full progress immediately.
+const CONTENT_KEY='master-content';
+let savedContent=null;
+export function cloneProgressState(state,includeContent=false){
+ const {cards,grammar,history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions,...progress}=state;
+ const copy=structuredClone(progress);
+ // Existing log entries are immutable. Shallow-copy the arrays so push, undo,
+ // truncation and deletion cannot mutate the previous committed state.
+ for(const [key,array] of Object.entries({history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions}))
+  copy[key]=Array.isArray(array)?array.slice():[];
+ copy.cards=includeContent?structuredClone(cards):cards;
+ copy.grammar=includeContent?structuredClone(grammar):grammar;
+ return copy;
+}
+const LOG_FIELDS=['history','grammarHistory','skillHistory'];
+const LOG_CHUNK=256;
+let savedHistory=null;
+// A progress write updates only changed 256-record log blocks. Together with
+// the separate master-content record, this prevents multi-megabyte writes for
+// each answer, while retaining a single IndexedDB transaction for durability.
 export async function loadState(){const db=await database();return new Promise((resolve,reject)=>{
-  const r=db.transaction(STORE,'readonly').objectStore(STORE).get('main');
-  r.onsuccess=()=>resolve(r.result||null);
-  r.onerror=()=>reject(r.error||new Error('Cannot read saved data'));
+ const store=db.transaction(STORE,'readonly').objectStore(STORE),request=store.get('main');
+ request.onsuccess=()=>{
+  const value=request.result;
+  if(!value){savedContent=null;savedHistory=null;resolve(null);return;}
+  const contentSplit=!!value.__splitContent,logChunks=value.__historyChunks;
+  if(!contentSplit&&!logChunks){savedContent=null;savedHistory=null;resolve(value);return;}
+  const restored={...value},logs={};let pending=0,failed=false;
+  const fail=error=>{if(!failed){failed=true;reject(error);}};
+  const done=()=>{
+   if(pending||failed)return;
+   if(contentSplit&&(!restored.cards||!restored.grammar)){
+    fail(new Error('The local dictionary is missing. Restore your latest full backup; no learning records were cleared.'));return;
+   }
+   if(logChunks){for(const field of LOG_FIELDS)restored[field]=logs[field].flat();savedHistory=Object.fromEntries(LOG_FIELDS.map(k=>[k,restored[k]]));}
+   else savedHistory=null;
+   if(contentSplit)savedContent={cards:restored.cards,grammar:restored.grammar};else savedContent=null;
+   delete restored.__splitContent;delete restored.__historyChunks;
+   resolve(restored);
+  };
+  const fetch=(key,callback)=>{
+   pending++;const r=store.get(key);
+   r.onsuccess=()=>{callback(r.result);pending--;done();};
+   r.onerror=()=>fail(r.error||new Error('Unable to read saved progress'));
+  };
+  // Reserve all pending requests before the first callback runs.
+  if(contentSplit)fetch(CONTENT_KEY,result=>{if(result){restored.cards=result.cards;restored.grammar=result.grammar;}});
+  if(logChunks){for(const field of LOG_FIELDS){
+   const count=logChunks[field];
+   if(!Number.isSafeInteger(count)||count<0||count>2000){fail(new Error('Invalid saved history chunk index'));return;}
+   logs[field]=new Array(count);
+   for(let i=0;i<count;i++)fetch(`log:${field}:${i}`,result=>{
+    if(!Array.isArray(result)){fail(new Error('Saved review history is incomplete; restore the latest backup.'));return;}
+    logs[field][i]=result;
+   });
+  }}
+  done();
+ };
+ request.onerror=()=>reject(request.error||new Error('Cannot read saved progress'));
 });}
 export async function saveState(state,expectedRevision=null){const db=await database();return new Promise((resolve,reject)=>{
-  const tx=db.transaction(STORE,'readwrite'),store=tx.objectStore(STORE);
-  if(expectedRevision===null)store.put(state,'main');
-  else {const read=store.get('main');read.onsuccess=()=>{
-    if(read.result && read.result.revision!==expectedRevision){
-      reject(new Error('Data changed in another tab. Reload before continuing.'));tx.abort();return;
-    }
-    store.put(state,'main');
-  };}
-
-  tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('Cannot save progress'));
-  tx.onabort=()=>reject(tx.error||new Error('Save was interrupted'));
+ const tx=db.transaction(STORE,'readwrite'),store=tx.objectStore(STORE);
+ const contentChanged=!savedContent||savedContent.cards!==state.cards||savedContent.grammar!==state.grammar;
+ const {cards,grammar,history,grammarHistory,skillHistory,...progress}=state;
+ progress.__splitContent=true;
+ const logs={history,grammarHistory,skillHistory};
+ const chunks=Object.fromEntries(LOG_FIELDS.map(field=>[field,Math.ceil((logs[field]||[]).length/LOG_CHUNK)]));
+ progress.__historyChunks=chunks;
+ let finished=false;
+ const fail=e=>{if(finished)return;finished=true;reject(e);};
+ const write=()=>{
+  if(contentChanged)store.put({cards,grammar},CONTENT_KEY);
+  for(const field of LOG_FIELDS){
+   const entries=logs[field]||[],prior=savedHistory?.[field],oldCount=Math.ceil((prior?.length||0)/LOG_CHUNK),newCount=chunks[field];
+   let shared=0;
+   if(prior)while(shared<Math.min(prior.length,entries.length)&&prior[shared]===entries[shared])shared++;
+   // A partial last block must be updated if appending; full blocks are shared.
+   const start=Math.floor(shared/LOG_CHUNK);
+   for(let i=start;i<newCount;i++)store.put(entries.slice(i*LOG_CHUNK,(i+1)*LOG_CHUNK),`log:${field}:${i}`);
+   for(let i=newCount;i<oldCount;i++)store.delete(`log:${field}:${i}`);
+  }
+  store.put(progress,'main');
+ };
+ if(expectedRevision===null)write();
+ else {const read=store.get('main');read.onsuccess=()=>{
+  if(read.result&&read.result.revision!==expectedRevision){fail(new Error('Data changed in another tab. Reload before continuing.'));tx.abort();return;}
+  write();
+ };read.onerror=()=>fail(read.error||new Error('Cannot verify stored revision'));}
+ tx.oncomplete=()=>{
+  savedContent={cards,grammar};savedHistory=logs;
+  if(!finished){finished=true;resolve();}
+ };
+ tx.onerror=()=>fail(tx.error||new Error('Cannot save progress'));
+ tx.onabort=()=>fail(tx.error||new Error('Save was interrupted'));
 });}
 const string=(x,max)=>String(x??'').trim().slice(0,max);
 export function normalizeCard(source,fallbackId=null){
@@ -97,7 +176,12 @@ export function migrateState(input){
   if(!input||typeof input!=='object')throw new Error('Stored data is not a Cíyán database');
   if((input.schemaVersion||1)>2)throw new Error('This database needs a newer version of Cíyán');
   if((input.schemaVersion||1)===2){
-    return ensureStudy({...input,cards:input.cards.map(c=>({...c,tags:normalizeTags(c.tags||[])})),grammar:Array.isArray(input.grammar)?input.grammar:[],
+    const normalizedCards=input.cards.map(c=>{
+      const tags=normalizeTags(c.tags||[]);
+      return Array.isArray(c.tags)&&tags.length===c.tags.length&&tags.every((tag,i)=>tag===c.tags[i])?c:{...c,tags};
+    });
+    const same=normalizedCards.every((c,i)=>c===input.cards[i]);
+    return ensureStudy({...input,cards:same?input.cards:normalizedCards,grammar:Array.isArray(input.grammar)?input.grammar:[],
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,

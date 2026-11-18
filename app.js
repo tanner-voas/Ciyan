@@ -12,7 +12,7 @@ import {replaceMaster} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
-import {loadState,saveState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords} from './storage.js';
+import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords} from './storage.js';
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
@@ -53,8 +53,15 @@ const opText=['>','>=','=','<=','<'];
 let state=null,page='study',studyMode='words',revealed=false,toneSelections=[],lastFinished=null,grammarFeedback=null;
 let currentModal=null,pendingBackupRevision=null,saving=false,toastTimer;
 const filters={words:{search:'',tags:{},op:'>=',rating:'any'},grammar:{search:'',tags:{},knowledgeOp:'>=',knowledgeValue:0,usageOp:'>=',usageValue:0}};
-const wordById=id=>state.cards.find(c=>c.id===id);
-const grammarById=id=>state.grammar.find(g=>g.id===id);
+let lookupCache=null;
+function lookups(){
+ if(lookupCache?.cards===state.cards&&lookupCache?.grammar===state.grammar)return lookupCache;
+ lookupCache={cards:state.cards,grammar:state.grammar,
+  words:new Map(state.cards.map(c=>[c.id,c])),sentences:new Map(state.grammar.map(g=>[g.id,g]))};
+ return lookupCache;
+}
+const wordById=id=>lookups().words.get(id);
+const grammarById=id=>lookups().sentences.get(id);
 const isDue=(id,now=Date.now())=>!!state.schedules[id]&&Date.parse(state.schedules[id].dueAt)<=now;
 const countDue=()=>state.cards.filter(c=>isDue(c.id)).length;
 const countLearned=()=>state.cards.filter(c=>state.schedules[c.id]?.reps>0).length;
@@ -64,7 +71,13 @@ const countReadyGrammar=()=>modeCounts(state,'grammar').available;
 const recall=s=>s?(retrievability(s)??0):0;
 const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.id]));
 const scoreGrammar=g=>grammarScores(g,state.cards,state.schedules,recall,state.grammarHistory);
-const tagsFor=kind=>tagNodes((kind==='words'?state.cards.map(c=>c.tags):state.grammar.map(g=>grammarTags(g,state.cards))).flat()).map(n=>n.path);
+const topicTagCache={words:null,grammar:null};
+const tagsFor=kind=>{
+ const cached=topicTagCache[kind];
+ if(cached?.cards===state.cards&&(kind==='words'||cached.grammar===state.grammar))return cached.tags;
+ const tags=tagNodes((kind==='words'?state.cards.map(c=>c.tags):state.grammar.map(g=>grammarTags(g,state.cards))).flat()).map(n=>n.path);
+ topicTagCache[kind]={cards:state.cards,grammar:state.grammar,tags};return tags;
+};
 const expandedTags={words:new Set(),grammar:new Set(),study:new Set()};
 const studyFilters={tags:{},search:''};let selectedPool='all',studyComposing=false;
 let tagOddsCache=null,tagContentRevision=0;
@@ -77,10 +90,12 @@ function appliedNewWordOdds(){
 }
 const tagHtml=text=>`<span class="tag">#${esc(tagLabel(text))}</span>`;
 function toast(message){clearTimeout(toastTimer);toastNode.textContent=message;toastNode.classList.add('show');toastTimer=setTimeout(()=>toastNode.classList.remove('show'),3600);}
-async function change(mutator,shouldRender=true){
+async function change(mutator,shouldRender=true,contentChange=false){
   if(saving)return false;
   saving=true;
-  const draft=structuredClone(state);
+  // Only copy learning records for a study action. Full dictionary data is
+  // immutable unless an explicit add/edit/delete/master operation requests it.
+  const draft=cloneProgressState(state,contentChange);
   try{mutator(draft);draft.appVersion=APP_VERSION;draft.revision=(draft.revision||0)+1;await saveState(draft,state.revision);state=draft;if(shouldRender)render();return true;}
   catch(error){toast(`Not saved: ${error.message}`);return false;}
   finally{saving=false;}
@@ -162,13 +177,13 @@ function studyFilterTree(){
   return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="study-expand-tag" data-tag="${esc(n.path)}" aria-expanded="${expandedTags.study.has(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}">${expandedTags.study.has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="study-tag" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}</button></div>`;}).join('')}</div><p class="subtle">Tap tag to require → exclude → neutral. Expand branches with arrows. Filters apply only to the session, not your backup.</p></section>`;
 }
 function selectedCount(counts,pool=selectedPool){return pool==='due'?counts.due:pool==='new'?counts.new:counts.available;}
-function studySummary(mode,filter=studyFilters){const counts=modeCounts(state,mode,filter);return `<div class="study-counts"><span><strong>${counts.due}</strong><small>Due now</small></span><span><strong>${counts.started}</strong><small>Started · not due</small></span><span><strong>${selectedCount(counts)}</strong><small>Available to study</small></span></div><p class="subtle">${counts.new} new available${mode==='words'?` of ${counts.newTotal} unstarted matching words`: ''} · ${counts.blocked} excluded or awaiting prerequisites</p>`;}
+function studySummary(mode,counts=modeCounts(state,mode,studyFilters)){return `<div class="study-counts"><span><strong>${counts.due}</strong><small>Due now</small></span><span><strong>${counts.started}</strong><small>Started · not due</small></span><span><strong>${selectedCount(counts)}</strong><small>Available to study</small></span></div><p class="subtle">${counts.new} new available${mode==='words'?` of ${counts.newTotal} unstarted matching words`: ''} · ${counts.blocked} excluded or awaiting prerequisites</p>`;}
 function renderStudyIntro(){
- const today=newVocabToday(state),left=newVocabRemaining(state),enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),all=enabled.map(m=>modeCounts(state,m,studyFilters));
+ const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),all=enabled.map(m=>countsByMode[m]);
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
  return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Continuous recognition, grammar, character writing, and particles. Stop whenever you choose.</p></div>
  ${studyFilterTree()}<section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
- ${autoControls()}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=modeCounts(state,mode,studyFilters);return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
+ ${autoControls()}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=countsByMode[mode];return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode,c)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
  ${backupBanner()}`;
 }
 function modeStartable(mode,counts){
@@ -302,54 +317,90 @@ function renderCollection(kind){
     ${!grammar?'<button class="btn btn-secondary btn-full" data-action="study-filtered">Study matching words</button>':''}<div id="collection-list"></div>${backupBanner()}`;
 }
 const matchesTags=matchesTagFilters;
-let visibleWords=80;
+const COLLECTION_SIZE=20;
+const collectionPages={words:0,grammar:0};
+const collectionSearchCache={words:null,grammar:null};
+function collectionResults(kind,f,q){
+ const key=JSON.stringify([state.revision,f,q,formatDay()]);
+ const previous=collectionSearchCache[kind];
+ if(previous?.key===key&&previous.cards===state.cards&&previous.grammar===state.grammar)return previous.results;
+ let results;
+ if(kind==='words'){
+  results=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&
+    (f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&
+    (!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q)));
+ }else{
+  const readyIds=new Set(modeCounts(state,'grammar').eligible.map(item=>item.id));
+  results=state.grammar.map(g=>({g,score:scoreGrammar(g),tags:grammarTags(g,state.cards)}))
+    .filter(({g,score,tags})=>matchesTags(tags,f.tags)&&compare(Math.round(score.knowledge*100),f.knowledgeOp,Number(f.knowledgeValue))&&
+      compare(Math.round(score.usage*100),f.usageOp,Number(f.usageValue))&&
+      (!q||[plainSentence(g.markup),g.markup,g.english,g.pinyin,...tags].join(' ').toLowerCase().includes(q)))
+    .sort((a,b)=>b.score.combined-a.score.combined||a.g.english.localeCompare(b.g.english))
+    .map(({g,score,tags})=>({g,score,tags,ready:readyIds.has(g.id)}));
+ }
+ collectionSearchCache[kind]={key,cards:state.cards,grammar:state.grammar,results};return results;
+}
+function pageControl(kind,number,total){
+ const pages=Math.max(1,Math.ceil(total/COLLECTION_SIZE)),current=number+1;
+ const control=(title,dir,disabled)=>`<button type="button" class="collection-page-btn" data-action="collection-page" data-kind="${kind}" data-dir="${dir}" aria-label="${title}" ${disabled?'disabled':''}>${title}</button>`;
+ return `<nav class="collection-pages" aria-label="${kind==='words'?'Vocabulary':'Grammar'} pages">
+ ${control('« First','first',current===1)}${control('‹ Previous','prev',current===1)}
+ <span class="collection-page-status">Page <strong>${current}</strong> of <strong>${pages}</strong><small>${total} matching · ${COLLECTION_SIZE} per page</small></span>
+ ${control('Next ›','next',current>=pages)}${control('Last »','last',current>=pages)}
+ </nav>`;
+}
 function updateCollection(keepPage=false){
-  if(!keepPage)visibleWords=80;
-  const kind=page==='grammar'?'grammar':'words',f=filters[kind],tags=tagsFor(kind);
-  const positives=tags.filter(t=>f.tags[t]===1),negatives=tags.filter(t=>f.tags[t]===-1),active=[...positives,...negatives];
-  const activeNode=$('#active-tag-filter'),availableNode=$('#tag-filter');if(!activeNode||!availableNode)return;
-  activeNode.innerHTML=active.length?active.map(t=>`<button class="pill ${f.tags[t]===1?'include':'exclude'}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(t)}">${f.tags[t]===1?'✓':'−'} # ${esc(tagLabel(t))}</button>`).join(''):
-    '<span class="subtle">No active tags. Tap a topic to include it.</span>';
-  availableNode.innerHTML=tagNodes(tags).filter(n=>{const parts=n.path.split('/');return parts.slice(0,-1).every((_,i)=>expandedTags[kind].has(parts.slice(0,i+1).join('/')));}).map(n=>{
+ const kind=page==='grammar'?'grammar':'words',f=filters[kind],tags=tagsFor(kind);
+ if(!keepPage)collectionPages[kind]=0;
+ const positives=tags.filter(t=>f.tags[t]===1),negatives=tags.filter(t=>f.tags[t]===-1),active=[...positives,...negatives];
+ const activeNode=$('#active-tag-filter'),availableNode=$('#tag-filter');if(!activeNode||!availableNode)return;
+ activeNode.innerHTML=active.length?active.map(t=>`<button class="pill ${f.tags[t]===1?'include':'exclude'}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(t)}">${f.tags[t]===1?'✓':'−'} # ${esc(tagLabel(t))}</button>`).join(''):
+   '<span class="subtle">No active tags. Tap a topic to include it.</span>';
+ availableNode.innerHTML=tagNodes(tags).filter(n=>{const parts=n.path.split('/');return parts.slice(0,-1).every((_,i)=>expandedTags[kind].has(parts.slice(0,i+1).join('/')));}).map(n=>{
     const children=tags.some(t=>t.startsWith(n.path+'/')),v=f.tags[n.path]||0;
     const inherited=Object.entries(f.tags).find(([t,value])=>value&&n.path.startsWith(t+'/'));
     return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="expand-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}" aria-expanded="${expandedTags[kind].has(n.path)}">${expandedTags[kind].has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}${!v&&inherited?`<small> · parent ${inherited[1]===1?'required':'excluded'}</small>`:''}</button></div>`;
-  }).join('')+'<p class="subtle">Tap a label: require → exclude → neutral. Required tags all must match; parents include descendants. Exclusions win. Use arrows to expand.</p>';
-  const q=f.search.trim().toLowerCase();
-  if(kind==='words'){
-    const results=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&
-      (f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&
-      (!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q)));
-    $('#browse-count').textContent=`${results.length} of ${state.cards.length} words`;
-    $('#collection-list').innerHTML=results.length?results.slice(0,visibleWords).map(c=>{
-      const schedule=state.schedules[c.id];
-      return `<button class="list-card" data-action="card-detail" data-id="${esc(c.id)}"><div class="list-hanzi">${esc(c.hanzi)}<small>${esc(c.pinyin)}</small></div>
-       <div class="list-detail"><strong>${esc(c.english)}</strong><small>${esc(c.tags.slice(0,3).map(x=>'#'+tagLabel(x)).join('  '))} · ${esc(dueLabel(schedule))}</small></div>
-       <div class="list-meta"><strong>${percent(scoreWord(c))}</strong><small>${schedule?ratingLabels[schedule.lastRating]:'New'}</small></div>${icon('right')}</button>`;
-    }).join('')+(results.length>visibleWords?'<button class="btn btn-secondary btn-full" data-action="more-words">Show more words</button>':''):'<div class="empty"><strong>No matching words</strong>Adjust a filter or add a new word.</div>';
-  }else{
-    const readyIds=new Set(modeCounts(state,'grammar').eligible.map(item=>item.id));
-    const results=state.grammar.map(g=>({g,score:scoreGrammar(g),tags:grammarTags(g,state.cards)}))
-      .filter(({g,score,tags})=>matchesTags(tags,f.tags)&&compare(Math.round(score.knowledge*100),f.knowledgeOp,Number(f.knowledgeValue))&&
-        compare(Math.round(score.usage*100),f.usageOp,Number(f.usageValue))&&
-        (!q||[plainSentence(g.markup),g.markup,g.english,g.pinyin,...tags].join(' ').toLowerCase().includes(q)))
-      .sort((a,b)=>b.score.combined-a.score.combined||a.g.english.localeCompare(b.g.english));
-    $('#browse-count').textContent=`${results.length} of ${state.grammar.length} sentences`;
-    $('#collection-list').innerHTML=results.length?results.map(({g,score,tags})=>`<button class="list-card grammar-list" data-action="grammar-detail" data-id="${esc(g.id)}">
-      <div class="list-detail"><strong class="grammar-preview">${esc(plainSentence(g.markup))}</strong><small>${esc(g.english)}</small>
-      <small>${esc(tags.slice(0,4).map(t=>'#'+t).join('  '))}</small></div><div class="list-meta"><strong>${percent(score.combined)}</strong>
-      <small>${readyIds.has(g.id)?'Ready':'Locked'}</small></div>${icon('right')}</button>`).join(''):
-        '<div class="empty"><strong>No matching sentences</strong>Change your filters or add a grammar card.</div>';
-  }
+ }).join('')+'<p class="subtle">Tap a label: require → exclude → neutral. Required tags all must match; parents include descendants. Exclusions win. Use arrows to expand.</p>';
+ updateCollectionPage(kind);
+}
+function updateCollectionPage(kind=page==='grammar'?'grammar':'words'){
+ const f=filters[kind],q=f.search.trim().toLowerCase(),results=collectionResults(kind,f,q),pages=Math.max(1,Math.ceil(results.length/COLLECTION_SIZE));
+ collectionPages[kind]=Math.min(pages-1,Math.max(0,collectionPages[kind]));
+ const begin=collectionPages[kind]*COLLECTION_SIZE,visible=results.slice(begin,begin+COLLECTION_SIZE);
+ const countNode=$('#browse-count'),list=$('#collection-list');if(!countNode||!list)return;
+ countNode.textContent=`${results.length} of ${kind==='words'?state.cards.length:state.grammar.length} ${kind==='words'?'words':'sentences'}`;
+ let content='';
+ if(kind==='words')content=visible.map(c=>{
+  const schedule=state.schedules[c.id];
+  return `<button class="list-card" data-action="card-detail" data-id="${esc(c.id)}"><div class="list-hanzi">${esc(c.hanzi)}<small>${esc(c.pinyin)}</small></div>
+    <div class="list-detail"><strong>${esc(c.english)}</strong><small>${esc(c.tags.slice(0,3).map(x=>'#'+tagLabel(x)).join('  '))} · ${esc(dueLabel(schedule))}</small></div>
+    <div class="list-meta"><strong>${percent(scoreWord(c))}</strong><small>${schedule?ratingLabels[schedule.lastRating]:'New'}</small></div>${icon('right')}</button>`;
+ }).join('');
+ else content=visible.map(({g,score,tags,ready})=>`<button class="list-card grammar-list" data-action="grammar-detail" data-id="${esc(g.id)}">
+  <div class="list-detail"><strong class="grammar-preview">${esc(plainSentence(g.markup))}</strong><small>${esc(g.english)}</small>
+  <small>${esc(tags.slice(0,4).map(t=>'#'+tagLabel(t)).join('  '))}</small></div><div class="list-meta"><strong>${percent(score.combined)}</strong>
+  <small>${ready?'Ready':'Locked'}</small></div>${icon('right')}</button>`).join('');
+ list.innerHTML=results.length?content+pageControl(kind,collectionPages[kind],results.length):`<div class="empty"><strong>No matching ${kind==='words'?'words':'sentences'}</strong>Adjust your search or filters.</div>`;
+}
+
+let reviewDayCache=null;
+function reviewDayCounts(){
+ const key=state.revision;
+ if(reviewDayCache?.revision===key)return reviewDayCache.counts;
+ const counts=new Map();
+ for(const list of [state.history,state.grammarHistory,state.skillHistory])for(const h of list){
+  if(!h?.at)continue;const day=dateKey(h.at);counts.set(day,(counts.get(day)||0)+1);
+ }
+ reviewDayCache={revision:key,counts};return counts;
 }
 function dailyStats(){const count=state.history.filter(h=>dateKey(h.at)===formatDay()).length;return `<section class="metrics stats-daily"><div class="metric">${icon('clock')}<div class="num">${countDue()}</div><div class="label">Vocabulary due now</div></div><div class="metric">${icon('book')}<div class="num">${countLearned()}</div><div class="label">Words encountered</div></div><div class="metric">${icon('flame')}<div class="num">${count}</div><div class="label">Vocab reviews today</div></div></section><p class="subtle">Master collection: ${state.cards.length} vocabulary words, ${state.grammar.length} grammar entries. ${countReadyGrammar()} grammar entries meet the new score thresholds.</p>`;}
 function renderStats(){
   const total=state.history.length,good=state.history.filter(h=>h.grade>=3).length;
-  const allReviews=[...state.history,...state.grammarHistory,...state.skillHistory];
-  const days=new Set(allReviews.map(h=>dateKey(h.at)));
+  const reviewCounts=reviewDayCounts();
+  const days=new Set(reviewCounts.keys());
   const d=new Date();if(!days.has(formatDay(d)))d.setDate(d.getDate()-1);
   let streak=0;while(days.has(formatDay(d))){streak++;d.setDate(d.getDate()-1);}
-  const series=Array.from({length:7},(_,i)=>{const day=new Date();day.setDate(day.getDate()-6+i);return {label:day.toLocaleDateString(undefined,{weekday:'short'}),day:formatDay(day),count:allReviews.filter(h=>dateKey(h.at)===formatDay(day)).length};});
+  const series=Array.from({length:7},(_,i)=>{const day=new Date();day.setDate(day.getDate()-6+i);return {label:day.toLocaleDateString(undefined,{weekday:'short'}),day:formatDay(day),count:reviewCounts.get(formatDay(day))||0};});
   const max=Math.max(1,...series.map(x=>x.count));
   const seen=state.cards.filter(c=>state.schedules[c.id]);
   const strength=seen.length?seen.reduce((a,c)=>a+recall(state.schedules[c.id]),0)/seen.length:0;
@@ -487,7 +538,7 @@ async function saveWordEditor(form){const id=form.dataset.id||null,existing=id?w
   if(existing?.hanzi!==candidate.hanzi&&state.schedules[id]&&
     !window.confirm('You changed the Chinese word of a studied card. Keep its existing memory history for the new spelling?'))return;
   const done=await change(d=>{if(id){const i=d.cards.findIndex(c=>c.id===id);if(i<0)throw new Error('Word no longer exists');d.cards[i]=candidate;}
-    else d.cards.push(candidate);ensureStudy(d);});
+    else d.cards.push(candidate);ensureStudy(d);},true,true);
   if(done){invalidateTagOdds();closeModal();toast(id?'Word edited':'Word added');}
 }
 async function saveGrammarEditor(form){const id=form.dataset.id||null,existing=id?grammarById(id):null;
@@ -496,7 +547,7 @@ async function saveGrammarEditor(form){const id=form.dataset.id||null,existing=i
   if(existing?.markup!==candidate.markup&&state.grammarHistory.some(h=>h.grammarId===id)&&
       !window.confirm('Changing this studied sentence will keep its prior attempt history. Continue?'))return;
   const done=await change(d=>{if(id){const i=d.grammar.findIndex(g=>g.id===id);if(i<0)throw new Error('Grammar card no longer exists');d.grammar[i]=candidate;}
-    else d.grammar.push(candidate);});
+    else d.grammar.push(candidate);},true,true);
   if(done){closeModal();toast(id?'Grammar edited':'Grammar card created');}
 }
 async function deleteWord(id){const c=wordById(id);if(!c)return;
@@ -504,13 +555,13 @@ async function deleteWord(id){const c=wordById(id);if(!c)return;
   if(!window.confirm(`Delete “${c.hanzi}” and all of its vocabulary reviews? ${uses} linked grammar sentences will remain but may be locked until a replacement word is added. This is irreversible without a backup.`))return;
   if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.cards=d.cards.filter(c=>c.id!==id);delete d.schedules[id];delete d.skillSchedules.drawing[id];d.skillHistory=d.skillHistory.filter(h=>!(h.mode==='drawing'&&h.id===id));if(d.activePractice?.current?.id===id)d.activePractice=null;d.history=d.history.filter(h=>h.cardId!==id);
     d.activeSession?.queue&&(d.activeSession.queue=d.activeSession.queue.filter(x=>x!==id));
-    if(d.activeSession&&!d.activeSession.queue.length)d.activeSession=null;})){invalidateTagOdds();closeModal();toast('Word deleted');}
+    if(d.activeSession&&!d.activeSession.queue.length)d.activeSession=null;},true,true)){invalidateTagOdds();closeModal();toast('Word deleted');}
 }
 async function deleteGrammar(id){const g=grammarById(id);if(!g)return;
   if(!window.confirm(`Delete grammar sentence “${plainSentence(g.markup)}” and its ${state.grammarHistory.filter(h=>h.grammarId===id).length} attempts? This cannot be undone without a backup.`))return;
   if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.grammar=d.grammar.filter(g=>g.id!==id);delete d.skillSchedules.grammar[id];for(const key of Object.keys(d.skillSchedules.particles))if(key.startsWith(id+':particle:'))delete d.skillSchedules.particles[key];d.skillHistory=d.skillHistory.filter(h=>!h.id.startsWith(id+':particle:'));if(d.activePractice?.current?.id===id||d.activePractice?.current?.id.startsWith(id+':particle:'))d.activePractice=null;d.grammarHistory=d.grammarHistory.filter(h=>h.grammarId!==id);
     d.activeGrammarSession?.queue&&(d.activeGrammarSession.queue=d.activeGrammarSession.queue.filter(x=>x!==id));
-    if(d.activeGrammarSession&&!d.activeGrammarSession.queue.length)d.activeGrammarSession=null;})){closeModal();toast('Grammar sentence deleted');}
+    if(d.activeGrammarSession&&!d.activeGrammarSession.queue.length)d.activeGrammarSession=null;},true,true)){closeModal();toast('Grammar sentence deleted');}
 }
 function clearDataModal(){modal('Clear learning records?',`<div class="notice error"><strong>This removes all review history, schedules, grades, streaks, grammar attempts, and active sessions.</strong> It keeps your vocabulary and grammar cards, as well as your settings. Export a backup first if you want to preserve your progress.</div>
   <div class="form-field" style="margin-top:18px"><label for="clear-confirm">Type <strong>delete</strong> to confirm</label>
@@ -542,7 +593,7 @@ async function exportBackup(mode){const file=backupFile(),revision=state.revisio
   }catch(e){if(e.name!=='AbortError')toast(`Backup failed: ${e.message}`);}
 }
 async function confirmBackup(){if(pendingBackupRevision===null||saving)return;
-  const candidate=structuredClone(state);candidate.backedUpRevision=Math.max(candidate.backedUpRevision,Math.min(candidate.revision,pendingBackupRevision));candidate.lastBackupAt=new Date().toISOString();
+  const candidate=cloneProgressState(state);candidate.backedUpRevision=Math.max(candidate.backedUpRevision,Math.min(candidate.revision,pendingBackupRevision));candidate.lastBackupAt=new Date().toISOString();
   try{await saveState(candidate,state.revision);state=candidate;pendingBackupRevision=null;closeModal();render();toast('Export confirmed. Keep that JSON file safe.');}
   catch(e){toast(`Could not save backup status: ${e.message}`);}
 }
@@ -581,7 +632,7 @@ async function restoreBackup(content){if(saving)return;const parsed=parseBackup(
 async function importDeck(content){
  const draft=replaceMaster(structuredClone(state),content);
  if(!window.confirm(`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. Refresh loads the bundled master again.`))return;
- if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);})){invalidateTagOdds();closeModal();toast('Master collection loaded for this visit.');}
+ if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection loaded for this visit.');}
 }
 function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
  downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),`ciyan-master-v${APP_VERSION}.json`);toast('Complete master file prepared');}
@@ -704,7 +755,14 @@ document.addEventListener('click',async event=>{
     case 'confirm-backup':await confirmBackup();break;
     case 'restore':requestFile('restore');break;
 
-    case 'more-words':visibleWords+=80;updateCollection(true);break;
+    case 'collection-page':{
+      const kind=element.dataset.kind,dir=element.dataset.dir;
+      if(kind!=='words'&&kind!=='grammar')break;
+      const count=collectionResults(kind,filters[kind],filters[kind].search.trim().toLowerCase()).length;
+      const last=Math.max(0,Math.ceil(count/COLLECTION_SIZE)-1);
+      collectionPages[kind]=dir==='first'?0:dir==='last'?last:dir==='next'?Math.min(last,collectionPages[kind]+1):Math.max(0,collectionPages[kind]-1);
+      updateCollectionPage(kind);break;
+    }
     case 'study-filtered':await startFilteredSession();break;
     case 'import-deck':requestFile('deck');break;
     case 'export-deck':exportDeck();break;
@@ -899,13 +957,18 @@ async function practiceAction(action,el){
  render();return true;
 }
 function extendedStats(){
- const all=[...state.history.map(h=>({...h,mode:'words'})),...state.grammarHistory.map(h=>({...h,mode:'grammar'})),...state.skillHistory];
- const now=Date.now(),days=Array.from({length:28},(_,i)=>{const d=new Date();d.setDate(d.getDate()-27+i);const key=formatDay(d);return {key,count:all.filter(h=>dateKey(h.at)===key).length};});
+ const counts=reviewDayCounts(),now=Date.now();
+ const total=state.history.length+state.grammarHistory.length+state.skillHistory.length;
+ const days=Array.from({length:28},(_,i)=>{const d=new Date();d.setDate(d.getDate()-27+i);const key=formatDay(d);return {key,count:counts.get(key)||0};});
  const max=Math.max(1,...days.map(d=>d.count));
- const forecasts=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()+i);const key=formatDay(d);return {key,n:activeDueEntries().filter(x=>dateKey(x.dueAt)===key).length};});
- const trouble=allParticles(state).map(p=>{const h=state.skillHistory.filter(x=>x.mode==='particles'&&x.id===p.id);return {p,n:h.length,bad:h.filter(x=>x.correct===false).length};}).filter(x=>x.bad).sort((a,b)=>b.bad-a.bad).slice(0,6);
+ const dueCounts=new Map();for(const e of activeDueEntries()){const key=dateKey(e.dueAt);dueCounts.set(key,(dueCounts.get(key)||0)+1);}
+ const forecasts=Array.from({length:7},(_,i)=>{const d=new Date();d.setDate(d.getDate()+i);const key=formatDay(d);return {key,n:dueCounts.get(key)||0};});
+ const particleCounts=new Map();for(const h of state.skillHistory)if(h.mode==='particles'){
+  const x=particleCounts.get(h.id)||{n:0,bad:0};x.n++;if(h.correct===false)x.bad++;particleCounts.set(h.id,x);
+ }
+ const trouble=allParticles(state).map(p=>({p,...(particleCounts.get(p.id)||{n:0,bad:0})})).filter(x=>x.bad).sort((a,b)=>b.bad-a.bad).slice(0,6);
  return `${feedbackStats()}${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
- <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${all.length} recorded attempts</p></section>
+ <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${total} recorded attempts</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Next seven days</h2><div class="forecast">${forecasts.map(d=>`<div><small>${d.key.slice(5)}</small><strong>${d.n}</strong></div>`).join('')}</div><p class="subtle">Scheduled reviews only, excluding new items and overdue backlog. Dates will change as you study.</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="stat-feedback-row"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect / ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
 }
@@ -1049,9 +1112,17 @@ async function applyTiming(scope){if(!pendingTiming||!['future','existing'].incl
 
 function dueLabel(schedule,now=Date.now()){if(!schedule)return 'New';const seconds=(Date.parse(schedule.dueAt)-now)/1000;return seconds<=0?'Due now':'In '+intervalText(seconds);}
 
+let dueEntriesCache=null;
 function activeDueEntries(){
+ if(dueEntriesCache?.revision===state.revision)return dueEntriesCache.entries;
  const ids={words:state.cards.map(c=>c.id),drawing:state.cards.map(c=>c.id),grammar:state.grammar.map(g=>g.id),particles:allParticles(state).map(p=>p.id)};
- return Object.keys(MODES).flatMap(mode=>ids[mode].flatMap(id=>{const s=scheduleFor(state,mode,id),postponed=state.postponed?.[`${mode}:${id}`];if(!s&&!postponed)return [];const at=Math.max(s?Date.parse(s.dueAt):0,postponed?Date.parse(postponed):0);return [{mode,dueAt:new Date(at).toISOString()}];}));
+ const entries=Object.keys(MODES).flatMap(mode=>ids[mode].flatMap(id=>{
+  const sched=scheduleFor(state,mode,id),postponed=state.postponed?.[`${mode}:${id}`];
+  if(!sched&&!postponed)return [];
+  const at=Math.max(sched?Date.parse(sched.dueAt):0,postponed?Date.parse(postponed):0);
+  return [{mode,dueAt:new Date(at).toISOString()}];
+ }));
+ dueEntriesCache={revision:state.revision,entries};return entries;
 }
 
 function feedbackStats(){

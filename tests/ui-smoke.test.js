@@ -5,7 +5,14 @@ import assert from 'node:assert/strict';
 
 const delay = (ms=4) => new Promise(resolve=>setTimeout(resolve,ms));
 
-const sharedData=new Map();
+class MockDatabaseMap extends Map {
+ get(key){const value=super.get(key);if(key==='main'&&value?.__splitContent&&!value.cards){
+ const content=super.get('master-content'),merged={...value,cards:content?.cards,grammar:content?.grammar};
+ if(value.__historyChunks)for(const [field,count] of Object.entries(value.__historyChunks))merged[field]=Array.from({length:count},(_,i)=>super.get(`log:${field}:${i}`)||[]).flat();
+ return merged;
+ }return value;}
+}
+const sharedData=new MockDatabaseMap();
 function mockBrowser() {
   const data=sharedData; data.clear();
   const listeners={};
@@ -19,7 +26,8 @@ function mockBrowser() {
       const tx={oncomplete:null,onerror:null,onabort:null,abort(){queueMicrotask(()=>tx.onabort?.());}};
       tx.objectStore=()=>({
         get(key){const request={onsuccess:null,onerror:null,result:data.get(key)};queueMicrotask(()=>request.onsuccess?.());return request;},
-        put(value,key){data.set(key,structuredClone(value));queueMicrotask(()=>tx.oncomplete?.());}
+        put(value,key){data.set(key,structuredClone(value));queueMicrotask(()=>tx.oncomplete?.());},
+        delete(key){data.delete(key);queueMicrotask(()=>tx.oncomplete?.());}
       });return tx;
     }
   };
@@ -118,7 +126,7 @@ test('bundled master is available without importing; filters and focused study w
  assert.match(mock.shell.innerHTML,/STUDY · YOUR HOME/);assert.doesNotMatch(mock.shell.innerHTML,/Explore optional decks/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),11893);
- assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,80);
+ assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,20);
  await click('cycle-tag',{kind:'words',tag:'Activities/climbing'});await click('study-filtered');
  const saved=mock.data.get('main');assert.ok(saved.activePractice.allowedWords.every(id=>saved.cards.find(c=>c.id===id).tags.includes('Activities/climbing')));
  assert.match(mock.shell.innerHTML,/Undo last answer/);
@@ -345,7 +353,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.6.3');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.4');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -359,7 +367,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.3');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.4');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -384,4 +392,22 @@ test('v0.6 omission answer checks without choosing a gap and saves error classif
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  assert.match(mock.shell.innerHTML,/No particle/);await click('particle-choice',{choice:'∅'});await click('practice-check');assert.equal(mock.data.get('main').activePractice.input.correct,true);
  await click('practice-grade',{grade:'3'});assert.equal(mock.data.get('main').skillHistory[0].correct,true);assert.equal(mock.data.get('main').skillHistory[0].errorType,null);
+});
+
+test('v0.6.4 pagination shows 20 rows, navigates in both collections, and resets on search',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=paging064');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay(4);};
+ await click('navigate',{page:'browse'});
+ const count=()=> (mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card(?: grammar-list)?"/g)||[]).length;
+ assert.equal(count(),20);assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>1<\/strong>/);
+ const first=mock.browseNodes['#collection-list'].innerHTML.match(/data-id="([^"]+)"/)?.[1];
+ await click('collection-page',{kind:'words',dir:'next'});
+ assert.equal(count(),20);assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>2<\/strong>/);
+ assert.notEqual(mock.browseNodes['#collection-list'].innerHTML.match(/data-id="([^"]+)"/)?.[1],first);
+ await click('collection-page',{kind:'words',dir:'last'});assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>595<\/strong>/);
+ mock.listeners.input({target:{id:'collection-search',value:'米饭'}});
+ assert.equal(count(),1);assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>1<\/strong>/);
+ await click('navigate',{page:'grammar'});assert.equal(count(),20);
+ await click('collection-page',{kind:'grammar',dir:'next'});assert.equal(count(),20);
+ assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>2<\/strong>/);
 });

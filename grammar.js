@@ -61,11 +61,15 @@ export function normalizeGrammar(source,fallbackId=null) {
 }
 export function initialGrammar(){return STARTER_GRAMMAR.map(g=>normalizeGrammar({...g,source:'Starter Mandarin',createdAt:'2026-11-16T00:00:00.000Z'}));}
 export function linkedWords(grammar,cards) {
-  const terms=new Set(grammarTokens(grammar));
-  return cards.filter(c=>terms.has(c.hanzi));
+  const index=vocabIndex(cards);
+  return [...new Set(grammarTokens(grammar))].map(w=>index.get(w)).filter(Boolean);
 }
+const grammarTagCache=new WeakMap();
 export function grammarTags(grammar,cards) {
-  return [...new Set(linkedWords(grammar,cards).flatMap(c=>c.tags||[]))].sort();
+  const previous=grammarTagCache.get(grammar);
+  if(previous?.cards===cards)return previous.tags;
+  const tags=[...new Set(linkedWords(grammar,cards).flatMap(c=>c.tags||[]))].sort();
+  grammarTagCache.set(grammar,{cards,tags});return tags;
 }
 export function requiredWords(grammar,cards) {
   const terms=[...new Set([...grammarTokens(grammar),...grammar.distractors.map(d=>d.word)])];
@@ -78,11 +82,21 @@ export function wordKnowledge(schedule, recall=1) {
   const maturity=Math.min(1,.85+.075*Math.max(0,schedule.reps-1));
   return Math.max(0,Math.min(1,quality*maturity*Math.max(0,Math.min(1,recall||0))));
 }
+const grammarHistoryCache=new WeakMap();
+function recentGrammarAttempts(history){
+ let cached=grammarHistoryCache.get(history);if(cached?.length===history.length)return cached.result;
+ let result;
+ result=new Map();for(const h of history){
+  if(typeof h?.correct!=='boolean')continue;
+  const list=result.get(h.grammarId)||[];list.push(h);if(list.length>20)list.shift();result.set(h.grammarId,list);
+ }
+ grammarHistoryCache.set(history,{length:history.length,result});return result;
+}
 export function grammarScores(grammar,cards,schedules,getRecall,history=[]) {
   const required=requiredWords(grammar,cards);
   const numbers=required.map(({card})=>card?wordKnowledge(schedules[card.id],getRecall(schedules[card.id])):0);
   const knowledge=numbers.length?numbers.reduce((a,b)=>a+b,0)/numbers.length:0;
-  const attempts=history.filter(h=>h.grammarId===grammar.id&&typeof h.correct==='boolean').slice(-20);
+  const attempts=recentGrammarAttempts(history).get(grammar.id)||[];
   const usage=attempts.length?attempts.filter(h=>!h.correct).length/attempts.length:0;
   const ready=required.length>0&&required.every(({card},i)=>card&&numbers[i]>=.75);
   return {knowledge,usage,usageAttempts:attempts.length,combined:knowledge*(1-usage),ready,required,weak:required.filter((_,i)=>numbers[i]<.75)};
