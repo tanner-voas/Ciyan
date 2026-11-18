@@ -33,11 +33,12 @@ function mockBrowser() {
   };
   globalThis.indexedDB={open(){const request={result:fakeDb,onsuccess:null,onerror:null,onupgradeneeded:null};queueMicrotask(()=>request.onsuccess?.());return request;}};
   globalThis.document={
-    body,
+    body,fonts:{},
     querySelector:sel=>sel==='#app'?shell:sel==='#toast'?toast:(browseNodes[sel]||null),
     addEventListener:(type,fn)=>listeners[type]=fn,
     createElement:()=>({className:'',innerHTML:'',remove(){},querySelector:()=>null})
   };
+  globalThis.FontFace=class {constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}async load(){this.status='loaded';return this;}};
   Object.defineProperty(globalThis,'navigator',{value:{},configurable:true});
   globalThis.window={scrollTo(){},confirm:()=>true};
   globalThis.location={protocol:'file:'};
@@ -142,14 +143,14 @@ test('stale tab cannot overwrite a newer revision or advance its review queue',a
   assert.match(mock.shell.innerHTML,/review-card/);
 });
 
-test('refresh replaces unsaved grammar edits with bundled content',async()=>{
+test('refresh retains custom grammar safely and escapes malicious HTML',async()=>{
   const mock=mockBrowser();const {defaultState}=await import('../storage.js');const source=defaultState();
   source.grammar[0].distractors=[{index:1,word:'<img src=x onerror=alert(1)>'}];mock.data.set('main',source);
   let modalContent='';document.body.append=node=>{modalContent=node.innerHTML;};
   await import('../app.js?smoke=escape');await delay(25);
   const el={dataset:{action:'grammar-detail',id:source.grammar[0].id}};
   await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});
-  assert.ok(!modalContent.includes('<img'));assert.ok(!modalContent.includes('&lt;img'));
+  assert.ok(!modalContent.includes('<img'));assert.ok(modalContent.includes('&lt;img')); // escaped, not executed
 });
 
 test('drawing UI requires score >=2, navigates pads and records independent writing',async()=>{
@@ -345,24 +346,33 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  old.grammarHistory=[{id:'grammar-review',grammarId:old.grammar[0].id,grade:3,correct:true,at:new Date(reviewedAt).toISOString()}];
  const before=structuredClone(old);mock.data.set('main',structuredClone(old));
  await import('../app.js?smoke=preserveUpgrade054');await delay(40);
- // Opening a new version must not even write the stored state.
- assert.deepEqual(mock.data.get('main'),before);
+ // Upgrading may do one atomic content reconciliation, but must not touch
+ // old learning scores, history, user settings, custom IDs or definitions.
+ const reconciled=mock.data.get('main');
+ assert.equal(reconciled.bundledMasterVersion,'0.6.6');
+ assert.deepEqual(reconciled.history,before.history);
+ assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
+ assert.deepEqual(reconciled.skillHistory,before.skillHistory);
+ assert.deepEqual(reconciled.schedules,before.schedules);
+ assert.equal(reconciled.settings.newWordsPerDay,before.settings.newWordsPerDay);
+ assert.ok(reconciled.cards.length>=before.cards.length);
+ assert.ok(reconciled.grammar.length>=before.grammar.length);
  assert.match(mock.shell.innerHTML,/5 new available/);
  const navigate={dataset:{action:'navigate',page:'settings'}};
  await mock.listeners.click({target:{closest:q=>q==='[data-action]'?navigate:null}});await delay();
  assert.match(mock.shell.innerHTML,/New vocabulary words per day/);
- assert.deepEqual(mock.data.get('main'),before);
+ assert.deepEqual(mock.data.get('main'),reconciled);
  // A normal user edit should then stamp the current version and retain progress.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.6.5');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.6');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
  assert.deepEqual(saved.history,before.history);assert.deepEqual(saved.skillHistory,before.skillHistory);
  assert.deepEqual(saved.grammarHistory,before.grammarHistory);
- assert.equal(saved.revision,before.revision+1);
+ assert.equal(saved.revision,reconciled.revision+1);
  // Reload at the new version also preserves everything.
  await import('../app.js?smoke=preserveRefresh054');await delay(40);
  const reloaded=mock.data.get('main');assert.deepEqual(reloaded,saved);
@@ -370,7 +380,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.5');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.6');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -432,7 +442,7 @@ test('v0.6.5 puts session filters after study controls and restores readable set
  };
  await change('fontDifficulty','advanced');
  assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
- assert.equal(mock.data.get('main').settings.fontChoice,'pen');
+ assert.equal(mock.data.get('main').settings.fontChoice,'zhushi');
  await change('fontChoice','mixed');
  assert.equal(mock.data.get('main').settings.fontChoice,'mixed');
  await click('navigate',{page:'study'});
@@ -469,4 +479,31 @@ test('particle error stats render two readable lines instead of narrow grid colu
  assert.match(mock.shell.innerHTML,/Particles to revisit/);
  assert.match(mock.shell.innerHTML,/class="particle-issue"/);
  assert.match(mock.shell.innerHTML,/1 incorrect · 1 attempts/);
+});
+
+test('v0.6.6 refuses a missing installed font and retains the last working preference, including Mixed',async()=>{
+ const mock=mockBrowser();
+ const {clearFontProbeCache}=await import('../fonts.js');
+ clearFontProbeCache();
+ const dialogs=[];document.body.append=node=>dialogs.push(node.innerHTML);
+ globalThis.FontFace=class {
+  constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}
+  async load(){if(this.src.includes('Zhi Mang Xing'))throw new Error('No local font');this.status='loaded';return this;}
+ };
+ await import('../app.js?smoke=fontrollback066');await delay(30);
+ const change=async(setting,value)=>{
+  await mock.listeners.change({target:{dataset:{setting},type:'select-one',value,closest:()=>null}});await delay(10);
+ };
+ await change('fontDifficulty','expert');
+ assert.equal(mock.data.get('main').settings.fontDifficulty,'expert');
+ assert.equal(mock.data.get('main').settings.fontChoice,'muyao');
+ const revision=mock.data.get('main').revision;
+ await change('fontChoice','zhimang');
+ assert.equal(mock.data.get('main').settings.fontChoice,'muyao');
+ assert.equal(mock.data.get('main').revision,revision);
+ assert.ok(dialogs.some(text=>text.includes('Font unavailable')));
+ await change('fontChoice','mixed');
+ assert.equal(mock.data.get('main').settings.fontChoice,'muyao');
+ assert.equal(mock.data.get('main').revision,revision);
+ clearFontProbeCache();
 });

@@ -20,3 +20,31 @@ export function replaceMaster(state,file){
  // recover progress. They are excluded from the active collection's due chart.
  return state;
 }
+
+// v0.6.6: Add new bundled content without deleting or replacing any entry
+// already present in a restored/custom local master. IDs, tags, synonyms,
+// learning records and edited definitions remain authoritative locally.
+// Unlike replaceMaster(), this is safe to call during every app startup.
+export function reconcileBundledMaster(state,source){
+ if(!state||!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!source?.cards||!source?.grammar)throw new Error('Cannot reconcile an invalid master collection.');
+ const cardsByHanzi=new Map(state.cards.map(c=>[c.hanzi,c]));
+ const usedCardIds=new Set(state.cards.map(c=>c.id));
+ const grammarByMarkup=new Map(state.grammar.map(g=>[g.markup,g]));
+ const usedGrammarIds=new Set(state.grammar.map(g=>g.id));
+ const incomingCards=[],incomingGrammar=[];
+ const safeId=(base,ids)=>{let id=base,n=1;while(ids.has(id)){id=`${base}-bundled-${n++}`;}ids.add(id);return id;};
+ for(const original of source.cards){
+  if(cardsByHanzi.has(original.hanzi))continue;
+  const card=normalizeCard({...original,id:safeId(original.id,usedCardIds)});
+  cardsByHanzi.set(card.hanzi,card);incomingCards.push(card);
+ }
+ for(const original of source.grammar){
+  if(grammarByMarkup.has(original.markup))continue;
+  const entry=normalizeGrammar({...original,id:safeId(original.id,usedGrammarIds)});
+  grammarByMarkup.set(entry.markup,entry);incomingGrammar.push(entry);
+ }
+ if(incomingCards.length)state.cards=[...state.cards,...incomingCards];
+ if(incomingGrammar.length)state.grammar=[...state.grammar,...incomingGrammar];
+ if(state.cards.length>20000||state.grammar.length>20000)throw new Error('Reconciled master is too large; restore an earlier backup.');
+ return {changed:!!(incomingCards.length||incomingGrammar.length),addedCards:incomingCards.length,addedGrammar:incomingGrammar.length};
+}

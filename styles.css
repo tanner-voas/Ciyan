@@ -339,23 +339,9 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .collection-page-btn:focus-visible{outline:2px solid #237357;outline-offset:2px}
 @media(max-width:360px){.collection-pages{gap:5px;padding:9px}.collection-page-btn{font-size:11px}}
 
-/* v0.6.5 — Chinese glyph-only native iPhone fonts. They are resolved locally;
-   English UI labels continue using the existing system font. */
-@font-face{font-family:CiyanPrint;src:local("PingFang SC"),local("Noto Sans CJK SC"),local("Microsoft YaHei");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-@font-face{font-family:CiyanSong;src:local("Songti SC"),local("STSong"),local("Noto Serif CJK SC");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-@font-face{font-family:CiyanKai;src:local("Kaiti SC"),local("STKaiti"),local("AR PL KaitiM GB");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-@font-face{font-family:CiyanPen;src:local("HanziPen SC"),local("HanziPenSC-W3"),local("Kaiti SC");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-@font-face{font-family:CiyanXing;src:local("Xingkai SC"),local("STXingkai"),local("Kaiti SC");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-@font-face{font-family:CiyanWawati;src:local("Wawati SC"),local("STWawati"),local("HanziPen SC");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
-@font-face{font-family:CiyanWeibei;src:local("Weibei SC"),local("STWeibei"),local("Xingkai SC");unicode-range:U+2E80-2EFF,U+3000-303F,U+3400-4DBF,U+4E00-9FFF,U+F900-FAFF,U+20000-2FA1F}
+/* v0.6.6: verified locally installed Chinese fonts. The selectable faces
+   and no-span Mixed unicode ranges are in mixed-fonts.css. */
 #app,.modal-backdrop{font-family:var(--ciyan-zh-font,"CiyanPrint"),-apple-system,BlinkMacSystemFont,"SF Pro Display","PingFang SC",sans-serif}
-.ciyan-mixed-char{display:inline;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;vertical-align:baseline;white-space:inherit}
-.ciyan-mixed-char.font-song{font-family:"CiyanSong","CiyanPrint",sans-serif}
-.ciyan-mixed-char.font-kai{font-family:"CiyanKai","CiyanPrint",sans-serif}
-.ciyan-mixed-char.font-pen{font-family:"CiyanPen","CiyanPrint",sans-serif}
-.ciyan-mixed-char.font-xing{font-family:"CiyanXing","CiyanPrint",sans-serif}
-.ciyan-mixed-char.font-wawati{font-family:"CiyanWawati","CiyanPrint",sans-serif}
-.ciyan-mixed-char.font-weibei{font-family:"CiyanWeibei","CiyanPrint",sans-serif}
 .font-settings .font-control{display:grid;gap:8px;font-size:13px;font-weight:700;color:var(--forest)}
 .font-settings .font-control select{width:100%;max-width:100%;min-height:46px;padding:10px 12px;border:1px solid #d4e2d6;border-radius:12px;background:#fff;color:var(--ink);font:inherit}
 .font-sample{min-width:0;border:1px solid #dfe8df;border-radius:16px;padding:17px;background:#f8faf7}
@@ -386,3 +372,6 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .file-action-icon{display:flex;justify-content:center;align-items:center;width:24px}
 .file-action-icon svg{width:20px;height:20px;flex-shrink:0}
 .file-action-label{display:block;min-width:0;text-align:left;line-height:1.38;overflow-wrap:break-word}
+
+.font-error-message{color:#873b33;line-height:1.65;overflow-wrap:anywhere}
+.font-install-hint{font-size:12px;line-height:1.65;color:#677a6e}

@@ -8,9 +8,9 @@ import {allParticles,particleCorrect,particleSentence,particleError,particleLabe
 import {characterEvidence,familyEvidence,drawingProfile} from './learning-feedback.js';
 import {drawPad,attachPad} from './drawing.js';
 import {DRAWING_RATINGS,drawingResult,withDrawingRating} from './drawing-grades.js';
-import {FONT_LEVELS,fontChoices,normalizeFontSettings,applyFontToRoot} from './fonts.js';
+import {FONT_LEVELS,fontChoices,normalizeFontSettings,applyFontToRoot,verifyFontSelection,FONT_CATALOG,requiredFonts} from './fonts.js';
 import {MASTER} from './master-data.js';
-import {replaceMaster} from './master.js';
+import {replaceMaster,reconcileBundledMaster} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
@@ -18,6 +18,30 @@ import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBa
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
+let lastAcceptedFont={fontDifficulty:'beginner',fontChoice:'print'};
+let fontSelectionCounter=0;
+function fontUnavailableDialog(requested,result){
+ const labels=(result.missing||[]).map(id=>FONT_CATALOG[id]?fontChoices(requested.fontDifficulty).find(([key])=>key===id)?.[1]||id:id);
+ const details=labels.length?labels.join(', '):'This font';
+ modal('Font unavailable',`<p class="font-error-message"><strong>${esc(details)}</strong> could not be loaded by this browser.</p><p class="font-install-hint">Install the missing font using an iPhone font app or configuration profile, then reopen Cíyán. Some iOS versions do not expose installed third-party fonts to Safari; in that case, this font cannot be selected here. No settings were changed.</p><p class="subtle">Mixed requires both installed fonts in the selected difficulty level. ${esc(result.reason||'')}</p><button class="btn btn-primary btn-full" data-action="close-modal">Keep previous font</button>`);
+}
+async function chooseFont(key,value){
+ const candidate={...lastAcceptedFont};
+ if(key==='fontDifficulty'){
+  if(!Object.hasOwn(FONT_LEVELS,value))return;
+  candidate.fontDifficulty=value;candidate.fontChoice=fontChoices(value)[0][0];
+ }else{
+  if(!fontChoices(candidate.fontDifficulty).some(([id])=>id===value))return;
+  candidate.fontChoice=value;
+ }
+ const seq=++fontSelectionCounter;
+ const check=await verifyFontSelection(candidate);
+ if(seq!==fontSelectionCounter)return;
+ if(!check.ok){render();fontUnavailableDialog(candidate,check);return;}
+ const saved=await change(d=>{Object.assign(d.settings,candidate);});
+ if(saved)lastAcceptedFont={...candidate};else render();
+}
+
 const app=$('#app'),toastNode=$('#toast');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const shapes={
@@ -433,12 +457,12 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
    <div class="section-row"><h2 class="section-title">Chinese typography</h2></div>
-   <div class="panel stack font-settings"><p class="subtle">Choose a difficulty and then a font. The selection applies to Chinese text across Cíyán and is saved in full backups. Mixed assigns one of the level's styles to each individual character.</p>
+   <div class="panel stack font-settings"><p class="subtle">Fonts shown here are selected from your examples. Install them on your iPhone before choosing one. Cíyán checks availability and rejects a missing font rather than silently substituting another. Mixed requires both fonts in that level.</p>
      <label class="font-control">Difficulty<select data-setting="fontDifficulty" aria-label="Chinese font difficulty">${options(Object.keys(FONT_LEVELS).map(level=>[level,level[0].toUpperCase()+level.slice(1)]),s.fontDifficulty)}</select></label>
      <label class="font-control">Font<select data-setting="fontChoice" aria-label="Chinese font">${options(fontChoices(s.fontDifficulty),s.fontChoice)}</select></label>
      <div class="font-sample"><div class="eyebrow">LIVE FONT PREVIEW</div><div class="font-sample-chinese" lang="zh-Hans">春风又绿江南岸，明月何时照我还？</div><p class="subtle">样式测试 · 春天的雨，山中的路，朋友的信。</p></div>
-     <p class="subtle">Fonts use locally installed Chinese typefaces on iPhone. An unavailable style falls back to a clean Chinese font; no web font or network connection is required.</p></div>
-   <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences load automatically. This preview still has gaps in per-word example coverage.</p><p class="subtle">Edits apply for this visit. Export one master file to keep changes, then load that file again after refreshing. Learning records save automatically and remain separate from the master content.</p></div>
+     <p class="subtle">An unavailable font causes an error and preserves your previous choice. iPhone installation does not guarantee Safari can use a font; if verification fails, keep Beginner. Only font names are included in this app, not font files.</p></div>
+   <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences are provided by default. Your imported and edited entries persist across restarts.</p><p class="subtle">New bundled content is merged on the first launch after an app update, without overwriting your own entries. Keep exporting full progress backups regularly; browser storage is not a permanent independent backup.</p></div>
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
      <button class="btn btn-primary btn-full file-action-btn" data-action="backup"><span class="file-action-icon">${icon('download')}</span><span class="file-action-label">Export full progress backup</span></button>
@@ -446,7 +470,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
      <button class="btn btn-secondary btn-full file-action-btn" data-action="import-deck"><span class="file-action-icon">${icon('plus')}</span><span class="file-action-label">Load complete master file</span></button>
      <button class="btn btn-secondary btn-full file-action-btn" data-action="export-deck"><span class="file-action-icon">${icon('archive')}</span><span class="file-action-label">Export complete master (no review records)</span></button>
 
-     <p class="subtle">Loading a master replaces the complete content for this visit. Matching words retain their learning records. Full backups contain content and progress; a master export contains only content.</p>
+     <p class="subtle">Loading a master explicitly replaces your current content; the replacement persists after restarting. Matching words retain their learning records. Full backups contain content and progress; a master export contains only content.</p>
      <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
    <div class="section-row"><h2 class="section-title">Danger zone</h2></div>
    <div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
@@ -635,13 +659,13 @@ function mergeRestoredContent(restored,current,master){
 }
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`Restore learning records and settings from this backup? Existing and current master vocabulary/grammar entries will be retained; current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{ensureStudy(parsed);mergeRestoredContent(parsed,state,MASTER);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
+  try{ensureStudy(parsed);mergeRestoredContent(parsed,state,MASTER);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,lastAcceptedFont);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=fontChoice;toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
  const draft=replaceMaster(structuredClone(state),content);
- if(!window.confirm(`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. Refresh loads the bundled master again.`))return;
- if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection loaded for this visit.');}
+ if(!window.confirm(`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. The imported master persists after restarting the app.`))return;
+ if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.bundledMasterVersion=APP_VERSION;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection saved locally.');}
 }
 function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
  downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),`ciyan-master-v${APP_VERSION}.json`);toast('Complete master file prepared');}
@@ -812,8 +836,7 @@ document.addEventListener('change',async event=>{
   if(key==='newWordsPerDay')value=event.target.value.trim()===''?null:Math.max(0,Math.min(20000,Math.round(Number(event.target.value)||0)));
   if(key==='sessionSize')value=Math.max(1,Math.min(500,Math.round(value)||12));
   if(key==='desiredRetention')value=[.85,.9,.95].includes(value)?value:.9;
-  if(key==='fontDifficulty'){if(!Object.hasOwn(FONT_LEVELS,value))return;await change(d=>{d.settings.fontDifficulty=value;d.settings.fontChoice=fontChoices(value)[0][0];});return;}
-  if(key==='fontChoice'){if(!fontChoices(state.settings.fontDifficulty).some(([id])=>id===value))return;}
+  if(key==='fontDifficulty'||key==='fontChoice'){await chooseFont(key,value);return;}
   await change(d=>{d.settings[key]=value;});
 });
 document.addEventListener('keydown',event=>{
@@ -827,17 +850,38 @@ async function boot(){try{
   // Creating a fresh state is valid only when no saved state exists. The user
   // controls clearing learning records through the explicit Settings action.
   state=loaded?migrateState(loaded):defaultState();
+  let changedContent=false;
   if(!loaded){
     replaceMaster(state,MASTER);
-    await saveState(state,null);
-  }else if(state.revision!==loaded.revision){
-    // Structural normalization can return a different revision for older
-    // schemas; keep the persisted revision until an explicit write occurs.
+    state.bundledMasterVersion=APP_VERSION;
+  }else{
     state.revision=Number(loaded.revision)||0;
+    // Once per release, merge any newly bundled content; NEVER overwrite or
+    // drop locally imported cards, custom sentences, IDs or score records.
+    if(state.bundledMasterVersion!==APP_VERSION){
+      const merge=reconcileBundledMaster(state,MASTER);
+      changedContent=merge.changed;
+      state.bundledMasterVersion=APP_VERSION;
+    }
   }
   if(!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!Array.isArray(state.history)||!state.schedules)throw new Error('Local data appears invalid. Import a JSON backup to restore it.');
-  ensureStudy(state);replaceMaster(state,MASTER);
+  ensureStudy(state);
+  const selected=normalizeFontSettings(state.settings);
+  const fontSettingsMigrated=selected.fontDifficulty!==state.settings.fontDifficulty||selected.fontChoice!==state.settings.fontChoice;
+  if(fontSettingsMigrated)Object.assign(state.settings,selected);
+  const validation=await verifyFontSelection(selected);
+  let fontError=null;
+  if(!validation.ok){
+    fontError={selected,validation};
+    Object.assign(state.settings,{fontDifficulty:'beginner',fontChoice:'print'});
+  }
+  lastAcceptedFont=normalizeFontSettings(state.settings);
+  if(!loaded||changedContent||state.bundledMasterVersion!==loaded?.bundledMasterVersion||fontError||fontSettingsMigrated){
+    state.revision=(Number(state.revision)||0)+1;
+    await saveState(state,loaded?Number(loaded.revision)||0:null);
+  }
   studyMode=state.activeGrammarSession?'grammar':'words';render();
+  if(fontError)fontUnavailableDialog(fontError.selected,fontError.validation);
   if(state.activePractice&&!state.activePractice.current)void settlePractice();
   if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});

@@ -1,57 +1,79 @@
-// v0.6.5: iOS system Chinese typefaces, with printable fallbacks.
-// CSS @font-face local() declarations restrict the face to CJK glyphs so
-// Latin interface labels keep their original typography. No network required.
+// Cíyán v0.6.6: explicit opt-in Chinese fonts seen in the supplied screenshots.
+// These names refer to *locally installed* fonts; no copyrighted binaries are
+// distributed. Browser support for installed iOS fonts varies, so a successful
+// load probe is required before saving a selected font.
 export const FONT_LEVELS=Object.freeze({
- beginner:[['print','Clean print']],
- intermediate:[['song','Songti (serif)'],['kai','Kaiti (regular script)'],['mixed','Mixed · intermediate']],
- advanced:[['pen','HanziPen (handwriting)'],['xing','Xingkai (semi-cursive)'],['mixed','Mixed · advanced']],
- expert:[['wawati','Wawati (freehand)'],['weibei','Weibei (calligraphic)'],['mixed','Mixed · expert']]
+ beginner:[['print','iPhone default · Clean print']],
+ intermediate:[['xiaowei','站酷小薇 LOGO 体 · ZCOOL XiaoWei'],['kuaile','站酷快乐体 · ZCOOL KuaiLe'],['mixed','Mixed · Intermediate']],
+ advanced:[['zhushi','杨任东竹石体 · Yang Ren Dong Zhu Shi'],['mashan','马善政毛笔楷书 · Ma Shan Zheng'],['mixed','Mixed · Advanced']],
+ expert:[['muyao','沐瑶软笔手写体 · Muyao Softbrush'],['zhimang','志莽行书 · Zhi Mang Xing'],['mixed','Mixed · Expert']]
 });
-const FACES={print:'CiyanPrint',song:'CiyanSong',kai:'CiyanKai',pen:'CiyanPen',xing:'CiyanXing',wawati:'CiyanWawati',weibei:'CiyanWeibei'};
-export function normalizeFontSettings(settings){
- const difficulty=Object.hasOwn(FONT_LEVELS,settings?.fontDifficulty)?settings.fontDifficulty:'beginner';
- const names=FONT_LEVELS[difficulty].map(([id])=>id);
- const font=names.includes(settings?.fontChoice)?settings.fontChoice:names[0];
- return {fontDifficulty:difficulty,fontChoice:font};
-}
+// Use several postscript/full family aliases, because installed-font apps
+// sometimes expose Chinese and English family names differently.
+export const FONT_CATALOG=Object.freeze({
+ xiaowei:{face:'CiyanXiaoWei',aliases:['ZCOOL XiaoWei','ZCOOLXiaoWei-Regular','站酷小薇LOGO体','站酷小薇 LOGO 体']},
+ kuaile:{face:'CiyanKuaiLe',aliases:['ZCOOL KuaiLe','ZCOOLKuaiLe-Regular','站酷快乐体']},
+ zhushi:{face:'CiyanZhuShi',aliases:['杨任东竹石体','YangRenDongZhuShi','YangRenDongZhuShiTi','Yang Ren Dong Zhu Shi']},
+ mashan:{face:'CiyanMaShan',aliases:['Ma Shan Zheng','MaShanZheng-Regular','MaShanZheng']},
+ muyao:{face:'CiyanMuYao',aliases:['沐瑶软笔手写体','Muyao Softbrush','Muyao-Softbrush','MuyaoSoftbrush']},
+ zhimang:{face:'CiyanZhiMang',aliases:['Zhi Mang Xing','ZhiMangXing-Regular','ZhiMangXing']}
+});
+export const FONT_LEVEL_FACES=Object.freeze({intermediate:'CiyanMixedIntermediate',advanced:'CiyanMixedAdvanced',expert:'CiyanMixedExpert'});
 export function fontChoices(level){return FONT_LEVELS[level]||FONT_LEVELS.beginner;}
-export function fontFace(id){return FACES[id]||FACES.print;}
-// Stable per-character mixing avoids a visually distracting reshuffle after
-// grading or navigating. Different occurrences/positions can use different faces.
-export function mixedFace(text,index,level){
- const options=fontChoices(level).map(([key])=>key).filter(id=>id!=='mixed');
- if(!options.length)return 'print';
- let hash=2166136261;
- for(const ch of String(text)){hash=Math.imul(hash^ch.codePointAt(0),16777619);}
- hash=Math.imul(hash^((index+1)*0x9e3779b1),16777619)>>>0;
- hash=(hash^(hash>>>16))>>>0;
- return options[hash%options.length];
+export function fontFace(id){return FONT_CATALOG[id]?.face||'CiyanPrint';}
+export function normalizeFontSettings(settings){
+ const fontDifficulty=Object.hasOwn(FONT_LEVELS,settings?.fontDifficulty)?settings.fontDifficulty:'beginner';
+ const options=fontChoices(fontDifficulty).map(([id])=>id);
+ const fontChoice=options.includes(settings?.fontChoice)?settings.fontChoice:options[0];
+ return {fontDifficulty,fontChoice};
 }
+export function requiredFonts(settings){
+ const {fontDifficulty,fontChoice}=normalizeFontSettings(settings);
+ if(fontDifficulty==='beginner')return [];
+ return fontChoice==='mixed'?fontChoices(fontDifficulty).map(([id])=>id).filter(id=>id!=='mixed'):[fontChoice];
+}
+export function fontSources(id){return FONT_CATALOG[id]?.aliases.map(alias=>`local(${JSON.stringify(alias)})`).join(',')||'';}
+// FontFace.load() is a genuine load check, unlike document.fonts.check(),
+// which returns true for undeclared families that merely fall back to system.
+// The probe does not accept substituted fonts or invisible fallback faces.
+const validated=new Map();
+export async function verifyFontSelection(settings,environment=globalThis){
+ const required=requiredFonts(settings);
+ if(!required.length)return {ok:true,missing:[]};
+ if(typeof environment.FontFace!=='function'||!environment.document?.fonts)return {ok:false,missing:required,reason:'Font loading is not supported by this browser.'};
+ const missing=[];
+ for(const id of required){
+  const data=FONT_CATALOG[id];
+  if(!validated.has(id)){
+   const result=(async()=>{try{
+    const font=new environment.FontFace(`CiyanAvailability_${id}`,fontSources(id),{unicodeRange:'U+4E00-9FFF'});
+    await font.load();
+    return font.status==='loaded';
+   }catch{return false;}})();
+   validated.set(id,result);
+  }
+  if(!await validated.get(id))missing.push(id);
+ }
+ return missing.length?{ok:false,missing,reason:'The selected font is not available to Safari. Install it and reopen Cíyán before selecting it.'}:{ok:true,missing:[]};
+}
+export function clearFontProbeCache(){validated.clear();}
+// A deterministic hash for predictable per-character selection. In v0.6.6
+// mixed styles are selected via unicode-range CSS, not character-span DOM
+// wrapping (previously expensive for thousands of characters).
+export function mixedFace(text,index,level){
+ const options=requiredFonts({fontDifficulty:level,fontChoice:'mixed'});
+ if(!options.length)return 'print';
+ const cp=String(text).codePointAt(index)||0;
+ let n=Math.imul(cp^0x9e3779b9,0x85ebca6b);
+ n=Math.imul((n^(n>>>16)),0xc2b2ae35);
+ return options[((n^(n>>>16))>>>0)%options.length];
+}
+export function mixIndex(cp){let n=Math.imul(cp^0x9e3779b9,0x85ebca6b);n=Math.imul(n^(n>>>16),0xc2b2ae35);return ((n^(n>>>16))>>>0)%2;}
 export function applyFontToRoot(root,settings){
  if(!root?.style)return;
  const {fontDifficulty,fontChoice}=normalizeFontSettings(settings);
- root.style.setProperty('--ciyan-zh-font',`"${fontFace(fontChoice==='mixed'?'print':fontChoice)}"`);
- root.dataset.fontLevel=fontDifficulty;
- root.dataset.fontChoice=fontChoice;
- if(fontChoice!=='mixed'||typeof document==='undefined'||!document.createTreeWalker||!document.createDocumentFragment)return;
- const nodes=[],walker=document.createTreeWalker(root,globalThis.NodeFilter?.SHOW_TEXT||4);
- for(let node=walker.nextNode();node;node=walker.nextNode()){
-  if(!/[\p{Script=Han}]/u.test(node.nodeValue||''))continue;
-  const parent=node.parentElement;
-  if(!parent||parent.closest?.('.ciyan-mixed-char,textarea,select,option,script,style,[contenteditable="true"]'))continue;
-  nodes.push(node);
- }
- for(const node of nodes){
-  const content=node.nodeValue,frag=document.createDocumentFragment();let offset=0,buffer='';
-  const append=()=>{if(buffer){frag.appendChild(document.createTextNode(buffer));buffer='';}};
-  for(const character of content){
-   if(/\p{Script=Han}/u.test(character)){
-    append();const span=document.createElement('span');
-    span.className=`ciyan-mixed-char font-${mixedFace(content,offset,fontDifficulty)}`;
-    span.textContent=character;frag.appendChild(span);
-   }else buffer+=character;
-   offset++;
-  }
-  append();node.replaceWith(frag);
- }
+ const family=fontChoice==='mixed'?FONT_LEVEL_FACES[fontDifficulty]:fontFace(fontChoice);
+ root.style.setProperty('--ciyan-zh-font',JSON.stringify(family||'CiyanPrint'));
+ root.dataset.fontLevel=fontDifficulty;root.dataset.fontChoice=fontChoice;
+ // No DOM character wrapping: Unicode ranges make mixing a CSS-only operation.
 }

@@ -15,6 +15,7 @@ TARGET = ROOT / "dist" / "ciyan"
 STATIC_FILES = (
     "index.html",
     "styles.css",
+    "mixed-fonts.css",
     "app.js",
     "backup-versions.js",
     "study-engine.js",

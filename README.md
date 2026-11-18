@@ -80,3 +80,12 @@ Safari or Home Screen app windows, and reopen to activate v0.6.5. Browser
 storage can be evicted by iOS, so keep your independent JSON backups.
 
 Automated tests do not replace physical iPhone/Safari testing.
+
+## v0.6.6 font installation and content safety
+
+See [`RELEASE_v0.6.6.md`](RELEASE_v0.6.6.md) and [font installation help](FONT_INSTALLATION_v0.6.6.md). Additional font choices refer
+only to user-installed Chinese typefaces from the screenshots. They are checked
+by the browser before selection; unavailable fonts explicitly fail and do not
+replace your working preference. Mixed fonts use pre-generated Unicode CSS
+ranges rather than thousands of extra character nodes. Bundled dictionary
+upgrades preserve existing user content instead of replacing it at startup.

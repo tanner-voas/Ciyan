@@ -7,14 +7,14 @@ import {defaultState,deleteConfirmationValid,makeBackup,parseBackup,migrateState
 import {MASTER} from '../master-data.js';
 
 test('v0.6.5 preserves content and supports identity migration from the v0.6.4 release',()=>{
- assert.equal(APP_VERSION,'0.6.5');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.6.6');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.3',state:{appVersion:'0.6.3',schemaVersion:2}};
  const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,APP_VERSION);
  assert.deepEqual(migrated.state,old.state);
 });
 test('four font levels have one beginner choice, with mixed among other level choices',()=>{
  assert.deepEqual(Object.keys(FONT_LEVELS),['beginner','intermediate','advanced','expert']);
- assert.deepEqual(fontChoices('beginner'),[['print','Clean print']]);
+ assert.deepEqual(fontChoices('beginner'),[['print','iPhone default · Clean print']]);
  for(const level of ['intermediate','advanced','expert']){
   assert.equal(fontChoices(level).length,3);
   assert.deepEqual(fontChoices(level).map(([id])=>id).at(-1),'mixed');
