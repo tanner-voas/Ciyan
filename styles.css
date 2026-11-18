@@ -305,3 +305,26 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .character-feedback{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.character-feedback button{min-height:44px;padding:7px;font-size:12px}.character-feedback .selected{background:#245e50;color:white}.draw-pair{min-width:0}
 
 .context-match-trace{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:8px 0;padding:8px 10px;background:var(--surface-alt,#edf5f2);border:1px solid var(--border,#dae3df);border-radius:10px;font-size:12px;overflow-wrap:anywhere;text-align:left}.context-match-trace strong{font-weight:700}.context-match-trace small{font-size:12px;opacity:.85}
+
+/* v0.6.3: Stats-only mobile layout and inspectable due projection */
+#main:has(.due-panel)>.panel{margin-bottom:20px}
+.stat-feedback-row{display:grid;grid-template-columns:minmax(42px,auto) minmax(0,1fr);gap:14px;align-items:start;padding:10px 0;border-bottom:1px solid #edf1ed;line-height:1.45}
+.stat-feedback-row:last-child{border-bottom:0}
+.stat-feedback-row strong{font-size:15px;overflow-wrap:anywhere}
+.stat-feedback-row span{min-width:0;font-size:13px;overflow-wrap:anywhere;color:#41584e}
+.due-panel{margin-top:20px;margin-bottom:24px}
+.due-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.due-controls label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:650;min-width:0}
+.due-controls select{width:100%;min-width:0;max-width:100%;font-size:14px;padding:10px 8px;border:1px solid #cbd9d0;border-radius:10px;background:#fff;color:#173b2b}
+.due-chart{overflow-x:auto;overscroll-behavior-x:contain;padding:12px 2px 18px;scrollbar-width:thin}
+.due-bars{display:flex;align-items:flex-end;gap:6px;width:max-content;min-width:100%;padding:0 4px}
+.due-column{appearance:none;background:transparent;border:0;color:inherit;flex:0 0 46px;min-width:46px;padding:0 2px;cursor:pointer;font:inherit}
+.due-column:focus-visible{outline:2px solid #256b51;outline-offset:2px}
+.due-column strong{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.due-column small{font-size:10px}
+.due-stack{width:100%;max-width:40px;display:flex;flex-direction:column-reverse;justify-content:flex-start;height:150px}
+.due-stack span{display:block;min-height:0;flex-shrink:0}
+.stats-table-wrap{max-width:100%;overflow-x:auto}
+.skill-table{min-width:440px;font-variant-numeric:tabular-nums}
+.skill-table th,.skill-table td{white-space:nowrap;padding:10px 8px}
+@media(max-width:390px){.due-controls{gap:8px}.stat-feedback-row{gap:10px}.stat-feedback-row span{font-size:12px}}

@@ -382,7 +382,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
      <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Export full progress backup</button>
-     <button class="btn btn-secondary btn-full" data-action="restore">${icon('upload')}Restore full backup (replace)</button>
+     <button class="btn btn-secondary btn-full" data-action="restore">${icon('upload')}Restore full backup (preserve master content)</button>
      <button class="btn btn-secondary btn-full" data-action="import-deck">${icon('plus')}Load complete master file</button>
      <button class="btn btn-secondary btn-full" data-action="export-deck">${icon('archive')}Export complete master (no review records)</button>
 
@@ -551,9 +551,31 @@ async function readJsonFile(file){if(!file)return null;if(file.size>40*1024*1024
 function requestFile(kind){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.className='fileinput';document.body.append(input);
   input.addEventListener('change',async()=>{try{const content=await readJsonFile(input.files?.[0]);if(content){if(kind==='restore')await restoreBackup(content);else await importDeck(content);}}
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
+function mergeRestoredContent(restored,current,master){
+ // Full backup is authoritative for learning history/settings, but not for deleting
+ // newer bundled content. Match by headword/markup, preserving learned IDs.
+ const wordMap=new Map(restored.cards.map(c=>[c.hanzi,c]));
+ const ids=new Set(restored.cards.map(c=>c.id));
+ for(const source of [...current.cards,...master.cards]){
+  if(wordMap.has(source.hanzi))continue;
+  if(ids.has(source.id))throw new Error('Word ID conflict while merging backup');
+  wordMap.set(source.hanzi,source);ids.add(source.id);
+ }
+ restored.cards=[...wordMap.values()];
+ const grammarMap=new Map(restored.grammar.map(g=>[g.markup,g]));
+ const grammarIds=new Set(restored.grammar.map(g=>g.id));
+ for(const source of [...current.grammar,...master.grammar]){
+  if(grammarMap.has(source.markup))continue;
+  if(grammarIds.has(source.id))throw new Error('Grammar ID conflict while merging backup');
+  grammarMap.set(source.markup,source);grammarIds.add(source.id);
+ }
+ restored.grammar=[...grammarMap.values()];
+ // Keep existing synonym relationships and tags for matching backup words only
+ // when absent from the backup; never mutate the historical review identity.
+}
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
-  if(!window.confirm(`REPLACE your entire current database with this backup? It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{ensureStudy(parsed);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
+  if(!window.confirm(`Restore learning records and settings from this backup? Existing and current master vocabulary/grammar entries will be retained; current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
+  try{ensureStudy(parsed);mergeRestoredContent(parsed,state,MASTER);parsed.revision=state.revision+1;parsed.backedUpRevision=parsed.revision;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -644,6 +666,7 @@ document.addEventListener('touchend',async event=>{
 },{passive:false});
 
 // Delegated handlers survive every mobile-first screen re-render.
+document.addEventListener('change',event=>{if(event.target.id==='due-window'){dueWindow=event.target.value;render();}else if(event.target.id==='due-resolution'){dueResolution=event.target.value;render();}});
 document.addEventListener('click',async event=>{
   if(currentModal&&event.target===currentModal){closeModal();return;}
   if(event.target.closest('.tone-option'))return; // selecting a tone must never reveal the answer
@@ -653,6 +676,7 @@ document.addEventListener('click',async event=>{
   if(await practiceAction(action,element))return;
   switch(action){
     case 'navigate':closeModal();navigate(element.dataset.page);break;
+    case 'due-bucket':{const n=Number(element.dataset.index);const buttons=[...document.querySelectorAll('.due-column')];const b=buttons[n];if(b)toast(b.getAttribute('aria-label'));break;}
     case 'start':await startSession(element.dataset.mode||'words');break;
     case 'reveal':revealed=true;render();break;
     case 'grade':await gradeCard(Number(element.dataset.grade));break;
@@ -883,7 +907,7 @@ function extendedStats(){
  return `${feedbackStats()}${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
  <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${all.length} recorded attempts</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Next seven days</h2><div class="forecast">${forecasts.map(d=>`<div><small>${d.key.slice(5)}</small><strong>${d.n}</strong></div>`).join('')}</div><p class="subtle">Scheduled reviews only, excluding new items and overdue backlog. Dates will change as you study.</p></section>
- <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="row"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect / ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
+ <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="stat-feedback-row"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect / ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
 }
 
 function highlightPinyin(sentence,word){
@@ -932,11 +956,30 @@ async function saveScheduler(form){try{
  modal('Review scheduling changes',`${timingCurve(pendingTiming)}<p><strong>${impact.additional} additional reviews due now.</strong> ${impact.later} currently due reviews move later. Due now: ${impact.before.due} → ${impact.after.due} if existing schedules are recalculated.</p><div class="stack"><button class="btn btn-primary" data-action="apply-timing" data-scope="future">Use for future reviews only</button><button class="btn btn-secondary" data-action="apply-timing" data-scope="existing">Also recalculate existing schedules</button><button class="btn btn-secondary" data-action="close-modal">Cancel</button></div><p class="subtle">No scores or review history are erased. Applying timing starts a new undo boundary.</p>`);
  }catch(e){toast(e.message);}}
 function dueChart(){
- const entries=activeDueEntries();
- const width=Math.max(280,Math.min(900,$('#main')?.clientWidth||globalThis.innerWidth||360)-64),data=dueHistogram(entries,width),max=Math.max(1,...data.bins.map(b=>b.total));
- const when=s=>s===0?'Now':`${s<0?'−':'+'}${intervalText(Math.abs(s))}`;
- return `<section class="panel stack due-panel"><h2>Overdue → next due</h2><p class="subtle">Scheduled cards by time from now. Bars and interval widths adapt to your data and screen.</p><div class="due-legend">${Object.entries(MODES).map(([m,n])=>`<span><i class="mode-${m}"></i>${n}</span>`).join('')}</div>${data.bins.length?`<div class="due-chart" role="img" aria-label="Review workload histogram"><div class="due-bars">${data.bins.map(b=>`<div class="due-column ${b.end<=0?'overdue':''}" title="${when(b.start)} to ${when(b.end)}: ${b.total} scheduled"><strong>${b.total}</strong><div class="due-stack">${Object.keys(MODES).map(m=>`<div class="mode-${m}" style="height:${150*b.counts[m]/max}px" title="${MODES[m]}: ${b.counts[m]}"></div>`).join('')}</div><small>${when(b.start)}</small></div>`).join('')}</div></div><p class="subtle">${entries.filter(e=>Date.parse(e.dueAt)<=Date.now()).length} overdue · ${entries.length} scheduled · ${intervalText(data.step)} per bar</p><details><summary>View exact bucket counts</summary><div class="stats-table-wrap"><table class="skill-table"><tr><th>Range</th>${Object.values(MODES).map(m=>`<th>${m}</th>`).join('')}</tr>${data.bins.map(b=>`<tr><th>${when(b.start)} to ${when(b.end)}</th>${Object.values(b.counts).map(n=>`<td>${n}</td>`).join('')}</tr>`).join('')}</table></div></details>`:'<p class="subtle">No scheduled reviews yet. New, unstudied cards are excluded from this chart.</p>'}</section>`;
+ const entries=activeDueEntries(),now=Date.now();
+ const windows={all:null,day:86400,week:604800,month:2592000,quarter:7776000,year:31536000};
+ const steps={auto:null,hour:3600,day:86400,week:604800,month:2592000};
+ const windowSeconds=windows[dueWindow]??null;
+ const points=entries.map(e=>({...e,offset:(Date.parse(e.dueAt)-now)/1000})).filter(e=>Number.isFinite(e.offset));
+ const selected=windowSeconds===null?points:points.filter(e=>e.offset>=-windowSeconds&&e.offset<=windowSeconds);
+ const offsets=selected.map(e=>e.offset);
+ const min=offsets.length?Math.min(0,...offsets):0,maxOffset=offsets.length?Math.max(0,...offsets):0;
+ const autoStep=(()=>{const span=Math.max(1,maxOffset-min);const target=Math.max(8,Math.min(28,Math.floor((globalThis.innerWidth||390)/24)));const sizes=[3600,21600,86400,259200,604800,1209600,2592000,7776000,31536000];return sizes.find(x=>span/x<=target)||sizes.at(-1);})();
+ const step=steps[dueResolution]||autoStep;
+ const start=Math.floor(min/step)*step,end=Math.ceil(maxOffset/step)*step;
+ const count=Math.max(1,Math.min(360,Math.round((end-start)/step)+1));
+ const bins=Array.from({length:count},(_,i)=>({start:start+i*step,end:start+(i+1)*step,total:0,counts:Object.fromEntries(Object.keys(MODES).map(m=>[m,0]))}));
+ for(const e of selected){const i=Math.max(0,Math.min(count-1,Math.floor((e.offset-start)/step)));bins[i].total++;if(e.mode in bins[i].counts)bins[i].counts[e.mode]++;}
+ const peak=Math.max(1,...bins.map(b=>b.total));
+ const when=s=>Math.abs(s)<1?'Now':`${s<0?'−':'+'}${intervalText(Math.abs(s))}`;
+ const option=(items,value)=>items.map(([k,v])=>`<option value="${k}" ${k===value?'selected':''}>${v}</option>`).join('');
+ return `<section class="panel stack due-panel"><h2>Overdue → next due</h2><p class="subtle">Choose a time window and bucket size. Scroll the plot horizontally for more detail; tap any bar for exact counts.</p>
+ <div class="due-controls"><label>Time window<select id="due-window">${option([['all','All scheduled'],['day','±1 day'],['week','±1 week'],['month','±30 days'],['quarter','±90 days'],['year','±1 year']],dueWindow)}</select></label><label>Resolution<select id="due-resolution">${option([['auto','Automatic'],['hour','Hourly'],['day','Daily'],['week','Weekly'],['month','Monthly']],dueResolution)}</select></label></div>
+ <div class="due-legend">${Object.entries(MODES).map(([m,n])=>`<span><i class="mode-${m}"></i>${n}</span>`).join('')}</div>
+ ${selected.length?`<div class="due-chart" aria-label="Review workload histogram"><div class="due-bars">${bins.map((b,i)=>`<button type="button" class="due-column ${b.end<=0?'overdue':''}" data-action="due-bucket" data-index="${i}" aria-label="${when(b.start)} to ${when(b.end)}: ${b.total} reviews"><strong>${b.total||''}</strong><span class="due-stack">${Object.keys(MODES).map(m=>`<span class="mode-${m}" style="height:${Math.max(0,150*b.counts[m]/peak)}px"></span>`).join('')}</span><small>${when(b.start)}</small></button>`).join('')}</div></div>
+ <p class="subtle">${points.filter(e=>e.offset<=0).length} overdue · ${entries.length} scheduled · ${selected.length} in view · ${intervalText(step)} per bar</p><details><summary>View exact bucket counts</summary><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Range</th>${Object.values(MODES).map(m=>`<th>${m}</th>`).join('')}</tr></thead><tbody>${bins.filter(b=>b.total).map(b=>`<tr><th>${when(b.start)} to ${when(b.end)}</th>${Object.values(b.counts).map(n=>`<td>${n}</td>`).join('')}</tr>`).join('')}</tbody></table></div></details>`:'<p class="subtle">No scheduled reviews in this window.</p>'}</section>`;
 }
+let dueWindow='all',dueResolution='auto';
 let resizeTimer;
 window.addEventListener?.('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(page==='stats')render();},160);});
 
@@ -1013,5 +1056,5 @@ function activeDueEntries(){
 
 function feedbackStats(){
  const chars=characterEvidence(state).slice(0,20),families=[...familyEvidence(state)].sort((a,b)=>b[1].errors-a[1].errors);
- return `<section class="panel stack"><h2>Character recall</h2><p class="subtle">Weakest characters first, using the last 20 explicit grades with greater weight on recent attempts. Scores accumulate gradually across words. Unrated characters are unknown; no drawings are retained.</p>${chars.length?chars.map(x=>`<div class="row"><strong>${esc(x.character)}</strong><span>${x.score==null?'Unscored':x.score.toFixed(2)} · ${(x.weakness*100).toFixed(0)}% weakness · ${x.total} ratings · ${x.words} words</span></div>`).join(''):'<p>No character feedback yet. Mark characters after revealing a drawing.</p>'}</section><section class="panel stack"><h2>Grammar families</h2><p class="subtle">Last 20 checked Particle Zoo answers per family. Errors modestly increase selection weight among eligible exercises; due cards still come first.</p>${families.length?families.map(([name,x])=>`<div class="row"><strong>${esc(name)}</strong><span>${x.errors} errors / ${x.total} checked · ${Object.entries(x.types).map(([k,n])=>esc(k)+': '+n).join(' · ')}</span></div>`).join(''):'<p>Complete Particle Zoo exercises to see family feedback.</p>'}</section>`;
+ return `<section class="panel stack"><h2>Character recall</h2><p class="subtle">Weakest characters first, using the last 20 explicit grades with greater weight on recent attempts. Scores accumulate gradually across words. Unrated characters are unknown; no drawings are retained.</p>${chars.length?chars.map(x=>`<div class="stat-feedback-row"><strong>${esc(x.character)}</strong><span>${x.score==null?'Unscored':x.score.toFixed(2)} · ${(x.weakness*100).toFixed(0)}% weakness · ${x.total} ratings · ${x.words} words</span></div>`).join(''):'<p>No character feedback yet. Mark characters after revealing a drawing.</p>'}</section><section class="panel stack"><h2>Grammar families</h2><p class="subtle">Last 20 checked Particle Zoo answers per family. Errors modestly increase selection weight among eligible exercises; due cards still come first.</p>${families.length?families.map(([name,x])=>`<div class="stat-feedback-row"><strong>${esc(name)}</strong><span>${x.errors} errors / ${x.total} checked · ${Object.entries(x.types).map(([k,n])=>esc(k)+': '+n).join(' · ')}</span></div>`).join(''):'<p>Complete Particle Zoo exercises to see family feedback.</p>'}</section>`;
 }

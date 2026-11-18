@@ -1,0 +1,182 @@
+[
+  {
+    "id": "ctx063-b194d0e6bc331c984c77",
+    "markup": "{尽管}{遇到}{困难}，{他}{仍然}{坚持}{完成}{任务}。",
+    "pinyin": "Jǐn guǎn yù dào kùn nan, tā réng rán jiān chí wán chéng rèn wu.",
+    "english": "Despite difficulties, he persisted in completing the task.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-49c31bcf167e029ac64b",
+    "markup": "{我们}{需要}{根据}{实际}{情况}{调整}{计划}。",
+    "pinyin": "Wǒ men xū yào gēn jù shí jì qíng kuàng tiáo zhěng jì huà.",
+    "english": "We need to adjust the plan according to the actual situation.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-6a6267d86b7908e41041",
+    "markup": "{这}{项}{研究}{的}{结果}{值得}{进一步}{讨论}。",
+    "pinyin": "Zhè xiàng yán jiū de jié guǒ zhí de jìn yī bù tǎo lùn.",
+    "english": "The results of this research deserve further discussion.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-99cf7ca64e8b1e9dcc5e",
+    "markup": "{她}{负责}{协调}{不同}{部门}{之间}{的}{工作}。",
+    "pinyin": "Tā fù zé xié tiáo bù tóng bù mén zhī jiān de gōng zuò.",
+    "english": "She is responsible for coordinating work between departments.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-3b32f36d5649e7997433",
+    "markup": "{为了}{避免}{误会}，{最好}{提前}{说明}{原因}。",
+    "pinyin": "Wèi le bì miǎn wù huì, zuì hǎo tí qián shuō míng yuán yīn.",
+    "english": "To avoid misunderstandings, it is best to explain the reason in advance.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-4555a2815ca252ae1f99",
+    "markup": "{他们}{通过}{合作}{解决}{了}{复杂}{的}{问题}。",
+    "pinyin": "Tā men tōng guò hé zuò jiě jué le fù zá de wèn tí.",
+    "english": "They solved the complicated problem through cooperation.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-543bd5feae228389809a",
+    "markup": "{这个}{决定}{可能}{影响}{未来}{的}{发展}。",
+    "pinyin": "Zhè ge jué dìng kě néng yǐng xiǎng wèi lái de fā zhǎn.",
+    "english": "This decision may affect future development.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-5891d81a20fd495d5205",
+    "markup": "{老师}{鼓励}{学生}{独立}{思考}{并}{提出}{问题}。",
+    "pinyin": "Lǎo shī gǔ lì xué sheng dú lì sī kǎo bìng tí chū wèn tí.",
+    "english": "The teacher encourages students to think independently and ask questions.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-75f70d9018d3487fe8cf",
+    "markup": "{这}{个}{方案}{既}{节省}{时间}{又}{降低}{成本}。",
+    "pinyin": "Zhè ge fāng àn jì jié shěng shí jiān yòu jiàng dī chéng běn.",
+    "english": "This proposal saves time and reduces costs.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-6d67ea6627e483a9901e",
+    "markup": "{如果}{条件}{允许}，{我们}{可以}{延长}{讨论}{时间}。",
+    "pinyin": "Rú guǒ tiáo jiàn yǔn xǔ, wǒ men kě yǐ yán cháng tǎo lùn shí jiān.",
+    "english": "If conditions permit, we can extend the discussion.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-b4f5ee3717e77c06d923",
+    "markup": "{他}{对}{这个}{领域}{的}{了解}{相当}{深入}。",
+    "pinyin": "Tā duì zhè ge lǐng yù de liǎo jiě xiāng dāng shēn rù.",
+    "english": "His understanding of this field is quite deep.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-ca6fc56927e35677ad36",
+    "markup": "{请}{确认}{所有}{信息}{准确}{以后}{再}{提交}。",
+    "pinyin": "Qǐng què rèn suǒ yǒu xìn xī zhǔn què yǐ hòu zài tí jiāo.",
+    "english": "Please confirm that all information is accurate before submitting.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-a3842597c061ef625bf0",
+    "markup": "{会议}{结束}{后}，{大家}{继续}{交换}{意见}。",
+    "pinyin": "Huì yì jié shù hòu, dà jiā jì xù jiāo huàn yì jian.",
+    "english": "After the meeting, everyone continued exchanging opinions.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-31555fc2194f23a41ba8",
+    "markup": "{这个}{变化}{反映}{了}{市场}{需求}{的}{增长}。",
+    "pinyin": "Zhè ge biàn huà fǎn yìng le shì chǎng xū qiú de zēng zhǎng.",
+    "english": "This change reflects growth in market demand.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-1b8e0bc0266e8094f49d",
+    "markup": "{面对}{压力}，{她}{始终}{保持}{冷静}。",
+    "pinyin": "Miàn duì yā lì, tā shǐ zhōng bǎo chí lěng jìng.",
+    "english": "She always stays calm under pressure.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-1d41169eff4246bccdc1",
+    "markup": "{我们}{应该}{尊重}{不同}{文化}{之间}{的}{差异}。",
+    "pinyin": "Wǒ men yīng gāi zūn zhòng bù tóng wén huà zhī jiān de chā yì.",
+    "english": "We should respect differences between cultures.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-d81123d0a6a879efa424",
+    "markup": "{公司}{正在}{寻找}{提高}{效率}{的}{方法}。",
+    "pinyin": "Gōng sī zhèng zài xún zhǎo tí gāo xiào lǜ de fāng fǎ.",
+    "english": "The company is looking for ways to improve efficiency.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-7692606376bcda89cd83",
+    "markup": "{调查}{显示}，{大多数}{人}{支持}{这个}{建议}。",
+    "pinyin": "Diào chá xiǎn shì, dà duō shù rén zhī chí zhè ge jiàn yì.",
+    "english": "The survey shows that most people support this suggestion.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-e634adcf81d5dd934af8",
+    "markup": "{随着}{技术}{进步}，{生活}{方式}{也}{发生}{了}{变化}。",
+    "pinyin": "Suí zhe jì shù jìn bù, shēng huó fāng shì yě fā shēng le biàn huà.",
+    "english": "As technology advances, lifestyles have also changed.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  },
+  {
+    "id": "ctx063-60c65fc22c187f0e75f6",
+    "markup": "{他}{解释}{得}{很}{清楚}，{所以}{大家}{都}{理解}{了}。",
+    "pinyin": "Tā jiě shì de hěn qīng chu, suǒ yǐ dà jiā dōu lǐ jiě le.",
+    "english": "He explained it clearly, so everyone understood.",
+    "distractors": [],
+    "source": "Ciyan v0.6.3 context extension",
+    "createdAt": "2026-11-18T00:00:00.000Z"
+  }
+]

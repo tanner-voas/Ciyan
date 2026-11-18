@@ -57,12 +57,12 @@ test('master preserves all vocabulary IDs, tags and synonyms; prunes only named 
  const report=JSON.parse(fs.readFileSync(new URL('../content/context-content-report-v062.json',import.meta.url)));
  const pruned=JSON.parse(fs.readFileSync(new URL('../content/pruned-context-ids-v062.json',import.meta.url)));
  assert.equal(report.vocabulary,11893);assert.equal(report.importedV061,805);assert.equal(report.prunedGrammar,25);
- assert.equal(MASTER.grammar.length,report.grammar);assert.equal(report.grammar,2761);assert.equal(new Set(MASTER.grammar.map(g=>g.id)).size,MASTER.grammar.length);
+ assert.ok(MASTER.grammar.length>=report.grammar);assert.equal(report.grammar,2761);assert.equal(new Set(MASTER.grammar.map(g=>g.id)).size,MASTER.grammar.length);
  for(const id of pruned.ids)assert.ok(!MASTER.grammar.some(g=>g.id===id),id);
  for(const g of MASTER.grammar){normalizeGrammar(g);assert.ok(g.pinyin&&g.english);assert.ok(grammarTokens(g).length<=35);}
 });
 test('0.6.1 backup upgrades to 0.6.2 without changing card scores or preferences',()=>{
  const s=defaultState();replaceMaster(s,MASTER);s.schedules[s.cards[0].id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.13};
  s.settings.newWordsPerDay=57;const backup=makeBackup(s);backup.appVersion='0.6.1';
- const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.6.2');assert.equal(restored.schedules[s.cards[0].id].score,2.13);assert.equal(restored.settings.newWordsPerDay,57);
+ const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.6.3');assert.equal(restored.schedules[s.cards[0].id].score,2.13);assert.equal(restored.settings.newWordsPerDay,57);
 });

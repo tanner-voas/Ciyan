@@ -1,5 +1,5 @@
 // App shell is cached for offline study after the first successful online visit.
-const CACHE = 'ciyan-shell-v6.2';
+const CACHE = 'ciyan-shell-v6.3';
 const ASSETS = ['./','./index.html','./styles.css','./app.js','./backup-versions.js','./study-engine.js','./tag-weights.js','./grammar-context.js','./context-matching.js','./review-scheduler.js','./particles.js','./particle-content.js','./learning-feedback.js','./tags.js','./drawing.js','./fsrs.js','./storage.js',
   './cards.js','./grammar.js','./master-data.js','./master.js','./session-controls.js','./hsk-tag-map.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png',
   './icons/apple-touch-icon.png'];
