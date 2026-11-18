@@ -10,7 +10,8 @@ import {drawPad,attachPad} from './drawing.js';
 import {DRAWING_RATINGS,drawingResult,withDrawingRating} from './drawing-grades.js';
 import {prepareVerifiedBackup} from './backup-integrity.js';
 import {mergeRestoredContent} from './backup-restore.js';
-import {FONT_LEVELS,fontChoices,normalizeFontSettings,applyFontToRoot,verifyFontSelection,FONT_CATALOG,requiredFonts} from './fonts.js';
+import {FONT_LEVELS,FONT_IDS,fontChoices,selectedFonts,normalizeFontSettings,applyFontToRoot,verifyFontSelection,FONT_CATALOG,requiredFonts} from './fonts.js';
+import {initializeFontLibrary,importFontFile,removeFontFile,getImportedFonts,fontLibraryError} from './font-library.js';
 import {MASTER} from './master-data.js';
 import {replaceMaster,reconcileBundledMaster} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
@@ -20,56 +21,58 @@ import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBa
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
-let lastAcceptedFont={fontDifficulty:'beginner',fontChoice:'print'};
+let lastAcceptedFont={enabledFonts:['print']};
 let fontSelectionCounter=0;
 let pendingFont=null;
 let applyingFont=false;
+const fontLabel=id=>Object.values(FONT_LEVELS).flat().find(([key])=>key===id)?.[1]||id;
+const cloneFont=s=>({enabledFonts:[...normalizeFontSettings(s).enabledFonts]});
 function fontUnavailableDialog(requested,result){
- const labels=(result.missing||[]).map(id=>FONT_CATALOG[id]?fontChoices(requested.fontDifficulty).find(([key])=>key===id)?.[1]||id:id);
- const details=labels.length?labels.join(', '):'This font';
- modal('Font unavailable',`<p class="font-error-message"><strong>${esc(details)}</strong> could not be loaded by this browser.</p><p class="font-install-hint">Install the missing font using an iPhone font app or configuration profile, then reopen Cíyán. Some iOS versions do not expose installed third-party fonts to Safari; in that case, this font cannot be selected here. No settings were changed.</p><p class="subtle">Mixed requires both installed fonts in the selected difficulty level. ${esc(result.reason||'')}</p><button class="btn btn-primary btn-full" data-action="close-modal">Keep previous font</button>`);
+ const labels=(result.missing||[]).map(fontLabel),details=labels.join(', ')||'A selected font';
+ const firstMissing=(result.missing||[])[0];
+ modal('Font unavailable',`<p class="font-error-message"><strong>${esc(details)}</strong> could not be loaded.</p><p class="font-install-hint">Cíyán attempted to download and cache the required web-font files. If the download fails, you can upload a .ttf, .otf or .woff2 file instead.</p><p class="subtle">No selection was applied. Your previous fonts and learning data are unchanged. ${esc(result.reason||'')}</p><div class="font-recovery-actions"><button class="btn btn-primary btn-full" data-action="close-modal">Keep previous fonts</button>${firstMissing?`<button class="btn btn-secondary btn-full" data-action="upload-missing-font" data-font-id="${esc(firstMissing)}">Upload font file</button>`:''}</div>`);
 }
-function fontSettingChanged(a,b){return a.fontDifficulty!==b.fontDifficulty||a.fontChoice!==b.fontChoice;}
-function setPendingFont(key,value){
- const draft={...(pendingFont||lastAcceptedFont)};
- if(key==='fontDifficulty'){
-  if(!Object.hasOwn(FONT_LEVELS,value))return;
-  draft.fontDifficulty=value;
-  if(!fontChoices(value).some(([id])=>id===draft.fontChoice))draft.fontChoice=fontChoices(value)[0][0];
- }else{
-  if(!fontChoices(draft.fontDifficulty).some(([id])=>id===value))return;
-  draft.fontChoice=value;
- }
- pendingFont=draft;
- ++fontSelectionCounter;
- // Never change the active font or write to storage from either dropdown.
- const font=$('#pending-font-choice');
- if(key==='fontDifficulty'&&font)font.innerHTML=options(fontChoices(draft.fontDifficulty),draft.fontChoice);
+let uploadingFontSlot=null;
+function fontChecklistMarkup(settings){
+ const selected=new Set(normalizeFontSettings(settings).enabledFonts),files=getImportedFonts();
+ return `<div class="font-checklist" role="group" aria-label="Enabled Chinese fonts">${Object.entries(FONT_LEVELS).map(([level,choices])=>`<div class="font-checklist-group"><div class="font-checklist-title">${level[0].toUpperCase()+level.slice(1)}</div>${choices.map(([id,label])=>`<label class="font-checklist-row"><input type="checkbox" data-font-id="${id}" ${selected.has(id)?'checked':''} aria-label="${esc(label)}"><span class="font-checklist-detail"><strong>${esc(label)}</strong><small>${id==='print'?'Built into iPhone':files[id]?`${files[id].source==='download'?'Available offline':'Uploaded'} · ${esc(files[id].name)}`:'Downloads automatically when applied'}</small></span></label>`).join('')}</div>`).join('')}</div>`;
+}
+function fontSettingChanged(a,b){
+ const aa=normalizeFontSettings(a).enabledFonts,bb=normalizeFontSettings(b).enabledFonts;
+ return aa.length!==bb.length||aa.some(id=>!bb.includes(id));
+}
+function setPendingFont(id,checked){
+ if(!FONT_IDS.includes(id))return;
+ const draft=cloneFont(pendingFont||lastAcceptedFont);
+ draft.enabledFonts=checked?[...new Set([...draft.enabledFonts,id])]:draft.enabledFonts.filter(x=>x!==id);
+ draft.enabledFonts=FONT_IDS.filter(x=>draft.enabledFonts.includes(x));
+ pendingFont=draft;++fontSelectionCounter;
+ // Only the draft changes. No re-render, CSS updates, or storage writes.
  const apply=$('#apply-font'),cancel=$('#discard-font'),status=$('#font-draft-status');
  const dirty=fontSettingChanged(draft,lastAcceptedFont);
  if(apply)apply.disabled=!dirty||applyingFont;
  if(cancel)cancel.disabled=!dirty||applyingFont;
- if(status)status.textContent=dirty?'Pending changes — tap Apply to validate and save.':'Current font is applied.';
+ if(status)status.textContent=dirty?'Pending changes — tap Apply to validate and save.':'Current font selection is applied.';
 }
 async function applyPendingFont(){
  if(applyingFont)return;
- const candidate={...(pendingFont||lastAcceptedFont)};
+ const candidate=cloneFont(pendingFont||lastAcceptedFont);
  if(!fontSettingChanged(candidate,lastAcceptedFont))return;
- applyingFont=true;
- const seq=++fontSelectionCounter;
+ applyingFont=true;const seq=++fontSelectionCounter;
  try{
+  const label=$('#font-draft-status');if(label)label.textContent='Checking selected fonts / downloading missing files…';
   const check=await verifyFontSelection(candidate);
   if(seq!==fontSelectionCounter)return;
-  if(!check.ok){pendingFont={...lastAcceptedFont};render();fontUnavailableDialog(candidate,check);return;}
-  const saved=await change(d=>{Object.assign(d.settings,candidate);});
-  if(saved){lastAcceptedFont={...candidate};pendingFont={...candidate};render();}
-  else{pendingFont={...lastAcceptedFont};render();}
+  if(!check.ok){pendingFont=cloneFont(lastAcceptedFont);render();fontUnavailableDialog(candidate,check);return;}
+  const saved=await change(d=>{Object.assign(d.settings,candidate);delete d.settings.fontDifficulty;delete d.settings.fontChoice;});
+  if(saved){lastAcceptedFont=cloneFont(candidate);pendingFont=cloneFont(candidate);render();}
+  else{pendingFont=cloneFont(lastAcceptedFont);render();}
  }finally{
   applyingFont=false;
   const apply=$('#apply-font');if(apply)apply.disabled=!fontSettingChanged(pendingFont||lastAcceptedFont,lastAcceptedFont);
  }
 }
-function discardPendingFont(){++fontSelectionCounter;pendingFont={...lastAcceptedFont};render();}
+function discardPendingFont(){++fontSelectionCounter;pendingFont=cloneFont(lastAcceptedFont);render();}
 
 const app=$('#app'),toastNode=$('#toast');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -419,6 +422,7 @@ function updateCollection(keepPage=false){
     return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="expand-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}" aria-expanded="${expandedTags[kind].has(n.path)}">${expandedTags[kind].has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}${!v&&inherited?`<small> · parent ${inherited[1]===1?'required':'excluded'}</small>`:''}</button></div>`;
  }).join('')+'<p class="subtle">Tap a label: require → exclude → neutral. Required tags all must match; parents include descendants. Exclusions win. Use arrows to expand.</p>';
  updateCollectionPage(kind);
+ applyFontToRoot(activeNode,state.settings);applyFontToRoot(availableNode,state.settings);
 }
 function updateCollectionPage(kind=page==='grammar'?'grammar':'words'){
  const f=filters[kind],q=f.search.trim().toLowerCase(),results=collectionResults(kind,f,q),pages=Math.max(1,Math.ceil(results.length/COLLECTION_SIZE));
@@ -438,6 +442,7 @@ function updateCollectionPage(kind=page==='grammar'?'grammar':'words'){
   <small>${esc(tags.slice(0,4).map(t=>'#'+tagLabel(t)).join('  '))}</small></div><div class="list-meta"><strong>${percent(score.combined)}</strong>
   <small>${ready?'Ready':'Locked'}</small></div>${icon('right')}</button>`).join('');
  list.innerHTML=results.length?content+pageControl(kind,collectionPages[kind],results.length):`<div class="empty"><strong>No matching ${kind==='words'?'words':'sentences'}</strong>Adjust your search or filters.</div>`;
+ applyFontToRoot(list,state.settings);
  applyFontToRoot(list,state.settings);
 }
 
@@ -488,11 +493,12 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
     <div class="settings-row"><div><strong>Tone test</strong><small>Choose tone 1–4 below each Chinese character; none = neutral</small></div><input class="toggle" type="checkbox" role="switch" data-setting="toneTest" ${s.toneTest?'checked':''}></div>
     <div class="settings-row"><div><strong>Enforce tone accuracy</strong><small>When tone test is on, a mismatch disables Easy</small></div><input class="toggle" type="checkbox" role="switch" data-setting="enforceTones" ${s.enforceTones?'checked':''}></div></div>
    <div class="section-row"><h2 class="section-title">Chinese typography</h2></div>
-   <div class="panel stack font-settings"><p class="subtle">Select a difficulty and font, then tap Apply. No font or saved preference changes during selection. Installed iPhone names: xiaowei, HappyZcool-2016, YRDZST, Ma Shan Zheng, Muyao-Softbrush, and Zhi Mang Xing. Mixed requires both fonts in its level.</p>
-     <label class="font-control">Difficulty<select data-setting="fontDifficulty" aria-label="Chinese font difficulty">${options(Object.keys(FONT_LEVELS).map(level=>[level,level[0].toUpperCase()+level.slice(1)]),draft.fontDifficulty)}</select></label>
-     <label class="font-control">Font<select data-setting="fontChoice" id="pending-font-choice" aria-label="Chinese font">${options(fontChoices(draft.fontDifficulty),draft.fontChoice)}</select></label>
-     <div class="font-apply-controls"><p id="font-draft-status" class="subtle">${fontSettingChanged(draft,lastAcceptedFont)?'Pending changes — tap Apply to validate and save.':'Current font is applied.'}</p><div class="row"><button type="button" class="btn btn-primary" id="apply-font" data-action="apply-font" ${!fontSettingChanged(draft,lastAcceptedFont)?'disabled':''}>Apply font</button><button type="button" class="btn btn-secondary" id="discard-font" data-action="discard-font" ${!fontSettingChanged(draft,lastAcceptedFont)?'disabled':''}>Discard changes</button></div></div><div class="font-sample"><div class="eyebrow">CURRENT APPLIED FONT</div><div class="font-sample-chinese" lang="zh-Hans">春风又绿江南岸，明月何时照我还？</div><p class="subtle">样式测试 · 春天的雨，山中的路，朋友的信。</p></div>
-     <p class="subtle">Select both difficulty and font before tapping Apply. An unavailable font causes an error and restores your previous choice. iPhone installation does not guarantee Safari can use a font; if verification fails, keep Beginner. Only font names are included in this app, not font files.</p></div>
+   <div class="panel stack font-settings"><p class="subtle">Check any combination of fonts, including Beginner. Each Chinese character occurrence independently receives a random font from your checked list. If none are checked, the iPhone default is used. Nothing changes until you tap <strong>Apply font</strong>.</p>
+     ${fontChecklistMarkup(draft)}
+     <input type="file" id="ciyan-font-file-input" class="visually-hidden" accept=".ttf,.otf,.woff,.woff2,font/*" aria-label="Choose a Chinese font file" style="position:absolute;left:-10000px;width:1px;height:1px">
+     <div class="font-apply-controls"><p id="font-draft-status" class="subtle">${fontSettingChanged(draft,lastAcceptedFont)?'Pending changes — tap Apply to validate and save.':'Current font selection is applied.'}</p><div class="row"><button type="button" class="btn btn-primary" id="apply-font" data-action="apply-font" ${!fontSettingChanged(draft,lastAcceptedFont)?'disabled':''}>Apply font</button><button type="button" class="btn btn-secondary" id="discard-font" data-action="discard-font" ${!fontSettingChanged(draft,lastAcceptedFont)?'disabled':''}>Discard changes</button></div></div>
+     <div class="font-sample"><div class="eyebrow">CURRENT APPLIED FONTS</div><div class="font-sample-chinese" lang="zh-Hans">子子子 春风又绿江南岸，明月何时照我还？</div><p class="subtle">样式测试 · 春天的雨，山中的路，朋友的信。</p></div>
+     <p class="subtle">When you apply, each checked custom font is downloaded if necessary, validated, and cached for offline use. If one is unavailable, an error offers to keep the previous fonts or upload the missing file. Font files are separate from learning backups.</p></div>
    <div class="section-row"><h2 class="section-title">Master collection</h2></div><div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences are provided by default. Your imported and edited entries persist across restarts.</p><p class="subtle">New bundled content is merged on the first launch after an app update, without overwriting your own entries. Keep exporting full progress backups regularly; browser storage is not a permanent independent backup.</p></div>
    <div class="section-row"><h2 class="section-title">Your files</h2><span class="subtle">Stored locally on this device</span></div>
    <div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
@@ -513,7 +519,7 @@ ${schedulerSettings()}${tagWeightSettings()}   <div class="section-row"><h2 clas
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),stats:renderStats,settings:renderSettings};
   app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();}
 function navigate(dest){if(!['study','browse','grammar','stats','settings','complete'].includes(dest))return;
-  if(dest==='settings'&&page!=='settings')pendingFont={...lastAcceptedFont};
+  if(dest==='settings'&&page!=='settings')pendingFont=cloneFont(lastAcceptedFont);
   if(dest!=='settings')pendingFont=null;
   page=dest;revealed=false;render();window.scrollTo({top:0,behavior:'instant'});}
 function modal(title,contents){closeModal();currentModal=document.createElement('div');currentModal.className='modal-backdrop';
@@ -672,7 +678,7 @@ function requestFile(kind){const input=document.createElement('input');input.typ
 
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`Restore learning records and settings from this backup? Existing and current master vocabulary/grammar entries will be retained; current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{ensureStudy(parsed);mergeRestoredContent(parsed,state,MASTER);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,lastAcceptedFont);parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=fontChoice;pendingFont={...lastAcceptedFont};toast('Full backup restored.');}
+  try{ensureStudy(parsed);mergeRestoredContent(parsed,state,MASTER);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(fontChoice);pendingFont=cloneFont(lastAcceptedFont);toast('Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -802,6 +808,12 @@ document.addEventListener('click',async event=>{
     case 'download-backup':await exportBackup('download');break;
     case 'confirm-backup':await confirmBackup();break;
     case 'restore':requestFile('restore');break;
+    case 'import-font-file':case 'upload-missing-font':{uploadingFontSlot=element.dataset.fontId;let input=$('#ciyan-font-file-input');if(!input){input=document.createElement('input');input.type='file';input.id='ciyan-font-file-input';input.accept='.ttf,.otf,.woff,.woff2,font/*';input.style.cssText='position:absolute;left:-10000px;width:1px;height:1px';document.body.append(input);}input.value='';input.click();break;}
+    case 'remove-font-file':{const id=element.dataset.fontId;try{if(requiredFonts(lastAcceptedFont).includes(id)){
+      const fallback={enabledFonts:FONT_IDS.filter(x=>lastAcceptedFont.enabledFonts.includes(x)&&x!==id)};
+      const ok=await change(d=>Object.assign(d.settings,fallback));if(!ok)break;
+      lastAcceptedFont=cloneFont(fallback);pendingFont=cloneFont(fallback);
+    }await removeFontFile(id);render();toast('Font file removed from this device.');}catch(err){modal('Font removal failed',`<p>${esc(err.message)}</p>`);}break;}
 
     case 'collection-page':{
       const kind=element.dataset.kind,dir=element.dataset.dir;
@@ -838,7 +850,15 @@ document.addEventListener('input',event=>{
 document.addEventListener('compositionstart',event=>{if(event.target.id==='study-search')studyComposing=true;});
 document.addEventListener('compositionend',event=>{if(event.target.id==='study-search'){studyComposing=false;studyFilters.search=event.target.value;render();const search=$('#study-search');search?.focus?.({preventScroll:true});}});
 document.addEventListener('change',async event=>{
+  if(event.target.id==='ciyan-font-file-input'){
+    const file=event.target.files?.[0],slot=uploadingFontSlot;uploadingFontSlot=null;
+    if(!file||!slot)return;
+    try{const imported=await importFontFile(slot,file);closeModal();render();toast(`${imported.name} saved. Choose the font and tap Apply.`);}
+    catch(e){render();modal('Could not import font file',`<p>${esc(e.message)}</p><p class="subtle">Export a genuine .ttf/.otf/.woff2 font from your font manager to Files. No learning progress was changed.</p>`);}
+    return;
+  }
   if(event.target.closest?.('#scheduler-form')){updateTimingPreview(event.target.closest('#scheduler-form'));return;}
+  if(event.target.dataset.fontId){setPendingFont(event.target.dataset.fontId,!!event.target.checked);return;}
   if(event.target.dataset.autoMode){await change(d=>{d.settings.autoModes[event.target.dataset.autoMode]=event.target.checked;});return;}
   if(state.activePractice&&event.target.dataset.toneIndex!==undefined){if(state.activePractice.input.revealed)return;await practiceInput(i=>{i.tones??=[];i.tones[Number(event.target.dataset.toneIndex)]=event.target.checked?Number(event.target.dataset.toneValue):0;});render();return;}
   if(event.target.dataset.toneIndex!==undefined){if(revealed)return;
@@ -847,11 +867,10 @@ document.addEventListener('change',async event=>{
   if(event.target.dataset.filter){const kind=event.target.dataset.kind,key=event.target.dataset.filter;
     filters[kind][key]=key.endsWith('Value')?Number(event.target.value):event.target.value;updateCollection();return;}
   const key=event.target.dataset.setting;if(!key)return;
-  let value=['fontDifficulty','fontChoice'].includes(key)?event.target.value:event.target.type==='checkbox'?event.target.checked:Number(event.target.value);
+  let value=event.target.type==='checkbox'?event.target.checked:Number(event.target.value);
   if(key==='newWordsPerDay')value=event.target.value.trim()===''?null:Math.max(0,Math.min(20000,Math.round(Number(event.target.value)||0)));
   if(key==='sessionSize')value=Math.max(1,Math.min(500,Math.round(value)||12));
   if(key==='desiredRetention')value=[.85,.9,.95].includes(value)?value:.9;
-  if(key==='fontDifficulty'||key==='fontChoice'){setPendingFont(key,value);return;}
   await change(d=>{d.settings[key]=value;});
 });
 document.addEventListener('keydown',event=>{
@@ -860,6 +879,9 @@ document.addEventListener('keydown',event=>{
   if(page==='study'&&revealed&&!currentModal&&['1','2','3','4'].includes(event.key)){if(state.activePractice)gradePractice(Number(event.key));else gradeCard(Number(event.key));}
 });
 async function boot(){try{
+  // Load automatically downloaded or user-imported font bytes before verifying saved typography.
+  // A missing font library does not interfere with the independent study database.
+  try{await initializeFontLibrary();}catch(e){console.warn('Private font library unavailable:',e);}
   const loaded=await loadState();
   // Existing local data must never be discarded because the app version changed.
   // Creating a fresh state is valid only when no saved state exists. The user
@@ -882,15 +904,13 @@ async function boot(){try{
   if(!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!Array.isArray(state.history)||!state.schedules)throw new Error('Local data appears invalid. Import a JSON backup to restore it.');
   ensureStudy(state);
   const selected=normalizeFontSettings(state.settings);
-  const fontSettingsMigrated=selected.fontDifficulty!==state.settings.fontDifficulty||selected.fontChoice!==state.settings.fontChoice;
-  if(fontSettingsMigrated)Object.assign(state.settings,selected);
+  const previous=Array.isArray(state.settings.enabledFonts)?state.settings.enabledFonts:null;
+  const fontSettingsMigrated=!previous||JSON.stringify(previous)!==JSON.stringify(selected.enabledFonts)||'fontDifficulty' in state.settings||'fontChoice' in state.settings;
+  if(fontSettingsMigrated){Object.assign(state.settings,selected);delete state.settings.fontDifficulty;delete state.settings.fontChoice;}
   const validation=await verifyFontSelection(selected);
   let fontError=null;
-  if(!validation.ok){
-    fontError={selected,validation};
-    Object.assign(state.settings,{fontDifficulty:'beginner',fontChoice:'print'});
-  }
-  lastAcceptedFont=normalizeFontSettings(state.settings);pendingFont={...lastAcceptedFont};
+  if(!validation.ok){fontError={selected,validation};Object.assign(state.settings,{enabledFonts:['print']});}
+  lastAcceptedFont=cloneFont(state.settings);pendingFont=cloneFont(lastAcceptedFont);
   if(!loaded||changedContent||state.bundledMasterVersion!==loaded?.bundledMasterVersion||fontError||fontSettingsMigrated){
     state.revision=(Number(state.revision)||0)+1;
     await saveState(state,loaded?Number(loaded.revision)||0:null);

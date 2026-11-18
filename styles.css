@@ -381,3 +381,28 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .font-apply-controls .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .font-apply-controls .btn{min-height:46px;min-width:0}
 .font-apply-controls .btn:disabled{opacity:.48;cursor:default}
+
+/* v0.6.8 private font-file import controls */
+.font-library{display:grid;gap:10px;min-width:0}
+.font-library-entry{border:1px solid var(--stroke);background:#fbfcfa;border-radius:13px;padding:12px;display:flex;align-items:flex-start;gap:12px;justify-content:space-between;flex-wrap:wrap;min-width:0}
+.font-library-entry>div:first-child{flex:1 1 150px;min-width:0}
+.font-library-entry strong{display:block;font-size:13px;overflow-wrap:anywhere}
+.font-library-entry small{display:block;color:var(--muted);margin-top:5px;font-size:11px;overflow-wrap:anywhere}
+.font-library-actions{display:flex;gap:6px;flex-wrap:wrap}
+.font-library-actions .btn{white-space:nowrap;font-size:11px;padding:9px 11px}
+@media(max-width:360px){.font-library-actions{width:100%}}
+
+.font-recovery-actions{display:grid;gap:10px;margin-top:18px}
+.font-library-entry{min-width:0}
+
+/* v0.6.8: single font checklist; selected fonts apply only after confirmation. */
+.font-checklist{display:grid;gap:12px;min-width:0}
+.font-checklist-group{display:grid;gap:2px;border:1px solid var(--stroke,#dce6dd);border-radius:13px;overflow:hidden;background:#fff}
+.font-checklist-title{background:#f4f7f2;color:var(--forest,#234d40);font-weight:700;font-size:13px;padding:10px 14px;border-bottom:1px solid var(--stroke,#dce6dd)}
+.font-checklist-row{display:flex;align-items:center;gap:12px;padding:13px 14px;min-width:0;cursor:pointer}
+.font-checklist-row+.font-checklist-row{border-top:1px solid #ecf0eb}
+.font-checklist-row input{flex:none;accent-color:#245643;width:23px;height:23px;margin:0}
+.font-checklist-detail{display:grid;gap:3px;min-width:0;overflow-wrap:anywhere}
+.font-checklist-detail strong{font-size:14px;line-height:1.35}
+.font-checklist-detail small{font-size:11px;line-height:1.35;color:var(--muted,#698076)}
+.ciyan-mixed-glyph{font-size:1em;font-weight:inherit;line-height:inherit;white-space:inherit;font-synthesis:none}

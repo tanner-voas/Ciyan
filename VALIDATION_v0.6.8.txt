@@ -1,0 +1,1094 @@
+
+> ciyan-mandarin-pwa@0.6.8 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: the bundled master validates and has unique word and grammar IDs
+ok 1 - the bundled master validates and has unique word and grammar IDs
+  ---
+  duration_ms: 395.537552
+  type: 'test'
+  ...
+# Subtest: expanded decks preserve learned schedules and customized words
+ok 2 - expanded decks preserve learned schedules and customized words
+  ---
+  duration_ms: 285.439143
+  type: 'test'
+  ...
+# Subtest: grammar deck includes every prerequisite and valid distractor index
+ok 3 - grammar deck includes every prerequisite and valid distractor index
+  ---
+  duration_ms: 1.873765
+  type: 'test'
+  ...
+# Subtest: grammar links use tokens, not substrings
+ok 4 - grammar links use tokens, not substrings
+  ---
+  duration_ms: 0.436384
+  type: 'test'
+  ...
+# Subtest: interchangeable duplicate words and identical distractors grade by visible text
+ok 5 - interchangeable duplicate words and identical distractors grade by visible text
+  ---
+  duration_ms: 0.358539
+  type: 'test'
+  ...
+# Subtest: all generated pinyin matches character count and explicit syllable tones
+ok 6 - all generated pinyin matches character count and explicit syllable tones
+  ---
+  duration_ms: 139.834238
+  type: 'test'
+  ...
+# Subtest: exactly one canonical HSK band is used by every matching vocabulary word
+ok 7 - exactly one canonical HSK band is used by every matching vocabulary word
+  ---
+  duration_ms: 140.90625
+  type: 'test'
+  ...
+# Subtest: reject corrupt numeric schedules and reserved object keys
+ok 8 - reject corrupt numeric schedules and reserved object keys
+  ---
+  duration_ms: 5.048472
+  type: 'test'
+  ...
+# Subtest: future deck versions are rejected without modifying data
+ok 9 - future deck versions are rejected without modifying data
+  ---
+  duration_ms: 0.969271
+  type: 'test'
+  ...
+# Subtest: all original vocabulary keeps its exact grammar usage; advanced words need no examples
+ok 10 - all original vocabulary keeps its exact grammar usage; advanced words need no examples
+  ---
+  duration_ms: 36.715593
+  type: 'test'
+  ...
+# Subtest: every grammar example is structurally valid and has complete vocabulary prerequisites
+ok 11 - every grammar example is structurally valid and has complete vocabulary prerequisites
+  ---
+  duration_ms: 25.320363
+  type: 'test'
+  ...
+# Subtest: all individual decks contain at least one linked grammar usage of every imported word
+ok 12 - all individual decks contain at least one linked grammar usage of every imported word
+  ---
+  duration_ms: 71.818856
+  type: 'test'
+  ...
+# Subtest: all 50 US states are included; DC is listed independently
+ok 13 - all 50 US states are included; DC is listed independently
+  ---
+  duration_ms: 1.552711
+  type: 'test'
+  ...
+# Subtest: all 27 European Union countries and corresponding capitals have explicit fact cards
+ok 14 - all 27 European Union countries and corresponding capitals have explicit fact cards
+  ---
+  duration_ms: 1.21973
+  type: 'test'
+  ...
+# Subtest: province-level terms, UK constituent countries and specified Asian capitals are represented
+ok 15 - province-level terms, UK constituent countries and specified Asian capitals are represented
+  ---
+  duration_ms: 1.719288
+  type: 'test'
+  ...
+# Subtest: user-provided visited places are tagged, without tagging all newly added places as visited
+ok 16 - user-provided visited places are tagged, without tagging all newly added places as visited
+  ---
+  duration_ms: 8.075029
+  type: 'test'
+  ...
+# Subtest: friend-chat expressions and broader contemporary, non-rude slang exist
+ok 17 - friend-chat expressions and broader contemporary, non-rude slang exist
+  ---
+  duration_ms: 1.153954
+  type: 'test'
+  ...
+# Subtest: content-only imports remain strictly additive and no studied scheduling history is replaced
+ok 18 - content-only imports remain strictly additive and no studied scheduling history is replaced
+  ---
+  duration_ms: 492.877713
+  type: 'test'
+  ...
+# Subtest: starter deck has unique IDs, useful Chinese, and topic tags
+ok 19 - starter deck has unique IDs, useful Chinese, and topic tags
+  ---
+  duration_ms: 2.900221
+  type: 'test'
+  ...
+# Subtest: FSRS-4.5 grades produce increasing first intervals
+ok 20 - FSRS-4.5 grades produce increasing first intervals
+  ---
+  duration_ms: 2.45298
+  type: 'test'
+  ...
+# Subtest: retrievability decays with elapsed time
+ok 21 - retrievability decays with elapsed time
+  ---
+  duration_ms: 0.233425
+  type: 'test'
+  ...
+# Subtest: successful overdue review grows stability, lapse reduces it
+ok 22 - successful overdue review grows stability, lapse reduces it
+  ---
+  duration_ms: 0.157012
+  type: 'test'
+  ...
+# Subtest: JSON backup roundtrip preserves review records and active session
+ok 23 - JSON backup roundtrip preserves review records and active session
+  ---
+  duration_ms: 5.983251
+  type: 'test'
+  ...
+# Subtest: invalid backups rejected without affecting user data
+ok 24 - invalid backups rejected without affecting user data
+  ---
+  duration_ms: 1.742062
+  type: 'test'
+  ...
+# Subtest: user cards are sanitized, validated, and tagged
+ok 25 - user cards are sanitized, validated, and tagged
+  ---
+  duration_ms: 1.714381
+  type: 'test'
+  ...
+# Subtest: grammar has independent sentence tokens and indexed distractors
+ok 26 - grammar has independent sentence tokens and indexed distractors
+  ---
+  duration_ms: 0.997282
+  type: 'test'
+  ...
+# Subtest: grammar readiness requires every answer and confusing word known
+ok 27 - grammar readiness requires every answer and confusing word known
+  ---
+  duration_ms: 1.227652
+  type: 'test'
+  ...
+# Subtest: tone parser aligns tone marks and neutral syllables per character
+ok 28 - tone parser aligns tone marks and neutral syllables per character
+  ---
+  duration_ms: 1.173122
+  type: 'test'
+  ...
+# Subtest: importing record-bearing backups as decks only merges new words, grammar and tags
+ok 29 - importing record-bearing backups as decks only merges new words, grammar and tags
+  ---
+  duration_ms: 2.982793
+  type: 'test'
+  ...
+# Subtest: old v0.1 state migrates examples without altering review records
+ok 30 - old v0.1 state migrates examples without altering review records
+  ---
+  duration_ms: 2.044617
+  type: 'test'
+  ...
+# Subtest: clearing learning data retains full vocabulary and grammar
+ok 31 - clearing learning data retains full vocabulary and grammar
+  ---
+  duration_ms: 0.921179
+  type: 'test'
+  ...
+# Subtest: service worker precaches app and the complete master collection without forced activation
+ok 32 - service worker precaches app and the complete master collection without forced activation
+  ---
+  duration_ms: 6.724956
+  type: 'test'
+  ...
+# Subtest: service worker removes only its own obsolete caches
+ok 33 - service worker removes only its own obsolete caches
+  ---
+  duration_ms: 1.230376
+  type: 'test'
+  ...
+# Subtest: atomic master + chunked history storage round-trips and updates only the final log block
+ok 34 - atomic master + chunked history storage round-trips and updates only the final log block
+  ---
+  duration_ms: 9.61362
+  type: 'test'
+  ...
+# Subtest: UI renders, reviews persist, session finishes with backup reminder
+ok 35 - UI renders, reviews persist, session finishes with backup reminder
+  ---
+  duration_ms: 2581.69757
+  type: 'test'
+  ...
+# Subtest: grammar mode unlocks only after required continuous vocabulary scores and records outcomes
+ok 36 - grammar mode unlocks only after required continuous vocabulary scores and records outcomes
+  ---
+  duration_ms: 1557.427598
+  type: 'test'
+  ...
+# Subtest: tone enforcement prevents Easy and records an incorrect tone answer
+ok 37 - tone enforcement prevents Easy and records an incorrect tone answer
+  ---
+  duration_ms: 582.430103
+  type: 'test'
+  ...
+# Subtest: bundled master is available without importing; filters and focused study work
+ok 38 - bundled master is available without importing; filters and focused study work
+  ---
+  duration_ms: 312.04243
+  type: 'test'
+  ...
+# Subtest: stale tab cannot overwrite a newer revision or advance its review queue
+ok 39 - stale tab cannot overwrite a newer revision or advance its review queue
+  ---
+  duration_ms: 442.346353
+  type: 'test'
+  ...
+# Subtest: refresh retains custom grammar safely and escapes malicious HTML
+ok 40 - refresh retains custom grammar safely and escapes malicious HTML
+  ---
+  duration_ms: 213.121094
+  type: 'test'
+  ...
+# Subtest: drawing UI requires score >=2, navigates pads and records independent writing
+ok 41 - drawing UI requires score >=2, navigates pads and records independent writing
+  ---
+  duration_ms: 438.605704
+  type: 'test'
+  ...
+# Subtest: Particle Zoo requires familiar base and choices, grades wrong choice separately from placement
+ok 42 - Particle Zoo requires familiar base and choices, grades wrong choice separately from placement
+  ---
+  duration_ms: 288.996091
+  type: 'test'
+  ...
+# Subtest: tag tree expands branches, selects a parent and excludes its child
+ok 43 - tag tree expands branches, selects a parent and excludes its child
+  ---
+  duration_ms: 454.872324
+  type: 'test'
+  ...
+# Subtest: timing settings save unit controls and update existing due dates
+ok 44 - timing settings save unit controls and update existing due dates
+  ---
+  duration_ms: 318.93092
+  type: 'test'
+  ...
+# Subtest: vocabulary reveal includes context and undo after completion reverses the stored answer
+ok 45 - vocabulary reveal includes context and undo after completion reverses the stored answer
+  ---
+  duration_ms: 587.638168
+  type: 'test'
+  ...
+# Subtest: skip and explicit postpone controls do not add failed answers
+ok 46 - skip and explicit postpone controls do not add failed answers
+  ---
+  duration_ms: 367.886451
+  type: 'test'
+  ...
+# Subtest: future-only timing changes require confirmation and leave existing due dates alone
+ok 47 - future-only timing changes require confirmation and leave existing due dates alone
+  ---
+  duration_ms: 223.637972
+  type: 'test'
+  ...
+# Subtest: v0.5 Study landing filters and due/new/all pool are session-specific
+ok 48 - v0.5 Study landing filters and due/new/all pool are session-specific
+  ---
+  duration_ms: 762.062385
+  type: 'test'
+  ...
+# Subtest: v0.5 session tag tree chooses matching word pool without saving filters into full backup
+ok 49 - v0.5 session tag tree chooses matching word pool without saving filters into full backup
+  ---
+  duration_ms: 492.246884
+  type: 'test'
+  ...
+# Subtest: v0.5 settings persist a zero daily word cap but default blank is unlimited
+ok 50 - v0.5 settings persist a zero daily word cap but default blank is unlimited
+  ---
+  duration_ms: 450.112482
+  type: 'test'
+  ...
+# Subtest: v0.5.1 tag-weight settings apply only on submit, show exact odds, and persist in full backup
+ok 51 - v0.5.1 tag-weight settings apply only on submit, show exact odds, and persist in full backup
+  ---
+  duration_ms: 241.402606
+  type: 'test'
+  ...
+# Subtest: v0.5.1 Settings odds reflect a newly introduced word when returning to Settings
+ok 52 - v0.5.1 Settings odds reflect a newly introduced word when returning to Settings
+  ---
+  duration_ms: 632.860308
+  type: 'test'
+  ...
+# Subtest: v0.5.3 current state does not automatically rewrite old retry settings or review dates
+ok 53 - v0.5.3 current state does not automatically rewrite old retry settings or review dates
+  ---
+  duration_ms: 264.826189
+  type: 'test'
+  ...
+# Subtest: v0.5.2 Study landing displays daily-capped vocabulary counts, not the master total
+ok 54 - v0.5.2 Study landing displays daily-capped vocabulary counts, not the master total
+  ---
+  duration_ms: 421.607039
+  type: 'test'
+  ...
+# Subtest: v0.5.2 Settings accepts negative and fractional tag weights and applies odds on submit
+ok 55 - v0.5.2 Settings accepts negative and fractional tag weights and applies odds on submit
+  ---
+  duration_ms: 264.507457
+  type: 'test'
+  ...
+# Subtest: v0.5.4 preserves all local results and preferences when upgrading from v0.5.3
+ok 56 - v0.5.4 preserves all local results and preferences when upgrading from v0.5.3
+  ---
+  duration_ms: 452.730692
+  type: 'test'
+  ...
+# Subtest: v0.5.4 creates clean defaults only when no saved state exists
+ok 57 - v0.5.4 creates clean defaults only when no saved state exists
+  ---
+  duration_ms: 191.757134
+  type: 'test'
+  ...
+# Subtest: v0.5.5 word details show scored synonyms after context and navigate with a working back trail
+ok 58 - v0.5.5 word details show scored synonyms after context and navigate with a working back trail
+  ---
+  duration_ms: 197.953605
+  type: 'test'
+  ...
+# Subtest: v0.6 omission answer checks without choosing a gap and saves error classification
+ok 59 - v0.6 omission answer checks without choosing a gap and saves error classification
+  ---
+  duration_ms: 125.693636
+  type: 'test'
+  ...
+# Subtest: v0.6.4 pagination shows 20 rows, navigates in both collections, and resets on search
+ok 60 - v0.6.4 pagination shows 20 rows, navigates in both collections, and resets on search
+  ---
+  duration_ms: 309.935772
+  type: 'test'
+  ...
+# Subtest: v0.6.5 puts session filters after study controls and restores readable settings
+ok 61 - v0.6.5 puts session filters after study controls and restores readable settings
+  ---
+  duration_ms: 328.879795
+  type: 'test'
+  ...
+# Subtest: single-character drawing completes on one rating, without a second word grade
+ok 62 - single-character drawing completes on one rating, without a second word grade
+  ---
+  duration_ms: 254.371709
+  type: 'test'
+  ...
+# Subtest: particle error stats render two readable lines instead of narrow grid columns
+ok 63 - particle error stats render two readable lines instead of narrow grid columns
+  ---
+  duration_ms: 212.991459
+  type: 'test'
+  ...
+# Subtest: v0.6.7 stages font changes and checks only the chosen final font on Apply
+ok 64 - v0.6.7 stages font changes and checks only the chosen final font on Apply
+  ---
+  duration_ms: 306.831448
+  type: 'test'
+  ...
+# Subtest: hierarchical parent inclusion, descendant exclusion, intersections, and boundaries
+ok 65 - hierarchical parent inclusion, descendant exclusion, intersections, and boundaries
+  ---
+  duration_ms: 12.084548
+  type: 'test'
+  ...
+# Subtest: retry interpolation matches requested 2.5 example and exact anchors
+ok 66 - retry interpolation matches requested 2.5 example and exact anchors
+  ---
+  duration_ms: 0.845908
+  type: 'test'
+  ...
+# Subtest: scores grow gradually and a lapse reduces rather than resets them
+ok 67 - scores grow gradually and a lapse reduces rather than resets them
+  ---
+  duration_ms: 5.000421
+  type: 'test'
+  ...
+# Subtest: skills are independent and disabled auto modes cannot appear
+ok 68 - skills are independent and disabled auto modes cannot appear
+  ---
+  duration_ms: 289.952571
+  type: 'test'
+  ...
+# Subtest: all manual modes obey the same net-score gates as Auto Study
+ok 69 - all manual modes obey the same net-score gates as Auto Study
+  ---
+  duration_ms: 405.044543
+  type: 'test'
+  ...
+# Subtest: due reviews precede new items, and immediate answer exposure blocks drawing
+ok 70 - due reviews precede new items, and immediate answer exposure blocks drawing
+  ---
+  duration_ms: 239.700402
+  type: 'test'
+  ...
+# Subtest: weighted random Auto Study can serve all enabled modes with eligible due work
+ok 71 - weighted random Auto Study can serve all enabled modes with eligible due work
+  ---
+  duration_ms: 11375.948784
+  type: 'test'
+  ...
+# Subtest: particle validation, choice and placement, and accepted alternatives
+ok 72 - particle validation, choice and placement, and accepted alternatives
+  ---
+  duration_ms: 1.715275
+  type: 'test'
+  ...
+# Subtest: backup round trip includes separate skills, settings, active pads, and deck test metadata; clear keeps content
+ok 73 - backup round trip includes separate skills, settings, active pads, and deck test metadata; clear keeps content
+  ---
+  duration_ms: 525.097238
+  type: 'test'
+  ...
+# Subtest: adaptive histogram counts every scheduled skill exactly once and changes density with width
+ok 74 - adaptive histogram counts every scheduled skill exactly once and changes density with width
+  ---
+  duration_ms: 1.494379
+  type: 'test'
+  ...
+# Subtest: drawing captures normalized strokes and redraws them without losing pads
+ok 75 - drawing captures normalized strokes and redraws them without losing pads
+  ---
+  duration_ms: 0.590122
+  type: 'test'
+  ...
+# Subtest: new Good and Easy are gradual and the displayed intervals equal committed results
+ok 76 - new Good and Easy are gradual and the displayed intervals equal committed results
+  ---
+  duration_ms: 7.428125
+  type: 'test'
+  ...
+# Subtest: format uses one largest unit and exactly one decimal
+ok 77 - format uses one largest unit and exactly one decimal
+  ---
+  duration_ms: 0.251031
+  type: 'test'
+  ...
+# Subtest: undo restores actual schedules, histories, counters and adaptive timing for all skills
+ok 78 - undo restores actual schedules, histories, counters and adaptive timing for all skills
+  ---
+  duration_ms: 7.227888
+  type: 'test'
+  ...
+# Subtest: skip leaves no review; postpone defers an unstudied item without making it learned
+ok 79 - skip leaves no review; postpone defers an unstudied item without making it learned
+  ---
+  duration_ms: 3.004104
+  type: 'test'
+  ...
+# Subtest: continuous waiting and postponed items survive backup, clear removes them
+ok 80 - continuous waiting and postponed items survive backup, clear removes them
+  ---
+  duration_ms: 10.281786
+  type: 'test'
+  ...
+# Subtest: impact preview calculates additional due items without mutating schedules
+ok 81 - impact preview calculates additional due items without mutating schedules
+  ---
+  duration_ms: 5.887109
+  type: 'test'
+  ...
+# Subtest: one master is complete, replaces content and preserves matched review IDs
+ok 82 - one master is complete, replaces content and preserves matched review IDs
+  ---
+  duration_ms: 563.211216
+  type: 'test'
+  ...
+# Subtest: friendly labels do not change tag matching or stored paths
+ok 83 - friendly labels do not change tag matching or stored paths
+  ---
+  duration_ms: 0.389384
+  type: 'test'
+  ...
+# Subtest: v0.4 first-Easy inflation is corrected from history once without deleting events
+ok 84 - v0.4 first-Easy inflation is corrected from history once without deleting events
+  ---
+  duration_ms: 1.971911
+  type: 'test'
+  ...
+# Subtest: v0.5 retry anchors, extrapolation and two-decimal outcome previews
+ok 85 - v0.5 retry anchors, extrapolation and two-decimal outcome previews
+  ---
+  duration_ms: 81.832606
+  type: 'test'
+  ...
+# Subtest: Easy always raises even a very mature score by at least .20
+ok 86 - Easy always raises even a very mature score by at least .20
+  ---
+  duration_ms: 148.499624
+  type: 'test'
+  ...
+# Subtest: drawing gating uses only the exact target word continuous score
+ok 87 - drawing gating uses only the exact target word continuous score
+  ---
+  duration_ms: 178.322577
+  type: 'test'
+  ...
+# Subtest: grammar needs minimum score >=1 and arithmetic mean >=2 across answer and distractor words
+ok 88 - grammar needs minimum score >=1 and arithmetic mean >=2 across answer and distractor words
+  ---
+  duration_ms: 101.843012
+  type: 'test'
+  ...
+# Subtest: particle zoo treats all base and choice words as prerequisites
+ok 89 - particle zoo treats all base and choice words as prerequisites
+  ---
+  duration_ms: 64.737534
+  type: 'test'
+  ...
+# Subtest: one >=2 matching anchor includes a grammar sentence despite unrelated excluded tokens
+ok 90 - one >=2 matching anchor includes a grammar sentence despite unrelated excluded tokens
+  ---
+  duration_ms: 85.247953
+  type: 'test'
+  ...
+# Subtest: filtered particles use qualifying vocabulary anchors, not full-sentence exclusion
+ok 91 - filtered particles use qualifying vocabulary anchors, not full-sentence exclusion
+  ---
+  duration_ms: 90.016927
+  type: 'test'
+  ...
+# Subtest: per-mode counters distinguish due, started future, new and eligible total
+ok 92 - per-mode counters distinguish due, started future, new and eligible total
+  ---
+  duration_ms: 73.850585
+  type: 'test'
+  ...
+# Subtest: daily vocabulary quota is local-date based, unique and undo-aware
+ok 93 - daily vocabulary quota is local-date based, unique and undo-aware
+  ---
+  duration_ms: 56.180443
+  type: 'test'
+  ...
+# Subtest: all selects due globally before any new; due-only/new-only override the pool
+ok 94 - all selects due globally before any new; due-only/new-only override the pool
+  ---
+  duration_ms: 53.778498
+  type: 'test'
+  ...
+# Subtest: any newly due card, including the same reviewed card, reenters a continuous session
+ok 95 - any newly due card, including the same reviewed card, reenters a continuous session
+  ---
+  duration_ms: 54.648122
+  type: 'test'
+  ...
+# Subtest: random selection responds to random seed, overdue severity and configured auto weights
+ok 96 - random selection responds to random seed, overdue severity and configured auto weights
+  ---
+  duration_ms: 59.236424
+  type: 'test'
+  ...
+# Subtest: postpone preserves due date and makes a draw eligible later; skip excludes it for session
+ok 97 - postpone preserves due date and makes a draw eligible later; skip excludes it for session
+  ---
+  duration_ms: 46.879075
+  type: 'test'
+  ...
+# Subtest: backup omits session filters and preserves daily-cap and timing settings
+ok 98 - backup omits session filters and preserves daily-cap and timing settings
+  ---
+  duration_ms: 202.518333
+  type: 'test'
+  ...
+# Subtest: new default score 2 is three days; other anchors stay unchanged
+ok 99 - new default score 2 is three days; other anchors stay unchanged
+  ---
+  duration_ms: 1.386931
+  type: 'test'
+  ...
+# Subtest: leaf paths use actual loaded tags; a card sums its leaf weights
+ok 100 - leaf paths use actual loaded tags; a card sums its leaf weights
+  ---
+  duration_ms: 0.648669
+  type: 'test'
+  ...
+# Subtest: odds decline as tagged words are introduced, without modifying saved preferences
+ok 101 - odds decline as tagged words are introduced, without modifying saved preferences
+  ---
+  duration_ms: 0.727406
+  type: 'test'
+  ...
+# Subtest: tag settings accept all finite real values and protect against malicious keys
+ok 102 - tag settings accept all finite real values and protect against malicious keys
+  ---
+  duration_ms: 0.524445
+  type: 'test'
+  ...
+# Subtest: new vocabulary selections use total tag weight, not per-tag frequency alone
+ok 103 - new vocabulary selections use total tag weight, not per-tag frequency alone
+  ---
+  duration_ms: 2.79287
+  type: 'test'
+  ...
+# Subtest: due review weight is exactly elapsed time / scheduled interval
+ok 104 - due review weight is exactly elapsed time / scheduled interval
+  ---
+  duration_ms: 2.144791
+  type: 'test'
+  ...
+# Subtest: due selection uses actual review interval even if user changes future-only anchors
+ok 105 - due selection uses actual review interval even if user changes future-only anchors
+  ---
+  duration_ms: 0.77141
+  type: 'test'
+  ...
+# Subtest: new grammar remains unweighted by vocabulary tag totals
+ok 106 - new grammar remains unweighted by vocabulary tag totals
+  ---
+  duration_ms: 1.750448
+  type: 'test'
+  ...
+# Subtest: context shows every qualified grammar and no unqualified when qualified exist
+ok 107 - context shows every qualified grammar and no unqualified when qualified exist
+  ---
+  duration_ms: 1.661627
+  type: 'test'
+  ...
+# Subtest: no qualified context uses one top-scoring example and randomizes exact ties
+ok 108 - no qualified context uses one top-scoring example and randomizes exact ties
+  ---
+  duration_ms: 1.628288
+  type: 'test'
+  ...
+# Subtest: tag preferences live in full backups, not master files, and missing tags initialize to 0
+ok 109 - tag preferences live in full backups, not master files, and missing tags initialize to 0
+  ---
+  duration_ms: 15.480519
+  type: 'test'
+  ...
+# Subtest: v0.5.2 leaf weight is max(1, 1 + sum) with neutral, negative, decimal and mixed paths
+ok 110 - v0.5.2 leaf weight is max(1, 1 + sum) with neutral, negative, decimal and mixed paths
+  ---
+  duration_ms: 1.709608
+  type: 'test'
+  ...
+# Subtest: tag odds are inclusive across multi-tag cards and reflect clamped card weight
+ok 111 - tag odds are inclusive across multi-tag cards and reflect clamped card weight
+  ---
+  duration_ms: 0.45987
+  type: 'test'
+  ...
+# Subtest: no implicit tag-weight upgrades: saved 1 and other custom values remain unchanged
+ok 112 - no implicit tag-weight upgrades: saved 1 and other custom values remain unchanged
+  ---
+  duration_ms: 14.863917
+  type: 'test'
+  ...
+# Subtest: all new neutral tag values are added on first population and after master changes
+ok 113 - all new neutral tag values are added on first population and after master changes
+  ---
+  duration_ms: 130.788875
+  type: 'test'
+  ...
+# Subtest: vocabulary total is due + min(filtered new, daily remaining), excluding future reviews
+ok 114 - vocabulary total is due + min(filtered new, daily remaining), excluding future reviews
+  ---
+  duration_ms: 2.431455
+  type: 'test'
+  ...
+# Subtest: zero daily budget still shows due, but not new; pool and mode apply to displayed availability
+ok 115 - zero daily budget still shows due, but not new; pool and mode apply to displayed availability
+  ---
+  duration_ms: 1.324939
+  type: 'test'
+  ...
+# Subtest: v0.5.4 full backup embeds exact app version separately from backup format version
+ok 116 - v0.5.4 full backup embeds exact app version separately from backup format version
+  ---
+  duration_ms: 6.798292
+  type: 'test'
+  ...
+# Subtest: versioned backup migration steps are sequential and do not touch unrelated settings
+ok 117 - versioned backup migration steps are sequential and do not touch unrelated settings
+  ---
+  duration_ms: 7.336988
+  type: 'test'
+  ...
+# Subtest: unstamped legacy backup is accepted without guessing version-specific data edits
+ok 118 - unstamped legacy backup is accepted without guessing version-specific data edits
+  ---
+  duration_ms: 8.56239
+  type: 'test'
+  ...
+# Subtest: unsupported future, malformed and missing migration steps fail without modifying backup
+ok 119 - unsupported future, malformed and missing migration steps fail without modifying backup
+  ---
+  duration_ms: 1.560277
+  type: 'test'
+  ...
+# Subtest: current schema normalization never silently adjusts scores, retry anchors, or tag weights
+ok 120 - current schema normalization never silently adjusts scores, retry anchors, or tag weights
+  ---
+  duration_ms: 1.349245
+  type: 'test'
+  ...
+# Subtest: v0.5.3 through v0.5.5 are identity migrations of backup data
+ok 121 - v0.5.3 through v0.5.5 are identity migrations of backup data
+  ---
+  duration_ms: 1.376215
+  type: 'test'
+  ...
+# Subtest: v0.5.5 bundled master contains all words with unchanged old definitions, IDs, and all grammar
+ok 122 - v0.5.5 bundled master contains all words with unchanged old definitions, IDs, and all grammar
+  ---
+  duration_ms: 52.194112
+  type: 'test'
+  ...
+# Subtest: every v3 synonym edge is imported only as an ID and numeric score and is exactly reciprocal
+ok 123 - every v3 synonym edge is imported only as an ID and numeric score and is exactly reciprocal
+  ---
+  duration_ms: 43.128659
+  type: 'test'
+  ...
+# Subtest: HSK 3.0 band tags are canonical, and advanced words also inherit safe existing topics
+ok 124 - HSK 3.0 band tags are canonical, and advanced words also inherit safe existing topics
+  ---
+  duration_ms: 15.796226
+  type: 'test'
+  ...
+# Subtest: minimal synonym schema is preserved in a complete master, backup roundtrip and on edits
+ok 125 - minimal synonym schema is preserved in a complete master, backup roundtrip and on edits
+  ---
+  duration_ms: 240.357665
+  type: 'test'
+  ...
+# Subtest: v0.5.4 backup migrations preserve all settings/history exactly
+ok 126 - v0.5.4 backup migrations preserve all settings/history exactly
+  ---
+  duration_ms: 2.88115
+  type: 'test'
+  ...
+# Subtest: malformed synonym input fails validation rather than executing markup or corrupting links
+ok 127 - malformed synonym input fails validation rather than executing markup or corrupting links
+  ---
+  duration_ms: 0.738572
+  type: 'test'
+  ...
+# Subtest: all 72 particle exercises validate, retain unique IDs and have real prerequisites
+ok 128 - all 72 particle exercises validate, retain unique IDs and have real prerequisites
+  ---
+  duration_ms: 1.776416
+  type: 'test'
+  ...
+# Subtest: omission does not require a slot, changes no sentence and distinguishes four error types
+ok 129 - omission does not require a slot, changes no sentence and distinguishes four error types
+  ---
+  duration_ms: 0.351119
+  type: 'test'
+  ...
+# Subtest: omission choices do not lock prerequisites and no mode bypasses min/mean gates
+ok 130 - omission choices do not lock prerequisites and no mode bypasses min/mean gates
+  ---
+  duration_ms: 110.698586
+  type: 'test'
+  ...
+# Subtest: family evidence pools distinct exercises, caps recent evidence, and weight is bounded
+ok 131 - family evidence pools distinct exercises, caps recent evidence, and weight is bounded
+  ---
+  duration_ms: 85.483233
+  type: 'test'
+  ...
+# Subtest: repeated character reports count once per word review and never infer ungraded characters
+ok 132 - repeated character reports count once per word review and never infer ungraded characters
+  ---
+  duration_ms: 43.921581
+  type: 'test'
+  ...
+# Subtest: drawing feedback survives backup and undo, but completed strokes are not archived
+ok 133 - drawing feedback survives backup and undo, but completed strokes are not archived
+  ---
+  duration_ms: 171.631703
+  type: 'test'
+  ...
+# Subtest: checked correctness, not ease rating, drives grammar usage with an explicit sample count
+ok 134 - checked correctness, not ease rating, drives grammar usage with an explicit sample count
+  ---
+  duration_ms: 61.777752
+  type: 'test'
+  ...
+# Subtest: explicit alternative order is accepted without accepting arbitrary permutations
+ok 135 - explicit alternative order is accepted without accepting arbitrary permutations
+  ---
+  duration_ms: 0.83836
+  type: 'test'
+  ...
+# Subtest: drawing context avoids showing target characters in other tiles and prefers familiar shorter contexts
+ok 136 - drawing context avoids showing target characters in other tiles and prefers familiar shorter contexts
+  ---
+  duration_ms: 71.679683
+  type: 'test'
+  ...
+# Subtest: new grammar validates with complete lexical links, pinyin, and no unreviewed templates
+ok 137 - new grammar validates with complete lexical links, pinyin, and no unreviewed templates
+  ---
+  duration_ms: 109.786162
+  type: 'test'
+  ...
+# Subtest: coverage ledger states the real gap rather than treating rejected templates as examples
+ok 138 - coverage ledger states the real gap rather than treating rejected templates as examples
+  ---
+  duration_ms: 9.450663
+  type: 'test'
+  ...
+# Subtest: character grades pool across words, deduplicate repeats with weaker grade, and leave unrated characters unknown
+ok 139 - character grades pool across words, deduplicate repeats with weaker grade, and leave unrated characters unknown
+  ---
+  duration_ms: 4.205127
+  type: 'test'
+  ...
+# Subtest: recent successful recall repairs old weakness; bounded weights and unknowns are neutral
+ok 140 - recent successful recall repairs old weakness; bounded weights and unknowns are neutral
+  ---
+  duration_ms: 2.531313
+  type: 'test'
+  ...
+# Subtest: word scores and shared weak characters both affect drawing selection, without bypassing gates or due dates
+ok 141 - word scores and shared weak characters both affect drawing selection, without bypassing gates or due dates
+  ---
+  duration_ms: 1.557933
+  type: 'test'
+  ...
+# Subtest: due work remains ahead of new words even when new words share a weak character
+ok 142 - due work remains ahead of new words even when new words share a weak character
+  ---
+  duration_ms: 1.361343
+  type: 'test'
+  ...
+# Subtest: numeric grades survive preview backup upgrade and undo without archiving strokes
+ok 143 - numeric grades survive preview backup upgrade and undo without archiving strokes
+  ---
+  duration_ms: 3.86198
+  type: 'test'
+  ...
+# Subtest: invalid character grades cannot poison selection or create fake evidence
+ok 144 - invalid character grades cannot poison selection or create fake evidence
+  ---
+  duration_ms: 0.595831
+  type: 'test'
+  ...
+# Subtest: exact-complete / full-token sequence / one-token substring; never a hybrid across token boundaries
+ok 145 - exact-complete / full-token sequence / one-token substring; never a hybrid across token boundaries
+  ---
+  duration_ms: 1.633656
+  type: 'test'
+  ...
+# Subtest: inverted index agrees with direct match for combinations and punctuation boundaries
+ok 146 - inverted index agrees with direct match for combinations and punctuation boundaries
+  ---
+  duration_ms: 1.357477
+  type: 'test'
+  ...
+# Subtest: exact examples outrank phrase and substring fallbacks even when other examples exist
+ok 147 - exact examples outrank phrase and substring fallbacks even when other examples exist
+  ---
+  duration_ms: 0.469324
+  type: 'test'
+  ...
+# Subtest: changes to cloned grammar content rebuild the index; unmodified clones reuse it
+ok 148 - changes to cloned grammar content rebuild the index; unmodified clones reuse it
+  ---
+  duration_ms: 0.41929
+  type: 'test'
+  ...
+# Subtest: drawing can use a strict fallback without leaking other occurrences of target characters
+ok 149 - drawing can use a strict fallback without leaking other occurrences of target characters
+  ---
+  duration_ms: 0.395505
+  type: 'test'
+  ...
+# Subtest: master preserves all vocabulary IDs, tags and synonyms; prunes only named placeholders
+ok 150 - master preserves all vocabulary IDs, tags and synonyms; prunes only named placeholders
+  ---
+  duration_ms: 56.030149
+  type: 'test'
+  ...
+# Subtest: 0.6.1 backup upgrades to 0.6.2 without changing card scores or preferences
+ok 151 - 0.6.1 backup upgrades to 0.6.2 without changing card scores or preferences
+  ---
+  duration_ms: 251.571556
+  type: 'test'
+  ...
+# Subtest: v0.6.4 preserves the v0.6.3 master and upgrades historical backups by identity
+ok 152 - v0.6.4 preserves the v0.6.3 master and upgrades historical backups by identity
+  ---
+  duration_ms: 1.394622
+  type: 'test'
+  ...
+# Subtest: sharing immutable content during review cannot change prior state or lose history
+ok 153 - sharing immutable content during review cannot change prior state or lose history
+  ---
+  duration_ms: 75.280367
+  type: 'test'
+  ...
+# Subtest: indexed tag lookups and indexed grammar history preserve original semantics
+ok 154 - indexed tag lookups and indexed grammar history preserve original semantics
+  ---
+  duration_ms: 108.766323
+  type: 'test'
+  ...
+# Subtest: backup JSON remains complete, independent of internal database chunk layout
+ok 155 - backup JSON remains complete, independent of internal database chunk layout
+  ---
+  duration_ms: 184.791888
+  type: 'test'
+  ...
+# Subtest: v0.6.5 preserves content and supports identity migration from the v0.6.4 release
+ok 156 - v0.6.5 preserves content and supports identity migration from the v0.6.4 release
+  ---
+  duration_ms: 3.898765
+  type: 'test'
+  ...
+# Subtest: font list contains seven independent checkbox choices including Beginner
+ok 157 - font list contains seven independent checkbox choices including Beginner
+  ---
+  duration_ms: 0.417647
+  type: 'test'
+  ...
+# Subtest: drawing grade is the minimum per-character grade; all character ratings are recorded exactly once
+ok 158 - drawing grade is the minimum per-character grade; all character ratings are recorded exactly once
+  ---
+  duration_ms: 0.272463
+  type: 'test'
+  ...
+# Subtest: case-insensitive delete confirmation has no effect on records until confirmed
+ok 159 - case-insensitive delete confirmation has no effect on records until confirmed
+  ---
+  duration_ms: 2.571292
+  type: 'test'
+  ...
+# Subtest: enabled font checkboxes are backed up and old level/Mixed backups migrate
+ok 160 - enabled font checkboxes are backed up and old level/Mixed backups migrate
+  ---
+  duration_ms: 17.086794
+  type: 'test'
+  ...
+# Subtest: v0.6.6 version migration is identity-safe and all 3444 bundled grammar examples remain
+ok 161 - v0.6.6 version migration is identity-safe and all 3444 bundled grammar examples remain
+  ---
+  duration_ms: 2.03561
+  type: 'test'
+  ...
+# Subtest: reconciliation is additive and preserves custom/edited words, grammar and learning data
+ok 162 - reconciliation is additive and preserves custom/edited words, grammar and learning data
+  ---
+  duration_ms: 270.10827
+  type: 'test'
+  ...
+# Subtest: colliding IDs cannot erase an older custom sentence on reconciling
+ok 163 - colliding IDs cannot erase an older custom sentence on reconciling
+  ---
+  duration_ms: 50.084069
+  type: 'test'
+  ...
+# Subtest: fonts retain level group labels, but selections may span every group
+ok 164 - fonts retain level group labels, but selections may span every group
+  ---
+  duration_ms: 0.409834
+  type: 'test'
+  ...
+# Subtest: missing custom font rejects full selection, print-only and empty sets work
+ok 165 - missing custom font rejects full selection, print-only and empty sets work
+  ---
+  duration_ms: 0.629248
+  type: 'test'
+  ...
+# Subtest: rendering with a single font needs no per-character spans
+ok 166 - rendering with a single font needs no per-character spans
+  ---
+  duration_ms: 0.18283
+  type: 'test'
+  ...
+# Subtest: v0.6.7 version and exact installed font names are exposed to users
+ok 167 - v0.6.7 version and exact installed font names are exposed to users
+  ---
+  duration_ms: 7.686303
+  type: 'test'
+  ...
+# Subtest: export validation catches lost records, checks settings, and never changes the live state
+ok 168 - export validation catches lost records, checks settings, and never changes the live state
+  ---
+  duration_ms: 13.199903
+  type: 'test'
+  ...
+# Subtest: lapses retain gradual score but Again and Hard get prompt bounded retries
+ok 169 - lapses retain gradual score but Again and Hard get prompt bounded retries
+  ---
+  duration_ms: 1.15272
+  type: 'test'
+  ...
+# Subtest: re-importing an older backup merges new content without dropping its learned IDs or scores
+ok 170 - re-importing an older backup merges new content without dropping its learned IDs or scores
+  ---
+  duration_ms: 167.953216
+  type: 'test'
+  ...
+# Subtest: six named font slots have real public web-font source manifests and explicit license references
+ok 171 - six named font slots have real public web-font source manifests and explicit license references
+  ---
+  duration_ms: 1.984165
+  type: 'test'
+  ...
+# Subtest: first Apply downloads and caches fonts; Mixed reuses cache; startup restores offline
+ok 172 - first Apply downloads and caches fonts; Mixed reuses cache; startup restores offline
+  ---
+  duration_ms: 2.998351
+  type: 'test'
+  ...
+# Subtest: failed network leaves candidate unavailable and can retain previous applied font
+ok 173 - failed network leaves candidate unavailable and can retain previous applied font
+  ---
+  duration_ms: 0.788513
+  type: 'test'
+  ...
+# Subtest: v0.6.8 has exactly seven independent selectable fonts, including the standard iPhone font
+ok 174 - v0.6.8 has exactly seven independent selectable fonts, including the standard iPhone font
+  ---
+  duration_ms: 1.615372
+  type: 'test'
+  ...
+# Subtest: legacy dropdown choices migrate to independent checked IDs; mixed is never a new selectable value
+ok 175 - legacy dropdown choices migrate to independent checked IDs; mixed is never a new selectable value
+  ---
+  duration_ms: 6.523518
+  type: 'test'
+  ...
+# Subtest: three identical Hanzi occurrences can use three distinct choices
+ok 176 - three identical Hanzi occurrences can use three distinct choices
+  ---
+  duration_ms: 0.155789
+  type: 'test'
+  ...
+# Subtest: DOM runs choose fonts per occurrence, preserve original text and group adjacent equal styles
+ok 177 - DOM runs choose fonts per occurrence, preserve original text and group adjacent equal styles
+  ---
+  duration_ms: 0.894919
+  type: 'test'
+  ...
+# Subtest: same-font selection stays CSS-only; mixed mode uses a walker when browser supports DOM
+ok 178 - same-font selection stays CSS-only; mixed mode uses a walker when browser supports DOM
+  ---
+  duration_ms: 0.259062
+  type: 'test'
+  ...
+# Subtest: font CSS is only one rule per web font, with no codepoint-based font mixing or template download
+ok 179 - font CSS is only one rule per web font, with no codepoint-based font mixing or template download
+  ---
+  duration_ms: 0.502491
+  type: 'test'
+  ...
+# Subtest: v0.6.8 saves all selected IDs in a normal full backup and never adds font bytes
+ok 180 - v0.6.8 saves all selected IDs in a normal full backup and never adds font bytes
+  ---
+  duration_ms: 3.197415
+  type: 'test'
+  ...
+1..180
+# tests 180
+# suites 0
+# pass 180
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 15943.320286

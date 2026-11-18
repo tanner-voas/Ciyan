@@ -8,10 +8,10 @@ import {MASTER} from '../master-data.js';
 import {defaultState,parseBackup,makeBackup} from '../storage.js';
 
 test('v0.6.6 version migration is identity-safe and all 3444 bundled grammar examples remain',()=>{
- assert.equal(APP_VERSION,'0.6.7');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.6.8');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.5',state:{appVersion:'0.6.5',schemaVersion:2,foo:11}};
  const next=prepareVersionedBackup(old);
- assert.equal(next.appVersion,'0.6.7');assert.deepEqual(next.state,old.state);
+ assert.equal(next.appVersion,'0.6.8');assert.deepEqual(next.state,old.state);
 });
 
 test('reconciliation is additive and preserves custom/edited words, grammar and learning data',()=>{
@@ -49,42 +49,36 @@ test('colliding IDs cannot erase an older custom sentence on reconciling',()=>{
  assert.ok(s.grammar.some(x=>x.markup===first.markup&&x.id!==first.id));
 });
 
-test('the chosen font list uses screenshot font families with two choices plus Mixed per level',()=>{
+test('fonts retain level group labels, but selections may span every group',()=>{
  assert.deepEqual(Object.keys(FONT_LEVELS),['beginner','intermediate','advanced','expert']);
  assert.equal(fontChoices('beginner').length,1);
  for(const level of ['intermediate','advanced','expert']){
-  const options=fontChoices(level);assert.equal(options.length,3);
-  assert.equal(options[2][0],'mixed');
-  assert.equal(requiredFonts({fontDifficulty:level,fontChoice:'mixed'}).length,2);
-  for(const [id] of options.slice(0,2))assert.ok(FONT_CATALOG[id]?.aliases.length>=2);
+  const choices=fontChoices(level);assert.equal(choices.length,2);
+  for(const [id] of choices)assert.ok(FONT_CATALOG[id]?.aliases.length>=2);
  }
  assert.equal(fontFace('zhushi'),'CiyanZhuShi');
- assert.deepEqual(normalizeFontSettings({fontDifficulty:'advanced',fontChoice:'pen'}),{fontDifficulty:'advanced',fontChoice:'zhushi'});
+ assert.deepEqual(requiredFonts({enabledFonts:['print','mashan','xiaowei']}),['mashan','xiaowei']);
+ assert.deepEqual(requiredFonts({enabledFonts:[]}),[]);
+ assert.deepEqual(normalizeFontSettings({fontDifficulty:'advanced',fontChoice:'pen'}),{enabledFonts:['zhushi']});
 });
 
-test('a missing installed font is rejected; Mixed requires every face',async()=>{
- const accepted={FontFace:class {constructor(_,src){this.src=src;this.status='unloaded';}async load(){if(this.src.includes('MaShanZheng'))throw new Error('not installed');this.status='loaded';return this;}},document:{fonts:{}}};
+test('missing custom font rejects full selection, print-only and empty sets work',async()=>{
  clearFontProbeCache();
- let result=await verifyFontSelection({fontDifficulty:'advanced',fontChoice:'zhushi'},accepted);
- assert.equal(result.ok,true);
- result=await verifyFontSelection({fontDifficulty:'advanced',fontChoice:'mixed'},accepted);
- assert.equal(result.ok,false);assert.deepEqual(result.missing,['mashan']);
- clearFontProbeCache();
- result=await verifyFontSelection({fontDifficulty:'expert',fontChoice:'muyao'},{document:{fonts:{}}});
- assert.equal(result.ok,false);assert.deepEqual(result.missing,['muyao']);
- result=await verifyFontSelection({fontDifficulty:'beginner',fontChoice:'print'},{document:{fonts:{}}});
- assert.equal(result.ok,true);
+ let result=await verifyFontSelection({enabledFonts:['zhushi','print']},{document:{fonts:{}}});
+ assert.equal(result.ok,false);assert.deepEqual(result.missing,['zhushi']);
+ result=await verifyFontSelection({enabledFonts:['muyao','zhimang']},{document:{fonts:{}}});
+ assert.equal(result.ok,false);assert.deepEqual(result.missing,['muyao','zhimang']);
+ for(const enabledFonts of [[],['print']]){
+  result=await verifyFontSelection({enabledFonts},{document:{fonts:{}}});assert.equal(result.ok,true);
+ }
  clearFontProbeCache();
 });
 
-test('Mixed font rendering is CSS-based, deterministic, and does not modify DOM text',()=>{
- const css=fs.readFileSync(new URL('../mixed-fonts.css',import.meta.url),'utf8');
- assert.match(css,/CiyanMixedIntermediate/);assert.match(css,/CiyanMixedAdvanced/);assert.match(css,/CiyanMixedExpert/);
- assert.ok(css.length>50000);
- for(const cp of [0x3400,0x4e00,0x7b80,0x9fff])assert.ok([0,1].includes(mixIndex(cp)));
+test('rendering with a single font needs no per-character spans',()=>{
  const root={style:{values:{},setProperty(k,v){this.values[k]=v;}},dataset:{},innerHTML:'<strong>欢迎来到中国</strong>'};
- const text=root.innerHTML;
- applyFontToRoot(root,{fontDifficulty:'advanced',fontChoice:'mixed'});
- assert.equal(root.innerHTML,text);assert.equal(root.style.values['--ciyan-zh-font'],'"CiyanMixedAdvanced"');
- assert.equal(root.dataset.fontChoice,'mixed');
+ const original=root.innerHTML;
+ applyFontToRoot(root,{enabledFonts:['zhushi']});
+ assert.equal(root.innerHTML,original);
+ assert.equal(root.style.values['--ciyan-zh-font'],'"CiyanZhuShi"');
+ assert.equal(root.dataset.fontSelection,'zhushi');
 });

@@ -2,6 +2,8 @@
 // IndexedDB + DOM mock. Complements the scheduler tests; not an iOS Safari test.
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {resetFontLibraryForTesting} from '../font-library.js';
 
 const delay = (ms=4) => new Promise(resolve=>setTimeout(resolve,ms));
 
@@ -14,31 +16,38 @@ class MockDatabaseMap extends Map {
 }
 const sharedData=new MockDatabaseMap();
 function mockBrowser() {
+  resetFontLibraryForTesting();
   const data=sharedData; data.clear();
+  const fontData=new Map();
   const listeners={};
   const shell={innerHTML:''};
   const toast={textContent:'',classList:{add(){},remove(){}}};
   const browseNodes=Object.fromEntries(['#tag-filter','#active-tag-filter','#collection-list','#browse-count'].map(k=>[k,{innerHTML:'',textContent:''}]));
   const body={append(){}};
+  const fontStyles=new Map();
   const fakeDb={
     objectStoreNames:{contains:()=>true},
-    transaction(){
+    transaction(storeName){
       const tx={oncomplete:null,onerror:null,onabort:null,abort(){queueMicrotask(()=>tx.onabort?.());}};
+      const store=storeName==='files'?fontData:data;
       tx.objectStore=()=>({
-        get(key){const request={onsuccess:null,onerror:null,result:data.get(key)};queueMicrotask(()=>request.onsuccess?.());return request;},
-        put(value,key){data.set(key,structuredClone(value));queueMicrotask(()=>tx.oncomplete?.());},
-        delete(key){data.delete(key);queueMicrotask(()=>tx.oncomplete?.());}
+        getAll(){const request={onsuccess:null,onerror:null,result:[...fontData.values()]};queueMicrotask(()=>request.onsuccess?.());return request;},
+        get(key){const request={onsuccess:null,onerror:null,result:store.get(key)};queueMicrotask(()=>request.onsuccess?.());return request;},
+        put(value,key){store.set(key??value.id,structuredClone(value));queueMicrotask(()=>tx.oncomplete?.());},
+        delete(key){store.delete(key);queueMicrotask(()=>tx.oncomplete?.());}
       });return tx;
     }
   };
   globalThis.indexedDB={open(){const request={result:fakeDb,onsuccess:null,onerror:null,onupgradeneeded:null};queueMicrotask(()=>request.onsuccess?.());return request;}};
   globalThis.document={
     body,fonts:{},
+    head:{append(n){if(n.id)fontStyles.set(n.id,n);}},getElementById:id=>fontStyles.get(id)||null,
     querySelector:sel=>sel==='#app'?shell:sel==='#toast'?toast:(browseNodes[sel]||null),
     addEventListener:(type,fn)=>listeners[type]=fn,
-    createElement:()=>({className:'',innerHTML:'',remove(){},querySelector:()=>null})
+    createElement:()=>({className:'',innerHTML:'',textContent:'',id:'',style:{setProperty(){}},dataset:{},remove(){},querySelector:()=>null})
   };
   globalThis.FontFace=class {constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}async load(){this.status='loaded';return this;}};
+  globalThis.fetch=async url=>String(url).endsWith('mixed-fonts.css')?{ok:true,async text(){return fs.readFileSync(new URL('../mixed-fonts.css',import.meta.url),'utf8');}}:{ok:true,headers:{get(){return null;}},async arrayBuffer(){return new Uint8Array([0,1,0,0,65,66]).buffer;}};
   Object.defineProperty(globalThis,'navigator',{value:{},configurable:true});
   globalThis.window={scrollTo(){},confirm:()=>true};
   globalThis.location={protocol:'file:'};
@@ -349,7 +358,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.6.7');
+ assert.equal(reconciled.bundledMasterVersion,'0.6.8');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -366,7 +375,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.6.7');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.6.8');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -380,7 +389,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.7');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.6.8');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -433,20 +442,18 @@ test('v0.6.5 puts session filters after study controls and restores readable set
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('navigate',{page:'settings'});
  assert.match(mock.shell.innerHTML,/Chinese typography/);
- assert.match(mock.shell.innerHTML,/data-setting="fontDifficulty"/);
- assert.match(mock.shell.innerHTML,/data-setting="fontChoice"/);
+ assert.match(mock.shell.innerHTML,/data-font-id="print"/);
+ assert.match(mock.shell.innerHTML,/data-font-id="mashan"/);
+ assert.doesNotMatch(mock.shell.innerHTML,/data-setting="fontDifficulty"/);
  assert.match(mock.shell.innerHTML,/file-action-icon/);
  assert.equal((mock.shell.innerHTML.match(/class="file-action-icon"/g)||[]).length,4);
- const change=async(key,value)=>{
-  await mock.listeners.change({target:{dataset:{setting:key},type:'select-one',value,closest:()=>null}});await delay();
+ const select=async(id,checked)=>{
+  await mock.listeners.change({target:{dataset:{fontId:id},type:'checkbox',checked,closest:()=>null}});await delay();
  };
- await change('fontDifficulty','advanced');
- assert.equal(mock.data.get('main').settings.fontDifficulty,'beginner');
- await change('fontChoice','mixed');
- assert.equal(mock.data.get('main').settings.fontChoice,'print');
+ await select('mashan',true);
+ assert.deepEqual(mock.data.get('main').settings.enabledFonts,['print']);
  await click('apply-font');
- assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
- assert.equal(mock.data.get('main').settings.fontChoice,'mixed');
+ assert.deepEqual(mock.data.get('main').settings.enabledFonts,['print','mashan']);
  await click('navigate',{page:'study'});
  assert.match(mock.shell.innerHTML,/Session filters/);
 });
@@ -490,34 +497,31 @@ test('v0.6.7 stages font changes and checks only the chosen final font on Apply'
  const checked=[];
  globalThis.FontFace=class {
   constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}
-  async load(){checked.push(this.src);if(this.src.includes('YRDZST')||this.src.includes('Zhi Mang Xing'))throw new Error('missing font');this.status='loaded';return this;}
+  async load(){checked.push(this.family);if(this.family.includes('zhushi')||this.family.includes('zhimang'))throw new Error('missing font');this.status='loaded';return this;}
  };
  await import('../app.js?smoke=font067');await delay(30);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay(15);};
- const change=async(setting,value)=>{await mock.listeners.change({target:{dataset:{setting},type:'select-one',value,closest:()=>null}});await delay(10);};
+ const select=async(id,checked)=>{await mock.listeners.change({target:{dataset:{fontId:id},type:'checkbox',checked,closest:()=>null}});await delay(10);};
  await click('navigate',{page:'settings'});
  assert.match(mock.shell.innerHTML,/Apply font/);
  const before=mock.data.get('main').revision;
- await change('fontDifficulty','advanced');
- assert.equal(mock.data.get('main').settings.fontDifficulty,'beginner');
+ await select('mashan',true);await select('print',false);
+ assert.deepEqual(mock.data.get('main').settings.enabledFonts,['print']);
  assert.equal(mock.data.get('main').revision,before);
  assert.equal(checked.length,0);
- await change('fontChoice','mashan');
- assert.equal(checked.length,0);
  await click('apply-font');
- assert.equal(mock.data.get('main').settings.fontDifficulty,'advanced');
- assert.equal(mock.data.get('main').settings.fontChoice,'mashan');
- assert.ok(checked.some(x=>x.includes('Ma Shan Zheng')));
- assert.ok(checked.every(x=>!x.includes('YRDZST')),'should not check the unselected default');
+ assert.deepEqual(mock.data.get('main').settings.enabledFonts,['mashan']);
+ assert.ok(checked.some(x=>x.includes('mashan')));
+ assert.ok(checked.every(x=>!x.includes('zhushi')),'should not check an unselected font');
  const savedRevision=mock.data.get('main').revision;
- await change('fontChoice','zhushi');
+ await select('zhushi',true);
  assert.equal(mock.data.get('main').revision,savedRevision);
  await click('apply-font');
- assert.equal(mock.data.get('main').settings.fontChoice,'mashan');
+ assert.deepEqual(mock.data.get('main').settings.enabledFonts,['mashan']);
  assert.equal(mock.data.get('main').revision,savedRevision);
  assert.ok(dialogs.some(x=>x.includes('Font unavailable')));
- await change('fontDifficulty','expert');await change('fontChoice','mixed');await click('apply-font');
- assert.equal(mock.data.get('main').settings.fontChoice,'mashan');
+ await select('muyao',true);await select('zhimang',true);await click('apply-font');
+ assert.deepEqual(mock.data.get('main').settings.enabledFonts,['mashan']);
  assert.equal(mock.data.get('main').revision,savedRevision);
  clearFontProbeCache();
 });

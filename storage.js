@@ -33,7 +33,7 @@ export function deleteConfirmationValid(value){return String(value??'').trim().t
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,fontDifficulty:'beginner',fontChoice:'print'},
+  settings:{sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print']},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -187,7 +187,7 @@ export function migrateState(input){
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,
-      settings:{...defaultState().settings,...input.settings}});
+      settings:{...defaultState().settings,...input.settings,...normalizeFontSettings(input.settings)}});
   }
   const oldCards=Array.isArray(input.cards)?input.cards:[];
   const migratedCards=oldCards.map(c=>normalizeCard(c));

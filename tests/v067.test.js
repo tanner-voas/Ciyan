@@ -8,8 +8,8 @@ import {defaultState,makeBackup,parseBackup} from '../storage.js';
 import {scheduleReview,rescheduleExisting,previewOutcomes,retrySeconds,DEFAULT_RETRY} from '../review-scheduler.js';
 
 test('v0.6.7 version and exact installed font names are exposed to users',()=>{
- assert.equal(APP_VERSION,'0.6.7');
- assert.equal(prepareVersionedBackup({...makeBackup(defaultState()),appVersion:'0.6.6'}).appVersion,'0.6.7');
+ assert.equal(APP_VERSION,'0.6.8');
+ assert.equal(prepareVersionedBackup({...makeBackup(defaultState()),appVersion:'0.6.6'}).appVersion,'0.6.8');
  const expected={xiaowei:'xiaowei',kuaile:'HappyZcool-2016',zhushi:'YRDZST',mashan:'Ma Shan Zheng',muyao:'Muyao-Softbrush',zhimang:'Zhi Mang Xing'};
  for(const [id,alias] of Object.entries(expected)){
   assert.equal(FONT_CATALOG[id].aliases[0],alias);
@@ -17,8 +17,7 @@ test('v0.6.7 version and exact installed font names are exposed to users',()=>{
   assert.ok(Object.values(FONT_LEVELS).flat().some(([key,label])=>key===id&&label.includes(alias)),id);
  }
  for(const level of ['intermediate','advanced','expert'])assert.equal(requiredFonts({fontDifficulty:level,fontChoice:'mixed'}).length,2);
- const css=fs.readFileSync(new URL('../mixed-fonts.css',import.meta.url),'utf8');
- for(const alias of Object.values(expected))assert.ok(css.includes(alias),alias);
+ assert.deepEqual(requiredFonts({enabledFonts:['print','xiaowei','muyao']}),['xiaowei','muyao']);
 });
 
 test('export validation catches lost records, checks settings, and never changes the live state',()=>{
@@ -29,7 +28,7 @@ test('export validation catches lost records, checks settings, and never changes
  const parsed=parseBackup(JSON.parse(result.json));
  assert.equal(parsed.history.length,1);
  assert.equal(parsed.cards.length,state.cards.length);
- assert.equal(parsed.settings.fontDifficulty,'beginner');
+ assert.deepEqual(parsed.settings.enabledFonts,['print']);
  assert.equal(JSON.stringify(state),before);
  const damaged={...state,skillHistory:[{id:'bad',mode:'drawing',grade:1234,at:'2026-11-18T07:20:00Z'}]};
  assert.throws(()=>prepareVerifiedBackup(damaged),/integrity error.*skillHistory/);

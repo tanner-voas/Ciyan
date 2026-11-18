@@ -1,20 +1,21 @@
-# Cíyán (词言) v0.6.5
+# Cíyán (词言) v0.6.8
 
-Offline Mandarin vocabulary, grammar, drawing and Particle Zoo, optimized for
-phone-based spaced repetition with local full-backup export.
+Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
+advanced SRS scheduling, and user-controlled Chinese typography.
 
 ## Latest release
 
-[v0.6.5 release notes](RELEASE_v0.6.5.md): bottom-of-page Study filters,
-one colored grade row per drawn character (minimum grade schedules the word),
-mobile Particle Zoo and file-action alignment fixes, case-insensitive delete
-confirmation, and an app-wide Chinese font selector with Beginner,
-Intermediate, Advanced, and Expert difficulty plus mixed-character fonts.
-Chinese styles use device-local fonts and do not require the network.
+See [v0.6.8 release notes](RELEASE_v0.6.8.md). The final planned pre-reader
+release replaces the two typography dropdowns with a **seven-font checklist**.
+Check fonts across any difficulty; no boxes checked means iPhone Beginner.
+Selected fonts do **not** change until Apply. Each *occurrence* of each Chinese
+character independently receives a random checked font. Fonts are downloaded
+and cached on demand (and can be uploaded if a source fails); font binaries
+are not included in the repository or progress backup.
 
-The **current bundled** master contains 11,893 vocabulary entries and
-3,444 grammar examples. The bundled master is unchanged from v0.6.4.
-Full backups can also preserve additional grammar entries from earlier imports.
+The bundled master contains 11,893 vocabulary entries and 3,444 grammar
+examples. User content and learning records persist across releases and are
+included in full JSON backups exported to Files.
 
 ## Context matching
 
@@ -81,15 +82,14 @@ storage can be evicted by iOS, so keep your independent JSON backups.
 
 Automated tests do not replace physical iPhone/Safari testing.
 
-## v0.6.7 font installation and content safety
+## Historical font versions
 
-See [`RELEASE_v0.6.7.md`](RELEASE_v0.6.7.md) and [font installation help](FONT_INSTALLATION_v0.6.7.md). Additional font choices refer
-only to user-installed Chinese typefaces from the screenshots. They are checked
-by the browser before selection; unavailable fonts explicitly fail and do not
-replace your working preference. Mixed fonts use pre-generated Unicode CSS
-ranges rather than thousands of extra character nodes. Bundled dictionary
-upgrades preserve existing user content instead of replacing it at startup.
+Previous v0.6.5–v0.6.7 font selections used one difficulty/choice and
+codepoint-based Mixed styles. The v0.6.8 checkbox set supersedes them and
+is migrated automatically during startup and backup restoration. The working
+v0.6.7.dev2 downloader is preserved and now provides all six custom web-fonts.
 
-## v0.6.7 readiness
+The old `FONT_INSTALLATION_v0.6.7.md` and release notes remain as historical
+references, not instructions for the current font selector.
 
-The font controls now stage choices until **Apply font**, using the installed iPhone names listed in `FONT_INSTALLATION_v0.6.7.md`. See `RELEASE_v0.6.7.md` for backup, scheduling, and performance changes. Full backup export now checks the restore format and uses compact JSON. No reader content is shipped.
+See `RELEASE_v0.6.8.md` for the complete selection and backup policy.

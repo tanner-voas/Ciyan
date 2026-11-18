@@ -1,15 +1,16 @@
-// Cíyán v0.6.7: exact iOS installed-font aliases; explicit opt-in Chinese fonts seen in the supplied screenshots.
-// These names refer to *locally installed* fonts; no copyrighted binaries are
-// distributed. Browser support for installed iOS fonts varies, so a successful
-// load probe is required before saving a selected font.
+// Cíyán v0.6.8: any combination of fonts can be enabled simultaneously.
+// A checkbox list replaces the old difficulty/choice controls. No selection
+// changes the active font until Apply validates and commits the entire set.
+import {verifyImportedFontSelection,clearFontValidationCache} from './font-library.js';
+
+// Legacy levels remain for migrating v0.6.5–v0.6.7 backups and to group the
+// checkboxes, but "Mixed" is no longer a selectable option in the app.
 export const FONT_LEVELS=Object.freeze({
  beginner:[['print','iPhone default · Clean print']],
- intermediate:[['xiaowei','xiaowei · 站酷小薇 LOGO 体'],['kuaile','HappyZcool-2016 · 站酷快乐体'],['mixed','Mixed · Intermediate']],
- advanced:[['zhushi','YRDZST · 杨任东竹石体'],['mashan','Ma Shan Zheng'],['mixed','Mixed · Advanced']],
- expert:[['muyao','Muyao-Softbrush'],['zhimang','Zhi Mang Xing'],['mixed','Mixed · Expert']]
+ intermediate:[['xiaowei','xiaowei · 站酷小薇 LOGO 体'],['kuaile','HappyZcool-2016 · 站酷快乐体']],
+ advanced:[['zhushi','YRDZST · 杨任东竹石体'],['mashan','Ma Shan Zheng']],
+ expert:[['muyao','Muyao-Softbrush'],['zhimang','Zhi Mang Xing']]
 });
-// Use several postscript/full family aliases, because installed-font apps
-// sometimes expose Chinese and English family names differently.
 export const FONT_CATALOG=Object.freeze({
  xiaowei:{face:'CiyanXiaoWei',aliases:['xiaowei','ZCOOL XiaoWei','ZCOOLXiaoWei-Regular','站酷小薇LOGO体','站酷小薇 LOGO 体']},
  kuaile:{face:'CiyanKuaiLe',aliases:['HappyZcool-2016','ZCOOL KuaiLe','ZCOOLKuaiLe-Regular','站酷快乐体']},
@@ -18,62 +19,88 @@ export const FONT_CATALOG=Object.freeze({
  muyao:{face:'CiyanMuYao',aliases:['Muyao-Softbrush','沐瑶软笔手写体','Muyao Softbrush','MuyaoSoftbrush']},
  zhimang:{face:'CiyanZhiMang',aliases:['Zhi Mang Xing','ZhiMangXing-Regular','ZhiMangXing']}
 });
-export const FONT_LEVEL_FACES=Object.freeze({intermediate:'CiyanMixedIntermediate',advanced:'CiyanMixedAdvanced',expert:'CiyanMixedExpert'});
+export const FONT_IDS=Object.freeze(['print',...Object.keys(FONT_CATALOG)]);
 export function fontChoices(level){return FONT_LEVELS[level]||FONT_LEVELS.beginner;}
 export function fontFace(id){return FONT_CATALOG[id]?.face||'CiyanPrint';}
+// A legacy setting can name a single font or an old within-level Mixed choice.
+// Once enabledFonts is present, it is authoritative (even if empty).
 export function normalizeFontSettings(settings){
- const fontDifficulty=Object.hasOwn(FONT_LEVELS,settings?.fontDifficulty)?settings.fontDifficulty:'beginner';
- const options=fontChoices(fontDifficulty).map(([id])=>id);
- const fontChoice=options.includes(settings?.fontChoice)?settings.fontChoice:options[0];
- return {fontDifficulty,fontChoice};
-}
-export function requiredFonts(settings){
- const {fontDifficulty,fontChoice}=normalizeFontSettings(settings);
- if(fontDifficulty==='beginner')return [];
- return fontChoice==='mixed'?fontChoices(fontDifficulty).map(([id])=>id).filter(id=>id!=='mixed'):[fontChoice];
-}
-export function fontSources(id){return FONT_CATALOG[id]?.aliases.map(alias=>`local(${JSON.stringify(alias)})`).join(',')||'';}
-// FontFace.load() is a genuine load check, unlike document.fonts.check(),
-// which returns true for undeclared families that merely fall back to system.
-// The probe does not accept substituted fonts or invisible fallback faces.
-const validated=new Map();
-export async function verifyFontSelection(settings,environment=globalThis){
- const required=requiredFonts(settings);
- if(!required.length)return {ok:true,missing:[]};
- if(typeof environment.FontFace!=='function'||!environment.document?.fonts)return {ok:false,missing:required,reason:'Font loading is not supported by this browser.'};
- const missing=[];
- for(const id of required){
-  const data=FONT_CATALOG[id];
-  if(!validated.has(id)){
-   const result=(async()=>{try{
-    const font=new environment.FontFace(`CiyanAvailability_${id}`,fontSources(id),{unicodeRange:'U+4E00-9FFF'});
-    await font.load();
-    return font.status==='loaded';
-   }catch{return false;}})();
-   validated.set(id,result);
-  }
-  if(!await validated.get(id))missing.push(id);
+ if(Array.isArray(settings?.enabledFonts)){
+  const enabledFonts=[...new Set(settings.enabledFonts.filter(id=>typeof id==='string'&&FONT_IDS.includes(id)))];
+  return {enabledFonts};
  }
- return missing.length?{ok:false,missing,reason:'The selected font is not available to Safari. Install it and reopen Cíyán before selecting it.'}:{ok:true,missing:[]};
+ const level=Object.hasOwn(FONT_LEVELS,settings?.fontDifficulty)?settings.fontDifficulty:'beginner';
+ const choice=settings?.fontChoice;
+ if(level==='beginner')return {enabledFonts:['print']};
+ if(choice==='mixed')return {enabledFonts:FONT_LEVELS[level].map(([id])=>id)};
+ return {enabledFonts:[FONT_LEVELS[level].some(([id])=>id===choice)?choice:FONT_LEVELS[level][0][0]]};
 }
-export function clearFontProbeCache(){validated.clear();}
-// A deterministic hash for predictable per-character selection. In v0.6.6
-// mixed styles are selected via unicode-range CSS, not character-span DOM
-// wrapping (previously expensive for thousands of characters).
-export function mixedFace(text,index,level){
- const options=requiredFonts({fontDifficulty:level,fontChoice:'mixed'});
- if(!options.length)return 'print';
- const cp=String(text).codePointAt(index)||0;
- let n=Math.imul(cp^0x9e3779b9,0x85ebca6b);
- n=Math.imul((n^(n>>>16)),0xc2b2ae35);
- return options[((n^(n>>>16))>>>0)%options.length];
-}
+export function selectedFonts(settings){const value=normalizeFontSettings(settings).enabledFonts;return value.length?value:['print'];}
+export function requiredFonts(settings){return selectedFonts(settings).filter(id=>id!=='print');}
+export function fontSources(id){return FONT_CATALOG[id]?.aliases.map(alias=>`local(${JSON.stringify(alias)})`).join(',')||'';}
+export async function verifyFontSelection(settings,environment=globalThis){return verifyImportedFontSelection(requiredFonts(settings),environment);}
+export function clearFontProbeCache(){clearFontValidationCache();}
+// Backwards-compatible utility used by older tests; v0.6.8 never uses it to
+// select actual character fonts. Glyph mixing is occurrence-based instead.
 export function mixIndex(cp){let n=Math.imul(cp^0x9e3779b9,0x85ebca6b);n=Math.imul(n^(n>>>16),0xc2b2ae35);return ((n^(n>>>16))>>>0)%2;}
-export function applyFontToRoot(root,settings){
+export function mixedFace(text,index,level){const options=fontChoices(level).map(([id])=>id);return options[mixIndex(String(text).codePointAt(index)||0)%options.length];}
+
+export function pickOccurrenceFont(fonts,rng=Math.random){
+ if(!fonts?.length)return 'print';
+ const n=Number(rng());const r=Number.isFinite(n)?Math.min(0.999999999999,Math.max(0,n)):0;
+ return fonts[Math.floor(r*fonts.length)];
+}
+const HAN=/\p{Script=Han}/u;
+const SKIP_ELEMENTS=new Set(['SCRIPT','STYLE','NOSCRIPT','TEXTAREA','INPUT','SELECT','OPTION','SVG','CANVAS','CODE','PRE','IFRAME']);
+// Only Chinese text nodes are touched. Adjacent characters assigned the same
+// face are coalesced into a single run so that mixed text avoids needless DOM.
+// Each Chinese *occurrence* receives an independent random draw, not a hash of
+// its Unicode code point: 子子子 can therefore contain three different faces.
+export function mixTextNode(node,fonts,rng=Math.random){
+ const value=node?.nodeValue||'';
+ if(!HAN.test(value)||!node.parentNode?.replaceChild)return false;
+ const doc=node.ownerDocument;
+ if(!doc?.createDocumentFragment||!doc?.createElement||!doc?.createTextNode)return false;
+ const fragment=doc.createDocumentFragment();
+ let buffer='',active=null,spans=0;
+ const flush=()=>{
+  if(!buffer)return;
+  if(active===null)fragment.appendChild(doc.createTextNode(buffer));
+  else{const span=doc.createElement('span');span.className='ciyan-mixed-glyph';span.dataset.ciyanGlyph='1';span.style.fontFamily=fontFace(active)==='CiyanPrint'? '"PingFang SC",-apple-system,sans-serif':`"${fontFace(active)}","PingFang SC",sans-serif`;
+   span.appendChild(doc.createTextNode(buffer));fragment.appendChild(span);spans++;}
+  buffer='';
+ };
+ for(const cp of value){
+  const family=HAN.test(cp)?pickOccurrenceFont(fonts,rng):null;
+  if(family!==active)flush();
+  active=family;buffer+=cp;
+ }
+ flush();node.parentNode.replaceChild(fragment,node);
+ return spans>0;
+}
+export function mixChineseText(root,fonts,rng=Math.random){
+ const doc=root?.ownerDocument||globalThis.document;
+ if(!doc?.createTreeWalker||fonts.length<=1)return 0;
+ const walker=doc.createTreeWalker(root,4); // NodeFilter.SHOW_TEXT
+ const nodes=[];let node;
+ while((node=walker.nextNode())){
+  if(!HAN.test(node.nodeValue||''))continue;
+  let excluded=false;
+  for(let el=node.parentElement;el;el=el.parentElement){
+   if(SKIP_ELEMENTS.has(el.tagName)||el.isContentEditable||el.dataset?.ciyanGlyph==='1'){excluded=true;break;}
+   if(el===root)break;
+  }
+  if(!excluded)nodes.push(node);
+ }
+ let changed=0;
+ for(const textNode of nodes)changed+=Number(mixTextNode(textNode,fonts,rng));
+ return changed;
+}
+export function applyFontToRoot(root,settings,rng=Math.random){
  if(!root?.style)return;
- const {fontDifficulty,fontChoice}=normalizeFontSettings(settings);
- const family=fontChoice==='mixed'?FONT_LEVEL_FACES[fontDifficulty]:fontFace(fontChoice);
- root.style.setProperty('--ciyan-zh-font',JSON.stringify(family||'CiyanPrint'));
- root.dataset.fontLevel=fontDifficulty;root.dataset.fontChoice=fontChoice;
- // No DOM character wrapping: Unicode ranges make mixing a CSS-only operation.
+ const fonts=selectedFonts(settings);
+ root.style.setProperty('--ciyan-zh-font',JSON.stringify(fonts.length===1?fontFace(fonts[0]):'CiyanPrint'));
+ root.dataset.fontSelection=fonts.join(',');
+ // Without multiple fonts no per-character markup is created at all.
+ if(fonts.length>1)mixChineseText(root,fonts,rng);
 }
