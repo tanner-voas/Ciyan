@@ -1,6 +1,8 @@
-# Cíyán (词言) v0.7.4
+# Cíyán (词言) v0.7.5
 
-In a chapter, open Reader controls → Reading guide, enable **Read aloud in Mandarin**, and press **Play**. Cíyán uses a local Mandarin voice exposed by the browser. When several are available, select one in the guide. The voice reads a sentence at a time. CPM is an approximate target during narration because voices vary and pause at punctuation.
+Open the Reader tab and choose a hosted chapter from the catalog, or import your own JSON. The app fetches chapter ZIPs relative to its own installation, verifies their contents, and keeps opened chapters available offline. Each hosted chapter retains the same identity as the original JSON.
+
+Tap a word for its dictionary entry. With the guide on, **Read from here** moves the guide to that occurrence. Enabling **Read aloud in Mandarin** starts narration from the current word. System Mandarin lets the browser resolve the language even if its voice list is empty. Other listed voices can be selected explicitly. Voices marked “network” may send speech text to the voice provider. CPM is approximate during narration.
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.
@@ -11,7 +13,7 @@ Open **Reader → Load chapter file** and select the first `.json` package. The 
 
 **Settings → Reader** selects the reading gate. Authored uses the writer’s selection of vocabulary, terms and grammar. Auto checks all distinct annotated words and terms. Each required item qualifies with a saved score of 1.5, three Good grades or one Easy during this app run. Study prioritizes due reviews, new items and then early practice. Early practice leaves the saved schedule and history untouched. Study lists also offer earlier due items and full-chapter preparation. Vocabulary reviews use the main vocabulary schedule. Terms and grammar belong to the novel. Opening an eligible chapter unlocks it permanently. Reading progress and flashcards travel in the full backup. Reading text stays in the chapter package and device cache.
 
-The optional Reading guide starts paused at 120 characters per minute. Step through words or play continuously. Double-tap a word for its definition, or hold for three seconds to move the guide. With the guide active, the bookmark follows the highlighted word. Manual scrolling saves the first visible paragraph.
+The optional Reading guide starts paused at 120 characters per minute. Step through words or play continuously. Tap a word for its definition and choose Read from here to move the active guide. With the guide active, the bookmark follows the highlighted word. Manual scrolling saves the first visible paragraph.
 
 In Settings, **Clear learning records** resets review data and reading progress, **Clear settings** restores default preferences, and **Clear dictionary** keeps vocabulary and grammar entries with learning evidence. **Reload cards** restores the bundled master. The backup carries the records of studied custom items removed by Reload cards.
 

@@ -15,7 +15,7 @@ TARGET = ROOT / "dist" / "ciyan"
 STATIC_FILES = (
     "index.html",
     "styles.css",
-    "app.js", "reader-core.js", "reader-ui.js", "reader-guide.js", "reader-speech.js", "collection-reset.js",
+    "app.js", "reader-core.js", "reader-ui.js", "reader-guide.js", "reader-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js",
     "study-engine.js",
     "tag-weights.js",
@@ -41,7 +41,7 @@ STATIC_FILES = (
     "manifest.webmanifest",
     "_headers",
 )
-STATIC_DIRS = ("icons",)
+STATIC_DIRS = ("icons", "chapters")
 
 
 def main() -> None:

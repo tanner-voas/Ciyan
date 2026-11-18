@@ -2,8 +2,8 @@
 export function mandarinVoices(voices){
  function rank(voice){
   const lang=voice.lang.toLowerCase().replaceAll('_','-');
-  if(!voice.localService||!/^(zh|cmn)(-|$)/.test(lang)||/-(hk|mo|yue)(-|$)/.test(lang)||/cantonese|粤语|廣東話/i.test(voice.name))return -1;
-  return (/-(cn|hans)(-|$)/.test(lang)?4:0)+(/premium|enhanced|优质|增强/i.test(voice.name)?2:0)+(voice.default?1:0);
+  if(!/^(zh|cmn)(-|$)/.test(lang)||/-(hk|mo|yue)(-|$)/.test(lang)||/cantonese|粤语|廣東話/i.test(voice.name))return -1;
+  return (voice.localService?8:0)+(/-(cn|hans)(-|$)/.test(lang)?4:0)+(/premium|enhanced|优质|增强/i.test(voice.name)?2:0)+(voice.default?1:0);
  }
  return voices.filter(v=>rank(v)>=0).sort((a,b)=>rank(b)-rank(a));
 }
@@ -28,7 +28,8 @@ export function createNarrator(win,select,advance,failed){
   const {text,start,words}=speechPassage(word);
   const utterance=new win.SpeechSynthesisUtterance(text);
   active=utterance;
-  utterance.voice=voice;utterance.lang=voice.lang;
+  if(voice)utterance.voice=voice;
+  utterance.lang=voice?.lang||'zh-CN';utterance.volume=1;
   utterance.rate=Math.max(.4,Math.min(2.5,cpm/240));
   let index=0;
   function move(next){
@@ -59,10 +60,13 @@ export function createNarrator(win,select,advance,failed){
    if(active!==utterance)return;
    clearTimeout(startTimeout);clearTimeout(timer);active=null;move(words.length-1);advance();
   };
-  function error(){if(active===utterance){cancel();failed();}}
+  function error(event){if(active===utterance){cancel();failed(event?.error||'start-timeout');}}
   utterance.onerror=error;
   startTimeout=setTimeout(error,10000);
-  try{win.speechSynthesis.speak(utterance);}catch{error();}
+  try{
+   if(win.speechSynthesis.paused)win.speechSynthesis.resume();
+   win.speechSynthesis.speak(utterance);
+  }catch{error();}
  }
  return {cancel,speak};
 }

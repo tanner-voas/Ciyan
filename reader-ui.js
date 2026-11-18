@@ -1,8 +1,10 @@
+import {catalog,downloadChapter} from './chapter-download.js';
 import {mountReadingGuide} from './reader-guide.js';
 import {acceptChapter,validateChapter,readerAnalysis,gradeReader,recordPractice} from './reader-core.js';
 
-export function createReader({state,change,render,esc,modal,toast,applyFonts}){
+export function createReader({state,change,render,esc,modal,closeModal,toast,applyFonts}){
  let novel='',number=1,mode='review',scope='gate',revealed=false,shown='',busy=false,epoch=0,observer=null,timer=null,pending=null;
+ let focusWord=null;
  let disposeGuide=null,pendingRate=null,writingPosition=null;
  const sessions=new Map();
  function evidence(){if(!sessions.has(novel))sessions.set(novel,new Map());return sessions.get(novel);}
@@ -14,6 +16,29 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
  const book=()=>state().reader?.[novel];
  const chapter=()=>book()?.chapters[number-1];
  const btn=(action,label,extra='')=>`<button class="btn btn-secondary" data-action="reader-${action}" ${extra}>${esc(label)}</button>`;
+ function catalogMenu(){
+  const books=[...new Set(catalog.map(e=>e.book))];
+  return `<div class="panel stack"><label>Chapter catalog<select id="reader-catalog-choice">${books.map(title=>`<optgroup label="${esc(title)}">${catalog.filter(e=>e.book===title).map(e=>`<option value="${esc(e.file)}">${esc(e.title)}</option>`).join('')}</optgroup>`).join('')}</select></label>${btn('catalog','Open selected chapter')}</div>`;
+ }
+ async function openHosted(entry){
+  if(!entry)throw Error('Unknown catalog chapter.');
+  const known=state().reader?.[entry.novel]?.chapters||[];
+  // Import any missing predecessors together to preserve sequential study records.
+  const needed=catalog.filter(e=>e.novel===entry.novel&&e.number<=entry.number&&e.number>known.length).sort((a,b)=>a.number-b.number);
+  const imported=[];
+  for(const e of needed){
+   const bytes=await downloadChapter(e),p=JSON.parse(new TextDecoder().decode(bytes));
+   validateChapter(p);
+   await (await caches.open(cacheName)).put(cacheKey(e.digest),new Response(bytes));
+   imported.push({p,digest:e.digest});
+  }
+  await flush();
+  if(imported.length){
+   if(!await change(d=>{for(const {p,digest} of imported)acceptChapter(d,p,digest);},false))return;
+   for(const {p,digest} of imported)memory.set(digest,p);
+  }
+  await choose(entry.novel,entry.number);
+ }
  function selectBook(){
   if(!book()){novel=Object.keys(state().reader||{})[0]||'';number=book()?.current||1;}
   if(!chapter())number=book()?.current||1;
@@ -54,17 +79,23 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   selectBook();
   const b=book(),c=chapter();
   const importBtn=btn('import','Load chapter file');
-  if(!b)return `<div class="page-heading"><h1 class="h1">Reader</h1></div><div class="panel stack"><h2>Open your first chapter</h2><p>Choose chapter 1 of a novel to start studying its vocabulary, terms and expressions.</p>${importBtn}</div>`;
+  if(!b)return `<div class="page-heading"><h1 class="h1">Reader</h1></div><div class="panel stack"><h2>Open your first chapter</h2>${importBtn}</div>${catalogMenu()}`;
   const a=analysis(state(),b,c);
   const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),x==='read'&&!c.unlocked&&!a.ready?'disabled':`aria-pressed="${mode===x}"`)).join('');
   const p=memory.get(c.digest);
   const body=mode==='study'?study(b,c,a):mode==='read'&&c.unlocked?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''}"><details class="reader-guide-bar"><summary aria-label="Reader controls" title="Reader controls"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 7h5m4 0h9M3 17h10m4 0h4"/><circle cx="10" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></summary><div class="reader-menu"><button class="btn btn-secondary" data-guide="toggle" aria-expanded="false">Reading guide</button><div data-guide-controls hidden><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Decrease reading speed">−</button><output></output><button data-guide="faster" aria-label="Increase reading speed">+</button></div><div class="reader-audio"><label><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><select data-voice-select aria-label="Mandarin voice" hidden></select><small data-speech-status role="status"></small></div><label><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label>${btn('exit','Exit reader')}</div></details>${article(p,a)}<div id="reader-boundary"></div></div>`:`<div class="panel stack"><h2>Reload chapter ${number}</h2><p>Your bookmark and study records are saved. Choose the chapter file to read its text on this device.</p>${importBtn}</div>`:review(b,c,a);
   if(isReading())return body;
-  return `<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${Object.entries(state().reader).map(([k,v])=>`<option value="${esc(k)}" ${k===novel?'selected':''}>${esc(v.title)}</option>`).join('')}</select></label><label>Chapter<select id="reader-chapter">${b.chapters.map(ch=>`<option value="${ch.number}" ${ch.number===number?'selected':''}>${esc(ch.title)}</option>`).join('')}</select></label></div><div class="reader-tabs">${tabs}</div>${body}`;
+  return `<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${Object.entries(state().reader).map(([k,v])=>`<option value="${esc(k)}" ${k===novel?'selected':''}>${esc(v.title)}</option>`).join('')}</select></label><label>Chapter<select id="reader-chapter">${b.chapters.map(ch=>`<option value="${ch.number}" ${ch.number===number?'selected':''}>${esc(ch.title)}</option>`).join('')}</select></label></div><div class="reader-tabs">${tabs}</div>${body}${catalogMenu()}`;
  }
  async function cached(c){
   if(memory.has(c.digest))return memory.get(c.digest);
-  const res=await (await caches.open(cacheName)).match(cacheKey(c.digest));
+  const cache=await caches.open(cacheName);
+  let res=await cache.match(cacheKey(c.digest));
+  const hosted=catalog.find(e=>e.digest===c.digest);
+  if(!res&&hosted){
+   try{res=new Response(await downloadChapter(hosted));await cache.put(cacheKey(c.digest),res.clone());}
+   catch(e){toast(e.message);return;}
+  }
   if(res){const bytes=await res.arrayBuffer();
    if(await contentDigest(bytes)!==c.digest)throw Error('Cached chapter changed. Reload its original file.');
    const p=JSON.parse(new TextDecoder().decode(bytes));validateChapter(p);memory.set(c.digest,p);return p;}
@@ -78,7 +109,7 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   const ok=await writingPosition;writingPosition=null;
   if(!ok){if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
  }
- function unmount(){disposeGuide?.();disposeGuide=null;observer?.disconnect();epoch++;}
+ function unmount(){focusWord=null;disposeGuide?.();disposeGuide=null;observer?.disconnect();epoch++;}
  function mount(){
   unmount();const token=epoch;
   const el=document.querySelector('#reader-pages');if(!el)return;
@@ -90,7 +121,10 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   async function appendNext(){
    observer?.disconnect();
    const ch=b.chapters[next-1];
-   if(!ch){edge.innerHTML=btn('import','Load chapter '+next);return;}
+   if(!ch){
+    const hosted=catalog.find(e=>e.novel===novel&&e.number===next);
+    edge.innerHTML=hosted?btn('catalog','Open '+hosted.title,`data-file="${esc(hosted.file)}"`):btn('import','Load chapter file');return;
+   }
    if(!ch.unlocked){edge.innerHTML=btn('next','Open chapter '+next,`data-number="${next}"`);return;}
    try{
     const p=await cached(ch);
@@ -102,7 +136,7 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
   observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting))void extend();},{rootMargin:'200px'});
   observer.observe(edge);
   disposeGuide=mountReadingGuide(el,{position:c.position,initialRate:pendingRate??state().settings.readerCpm??120,rateChanged:value=>{pendingRate=value;void flush();},extend,
-   define:word=>void action('define',word),
+   define:(word,focus)=>{focusWord=focus;void action('define',word);},
    save:(n,position)=>{
     position.guided=el.classList.contains('guided');
     const ch=book()?.chapters[n-1];if(!ch)return;
@@ -140,9 +174,16 @@ export function createReader({state,change,render,esc,modal,toast,applyFonts}){
  async function action(name,el){
   if(busy)return;busy=true;
   try{
+   if(name==='catalog'){
+    const file=el.dataset.file||document.querySelector('#reader-catalog-choice')?.value;
+    const label=el.textContent;el.disabled=true;el.textContent='Opening…';
+    try{await openHosted(catalog.find(e=>e.file===file));}finally{el.disabled=false;el.textContent=label;}
+    return;
+   }
+   if(name==='focus'){closeModal();const focus=focusWord;focusWord=null;focus?.();return;}
    if(name==='import'){pick();return;}
    const b=book(),c=chapter();if(!c)return;
-   if(name==='define'){const item=b.items[el.dataset.key];modal(el.textContent||item.hanzi,`<p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small>`);return;}
+   if(name==='define'){const item=b.items[el.dataset.key];modal(el.textContent||item.hanzi,`<p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small>${focusWord?btn('focus','Read from here'):''}`);return;}
    await flush();
    if(name==='exit'){await choose(novel,Number(el.dataset.number)||book().current);globalThis.scrollTo?.(0,0);return;}
    if(name==='next'){await choose(novel,Number(el.dataset.number));return;}

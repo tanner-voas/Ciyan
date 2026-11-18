@@ -29,19 +29,17 @@ test('guide gestures, word-length timing, centered position and manual bookmarks
   return w;
  });
  pages.querySelectorAll=q=>q==='[data-pid]'?[row]:words;row.querySelectorAll=()=>words;row.querySelector=()=>words[0];
- const saved=[],definitions=[];
- const dispose=mountReadingGuide(pages,{save:(n,p)=>saved.push(p),define:w=>definitions.push(w),initialRate:120,rateChanged(){},extend:async()=>{}});
- const click=k=>pages.fire('click',{target:{closest:()=>({dataset:{guide:k}})}});
- const touch=(type,i)=>pages.fire(type,{target:words[i]});
- touch('pointerdown',0);touch('pointerup',0);assert.equal(definitions.length,0);
- touch('pointerdown',0);touch('pointerup',0);assert.deepEqual(definitions,[words[0]]);
+ const saved=[],definitions=[];let focus;
+ const dispose=mountReadingGuide(pages,{save:(n,p)=>saved.push(p),define:(w,seek)=>{definitions.push(w);focus=seek;},initialRate:120,rateChanged(){},extend:async()=>{}});
+ const click=k=>pages.fire('click',{target:{closest:q=>q==='[data-guide]'?{dataset:{guide:k}}:null}});
+ pages.fire('click',{target:words[0]});assert.deepEqual(definitions,[words[0]]);assert.equal(focus,null);
  click('toggle');click('play');t.mock.timers.tick(499);assert.equal(saved.at(-1).wordIndex,0);
  t.mock.timers.tick(1);assert.equal(saved.at(-1).wordIndex,1);
  t.mock.timers.tick(999);assert.equal(saved.at(-1).wordIndex,1);
  t.mock.timers.tick(1);assert.equal(saved.at(-1).wordIndex,2);
  assert.equal(words[2].getBoundingClientRect().top+10,82); // chapter start stays at its natural top
- click('play');touch('pointerdown',1);t.mock.timers.tick(2999);assert.equal(saved.at(-1).wordIndex,2);
- t.mock.timers.tick(1);touch('pointerup',1);assert.equal(saved.at(-1).wordIndex,1);
+ click('play');pages.fire('click',{target:words[1]});assert.equal(saved.at(-1).wordIndex,2);
+ focus();assert.equal(saved.at(-1).wordIndex,1);
  click('toggle');assert.equal(saved.at(-1).wordIndex,0);assert.equal(saved.at(-1).offset,0);
  dispose();
 });

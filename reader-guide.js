@@ -11,31 +11,41 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  let wordList=Array.from(pages.querySelectorAll('[data-word-index]'));
  const rows=()=>pages.querySelectorAll('[data-pid]');
  let current=null,enabled=false,playing=false,rate=initialRate;
- let tick,hold,frame,lastTap=null,press=null,held=false,stopped=false;
+ let tick,frame,stopped=false;
  const audio=pages.querySelector('[data-guide-audio]');
  const speechStatus=pages.querySelector('[data-speech-status]');
  const voiceSelect=pages.querySelector('[data-voice-select]');
- let voices=[],aloud=false,sequence=0;
+ let voices=[],aloud=false,sequence=0,systemFallback=null;
  const synth=win.speechSynthesis;
- const narrator=createNarrator(win,select,()=>void step(1),()=>{
-  pause();speechStatus.textContent='Speech stopped. Tap Play to retry or turn off Read aloud.';
+ const session=win.navigator?.audioSession;
+ let previousType;
+ function usePlayback(){
+  if(!session||previousType!==undefined)return;
+  try{previousType=session.type;session.type='playback';}catch{previousType=undefined;}
+ }
+ function releasePlayback(){
+  if(previousType!==undefined){try{session.type=previousType;}catch{}previousType=undefined;}
+ }
+ const narrator=createNarrator(win,select,()=>void step(1),reason=>{
+  const fallback=voices.find(v=>v.localService);
+  if(playing&&!systemFallback&&!voiceSelect.value&&fallback){
+   systemFallback=fallback;narrator.speak(current,fallback,rate);return;
+  }
+  pause();speechStatus.textContent='Mandarin audio could not play ('+reason+'). Check media volume and output, or choose another voice and tap Play.';
  });
  function refreshVoices(){
   voices=mandarinVoices(synth.getVoices());
-  voiceSelect.replaceChildren(...voices.map((v,i)=>{
-   const option=doc.createElement('option');option.value=String(i);option.textContent=v.name;return option;
+  const system=doc.createElement('option');system.value='';system.textContent='System Mandarin';
+  voiceSelect.replaceChildren(system,...voices.map(v=>{
+   const option=doc.createElement('option');option.value=v.voiceURI;option.textContent=v.name+(v.localService?'':' (network)');return option;
   }));
-  const match=voices.findIndex(v=>v.voiceURI===voiceSelect.dataset.selected);
-  if(match>=0)voiceSelect.value=String(match);
-  voiceSelect.hidden=!aloud||voices.length<2;
-  audio.disabled=!voices.length;
-  if(!voices.length&&aloud){aloud=false;audio.checked=false;pause();}
-  speechStatus.textContent=voices.length?'':'Install a Mandarin voice in iPhone accessibility speech settings, then reopen the reader.';
+  voiceSelect.value=voices.some(v=>v.voiceURI===voiceSelect.dataset.selected)?voiceSelect.dataset.selected:'';
+  voiceSelect.hidden=!aloud||!voices.length;
  }
  if(synth&&win.SpeechSynthesisUtterance){
   refreshVoices();synth.addEventListener?.('voiceschanged',refreshVoices,options);
-  audio.addEventListener('change',()=>{aloud=audio.checked;voiceSelect.hidden=!aloud||voices.length<2;schedule();},options);
-  voiceSelect.addEventListener('change',()=>{voiceSelect.dataset.selected=voices[+voiceSelect.value]?.voiceURI;schedule();},options);
+  audio.addEventListener('click',()=>{aloud=audio.checked;systemFallback=null;refreshVoices();if(aloud&&current){playing=true;play.textContent='Pause';}else releasePlayback();schedule();},options);
+  voiceSelect.addEventListener('change',()=>{voiceSelect.dataset.selected=voiceSelect.value;systemFallback=null;schedule();},options);
  }else if(audio?.matches?.('[data-guide-audio]')){
   audio.disabled=true;speechStatus.textContent='This browser does not provide speech playback.';
  }
@@ -82,10 +92,10 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   current?.classList.remove('reader-current');current=word;current.classList.add('reader-current');
   center();bookmark(current.closest('[data-pid]'),current);
  }
- function pause(){sequence++;narrator.cancel();win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
+ function pause(){releasePlayback();sequence++;narrator.cancel();win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
  function schedule(){
   sequence++;narrator.cancel();clearTimeout(tick);
-  if(playing&&current&&aloud){speechStatus.textContent='';narrator.speak(current,voices[+voiceSelect.value]||voices[0],rate);return;}
+  if(playing&&current&&aloud){usePlayback();speechStatus.textContent='';narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback,rate);return;}
   if(playing&&current)tick=setTimeout(()=>void step(1),60000*[...current.textContent].length/rate);
  }
  async function step(direction){
@@ -109,27 +119,21 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   if(frame)return;
   frame=win.requestAnimationFrame(()=>{frame=0;if(enabled){if(playing&&!drift)center();}else bookmark(visibleRow());});
  }
- function cancelHold(){clearTimeout(hold);press=null;}
- pages.addEventListener('pointerdown',e=>{
-  cancelHold();held=false;
-  const word=e.target.closest('[data-word-index]');if(!word||!e.isPrimary||e.button!==0)return;
-  press={x:e.clientX,y:e.clientY,word};
-  hold=setTimeout(()=>{held=true;lastTap=null;switchGuide(true,word);},3000);
- },options);
- pages.addEventListener('pointermove',e=>{if(press&&Math.hypot(e.clientX-press.x,e.clientY-press.y)>10)cancelHold();},options);
- pages.addEventListener('pointercancel',()=>{cancelHold();lastTap=null;},options);
- pages.addEventListener('pointerup',e=>{
-  const word=e.target.closest('[data-word-index]'),valid=press&&press.word===word&&!held;
-  cancelHold();if(!valid||!word)return;
-  const now=performance.now();
-  if(lastTap?.word===word&&now-lastTap.time<=400){lastTap=null;pause();define(word);}
-  else lastTap={word,time:now};
- },options);
- pages.addEventListener('contextmenu',e=>{if(e.target.closest('[data-word-index]'))e.preventDefault();},options);
+ function lookup(word){
+  const wasPlaying=playing;
+  pause();
+  define(word,enabled?()=>{
+   if(stopped||!enabled)return;
+   select(word);
+   if(wasPlaying){playing=true;play.textContent='Pause';schedule();}
+  }:null);
+ }
  pages.addEventListener('keydown',e=>{
-  if(['Enter',' '].includes(e.key)&&e.target.matches('[data-word-index]')){e.preventDefault();pause();define(e.target);}
+  if(['Enter',' '].includes(e.key)&&e.target.matches('[data-word-index]')){e.preventDefault();lookup(e.target);}
  },options);
  pages.addEventListener('click',e=>{
+  const word=e.target.closest('[data-word-index]');
+  if(word){lookup(word);return;}
   const action=e.target.closest('[data-guide]')?.dataset.guide;
   if(action==='toggle'){if(!enabled&&synth&&win.SpeechSynthesisUtterance)refreshVoices();switchGuide(!enabled);}
   if(action==='play'){if(playing)pause();else{playing=true;play.textContent='Pause';schedule();}}
@@ -142,7 +146,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  win.addEventListener('scroll',track,{passive:true,...options});
  win.addEventListener('resize',track,options);
  viewport()?.addEventListener('resize',track,options);
- doc.addEventListener('visibilitychange',()=>{if(doc.hidden){pause();cancelHold();}},options);
+ doc.addEventListener('visibilitychange',()=>{if(doc.hidden){pause();}},options);
  rateLabel.textContent=rate+' CPM';
  const paragraphs=Array.from(rows());
  const row=paragraphs.find(r=>r.dataset.pid===position?.id)||paragraphs[0];
@@ -151,5 +155,5 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  if(position?.guided&&resume)switchGuide(true,resume);
  else if(!position)win.scrollTo?.(0,0);
  else if(row)win.scrollBy(0,row.getBoundingClientRect().top-parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top')||0));
- return ()=>{stopped=true;listeners.abort();pause();cancelHold();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
+ return ()=>{stopped=true;listeners.abort();pause();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
 }

@@ -96,7 +96,7 @@ function discardPendingFont(){++fontSelectionCounter;pendingFont=cloneFont(lastA
 
 const app=$('#app'),toastNode=$('#toast');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const reader=createReader({state:()=>state,change,render,esc,modal,toast,applyFonts:el=>applyFontToRoot(el,state.settings)});
+const reader=createReader({state:()=>state,change,render,esc,modal,closeModal,toast,applyFonts:el=>applyFontToRoot(el,state.settings)});
 const shapes={
  home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-8h6v8"/>',
  cards:'<rect x="5" y="4" width="15" height="17" rx="3"/><path d="M9 8h7M9 12h7M4 8H3M4 12H3"/>',

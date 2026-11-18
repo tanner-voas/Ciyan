@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {mandarinVoices,speechPassage,createNarrator} from '../reader-speech.js';
 
 const voice=(lang,name,localService=true)=>({lang,name,localService});
-test('selects local Mandarin voices and prefers enhanced mainland voices',()=>{
+test('prefers local Mandarin voices and prefers enhanced mainland voices',()=>{
  const best=voice('zh_CN','Enhanced'),standard=voice('zh-CN','Standard'),taiwan=voice('zh-TW','Taiwan');
- assert.deepEqual(mandarinVoices([voice('en-US','US'),voice('zh-HK','Hong Kong'),taiwan,standard,voice('zh-CN','Cloud',false),best]),[best,standard,taiwan]);
+ assert.deepEqual(mandarinVoices([voice('en-US','US'),voice('zh-HK','Hong Kong'),taiwan,standard,voice('zh-CN','Cloud',false),best]),[best,standard,taiwan,voice('zh-CN','Cloud',false)]);
 });
 
 function fixture(){
@@ -32,4 +32,13 @@ test('word callbacks update the guide and late callbacks cannot advance a cancel
  u.onerror();u.onend();assert.equal(ended,0);assert.equal(errors,0);assert.equal(canceled,1);
  heard[1].onend();assert.equal(ended,1);assert.deepEqual(selected,['上海','吧']);
  n.speak(words[0],voice('zh-CN','Mandarin'),120);heard[2].onerror();assert.equal(errors,1);
+});
+
+test('starts Mandarin with no enumerated voices and resumes a paused speech engine',()=>{
+ let spoken,resumed=false;
+ const win={SpeechSynthesisUtterance:class{},speechSynthesis:{paused:true,resume(){resumed=true;},speak(u){spoken=u;},cancel(){}}};
+ const n=createNarrator(win,()=>{},()=>{},()=>{});
+ n.speak(fixture()[0],undefined,120);
+ assert.ok(resumed);assert.equal(spoken.lang,'zh-CN');assert.equal(spoken.volume,1);assert.equal(spoken.voice,undefined);
+ n.cancel();
 });
