@@ -330,7 +330,7 @@ test('v0.5.2 Settings accepts negative and fractional tag weights and applies od
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('navigate',{page:'settings'});
  assert.match(mock.shell.innerHTML,/zero is neutral/);
- assert.match(mock.shell.innerHTML,/New tags start at weight 0/);
+ assert.match(mock.shell.innerHTML,/HSK levels have preset weights/);
  assert.match(mock.shell.innerHTML,/type="number" step="any" value="0"/);
  const form={matches:q=>q==='#tag-weight-form',querySelectorAll:q=>q==='[data-tag-weight]'?[
    {dataset:{tagWeight:'Food/food'},value:'-1.75'},
@@ -358,7 +358,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.7.1');
+ assert.equal(reconciled.bundledMasterVersion,'0.7.2');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -375,7 +375,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.7.1');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.7.2');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -389,7 +389,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.7.1');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.7.2');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });

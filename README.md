@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.7.1
+# Cíyán (词言) v0.7.2
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.

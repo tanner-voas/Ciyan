@@ -1,5 +1,7 @@
 // Applied preferences live in Settings and full progress backups, never in cards.
 // A tag is a leaf only if no other loaded tag is below it in the tree.
+const HSK_DEFAULTS={'HSK/HSK1':4096,'HSK/HSK2':1024,'HSK/HSK3':256,'HSK/HSK4':64,'HSK/HSK5':16,'HSK/HSK6':8,'HSK/HSK7-9':0};
+export const defaultTagWeight=tag=>Object.hasOwn(HSK_DEFAULTS,tag)?HSK_DEFAULTS[tag]:0;
 export function leafTagPaths(cards){
  const paths=[...new Set(cards.flatMap(c=>Array.isArray(c.tags)?c.tags:[]).filter(x=>typeof x==='string'&&x.trim()))].sort();
  return paths.filter(t=>!paths.some(other=>other.startsWith(t+'/')));
@@ -22,7 +24,7 @@ export function validatedTagWeights(input){
 export function weightForNewCard(card,weights={},leaves=null){
  const allowed=leaves instanceof Set?leaves:leaves?new Set(leaves):null;
  const tags=[...new Set(card.tags||[])].filter(t=>!allowed||allowed.has(t));
- return Math.max(1,1+tags.reduce((sum,t)=>sum+(weights[t]??0),0));
+ return Math.max(1,1+tags.reduce((sum,t)=>sum+(weights[t]??defaultTagWeight(t)),0));
 }
 export function newWordOdds(cards,schedules={},weights={}){
  const leaves=leafTagPaths(cards),leafSet=new Set(leaves),weighted=Object.fromEntries(leaves.map(t=>[t,0]));

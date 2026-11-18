@@ -12,13 +12,12 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  let current=null,enabled=false,playing=false,rate=initialRate;
  let tick,hold,frame,lastTap=null,press=null,held=false,stopped=false;
  const viewport=()=>win.visualViewport;
- const mid=()=> (viewport()?.offsetTop||0)+(viewport()?.height||win.innerHeight)/2;
  function bookmark(row,word){
   if(row)save(+row.closest('article').dataset.readerNumber,{id:row.dataset.pid,index:+row.dataset.index,
    wordIndex:word?+word.dataset.wordIndex:0,offset:word?+word.dataset.offset:0});
  }
  function topEdge(){
-  return Math.max(0,pages.querySelector('.reader-guide-bar').getBoundingClientRect().bottom);
+  return parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top'))||0;
  }
  function visibleRow(){
   const top=topEdge()+2;
@@ -31,18 +30,31 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   }
   return paragraphs[Math.min(low,paragraphs.length-1)];
  }
- function center(){
-  if(!current)return;
-  const rect=current.getBoundingClientRect();
-  const distance=rect.top+rect.height/2-mid();
-  if(Math.abs(distance)>0.9)win.scrollBy(0,distance);
+ let drift=0,lastFrame=0;
+ function center(time=performance.now()){
+  if(!current||stopped||doc.hidden||Math.abs((viewport()?.scale||1)-1)>0.01)return;
+  const first=pages.querySelector('article'),last=pages.querySelector('article:last-of-type');
+  const top=topEdge(),bottom=Math.min(win.innerHeight,pages.querySelector('.reader-guide-bar').getBoundingClientRect().top);
+  if(bottom<=top||!first||!last)return;
+  const target=current.getBoundingClientRect(),height=bottom-top;
+  const delta=target.top+target.height/2-(top+height/2);
+  // Clamp the scroll to the available prose, including at both chapter ends.
+  const distance=Math.min(Math.max(0,last.getBoundingClientRect().bottom-bottom),
+   Math.max(Math.min(0,first.getBoundingClientRect().top-top),delta));
+  if(Math.abs(distance)<1)return;
+  const dt=Math.min(50,Math.max(8,time-lastFrame));lastFrame=time;
+  const step=playing&&Math.abs(delta)<=height*.15
+   ?Math.sign(distance)*Math.min(Math.abs(distance),Math.max(1,Math.abs(distance)*(1-Math.exp(-dt/160))))
+   :distance;
+  win.scrollBy(0,step);
+  if(Math.abs(distance-step)>=1&&!drift)drift=win.requestAnimationFrame(t=>{drift=0;center(t);});
  }
  function select(word){
   if(!word)return;
   current?.classList.remove('reader-current');current=word;current.classList.add('reader-current');
   center();bookmark(current.closest('[data-pid]'),current);
  }
- function pause(){clearTimeout(tick);playing=false;play.textContent='Play';}
+ function pause(){win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
  function schedule(){
   clearTimeout(tick);
   if(playing&&current)tick=setTimeout(()=>void step(1),60000*[...current.textContent].length/rate);
@@ -65,7 +77,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  }
  function track(){
   if(frame)return;
-  frame=win.requestAnimationFrame(()=>{frame=0;if(enabled)center();else bookmark(visibleRow());});
+  frame=win.requestAnimationFrame(()=>{frame=0;if(enabled){if(playing&&!drift)center();}else bookmark(visibleRow());});
  }
  function cancelHold(){clearTimeout(hold);press=null;}
  pages.addEventListener('pointerdown',e=>{
@@ -107,6 +119,6 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const spans=row?Array.from(row.querySelectorAll('[data-word-index]')):[];
  const resume=position?.wordIndex!=null?spans[position.wordIndex]:spans.find(w=>+w.dataset.offset>=position?.offset);
  if(position?.guided&&resume)switchGuide(true,resume);
- else if(row)win.scrollBy(0,row.getBoundingClientRect().top-parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top')||0)-pages.querySelector('.reader-guide-bar').offsetHeight);
- return ()=>{stopped=true;listeners.abort();pause();cancelHold();win.cancelAnimationFrame(frame);};
+ else if(row)win.scrollBy(0,row.getBoundingClientRect().top-parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top')||0));
+ return ()=>{stopped=true;listeners.abort();pause();cancelHold();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
 }

@@ -1,5 +1,5 @@
 import {normalizeFontSettings} from './fonts.js';
-import {weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.js';
+import {defaultTagWeight,weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.js';
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
 import {grammarTokens,wordKnowledge} from './grammar.js';
@@ -20,7 +20,7 @@ export function ensureStudy(s){
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
  s.settings.autoShares={...SHARES,...s.settings.autoShares};
  s.settings.tagWeights=validatedTagWeights(s.settings.tagWeights);
- for(const tag of leafTagPaths(s.cards||[]))if(s.settings.tagWeights[tag]===undefined)s.settings.tagWeights[tag]=0;
+ for(const tag of leafTagPaths(s.cards||[]))if(s.settings.tagWeights[tag]===undefined)s.settings.tagWeights[tag]=defaultTagWeight(tag);
  s.settings.autoModes={words:true,grammar:true,drawing:true,particles:true,...s.settings.autoModes};
  // Null means unlimited. Zero is a meaningful limit, unlike a blank field.
  const limit=s.settings.newWordsPerDay;

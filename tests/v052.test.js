@@ -19,7 +19,7 @@ test('v0.5.2 leaf weight is max(1, 1 + sum) with neutral, negative, decimal and 
  assert.equal(weightForNewCard(b,weights),1);
  assert.equal(weightForNewCard(c,weights),1);
  assert.equal(weightForNewCard(a,{'HSK/HSK1':1.2,'Food/fruit':.5}),2.7);
- assert.equal(weightForNewCard(a,{}),1);
+ assert.equal(weightForNewCard(a,{}),4097);
  assert.equal(weightForNewCard(b,{'HSK/HSK1':-100000}),1);
  assert.deepEqual(validatedTagWeights({'HSK/HSK1':0,'Food/fruit':-0.125}),{'HSK/HSK1':0,'Food/fruit':-0.125});
 });
@@ -57,7 +57,8 @@ test('all new neutral tag values are added on first population and after master 
  const s=defaultState();replaceMaster(s,MASTER);ensureStudy(s);
  const leaves=leafTagPaths(s.cards);
  assert.ok(leaves.length>50);
- assert.equal(leaves.filter(t=>s.settings.tagWeights[t]!==0).length,0);
+ assert.deepEqual([1,2,3,4,5,6,'7-9'].map(i=>s.settings.tagWeights['HSK/HSK'+i]),[4096,1024,256,64,16,8,0]);
+ assert.ok(leaves.filter(t=>!t.startsWith('HSK/')).every(t=>s.settings.tagWeights[t]===0));
  const extra=card('new-word',['Topics/BrandNew']);s.cards.push(extra);ensureStudy(s);
  assert.equal(s.settings.tagWeights['Topics/BrandNew'],0);
 });

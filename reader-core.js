@@ -1,3 +1,4 @@
+import {defaultTagWeight} from './tag-weights.js';
 import {hskTagFor} from './hsk-tag-map.js';
 import {scheduleReview} from './review-scheduler.js';
 
@@ -113,7 +114,7 @@ export function gradeReader(s,b,key,grade,now=Date.now()){
    if(s.archived)s.archived.cards=s.archived.cards.filter(c=>c.id!==card.id);
    const hsk=hskTagFor(item.hanzi);
    if(hsk&&!card.tags.some(t=>t.startsWith('HSK/')))card={...card,tags:[...card.tags,'HSK/'+hsk.toUpperCase()]};
-   for(const t of card.tags)s.settings.tagWeights[t]??=0;
+   for(const t of card.tags)s.settings.tagWeights[t]??=defaultTagWeight(t);
    s.cards=[...s.cards,card];
   }
   s.settings.tagWeights??={};s.settings.tagWeights[tag]??=0;

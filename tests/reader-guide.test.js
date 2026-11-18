@@ -16,10 +16,11 @@ test('guide gestures, word-length timing, centered position and manual bookmarks
  Object.assign(win,{innerHeight:800,scrollBy(x,dy){y+=dy;},getComputedStyle:()=>({getPropertyValue:()=> '12px'}),
   requestAnimationFrame:fn=>{queueMicrotask(fn);return 1;},cancelAnimationFrame(){}});
  doc.defaultView=win;pages.ownerDocument=doc;
- bar.getBoundingClientRect=()=>({bottom:40});bar.offsetHeight=40;
+ bar.getBoundingClientRect=()=>({top:688,bottom:730});bar.offsetHeight=40;
  toolbar.querySelector=q=>q==='output'?output:play;
- pages.querySelector=q=>q==='.reader-guide-bar'?bar:q.includes('controls')?toolbar:toggle;
+ pages.querySelector=q=>q==='.reader-guide-bar'?bar:q.startsWith('article')?article:q.includes('controls')?toolbar:toggle;
  const row=element({pid:'p1',index:'0'}),article=element({readerNumber:'1'});
+ article.getBoundingClientRect=()=>({top:480-y,bottom:1800-y});
  row.closest=()=>article;row.getBoundingClientRect=()=>({top:500-y,bottom:700-y});
  const words=['我','喜欢','书'].map((text,i)=>{
   const w=element({wordIndex:String(i),offset:String([0,1,3][i])});w.textContent=text;
@@ -38,7 +39,7 @@ test('guide gestures, word-length timing, centered position and manual bookmarks
  t.mock.timers.tick(1);assert.equal(saved.at(-1).wordIndex,1);
  t.mock.timers.tick(999);assert.equal(saved.at(-1).wordIndex,1);
  t.mock.timers.tick(1);assert.equal(saved.at(-1).wordIndex,2);
- assert.equal(words[2].getBoundingClientRect().top+10,400);
+ assert.equal(words[2].getBoundingClientRect().top+10,82); // chapter start stays at its natural top
  click('play');touch('pointerdown',1);t.mock.timers.tick(2999);assert.equal(saved.at(-1).wordIndex,2);
  t.mock.timers.tick(1);touch('pointerup',1);assert.equal(saved.at(-1).wordIndex,1);
  click('toggle');assert.equal(saved.at(-1).wordIndex,0);assert.equal(saved.at(-1).offset,0);
