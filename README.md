@@ -1,10 +1,10 @@
-# Cíyán (词言) v0.7.9
+# Cíyán (词言) v0.8.0
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
 user-controlled typography.
 
-## Reader in v0.7.9
+## Reader in v0.8.0
 
 The **Reader** library has vertically stacked Novel, optional Volume, and
 Chapter selectors, plus Upload chapter JSON. Novel names display as **author •
@@ -49,11 +49,13 @@ custom-index full backups; chapter text itself is never backed up.
 Both Cloudflare Pages and Cloudflare Workers deploy from the same
 `dist/ciyan` build, as documented below.
 
-## Reader narration in v0.7.6
+## Speech and listening in v0.8.0
 
-Use the sliders menu to enable the guide. Transport controls stay in the bottom bar while the menu is closed. Enable **Read aloud in Mandarin** to show the voice selector. Equivalent system voices are grouped. When the browser identifies them, region and installed voice quality distinguish variants.
+Open **Settings → Speech** to choose a Mandarin voice and set reading speed, pitch, Azure lookahead and paragraph pauses. The reader and study screens share these preferences. Azure fetches two upcoming sentences by default and reuses up to eight decoded clips. Transport controls can restart speech at any annotated word.
 
-The two additional male Mandarin voices, Yunxi and Yunyang, use Azure Speech. Select a voice in the bottom bar, enter your Azure Speech resource region (such as `eastasia`) and resource key in the menu, then close the menu and tap Play. Use a free-tier F0 resource for the free allowance. The app sends the current sentence directly to Microsoft's regional synthesis endpoint. Credentials stay in the open reader and are omitted from exports. Native audio continues to work without Azure.
+To use Yunxi or Yunyang, open **Manage Azure credentials**, enter the region and key, and choose a four-digit PIN. This device can then play audio without asking again. Full backups include the encrypted credentials alongside readable study progress. On a new device, restore the backup, then use the PIN to unlock speech. Changing the PIN requires the current one. Resetting removes the local credentials and PIN.
+
+Listening uses the same sentence prerequisites as Grammar and maintains its own mastery. Replay the audio, optionally reveal the English hint, then reveal the Chinese, pinyin and translation to grade your recall. Using the hint caps the grade at Good. Enable Listening in Auto Study for the current session when you can play audio.
 
 ## Chapter preparation and study
 

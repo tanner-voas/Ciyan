@@ -3,7 +3,11 @@ import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,ch
 import {mountReadingGuide} from './reader-guide.js';
 import {acceptChapter,validateChapter,readerAnalysis,gradeReader,recordPractice} from './reader-core.js';
 
-export function createReader({state,change,render,esc,modal,closeModal,toast,applyFonts}){
+export function chapterLabel(c){
+ const title=c.title.replace(/^第[〇零一二三四五六七八九十百千万\d]+章\s*/u,'').replace(/[（(][上下][）)]\s*$/u,'').trim();
+ return 'CH'+String(c.number).padStart(4,'0')+(title?' • '+title:'');
+}
+export function createReader({state,change,render,esc,modal,closeModal,toast,credentials,applyFonts}){
  let novel='',number=1,mode='review',scope='gate',revealed=false,shown='',busy=false,epoch=0,observer=null,timer=null,pending=null;
  let focusWord=null;
  let disposeGuide=null,pendingRate=null,writingPosition=null;
@@ -29,7 +33,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
  async function openHosted(entry){
   if(!entry||entry.source==='custom')throw Error('Unknown hosted chapter.');
   const known=state().reader?.[entry.novel]?.chapters||[];
-  const needed=catalog.filter(e=>e.novel===entry.novel&&e.number<=entry.number&&e.number>known.length).sort((a,b)=>a.number-b.number);
+  const needed=catalog.filter(e=>e.novel===entry.novel&&e.number<=entry.number&&(e.number>known.length||e.previousDigest&&e.previousDigest===known[e.number-1]?.digest)).sort((a,b)=>a.number-b.number);
   const imported=[];
   for(const e of needed){
    const bytes=await downloadChapter(e),p=JSON.parse(new TextDecoder().decode(bytes));
@@ -46,7 +50,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
  }
  function showMissing(entry){
   requestedUpload=entry;
-  modal('Chapter file needed',`<p>The custom chapter <strong>${esc(entry.title)}</strong> from <strong>${esc(libraryBook(entry.novel)?.title||entry.novel)}</strong> (Chapter ${entry.number}) is no longer stored on this device.</p><p class="subtle">Your chapter index, bookmark and study progress are saved in the backup. Reupload the matching Cíyán chapter JSON to restore its reading text.</p><button class="btn btn-primary btn-full" data-action="reader-reupload">Select chapter JSON</button>`);
+  modal('Chapter file needed',`<p>The custom chapter <strong>${esc(chapterLabel(entry))}</strong> from <strong>${esc(libraryBook(entry.novel)?.title||entry.novel)}</strong> (Chapter ${entry.number}) is no longer stored on this device.</p><p class="subtle">Your chapter index, bookmark and study progress are saved in the backup. Reupload the matching Cíyán chapter JSON to restore its reading text.</p><button class="btn btn-primary btn-full" data-action="reader-reupload">Select chapter JSON</button>`);
  }
  async function loadSelection(id,n,{reading=false,automatic=false}={}){
   if(!libraryBook(id))return;
@@ -55,8 +59,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
   if(!entry)return;
   try{
    if(entry.source==='master'){
-    if(!state().reader?.[id]?.chapters[n-1]){
-     if(!await openHosted(entry))return;
+    if(!state().reader?.[id]?.chapters[n-1]||entry.previousDigest&&entry.previousDigest===state().reader[id].chapters[n-1].digest){
+     try{if(!await openHosted(entry))return;}
+     catch(error){const previous=state().reader?.[id]?.chapters[n-1];
+      if(!previous||!(await cached(previous)))throw error;
+      toast('Using the saved chapter. The update will retry when online.');
+     }
     }
     const ch=state().reader?.[id]?.chapters[n-1];
     if(ch)await cached(ch);
@@ -96,7 +104,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
  function article(p,a){
   const later=libraryChapter(novel,p.number+1);
   const complete=book()?.chapters[p.number-1]?.complete;
-  return `<article data-reader-number="${p.number}"><h2>${esc(p.title)}</h2>${p.paragraphs.map((row,index)=>{
+  return `<article data-reader-number="${p.number}"><h2>${esc(chapterLabel(p))}</h2>${p.paragraphs.map((row,index)=>{
    let offset=0,wordIndex=0;
    return `<p data-pid="${esc(row.id)}" data-index="${index}">${row.tokens.map(t=>{
     if(typeof t==='string'){offset+=t.length;return esc(t);}
@@ -113,9 +121,9 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
  }
  function readerChrome(){
   const entries=libraryBook(novel)?.chapters||[];
-  return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(c.title)}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
-  <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
-  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div><button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><div class="reader-cloud-config" data-cloud-config hidden><small>Azure receives spoken sentences. Credentials are held only in this open reader session.</small><label>Azure speech region<input data-cloud-region placeholder="eastasia" autocapitalize="none" spellcheck="false"></label><label>Azure speech key<input type="password" data-cloud-key autocomplete="off"></label></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
+  return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(chapterLabel(c))}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
+  <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-selected="${esc(state().settings.speechVoice||'')}" data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
+  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div><button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="speech-settings">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
  }
  function view(){
   selectBook();
@@ -126,13 +134,13 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
   // Volume is solely a chapter picker filter. No volume-specific progress or
   // unlock state is created; chapters remain globally numbered and linear.
   const chapterChoices=volumes.length?chaptersInVolume(lib,currentVolume):lib?.chapters||[];
-  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(x.title)}</option>`).join('')}</select></label></div>`;
+  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label></div>`;
   if(!entry)return `${chooser}<div class="panel stack"><h2>No chapters yet</h2>${importBtn}</div>`;
-  if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(entry.title)}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
+  if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(chapterLabel(entry))}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
   const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),x==='read'&&!c.unlocked&&!a.ready?'disabled':`aria-pressed="${mode===x}"`)).join('');
   const p=memory.get(c.digest);
-  const body=mode==='study'?study(b,c,a):mode==='read'&&c.unlocked?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(c.title)}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
+  const body=mode==='study'?study(b,c,a):mode==='read'&&c.unlocked?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
   if(isReading())return body;
   return `${chooser}<div class="reader-tabs">${tabs}</div>${body}`;
  }
@@ -188,7 +196,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
    return;
   }
   const c=chapter();
-  disposeGuide=mountReadingGuide(el,{position:c.position,initialRate:pendingRate??state().settings.readerCpm??120,
+  disposeGuide=mountReadingGuide(el,{position:pending?.digest===c.digest?pending.position:c.position,initialRate:pendingRate??state().settings.readerCpm??120,
+   speechSettings:()=>state().settings,credentials:()=>credentials(),voiceChanged:value=>change(d=>{d.settings.speechVoice=value;},false),
    initialGuide:state().settings.readerGuideEnabled===true,initialAudio:state().settings.readerTtsEnabled===true,
    onGuideChange:value=>{void change(d=>{d.settings.readerGuideEnabled=value;},false);},
    onAudioChange:value=>{void change(d=>{d.settings.readerTtsEnabled=value;},false);},
@@ -252,7 +261,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
    if(name==='define'){
     const item=b.items[el.dataset.key];if(!item)return;
     const match=state().cards.find(card=>card.hanzi===item.hanzi);
-    modal(el.textContent||item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}${match?`<button class="btn btn-secondary" data-action="edit-card" data-id="${esc(match.id)}">Edit word</button>`:''}</div></div>`);return;
+    modal(el.textContent||item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="edit-card" data-id="${esc(match.id)}">Edit word</button>`:''}</div></div>`);return;
    }
    await flush();
    if(name==='exit'){mode='review';chromeVisible=true;render();globalThis.scrollTo?.(0,0);return;}

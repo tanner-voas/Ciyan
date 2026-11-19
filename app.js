@@ -1,3 +1,6 @@
+import {createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
+import {createCloudNarrator,cloudVoices,speechCacheCount,clearSpeechCache} from './reader-cloud-speech.js';
+import {sealSpeech,openSpeech,unlockSpeech} from './speech-vault.js';
 import {createReader} from './reader-ui.js';
 import {clearDictionary,reloadCards} from './collection-reset.js';
 import {APP_VERSION} from './backup-versions.js';
@@ -5,7 +8,7 @@ import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './ta
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
 import {contextsForWord} from './grammar-context.js';
 import {contextMatches,contextSort,contextMatchLabel,literalGrammarTokens} from './context-matching.js';
-import {MODES,SHARES,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary,contextFor,modeCounts,availableModes,newVocabToday,newVocabRemaining,sessionAvailability,POOLS} from './study-engine.js';
+import {MODES,SHARES,autoEnabled,setListeningAuto,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary,contextFor,modeCounts,availableModes,newVocabToday,newVocabRemaining,sessionAvailability,POOLS} from './study-engine.js';
 import {allParticles,particleCorrect,particleSentence,particleError,particleLabel,OMIT} from './particles.js';
 import {characterEvidence,familyEvidence,drawingProfile} from './learning-feedback.js';
 import {drawPad,attachPad} from './drawing.js';
@@ -96,7 +99,7 @@ function discardPendingFont(){++fontSelectionCounter;pendingFont=cloneFont(lastA
 
 const app=$('#app'),toastNode=$('#toast');
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const reader=createReader({state:()=>state,change,render,esc,modal,closeModal,toast,applyFonts:el=>applyFontToRoot(el,state.settings)});
+const reader=createReader({credentials,state:()=>state,change,render,esc,modal,closeModal,toast,applyFonts:el=>applyFontToRoot(el,state.settings)});
 const shapes={
  home:'<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-8h6v8"/>',
  cards:'<rect x="5" y="4" width="15" height="17" rx="3"/><path d="M9 8h7M9 12h7M4 8H3M4 12H3"/>',
@@ -261,7 +264,7 @@ function studyFilterTree(){
 function selectedCount(counts,pool=selectedPool){return pool==='due'?counts.due:pool==='new'?counts.new:counts.available;}
 function studySummary(mode,counts=modeCounts(state,mode,studyFilters)){return `<div class="study-counts"><span><strong>${counts.due}</strong><small>Due now</small></span><span><strong>${counts.started}</strong><small>Started · not due</small></span><span><strong>${selectedCount(counts)}</strong><small>Available to study</small></span></div><p class="subtle">${counts.new} new available${mode==='words'?` of ${counts.newTotal} unstarted matching words`: ''} · ${counts.blocked} excluded or awaiting prerequisites</p>`;}
 function renderStudyIntro(){
- const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),all=enabled.map(m=>countsByMode[m]);
+ const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),all=enabled.map(m=>countsByMode[m]);
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
  return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Continuous recognition, grammar, character writing, and particles. Stop whenever you choose.</p></div>
  <section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
@@ -299,7 +302,7 @@ function renderWordStudy(){
         ${tone?`<div class="tone-result ${badTone?'incorrect':'correct'}">${badTone?`Tone mismatch (${tone.wrong.length} of ${tone.expected.length}): expected ${tone.expected.join(' · ')}; selected ${tone.chosen.join(' · ')}.`:'Tones matched!'}${badTone&&state.settings.enforceTones?' Easy is capped at Good.':''}</div>`:''}
         <button class="text-link" data-action="card-detail" data-id="${esc(card.id)}" style="margin-top:15px">View in-context sentences ${icon('right')}</button>`:
         `<div class="review-prompt">Remember the meaning${state.settings.toneTest?' and select tones':''}, then reveal</div>`}</div>
-    ${revealed?`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT</div>${contextsForWord(state,card).map(m=>{const g=m.grammar;return `<div class="vocab-example"><strong>${esc(plainSentence(g.markup))}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p>${matchTrace(m)}</div>`;}).join('')||'<p class="subtle">No linked grammar examples.</p>'}</section>`:''}
+    ${revealed?`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT</div>${contextsForWord(state,card).map(m=>{const g=m.grammar;return `<div class="vocab-example"><strong>${linkedSentence(g)}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p>${speechButton(plainSentence(g.markup))}${matchTrace(m)}</div>`;}).join('')||'<p class="subtle">No linked grammar examples.</p>'}</section>`:''}
     ${revealed?`<div class="eyebrow" style="text-align:center">HOW WELL DID YOU REMEMBER?</div><div class="review-controls">${ratingOptions.map(([cls,label,grade],i)=>
       `<button class="grade ${cls}" data-action="grade" data-grade="${grade}" ${grade===4&&state.settings.enforceTones&&badTone?'disabled':''}><strong>${label}</strong><span>${intervals[i]}</span></button>`).join('')}</div>
       <p class="study-captions">Again: forgot · Hard: struggled · Good: recalled · Easy: effortless</p>`:
@@ -506,10 +509,101 @@ function renderStats(){
     ${sessions.length?sessions.slice(0,6).map(s=>`<div class="list-card"><span class="brand-mark" style="height:40px;width:40px;font-size:18px">${s.mode==='grammar'?'文':'词'}</span>
     <div class="list-detail"><strong>${new Date(s.endedAt).toLocaleDateString()}</strong><small>${esc(MODES[s.mode]||(s.mode==='auto'?'Auto Study':'Vocabulary'))} · ${s.total} attempts · ${s.total?Math.round(100*s.correct/s.total):0}% success</small></div></div>`).join(''):'<div class="empty">Your completed sessions will appear here.</div>'}`;
 }
+let clipPlayer=null,localPlayer=null,speechTicket=0,lastListening='';
+function stopStudyAudio(){
+ speechTicket++;clipPlayer?.cancel();localPlayer?.cancel();
+}
+async function credentials(){
+ if(!state.speechVault||!state.deviceKey)throw Error('Set up or unlock Azure credentials in Speech settings.');
+ return openSpeech(state.speechVault,state.deviceKey);
+}
+function speechButton(text,label='Listen'){
+ return `<button class="btn btn-secondary" data-action="say-text" data-text="${esc(text)}">${esc(label)}</button>`;
+}
+async function sayText(text){
+ stopStudyAudio();const ticket=speechTicket,s=state.settings;
+ function local(reason){
+  if(ticket!==speechTicket)return;
+  if(reason)toast(reason+' Using system Mandarin.');
+  if(!window.speechSynthesis||!window.SpeechSynthesisUtterance){toast('System Mandarin audio unavailable on this device.');return;}
+  localPlayer??=createNarrator(window,()=>{},()=>{},reason=>toast('System speech: '+reason));
+  const voices=mandarinVoices(window.speechSynthesis.getVoices());
+  localPlayer.speak(text,voices.find(v=>v.voiceURI===s.speechVoice)||voices.find(v=>v.localService)||voices[0],s.readerCpm,s.speechPitch);
+ }
+ if(!cloudVoices.has(s.speechVoice)){local();return;}
+ try{
+  clipPlayer?.dispose();clipPlayer=createCloudNarrator(window,()=>{},()=>{},local);
+  const [, {region,key}]=await Promise.all([clipPlayer.prepare(),credentials()]);if(ticket!==speechTicket)return;
+  await clipPlayer.speak(text,s.speechVoice,s.readerCpm,region,key,{pitch:s.speechPitch});
+ }catch(error){local(error.message);}
+}
+function mountListening(){
+ const s=state.activePractice,e=s?.current;
+ const id=page==='study'&&e?.mode==='listening'?s.id+'-'+s.turn+'-'+e.id:'';
+ if(id===lastListening)return;
+ lastListening=id;stopStudyAudio();
+ if(id&&!s.input?.revealed)void sayText(plainSentence(grammarById(e.id).markup));
+}
+function speechSettings(){
+ const s=state.settings,voices=mandarinVoices(window.speechSynthesis?.getVoices()||[]);
+ const list=[['','System Mandarin'],...voices.map(v=>[v.voiceURI,voiceDescription(v)]),...cloudVoices];
+ if(s.speechVoice&&!list.some(([id])=>id===s.speechVoice))list.push([s.speechVoice,'Saved system voice']);
+ const numeric=(name,label,min,max)=>`<label class="settings-row">${label}<input type="number" id="${name}" min="${min}" max="${max}" value="${s[name]}"></label>`;
+ modal('Speech settings',`<div class="stack"><label>Mandarin voice<select id="speechVoice">${list.map(([id,label])=>`<option value="${esc(id)}" ${s.speechVoice===id?'selected':''}>${esc(label)}</option>`).join('')}</select></label>
+ ${numeric('readerCpm','Characters per minute',10,1200)}${numeric('speechPitch','Pitch adjustment (%)',-50,50)}${numeric('speechPreload','Azure sentences ahead',0,6)}${numeric('paragraphDelay','Paragraph pause (ms)',0,5000)}
+ <button class="btn btn-primary" data-action="save-speech">Save speech settings</button>
+ <p>${speechCacheCount()} of 8 audio clips cached · ${state.speechVault?(state.deviceKey?'Azure credentials saved':'Azure credentials locked'):'No saved Azure credentials'}</p>
+ ${speechButton('今天我们一起学习中文。','Test current voice')}<button class="btn btn-secondary" data-action="clear-speech">Clear audio cache</button><button class="btn btn-secondary" data-action="speech-secret">Manage Azure credentials</button></div>`);
+}
+function secretForm(){
+ const existing=!!state.speechVault;
+ const pin=(name,label)=>`<label>${label}<input id="${name}" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off"></label>`;
+ modal('Azure credentials',`<div class="stack">${existing?pin('current-pin','Current PIN'):''}
+ ${existing?'<button class="btn btn-secondary" data-action="unlock-speech">Unlock on this device</button>':''}
+ <label>Azure region<input id="speech-region" autocomplete="off" autocapitalize="none" placeholder="${existing?'Keep saved region':'eastasia'}"></label>
+ <label>Azure Speech key<input type="password" id="speech-key" autocomplete="off" placeholder="${existing?'Keep saved key':''}"></label>
+ ${pin('new-pin',existing?'New PIN (optional)':'Choose a four-digit PIN')}${pin('confirm-pin','Confirm new PIN')}
+ <button class="btn btn-primary" data-action="store-speech">Save credentials</button>
+ ${existing?'<button class="btn btn-danger" data-action="reset-speech">Reset credentials and PIN</button>':''}
+ <p class="subtle">The PIN protects the speech credentials in your backups. This device can play audio after you unlock it once.</p></div>`);
+}
+async function speechAction(action,el){
+ try{
+  if(action==='say-text')await sayText(el.dataset.text);
+  else if(action==='speech-settings')speechSettings();
+  else if(action==='speech-secret')secretForm();
+  else if(action==='clear-speech'){clearSpeechCache();speechSettings();}
+  else if(action==='save-speech'){
+   const settings={speechVoice:$('#speechVoice').value};
+   for(const field of ['readerCpm','speechPitch','speechPreload','paragraphDelay']){
+    const input=$('#'+field);if(!input.value||!input.checkValidity())throw Error('Check the range for '+input.parentElement.textContent.trim());
+    settings[field]=Number(input.value);
+   }
+   if(await change(d=>Object.assign(d.settings,settings),false)){closeModal();render();toast('Speech settings saved.');}
+  }else if(action==='reset-speech'){
+   if(window.confirm('Erase the saved Azure key, region and PIN on this device?')){
+    if(await change(d=>{delete d.speechVault;delete d.deviceKey;},false)){clearSpeechCache();speechSettings();}
+   }
+  }else if(action==='store-speech'||action==='unlock-speech'){
+   const current=$('#current-pin')?.value;
+   const old=state.speechVault?await unlockSpeech(state.speechVault,current):{};
+   if(action==='unlock-speech'){
+    if(await change(d=>{d.deviceKey=old.deviceKey;},false))speechSettings();
+   }else{
+    const fresh=$('#new-pin').value;
+    if(fresh!==$('#confirm-pin').value)throw Error('New PIN entries must match.');
+    const sealed=await sealSpeech(fresh||current,$('#speech-region').value||old.region||'',$('#speech-key').value||old.key||'');
+    if(await change(d=>Object.assign(d,sealed),false)){clearSpeechCache();speechSettings();}
+   }
+  }else return false;
+ }catch(error){toast(error.message);}
+ return true;
+}
+
 function renderSettings(){const s=state.settings,draft=pendingFont||lastAcceptedFont;
  const group=(title,content)=>`<details class="settings-section"><summary><span>${title}</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-section-body">${content}</div></details>`;
   return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1><p class="lead">Expand only the sections you want to change.</p></div>
-${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
+${group('Speech','<button class="btn btn-secondary" data-action="speech-settings">Voice, playback &amp; Azure credentials</button>')}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
    <div class="panel"><div class="settings-row"><div><strong>New vocabulary words per day</strong><small>Leave empty for unlimited. Zero blocks new words but not due reviews. Resets each local calendar day.</small></div><input type="number" min="0" max="20000" placeholder="Unlimited" data-setting="newWordsPerDay" value="${s.newWordsPerDay??''}" aria-label="New vocabulary words per day"></div>
     <div class="settings-row"><div><strong>Target retention</strong><small>FSRS retention target and Auto urgency; score intervals are set above</small></div><select data-setting="desiredRetention">${options([[.85,'85%'],[.9,'90%'],[.95,'95%']],s.desiredRetention)}</select></div>
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
@@ -560,15 +654,23 @@ function positionStudyScreen(){
  lastScreen=page;lastStudyFocus=key;
 }
 function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
-  reader.unmount();app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();if(page==='reader')reader.mount();positionStudyScreen();}
+  reader.unmount();app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();mountListening();if(page==='reader')reader.mount();positionStudyScreen();}
 function navigate(dest){if(!['study','browse','grammar','reader','stats','settings','complete'].includes(dest))return;
   if(dest==='settings'&&page!=='settings')pendingFont=cloneFont(lastAcceptedFont);
   if(dest!=='settings')pendingFont=null;
   page=dest;revealed=false;render();}
-function modal(title,contents){closeModal();currentModal=document.createElement('div');currentModal.className='modal-backdrop';
+const detailStack=[];
+function modal(title,contents){
+ const nested=currentModal&&['Word in context','Grammar in context'].includes(title)&&title!==currentModal.dataset?.detailTitle;
+ if(!['Word in context','Grammar in context'].includes(title))detailStack.length=0;
+ if(nested){detailStack.push(currentModal);currentModal.remove();currentModal=null;}else closeModal(false);currentModal=document.createElement('div');currentModal.className='modal-backdrop';
   currentModal.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="modal-head"><h2>${esc(title)}</h2><button class="icon-btn" data-action="close-modal" aria-label="Close">${icon('x')}</button></div><div class="modal-scroll">${contents}</div></div>`;
+  if(currentModal.dataset)currentModal.dataset.detailTitle=title;
+  const synonymBack=currentModal.querySelector('.synonym-back');
+  if(synonymBack)currentModal.querySelector('.modal-head')?.prepend(synonymBack);
+  if(detailStack.length){const back=document.createElement('button');back.className='btn btn-secondary';back.textContent='Back';back.dataset.action='detail-back';currentModal.querySelector('.modal-head')?.prepend(back);}
   document.body.append(currentModal);applyFontToRoot(currentModal,state.settings);currentModal.querySelector('input:not([type=file]),button')?.focus();}
-function closeModal(){if(currentModal){currentModal.remove();currentModal=null;}}
+function closeModal(clear=true){if(clear)detailStack.length=0;if(currentModal){currentModal.remove();currentModal=null;}}
 let wordDetailTrail=[];
 let wordDetailCurrent=null;
 let wordContextLimit=12;
@@ -586,7 +688,7 @@ function wordDetails(id,direction='root'){
   const byId=new Map(state.cards.map(w=>[w.id,w]));
   const synonyms=(c.synonyms||[]).map(entry=>({entry,card:byId.get(entry.id)})).filter(x=>x.card);
   const back=wordDetailTrail.length?`<button class="btn btn-secondary synonym-back" data-action="synonym-back">${icon('arrow-left')} Back to ${esc(byId.get(wordDetailTrail.at(-1))?.hanzi||'previous word')}</button>`:'';
-  modal('Word in context',`${back}<div class="detail-hero"><div class="review-hanzi">${esc(c.hanzi)}</div><div class="review-pinyin">${esc(c.pinyin)}</div><div class="review-english">${esc(c.english)}</div></div>
+  modal('Word in context',`${back}<div class="detail-hero">${speechButton(c.hanzi)}<div class="review-hanzi">${esc(c.hanzi)}</div><div class="review-pinyin">${esc(c.pinyin)}</div><div class="review-english">${esc(c.english)}</div></div>
     <div class="tags-wrap">${c.tags.map(tagHtml).join('')||'<span class="subtle">No tags</span>'}</div>
     <div class="detail-stats"><div><strong>${percent(knowledge)}</strong><span>Knowledge score</span></div>
       <div><strong>${history.length}</strong><span>Times encountered</span></div>
@@ -605,13 +707,20 @@ function wordDetails(id,direction='root'){
     ${drawingDetail(c)}<div class="modal-actions"><button class="btn btn-secondary" data-action="edit-card" data-id="${esc(id)}">${icon('edit')}Edit</button>
       <button class="btn btn-danger" data-action="delete-card" data-id="${esc(id)}">${icon('trash')}Delete</button></div>`);
 }
+function linkedSentence(g){
+ const cards=new Map(state.cards.map(c=>[c.hanzi,c.id]));
+ return parseSegments(g.markup).map(seg=>{
+  const id=cards.get(seg.text);
+  return seg.type==='token'&&id?`<button class="grammar-word" data-action="card-detail" data-id="${esc(id)}">${esc(seg.text)}</button>`:esc(seg.text);
+ }).join('');
+}
 function grammarDetails(id){const g=grammarById(id);if(!g)return;const scores=scoreGrammar(g),tags=grammarTags(g,state.cards);
   const history=state.grammarHistory.filter(h=>h.grammarId===id),correct=history.filter(h=>h.correct).length;
   const involved=[...new Set([...parseSegments(g.markup).filter(x=>x.type==='token').map(x=>x.text),...g.distractors.map(d=>d.word)])];
   const wordScore=word=>state.schedules[state.cards.find(c=>c.hanzi===word)?.id]?.score||0;
   const mean=involved.reduce((n,w)=>n+wordScore(w),0)/Math.max(1,involved.length);
   const weakWords=involved.filter(w=>wordScore(w)<1);
-  modal('Grammar in context',`<div class="panel stack"><div class="eyebrow">SENTENCE</div><div class="grammar-detail-hanzi">${esc(plainSentence(g.markup))}</div>
+  modal('Grammar in context',`<div class="panel stack"><div class="eyebrow">SENTENCE</div><div class="grammar-detail-hanzi">${linkedSentence(g)}</div>${speechButton(plainSentence(g.markup))}
     <div class="review-pinyin">${esc(g.pinyin)}</div><strong>${esc(g.english)}</strong><p class="subtle">Original grammar tiles: ${esc(literalGrammarTokens(g))}</p></div>
     <div class="tags-wrap" style="margin:16px 0">${tags.map(tagHtml).join('')||'<span class="subtle">No inherited tags (add matching word cards)</span>'}</div>
     <div class="detail-stats"><div><strong>${percent(scores.knowledge)}</strong><span>Knowledge</span></div>
@@ -620,8 +729,8 @@ function grammarDetails(id){const g=grammarById(id);if(!g)return;const scores=sc
       <div><strong>${history.length?`${correct}/${history.length}`:'0'}</strong><span>Grammar correct</span></div></div>
     <div class="panel stack" style="margin-bottom:15px"><strong>${modeCounts(state,'grammar').eligible.some(item=>item.id===id)?'Ready for grammar study':'Not yet unlocked'}</strong>
       <p class="subtle">Each involved word needs score ≥ 1.0, and the sentence's mean must reach 2.0 (current mean ${mean.toFixed(2)}). Words below 1.0:</p>
-      <div class="tags-wrap">${weakWords.map(w=>`<span class="tag alt">${esc(w)} · ${wordScore(w).toFixed(2)}</span>`).join('')||'<span class="subtle">None below 1.0</span>'}</div>
-      <div class="subtle">Distractors (1-based answer token): ${esc(g.distractors.map(d=>`${d.index}: [${d.word}]`).join(', ')||'none')}</div></div>
+      <div class="tags-wrap">${weakWords.map(w=>`<button class="tag alt" data-action="card-detail" data-id="${esc(state.cards.find(c=>c.hanzi===w)?.id||'')}">${esc(w)} · ${wordScore(w).toFixed(2)}</button>`).join('')||'<span class="subtle">None below 1.0</span>'}</div>
+      <div class="subtle">Distractors (1-based answer token): ${g.distractors.map(d=>{const card=state.cards.find(c=>c.hanzi===d.word);return `${esc(d.index)}: ${card?`<button class="grammar-word" data-action="card-detail" data-id="${esc(card.id)}">${esc(d.word)}</button>`:esc(d.word)}`;}).join(', ')||'none'}</div></div>
     <div class="modal-actions"><button class="btn btn-secondary" data-action="edit-grammar" data-id="${esc(id)}">${icon('edit')}Edit</button>
      <button class="btn btn-danger" data-action="delete-grammar" data-id="${esc(id)}">${icon('trash')}Delete</button></div>`);
 }
@@ -674,7 +783,7 @@ async function deleteWord(id){const c=wordById(id);if(!c)return;
 }
 async function deleteGrammar(id){const g=grammarById(id);if(!g)return;
   if(!window.confirm(`Delete grammar sentence “${plainSentence(g.markup)}” and its ${state.grammarHistory.filter(h=>h.grammarId===id).length} attempts? This cannot be undone without a backup.`))return;
-  if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.grammar=d.grammar.filter(g=>g.id!==id);delete d.skillSchedules.grammar[id];for(const key of Object.keys(d.skillSchedules.particles))if(key.startsWith(id+':particle:'))delete d.skillSchedules.particles[key];d.skillHistory=d.skillHistory.filter(h=>!h.id.startsWith(id+':particle:'));if(d.activePractice?.current?.id===id||d.activePractice?.current?.id.startsWith(id+':particle:'))d.activePractice=null;d.grammarHistory=d.grammarHistory.filter(h=>h.grammarId!==id);
+  if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.grammar=d.grammar.filter(g=>g.id!==id);delete d.skillSchedules.grammar[id];delete d.skillSchedules.listening[id];d.skillHistory=d.skillHistory.filter(h=>h.mode!=='listening'||h.id!==id);for(const key of Object.keys(d.skillSchedules.particles))if(key.startsWith(id+':particle:'))delete d.skillSchedules.particles[key];d.skillHistory=d.skillHistory.filter(h=>!h.id.startsWith(id+':particle:'));if(d.activePractice?.current?.id===id||d.activePractice?.current?.id.startsWith(id+':particle:'))d.activePractice=null;d.grammarHistory=d.grammarHistory.filter(h=>h.grammarId!==id);
     d.activeGrammarSession?.queue&&(d.activeGrammarSession.queue=d.activeGrammarSession.queue.filter(x=>x!==id));
     if(d.activeGrammarSession&&!d.activeGrammarSession.queue.length)d.activeGrammarSession=null;},true,true)){closeModal();toast('Grammar sentence deleted');}
 }
@@ -738,7 +847,10 @@ function requestFile(kind){const input=document.createElement('input');input.typ
 
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
-  try{ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);addTskTags(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast('Full backup restored.');}
+  try{
+   if(!parsed.speechVault&&state.speechVault){parsed.speechVault=state.speechVault;parsed.deviceKey=state.deviceKey;}
+   else if(parsed.speechVault?.data===state.speechVault?.data&&state.deviceKey)parsed.deviceKey=state.deviceKey;
+   ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);addTskTags(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!parsed.deviceKey?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -836,10 +948,14 @@ document.addEventListener('click',async event=>{
   if(suppressTileClick&&event.target.closest('[data-tile],[data-drop-slot]')){event.preventDefault();return;}
   const element=event.target.closest('[data-action]');if(!element)return;
   const action=element.dataset.action;
+  if(action==='say-text'||action.startsWith('speech-')||['save-speech','clear-speech','reset-speech','store-speech','unlock-speech'].includes(action)){
+   await speechAction(action,element);return;
+  }
   if(action.startsWith('reader-')){await reader.action(action.slice(7),element);return;}
   if(page==='reader'&&action==='navigate')await reader.flush();
   if(await practiceAction(action,element))return;
   switch(action){
+    case 'detail-back':{closeModal(false);currentModal=detailStack.pop();if(currentModal)document.body.append(currentModal);break;}
     case 'navigate':closeModal();navigate(element.dataset.page);break;
     case 'apply-font':await applyPendingFont();break;
     case 'discard-font':discardPendingFont();break;
@@ -932,6 +1048,7 @@ document.addEventListener('change',async event=>{
   if(event.target.closest?.('#scheduler-form')){updateTimingPreview(event.target.closest('#scheduler-form'));return;}
   if(event.target.dataset.fontId){setPendingFont(event.target.dataset.fontId,!!event.target.checked);return;}
   if(event.target.dataset?.fontMasterScale!==undefined||event.target.dataset?.fontScaleId){return;} // Sliders remain draft-only until Apply.
+  if(event.target.dataset.autoMode==='listening'){setListeningAuto(event.target.checked);if(event.target.checked)toast('Listening uses audio. Check your volume or headphones.');render();return;}
   if(event.target.dataset.autoMode){await change(d=>{d.settings.autoModes[event.target.dataset.autoMode]=event.target.checked;});return;}
   if(state.activePractice&&event.target.dataset.toneIndex!==undefined){if(state.activePractice.input.revealed)return;await practiceInput(i=>{i.tones??=[];i.tones[Number(event.target.dataset.toneIndex)]=event.target.checked?Number(event.target.dataset.toneValue):0;});render();return;}
   if(event.target.dataset.toneIndex!==undefined){if(revealed)return;
@@ -986,7 +1103,8 @@ async function boot(){try{
   let fontError=null;
   if(!validation.ok){fontError={selected,validation};Object.assign(state.settings,{enabledFonts:['print']});}
   lastAcceptedFont=cloneFont(state.settings);pendingFont=cloneFont(lastAcceptedFont);
-  if(!loaded||changedContent||state.bundledMasterVersion!==loaded?.bundledMasterVersion||fontError||fontSettingsMigrated){
+  state.appVersion=APP_VERSION;
+  if(!loaded||loaded.appVersion!==APP_VERSION||changedContent||state.bundledMasterVersion!==loaded?.bundledMasterVersion||fontError||fontSettingsMigrated){
     state.revision=(Number(state.revision)||0)+1;
     await saveState(state,loaded?Number(loaded.revision)||0:null);
   }
@@ -1007,10 +1125,10 @@ async function startFilteredSession(){
  await startPractice('words',ids);
 }
 function autoControls(){
- const enabled=Object.keys(MODES).filter(m=>state.settings.autoModes[m]),rows=enabled.map(m=>modeCounts(state,m,studyFilters));
+ const enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),rows=enabled.map(m=>modeCounts(state,m,studyFilters));
  const due=rows.reduce((n,x)=>n+x.due,0),started=rows.reduce((n,x)=>n+x.started,0),total=rows.reduce((n,x)=>n+selectedCount(x),0),newCards=rows.reduce((n,x)=>n+x.new,0);
  const canStart=!!enabled.length&&(selectedPool==='due'?due>0:selectedPool==='new'?newCards>0:due+newCards>0)&&(selectedPool==='due'||due>0||enabled.some(m=>m!=='words')||newVocabRemaining(state)>0);
- return `<section class="panel stack auto-panel"><div class="eyebrow">MIXED PRACTICE</div><h2>Auto Study</h2><p>Weighted-random modes and overdue cards, using your preferred weights. No fixed session length.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${state.settings.autoModes[m]?'checked':''}> ${label}</label>`).join('')}</div><div class="study-counts"><span><strong>${due}</strong><small>Due now</small></span><span><strong>${started}</strong><small>Started · not due</small></span><span><strong>${total}</strong><small>Available to study</small></span></div><p class="subtle">${newCards} new available across enabled modes</p><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${canStart?'':'disabled'}>Start Auto Study</button></section>`;
+ return `<section class="panel stack auto-panel"><div class="eyebrow">MIXED PRACTICE</div><h2>Auto Study</h2><p>Weighted-random modes and overdue cards, using your preferred weights. No fixed session length.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${autoEnabled(state,m)?'checked':''}> ${label}</label>`).join('')}</div><div class="study-counts"><span><strong>${due}</strong><small>Due now</small></span><span><strong>${started}</strong><small>Started · not due</small></span><span><strong>${total}</strong><small>Available to study</small></span></div><p class="subtle">${newCards} new available across enabled modes</p><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${canStart?'':'disabled'}>Start Auto Study</button></section>`;
 }
 async function startPractice(mode,allowedWords=null){
  if(state.activeSession||state.activeGrammarSession){await startSession();return;}
@@ -1033,7 +1151,8 @@ function practiceRender(){
   const tone=wordToneCheck(c),cap=state.settings.enforceTones&&tone?.wrong.length?3:4;
   body=`<div class="review-card vocab-review"><div class="card-kicker">CHINESE → ENGLISH</div>${state.settings.toneTest?renderToneGrid(c):`<div class="review-hanzi">${esc(c.hanzi)}</div>`}${input.revealed||state.settings.showPinyinPrompt&&!state.settings.toneTest?`<div class="review-pinyin">${esc(c.pinyin)}</div>`:''}${input.revealed?`<div class="review-english">${esc(c.english)}</div>${tone?`<p class="subtle">Expected tones: ${tone.expected.join(' · ')}${cap===3?' · Easy unavailable':''}</p>`:''}`:'<p>Recall the meaning, then reveal.</p>'}</div>${input.revealed?practiceRatings(e.mode,e.id,cap):'<button class="btn btn-primary btn-full" data-action="practice-reveal">Reveal answer</button>'}`;
  }
- if(e.mode==='words'&&input.revealed){const examples=contextsForWord(state,wordById(e.id));if(examples.length)body+=`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT · ${examples.filter(x=>x.qualified).length?`${examples.length} qualified example${examples.length===1?'':'s'}`:'best available example'}</div>${examples.map(m=>{const g=m.grammar;return `<div class="vocab-example"><strong>${esc(plainSentence(g.markup))}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p>${matchTrace(m)}</div>`;}).join('')}</section>`;}
+ if(e.mode==='words')body+=speechButton(wordById(e.id).hanzi);
+ if(e.mode==='words'&&input.revealed){const examples=contextsForWord(state,wordById(e.id));if(examples.length)body+=`<section class="panel stack vocab-context"><div class="eyebrow">IN CONTEXT · ${examples.filter(x=>x.qualified).length?`${examples.length} qualified example${examples.length===1?'':'s'}`:'best available example'}</div>${examples.map(m=>{const g=m.grammar;return `<div class="vocab-example"><strong>${linkedSentence(g)}</strong><p>${esc(g.pinyin)}</p><p>${esc(g.english)}</p>${speechButton(plainSentence(g.markup))}${matchTrace(m)}</div>`;}).join('')}</section>`;}
  if(e.mode==='drawing'){
   const c=wordById(e.id),chars=[...c.hanzi],index=input.pad||0,g=grammarById(e.contextId),charMap=new Map(characterEvidence(state).map(x=>[x.character,x]));
   const sourceMatch=g?contextMatches(state,c).find(m=>m.grammar.id===g.id):null;
@@ -1047,8 +1166,16 @@ function practiceRender(){
  if(e.mode==='grammar'){
   const g=grammarById(e.id),bank=shuffledBank(g,s),picks=input.picks||[],tokens=parseSegments(g.markup).filter(t=>t.type==='token');
   body=`<section class="panel stack"><h2>${esc(g.english)}</h2><p class="subtle">Tap words in order or drag them to a slot. Tap a selected word to remove it.</p><div class="grammar-sentence">${parseSegments(g.markup).map(seg=>seg.type==='fixed'?`<span>${esc(seg.text)}</span>`:`<button class="sentence-slot ${picks[seg.index]?'filled':''}" data-action="practice-remove" data-index="${seg.index}" data-practice-slot="${seg.index}" data-practice-tile="${esc(picks[seg.index]||'')}" draggable="${!input.revealed&&!!picks[seg.index]}" ${input.revealed?'disabled':''}>${esc(bank.find(t=>t.id===picks[seg.index])?.word||String(seg.index+1))}</button>`).join('')}</div><div class="grammar-bank">${bank.map(t=>`<button class="bank-tile" data-action="practice-pick" data-tile="${esc(t.id)}" data-practice-tile="${esc(t.id)}" draggable="${!input.revealed&&!picks.includes(t.id)}" ${picks.includes(t.id)||input.revealed?'disabled':''}>${esc(t.word)}</button>`).join('')}</div></section>`;
-  body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct target order':'Compare with the target'}</strong><p>${esc(plainSentence(g.markup))}</p><p>${esc(g.pinyin)}</p><small>Explicitly accepted orders are checked. Other natural orders may still exist; a mismatch does not prove that your sentence is ungrammatical.</small></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${picks.filter(Boolean).length!==tokens.length?'disabled':''}>Check sentence</button>`;
+  body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct target order':'Compare with the target'}</strong><p>${linkedSentence(g)}</p><p>${esc(g.pinyin)}</p><small>Explicitly accepted orders are checked. Other natural orders may still exist; a mismatch does not prove that your sentence is ungrammatical.</small></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${picks.filter(Boolean).length!==tokens.length?'disabled':''}>Check sentence</button>`;
  }
+ if(e.mode==='listening'){
+  const g=grammarById(e.id);
+  body=`<section class="panel stack"><h2>Listen to the sentence</h2>${speechButton(plainSentence(g.markup),'Play sentence')}
+   ${input.revealed?`<div class="grammar-detail-hanzi">${linkedSentence(g)}</div><div>${esc(g.pinyin)}</div>`:''}
+   ${input.hinted||input.revealed?`<p>${esc(g.english)}</p>`:'<button class="btn btn-secondary" data-action="listen-hint">English hint · maximum Good</button>'}
+   ${input.revealed?practiceRatings(e.mode,e.id,input.hinted?3:4):'<button class="btn btn-primary" data-action="practice-reveal">Reveal answer</button>'}</section>`;
+ }
+ if(e.mode==='grammar'&&input.revealed)body+=speechButton(plainSentence(grammarById(e.id).markup));
  if(e.mode==='particles'){
   const p=allParticles(state).find(p=>p.id===e.id);
   body=`<section class="panel stack"><h2>${esc(p.focus)}</h2><p>${esc(p.prompt)}</p><div class="eyebrow">1. CHOOSE THE PARTICLE OR CLASSIFIER</div><div class="grammar-bank">${p.choices.map(c=>`<button class="bank-tile ${input.choice===c?'chosen':''}" data-action="particle-choice" data-choice="${esc(c)}" ${input.revealed?'disabled':''}>${esc(particleLabel(c))}</button>`).join('')}</div><div class="eyebrow">2. TAP ITS GAP (NOT NEEDED FOR NO PARTICLE)</div><div class="particle-line">${Array.from({length:p.base.length+1},(_,i)=>`<button class="gap ${input.slot===i?'chosen':''}" data-action="particle-slot" data-slot="${i}" aria-label="Gap ${i+1}" ${input.revealed?'disabled':''}>${input.slot===i?esc(input.choice||'?'):'＋'}</button>${i<p.base.length?`<span>${esc(p.base[i])}</span>`:''}`).join('')}</div></section>`;
@@ -1074,11 +1201,12 @@ function mountDrawing(){
 async function practiceInput(fn){await drawingSave;return change(d=>fn(d.activePractice.input,d.activePractice),false);}
 async function finishPractice(){await drawingSave;const s=state.activePractice;if(!s)return;
  const finished={id:s.id,mode:s.mode,startedAt:s.startedAt,endedAt:new Date().toISOString(),total:s.results.length,correct:s.results.filter(r=>r.grade>=3).length,newWords:s.results.filter(r=>r.reason==='first practice'&&r.mode==='words').length,results:s.results};
- if(await change(d=>{if(finished.total)d.mixedSessions.push(finished);d.lastPracticeUndo=s.undo?.length?structuredClone(s):null;d.activePractice=null;},false)){lastFinished=finished;page=finished.total?'complete':'study';render();}
+ if(await change(d=>{if(finished.total)d.mixedSessions.push(finished);d.lastPracticeUndo=s.undo?.length?structuredClone(s):null;d.activePractice=null;},false)){if(s.mode==='auto')setListeningAuto(false);lastFinished=finished;page=finished.total?'complete':'study';render();}
 }
 async function gradePractice(grade){
  await drawingSave;const s=state.activePractice;if(!s?.input?.revealed||saving||![1,2,3,4].includes(grade))return;
  const e=s.current,input=s.input;
+ if(e.mode==='listening'&&input.hinted&&grade>3)return;
  if(e.mode==='drawing')return; // Drawing is graded only through character rows.
  if(['grammar','particles'].includes(e.mode)&&!input.correct&&grade>2)return;
  if(e.mode==='words'){toneSelections=input.tones||[];if(grade===4&&state.settings.enforceTones&&wordToneCheck(wordById(e.id))?.wrong.length)return;}
@@ -1134,6 +1262,7 @@ async function practiceAction(action,el){
  const s=state.activePractice,e=s.current;
  if(!e)return false;
  if(['practice-reveal','reveal'].includes(action)){await practiceInput(i=>{i.revealed=true;});render();return true;}
+ if(action==='listen-hint'&&e.mode==='listening'&&!s.input.revealed){await practiceInput(i=>{i.hinted=true;});render();return true;}
  if(action==='draw-feedback'&&e.mode==='drawing'&&s.input.revealed){await gradeDrawingCharacter(Number(el.dataset.index),el.dataset.rating);return true;}
  if(s.input.revealed)return false;
  if(action==='draw-page'){const n=Number(el.dataset.pad);if(n>=0&&n<[...wordById(e.id).hanzi].length)await practiceInput(i=>{i.pad=n;});}
@@ -1243,9 +1372,9 @@ function sessionControls(s){return `<div class="session-controls"><button class=
 function autoDistribution(s){
  if(s.mode!=='auto')return '';
  const sum=Object.values(s.spent).reduce((n,x)=>n+x,0),weights=state.settings.autoShares||SHARES;
- const total=Object.keys(MODES).reduce((n,m)=>n+(state.settings.autoModes[m]?weights[m]:0),0)||1;
+ const total=Object.keys(MODES).reduce((n,m)=>n+(autoEnabled(state,m)?weights[m]:0),0)||1;
  const status=availability(state,s);
- return `<details class="panel auto-distribution"><summary>Auto Study balance · actual vs preferred</summary><p class="subtle">Shares use practice time, not card count. Due/relearning reviews take priority; vocabulary prerequisites can block other modes.</p><table class="skill-table"><tr><th>Mode</th><th>Actual</th><th>Preferred</th><th>Ready now</th></tr>${Object.entries(MODES).map(([m,n])=>`<tr><th>${n}</th><td>${percent(sum?(s.spent[m]||0)/sum:0)}</td><td>${state.settings.autoModes[m]?percent(weights[m]/total):'Off'}</td><td>${status.modes.find(x=>x.mode===m)?.due||0}</td></tr>`).join('')}</table>${status.modes.filter(m=>m.blocked).map(m=>`<p class="subtle">${MODES[m.mode]}: ${m.blocked} excluded by session filters or waiting on vocabulary scores.</p>`).join('')}</details>`;
+ return `<details class="panel auto-distribution"><summary>Auto Study balance · actual vs preferred</summary><p class="subtle">Shares use practice time, not card count. Due/relearning reviews take priority; vocabulary prerequisites can block other modes.</p><table class="skill-table"><tr><th>Mode</th><th>Actual</th><th>Preferred</th><th>Ready now</th></tr>${Object.entries(MODES).map(([m,n])=>`<tr><th>${n}</th><td>${percent(sum?(s.spent[m]||0)/sum:0)}</td><td>${autoEnabled(state,m)?percent(weights[m]/total):'Off'}</td><td>${status.modes.find(x=>x.mode===m)?.due||0}</td></tr>`).join('')}</table>${status.modes.filter(m=>m.blocked).map(m=>`<p class="subtle">${MODES[m.mode]}: ${m.blocked} excluded by session filters or waiting on vocabulary scores.</p>`).join('')}</details>`;
 }
 let waitTimer;
 function sessionCounts(session){const info=sessionAvailability(state,session);return `<div class="study-counts"><span><strong>${info.due}</strong><small>Due now</small></span><span><strong>${info.started}</strong><small>Started · not due</small></span><span><strong>${info.available}</strong><small>Available to study</small></span></div>`;}
@@ -1308,7 +1437,7 @@ function dueLabel(schedule,now=Date.now()){if(!schedule)return 'New';const secon
 let dueEntriesCache=null;
 function activeDueEntries(){
  if(dueEntriesCache?.revision===state.revision)return dueEntriesCache.entries;
- const ids={words:state.cards.map(c=>c.id),drawing:state.cards.map(c=>c.id),grammar:state.grammar.map(g=>g.id),particles:allParticles(state).map(p=>p.id)};
+ const ids={listening:state.grammar.map(g=>g.id),words:state.cards.map(c=>c.id),drawing:state.cards.map(c=>c.id),grammar:state.grammar.map(g=>g.id),particles:allParticles(state).map(p=>p.id)};
  const entries=Object.keys(MODES).flatMap(mode=>ids[mode].flatMap(id=>{
   const sched=scheduleFor(state,mode,id),postponed=state.postponed?.[`${mode}:${id}`];
   if(!sched&&!postponed)return [];

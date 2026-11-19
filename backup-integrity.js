@@ -17,7 +17,7 @@ export function prepareVerifiedBackup(state){
  }
  const count=s=>Object.keys(s||{}).length;
  if(count(restored.schedules)!==count(state.schedules))throw new Error('Backup integrity error: vocabulary schedules were lost.');
- for(const mode of ['grammar','drawing','particles']){
+ for(const mode of ['grammar','drawing','particles','listening']){
   if(count(restored.skillSchedules[mode])!==count(state.skillSchedules?.[mode]))throw new Error(`Backup integrity error: ${mode} schedules were lost.`);
  }
  for(const key of Object.keys(state.settings))

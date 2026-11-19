@@ -67,6 +67,9 @@ const tokensFor=text=>{
 const specs=JSON.parse(read('study-extended.json'));
 for(let i=4;i<=11;i++){
  const stem=String(i).padStart(3,'0');
+ // Published refinements are hand-edited after the initial tokenization.
+ const output=directory+'chapters/'+stem+'.json';
+ if(fs.existsSync(output)&&JSON.parse(fs.readFileSync(output,'utf8')).revision>1)continue;
  const raw=read('new-raw/'+stem+'.txt').replace(/\r\n/g,'\n');
  const [heading,...body]=raw.trimEnd().split('\n\n');
  const parts=heading.split('\n');

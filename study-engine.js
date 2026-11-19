@@ -7,14 +7,14 @@ import {contextMatches} from './context-matching.js';
 import {allParticles,particleWords,particleFamily} from './particles.js';
 import {familyEvidence,weaknessWeight,characterEvidence,drawingProfile} from './learning-feedback.js';
 import {matchesTagFilters} from './tags.js';
-export const MODES={words:'Vocabulary',grammar:'Grammar',drawing:'Drawing',particles:'Particle Zoo'};
-export const SHARES={words:.60,grammar:.20,drawing:.12,particles:.08};
-export const COSTS={words:12,grammar:35,drawing:50,particles:25};
+export const MODES={words:'Vocabulary',grammar:'Grammar',drawing:'Drawing',particles:'Particle Zoo',listening:'Listening'};
+export const SHARES={words:.60,grammar:.20,drawing:.12,particles:.08,listening:.04};
+export const COSTS={words:12,grammar:35,drawing:50,particles:25,listening:20};
 export const POOLS=['all','due','new'];
 const HAS_HAN=/^[\p{Script=Han}]+$/u;
 export function ensureStudy(s){
  s.skillSchedules??={grammar:{},drawing:{},particles:{}};
- for(const m of ['grammar','drawing','particles'])s.skillSchedules[m]??={};
+ for(const m of ['grammar','drawing','particles','listening'])s.skillSchedules[m]??={};
  s.postponed??={};s.skillHistory??=[];s.mixedSessions??=[];s.activePractice??=null;
  Object.assign(s.settings,normalizeFontSettings(s.settings));
  s.settings.scheduler??='score';s.settings.retryIntervals??=structuredClone(DEFAULT_RETRY);
@@ -76,7 +76,7 @@ function info(s,mode,now,filters){
  if(mode==='drawing'){
   return cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin&&netScore(s,c.id)>=2&&anchorMatches(c,filters)).map(c=>({id:c.id,wordIds:[c.id]}));
  }
- if(mode==='grammar')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
+ if(mode==='grammar'||mode==='listening')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
  if(mode==='particles')return allParticles(s).filter(p=>acceptsGroup(particleWords(p))).map(p=>({id:p.id,family:particleFamily(p),wordIds:[...new Set(particleWords(p))].map(w=>toCard(w)?.id).filter(Boolean)}));
  return [];
 }
@@ -95,7 +95,10 @@ export function candidates(s,mode,_auto=false,now=Date.now(),includeFuture=false
   return [{...item,mode,drawingWeight:drawing?.weight,urgency:weight*(drawing?.weight||1)*(evidence?weaknessWeight(evidence.get(item.family)):1),reason:!sched?'first practice':sched.learning?'relearning due':'review due',dueAt:sched?.dueAt||null}];
  });
 }
-export function availableModes(s,session){return Object.keys(MODES).filter(m=>session?.mode==='auto'?s.settings.autoModes[m]:m===(session?.mode||'words'));}
+let listeningAuto=false;
+export function setListeningAuto(value){listeningAuto=value===true;}
+export function autoEnabled(s,m){return m==='listening'?listeningAuto:s.settings.autoModes[m];}
+export function availableModes(s,session){return Object.keys(MODES).filter(m=>session?.mode==='auto'?autoEnabled(s,m):m===(session?.mode||'words'));}
 function deferredUntil(session,item,now){
  const data=session?.deferred?.[`${item.mode}:${item.id}`];
  if(!data)return 0;
@@ -116,7 +119,7 @@ export function modeCounts(s,mode,filters=null,now=Date.now(),session=null){
  const fresh=all.filter(x=>!x.dueAt);
  const newCount=mode==='words'?Math.min(fresh.length,newVocabRemaining(s,now)):fresh.length;
  // Future-due exercises are shown separately but cannot be selected now.
- return {mode,due:due.length,started:started.length,new:newCount,newTotal:fresh.length,available:due.length+newCount,eligible:all,blocked:Math.max(0,(mode==='words'?s.cards.length:mode==='grammar'?s.grammar.length:mode==='drawing'?s.cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin).length:allParticles(s).length)-all.length)};
+ return {mode,due:due.length,started:started.length,new:newCount,newTotal:fresh.length,available:due.length+newCount,eligible:all,blocked:Math.max(0,(mode==='words'?s.cards.length:['listening','grammar'].includes(mode)?s.grammar.length:mode==='drawing'?s.cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin).length:allParticles(s).length)-all.length)};
 }
 export function sessionAvailability(s,session,now=Date.now()){
  const modes=availableModes(s,session).map(m=>modeCounts(s,m,session?.filters||null,now,session));

@@ -1,8 +1,8 @@
-import {mandarinVoices,voiceDescription,createNarrator} from './reader-speech.js';
+import {speechPassage,mandarinVoices,voiceDescription,createNarrator} from './reader-speech.js';
 import {cloudVoices,createCloudNarrator} from './reader-cloud-speech.js';
 // The document scrolls as one reading surface. Word indices count annotated
 // words in a paragraph, while offset keeps older character-based bookmarks usable.
-export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend,initialGuide=false,initialAudio=false,onGuideChange=()=>{},onAudioChange=()=>{},onTap=()=>{}}){
+export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend,speechSettings=()=>({}),credentials=async()=>({}),voiceChanged=()=>{},initialGuide=false,initialAudio=false,onGuideChange=()=>{},onAudioChange=()=>{},onTap=()=>{}}){
  const doc=pages.ownerDocument,win=doc.defaultView;
  const listeners=new AbortController(),options={signal:listeners.signal};
  const toolbar=pages.querySelector('[data-guide-controls]');
@@ -27,7 +27,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  function releasePlayback(){
   if(previousType!==undefined){try{session.type=previousType;}catch{}previousType=undefined;}
  }
- const narrator=createNarrator(win,select,()=>void step(1),reason=>{
+ const narrator=createNarrator(win,select,()=>void step(1,true),reason=>{
   const fallback=voices.find(v=>v.localService);
   if(playing&&!systemFallback&&!voiceSelect.value&&fallback){
    systemFallback=fallback;narrator.speak(current,fallback,rate);return;
@@ -37,8 +37,13 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const menu=pages.querySelector('[data-reader-settings-sheet]'),dock=pages.querySelector('.reader-dock');
  const audioControls=pages.querySelector('[data-audio-controls]');
  const config=pages.querySelector('[data-cloud-config]');
- const region=pages.querySelector('[data-cloud-region]'),key=pages.querySelector('[data-cloud-key]');
- const cloud=createCloudNarrator(win,select,()=>void step(1),msg=>{pause();speechStatus.textContent=msg;});
+
+ function cloudFailed(msg){
+  const local=voices.find(v=>v.localService);
+  if(playing&&local){systemFallback=local;speechStatus.textContent=msg+' Using '+local.name+'.';narrator.speak(current,local,rate,speechSettings().speechPitch||0);}
+  else{pause();speechStatus.textContent=msg;}
+ }
+ const cloud=createCloudNarrator(win,select,()=>void step(1,true),cloudFailed);
  function refreshVoices(){
   voices=mandarinVoices(synth?.getVoices()||[]);
   function option(value,text){const o=doc.createElement('option');o.value=value;o.textContent=text;return o;}
@@ -50,7 +55,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   const preferred=voiceSelect.dataset.selected;
   if(cloudVoices.has(preferred)||voices.some(v=>v.voiceURI===preferred))voiceSelect.value=preferred;
   audioControls.hidden=!aloud;
-  config.hidden=!aloud||!cloudVoices.has(voiceSelect.value);
+  config.hidden=false;
  }
  if(voiceSelect?.matches?.('[data-voice-select]')){
   refreshVoices();synth?.addEventListener?.('voiceschanged',refreshVoices,options);
@@ -64,7 +69,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   voiceSelect.addEventListener('change',()=>{
    voiceSelect.dataset.selected=voiceSelect.value;systemFallback=null;speechStatus.textContent='';
    refreshVoices();
-   if(!config.hidden&&(!region.value||!key.value)){pause();if(menu)menu.hidden=false;return;}
+   void voiceChanged(voiceSelect.value);
    schedule();
   },options);
  }
@@ -91,7 +96,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  function center(time=performance.now()){
   if(!current||stopped||doc.hidden||Math.abs((viewport()?.scale||1)-1)>0.01)return;
   const first=pages.querySelector('article'),last=pages.querySelector('article:last-of-type');
-  const top=topEdge(),bottom=Math.min(win.innerHeight,(dock?.getBoundingClientRect?.()||{top:win.innerHeight-10}).top);
+  const top=topEdge(),bottom=Math.min(win.innerHeight,dock?.getBoundingClientRect?.().top||win.innerHeight-10);
   if(bottom<=top||!first||!last)return;
   const target=current.getBoundingClientRect(),height=bottom-top;
   const delta=target.top+target.height/2-(top+height/2);
@@ -112,16 +117,28 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   center();bookmark(current.closest('[data-pid]'),current);
  }
  function pause(){releasePlayback();sequence++;cloud.cancel();narrator.cancel();win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
- function schedule(){
+ function schedule(deadline=0){
   sequence++;cloud.cancel();narrator.cancel();clearTimeout(tick);
   if(playing&&current&&aloud){usePlayback();speechStatus.textContent='';
-   if(cloudVoices.has(voiceSelect.value)){
-    void cloud.speak(current,voiceSelect.value,rate,region.value.trim().toLowerCase(),key.value.trim());return;
+   if(cloudVoices.has(voiceSelect.value)&&!systemFallback){
+    const ticket=sequence,preferences=speechSettings(),ahead=[];
+    let word=current;
+    for(let n=0;n<(preferences.speechPreload??2);n++){
+     const last=speechPassage(word).words.at(-1);
+     word=wordList[wordList.indexOf(last)+1];if(!last||!word)break;
+     ahead.push(speechPassage(word).text);
+    }
+    void Promise.all([cloud.prepare(),credentials()]).then(([, {region,key}])=>{
+     if(ticket===sequence)void cloud.speak(current,voiceSelect.value,rate,region,key,{pitch:preferences.speechPitch||0,ahead,deadline});
+    }).catch(error=>{if(ticket===sequence)cloudFailed(error.message);});
+    return;
    }
-   narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback,rate);return;}
-  if(playing&&current)tick=setTimeout(()=>void step(1),60000*[...current.textContent].length/rate);
+   const speak=()=>narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback,rate,speechSettings().speechPitch||0);
+   if(deadline>performance.now())tick=setTimeout(speak,deadline-performance.now());else speak();return;}
+  if(playing&&current)tick=setTimeout(()=>void step(1,true),60000*[...current.textContent].length/rate);
  }
- async function step(direction){
+ async function step(direction,natural=false){
+  const ended=performance.now();
   if(!current)return;
   const request=++sequence;clearTimeout(tick);cloud.cancel();narrator.cancel();
   const source=current;
@@ -129,7 +146,8 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   let index=wordList.indexOf(source)+direction;
   if(index===wordList.length&&direction===1){await extend();if(request!==sequence||stopped||!enabled||current!==source)return;wordList=Array.from(pages.querySelectorAll('[data-word-index]'));}
   if(!wordList[index]){pause();return;}
-  select(wordList[index]);schedule();
+  const paragraph=natural&&source.closest('[data-pid]')!==wordList[index].closest('[data-pid]');
+  select(wordList[index]);schedule(paragraph?ended+(speechSettings().paragraphDelay||0):0);
  }
  function switchGuide(on,target){
   const start=target||current||visibleRow()?.querySelector('[data-word-index]')||wordList[0];

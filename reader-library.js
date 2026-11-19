@@ -76,7 +76,7 @@ export function novelLibrary(state){
  for(const c of masterCatalog)add(c.novel,c.book,c.author,{...c,source:'master'});
  // Historic imported, non-hosted chapters are reconstructed for old backups.
  for(const [id,b] of Object.entries(state.reader||{}))for(const c of b.chapters||[]){
-  if(!masterCatalog.some(x=>x.novel===id&&x.number===c.number&&x.digest===c.digest)){
+  if(!masterCatalog.some(x=>x.novel===id&&x.number===c.number&&(x.digest===c.digest||x.previousDigest===c.digest))){
    const meta=state.readerCustomIndex?.[id],record=meta?.chapters.find(x=>x.number===c.number);
    add(id,meta?.title||b.title,meta?.author,{...c,...record,novel:id,source:'custom'});
   }

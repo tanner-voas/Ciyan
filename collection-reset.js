@@ -1,12 +1,13 @@
 // Keep any entry referenced by vocabulary, drawing, or grammar evidence.
 function recorded(s){
  const words=new Set(Object.keys(s.schedules)),sentences=new Set(Object.keys(s.skillSchedules.grammar));
+ for(const key of Object.keys(s.skillSchedules.listening||{}))sentences.add(key);
  for(const key of Object.keys(s.skillSchedules.drawing))words.add(key);
  for(const r of s.history)words.add(r.cardId);
  for(const r of s.grammarHistory)sentences.add(r.grammarId);
  for(const r of s.skillHistory){
   if(r.mode==='drawing'||r.mode==='words')words.add(r.id);
-  if(r.mode==='grammar')sentences.add(r.id);
+  if(r.mode==='grammar'||r.mode==='listening')sentences.add(r.id);
  }
  return {words,sentences};
 }

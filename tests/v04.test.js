@@ -63,7 +63,7 @@ test('weighted random Auto Study can serve all enabled modes with eligible due w
  const s=known();for(const c of s.cards)s.schedules[c.id].dueAt=new Date(now-1000).toISOString();
  for(const m of ['grammar','drawing','particles'])for(const x of candidates(s,m,false,now))s.skillSchedules[m][x.id]={...scheduleReview(null,3,now,s.settings),score:2.5,dueAt:new Date(now-1000).toISOString()};
  const a=session(),seen=new Set();for(let i=0;i<120;i++){a.current=nextExercise(s,a,now,()=>((i*37)%101)/101);if(!a.current)break;seen.add(a.current.mode);recordExercise(s,a,3,{seconds:20},now);}
- assert.deepEqual([...seen].sort(),Object.keys(MODES).sort());
+ assert.deepEqual([...seen].sort(),Object.keys(MODES).filter(m=>m!=='listening').sort());
 });
 test('particle validation, choice and placement, and accepted alternatives',()=>{
  for(const p of PARTICLES){const n=normalizeParticle(p);for(const a of n.accepted)assert.ok(particleCorrect(n,a.choice,a.slot));assert.equal(particleCorrect(n,'invalid',0),false);}
@@ -79,7 +79,7 @@ test('backup round trip includes separate skills, settings, active pads, and dec
  assert.deepEqual(restored.skillSchedules,s.skillSchedules);assert.deepEqual(restored.skillHistory,s.skillHistory);assert.deepEqual(restored.activePractice.input,a.input);assert.deepEqual(restored.settings.retryIntervals,s.settings.retryIntervals);
  assert.equal(restored.grammar[0].particleTests.length,1);
  const before=JSON.stringify([restored.cards,restored.grammar]);clearLearningRecords(restored);
- assert.equal(JSON.stringify([restored.cards,restored.grammar]),before);assert.equal(restored.activePractice,null);assert.deepEqual(restored.skillSchedules,{grammar:{},drawing:{},particles:{}});
+ assert.equal(JSON.stringify([restored.cards,restored.grammar]),before);assert.equal(restored.activePractice,null);assert.deepEqual(restored.skillSchedules,{grammar:{},drawing:{},particles:{},listening:{}});
  const invalid=makeBackup(s);invalid.state.activePractice.input.pads=[[[[Infinity,0]]]];assert.throws(()=>parseBackup(invalid));
 });
 test('adaptive histogram counts every scheduled skill exactly once and changes density with width',()=>{

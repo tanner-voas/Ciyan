@@ -48,8 +48,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-4.zip",
-    "digest": "d275a7ba6a76c7a8ed910602cdf8bdda822881009ce423c02d5c58115c7b7bc0",
-    "size": 100021
+    "digest": "7f4783717afa43b9ab9e5d8031dedb19823f3672eedb5aa24608ca2448b8dcbc",
+    "size": 98488,
+    "previousDigest": "d275a7ba6a76c7a8ed910602cdf8bdda822881009ce423c02d5c58115c7b7bc0"
   },
   {
     "book": "盘龙",
@@ -61,8 +62,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-5.zip",
-    "digest": "143c88f2c4f6477ad75846b9afddd22b7d881413260475bac4e88eb6abe94466",
-    "size": 77107
+    "digest": "7196daf6536d6e19028655d88393f858f0c2ad54d94cd6eeeb752e66afae2727",
+    "size": 76312,
+    "previousDigest": "143c88f2c4f6477ad75846b9afddd22b7d881413260475bac4e88eb6abe94466"
   },
   {
     "book": "盘龙",
@@ -74,8 +76,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-6.zip",
-    "digest": "d3a3d3f05ca016cfa40524ac337d7e507480d0efde0525b3ef70486f2dda89a2",
-    "size": 77432
+    "digest": "76c10ab689cd4408299e74a486a270352eebf85f4e2377fe257120a5a66c9a8d",
+    "size": 76483,
+    "previousDigest": "d3a3d3f05ca016cfa40524ac337d7e507480d0efde0525b3ef70486f2dda89a2"
   },
   {
     "book": "盘龙",
@@ -87,8 +90,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-7.zip",
-    "digest": "a8ba650fded060e67df6c504651a9fd35059bad20f96c52397312f833580495a",
-    "size": 75204
+    "digest": "580a6ecedfc30ea73767ba1899df3e83b237a992a71ea7ebb1f2740f2a622593",
+    "size": 74119,
+    "previousDigest": "a8ba650fded060e67df6c504651a9fd35059bad20f96c52397312f833580495a"
   },
   {
     "book": "盘龙",
@@ -100,8 +104,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-8.zip",
-    "digest": "e78c80f4c9622cd9738d8a52b37ed32b4d6f30e920abbef46fc7b3f70b005144",
-    "size": 80105
+    "digest": "edc409e23bdb3dd45b1ae42b479b04c6c167d5ab199f061a41092de6480806db",
+    "size": 79579,
+    "previousDigest": "e78c80f4c9622cd9738d8a52b37ed32b4d6f30e920abbef46fc7b3f70b005144"
   },
   {
     "book": "盘龙",
@@ -113,8 +118,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-9.zip",
-    "digest": "56b85ce0b8912a71e649c2267be33e42eb8dce7a6814b707fd11b73792c55da0",
-    "size": 82783
+    "digest": "81223f959526b21ef5ffc69354d5f47eb404854fb43d19ca4eaaadeb3c0bb67c",
+    "size": 80450,
+    "previousDigest": "56b85ce0b8912a71e649c2267be33e42eb8dce7a6814b707fd11b73792c55da0"
   },
   {
     "book": "盘龙",
@@ -126,8 +132,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-10.zip",
-    "digest": "c2d06adcd783139f4e4d23cf46a7ccb5b480147f36cd888c4ebb0c1ab794f1b8",
-    "size": 75882
+    "digest": "ddf4079ad167c05b2e050df78059c795b7afa5ace7f59e4ddbef9fec589f3832",
+    "size": 74936,
+    "previousDigest": "c2d06adcd783139f4e4d23cf46a7ccb5b480147f36cd888c4ebb0c1ab794f1b8"
   },
   {
     "book": "盘龙",
@@ -139,8 +146,9 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-11.zip",
-    "digest": "6433e07d57027eaa049d760805c50ade3ccf8c81bc37eed788c360aeab8023cd",
-    "size": 87902
+    "digest": "73288b095e66d7e76d17485a4179a3c7d57b3e364a394b3c91e15ab9e214f740",
+    "size": 86110,
+    "previousDigest": "6433e07d57027eaa049d760805c50ade3ccf8c81bc37eed788c360aeab8023cd"
   },
   {
     "book": "TSK3 samples",

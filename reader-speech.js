@@ -36,13 +36,13 @@ export function createNarrator(win,select,advance,failed){
   clearTimeout(startTimeout);clearTimeout(timer);
   if(active){active=null;win.speechSynthesis.cancel();}
  }
- function speak(word,voice,cpm){
+ function speak(word,voice,cpm,pitch=0){
   cancel();
-  const {text,start,words}=speechPassage(word);
+  const {text,start,words}=typeof word==='string'?{text:word,start:0,words:[]}:speechPassage(word);
   const utterance=new win.SpeechSynthesisUtterance(text);
   active=utterance;
   if(voice)utterance.voice=voice;
-  utterance.lang=voice?.lang||'zh-CN';utterance.volume=1;
+  utterance.lang=voice?.lang||'zh-CN';utterance.volume=1;utterance.pitch=1+pitch/100;
   utterance.rate=Math.max(.4,Math.min(2.5,cpm/240));
   let index=0;
   function move(next){

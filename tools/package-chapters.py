@@ -7,6 +7,16 @@ from zipfile import ZipFile, ZipInfo, ZIP_DEFLATED
 root = Path(__file__).resolve().parents[1]
 dest = root / "chapters"
 dest.mkdir(exist_ok=True)
+previous_panlong_digests = {
+    4: "d275a7ba6a76c7a8ed910602cdf8bdda822881009ce423c02d5c58115c7b7bc0",
+    5: "143c88f2c4f6477ad75846b9afddd22b7d881413260475bac4e88eb6abe94466",
+    6: "d3a3d3f05ca016cfa40524ac337d7e507480d0efde0525b3ef70486f2dda89a2",
+    7: "a8ba650fded060e67df6c504651a9fd35059bad20f96c52397312f833580495a",
+    8: "e78c80f4c9622cd9738d8a52b37ed32b4d6f30e920abbef46fc7b3f70b005144",
+    9: "56b85ce0b8912a71e649c2267be33e42eb8dce7a6814b707fd11b73792c55da0",
+    10: "c2d06adcd783139f4e4d23cf46a7ccb5b480147f36cd888c4ebb0c1ab794f1b8",
+    11: "6433e07d57027eaa049d760805c50ade3ccf8c81bc37eed788c360aeab8023cd",
+}
 catalog = []
 for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/panlong/chapters").glob("*.json")]):
     data = path.read_bytes()
@@ -37,6 +47,8 @@ for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/
     entry["file"] = f"{entry['novel']}-{entry['number']}.zip"
     entry["digest"] = hashlib.sha256(data).hexdigest()
     entry["size"] = len(data)
+    if chapter["novel"] == "panlong" and chapter["number"] in previous_panlong_digests:
+        entry["previousDigest"] = previous_panlong_digests[chapter["number"]]
     with ZipFile(dest / entry["file"], "w") as archive:
         archive.writestr(ZipInfo("chapter.json"), data, compress_type=ZIP_DEFLATED)
     catalog.append(entry)

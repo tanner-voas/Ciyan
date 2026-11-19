@@ -1,3 +1,4 @@
+import {validVault} from './speech-vault.js';
 import {validateReader,resetReaderProgress} from './reader-core.js';
 import {validateReaderCustomIndex} from './reader-library.js';
 import {APP_VERSION,prepareVersionedBackup} from './backup-versions.js';
@@ -32,10 +33,14 @@ function database(){
   return databasePromise;
 }
 export function deleteConfirmationValid(value){return String(value??'').trim().toLowerCase()==='delete';}
+export function speechPreferences(s={}){
+ const number=(v,min,max,fallback)=>Number.isInteger(v)&&v>=min&&v<=max?v:fallback;
+ return {speechVoice:typeof s.speechVoice==='string'?s.speechVoice.slice(0,512):'',speechPitch:number(s.speechPitch,-50,50,0),speechPreload:number(s.speechPreload,0,6,2),paragraphDelay:number(s.paragraphDelay,0,5000,110)};
+}
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  reader:{},readerCustomIndex:{},settings:{readerGuideEnabled:false,readerTtsEnabled:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
+  reader:{},readerCustomIndex:{},settings:{...speechPreferences(),readerGuideEnabled:false,readerTtsEnabled:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -254,7 +259,7 @@ export function parseBackup(data){
   const grammarHistory=source.grammarHistory.filter(h=>h&&grammarIds.has(h.grammarId)&&validDate(h.at)).slice(-500000);
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
-  const settings={readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+  const settings={...speechPreferences(s),readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
@@ -265,7 +270,8 @@ export function parseBackup(data){
   const activeGrammarSession=source.activeGrammarSession&&Array.isArray(source.activeGrammarSession.queue)&&Array.isArray(source.activeGrammarSession.results)
     ?{...source.activeGrammarSession,queue:source.activeGrammarSession.queue.filter(id=>grammarIds.has(id)),results:source.activeGrammarSession.results.filter(r=>grammarIds.has(r.grammarId))}:null;
   const revision=Math.max(0,Math.floor(Number(source.revision)||0));
-  return {...defaults,archived,explicitDictionary:source.explicitDictionary===true,reader:validateReader(source.reader),readerCustomIndex:validateReaderCustomIndex(source.readerCustomIndex),appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
+  if(source.speechVault&&!validVault(source.speechVault))throw Error("Invalid encrypted speech credentials");
+  return {...defaults,...(source.speechVault?{speechVault:source.speechVault}:{}),archived,explicitDictionary:source.explicitDictionary===true,reader:validateReader(source.reader),readerCustomIndex:validateReaderCustomIndex(source.readerCustomIndex),appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
     postponed:Object.fromEntries(Object.entries(source.postponed||{}).filter(([k,v])=>!Object.hasOwn(Object.prototype,k)&&validDate(v))),skillSchedules:validateSkillSchedules(source.skillSchedules,ids,grammarIds),skillHistory:(source.skillHistory||[]).filter(h=>h&&[1,2,3,4].includes(h.grade)&&validDate(h.at)).slice(-500000),mixedSessions:(source.mixedSessions||[]).filter(s=>validDate(s.endedAt)).slice(-50000),activePractice:validatePractice(source.activePractice,ids,grammarIds,new Set(allParticles({grammar}).map(p=>p.id))),
     activeSession:activeSession?.queue?.length?activeSession:null,
     activeGrammarSession:activeGrammarSession?.queue?.length?activeGrammarSession:null,
@@ -273,7 +279,7 @@ export function parseBackup(data){
 }
 export function makeBackup(state){
  const content={...state,appVersion:APP_VERSION,backedUpRevision:state.revision,lastBackupAt:new Date().toISOString()};
- delete content.filters;delete content.studyFilters;
+ delete content.deviceKey;delete content.filters;delete content.studyFilters;
  if(content.activePractice){content.activePractice={...content.activePractice};delete content.activePractice.filters;delete content.activePractice.allowedWords;}
  if(content.lastPracticeUndo){content.lastPracticeUndo=structuredClone(content.lastPracticeUndo);delete content.lastPracticeUndo.filters;delete content.lastPracticeUndo.allowedWords;delete content.lastPracticeUndo.input?.pads;}
  for(const session of [content.activePractice,content.lastPracticeUndo]){if(session?.undo)session.undo=session.undo.map(snap=>{const clean={...snap,input:{...snap.input}};delete clean.input.pads;return clean;});}
@@ -316,15 +322,15 @@ export function mergeDeck(current,content){
 }
 export function clearLearningRecords(d){
   resetReaderProgress(d);d.archived={cards:[],grammar:[]};
-  d.lastPracticeUndo=null;d.postponed={};d.skillSchedules={grammar:{},drawing:{},particles:{}};d.skillHistory=[];d.mixedSessions=[];d.activePractice=null;d.schedules={};d.history=[];d.sessions=[];d.activeSession=null;
+  d.lastPracticeUndo=null;d.postponed={};d.skillSchedules={grammar:{},drawing:{},particles:{},listening:{}};d.skillHistory=[];d.mixedSessions=[];d.activePractice=null;d.schedules={};d.history=[];d.sessions=[];d.activeSession=null;
   d.grammarHistory=[];d.grammarSessions=[];d.activeGrammarSession=null;
 }
 
 function validateSkillSchedules(input,words,grammar){
- const out={grammar:{},drawing:{},particles:{}};
+ const out={grammar:{},drawing:{},particles:{},listening:{}};
  for(const mode of Object.keys(out))for(const [id,s] of Object.entries(input?.[mode]||{})){
   if(Object.hasOwn(Object.prototype,id)||id==='prototype')throw new Error('Invalid skill ID');
-  if(mode==='drawing'&&!words.has(id)||mode==='grammar'&&!grammar.has(id))continue;
+  if(mode==='drawing'&&!words.has(id)||['grammar','listening'].includes(mode)&&!grammar.has(id))continue;
   if(!s||!validDate(s.dueAt)||!validDate(s.lastReviewedAt)||!Number.isFinite(s.stability)||s.stability<=0||s.stability>36500||!Number.isFinite(s.difficulty)||s.difficulty<1||s.difficulty>10||![1,2,3,4].includes(s.lastRating)||!Number.isSafeInteger(s.reps)||s.reps<1)throw new Error('Invalid skill schedule');
   out[mode][id]={...s};
  }
@@ -334,9 +340,9 @@ function validateSkillSchedules(input,words,grammar){
 function validatePractice(input,words,grammar,particles){
  if(!input)return null;
  const e=input.current;
- if((!e&&!input.continuous)||e&&!['words','grammar','drawing','particles'].includes(e.mode)||!['auto','words','grammar','drawing','particles'].includes(input.mode)||!Array.isArray(input.results)||input.results.length>500000)return null;
+ if((!e&&!input.continuous)||e&&!['words','grammar','drawing','particles','listening'].includes(e.mode)||!['auto','words','grammar','drawing','particles','listening'].includes(input.mode)||!Array.isArray(input.results)||input.results.length>500000)return null;
  if(e&&e.mode==='particles'&&!particles.has(e.id))return null;
- if(e&&(['words','drawing'].includes(e.mode)&&!words.has(e.id)||e.mode==='grammar'&&!grammar.has(e.id)))return null;
+ if(e&&(['words','drawing'].includes(e.mode)&&!words.has(e.id)||['grammar','listening'].includes(e.mode)&&!grammar.has(e.id)))return null;
  const result=structuredClone(input);delete result.filters;delete result.allowedWords;result.continuous=true;result.pool=['all','due','new'].includes(result.pool)?result.pool:'all';result.turn=Number.isSafeInteger(result.turn)&&result.turn>=0?result.turn:0;result.deferred=Object.fromEntries(Object.entries(result.deferred||{}).filter(([key,val])=>typeof key==='string'&&val&&Number.isFinite(val.at)&&Number.isSafeInteger(val.turn)));result.limit=Math.max(1,Math.min(500,Number(result.limit)||12));result.spent??={};result.input??={};
  if(result.input.pads){
   if(!Array.isArray(result.input.pads)||result.input.pads.length>120)throw new Error('Invalid drawing pads');

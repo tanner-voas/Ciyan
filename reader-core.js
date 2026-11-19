@@ -55,6 +55,18 @@ export function acceptChapter(s,p,digest){
   b.items[key]={kind:c.kind,hanzi:c.hanzi,pinyin:c.pinyin,english:c.english};
  }
  let position=old?.position;
+ if(position&&old.digest!==digest){
+  const row=p.paragraphs.find(r=>r.id===position.id);
+  if(row){
+   let offset=0,wordIndex=-1,restored=null;
+   for(const token of row.tokens){
+    const text=typeof token==='string'?token:token[1]??p.items[token[0]].hanzi;
+    if(Array.isArray(token)&&(!restored||offset<=position.offset))restored={wordIndex:++wordIndex,offset};
+    offset+=text.length;
+   }
+   if(restored)position={...position,...restored};
+  }
+ }
  if(position&&!p.paragraphs.some(r=>r.id===position.id)){
   const index=Math.min(position.index||0,p.paragraphs.length-1);
   position={id:p.paragraphs[index].id,index,offset:0};

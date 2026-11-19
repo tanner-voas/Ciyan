@@ -15,7 +15,7 @@ export function replaceMaster(state,file){
  state.cards=cards;state.grammar=grammar;
  const ids=new Set(cards.map(c=>c.id)),gids=new Set(grammar.map(g=>g.id));
  const e=state.activePractice?.current;
- if(e&&(['words','drawing'].includes(e.mode)?!ids.has(e.id):e.mode==='grammar'?!gids.has(e.id):false))state.activePractice=null;
+ if(e&&(['words','drawing'].includes(e.mode)?!ids.has(e.id):['grammar','listening'].includes(e.mode)?!gids.has(e.id):false))state.activePractice=null;
  // Keep schedules of absent custom items so manually reloading their master can
  // recover progress. They are excluded from the active collection's due chart.
  return state;
