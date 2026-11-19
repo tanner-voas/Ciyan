@@ -53,8 +53,10 @@ export function matchesRequestedChapter(chapter,requested,digest){
   (chapter.revision>requested.revision||
    (chapter.revision===requested.revision&&digest===requested.digest));
 }
+const isHostedDigest=(novel,number,digest)=>masterCatalog.some(c=>c.novel===novel&&c.number===number&&
+ (c.digest===digest||c.previousDigest===digest||c.previousDigests?.includes(digest)));
 export function registerCustomChapter(state,chapter,digest){
- if(masterCatalog.some(c=>c.novel===chapter.novel&&c.number===chapter.number&&c.digest===digest))return;
+ if(isHostedDigest(chapter.novel,chapter.number,digest))return;
  state.readerCustomIndex??={};
  const b=state.readerCustomIndex[chapter.novel]??{title:chapter.book,chapters:[]};
  b.title=chapter.book;
@@ -76,12 +78,13 @@ export function novelLibrary(state){
  for(const c of masterCatalog)add(c.novel,c.book,c.author,{...c,source:'master'});
  // Historic imported, non-hosted chapters are reconstructed for old backups.
  for(const [id,b] of Object.entries(state.reader||{}))for(const c of b.chapters||[]){
-  if(!masterCatalog.some(x=>x.novel===id&&x.number===c.number&&(x.digest===c.digest||x.previousDigest===c.digest))){
+  if(!isHostedDigest(id,c.number,c.digest)){
    const meta=state.readerCustomIndex?.[id],record=meta?.chapters.find(x=>x.number===c.number);
    add(id,meta?.title||b.title,meta?.author,{...c,...record,novel:id,source:'custom'});
   }
  }
  for(const [id,b] of Object.entries(state.readerCustomIndex||{}))for(const c of b.chapters||[]){
+  if(isHostedDigest(id,c.number,c.digest))continue;
   add(id,b.title,b.author,{...c,novel:id,source:'custom'});
  }
  return [...books.values()].map(b=>({novel:b.novel,title:b.title,author:b.author,chapters:[...b.chapters.values()].sort((a,b)=>a.number-b.number)}))

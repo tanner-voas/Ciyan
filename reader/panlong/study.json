@@ -1,5 +1,29 @@
 [
- {"words":["林雷","乌山镇","希尔曼","蕴气式","斗气","圣域","巴鲁克","龙血战士","晨练","稚童","斑驳","资质","修炼","筋骨","凝神","出人头地","府邸","衰败","憧憬"],"grammar":[{"hanzi":"即使……也……","pinyin":"jíshǐ … yě …","english":"Even if one condition holds, the result still applies. 即使是六七岁的稚童，也…… includes even the youngest children."}]},
- {"words":["林雷","霍格","沃顿","希里","龙血战士","乌山镇","炽热","枯黄","深秋","恭敬","躬身","灵位","宗堂","麻布","尚武","嘱托","蕴含","血脉"],"grammar":[{"hanzi":"正是……","pinyin":"zhèng shì …","english":"Emphasizes identification: it is precisely this person or thing. Hogg uses 正是 to identify his own clan."}]},
- {"words":["林雷","霍格","巴鲁克","龙血针","杀戮","龙血战士","稀薄","浓度","灵位","血脉","迎战","收服","衰败","变卖","依偎","荣耀","落荒而逃"],"grammar":[{"hanzi":"越……越……","pinyin":"yuè … yuè …","english":"Two quantities vary together. 浓度越高越好 means the higher the concentration, the better."}]}
+  {
+    "grammar": [
+      {
+        "hanzi": "即使……也……",
+        "pinyin": "jíshǐ … yě …",
+        "english": "Even if one condition holds, the result still applies. 即使是六七岁的稚童，也…… includes even the youngest children."
+      }
+    ]
+  },
+  {
+    "grammar": [
+      {
+        "hanzi": "正是……",
+        "pinyin": "zhèng shì …",
+        "english": "Emphasizes identification: it is precisely this person or thing. Hogg uses 正是 to identify his own clan."
+      }
+    ]
+  },
+  {
+    "grammar": [
+      {
+        "hanzi": "越……越……",
+        "pinyin": "yuè … yuè …",
+        "english": "Two quantities vary together. 浓度越高越好 means the higher the concentration, the better."
+      }
+    ]
+  }
 ]

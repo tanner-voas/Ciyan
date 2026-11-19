@@ -17,6 +17,14 @@ previous_panlong_digests = {
     10: "c2d06adcd783139f4e4d23cf46a7ccb5b480147f36cd888c4ebb0c1ab794f1b8",
     11: "6433e07d57027eaa049d760805c50ade3ccf8c81bc37eed788c360aeab8023cd",
 }
+# Preserve every known earlier manifest digest so v0.7.x/v0.8.x readers
+# upgrade after installing a newer service worker instead of staying on the
+# old package or mistaking a master chapter for a custom upload.
+old_catalog = {}
+index_path = dest / "index.js"
+if index_path.exists():
+    original = index_path.read_text().removeprefix("export default ").strip().removesuffix(";")
+    old_catalog = {(entry["novel"], entry["number"]): entry for entry in json.loads(original)}
 catalog = []
 for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/panlong/chapters").glob("*.json")]):
     data = path.read_bytes()
@@ -47,8 +55,16 @@ for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/
     entry["file"] = f"{entry['novel']}-{entry['number']}.zip"
     entry["digest"] = hashlib.sha256(data).hexdigest()
     entry["size"] = len(data)
-    if chapter["novel"] == "panlong" and chapter["number"] in previous_panlong_digests:
-        entry["previousDigest"] = previous_panlong_digests[chapter["number"]]
+    original_entry = old_catalog.get((chapter["novel"], chapter["number"]), {})
+    prior = [original_entry.get("digest"), original_entry.get("previousDigest"),
+             *(original_entry.get("previousDigests") or [])]
+    if chapter["novel"] == "panlong":
+        prior.append(previous_panlong_digests.get(chapter["number"]))
+    prior = list(dict.fromkeys(h for h in prior if h and h != entry["digest"]))
+    if prior:
+        entry["previousDigest"] = prior[0]
+        if len(prior) > 1:
+            entry["previousDigests"] = prior[1:]
     with ZipFile(dest / entry["file"], "w") as archive:
         archive.writestr(ZipInfo("chapter.json"), data, compress_type=ZIP_DEFLATED)
     catalog.append(entry)

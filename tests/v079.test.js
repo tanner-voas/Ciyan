@@ -11,14 +11,14 @@ import {APP_VERSION,prepareVersionedBackup} from '../backup-versions.js';
 
 const content=path=>fs.readFileSync(new URL(path,import.meta.url),'utf8');
 test('v0.7.9 includes 11 linear Panlong chapters under V01; existing three digests unchanged',()=>{
- assert.equal(APP_VERSION,'0.8.2');
+ assert.equal(APP_VERSION,'0.8.3');
  assert.equal(catalog.length,14);
  const entries=catalog.filter(c=>c.novel==='panlong');
  assert.deepEqual(entries.map(c=>c.number),Array.from({length:11},(_,i)=>i+1));
  assert.ok(entries.every(c=>c.volume===1&&c.volumeTitle==='盘龙之戒'&&c.author==='我吃西红柿'));
- assert.equal(entries[0].digest,'adf543c915356f94e96968182122b751613ab833f2899bab7b477198772ccb03');
- assert.equal(entries[1].digest,'3f55cdbe9546326fd162ee0488f59911752285d0e56e8d50f687246e914ab333');
- assert.equal(entries[2].digest,'351696f3e4f993ee4360e6cc329ff856c92f0dac83580877aa6aedaa2056d2cc');
+ assert.equal(entries[0].previousDigest,'adf543c915356f94e96968182122b751613ab833f2899bab7b477198772ccb03');
+ assert.equal(entries[1].previousDigest,'3f55cdbe9546326fd162ee0488f59911752285d0e56e8d50f687246e914ab333');
+ assert.equal(entries[2].previousDigest,'351696f3e4f993ee4360e6cc329ff856c92f0dac83580877aa6aedaa2056d2cc');
 });
 test('new reader packages preserve uploaded chapter prose exactly',()=>{
  for(let n=4;n<=11;n++){
@@ -28,7 +28,10 @@ test('new reader packages preserve uploaded chapter prose exactly',()=>{
   const chapter=JSON.parse(content(`../reader/panlong/chapters/${name}.json`));
   assert.deepEqual(validateChapter(chapter).length>100,true);
   assert.equal(chapterText(chapter),reference,`chapter ${n} source fidelity`);
-  assert.ok(chapter.authored.length>=10,`chapter ${n} has sufficient curated study words`);
+  assert.ok(chapter.focus.length>=5,`chapter ${n} has critical terms and grammar`);
+  assert.ok(chapter.focus.every(id=>chapter.items[id].kind!=='vocab'));
+  assert.ok(chapter.focus.some(id=>id.startsWith('grammar-')));
+  assert.ok(!('authored' in chapter));
   const file=fs.readFileSync(new URL(`../reader/panlong/chapters/${name}.json`,import.meta.url));
   const manifest=catalog.find(c=>c.novel==='panlong'&&c.number===n);
   assert.equal(createHash('sha256').update(file).digest('hex'),manifest.digest);
@@ -91,5 +94,5 @@ test('custom author and volume metadata survive backup without adding new progre
  assert.ok(!JSON.stringify(saved.reader).includes('paragraphs'));
  assert.ok(!JSON.stringify(saved.readerCustomIndex).includes('tokens'));
  const older=defaultState();older.appVersion='0.7.8';
- assert.equal(prepareVersionedBackup(older).appVersion,'0.8.2');
+ assert.equal(prepareVersionedBackup(older).appVersion,'0.8.3');
 });

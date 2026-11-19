@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.8.2
+# Cíyán (词言) v0.8.3
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
@@ -49,7 +49,7 @@ custom-index full backups; chapter text itself is never backed up.
 Both Cloudflare Pages and Cloudflare Workers deploy from the same
 `dist/ciyan` build, as documented below.
 
-## Speech and listening in v0.8.2
+## Speech and listening in v0.8.3
 
 Open **Settings → Speech** to choose a Mandarin voice and set reading speed, pitch, Azure lookahead and paragraph pauses. The reader and study screens share these preferences. Each voice remembers its own CPM and pitch. Existing settings carry forward for the previously selected voice. Azure fetches two upcoming sentences by default and reuses up to eight decoded clips by default. Set Maximum cached sentences to adjust this limit, including zero to disable caching. Transport controls can restart speech at any annotated word.
 
@@ -83,19 +83,21 @@ of studied custom items removed by Reload cards.
 
 ### Chapter authoring and verification
 
-The package is UTF-8 JSON. Each paragraph is a stable ID and a token sequence. Literal strings supply punctuation and spacing. A one-element array identifies a dictionary entry whose Chinese headword supplies the visible text. An optional second array element preserves an alias such as a full name while sharing the same item and score. The authored list can include grammar prompts. Auto derives its list from every nonliteral span. Novel IDs and item IDs should be reused across chapters. Increment the revision when changing a released file.
+The package is UTF-8 JSON. Each paragraph is a stable ID and a token sequence. Literal strings supply punctuation and spacing. A one-element array identifies a dictionary entry whose Chinese headword supplies the visible text. An optional second array element preserves an alias such as a full name while sharing the same item and score. Automatic chapter study derives vocabulary from all annotated spans. The `focus` list contains only chapter-critical terms and grammar, which receive six times the ordinary selection weight. Legacy `authored` lists remain importable but cannot limit vocabulary selection. Novel IDs and item IDs should be reused across chapters. Increment the revision when changing a released file.
 
 The exact uploads are in `reader/panlong/original/`. Clean references remove paragraph-end website counters, trim surrounding indentation and use one blank line between paragraphs. Dates and numbers within the narrative are preserved. SHA-256 digests in `locked.json` pin those references. Run from the repository root:
 
 ```sh
 node tools/verify-reader.mjs
 node tools/build-reader.mjs
+node tools/build-panlong-extended.mjs
+node tools/refresh-reader-focus.mjs
 node tools/verify-reader.mjs
 npm test
 python3 package.py
 ```
 
-The builder uses the bundled vocabulary, authored study lists, supplemental glossaries and Node’s Mandarin word segmenter. The committed packages can be imported directly. Use Node 24 to rebuild. The verifier checks both the raw-to-clean transformation and reconstruction through the reader’s own token model.
+The builders use the bundled vocabulary, supplemental glossaries, the versioned `reader/focus-grammar.json` focus specification, and Node’s Mandarin word segmenter. The committed packages can be imported directly. Use Node 24 to rebuild. The verifier checks both the raw-to-clean transformation and reconstruction through the reader’s own token model.
 
 Fonts continue to download and cache on demand, with a manual upload fallback.
 Font bytes are not part of the Git ZIP, deployment or learning backup.

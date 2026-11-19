@@ -2,9 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
-import {acceptChapter,readerAnalysis,gradeReader,validateChapter} from '../reader-core.js';
+import {acceptChapter,readerAnalysis,gradeReader,validateChapter,chapterFocus,pickReaderItem,recordPractice} from '../reader-core.js';
 import {clearDictionary,reloadCards} from '../collection-reset.js';
-import {defaultState,parseBackup,clearLearningRecords} from '../storage.js';
+import {defaultState,parseBackup,clearLearningRecords,migrateState} from '../storage.js';
 import {replaceMaster} from '../master.js';
 import {prepareVerifiedBackup} from '../backup-integrity.js';
 import {scheduleReview} from '../review-scheduler.js';
@@ -13,22 +13,28 @@ const chapters=[1,2,3].map(n=>{
  return [JSON.parse(bytes),createHash('sha256').update(bytes).digest('hex')];
 });
 function restored(s){return parseBackup(JSON.parse(prepareVerifiedBackup(s).json));}
-test('three chapters retain recurring and overdue cards through text-free backup and out-of-order reload',()=>{
+test('all vocabulary is auto-selected, while high-priority terms/grammar survive backups and earlier reviews',()=>{
  const s=defaultState();assert.throws(()=>acceptChapter(s,...chapters[1]),/chapter 1/);
  acceptChapter(s,...chapters[0]);const b=s.reader.panlong,c=b.chapters[0];
- const first=readerAnalysis(s,b,c);assert.equal(first.keys.length,20);assert.ok(first.weak.includes('grammar-即使……也……'));
+ const first=readerAnalysis(s,b,c);
+ assert.equal(first.keys.length,c.all.length+4);
+ assert.ok(first.weak.includes('grammar-即使……也……'));
+ assert.ok(first.weak.includes('vocab-斑驳'));
+ assert.ok(!first.weak.includes('vocab-的'),'HSK1–4 words without weakness are assumed known');
+ assert.ok(first.focus.has('term-希尔曼'));
+ assert.ok(first.focus.has('grammar-一旦……就……'));
+ assert.ok(!first.focus.has('vocab-斑驳'));
  s.settings.newWordsPerDay=0;const t=Date.UTC(2026,10,1);
- for(const k of first.keys)for(let i=0;i<11;i++)gradeReader(s,b,k,4,t+i*45*86400000);
- assert.ok(readerAnalysis(s,b,c).ready);c.unlocked=true;c.position={id:'p12',index:11,offset:6};
+ gradeReader(s,b,'vocab-斑驳',4,t);gradeReader(s,b,'term-蕴气式',4,t);
  assert.ok(s.cards.some(w=>w.hanzi==='斑驳'&&w.tags.includes('Reader/盘龙')));
  assert.ok(!s.cards.some(w=>w.hanzi==='希尔曼'||w.hanzi.includes('……')));
- s.settings.readerGate='auto';const auto=readerAnalysis(s,b,c);
- assert.equal(auto.keys.length,c.all.length);assert.ok(!auto.ready);assert.ok(c.unlocked);
- s.settings.readerGate='authored';acceptChapter(s,...chapters[1]);
+ c.unlocked=true;c.position={id:'p12',index:11,offset:6};
+ acceptChapter(s,...chapters[1]);
  const second=readerAnalysis(s,b,b.chapters[1],t+900*86400000);
- assert.ok(second.earlier.includes('term-蕴气式'));assert.ok(!second.weak.includes('term-林雷'));
+ assert.ok(second.earlier.includes('term-蕴气式'));
  const r=restored(s);assert.deepEqual(r.reader,s.reader);
  assert.ok(!JSON.stringify(r.reader).includes('"tokens"'));
+ assert.ok(!JSON.stringify(r.reader).includes('"authored"'));
  acceptChapter(r,...chapters[2]);acceptChapter(r,...chapters[0]);
  assert.equal(r.reader.panlong.chapters.length,3);assert.equal(r.reader.panlong.chapters[0].position.offset,6);
  assert.throws(()=>acceptChapter(r,chapters[0][0],'a'.repeat(64)),/revision/);
@@ -44,67 +50,79 @@ test('clear dictionary keeps drawing-only and grammar records; default reload ar
  assert.ok(!s.cards.some(w=>w.id===extra.id));assert.equal(restored(s).schedules[extra.id].reps,1);
  acceptChapter(s,...chapters[0]);gradeReader(s,s.reader.panlong,'vocab-斑驳',3);assert.equal(s.schedules[extra.id].reps,1);assert.equal(restored(s).archived.cards.length,1);
 });
-test('malformed packages cannot skip annotated text or supply dangling authored cards',()=>{
- const p=structuredClone(chapters[0][0]);p.authored.push('absent');assert.throws(()=>validateChapter(p));
- p.authored.pop();p.paragraphs[0].tokens=['漏'];assert.throws(()=>validateChapter(p),/Unannotated/);
+test('chapter focus contains only existing terms/grammar, while legacy authored chapters remain importable',()=>{
+ const p=structuredClone(chapters[0][0]);p.focus.push('absent');assert.throws(()=>validateChapter(p),/study list/);
+ p.focus.pop();p.focus.push('vocab-斑驳');assert.throws(()=>validateChapter(p),/focus/);
+ p.focus.pop();p.paragraphs[0].tokens=['漏'];assert.throws(()=>validateChapter(p),/Unannotated/);
+ const legacy=structuredClone(chapters[0][0]);delete legacy.focus;
+ legacy.authored=['vocab-斑驳','term-希尔曼','grammar-即使……也……'];
+ assert.deepEqual(chapterFocus(legacy,legacy.items),['term-希尔曼','grammar-即使……也……']);
+ validateChapter(legacy);
+ const s=defaultState();acceptChapter(s,legacy,chapters[0][1]);
+ assert.deepEqual(s.reader.panlong.chapters[0].focus,['term-希尔曼','grammar-即使……也……']);
+ assert.ok(!('authored' in s.reader.panlong.chapters[0]));
+ const old=structuredClone(s);delete old.reader.panlong.chapters[0].focus;old.reader.panlong.chapters[0].authored=legacy.authored;
+ old.settings.readerGate='authored';const migrated=migrateState(old);
+ assert.ok(!('readerGate' in migrated.settings));
+ assert.deepEqual(migrated.reader.panlong.chapters[0].focus,['term-希尔曼','grammar-即使……也……']);
+ assert.ok(!('authored' in migrated.reader.panlong.chapters[0]));
 });
-
-test('reader screen handles a graded file import, settings gate, unlock, missing text and actual rendered paragraphs',async()=>{
+test('reader screen offers automatic chapter study and preserves the imported narrative',async()=>{
  const {createReader}=await import('../reader-ui.js');
  const s=defaultState(),messages=[],cached=new Map(),listeners={};let file,done,html,definition;
  globalThis.document={addEventListener:(t,fn)=>listeners[t]=fn,createElement:()=>({files:[file],click(){done=this.onchange();}})};
  globalThis.location={href:'https://example.test/app/'};
  globalThis.caches={open:async()=>({put:async(k,v)=>cached.set(k,v),match:async k=>cached.get(k)?.clone()})};
  const adapter={state:()=>s,change:async(fn)=>{try{fn(s);return true;}catch(e){messages.push(e.message);return false;}},esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;'),modal:(title)=>definition=title,toast:m=>messages.push(m),applyFonts:()=>{},render:()=>html=ui.view()};
- const ui=createReader(adapter);
- const action=(n,data={})=>ui.action(n,{dataset:data});
+ const ui=createReader(adapter);const action=(n,data={})=>ui.action(n,{dataset:data});
  async function upload(n){file=new Blob([fs.readFileSync(new URL('../reader/panlong/chapters/00'+n+'.json',import.meta.url))]);await action('import');await done;}
  await upload(2);assert.match(messages.at(-1),/chapter 1/);
- await upload(1);assert.match(html,/Authored study list · 20/);
+ await upload(1);assert.match(html,/Automatic vocabulary · 1090 items/);assert.match(html,/27 priority terms\/grammar/);
+ assert.doesNotMatch(html,/Authored study list|Reading gate/);
  assert.match(html,/Chapter vocabulary/);assert.equal((html.match(/class="list-card reader-vocab-row"/g)||[]).length,20);
  const firstPage=html;await action('vocab-next');assert.notEqual(html,firstPage);
  await action('vocab-group',{group:'due'});assert.match(html,/No words in this group/);
- s.settings.readerGate='auto';assert.match(ui.view(),/All words and terms · 1086/);
- s.settings.readerGate='authored';await action('study');await action('reveal');
+ await action('study');await action('reveal');
  const key=html.match(/data-action="reader-grade" data-key="([^"]+)"/)[1];
  await action('grade',{key,grade:'4'});assert.equal(s.reader.panlong.history.length,1);
- const b=s.reader.panlong;for(const k of b.chapters[0].authored)for(let i=0;i<11;i++)gradeReader(s,b,k,4,Date.now()+(i+1)*60*86400000);
- await action('read');assert.match(html,/id="reader-pages"/);assert.equal(b.chapters[0].unlocked,true);
+ const b=s.reader.panlong;b.chapters[0].unlocked=true;
+ await action('read');assert.match(html,/id="reader-pages"/);
  const text=[...html.matchAll(/<p data-pid="[^"]+" data-index="\d+">(.*?)<\/p>/gs)].map(x=>x[1].replace(/<[^>]+>/g,'').replaceAll('&amp;','&'));
  const ref=fs.readFileSync(new URL('../reader/panlong/reference/001.txt',import.meta.url),'utf8');
  assert.equal([b.chapters[0].title,...text].join('\n\n'),ref);
  await action('define',{key:'term-乌山镇'});assert.equal(definition,'乌山镇');
  ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/);
- cached.clear();ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/); // hosted master chapters redownload on demand
+ cached.clear();ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/);
  await upload(1);await upload(2);await upload(3);assert.equal(b.chapters.length,3);
 });
-
-test('early practice leaves scores, schedules and histories untouched; evidence expires on reload',async()=>{
- const {recordPractice}=await import('../reader-core.js');
+test('focus cards are sampled six times more often than normal vocabulary, and early practice remains provisional',()=>{
  const s=defaultState();acceptChapter(s,...chapters[0]);
  const b=s.reader.panlong,c=b.chapters[0],now=Date.now(),session=new Map();
- const key=c.authored.find(k=>b.items[k].kind==='term');
- gradeReader(s,b,key,1,now);
+ const term=c.focus.find(k=>b.items[k].kind==='term');const vocab=c.all.find(k=>b.items[k].kind==='vocab'&&k==='vocab-斑驳');
+ const a=readerAnalysis(s,b,c,now,session);
+ const choices=[vocab,term];
+ const n=7000;let focusCount=0;
+ for(let i=0;i<n;i++)if(pickReaderItem(choices,a,()=>i/n)===term)focusCount++;
+ assert.ok(focusCount/n>.84&&focusCount/n<.87,'Focused item should occupy six of seven weighted slots');
+ gradeReader(s,b,term,1,now);
  const saved=JSON.stringify(s);
  for(const grade of [3,2,3]){
-  assert.equal(gradeReader(s,b,key,grade,now+1),false);
-  recordPractice(session,key,grade);
+  assert.equal(gradeReader(s,b,term,grade,now+1),false);
+  recordPractice(session,term,grade);
  }
- assert.ok(readerAnalysis(s,b,c,now+1,session).weak.includes(key));
- recordPractice(session,key,3);
- assert.ok(!readerAnalysis(s,b,c,now+1,session).weak.includes(key));
- assert.ok(readerAnalysis(s,b,c,now+1,new Map()).weak.includes(key));
+ assert.ok(readerAnalysis(s,b,c,now+1,session).weak.includes(term));
+ recordPractice(session,term,3);
+ assert.ok(!readerAnalysis(s,b,c,now+1,session).weak.includes(term));
+ assert.ok(readerAnalysis(s,b,c,now+1,new Map()).weak.includes(term));
  assert.equal(JSON.stringify(s),saved);
- const vocab=c.authored.find(k=>b.items[k].kind==='vocab');
  gradeReader(s,b,vocab,1,now);
  const before=JSON.stringify(s);assert.equal(gradeReader(s,b,vocab,4,now+1),false);
  assert.equal(JSON.stringify(s),before);
- const due=Date.parse(b.progress[key].dueAt);
- const a=readerAnalysis(s,b,c,due,session);
- assert.deepEqual(a.queue.map(a.group),a.queue.map(a.group).sort());
+ const due=Date.parse(b.progress[term].dueAt);
+ const scheduled=readerAnalysis(s,b,c,due,session);
+ assert.deepEqual(scheduled.queue.map(scheduled.group),scheduled.queue.map(scheduled.group).sort());
  recordPractice(session,vocab,4);assert.ok(!readerAnalysis(s,b,c,now,session).weak.includes(vocab));
 });
-
 test('global reading speed survives verified full backup and defaults to 120 in older backups',()=>{
  const s=defaultState();assert.equal(s.settings.readerCpm,120);
  s.settings.readerCpm=300;assert.equal(restored(s).settings.readerCpm,300);

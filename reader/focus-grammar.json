@@ -1,0 +1,236 @@
+{
+  "grammar": {
+    "即使……也……": {
+      "hanzi": "即使……也……",
+      "pinyin": "jíshǐ … yě …",
+      "english": "Even if the stated condition is true, the result still applies."
+    },
+    "正是……": {
+      "hanzi": "正是……",
+      "pinyin": "zhèng shì …",
+      "english": "Precisely or exactly; emphasizes the identity of someone or something."
+    },
+    "越……越……": {
+      "hanzi": "越……越……",
+      "pinyin": "yuè … yuè …",
+      "english": "The more one condition changes, the more another changes."
+    },
+    "一旦……就……": {
+      "hanzi": "一旦……就……",
+      "pinyin": "yídàn … jiù …",
+      "english": "Once a condition occurs, the following result follows."
+    },
+    "无论……都……": {
+      "hanzi": "无论……都……",
+      "pinyin": "wúlùn … dōu …",
+      "english": "No matter which condition holds, the result is unchanged."
+    },
+    "一边……一边……": {
+      "hanzi": "一边……一边……",
+      "pinyin": "yìbiān … yìbiān …",
+      "english": "Two actions happen simultaneously: doing A while doing B."
+    },
+    "连……都……": {
+      "hanzi": "连……都……",
+      "pinyin": "lián … dōu …",
+      "english": "Even an unexpected or extreme example meets the stated result."
+    },
+    "只要……便……": {
+      "hanzi": "只要……便……",
+      "pinyin": "zhǐyào … biàn …",
+      "english": "As long as a condition holds, the result follows; 便 is a literary form of 就."
+    },
+    "再……也……": {
+      "hanzi": "再……也……",
+      "pinyin": "zài … yě …",
+      "english": "Even if something happens again or to a greater degree, the following outcome still holds."
+    },
+    "虽然……却……": {
+      "hanzi": "虽然……却……",
+      "pinyin": "suīrán … què …",
+      "english": "Although one fact holds, a contrasting fact follows; 却 highlights the contrast."
+    },
+    "虽然……但是……": {
+      "hanzi": "虽然……但是……",
+      "pinyin": "suīrán … dànshì …",
+      "english": "Although one fact holds, a contrasting fact follows."
+    },
+    "虽然……可是……": {
+      "hanzi": "虽然……可是……",
+      "pinyin": "suīrán … kěshì …",
+      "english": "Although one fact holds, a contrasting fact follows; 可是 is conversational."
+    },
+    "不得不……": {
+      "hanzi": "不得不……",
+      "pinyin": "bùdébù …",
+      "english": "Expresses necessity or compulsion: cannot avoid doing something."
+    },
+    "被……": {
+      "hanzi": "被……",
+      "pinyin": "bèi …",
+      "english": "Passive construction: the subject experiences an action done by someone or something."
+    },
+    "毕竟……": {
+      "hanzi": "毕竟……",
+      "pinyin": "bìjìng …",
+      "english": "After all; introduces a fact offered as a reason or qualification."
+    },
+    "越来越……": {
+      "hanzi": "越来越……",
+      "pinyin": "yuèláiyuè …",
+      "english": "An ongoing change that becomes increasingly pronounced."
+    },
+    "反而……": {
+      "hanzi": "反而……",
+      "pinyin": "fǎn ér …",
+      "english": "Instead or on the contrary, often contrary to what was expected."
+    },
+    "不是……而是……": {
+      "hanzi": "不是……而是……",
+      "pinyin": "búshì … érshì …",
+      "english": "Contrasts an incorrect explanation with the actual one: not A, but B."
+    },
+    "只要……就……": {
+      "hanzi": "只要……就……",
+      "pinyin": "zhǐyào … jiù …",
+      "english": "As long as the stated condition holds, the result follows."
+    },
+    "不但……而且……": {
+      "hanzi": "不但……而且……",
+      "pinyin": "búdàn … érqiě …",
+      "english": "Not only one fact but also an additional one."
+    },
+    "如果……那……": {
+      "hanzi": "如果……那……",
+      "pinyin": "rúguǒ … nà …",
+      "english": "If a condition holds, then the stated consequence follows; 那 introduces the result."
+    },
+    "将……": {
+      "hanzi": "将……",
+      "pinyin": "jiāng …",
+      "english": "Formal or literary object-fronting construction, similar to 把."
+    },
+    "把……给……": {
+      "hanzi": "把……给……",
+      "pinyin": "bǎ … gěi …",
+      "english": "Disposal/conveyance construction: transfer the object to someone."
+    },
+    "把……换……": {
+      "hanzi": "把……换……",
+      "pinyin": "bǎ … huàn …",
+      "english": "Disposal construction: take the named object and exchange or change it."
+    },
+    "……比……多": {
+      "hanzi": "……比……多",
+      "pinyin": "… bǐ … duō",
+      "english": "Comparative construction meaning more than the other item."
+    },
+    "……一下": {
+      "hanzi": "……一下",
+      "pinyin": "… yíxià",
+      "english": "A short action or polite softener, often expressing trying something briefly."
+    },
+    "……却……": {
+      "hanzi": "……却……",
+      "pinyin": "… què …",
+      "english": "A contrastive adverb: yet, however, or unexpectedly instead."
+    },
+    "在……": {
+      "hanzi": "在……",
+      "pinyin": "zài …",
+      "english": "Marks location or an ongoing action, according to the following phrase."
+    },
+    "没有人……": {
+      "hanzi": "没有人……",
+      "pinyin": "méiyǒu rén …",
+      "english": "Existential negation meaning nobody is doing or has the stated property."
+    }
+  },
+  "chapters": {
+    "panlong": {
+      "1": [
+        "即使……也……",
+        "一旦……就……",
+        "无论……都……",
+        "一边……一边……"
+      ],
+      "2": [
+        "正是……",
+        "即使……也……",
+        "连……都……"
+      ],
+      "3": [
+        "越……越……",
+        "只要……便……",
+        "再……也……"
+      ],
+      "4": [
+        "即使……也……",
+        "虽然……却……",
+        "无论……都……"
+      ],
+      "5": [
+        "虽然……但是……",
+        "不得不……",
+        "再……也……"
+      ],
+      "6": [
+        "连……都……",
+        "不得不……",
+        "毕竟……"
+      ],
+      "7": [
+        "连……都……",
+        "一边……一边……",
+        "越来越……",
+        "反而……"
+      ],
+      "8": [
+        "不是……而是……",
+        "虽然……可是……",
+        "被……"
+      ],
+      "9": [
+        "不但……而且……",
+        "只要……就……",
+        "如果……那……"
+      ],
+      "10": [
+        "一旦……就……",
+        "即使……也……",
+        "被……"
+      ],
+      "11": [
+        "只要……就……",
+        "反而……",
+        "将……"
+      ]
+    },
+    "two-cups": {
+      "1": [
+        "……比……多",
+        "把……换……"
+      ]
+    },
+    "which-exit": {
+      "1": [
+        "在……",
+        "没有人……",
+        "……一下"
+      ]
+    },
+    "takeaway": {
+      "1": [
+        "把……给……",
+        "……却……"
+      ]
+    }
+  },
+  "termOverrides": {
+    "魔法师": "Mage: a practitioner of spellcasting in the setting.",
+    "魔兽": "Magical beast: a supernatural animal/monster in the story.",
+    "静态张力": "Static-tension training: holding muscles under tension in the conditioning routine.",
+    "佣兵": "Mercenary: a hired fighter; often part of a mercenary team.",
+    "魔法咒语": "Magic incantation: spoken words used to cast a spell."
+  }
+}

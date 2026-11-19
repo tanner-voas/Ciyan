@@ -15,5 +15,5 @@ for(const [stem,sha] of Object.entries(locks)){
  const all=validateChapter(p);
  assert.equal(p.number,Number(stem));assert.equal(p.novel,'panlong');
  assert.equal(chapterText(p),reference,'Reading text drift: '+stem);
- console.log(stem,p.title,p.paragraphs.length,'paragraphs,',p.authored.length,'authored items,',all.length,'distinct words and terms. Text matches.');
+ console.log(stem,p.title,p.paragraphs.length,'paragraphs,',p.focus.length,'chapter-specific terms/grammar,',all.length,'distinct words and terms. Text matches.');
 }

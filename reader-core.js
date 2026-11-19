@@ -13,6 +13,12 @@ function validateItems(items){
   check(safeKey(id)&&object(c)&&['vocab','term','grammar'].includes(c.kind)&&string(c.hanzi,120)&&string(c.english,500)&&string(c.pinyin,160),'Invalid reader flashcard');
  }
 }
+// The old format carried an authored list of words, terms and grammar.
+// It remains importable, but only terms and grammar are chapter-specific.
+export function chapterFocus(chapter,items){
+ const focus=chapter.focus??chapter.authored?.filter(id=>items?.[id]?.kind!=='vocab')??[];
+ return focus;
+}
 function checkIds(ids,items){
  check(Array.isArray(ids)&&new Set(ids).size===ids.length&&ids.every(k=>safeKey(k)&&Object.hasOwn(items,k)),'Invalid reader study list');
 }
@@ -22,7 +28,10 @@ export function validateChapter(p){
   (p.author===undefined||string(p.author,120))&&
   (p.volume===undefined||integer(p.volume)&&p.volume<=999)&&
   (p.volumeTitle===undefined||p.volume!==undefined&&string(p.volumeTitle,120)),'Invalid chapter identity');
- validateItems(p.items);checkIds(p.authored,p.items);
+ validateItems(p.items);
+ if(p.authored!==undefined)checkIds(p.authored,p.items); // Legacy chapter compatibility.
+ const focus=chapterFocus(p,p.items);checkIds(focus,p.items);
+ check(focus.every(id=>['term','grammar'].includes(p.items[id].kind)),'Chapter focus must contain only terms and grammar');
  check(Array.isArray(p.paragraphs)&&p.paragraphs.length>0,'This chapter has no paragraphs');
  const used=new Set(),anchors=new Set();
  for(const row of p.paragraphs){
@@ -34,7 +43,8 @@ export function validateChapter(p){
    used.add(span[0]);
   }
  }
- check(used.size&&p.authored.length,'Empty reading gate');
+ check(used.size,'This chapter has no annotated Chinese');
+ check(focus.every(id=>p.items[id].kind==='grammar'||used.has(id)),'Focused term is not present in the chapter');
  for(const id of Object.keys(p.items))check(used.has(id)||p.items[id].kind==='grammar','Unused vocabulary');
  return [...used];
 }
@@ -71,7 +81,7 @@ export function acceptChapter(s,p,digest){
   const index=Math.min(position.index||0,p.paragraphs.length-1);
   position={id:p.paragraphs[index].id,index,offset:0};
  }
- b.chapters[p.number-1]={number:p.number,title:p.title,revision:p.revision,digest,authored:p.authored,all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null};
+ b.chapters[p.number-1]={number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null};
  b.current=p.number;s.reader[p.novel]=b;
 }
 export function validateReader(books={}){
@@ -82,7 +92,12 @@ export function validateReader(books={}){
   check(integer(b.current)&&b.current<=b.chapters.length,'Invalid current chapter');
   for(const [i,c] of b.chapters.entries()){
    check(c.number===i+1&&integer(c.revision)&&/^[a-f0-9]{64}$/.test(c.digest)&&string(c.title,200)&&typeof c.unlocked==='boolean'&&typeof c.complete==='boolean','Invalid saved chapter');
-   checkIds(c.all,b.items);checkIds(c.authored,b.items);
+   checkIds(c.all,b.items);
+   // Normalize imported v0.8.2 backups and split IndexedDB reader catalogs.
+   if(c.authored!==undefined&&c.focus===undefined)c.focus=chapterFocus(c,b.items);
+   delete c.authored;
+   checkIds(c.focus??[],b.items);
+   check((c.focus??[]).every(id=>['term','grammar'].includes(b.items[id].kind)),'Invalid reader focus');
    if(c.position)check(safeKey(c.position.id)&&Number.isInteger(c.position.index)&&c.position.index>=0&&Number.isInteger(c.position.offset)&&c.position.offset>=0&&
     (c.position.wordIndex===undefined||Number.isSafeInteger(c.position.wordIndex)&&c.position.wordIndex>=0)&&
     (c.position.guided===undefined||typeof c.position.guided==='boolean'),'Invalid bookmark');
@@ -101,18 +116,33 @@ export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const byWord=new Map([...(s.archived?.cards||[]),...s.cards].map(w=>[w.hanzi,w.id]));
  const schedule=key=>{const w=b.items[key];return w.kind==='vocab'?s.schedules[byWord.get(w.hanzi)]:b.progress[key];};
  const score=key=>schedule(key)?.score||0;
- const keys=s.settings.readerGate==='auto'?c.all:c.authored;
- const qualifies=k=>score(k)>=1.5||evidence.get(k)?.goods>=3||evidence.get(k)?.easy;
+ const focused=new Set(chapterFocus(c,b.items));
+ const keys=[...new Set([...c.all,...focused])];
+ // HSK1–4 is the assumed general vocabulary baseline. A recorded low
+ // mastery score overrides that assumption; advanced and unclassified words
+ // are automatically included in preparation until learned.
+ const background=k=>b.items[k].kind==='vocab'&&/^hsk[1-4]$/.test(hskTagFor(b.items[k].hanzi)||'')&&!schedule(k);
+ const qualifies=k=>background(k)||score(k)>=1.5||evidence.get(k)?.goods>=3||evidence.get(k)?.easy;
  const due=k=>schedule(k)&&Date.parse(schedule(k).dueAt)<=now;
  const group=k=>due(k)?0:schedule(k)?2:1;
  const order=(a,b)=>group(a)-group(b)||(evidence.get(a)?.turn||0)-(evidence.get(b)?.turn||0)||
   (Date.parse(schedule(a)?.dueAt)||0)-(Date.parse(schedule(b)?.dueAt)||0);
  const weak=keys.filter(k=>!qualifies(k)).sort(order);
  const selected=new Set(keys);
- const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...ch.authored]));
+ const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...chapterFocus(ch,b.items)]));
  const earlier=[...previous].filter(k=>!selected.has(k)&&due(k)).sort(order);
  const queue=[...new Set([...earlier,...keys.filter(k=>due(k)||!qualifies(k))])].sort(order);
- return {weak,ready:weak.length===0,keys,earlier,queue,score,group,qualifies};
+ const focus=new Set([...focused,...b.chapters.slice(0,c.number-1).flatMap(ch=>chapterFocus(ch,b.items))]);
+ return {weak,ready:weak.length===0,keys,earlier,queue,score,group,qualifies,focus};
+}
+// Chapter-specific terms and grammar receive 6x selection weight. Due cards
+// still receive a modest boost, without permanently starving other vocabulary.
+export function pickReaderItem(queue,analysis,random=Math.random){
+ if(!queue.length)return undefined;
+ const weights=queue.map(id=>(analysis.focus.has(id)?6:1)*(analysis.group(id)===0?2:1));
+ let remaining=weights.reduce((a,b)=>a+b,0)*Math.max(0,Math.min(1,random()));
+ for(let i=0;i<queue.length;i++)if((remaining-=weights[i])<0)return queue[i];
+ return queue.at(-1);
 }
 export function gradeReader(s,b,key,grade,now=Date.now()){
  const item=b.items[key];check(item&&integer(grade)&&grade<=4,'Invalid reader grade');

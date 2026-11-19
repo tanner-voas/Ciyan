@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {MASTER} from '../master-data.js';
 import {chapterText,validateChapter} from '../reader-core.js';
 const directory=fileURLToPath(new URL('../reader/panlong/',import.meta.url));
+const focusSpec=JSON.parse(fs.readFileSync(fileURLToPath(new URL('../reader/focus-grammar.json',import.meta.url)),'utf8'));
 const read=name=>fs.readFileSync(directory+name,'utf8');
 const dictionary=new Map(MASTER.cards.map(({hanzi,pinyin,english})=>[hanzi,{kind:'vocab',hanzi,pinyin,english}]));
 const specialWords=new Set();
@@ -25,6 +26,7 @@ for(const [filename,kind,force] of [['lexicon.tsv','term',true],['vocabulary.tsv
   if(force)specialWords.add(hanzi);
  }
 }
+for(const [word,english] of Object.entries(focusSpec.termOverrides))if(dictionary.has(word))dictionary.set(word,{...dictionary.get(word),kind:'term',english});
 const aliases=JSON.parse(read('aliases.json'));
 for(const [alias,name] of Object.entries(aliases))if(dictionary.has(name)){dictionary.set(alias,dictionary.get(name));specialWords.add(alias);}
 const wordRegex=new RegExp('('+[...specialWords].sort((a,b)=>b.length-a.length).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gu');
@@ -64,7 +66,6 @@ const tokensFor=text=>{
  }
  return tokens;
 };
-const specs=JSON.parse(read('study-extended.json'));
 for(let i=4;i<=11;i++){
  const stem=String(i).padStart(3,'0');
  // Published refinements are hand-edited after the initial tokenization.
@@ -79,18 +80,16 @@ for(let i=4;i<=11;i++){
  const paragraphs=body.map((line,index)=>({id:'p'+(index+1),tokens:tokensFor(line)}));
  const used=new Set(paragraphs.flatMap(p=>p.tokens).filter(t=>Array.isArray(t)).map(t=>t[0]));
  const items={};for(const id of used){const name=id.slice(id.indexOf('-')+1);const item=dictionary.get(name);if(!item)throw Error('Missing '+id);items[id]=item;}
- const authored=[];for(const word of specs[i]||[]){
-  const item=dictionary.get(word);if(!item)throw Error(`Missing study word for chapter ${i}: ${word}`);
-  const id=`${item.kind}-${item.hanzi}`;
-  if(!used.has(id)){console.warn(`Not used in chapter ${i}: ${word}`);continue;}
-  if(!authored.includes(id))authored.push(id);
+ const focus=Object.entries(items).filter(([id,item])=>item.kind==='term').map(([id])=>id);
+ for(const pattern of focusSpec.chapters.panlong[i]){
+  const entry=focusSpec.grammar[pattern],id='grammar-'+pattern;
+  items[id]={kind:'grammar',...entry};focus.push(id);
  }
- if(authored.length<7)throw Error(`Too few authored study words for chapter ${i}`);
- const data={format:'ciyan-chapter',version:1,novel:'panlong',book:'盘龙',number:i,title,revision:1,author:'我吃西红柿',volume:1,volumeTitle:'盘龙之戒',paragraphs,items,authored};
+ const data={format:'ciyan-chapter',version:1,novel:'panlong',book:'盘龙',number:i,title,revision:1,author:'我吃西红柿',volume:1,volumeTitle:'盘龙之戒',paragraphs,items,focus};
  if(!missing.size){validateChapter(data);if(chapterText(data)!==reference)throw Error(`Text mismatch in chapter ${i}`);
   fs.mkdirSync(directory+'reference/',{recursive:true});fs.writeFileSync(directory+'reference/'+stem+'.txt',reference);
   fs.writeFileSync(directory+'chapters/'+stem+'.json',JSON.stringify(data));
-  console.log(stem,paragraphs.length,'paragraphs',Object.keys(items).length,'items',authored.length,'study words');
+  console.log(stem,paragraphs.length,'paragraphs',Object.keys(items).length,'items',focus.length,'focused terms/grammar');
  }
 }
 if(missing.size){console.error('Missing characters/words:',[...missing].join(' '));process.exitCode=1;}

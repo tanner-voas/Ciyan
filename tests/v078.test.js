@@ -13,7 +13,7 @@ const fixture=JSON.parse(fs.readFileSync(new URL('../reader/panlong/chapters/001
 const digest=createHash('sha256').update(fs.readFileSync(new URL('../reader/panlong/chapters/001.json',import.meta.url))).digest('hex');
 
 test('0.7.8 has the requested 9 non-neutral TSK defaults and preserves custom weights',()=>{
- assert.equal(APP_VERSION,'0.8.2');
+ assert.equal(APP_VERSION,'0.8.3');
  assert.deepEqual(Object.values(TSK_DEFAULTS),[2560,1280,640,320,160,80,40,20,10]);
  assert.equal(defaultTagWeight('TSK/TSK5'),160);
  assert.equal(defaultTagWeight('Topics/anything'),0);
@@ -75,12 +75,12 @@ test('offline cache and Cloudflare build contain the new reader index',()=>{
 });
 
 test('missing custom chapter prompt only accepts the matching file or newer revision',()=>{
- const request={novel:'my-novel',number:1,title:'第一章',revision:1,digest};
+ const request={novel:'my-novel',number:1,title:'第一章',revision:fixture.revision,digest};
  const chapter={...fixture,novel:'my-novel'};
  assert.equal(matchesRequestedChapter(chapter,request,digest),true);
  assert.equal(matchesRequestedChapter(chapter,request,'0'.repeat(64)),false);
  assert.equal(matchesRequestedChapter({...chapter,number:2},request,digest),false);
  assert.equal(matchesRequestedChapter({...chapter,novel:'another'},request,digest),false);
- assert.equal(matchesRequestedChapter({...chapter,revision:2},request,'0'.repeat(64)),true);
+ assert.equal(matchesRequestedChapter({...chapter,revision:fixture.revision+1},request,'0'.repeat(64)),true);
  assert.equal(matchesRequestedChapter(chapter,null,digest),true);
 });

@@ -1,5 +1,5 @@
 import {validVault} from './speech-vault.js';
-import {validateReader,resetReaderProgress} from './reader-core.js';
+import {chapterFocus,validateReader,resetReaderProgress} from './reader-core.js';
 import {validateReaderCustomIndex} from './reader-library.js';
 import {APP_VERSION,prepareVersionedBackup} from './backup-versions.js';
 import {normalizeTypographySettings} from './fonts.js';
@@ -41,7 +41,7 @@ export function speechPreferences(s={}){
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  reader:{},readerCustomIndex:{},settings:{...speechPreferences(),readerGuideEnabled:false,readerTtsEnabled:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
+  reader:{},readerCustomIndex:{},settings:{...speechPreferences(),readerGuideEnabled:false,readerTtsEnabled:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -125,9 +125,9 @@ export async function saveState(state,expectedRevision=null){const db=await data
  const catalogs=new Map();
  progress.__readerCatalog=true;
  progress.reader=Object.fromEntries(Object.entries(state.reader||{}).map(([id,b])=>{
-  const lists=b.chapters.map(({all,authored})=>({all,authored}));
+  const lists=b.chapters.map(c=>({all:c.all,focus:chapterFocus(c,b.items)}));
   catalogs.set(id,{items:b.items,lists});
-  return [id,{...b,items:undefined,chapters:b.chapters.map(({all,authored,...meta})=>meta)}];
+  return [id,{...b,items:undefined,chapters:b.chapters.map(({all,focus,authored,...meta})=>meta)}];
  }));
  const logs={history,grammarHistory,skillHistory};
  const chunks=Object.fromEntries(LOG_FIELDS.map(field=>[field,Math.ceil((logs[field]||[]).length/LOG_CHUNK)]));
@@ -137,7 +137,7 @@ export async function saveState(state,expectedRevision=null){const db=await data
  const write=()=>{
   for(const [id,catalog] of catalogs){
    const old=savedReaderCatalog.get(id);
-   if(old?.items!==catalog.items||old.lists.length!==catalog.lists.length||catalog.lists.some((l,i)=>old.lists[i].all!==l.all||old.lists[i].authored!==l.authored))store.put(catalog,'reader-catalog:'+id);
+   if(old?.items!==catalog.items||old.lists.length!==catalog.lists.length||catalog.lists.some((l,i)=>old.lists[i].all!==l.all||old.lists[i].focus!==l.focus))store.put(catalog,'reader-catalog:'+id);
   }
   for(const id of savedReaderCatalog.keys())if(!catalogs.has(id))store.delete('reader-catalog:'+id);
   if(contentChanged)store.put({cards,grammar},CONTENT_KEY);
@@ -215,8 +215,9 @@ export function migrateState(input){
     });
     const same=normalizedCards.every((c,i)=>c===input.cards[i]);
     const migratedSettings={...input.settings,tagWeights:{...input.settings?.tagWeights}};
+    delete migratedSettings.readerGate; // Obsolete authored/auto switch.
     upgradeTskDefaults(migratedSettings,input.appVersion);
-    return ensureStudy({...input,cards:same?input.cards:normalizedCards,grammar:Array.isArray(input.grammar)?input.grammar:[],
+    return ensureStudy({...input,reader:validateReader(input.reader||{}),cards:same?input.cards:normalizedCards,grammar:Array.isArray(input.grammar)?input.grammar:[],
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,
@@ -260,7 +261,7 @@ export function parseBackup(data){
   const grammarHistory=source.grammarHistory.filter(h=>h&&grammarIds.has(h.grammarId)&&validDate(h.at)).slice(-500000);
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
-  const settings={...speechPreferences(s),readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+  const settings={...speechPreferences(s),readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
