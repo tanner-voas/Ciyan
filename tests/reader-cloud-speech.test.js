@@ -30,3 +30,23 @@ test('Azure narration requests only the current sentence, reuses audio, and canc
  await n.speak(words[0],'zh-CN-YunxiNeural',240,'bad/region','test');assert.equal(errors.length,1);assert.equal(requests,1);
  n.dispose();
 });
+
+test('cache capacity changes take effect immediately and voice previews always fetch',async()=>{
+ const {setSpeechCacheLimit,speechCacheCount,clearSpeechCache}=await import('../reader-cloud-speech.js');
+ clearSpeechCache();setSpeechCacheLimit(2);
+ let fetched=0;
+ const win={cancelAnimationFrame(){},requestAnimationFrame(){},async fetch(){fetched++;return new Response(new Uint8Array(1));},
+  AudioContext:class{state='running';currentTime=0;async decodeAudioData(){return {duration:1};}
+   createBufferSource(){return {connect(){},disconnect(){},start(){},stop(){}};}async close(){}}
+ };
+ const player=createCloudNarrator(win,()=>{},()=>{},message=>assert.fail(message));
+ const play=(text,options)=>player.speak(text,'zh-CN-YunxiNeural',120,'eastasia','fake-key',options);
+ try{
+  await play('甲');await play('乙');await play('甲');assert.equal(fetched,2);
+  setSpeechCacheLimit(1);assert.equal(speechCacheCount(),1);
+  await play('甲',{useCache:false});assert.equal(fetched,3);
+  await play('甲');assert.equal(fetched,3);
+  setSpeechCacheLimit(0);assert.equal(speechCacheCount(),0);
+  await play('甲');await play('甲');assert.equal(fetched,5);assert.equal(speechCacheCount(),0);
+ }finally{player.dispose();clearSpeechCache();setSpeechCacheLimit(8);}
+});

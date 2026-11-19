@@ -1,6 +1,6 @@
 import {createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
-import {createCloudNarrator,cloudVoices,speechCacheCount,clearSpeechCache} from './reader-cloud-speech.js';
-import {sealSpeech,openSpeech,unlockSpeech} from './speech-vault.js';
+import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
+import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
 import {createReader} from './reader-ui.js';
 import {clearDictionary,reloadCards} from './collection-reset.js';
 import {APP_VERSION} from './backup-versions.js';
@@ -513,15 +513,94 @@ let clipPlayer=null,localPlayer=null,speechTicket=0,lastListening='';
 function stopStudyAudio(){
  speechTicket++;clipPlayer?.cancel();localPlayer?.cancel();
 }
+let speechSession=null,unlockRequest=null;
+function unlocked(){return speechSession&&speechSession.envelope===state.speechVault?.data?speechSession:null;}
+const fieldPin=(name,label)=>`<label>${label}<input type="password" name="${name}" inputmode="numeric" pattern="[0-9]{4}" required maxlength="4" autocomplete="off"></label>`;
+const newPinFields=()=>fieldPin('pin','New four-digit PIN')+fieldPin('repeat','Confirm new PIN');
+const deleteField='<label>Type <strong>delete</strong> to confirm<input name="confirmation" required autocomplete="off" spellcheck="false"></label>';
+// Use a native dialog above the caller so dismissing it preserves the current card or form.
+function askDialog(title,fields,submit,accept,{danger=false,reset=false,offerChange=false}={}){
+ return new Promise(resolve=>{
+  const dialog=document.createElement('dialog');
+  dialog.className='pin-dialog';
+  dialog.setAttribute('aria-label',title);
+  dialog.innerHTML=`<form class="stack"><h2>${esc(title)}</h2>${fields}<div role="alert" class="dialog-error"></div>
+   <button type="submit" class="btn ${danger?'btn-danger':'btn-primary'}">${esc(submit)}</button>
+   ${offerChange?'<button type="submit" name="rotate" class="btn btn-secondary">Unlock and change PIN</button>':''}
+   ${reset?'<button type="button" class="btn btn-danger" name="resetSecrets">Reset secrets</button>':''}
+   <button type="button" class="btn btn-secondary" name="dismiss">Cancel</button></form>`;
+  const form=dialog.querySelector('form');
+  let busy=false;
+  function finish(value){dialog.close();dialog.remove();resolve(value);}
+  form.elements.dismiss.onclick=()=>{if(!busy)finish(null);};
+  dialog.oncancel=e=>{e.preventDefault();if(!busy)finish(null);};
+  if(reset)form.elements.resetSecrets.onclick=async()=>{if(!busy&&await resetSecrets())finish(null);};
+  form.onsubmit=async e=>{
+   e.preventDefault();if(busy)return;busy=true;
+   try{
+    const data=new FormData(form);
+    if(data.has('confirmation')&&!deleteConfirmationValid(data.get('confirmation')))throw Error('Type delete to confirm.');
+    if(data.has('repeat')&&data.get('pin')!==data.get('repeat'))throw Error('The PINs must match.');
+    finish(await accept(data,e.submitter?.name));
+   }catch(error){dialog.querySelector('[role=alert]').textContent=error.message;}
+   finally{busy=false;}
+  };
+  document.body.append(dialog);dialog.showModal();
+ });
+}
+async function storeEnvelope(pin,key,settings={}){
+ const {speechVault}=await sealSpeechKey(pin,key);
+ if(!await change(d=>{d.speechVault=speechVault;delete d.deviceKey;Object.assign(d.settings,settings);},false))throw Error('Could not save credentials. Try again.');
+ speechSession={pin,key,envelope:speechVault.data};clearSpeechCache();refreshSecret();
+}
+function resetSecrets(){
+ return askDialog('Reset secrets','<p>Erase the saved speech key and replace its PIN.</p>'+deleteField+newPinFields(),'Reset secrets',async data=>{
+  await storeEnvelope(data.get('pin'),'');return true;
+ },{danger:true});
+}
+function changePin(session){
+ return askDialog('Change PIN',newPinFields(),'Change PIN',async data=>{
+  await storeEnvelope(data.get('pin'),session.key);return true;
+ });
+}
+async function requireUnlock(offerChange=true){
+ if(unlocked())return unlocked();
+ if(!state.speechVault)throw Error('Enter an Azure key in Speech settings.');
+ if(!unlockRequest){
+  const vault=state.speechVault;
+  unlockRequest=askDialog('Unlock saved secrets',fieldPin('pin','Four-digit PIN'),'Unlock',async (data,command)=>{
+   const pin=data.get('pin'),opened=await unlockSpeech(vault,pin);
+   if(vault.data!==state.speechVault?.data)throw Error('Saved credentials changed. Reopen this prompt.');
+   if(opened.region&&!state.settings.azureRegion){
+    if(!await change(d=>{d.settings.azureRegion=opened.region;},false))throw Error('Could not save the Azure region.');
+    const region=$('#speech-region');if(region&&!region.value)region.value=opened.region;
+   }
+   speechSession={pin,key:opened.key,envelope:vault.data};refreshSecret();
+   if(command==='rotate')await changePin(speechSession);
+   return speechSession;
+  },{reset:true,offerChange}).finally(()=>{unlockRequest=null;});
+ }
+ const session=await unlockRequest;
+ if(!session)throw new DOMException('Unlock canceled.','AbortError');
+ return session;
+}
 async function credentials(){
- if(!state.speechVault||!state.deviceKey)throw Error('Set up or unlock Azure credentials in Speech settings.');
- return openSpeech(state.speechVault,state.deviceKey);
+ const {key}=await requireUnlock(),region=state.settings.azureRegion;
+ if(!key||!region)throw Error('Enter the Azure region and key in Speech settings.');
+ return {region,key};
+}
+async function previewCredentials(settings){
+ const session=state.speechVault?await requireUnlock():null;
+ const key=$('#speech-key')?.value.trim()??session?.key;
+ const region=$('#speech-region')?.value.trim().toLowerCase()??settings.azureRegion;
+ if(!region||!key)throw Error('Enter an Azure region and key to test this voice.');
+ return {region,key};
 }
 function speechButton(text,label='Listen'){
  return `<button class="btn btn-secondary" data-action="say-text" data-text="${esc(text)}">${esc(label)}</button>`;
 }
-async function sayText(text){
- stopStudyAudio();const ticket=speechTicket,s=state.settings;
+async function sayText(text,s=state.settings,preview=false){
+ stopStudyAudio();const ticket=speechTicket;
  function local(reason){
   if(ticket!==speechTicket)return;
   if(reason)toast(reason+' Using system Mandarin.');
@@ -533,9 +612,9 @@ async function sayText(text){
  if(!cloudVoices.has(s.speechVoice)){local();return;}
  try{
   clipPlayer?.dispose();clipPlayer=createCloudNarrator(window,()=>{},()=>{},local);
-  const [, {region,key}]=await Promise.all([clipPlayer.prepare(),credentials()]);if(ticket!==speechTicket)return;
-  await clipPlayer.speak(text,s.speechVoice,s.readerCpm,region,key,{pitch:s.speechPitch});
- }catch(error){local(error.message);}
+  const [, {region,key}]=await Promise.all([clipPlayer.prepare(),preview?previewCredentials(s):credentials()]);if(ticket!==speechTicket)return;
+  await clipPlayer.speak(text,s.speechVoice,s.readerCpm,region,key,{pitch:s.speechPitch,useCache:!preview});
+ }catch(error){if(error.name!=='AbortError')local(error.message);}
 }
 function mountListening(){
  const s=state.activePractice,e=s?.current;
@@ -548,62 +627,68 @@ function speechSettings(){
  const s=state.settings,voices=mandarinVoices(window.speechSynthesis?.getVoices()||[]);
  const list=[['','System Mandarin'],...voices.map(v=>[v.voiceURI,voiceDescription(v)]),...cloudVoices];
  if(s.speechVoice&&!list.some(([id])=>id===s.speechVoice))list.push([s.speechVoice,'Saved system voice']);
- const numeric=(name,label,min,max)=>`<label class="settings-row">${label}<input type="number" id="${name}" min="${min}" max="${max}" value="${s[name]}"></label>`;
- modal('Speech settings',`<div class="stack"><label>Mandarin voice<select id="speechVoice">${list.map(([id,label])=>`<option value="${esc(id)}" ${s.speechVoice===id?'selected':''}>${esc(label)}</option>`).join('')}</select></label>
- ${numeric('readerCpm','Characters per minute',10,1200)}${numeric('speechPitch','Pitch adjustment (%)',-50,50)}${numeric('speechPreload','Azure sentences ahead',0,6)}${numeric('paragraphDelay','Paragraph pause (ms)',0,5000)}
+ const numeric=(name,label,min,max)=>`<label class="settings-row">${label}<input type="number" required id="${name}" min="${min}" max="${max}" value="${s[name]}"></label>`;
+ return `<div class="stack"><label>Mandarin voice<select id="speechVoice">${list.map(([id,label])=>`<option value="${esc(id)}" ${s.speechVoice===id?'selected':''}>${esc(label)}</option>`).join('')}</select></label>
+ ${numeric('readerCpm','Characters per minute',10,1200)}${numeric('speechPitch','Pitch adjustment (%)',-50,50)}${numeric('speechPreload','Azure sentences ahead',0,Number.MAX_SAFE_INTEGER)}${numeric('speechCacheLimit','Maximum cached sentences',0,Number.MAX_SAFE_INTEGER)}${numeric('paragraphDelay','Paragraph pause (ms)',0,5000)}
+ <details><summary>Azure credentials</summary><div class="stack"><label>Azure region<input id="speech-region" autocapitalize="none" autocomplete="off" placeholder="eastasia" value="${esc(s.azureRegion)}"></label>
+ <div id="speech-key-area">${secretControls()}</div></div></details>
  <button class="btn btn-primary" data-action="save-speech">Save speech settings</button>
- <p>${speechCacheCount()} of 8 audio clips cached · ${state.speechVault?(state.deviceKey?'Azure credentials saved':'Azure credentials locked'):'No saved Azure credentials'}</p>
- ${speechButton('今天我们一起学习中文。','Test current voice')}<button class="btn btn-secondary" data-action="clear-speech">Clear audio cache</button><button class="btn btn-secondary" data-action="speech-secret">Manage Azure credentials</button></div>`);
+ <button class="btn btn-secondary" data-action="speech-test">Test current voice</button>
+ <p id="speech-cache-count">${speechCacheCount()} sentences cached</p><button class="btn btn-secondary" data-action="clear-speech">Clear audio cache</button></div>`;
 }
-function secretForm(){
- const existing=!!state.speechVault;
- const pin=(name,label)=>`<label>${label}<input id="${name}" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off"></label>`;
- modal('Azure credentials',`<div class="stack">${existing?pin('current-pin','Current PIN'):''}
- ${existing?'<button class="btn btn-secondary" data-action="unlock-speech">Unlock on this device</button>':''}
- <label>Azure region<input id="speech-region" autocomplete="off" autocapitalize="none" placeholder="${existing?'Keep saved region':'eastasia'}"></label>
- <label>Azure Speech key<input type="password" id="speech-key" autocomplete="off" placeholder="${existing?'Keep saved key':''}"></label>
- ${pin('new-pin',existing?'New PIN (optional)':'Choose a four-digit PIN')}${pin('confirm-pin','Confirm new PIN')}
- <button class="btn btn-primary" data-action="store-speech">Save credentials</button>
- ${existing?'<button class="btn btn-danger" data-action="reset-speech">Reset credentials and PIN</button>':''}
- <p class="subtle">The PIN protects the speech credentials in your backups. This device can play audio after you unlock it once.</p></div>`);
+function secretControls(){
+ if(state.speechVault&&!unlocked())return '<button class="btn btn-secondary" data-action="speech-unlock">Unlock saved key</button>';
+ return `<label>Azure Speech key<input type="password" id="speech-key" autocomplete="off" value="${esc(unlocked()?.key||'')}"></label><button class="text-link" data-action="speech-show-key" aria-pressed="false">Show key</button>`;
+}
+function refreshSecret(){
+ const area=$('#speech-key-area');if(area)area.innerHTML=secretControls();
+ for(const button of document.querySelectorAll('[data-action="speech-reset"],[data-action="speech-change-pin"]'))button.disabled=!state.speechVault;
+}
+function speechDraft(){
+ const settings={speechVoice:$('#speechVoice').value,azureRegion:$('#speech-region').value.trim().toLowerCase()};
+ if(settings.azureRegion&&!/^[a-z0-9]{1,64}$/.test(settings.azureRegion))throw Error('Enter a valid Azure region.');
+ for(const field of ['readerCpm','speechPitch','speechPreload','speechCacheLimit','paragraphDelay']){
+  const input=$('#'+field);
+  if(!input.checkValidity())throw Error('Check '+input.parentElement.textContent.trim()+'.');
+  settings[field]=Number(input.value);
+ }
+ return settings;
+}
+function keyEdited(){
+ const input=$('#speech-key');return input&&input.value.trim()!==(unlocked()?.key||'');
+}
+async function saveSpeechDraft(){
+ const settings=speechDraft();
+ if(keyEdited()){
+  const key=$('#speech-key').value.trim();
+  if(!key)throw Error('Use Reset secrets to erase the saved key.');
+  if(state.speechVault){const session=await requireUnlock();await storeEnvelope(session.pin,key,settings);}
+  else if(!await askDialog('Set PIN',newPinFields(),'Save',async data=>{await storeEnvelope(data.get('pin'),key,settings);return true;}))return false;
+ }else if(!await change(d=>Object.assign(d.settings,settings),false))return false;
+ setSpeechCacheLimit(settings.speechCacheLimit);return true;
 }
 async function speechAction(action,el){
  try{
   if(action==='say-text')await sayText(el.dataset.text);
-  else if(action==='speech-settings')speechSettings();
-  else if(action==='speech-secret')secretForm();
-  else if(action==='clear-speech'){clearSpeechCache();speechSettings();}
-  else if(action==='save-speech'){
-   const settings={speechVoice:$('#speechVoice').value};
-   for(const field of ['readerCpm','speechPitch','speechPreload','paragraphDelay']){
-    const input=$('#'+field);if(!input.value||!input.checkValidity())throw Error('Check the range for '+input.parentElement.textContent.trim());
-    settings[field]=Number(input.value);
-   }
-   if(await change(d=>Object.assign(d.settings,settings),false)){closeModal();render();toast('Speech settings saved.');}
-  }else if(action==='reset-speech'){
-   if(window.confirm('Erase the saved Azure key, region and PIN on this device?')){
-    if(await change(d=>{delete d.speechVault;delete d.deviceKey;},false)){clearSpeechCache();speechSettings();}
-   }
-  }else if(action==='store-speech'||action==='unlock-speech'){
-   const current=$('#current-pin')?.value;
-   const old=state.speechVault?await unlockSpeech(state.speechVault,current):{};
-   if(action==='unlock-speech'){
-    if(await change(d=>{d.deviceKey=old.deviceKey;},false))speechSettings();
-   }else{
-    const fresh=$('#new-pin').value;
-    if(fresh!==$('#confirm-pin').value)throw Error('New PIN entries must match.');
-    const sealed=await sealSpeech(fresh||current,$('#speech-region').value||old.region||'',$('#speech-key').value||old.key||'');
-    if(await change(d=>Object.assign(d,sealed),false)){clearSpeechCache();speechSettings();}
-   }
-  }else return false;
- }catch(error){toast(error.message);}
- return true;
+  if(action==='speech-test')await sayText('今天我们一起学习中文。',speechDraft(),true);
+  if(action==='speech-show-key'){
+   const input=$('#speech-key'),show=input.type==='password';
+   input.type=show?'text':'password';el.textContent=show?'Hide key':'Show key';el.setAttribute('aria-pressed',String(show));
+  }
+  if(action==='clear-speech')clearSpeechCache();
+  if(action==='save-speech'&&await saveSpeechDraft())toast('Speech settings saved.');
+  if(action==='speech-unlock')await requireUnlock();
+  if(action==='speech-reset')await resetSecrets();
+  if(action==='speech-change-pin'){
+   await changePin(await requireUnlock(false));
+  }
+  const count=$('#speech-cache-count');if(count)count.textContent=speechCacheCount()+' sentences cached';
+ }catch(error){if(error.name!=='AbortError')toast(error.message);}
 }
-
 function renderSettings(){const s=state.settings,draft=pendingFont||lastAcceptedFont;
  const group=(title,content)=>`<details class="settings-section"><summary><span>${title}</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-section-body">${content}</div></details>`;
-  return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1><p class="lead">Expand only the sections you want to change.</p></div>
-${group('Speech','<button class="btn btn-secondary" data-action="speech-settings">Voice, playback &amp; Azure credentials</button>')}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
+  return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1><button class="btn btn-secondary" data-action="navigate" data-page="${settingsOrigin}">‹ ${settingsOrigin==='study'&& (state.activePractice||state.activeSession||state.activeGrammarSession)?'Return to study session':'Back'}</button></div>
+${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
    <div class="panel"><div class="settings-row"><div><strong>New vocabulary words per day</strong><small>Leave empty for unlimited. Zero blocks new words but not due reviews. Resets each local calendar day.</small></div><input type="number" min="0" max="20000" placeholder="Unlimited" data-setting="newWordsPerDay" value="${s.newWordsPerDay??''}" aria-label="New vocabulary words per day"></div>
     <div class="settings-row"><div><strong>Target retention</strong><small>FSRS retention target and Auto urgency; score intervals are set above</small></div><select data-setting="desiredRetention">${options([[.85,'85%'],[.9,'90%'],[.95,'95%']],s.desiredRetention)}</select></div>
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
@@ -626,6 +711,8 @@ ${group('Speech','<button class="btn btn-secondary" data-action="speech-settings
      <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
    `)}${group('Reset & recovery',`<div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button>
+     <button class="btn btn-secondary" data-action="speech-change-pin" ${state.speechVault?'':'disabled'}>Change PIN</button>
+     <button class="btn btn-danger" data-action="speech-reset" ${state.speechVault?'':'disabled'}>Reset secrets</button>
      <button class="btn btn-danger" data-action="clear-settings">Clear settings</button>
      <button class="btn btn-danger" data-action="clear-dictionary">Clear dictionary</button>
      <button class="btn btn-secondary" data-action="reload-cards">Reload cards from default master</button></div>`)}
@@ -653,12 +740,16 @@ function positionStudyScreen(){
  }
  lastScreen=page;lastStudyFocus=key;
 }
-function render(){if(!state)return;const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
+function render(){if(!state)return;setSpeechCacheLimit(state.settings.speechCacheLimit);const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
   reader.unmount();app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();mountListening();if(page==='reader')reader.mount();positionStudyScreen();}
-function navigate(dest){if(!['study','browse','grammar','reader','stats','settings','complete'].includes(dest))return;
+let settingsOrigin='study',beforeSettingsReveal=false;
+function navigate(dest){
+  if(dest==='settings'&&page==='settings')dest=settingsOrigin;
+  if(dest==='settings'){settingsOrigin=page;beforeSettingsReveal=revealed;}
+  if(!['study','browse','grammar','reader','stats','settings','complete'].includes(dest))return;
   if(dest==='settings'&&page!=='settings')pendingFont=cloneFont(lastAcceptedFont);
   if(dest!=='settings')pendingFont=null;
-  page=dest;revealed=false;render();}
+  revealed=page==='settings'&&dest===settingsOrigin?beforeSettingsReveal:false;page=dest;render();}
 const detailStack=[];
 function modal(title,contents){
  const nested=currentModal&&['Word in context','Grammar in context'].includes(title)&&title!==currentModal.dataset?.detailTitle;
@@ -722,7 +813,7 @@ function grammarDetails(id){const g=grammarById(id);if(!g)return;const scores=sc
   const weakWords=involved.filter(w=>wordScore(w)<1);
   modal('Grammar in context',`<div class="panel stack"><div class="eyebrow">SENTENCE</div><div class="grammar-detail-hanzi">${linkedSentence(g)}</div>${speechButton(plainSentence(g.markup))}
     <div class="review-pinyin">${esc(g.pinyin)}</div><strong>${esc(g.english)}</strong><p class="subtle">Original grammar tiles: ${esc(literalGrammarTokens(g))}</p></div>
-    <div class="tags-wrap" style="margin:16px 0">${tags.map(tagHtml).join('')||'<span class="subtle">No inherited tags (add matching word cards)</span>'}</div>
+    <details class="panel"><summary>Tags (${tags.length})</summary><div class="tags-wrap">${tags.map(tagHtml).join('')||'No inherited tags'}</div></details>
     <div class="detail-stats"><div><strong>${percent(scores.knowledge)}</strong><span>Knowledge</span></div>
       <div><strong>${scores.usageAttempts?percent(scores.usage):"—"}</strong><span>Usage risk · ${scores.usageAttempts} checked</span></div>
       <div><strong>${percent(scores.combined)}</strong><span>Combined</span></div>
@@ -801,15 +892,11 @@ for(const name of ['gesturestart','gesturechange','gestureend']){
  document.addEventListener(name,e=>e.preventDefault(),{passive:false});
 }
 document.addEventListener('touchmove',e=>{if(e.touches.length>1)e.preventDefault();},{passive:false});
-function confirmRemoval(message){
- return deleteConfirmationValid(window.prompt(message+' Type delete to confirm.')||'');
+function confirmRemoval(title,message){
+ return askDialog(title,'<p>'+esc(message)+'</p>'+deleteField,title,()=>true,{danger:true});
 }
-function clearDataModal(){modal('Clear learning records?',`<div class="notice error"><strong>This removes all review history, schedules, grades, streaks, grammar attempts, and active sessions.</strong> It keeps your vocabulary and grammar cards, as well as your settings. Export a backup first if you want to preserve your progress.</div>
-  <div class="form-field" style="margin-top:18px"><label for="clear-confirm">Type <strong>delete</strong> to confirm</label>
-  <input id="clear-confirm" placeholder="delete" autocomplete="off" spellcheck="false"></div>
-  <div class="modal-actions"><button class="btn btn-secondary" data-action="close-modal">Cancel</button>
-    <button class="btn btn-danger" id="clear-confirm-button" data-action="confirm-clear" disabled>Clear records</button></div>`);}
-async function clearData(){if(!deleteConfirmationValid($('#clear-confirm')?.value))return;
+async function clearData(){
+ if(!await confirmRemoval('Clear learning records','Remove review history, schedules, grades, streaks, grammar attempts and active sessions. Your words, grammar cards and settings are kept.'))return;
   const done=await change(d=>clearLearningRecords(d),false);
   if(done){reader.reset();closeModal();lastFinished=null;grammarFeedback=null;revealed=false;page='study';render();toast('Learning records cleared; cards retained. Export your new backup.');}
 }
@@ -826,6 +913,7 @@ function backupFile(){const {json:content}=prepareVerifiedBackup(state);
   return new File([content],`ciyan-progress-v${APP_VERSION}-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
 async function exportBackup(mode){
   try{
+    if(keyEdited()&&!await saveSpeechDraft())return;
     const file=backupFile(),revision=state.revision;
     if(mode==='share'&&navigator.share&&navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'Cíyán complete backup'});
     else{downloadFile(file,file.name);if(mode==='share')toast('Share is unavailable; a JSON download was started');}
@@ -848,9 +936,8 @@ function requestFile(kind){const input=document.createElement('input');input.typ
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!window.confirm(`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
   try{
-   if(!parsed.speechVault&&state.speechVault){parsed.speechVault=state.speechVault;parsed.deviceKey=state.deviceKey;}
-   else if(parsed.speechVault?.data===state.speechVault?.data&&state.deviceKey)parsed.deviceKey=state.deviceKey;
-   ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);addTskTags(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!parsed.deviceKey?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
+   if(!parsed.speechVault&&state.speechVault){parsed.speechVault=state.speechVault;parsed.settings.azureRegion ||= state.settings.azureRegion;}
+   ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);addTskTags(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;if(!unlocked())speechSession=null;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!unlocked()?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -948,7 +1035,7 @@ document.addEventListener('click',async event=>{
   if(suppressTileClick&&event.target.closest('[data-tile],[data-drop-slot]')){event.preventDefault();return;}
   const element=event.target.closest('[data-action]');if(!element)return;
   const action=element.dataset.action;
-  if(action==='say-text'||action.startsWith('speech-')||['save-speech','clear-speech','reset-speech','store-speech','unlock-speech'].includes(action)){
+  if(action==='say-text'||action.startsWith('speech-')||['save-speech','clear-speech'].includes(action)){
    await speechAction(action,element);return;
   }
   if(action.startsWith('reader-')){await reader.action(action.slice(7),element);return;}
@@ -956,7 +1043,12 @@ document.addEventListener('click',async event=>{
   if(await practiceAction(action,element))return;
   switch(action){
     case 'detail-back':{closeModal(false);currentModal=detailStack.pop();if(currentModal)document.body.append(currentModal);break;}
-    case 'navigate':closeModal();navigate(element.dataset.page);break;
+    case 'navigate':{
+     const openSpeech=element.dataset.section==='Speech'||(element.dataset.page==='settings'&&page==='study'&&state.activePractice?.current?.mode==='listening');
+     closeModal();navigate(element.dataset.page);
+     if(openSpeech&&page==='settings')document.querySelector('.settings-section').open=true;
+     break;
+    }
     case 'apply-font':await applyPendingFont();break;
     case 'discard-font':discardPendingFont();break;
     case 'due-bucket':{const n=Number(element.dataset.index);const buttons=[...document.querySelectorAll('.due-column')];const b=buttons[n];if(b)toast(b.getAttribute('aria-label'));break;}
@@ -1006,15 +1098,14 @@ document.addEventListener('click',async event=>{
     case 'export-deck':exportDeck();break;
     case 'template':downloadTemplate();break;
     case 'clear-settings':
-     if(confirmRemoval('Restore all settings, including fonts and the reader gate, to their defaults?')&&await change(d=>{d.settings=defaultState().settings;ensureStudy(d);},false)){
+     if(await confirmRemoval('Clear settings','Restore all settings, including fonts and the reader gate, to their defaults?')&&await change(d=>{d.settings=defaultState().settings;ensureStudy(d);},false)){
       lastAcceptedFont=cloneFont(state.settings);pendingFont=cloneFont(lastAcceptedFont);render();toast('Default settings restored.');
      }break;
     case 'clear-dictionary':
-     if(confirmRemoval('Remove words and grammar cards with no learning records? Active study sessions will end.'))await change(clearDictionary);break;
+     if(await confirmRemoval('Clear dictionary','Remove words and grammar cards with no learning records? Active study sessions will end.'))await change(clearDictionary);break;
     case 'reload-cards':
-     if(confirmRemoval('Replace your dictionary with the default master cards? Learning records are kept. Active study sessions will end.'))await change(d=>reloadCards(d,MASTER,replaceMaster));break;
-    case 'clear-data':clearDataModal();break;
-    case 'confirm-clear':await clearData();break;
+     if(await confirmRemoval('Reload default cards','Replace your dictionary with the default master cards? Learning records are kept. Active study sessions will end.'))await change(d=>reloadCards(d,MASTER,replaceMaster));break;
+    case 'clear-data':await clearData();break;
     case 'grammar-pick':await pickGrammarTile(element.dataset.tile);break;
     case 'grammar-slot':await removeGrammarTile(Number(element.dataset.slot));break;
     case 'grammar-check':await checkGrammar();break;
@@ -1033,7 +1124,6 @@ document.addEventListener('input',event=>{
   if(event.target.closest?.('#scheduler-form'))updateTimingPreview(event.target.closest('#scheduler-form'));
   if(event.target.id==='study-search'){studyFilters.search=event.target.value;const caret=event.target.selectionStart;if(!studyComposing){render();const search=$('#study-search');search?.focus?.({preventScroll:true});if(Number.isInteger(caret))search?.setSelectionRange?.(caret,caret);}return;}
   if(event.target.id==='collection-search') {const kind=page==='grammar'?'grammar':'words';filters[kind].search=event.target.value;updateCollection();}
-  if(event.target.id==='clear-confirm') {const b=$('#clear-confirm-button');if(b)b.disabled=!deleteConfirmationValid(event.target.value);}
 });
 document.addEventListener('compositionstart',event=>{if(event.target.id==='study-search')studyComposing=true;});
 document.addEventListener('compositionend',event=>{if(event.target.id==='study-search'){studyComposing=false;studyFilters.search=event.target.value;render();const search=$('#study-search');search?.focus?.({preventScroll:true});}});
@@ -1065,6 +1155,7 @@ document.addEventListener('change',async event=>{
   await change(d=>{d.settings[key]=value;});
 });
 document.addEventListener('keydown',event=>{
+  if(document.querySelector('dialog[open]'))return;
   if(event.key==='Escape'&&currentModal){closeModal();return;}
   if(['Enter',' '].includes(event.key)&&!revealed&&page==='study'&&event.target.closest('.review-card')&&!state.settings.toneTest){event.preventDefault();revealed=true;render();}
   if(page==='study'&&revealed&&!currentModal&&['1','2','3','4'].includes(event.key)){if(state.activePractice)gradePractice(Number(event.key));else gradeCard(Number(event.key));}
@@ -1078,6 +1169,7 @@ async function boot(){try{
   // Creating a fresh state is valid only when no saved state exists. The user
   // controls clearing learning records through the explicit Settings action.
   state=loaded?migrateState(loaded):defaultState();
+  delete state.deviceKey;
   let changedContent=false;
   if(!loaded){
     replaceMaster(state,MASTER);

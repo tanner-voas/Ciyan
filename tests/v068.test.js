@@ -15,7 +15,7 @@ function fakeDocument(){
  return doc;
 }
 test('v0.6.8 has exactly seven independent selectable fonts, including the standard iPhone font',()=>{
- assert.equal(APP_VERSION,'0.8.0');
+ assert.equal(APP_VERSION,'0.8.1');
  assert.deepEqual(FONT_IDS,['print','xiaowei','kuaile','zhushi','mashan','muyao','zhimang']);
  assert.equal(Object.keys(FONT_CATALOG).length,6);
  assert.deepEqual(normalizeFontSettings({enabledFonts:[]}),{enabledFonts:[]});

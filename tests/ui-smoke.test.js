@@ -358,7 +358,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.8.0');
+ assert.equal(reconciled.bundledMasterVersion,'0.8.1');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -375,7 +375,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.8.0');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.8.1');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -389,7 +389,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.8.0');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.8.1');
  assert.equal(saved.cards.length,11893);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -576,4 +576,80 @@ test('listening hint reveals English, caps grades and keeps grammar mastery inde
  await click('practice-grade',{grade:'4'});assert.equal(mock.data.get('main').skillHistory.length,0);
  await click('practice-grade',{grade:'3'});const saved=mock.data.get('main');assert.equal(saved.skillSchedules.listening[g.id].reps,1);
  assert.equal(saved.skillHistory[0].grade,3);assert.equal(saved.grammarHistory.length,0);
+});
+
+test('speech drafts, PIN sessions and backup exports use the same saved key',async()=>{
+ const mock=mockBrowser(),nodes=mock.browseNodes;
+ const {loadState,makeBackup}=await import('../storage.js');
+ const {unlockSpeech}=await import('../speech-vault.js');
+ const dialogs=[];
+ const ordinaryElement=document.createElement;
+ document.querySelectorAll=()=>[];
+ document.createElement=name=>{
+  if(name!=='dialog')return ordinaryElement(name);
+  const form={elements:{dismiss:{},resetSecrets:{}}},alert={};
+  const dialog={form,alert,setAttribute(){},querySelector:q=>q==='form'?form:alert,
+   showModal(){dialogs.push(this);},close(){dialogs.pop();},remove(){}};
+  return dialog;
+ };
+ const click=(action,extra={})=>mock.listeners.click({target:{closest:q=>q==='[data-action]'?{dataset:{action,...extra}}:null}});
+ const waitForDialog=async()=>{for(let n=0;n<100&&!dialogs.length;n++)await delay();assert.ok(dialogs.length);return dialogs.at(-1);};
+ const submit=async values=>{
+  const dialog=await waitForDialog(),RealFormData=globalThis.FormData;
+  globalThis.FormData=class extends Map {constructor(){super(Object.entries(values));}};
+  try{await dialog.form.onsubmit({preventDefault(){}});}finally{globalThis.FormData=RealFormData;}
+ };
+ await import('../app.js?smoke=speech081');await delay(30);
+ await click('navigate',{page:'settings'});
+ assert.match(mock.shell.innerHTML,/Maximum cached sentences/);
+ const input=value=>({value,checkValidity:()=>true});
+ for(const [key,value] of Object.entries({speechVoice:'',readerCpm:'360',speechPitch:'12',speechPreload:'2',speechCacheLimit:'19',paragraphDelay:'110','speech-region':'westus','speech-key':'test-key'}))nodes['#'+key]=input(value);
+ nodes['#speech-key-area']={};nodes['#speech-cache-count']={};
+ const pending=click('save-speech');await submit({pin:'1234',repeat:'1234'});await pending;
+ const saved=await loadState();
+ assert.equal(saved.settings.speechCacheLimit,19);assert.equal(saved.settings.azureRegion,'westus');assert.ok(!saved.deviceKey);
+ assert.equal((await unlockSpeech(saved.speechVault,'1234')).key,'test-key');
+ assert.ok(!JSON.stringify(makeBackup(saved)).includes('test-key'));
+ assert.match(nodes['#speech-key-area'].innerHTML,/value="test-key"/);
+ nodes['#speech-key'].value='edited-key';await click('save-speech');
+ const rotated=click('speech-change-pin');await submit({pin:'2345',repeat:'2345'});await rotated;
+ const next=await loadState();assert.equal((await unlockSpeech(next.speechVault,'2345')).key,'edited-key');
+ await assert.rejects(unlockSpeech(next.speechVault,'1234'),/PIN/);
+ // Verify the live, unsaved voice, region, key, pitch and rate reach synthesis.
+ let request;
+ window.AudioContext=class {state='running';close(){return Promise.resolve();}};
+ window.cancelAnimationFrame=()=>{};
+ window.fetch=async(url,options)=>{request={url,...options};return new Response('',{status:403});};
+ nodes['#speechVoice'].value='zh-CN-YunyangNeural';nodes['#readerCpm'].value='480';
+ nodes['#speech-region'].value='eastasia';nodes['#speech-key'].value='test-preview';
+ await click('speech-test');
+ assert.match(request.url,/eastasia\.tts/);assert.match(request.body,/YunyangNeural/);
+ assert.match(request.body,/rate="100%" pitch="12%"/);assert.equal(request.headers['Ocp-Apim-Subscription-Key'],'test-preview');
+ assert.equal((await loadState()).settings.readerCpm,360);
+ // Reload the app against the same IndexedDB. The encrypted envelope survives but access locks.
+ await import('../app.js?smoke=speech081reload');await delay(30);
+ await click('navigate',{page:'settings'});assert.match(mock.shell.innerHTML,/Unlock saved key/);
+ const unlocking=click('speech-unlock');await submit({pin:'9999'});
+ assert.match(dialogs.at(-1).alert.textContent,/PIN/);await submit({pin:'2345'});await unlocking;
+ assert.match(nodes['#speech-key-area'].innerHTML,/value="edited-key"/);
+ const reset=click('speech-reset');await submit({pin:'3456',repeat:'3456',confirmation:'delete'});await reset;
+ assert.equal((await unlockSpeech((await loadState()).speechVault,'3456')).key,'');
+});
+
+test('listening settings open on speed and return to the same exercise',async()=>{
+ const mock=mockBrowser();
+ const {defaultState}=await import('../storage.js');
+ const state=defaultState();
+ for(const card of state.cards)state.schedules[card.id]={score:3};
+ mock.data.set('main',state);
+ const section={};mock.browseNodes['.settings-section']=section;
+ const click=(action,extra={})=>mock.listeners.click({target:{closest:q=>q==='[data-action]'?{dataset:{action,...extra}}:null}});
+ await import('../app.js?smoke=listening081');await delay(30);
+ await click('practice-start',{mode:'listening'});
+ const before=structuredClone(mock.data.get('main').activePractice);
+ assert.match(mock.shell.innerHTML,/Listen to the sentence/);
+ await click('navigate',{page:'settings'});assert.equal(section.open,true);
+ assert.match(mock.shell.innerHTML,/Return to study session/);
+ await click('navigate',{page:'study'});assert.match(mock.shell.innerHTML,/Listen to the sentence/);
+ assert.deepEqual(mock.data.get('main').activePractice,before);
 });

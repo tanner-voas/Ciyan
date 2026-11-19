@@ -1,5 +1,4 @@
-// The portable envelope carries only ciphertext. IndexedDB can separately
-// retain the non-extractable CryptoKey for ordinary playback on this device.
+// Previous envelopes can include a region. New envelopes store only the key.
 const base64=bytes=>btoa(String.fromCharCode(...new Uint8Array(bytes)));
 const bytes=text=>Uint8Array.from(atob(text),c=>c.charCodeAt(0));
 async function derive(pin,salt){
@@ -13,8 +12,15 @@ export function validVault(v){
 export async function sealSpeech(pin,region,key){
  region=region.trim().toLowerCase();key=key.trim();
  if(!/^[a-z0-9]{1,64}$/.test(region)||!key||key.length>512)throw Error('Enter a valid Azure region and key.');
+ return seal(pin,{region,key});
+}
+export function sealSpeechKey(pin,key){
+ if(typeof key!=='string'||key.length>512)throw Error('Enter a valid Azure key.');
+ return seal(pin,{key});
+}
+async function seal(pin,payload){
  const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12)),deviceKey=await derive(pin,salt);
- const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},deviceKey,new TextEncoder().encode(JSON.stringify({region,key})));
+ const encrypted=await crypto.subtle.encrypt({name:'AES-GCM',iv},deviceKey,new TextEncoder().encode(JSON.stringify(payload)));
  return {speechVault:{version:1,salt:base64(salt),iv:base64(iv),data:base64(encrypted)},deviceKey};
 }
 export async function openSpeech(v,deviceKey){

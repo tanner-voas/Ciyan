@@ -121,16 +121,18 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   sequence++;cloud.cancel();narrator.cancel();clearTimeout(tick);
   if(playing&&current&&aloud){usePlayback();speechStatus.textContent='';
    if(cloudVoices.has(voiceSelect.value)&&!systemFallback){
-    const ticket=sequence,preferences=speechSettings(),ahead=[];
-    let word=current;
-    for(let n=0;n<(preferences.speechPreload??2);n++){
-     const last=speechPassage(word).words.at(-1);
-     word=wordList[wordList.indexOf(last)+1];if(!last||!word)break;
-     ahead.push(speechPassage(word).text);
+    const ticket=sequence,preferences=speechSettings(),first=current;
+    function* upcoming(){
+     let passage=speechPassage(first);
+     for(let n=0;n<Math.min(preferences.speechPreload??2,preferences.speechCacheLimit??8);n++){
+      const last=passage.words.at(-1),word=last&&wordList[wordList.indexOf(last)+1];
+      if(!word)return;
+      passage=speechPassage(word);yield passage.text;
+     }
     }
     void Promise.all([cloud.prepare(),credentials()]).then(([, {region,key}])=>{
-     if(ticket===sequence)void cloud.speak(current,voiceSelect.value,rate,region,key,{pitch:preferences.speechPitch||0,ahead,deadline});
-    }).catch(error=>{if(ticket===sequence)cloudFailed(error.message);});
+     if(ticket===sequence)void cloud.speak(current,voiceSelect.value,rate,region,key,{pitch:preferences.speechPitch||0,ahead:upcoming(),deadline});
+    }).catch(error=>{if(ticket!==sequence)return;if(error.name==='AbortError')pause();else cloudFailed(error.message);});
     return;
    }
    const speak=()=>narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback,rate,speechSettings().speechPitch||0);

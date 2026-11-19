@@ -35,7 +35,7 @@ function database(){
 export function deleteConfirmationValid(value){return String(value??'').trim().toLowerCase()==='delete';}
 export function speechPreferences(s={}){
  const number=(v,min,max,fallback)=>Number.isInteger(v)&&v>=min&&v<=max?v:fallback;
- return {speechVoice:typeof s.speechVoice==='string'?s.speechVoice.slice(0,512):'',speechPitch:number(s.speechPitch,-50,50,0),speechPreload:number(s.speechPreload,0,6,2),paragraphDelay:number(s.paragraphDelay,0,5000,110)};
+ return {speechCacheLimit:number(s.speechCacheLimit,0,Number.MAX_SAFE_INTEGER,8),azureRegion:typeof s.azureRegion==='string'&&/^[a-z0-9]{1,64}$/.test(s.azureRegion)?s.azureRegion:'',speechVoice:typeof s.speechVoice==='string'?s.speechVoice.slice(0,512):'',speechPitch:number(s.speechPitch,-50,50,0),speechPreload:number(s.speechPreload,0,Number.MAX_SAFE_INTEGER,2),paragraphDelay:number(s.paragraphDelay,0,5000,110)};
 }
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
