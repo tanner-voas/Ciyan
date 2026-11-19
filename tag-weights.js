@@ -1,7 +1,18 @@
 // Applied preferences live in Settings and full progress backups, never in cards.
 // A tag is a leaf only if no other loaded tag is below it in the tree.
 const HSK_DEFAULTS={'HSK/HSK1':4096,'HSK/HSK2':1024,'HSK/HSK3':256,'HSK/HSK4':64,'HSK/HSK5':16,'HSK/HSK6':8,'HSK/HSK7-9':0};
-export const defaultTagWeight=tag=>Object.hasOwn(HSK_DEFAULTS,tag)?HSK_DEFAULTS[tag]:0;
+export const TSK_DEFAULTS=Object.freeze(Object.fromEntries([2560,1280,640,320,160,80,40,20,10].map((n,i)=>['TSK/TSK'+(i+1),n])));
+export const defaultTagWeight=tag=>Object.hasOwn(HSK_DEFAULTS,tag)?HSK_DEFAULTS[tag]:(TSK_DEFAULTS[tag]??0);
+// Versions through 0.7.7 initialized all TSK weights to zero. Upgrade that
+// recognizable untouched preset once, without replacing personalized weights.
+export function upgradeTskDefaults(settings,version){
+ const weights=settings?.tagWeights;
+ if(!weights||typeof weights!=='object'||Array.isArray(weights))return;
+ if(typeof version==='string'&&/^v?0\.7\.[0-7]$/.test(version)&&
+   Object.keys(TSK_DEFAULTS).every(k=>weights[k]===undefined||weights[k]===0))
+  for(const [tag,n] of Object.entries(TSK_DEFAULTS))weights[tag]=n;
+}
+
 export function leafTagPaths(cards){
  const paths=[...new Set(cards.flatMap(c=>Array.isArray(c.tags)?c.tags:[]).filter(x=>typeof x==='string'&&x.trim()))].sort();
  return paths.filter(t=>!paths.some(other=>other.startsWith(t+'/')));

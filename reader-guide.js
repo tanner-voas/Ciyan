@@ -2,7 +2,7 @@ import {mandarinVoices,voiceDescription,createNarrator} from './reader-speech.js
 import {cloudVoices,createCloudNarrator} from './reader-cloud-speech.js';
 // The document scrolls as one reading surface. Word indices count annotated
 // words in a paragraph, while offset keeps older character-based bookmarks usable.
-export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend}){
+export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend,initialGuide=false,initialAudio=false,onGuideChange=()=>{},onAudioChange=()=>{},onTap=()=>{}}){
  const doc=pages.ownerDocument,win=doc.defaultView;
  const listeners=new AbortController(),options={signal:listeners.signal};
  const toolbar=pages.querySelector('[data-guide-controls]');
@@ -34,7 +34,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   }
   pause();speechStatus.textContent='Mandarin audio could not play ('+reason+'). Check media volume and output, or choose another voice and tap Play.';
  });
- const menu=pages.querySelector('.reader-guide-bar'),dock=pages.querySelector('.reader-dock');
+ const menu=pages.querySelector('[data-reader-settings-sheet]'),dock=pages.querySelector('.reader-dock');
  const audioControls=pages.querySelector('[data-audio-controls]');
  const config=pages.querySelector('[data-cloud-config]');
  const region=pages.querySelector('[data-cloud-region]'),key=pages.querySelector('[data-cloud-key]');
@@ -56,14 +56,15 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   refreshVoices();synth?.addEventListener?.('voiceschanged',refreshVoices,options);
   audio.addEventListener('click',()=>{
    aloud=audio.checked;systemFallback=null;refreshVoices();
-   if(aloud&&enabled&&current){playing=true;play.textContent='Pause';}
-   else releasePlayback();
+   if(aloud&&!enabled){switchGuide(true);onGuideChange(true);}
+   onAudioChange(aloud);
+   if(!aloud)releasePlayback();
    schedule();
   },options);
   voiceSelect.addEventListener('change',()=>{
    voiceSelect.dataset.selected=voiceSelect.value;systemFallback=null;speechStatus.textContent='';
    refreshVoices();
-   if(!config.hidden&&(!region.value||!key.value)){pause();menu.open=true;return;}
+   if(!config.hidden&&(!region.value||!key.value)){pause();if(menu)menu.hidden=false;return;}
    schedule();
   },options);
  }
@@ -90,7 +91,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  function center(time=performance.now()){
   if(!current||stopped||doc.hidden||Math.abs((viewport()?.scale||1)-1)>0.01)return;
   const first=pages.querySelector('article'),last=pages.querySelector('article:last-of-type');
-  const top=topEdge(),bottom=Math.min(win.innerHeight,(dock?.getBoundingClientRect?dock:menu).getBoundingClientRect().top);
+  const top=topEdge(),bottom=Math.min(win.innerHeight,(dock?.getBoundingClientRect?.()||{top:win.innerHeight-10}).top);
   if(bottom<=top||!first||!last)return;
   const target=current.getBoundingClientRect(),height=bottom-top;
   const delta=target.top+target.height/2-(top+height/2);
@@ -133,6 +134,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  function switchGuide(on,target){
   const start=target||current||visibleRow()?.querySelector('[data-word-index]')||wordList[0];
   enabled=on;toolbar.hidden=!on;toggle.setAttribute('aria-pressed',String(on));toggle.textContent=on?'Disable reading guide':'Enable reading guide';
+  pages.classList.toggle('has-reader-guide',on);
   pages.classList.toggle('guided',on);
   if(on){select(start);schedule();}
   else{pause();current?.classList.remove('reader-current');current=null;bookmark(visibleRow());}
@@ -144,26 +146,37 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  function lookup(word){
   const wasPlaying=playing;
   pause();
-  define(word,enabled?()=>{
-   if(stopped||!enabled)return;
-   select(word);
-   if(wasPlaying){playing=true;play.textContent='Pause';schedule();}
-  }:null);
+  define(word,()=>{
+   if(stopped)return;
+   if(!enabled){switchGuide(true,word);onGuideChange(true);}else select(word);
+   if(aloud||wasPlaying){playing=true;play.textContent='Pause';schedule();}
+  });
  }
  pages.addEventListener('keydown',e=>{
   if(['Enter',' '].includes(e.key)&&e.target.matches('[data-word-index]')){e.preventDefault();lookup(e.target);}
  },options);
+ // A single tap toggles unobtrusive reader controls; a second tap on the
+ // SAME annotated word within 360ms opens its dictionary. The delayed first
+ // tap prevents controls flashing twice when looking up a word on iPhone.
+ let tapped=null,tappedAt=0,tapTimer;
  pages.addEventListener('click',e=>{
-  const word=e.target.closest('[data-word-index]');
-  if(word){lookup(word);return;}
-  const action=e.target.closest('[data-guide]')?.dataset.guide;
-  if(action==='toggle'){switchGuide(!enabled);menu.open=false;}
-  if(action==='play'){if(playing)pause();else{playing=true;play.textContent='Pause';schedule();}}
-  if(action==='back'||action==='forward')void step(action==='back'?-1:1);
+  const action=e.target.closest?.('[data-guide]')?.dataset.guide;
+  if(action==='toggle'){const next=!enabled;if(!next&&aloud){aloud=false;audio.checked=false;onAudioChange(false);refreshVoices();}switchGuide(next);onGuideChange(enabled);if(menu)menu.hidden=true;return;}
+  if(action==='play'){if(playing)pause();else{if(!enabled){switchGuide(true);onGuideChange(true);}playing=true;play.textContent='Pause';schedule();}return;}
+  if(action==='back'||action==='forward'){void step(action==='back'?-1:1);return;}
   if(action==='slower'||action==='faster'){
    rate=Math.max(10,Math.min(1200,rate+(action==='slower'?-10:10)));
-   rateLabel.textContent=rate+' CPM';rateChanged(rate);schedule();
+   rateLabel.textContent=rate+' CPM';rateChanged(rate);schedule();return;
   }
+  if(e.target.closest?.('[data-reader-ui],button,input,select,label,a'))return;
+  const word=e.target.closest?.('[data-word-index]');
+  if(word){
+   const now=Date.now();
+   if(tapped===word&&now-tappedAt<360){clearTimeout(tapTimer);tapped=null;tappedAt=0;lookup(word);}
+   else{clearTimeout(tapTimer);tapped=word;tappedAt=now;tapTimer=setTimeout(()=>{tapped=null;onTap();},285);}
+   return;
+  }
+  clearTimeout(tapTimer);tapped=null;onTap();
  },options);
  win.addEventListener('scroll',track,{passive:true,...options});
  win.addEventListener('resize',track,options);
@@ -173,9 +186,10 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const paragraphs=Array.from(rows());
  const row=paragraphs.find(r=>r.dataset.pid===position?.id)||paragraphs[0];
  const spans=row?Array.from(row.querySelectorAll('[data-word-index]')):[];
- const resume=position?.wordIndex!=null?spans[position.wordIndex]:spans.find(w=>+w.dataset.offset>=position?.offset);
- if(position?.guided&&resume)switchGuide(true,resume);
+ const resume=(position?.wordIndex!=null?spans[position.wordIndex]:spans.find(w=>+w.dataset.offset>=(position?.offset??0)))||spans[0];
+ audio.checked=!!initialAudio;aloud=audio.checked;refreshVoices();
+ if((initialGuide||initialAudio||position?.guided)&&resume)switchGuide(true,resume);
  else if(!position)win.scrollTo?.(0,0);
  else if(row)win.scrollBy(0,row.getBoundingClientRect().top-parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top')||0));
- return ()=>{stopped=true;listeners.abort();pause();cloud.dispose();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
+ return ()=>{stopped=true;listeners.abort();clearTimeout(tapTimer);pause();cloud.dispose();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
 }

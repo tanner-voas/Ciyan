@@ -476,3 +476,67 @@ html,body{touch-action:pan-x pan-y}
 .reader-cloud-config input{width:100%;box-sizing:border-box}
 .reader-playback small:not(:empty){display:block;padding:4px}
 #reader-pages.guided{padding-bottom:calc(96px + env(safe-area-inset-bottom))}
+
+/* v0.7.8: independent, initially closed settings groups. */
+.settings-section{margin:12px 0;border:1px solid var(--stroke);border-radius:18px;background:#fffefb;overflow:clip;box-shadow:0 2px 9px #1c3b2910}
+.settings-section>summary{display:flex;align-items:center;justify-content:space-between;min-height:64px;padding:15px 18px;font-size:17px;font-weight:750;list-style:none;cursor:pointer;color:var(--forest)}
+.settings-section>summary::-webkit-details-marker{display:none}
+.settings-section>summary:focus-visible{outline:3px solid #65bf99;outline-offset:-3px}
+.settings-chevron{transition:transform .18s ease;color:#789286;font-size:24px}
+.settings-section[open] .settings-chevron{transform:rotate(180deg)}
+.settings-section-body{padding:0 12px 14px}
+.settings-section-body>.panel{box-shadow:none;margin:0;border:0;padding:12px 8px}
+.settings-section-body .tag-weight-settings{padding:12px 4px}
+
+/* v0.7.8 immersive reading controls: unobtrusive chrome, generous prose and
+   an adaptive, safe-area-aware bottom transport. */
+.app-frame:has(.immersive-reader){width:100%;max-width:none;padding:0 0 calc(14px + env(safe-area-inset-bottom))}
+.immersive-reader{padding:0;min-height:100dvh;background:#fffef9}
+#reader-pages{min-height:100dvh;max-width:760px;margin:0 auto;padding:calc(82px + env(safe-area-inset-top)) clamp(18px,5.5vw,42px) calc(48px + env(safe-area-inset-bottom));border:0;border-radius:0;background:#fffef9;scroll-padding-top:calc(88px + env(safe-area-inset-top))}
+#reader-pages article{max-width:42em;margin:0 auto}
+#reader-pages article h2{font-size:clamp(1.45rem,5vw,1.95rem);font-weight:760;line-height:1.45;margin:0 0 1.65rem;color:#1c4031}
+#reader-pages article p{font-size:clamp(1.2rem,4.35vw,1.46rem);line-height:2.02;letter-spacing:.01em;margin:0 0 1.38em;color:#1f342c;overflow-wrap:break-word}
+#reader-pages [data-word-index]{touch-action:manipulation;cursor:text;-webkit-tap-highlight-color:transparent}
+#reader-pages .reader-current{background:#d7e8d3;border-radius:4px}
+.reader-topbar{position:fixed;z-index:23;top:0;left:50%;transform:translateX(-50%);width:min(100%,760px);height:calc(63px + env(safe-area-inset-top));padding:env(safe-area-inset-top) 14px 0;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;background:#fffefaee;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid #d9e4dc;transition:opacity .18s ease,visibility .18s ease}
+.reader-topbar button{background:transparent;color:var(--forest);height:42px;padding:0 10px;border-radius:12px;font-size:18px;font-weight:700}
+.reader-topbar .reader-exit{justify-self:start;white-space:nowrap;font-size:15px}
+.reader-toc-button{justify-self:end;font-size:27px!important}
+.reader-chapter-nav{display:flex;align-items:center;gap:4px;border:1px solid #e0e8e0;border-radius:24px;background:white}
+.reader-chapter-nav span{min-width:55px;text-align:center;font-weight:650;font-size:12px;color:#52665e;white-space:nowrap}
+.reader-chapter-nav button{min-width:37px;font-size:27px;padding:0}
+.reader-dock{left:50%;right:auto;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 16px);bottom:calc(8px + env(safe-area-inset-bottom));display:flex;align-items:flex-end;justify-content:flex-end;gap:6px;transition:opacity .18s ease,visibility .18s ease,transform .18s ease}
+.reader-dock>*{background:#fffefaee;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid #dbe7de;border-radius:19px;box-shadow:0 5px 26px #163d2920}
+.reader-playback{max-width:calc(100vw - 78px);padding:5px;min-width:0}
+.reader-transport{flex-wrap:nowrap;gap:1px}
+.reader-transport button{min-width:35px;min-height:42px;border-radius:12px;padding:4px 6px;background:transparent;font-size:16px}
+.reader-transport [data-guide=play]{background:#1f503e;color:#fff;min-width:53px}
+.reader-transport output{font-size:11px;line-height:1.2;text-align:center;min-width:50px}
+.reader-more-button{width:48px;min-width:48px;min-height:54px;display:grid;place-items:center;font-weight:800;font-size:23px;letter-spacing:1px}
+.reader-audio-line{padding:5px 4px 2px;border-top:1px solid #e5eae2;margin-top:3px}
+.reader-audio-line[hidden],.reader-playback[hidden]{display:none}
+.reader-audio-line .reader-voice{font-size:12px;gap:7px;padding:3px 4px}
+.reader-audio-line select{width:100%;min-width:0;max-width:400px;flex:1;padding:6px 4px;border-radius:10px;font-size:13px}
+.reader-audio-line small{display:block;padding:4px;font-size:11px;line-height:1.45;color:#925527}
+.reader-toc-sheet,.reader-settings-sheet{position:fixed;z-index:25;background:#fffefb;box-shadow:0 12px 44px #122a2250;border:1px solid #dfebe0;border-radius:20px;padding:16px;box-sizing:border-box}
+.reader-toc-sheet[hidden],.reader-settings-sheet[hidden]{display:none}
+.reader-toc-sheet{right:max(12px,calc((100vw - 735px)/2));top:calc(72px + env(safe-area-inset-top));width:min(370px,calc(100vw - 24px));max-height:70dvh;overflow:auto}
+.reader-settings-sheet{left:50%;transform:translateX(-50%);bottom:calc(78px + env(safe-area-inset-bottom));width:min(440px,calc(100vw - 24px));max-height:65dvh;overflow:auto;display:grid;gap:10px}
+.reader-settings-sheet>.btn{min-height:47px}
+.reader-sheet-head{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:8px;border-bottom:1px solid #e4eae3;color:var(--forest)}
+.reader-sheet-head button{background:#edf3ed;color:var(--forest);border-radius:12px;min-height:38px;min-width:38px;font-size:21px}
+.reader-option{display:flex;align-items:center;gap:12px;min-height:42px;font-size:14px;color:#28473b}
+.reader-option input{width:20px;height:20px;accent-color:var(--forest)}
+.reader-toc-list{display:grid;gap:5px;margin-top:10px}
+.reader-toc-list button{display:grid;gap:4px;text-align:left;padding:12px 13px;border-radius:12px;background:transparent;color:var(--ink)}
+.reader-toc-list button[aria-current=page]{background:#e8f2e9;color:var(--forest);font-weight:750}
+.reader-toc-list button small{font-size:11px;color:#75897e}
+.reader-ui-hidden .reader-topbar,.reader-ui-hidden .reader-dock{opacity:0;visibility:hidden;pointer-events:none}
+#reader-pages.has-reader-guide{padding-bottom:calc(110px + env(safe-area-inset-bottom))}
+.reader-end{display:grid;gap:14px;text-align:center;margin:50px 0 24px;padding:26px 12px;border-top:1px solid #e0e9e0}
+.reader-end-label{text-transform:uppercase;letter-spacing:1px;font-weight:650;color:#748b7c;font-size:12px}
+.reader-finish-next{background:var(--forest);border-radius:15px;padding:17px 12px;color:white;font-weight:750;min-height:56px;width:100%;font-size:16px}
+.reader-definition-actions{display:flex;flex-wrap:wrap;gap:10px}
+@media(max-width:390px){.reader-transport button{min-width:30px;padding:4px}.reader-transport output{min-width:45px}.reader-topbar{padding-left:8px;padding-right:8px}.reader-topbar .reader-exit span{display:none}}
+/* With guide and TTS off, keep the sole options button out of the text column. */
+#reader-pages:not(.has-reader-guide) .reader-dock{left:auto;right:max(12px,env(safe-area-inset-right));transform:none}

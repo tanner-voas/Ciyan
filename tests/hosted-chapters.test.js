@@ -24,7 +24,8 @@ test('catalog opens later chapters in order and recovers a saved bookmark after 
  globalThis.location={href:'https://example.test/sub/app/'};
  globalThis.caches={open:async()=>({put:(k,v)=>cache.set(k,v),match:k=>cache.get(k)?.clone()})};
  const ui=createReader({state:()=>state,esc:String,render(){},toast:m=>errors.push(m),change:async fn=>{fn(state);return true;}});
- assert.match(ui.view(),/Chapter catalog/);
+ assert.match(ui.view(),/id="reader-novel"/);
+ assert.doesNotMatch(ui.view(),/Chapter catalog/);
  await ui.action('catalog',{dataset:{file:'panlong-3.zip'}});
  const b=state.reader.panlong;
  assert.equal(b.current,3);assert.equal(b.chapters.length,3);

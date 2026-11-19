@@ -1,7 +1,8 @@
 import {validateReader,resetReaderProgress} from './reader-core.js';
+import {validateReaderCustomIndex} from './reader-library.js';
 import {APP_VERSION,prepareVersionedBackup} from './backup-versions.js';
 import {normalizeTypographySettings} from './fonts.js';
-import {validatedTagWeights} from './tag-weights.js';
+import {validatedTagWeights,upgradeTskDefaults} from './tag-weights.js';
 import {allParticles} from './particles.js';
 import {retrySeconds,DEFAULT_RETRY} from './review-scheduler.js';
 import {normalizeTags} from './tags.js';
@@ -34,7 +35,7 @@ export function deleteConfirmationValid(value){return String(value??'').trim().t
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  reader:{},settings:{continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
+  reader:{},readerCustomIndex:{},settings:{readerGuideEnabled:false,readerTtsEnabled:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerGate:"authored",readerHighlight:false,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -207,11 +208,13 @@ export function migrateState(input){
       return Array.isArray(c.tags)&&tags.length===c.tags.length&&tags.every((tag,i)=>tag===c.tags[i])?c:{...c,tags};
     });
     const same=normalizedCards.every((c,i)=>c===input.cards[i]);
+    const migratedSettings={...input.settings,tagWeights:{...input.settings?.tagWeights}};
+    upgradeTskDefaults(migratedSettings,input.appVersion);
     return ensureStudy({...input,cards:same?input.cards:normalizedCards,grammar:Array.isArray(input.grammar)?input.grammar:[],
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],
       activeGrammarSession:input.activeGrammarSession||null,
-      settings:{...defaultState().settings,...input.settings,...normalizeTypographySettings(input.settings)}});
+      settings:{...defaultState().settings,...migratedSettings,...normalizeTypographySettings(input.settings)}});
   }
   const oldCards=Array.isArray(input.cards)?input.cards:[];
   const migratedCards=oldCards.map(c=>normalizeCard(c));
@@ -251,7 +254,7 @@ export function parseBackup(data){
   const grammarHistory=source.grammarHistory.filter(h=>h&&grammarIds.has(h.grammarId)&&validDate(h.at)).slice(-500000);
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
-  const settings={readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+  const settings={readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,readerGate:s.readerGate==='auto'?'auto':'authored',readerHighlight:s.readerHighlight===true,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),
@@ -262,7 +265,7 @@ export function parseBackup(data){
   const activeGrammarSession=source.activeGrammarSession&&Array.isArray(source.activeGrammarSession.queue)&&Array.isArray(source.activeGrammarSession.results)
     ?{...source.activeGrammarSession,queue:source.activeGrammarSession.queue.filter(id=>grammarIds.has(id)),results:source.activeGrammarSession.results.filter(r=>grammarIds.has(r.grammarId))}:null;
   const revision=Math.max(0,Math.floor(Number(source.revision)||0));
-  return {...defaults,archived,explicitDictionary:source.explicitDictionary===true,reader:validateReader(source.reader),appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
+  return {...defaults,archived,explicitDictionary:source.explicitDictionary===true,reader:validateReader(source.reader),readerCustomIndex:validateReaderCustomIndex(source.readerCustomIndex),appVersion:APP_VERSION,cards,grammar,schedules,history,sessions,grammarHistory,grammarSessions,settings,
     postponed:Object.fromEntries(Object.entries(source.postponed||{}).filter(([k,v])=>!Object.hasOwn(Object.prototype,k)&&validDate(v))),skillSchedules:validateSkillSchedules(source.skillSchedules,ids,grammarIds),skillHistory:(source.skillHistory||[]).filter(h=>h&&[1,2,3,4].includes(h.grade)&&validDate(h.at)).slice(-500000),mixedSessions:(source.mixedSessions||[]).filter(s=>validDate(s.endedAt)).slice(-50000),activePractice:validatePractice(source.activePractice,ids,grammarIds,new Set(allParticles({grammar}).map(p=>p.id))),
     activeSession:activeSession?.queue?.length?activeSession:null,
     activeGrammarSession:activeGrammarSession?.queue?.length?activeGrammarSession:null,

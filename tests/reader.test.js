@@ -72,7 +72,7 @@ test('reader screen handles a graded file import, settings gate, unlock, missing
  assert.equal([b.chapters[0].title,...text].join('\n\n'),ref);
  await action('define',{key:'term-乌山镇'});assert.equal(definition,'乌山镇');
  ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/);
- cached.clear();ui.reset();ui.view();await action('read');assert.match(html,/Reload chapter 1/);
+ cached.clear();ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/); // hosted master chapters redownload on demand
  await upload(1);await upload(2);await upload(3);assert.equal(b.chapters.length,3);
 });
 

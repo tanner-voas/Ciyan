@@ -1,11 +1,41 @@
-# Cíyán (词言) v0.7.7
+# Cíyán (词言) v0.7.8
 
-Open the Reader tab and choose a hosted chapter from the catalog, or import your own JSON. The app fetches chapter ZIPs relative to its own installation, verifies their contents, and keeps opened chapters available offline. Each hosted chapter retains the same identity as the original JSON.
+Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
+FSRS review scheduling, a graded novel reader, drawing practice and
+user-controlled typography.
 
-Tap a word for its dictionary entry. With the guide on, **Read from here** moves the guide to that occurrence. Enabling **Read aloud in Mandarin** starts narration from the current word. System Mandarin lets the browser resolve the language even if its voice list is empty. Other listed voices can be selected explicitly. Voices marked “network” may send speech text to the voice provider. CPM is approximate during narration.
+## Reader in v0.7.8
 
-Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
-advanced SRS scheduling, and user-controlled Chinese typography.
+The **Reader** library has three top-level controls: Novel, Chapter, and
+Upload chapter JSON. The Novel and Chapter selectors combine the master hosted
+catalog (deployed with the app) with your custom chapter index. Selecting a
+master chapter automatically downloads it and prerequisite chapters when
+needed; downloaded text is cached for offline reading. Custom chapter metadata
+is retained in full backups, while custom chapter **text is not**. If a custom
+chapter is missing from the browser cache, Cíyán identifies the missing novel
+and chapter and requests that exact JSON again; newer chapter revisions are
+accepted. Back up and retain your own custom chapter JSON files separately.
+
+In the reading view, **single tap** the prose to show or hide its controls.
+**Double-tap an annotated Chinese word** for its dictionary entry. From the
+entry, **Guide from here** (or **Read from here** when narration is enabled)
+starts at that word; ordinary vocabulary entries can also be edited. The top
+bar includes exit, previous/next chapter and table of contents. Those
+navigation controls do **not** mark chapters complete. The button at the **end
+of the chapter** explicitly marks it complete and opens the next chapter when
+one is available.
+
+The bottom reading dock adapts to your settings: its guide controls appear
+when the reading guide is enabled and its Mandarin voice selector appears when
+text-to-speech is enabled. Use the **•••** button for reading options. You can
+also set the guide, narration and weak-word underline defaults under Settings
+→ Reader. Settings groups are independently collapsible and closed by default,
+except for About. The new default weights for TSK/TSK1 through TSK/TSK9 are
+2560, 1280, 640, 320, 160, 80, 40, 20 and 10, respectively. Previously
+customized weights are preserved.
+
+Both Cloudflare Pages and Cloudflare Workers deploy from the same
+`dist/ciyan` build, as documented below.
 
 ## Reader narration in v0.7.6
 
@@ -13,15 +43,29 @@ Use the sliders menu to enable the guide. Transport controls stay in the bottom 
 
 The two additional male Mandarin voices, Yunxi and Yunyang, use Azure Speech. Select a voice in the bottom bar, enter your Azure Speech resource region (such as `eastasia`) and resource key in the menu, then close the menu and tap Play. Use a free-tier F0 resource for the free allowance. The app sends the current sentence directly to Microsoft's regional synthesis endpoint. Credentials stay in the open reader and are omitted from exports. Native audio continues to work without Azure.
 
-## Latest release
+## Chapter preparation and study
 
-Open **Reader → Load chapter file** and select the first `.json` package. The three 《盘龙》 packages are in `reader/panlong/chapters/`. Import new chapters in order. You can reload an earlier chapter at any time.
+**Settings → Reader** selects the reading gate. Authored uses the writer’s
+selection of vocabulary, terms and grammar. Auto checks all distinct annotated
+words and terms. Each required item qualifies with a saved score of 1.5,
+three Good grades or one Easy during this app run. Study prioritizes due
+reviews, new items and then early practice. Early practice leaves the saved
+schedule and history untouched. Study lists also offer earlier due items and
+full-chapter preparation. Vocabulary reviews use the main vocabulary schedule.
+Terms and grammar belong to the novel. Opening an eligible chapter unlocks it
+permanently. Reading progress, chapter completion and the custom chapter index
+travel in the full backup. Chapter prose remains in the hosted package or
+browser cache, not in full backups.
 
-**Settings → Reader** selects the reading gate. Authored uses the writer’s selection of vocabulary, terms and grammar. Auto checks all distinct annotated words and terms. Each required item qualifies with a saved score of 1.5, three Good grades or one Easy during this app run. Study prioritizes due reviews, new items and then early practice. Early practice leaves the saved schedule and history untouched. Study lists also offer earlier due items and full-chapter preparation. Vocabulary reviews use the main vocabulary schedule. Terms and grammar belong to the novel. Opening an eligible chapter unlocks it permanently. Reading progress and flashcards travel in the full backup. Reading text stays in the chapter package and device cache.
+The optional reading guide starts paused at 120 characters per minute. Step
+through words or play continuously. While active, the bookmark follows the
+highlighted word. Manual scrolling saves the first visible paragraph.
 
-The optional Reading guide starts paused at 120 characters per minute. Step through words or play continuously. Tap a word for its definition and choose Read from here to move the active guide. With the guide active, the bookmark follows the highlighted word. Manual scrolling saves the first visible paragraph.
-
-In Settings, **Clear learning records** resets review data and reading progress, **Clear settings** restores default preferences, and **Clear dictionary** keeps vocabulary and grammar entries with learning evidence. **Reload cards** restores the bundled master. The backup carries the records of studied custom items removed by Reload cards.
+In Settings, **Clear learning records** resets review data and reading
+progress, **Clear settings** restores default preferences, and **Clear
+dictionary** keeps vocabulary and grammar entries with learning evidence.
+**Reload cards** restores the bundled master. The backup carries the records
+of studied custom items removed by Reload cards.
 
 ### Chapter authoring and verification
 

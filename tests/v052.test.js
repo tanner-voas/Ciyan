@@ -57,8 +57,9 @@ test('all new neutral tag values are added on first population and after master 
  const s=defaultState();replaceMaster(s,MASTER);ensureStudy(s);
  const leaves=leafTagPaths(s.cards);
  assert.ok(leaves.length>50);
+ assert.deepEqual([1,2,3,4,5,6,7,8,9].map(i=>s.settings.tagWeights['TSK/TSK'+i]),[2560,1280,640,320,160,80,40,20,10]);
  assert.deepEqual([1,2,3,4,5,6,'7-9'].map(i=>s.settings.tagWeights['HSK/HSK'+i]),[4096,1024,256,64,16,8,0]);
- assert.ok(leaves.filter(t=>!t.startsWith('HSK/')).every(t=>s.settings.tagWeights[t]===0));
+ assert.ok(leaves.filter(t=>!t.startsWith('HSK/')&&!t.startsWith('TSK/')).every(t=>s.settings.tagWeights[t]===0));
  const extra=card('new-word',['Topics/BrandNew']);s.cards.push(extra);ensureStudy(s);
  assert.equal(s.settings.tagWeights['Topics/BrandNew'],0);
 });

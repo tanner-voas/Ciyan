@@ -2,23 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {mountReadingGuide} from '../reader-guide.js';
 
-test('guide gestures, word-length timing, centered position and manual bookmarks',async t=>{
- t.mock.timers.enable({apis:['setTimeout']});
+function fixture(){
  function element(dataset={}){
   const listeners={},classes=new Set();
-  return {dataset,classes,addEventListener(type,fn){listeners[type]=fn;},
-   fire(type,extra={}){listeners[type]?.({target:this,button:0,isPrimary:true,clientX:4,clientY:4,...extra});},
-   classList:{add:v=>classes.add(v),remove:v=>classes.delete(v),toggle:(v,on)=>on?classes.add(v):classes.delete(v)},
-   setAttribute(){},closest(){return null;}};
+  return {dataset,textContent:'',hidden:false,checked:false,value:'',classes,
+   addEventListener(type,fn){listeners[type]=fn;},
+   fire(type,extra={}){listeners[type]?.({target:this,preventDefault(){},...extra});},
+   replaceChildren(){},append(){},setAttribute(){},
+   closest(){return null;},getBoundingClientRect:()=>({top:600,bottom:640,height:40}),
+   classList:{add:v=>classes.add(v),remove:v=>classes.delete(v),toggle:(v,on)=>on?classes.add(v):classes.delete(v)}};
  }
- const win=element(),doc=element(),pages=element(),bar=element(),toolbar=element(),play=element(),output=element(),toggle=element();
+ const win=element(),doc=element(),pages=element(),toolbar=element(),play=element(),output=element();
+ const toggle=element(),audio=element(),speechStatus=element(),voice=element(),config=element(),region=element(),key=element(),dock=element(),sheet=element(),audioControls=element();
  let y=0;
- Object.assign(win,{innerHeight:800,scrollTo(x,dy){y=dy;},scrollBy(x,dy){y+=dy;},getComputedStyle:()=>({getPropertyValue:()=> '12px'}),
-  requestAnimationFrame:fn=>{queueMicrotask(fn);return 1;},cancelAnimationFrame(){}});
- doc.defaultView=win;pages.ownerDocument=doc;
- bar.getBoundingClientRect=()=>({top:688,bottom:730});bar.offsetHeight=40;
+ Object.assign(win,{innerHeight:800,scrollTo(x,dy){y=dy;},scrollBy(x,dy){y+=dy;},
+  getComputedStyle:()=>({getPropertyValue:()=> '12px'}),
+  requestAnimationFrame:()=>1,cancelAnimationFrame(){}});
+ doc.defaultView=win;doc.createElement=()=>({append(){},replaceChildren(){},label:''});
+ pages.ownerDocument=doc;
  toolbar.querySelector=q=>q==='output'?output:play;
- pages.querySelector=q=>q==='.reader-guide-bar'?bar:q.startsWith('article')?article:q.includes('controls')?toolbar:toggle;
  const row=element({pid:'p1',index:'0'}),article=element({readerNumber:'1'});
  article.getBoundingClientRect=()=>({top:12-y,bottom:1800-y});
  row.closest=()=>article;row.getBoundingClientRect=()=>({top:32-y,bottom:700-y});
@@ -28,18 +30,47 @@ test('guide gestures, word-length timing, centered position and manual bookmarks
   w.closest=q=>q==='[data-pid]'?row:q==='[data-word-index]'?w:null;
   return w;
  });
- pages.querySelectorAll=q=>q==='[data-pid]'?[row]:words;row.querySelectorAll=()=>words;row.querySelector=()=>words[0];
- const saved=[],definitions=[];let focus;
- const dispose=mountReadingGuide(pages,{save:(n,p)=>saved.push(p),define:(w,seek)=>{definitions.push(w);focus=seek;},initialRate:120,rateChanged(){},extend:async()=>{}});
- const click=k=>pages.fire('click',{target:{closest:q=>q==='[data-guide]'?{dataset:{guide:k}}:null}});
- pages.fire('click',{target:words[0]});assert.deepEqual(definitions,[words[0]]);assert.equal(focus,null);
- click('toggle');click('play');t.mock.timers.tick(499);assert.equal(saved.at(-1).wordIndex,0);
- t.mock.timers.tick(1);assert.equal(saved.at(-1).wordIndex,1);
- t.mock.timers.tick(999);assert.equal(saved.at(-1).wordIndex,1);
- t.mock.timers.tick(1);assert.equal(saved.at(-1).wordIndex,2);
- assert.equal(words[2].getBoundingClientRect().top+10,82); // chapter start stays at its natural top
- click('play');pages.fire('click',{target:words[1]});assert.equal(saved.at(-1).wordIndex,2);
- focus();assert.equal(saved.at(-1).wordIndex,1);
- click('toggle');assert.equal(saved.at(-1).wordIndex,0);assert.equal(saved.at(-1).offset,0);
+ const nodes={
+  '[data-guide-controls]':toolbar,'[data-guide="toggle"]':toggle,'[data-guide-audio]':audio,
+  '[data-speech-status]':speechStatus,'[data-voice-select]':voice,'[data-reader-settings-sheet]':sheet,
+  '.reader-dock':dock,'[data-audio-controls]':audioControls,'[data-cloud-config]':config,
+  '[data-cloud-region]':region,'[data-cloud-key]':key,
+ };
+ pages.querySelector=q=>nodes[q]||(q.startsWith('article')?article:null);
+ pages.querySelectorAll=q=>q==='[data-pid]'?[row]:words;
+ row.querySelectorAll=()=>words;row.querySelector=()=>words[0];
+ return {win,doc,pages,words,row,play,toggle,audio,voice,speechStatus,getScroll:()=>y};
+}
+
+test('single tap shows controls; double tap opens dictionary without toggling controls', t=>{
+ t.mock.timers.enable({apis:['setTimeout']});
+ const f=fixture(),definitions=[],taps=[],saved=[];let focus;
+ const dispose=mountReadingGuide(f.pages,{
+  save:(n,p)=>saved.push(p),define:(word,seek)=>{definitions.push(word);focus=seek;},
+  initialRate:120,rateChanged(){},extend:async()=>{},onTap:()=>taps.push('tap')
+ });
+ const wordTarget=w=>({closest:q=>q==='[data-word-index]'?w:null});
+ f.pages.fire('click',{target:wordTarget(f.words[0])});
+ assert.equal(definitions.length,0);
+ t.mock.timers.tick(285);
+ assert.deepEqual(taps,['tap']);
+ f.pages.fire('click',{target:wordTarget(f.words[1])});
+ f.pages.fire('click',{target:wordTarget(f.words[1])});
+ assert.deepEqual(definitions,[f.words[1]]);
+ assert.equal(taps.length,1);
+ focus();assert.equal(saved.at(-1).wordIndex,1); // guide from here also works if off
+ dispose();
+});
+
+test('guide transport still steps through words and saves the bookmark',t=>{
+ t.mock.timers.enable({apis:['setTimeout']});
+ const f=fixture(),saved=[];
+ const dispose=mountReadingGuide(f.pages,{save:(n,p)=>saved.push(p),define(){},initialRate:120,rateChanged(){},extend:async()=>{},initialGuide:true});
+ assert.equal(saved.at(-1).wordIndex,0);
+ const target=action=>({closest:q=>q==='[data-guide]'?{dataset:{guide:action}}:null});
+ f.pages.fire('click',{target:target('play')});
+ t.mock.timers.tick(500);assert.equal(saved.at(-1).wordIndex,1);
+ t.mock.timers.tick(1000);assert.equal(saved.at(-1).wordIndex,2);
+ f.pages.fire('click',{target:target('play')});
  dispose();
 });
