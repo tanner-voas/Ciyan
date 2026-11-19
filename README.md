@@ -71,27 +71,27 @@ Build the master reproducibly with `python3 build_v062.py`; package the site
 with `python3 package.py`. No writing hints, saved drawing history, radical
 lessons, or English-to-Mandarin mode are included.
 
-## Development and Cloudflare Pages (Git auto-deployment)
+## Development and Cloudflare Git auto-deployment (Pages or Workers)
 
-Cíyán is a static PWA. The repository root contains the source, release
-history, tests and packaging tools; **do not deploy the repository root**.
-The existing dependency-free Python packager selects only web assets and chapter
-ZIPs into `dist/ciyan/`. The root `index.html`, `_headers`, service worker,
-PWA manifest, bundled vocabulary and hosted chapters are included in that output.
-The app has no server-side runtime and needs no Cloudflare environment secrets.
+Cíyán is a static PWA. The repository root contains source, test files,
+release history and packaging tools, so **do not publish the repository root**.
+Both deployment targets use the exact same static output: `dist/ciyan/`, built
+by the dependency-free Python packager. The generated site includes
+`index.html`, the service worker, `_headers`, the manifest, icons, hosted
+chapter ZIPs, and application JavaScript. No server-side runtime, app secrets
+or Azure credentials are part of the deployable site.
 
-Local checks, using Node.js and Python 3:
+To verify the shared build (requires Node.js and Python 3):
 
 ```bash
 npm test
 npm run build
-# Confirm dist/ciyan/index.html and dist/ciyan/chapters/*.zip exist
+# Inspect dist/ciyan/index.html and dist/ciyan/chapters/*.zip
 ```
 
-To enable automatic deployment, create a **Cloudflare Pages** project using
-**Import an existing Git repository / Connect to Git** (not a manually uploaded
-Pages project and not the separate Workers editor). Authorize the Cloudflare
-GitHub application for `tanner-voas/Ciyan`, and configure:
+### Option A: Cloudflare Pages (Git integration)
+
+Create a Cloudflare **Pages** project linked to `tanner-voas/Ciyan`, then set:
 
 | Setting | Value |
 | --- | --- |
@@ -102,19 +102,57 @@ GitHub application for `tanner-voas/Ciyan`, and configure:
 | Build output directory | `dist/ciyan` |
 | Environment variables | None |
 
-The Git integration deploys new commits to `main` automatically; branches can
-receive preview deployments. `dist/` remains Git-ignored and is rebuilt from
-source on each deployment. The historical `python3 package.py` command is still
-available and produces the same output folder used for manual ZIP releases.
+Cloudflare Pages deploys the directory automatically on each push to `main`.
 
-**Important:** The Cloudflare dashboard screenshot of `empty-dawn-08a7` is a
-**Worker** (`*.workers.dev`), not a Pages project. Creating a Pages project
-creates a distinct `*.pages.dev` URL. Do not delete or replace the existing
-Worker until the Pages deployment has been verified and any custom domain or
-installation considerations have been addressed. Keep using the same deployed
-origin for existing browser-stored progress when possible, and export a full
-backup before switching origins; browser storage does not transfer automatically
-between domains.
+### Option B: Cloudflare Workers with static assets (Git integration)
+
+The repository also contains `wrangler.jsonc` for a scriptless static Worker.
+Its `assets.directory` points at **the same `dist/ciyan` folder**. The
+configured Worker name, `empty-dawn-08a7`, matches the existing deployment;
+if you use a *different* Worker, change `name` in `wrangler.jsonc` to match its
+project name before enabling automated deployment. This configuration makes
+no changes to the app's JavaScript or local storage.
+
+In the Cloudflare dashboard, open **Workers & Pages → empty-dawn-08a7 →
+Settings → Builds**, connect `tanner-voas/Ciyan` and configure:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Root directory | `/` (repository root) |
+| Build command | `npm run build` |
+| Deploy command | `npm run deploy:worker` |
+| Environment variables | None |
+
+The deploy script runs `npx --yes wrangler@4 deploy` and uses
+`wrangler.jsonc`. Cloudflare Workers Builds normally supplies deployment
+credentials itself; do not commit API tokens or Azure credentials. Python 3
+is available in Cloudflare's build environment. For an optional manual
+Worker deployment after authentication, run:
+
+```bash
+npm run build
+npm run deploy:worker
+```
+
+**Important:** Deploying to the named Worker replaces its current deployed
+Worker version. Verify that it is the correct project and that it currently
+only serves the Cíyán static PWA before connecting the automated deploy.
+
+### Choosing one or both
+
+Either platform can be connected to the same GitHub `main` branch. Connecting
+both triggers two independent builds/deployments on each push; connecting
+only one deploys only that target. Adding `wrangler.jsonc` does **not**
+automatically enable either Cloudflare Git integration; connect the project
+once in its dashboard. `dist/` is Git-ignored and rebuilt for every deploy.
+The existing `python3 package.py` workflow remains supported.
+
+**Preserve learning progress:** Cloudflare Pages (`*.pages.dev`) and Workers
+(`*.workers.dev`) have different browser storage origins. Existing IndexedDB
+progress will not transfer just because the code is identical. If the current
+Worker address is in use, continuing to deploy to that Worker preserves its
+origin. Export a full Cíyán backup before changing domains or installations.
 
 To regenerate the default collection from its compact, reviewed sources:
 
