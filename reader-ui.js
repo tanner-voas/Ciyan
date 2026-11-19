@@ -1,5 +1,5 @@
 import {catalog,downloadChapter} from './chapter-download.js';
-import {novelLibrary,registerCustomChapter,matchesRequestedChapter} from './reader-library.js';
+import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,chaptersInVolume,volumeLabel} from './reader-library.js';
 import {mountReadingGuide} from './reader-guide.js';
 import {acceptChapter,validateChapter,readerAnalysis,gradeReader,recordPractice} from './reader-core.js';
 
@@ -23,7 +23,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
  const btn=(action,label,extra='')=>`<button class="btn btn-secondary" data-action="reader-${action}" ${extra}>${esc(label)}</button>`;
  function selectBook(){
   const available=books();
-  if(!libraryBook(novel)){novel=Object.keys(state().reader||{})[0]||available[0]?.novel||'';number=book()?.current||libraryBook(novel)?.chapters[0]?.number||1;}
+  if(!libraryBook(novel)){novel=Object.keys(state().reader||{})[0]||available.find(x=>x.novel==='panlong')?.novel||available[0]?.novel||'';number=book()?.current||libraryBook(novel)?.chapters[0]?.number||1;}
   if(!libraryChapter(novel,number))number=book()?.current||libraryBook(novel)?.chapters[0]?.number||1;
  }
  async function openHosted(entry){
@@ -113,7 +113,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
  }
  function readerChrome(){
   const entries=libraryBook(novel)?.chapters||[];
-  return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map(c=>`<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(c.title)}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
+  return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(c.title)}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
   <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
   <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div><button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><div class="reader-cloud-config" data-cloud-config hidden><small>Azure receives spoken sentences. Credentials are held only in this open reader session.</small><label>Azure speech region<input data-cloud-region placeholder="eastasia" autocapitalize="none" spellcheck="false"></label><label>Azure speech key<input type="password" data-cloud-key autocomplete="off"></label></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
  }
@@ -122,7 +122,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
   const available=books(),lib=libraryBook(novel),entry=libraryChapter(novel,number);
   const b=book(),c=chapter();
   const importBtn=btn('import','Upload chapter JSON');
-  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.title)}</option>`).join('')}</select></label><label>Chapter<select id="reader-chapter">${(lib?.chapters||[]).map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(x.title)}</option>`).join('')}</select></label></div>`;
+  const volumes=volumeList(lib),currentVolume=lib?.chapters.find(c=>c.number===number)?.volume??volumes[0]?.number;
+  // Volume is solely a chapter picker filter. No volume-specific progress or
+  // unlock state is created; chapters remain globally numbered and linear.
+  const chapterChoices=volumes.length?chaptersInVolume(lib,currentVolume):lib?.chapters||[];
+  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(x.title)}</option>`).join('')}</select></label></div>`;
   if(!entry)return `${chooser}<div class="panel stack"><h2>No chapters yet</h2>${importBtn}</div>`;
   if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(entry.title)}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
@@ -294,8 +298,16 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,app
    else e.target.checked=state().settings.readerHighlight;
   }
   if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;render();}
+  if(e.target.id==='reader-volume'){
+   const destination=chaptersInVolume(libraryBook(novel),Number(e.target.value))[0];
+   if(destination)void choose(novel,destination.number);
+  }
   if(e.target.id==='reader-chapter')void choose(novel,+e.target.value);
-  if(e.target.id==='reader-novel')void choose(e.target.value,libraryBook(e.target.value)?.chapters[0]?.number||1);
+  if(e.target.id==='reader-novel'){
+   const id=e.target.value,stored=state().reader?.[id]?.current;
+   const selected=libraryBook(id)?.chapters.find(c=>c.number===stored)||libraryBook(id)?.chapters[0];
+   if(selected)void choose(id,selected.number);
+  }
  });
  globalThis.addEventListener?.('pagehide',()=>void flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)void flush();});

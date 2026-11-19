@@ -424,9 +424,10 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr))}
 .reader-heading,.reader-tabs,.reader-choices,.reader-metrics{display:flex;align-items:center;gap:.65rem}
 .reader-heading{justify-content:space-between;margin:1.5rem 0}
-.reader-choices label{display:grid;gap:.3rem;font-size:.8rem;min-width:0;flex:1}
-.reader-choices label:last-child{flex:2}
-.reader-choices select{max-width:100%;padding:.6rem;border:1px solid #d6ded7;border-radius:.6rem;background:white}
+.reader-choices{display:grid;grid-template-columns:minmax(0,1fr);gap:.85rem;width:100%}
+.reader-choices label{display:grid;grid-template-columns:minmax(0,1fr);gap:.3rem;font-size:.86rem;min-width:0;width:100%}
+.reader-choices select{display:block;box-sizing:border-box;width:100%;min-width:0;max-width:100%;padding:.72rem;border:1px solid #d6ded7;border-radius:.75rem;background:white;font-size:1rem;color:var(--ink)}
+.reader-volume-heading{font-size:.85rem;color:var(--forest);margin:1rem 0 .3rem;padding:0 .45rem}
 .reader-tabs{margin:1rem 0}.reader-tabs button{flex:1}
 .reader-tabs [aria-pressed=true]{background:#264b3e;color:white}
 .reader-metrics{align-items:stretch;justify-content:space-between}.reader-metrics span{display:grid;font-size:.8rem}.reader-metrics strong{font-size:1.35rem}

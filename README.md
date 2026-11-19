@@ -1,13 +1,18 @@
-# Cíyán (词言) v0.7.8
+# Cíyán (词言) v0.7.9
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
 user-controlled typography.
 
-## Reader in v0.7.8
+## Reader in v0.7.9
 
-The **Reader** library has three top-level controls: Novel, Chapter, and
-Upload chapter JSON. The Novel and Chapter selectors combine the master hosted
+The **Reader** library has vertically stacked Novel, optional Volume, and
+Chapter selectors, plus Upload chapter JSON. Novel names display as **author •
+novel** in alphabetical order. The shipped Panlong story has a `V01 · 盘龙之戒`
+volume filter; volume is only a navigation convenience and never changes the
+global novel-to-chapter order, chapter unlocking or reading progress. The three
+sample story entries are labeled TSK1, TSK2 and TSK3 collections, and have no
+Volume selector. The Novel and Chapter selectors combine the master hosted
 catalog (deployed with the app) with your custom chapter index. Selecting a
 master chapter automatically downloads it and prerequisite chapters when
 needed; downloaded text is cached for offline reading. Custom chapter metadata
@@ -33,6 +38,13 @@ also set the guide, narration and weak-word underline defaults under Settings
 except for About. The new default weights for TSK/TSK1 through TSK/TSK9 are
 2560, 1280, 640, 320, 160, 80, 40, 20 and 10, respectively. Previously
 customized weights are preserved.
+
+Panlong Volume 1 now includes Chapters 1–11. The new Chapters 4–11 retain
+the text of the supplied PDF-verified source, including unusual historical
+glyphs; the first three JSON and chapter hashes are unchanged, preserving your
+previous study work. All new chapter ZIPs are deployed automatically alongside
+the index. Author, volume and original chapter metadata can be retained in
+custom-index full backups; chapter text itself is never backed up.
 
 Both Cloudflare Pages and Cloudflare Workers deploy from the same
 `dist/ciyan` build, as documented below.

@@ -18,7 +18,10 @@ function checkIds(ids,items){
 }
 export function validateChapter(p){
  check(p?.format==='ciyan-chapter'&&p.version===1,'Choose a version 1 .json chapter file');
- check(safeKey(p.novel)&&/^[a-z0-9-]+$/.test(p.novel)&&integer(p.number)&&integer(p.revision)&&string(p.book,120)&&string(p.title,200),'Invalid chapter identity');
+ check(safeKey(p.novel)&&/^[a-z0-9-]+$/.test(p.novel)&&integer(p.number)&&integer(p.revision)&&string(p.book,120)&&string(p.title,200)&&
+  (p.author===undefined||string(p.author,120))&&
+  (p.volume===undefined||integer(p.volume)&&p.volume<=999)&&
+  (p.volumeTitle===undefined||p.volume!==undefined&&string(p.volumeTitle,120)),'Invalid chapter identity');
  validateItems(p.items);checkIds(p.authored,p.items);
  check(Array.isArray(p.paragraphs)&&p.paragraphs.length>0,'This chapter has no paragraphs');
  const used=new Set(),anchors=new Set();
