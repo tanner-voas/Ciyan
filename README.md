@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.7.6
+# Cíyán (词言) v0.7.7
 
 Open the Reader tab and choose a hosted chapter from the catalog, or import your own JSON. The app fetches chapter ZIPs relative to its own installation, verifies their contents, and keeps opened chapters available offline. Each hosted chapter retains the same identity as the original JSON.
 
@@ -71,17 +71,50 @@ Build the master reproducibly with `python3 build_v062.py`; package the site
 with `python3 package.py`. No writing hints, saved drawing history, radical
 lessons, or English-to-Mandarin mode are included.
 
-## Development and Cloudflare Pages
+## Development and Cloudflare Pages (Git auto-deployment)
+
+Cíyán is a static PWA. The repository root contains the source, release
+history, tests and packaging tools; **do not deploy the repository root**.
+The existing dependency-free Python packager selects only web assets and chapter
+ZIPs into `dist/ciyan/`. The root `index.html`, `_headers`, service worker,
+PWA manifest, bundled vocabulary and hosted chapters are included in that output.
+The app has no server-side runtime and needs no Cloudflare environment secrets.
+
+Local checks, using Node.js and Python 3:
 
 ```bash
 npm test
-python3 package.py
+npm run build
+# Confirm dist/ciyan/index.html and dist/ciyan/chapters/*.zip exist
 ```
 
-The packager writes the Cloudflare-ready `dist/ciyan/` folder, with `index.html`
-at its root. The distribution ZIP contains only those static files. The Git
-ZIP includes all source code, content sources, tests, release history and tags.
-No runtime network service, npm dependencies or account is required.
+To enable automatic deployment, create a **Cloudflare Pages** project using
+**Import an existing Git repository / Connect to Git** (not a manually uploaded
+Pages project and not the separate Workers editor). Authorize the Cloudflare
+GitHub application for `tanner-voas/Ciyan`, and configure:
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Framework preset | `None` |
+| Root directory | `/` (repository root) |
+| Build command | `npm run build` |
+| Build output directory | `dist/ciyan` |
+| Environment variables | None |
+
+The Git integration deploys new commits to `main` automatically; branches can
+receive preview deployments. `dist/` remains Git-ignored and is rebuilt from
+source on each deployment. The historical `python3 package.py` command is still
+available and produces the same output folder used for manual ZIP releases.
+
+**Important:** The Cloudflare dashboard screenshot of `empty-dawn-08a7` is a
+**Worker** (`*.workers.dev`), not a Pages project. Creating a Pages project
+creates a distinct `*.pages.dev` URL. Do not delete or replace the existing
+Worker until the Pages deployment has been verified and any custom domain or
+installation considerations have been addressed. Keep using the same deployed
+origin for existing browser-stored progress when possible, and export a full
+backup before switching origins; browser storage does not transfer automatically
+between domains.
 
 To regenerate the default collection from its compact, reviewed sources:
 
@@ -106,7 +139,7 @@ scheduling behavior or reset scores.
 
 For an existing Cloudflare installation, export a full backup first. Upload
 the new deployment to the **same project**, open it online, close any previous
-Safari or Home Screen app windows, and reopen to activate v0.6.9. Browser
+Safari or Home Screen app windows, and reopen to activate v0.7.7. Browser
 storage can be evicted by iOS, so keep your independent JSON backups.
 
 Automated tests do not replace physical iPhone/Safari testing.
