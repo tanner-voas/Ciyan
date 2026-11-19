@@ -112,7 +112,7 @@ export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...ch.authored]));
  const earlier=[...previous].filter(k=>!selected.has(k)&&due(k)).sort(order);
  const queue=[...new Set([...earlier,...keys.filter(k=>due(k)||!qualifies(k))])].sort(order);
- return {weak,ready:weak.length===0,keys,earlier,queue,score,group};
+ return {weak,ready:weak.length===0,keys,earlier,queue,score,group,qualifies};
 }
 export function gradeReader(s,b,key,grade,now=Date.now()){
  const item=b.items[key];check(item&&integer(grade)&&grade<=4,'Invalid reader grade');

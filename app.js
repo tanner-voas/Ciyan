@@ -1,4 +1,4 @@
-import {createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
+import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
 import {createReader} from './reader-ui.js';
@@ -22,7 +22,7 @@ import {replaceMaster,reconcileBundledMaster} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
-import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords,deleteConfirmationValid} from './storage.js';
+import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords,resetConfirmationValid} from './storage.js';
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
@@ -188,7 +188,7 @@ function shell(content){
   if(page==='reader'&&reader.isReading())return '<main id="main" class="immersive-reader">'+content+'</main>';
   const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['reader','book','Reader'],['stats','chart','Stats']];
   const hideNav=page==='complete'||!!state.activePractice||(page==='study'&&(state.activeSession||state.activeGrammarSession));
-  return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span>Cíyán<small>Words that stay</small></span></div><div class="header-actions">
+  return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span>Cíyán<small>Words that stay</small></span></div><div class="header-actions">${page==='settings'?`<button class="icon-btn" data-action="navigate" data-page="${settingsOrigin}" aria-label="${settingsOrigin==='study'&& (state.activePractice||state.activeSession||state.activeGrammarSession)?'Return to study session':'Back'}">←</button>`:''}
       <button class="icon-btn" data-action="backup" aria-label="Backup progress">${icon('archive')}${backupNeeded()?'<span class="dot"></span>':''}</button>
       <button class="icon-btn" data-action="navigate" data-page="settings" aria-label="Settings">${icon('settings')}</button></div></header>
       <main id="main">${content}</main>${hideNav?'':`<nav class="bottom-nav" aria-label="Main navigation">${nav.map(([dest,ico,title])=>
@@ -517,7 +517,7 @@ let speechSession=null,unlockRequest=null;
 function unlocked(){return speechSession&&speechSession.envelope===state.speechVault?.data?speechSession:null;}
 const fieldPin=(name,label)=>`<label>${label}<input type="password" name="${name}" inputmode="numeric" pattern="[0-9]{4}" required maxlength="4" autocomplete="off"></label>`;
 const newPinFields=()=>fieldPin('pin','New four-digit PIN')+fieldPin('repeat','Confirm new PIN');
-const deleteField='<label>Type <strong>delete</strong> to confirm<input name="confirmation" required autocomplete="off" spellcheck="false"></label>';
+const confirmationField='<label>Type <strong>confirm</strong> to confirm<input name="confirmation" required autocomplete="off" spellcheck="false"></label>';
 // Use a native dialog above the caller so dismissing it preserves the current card or form.
 function askDialog(title,fields,submit,accept,{danger=false,reset=false,offerChange=false}={}){
  return new Promise(resolve=>{
@@ -539,7 +539,7 @@ function askDialog(title,fields,submit,accept,{danger=false,reset=false,offerCha
    e.preventDefault();if(busy)return;busy=true;
    try{
     const data=new FormData(form);
-    if(data.has('confirmation')&&!deleteConfirmationValid(data.get('confirmation')))throw Error('Type delete to confirm.');
+    if(data.has('confirmation')&&!resetConfirmationValid(data.get('confirmation')))throw Error('Type confirm to continue.');
     if(data.has('repeat')&&data.get('pin')!==data.get('repeat'))throw Error('The PINs must match.');
     finish(await accept(data,e.submitter?.name));
    }catch(error){dialog.querySelector('[role=alert]').textContent=error.message;}
@@ -554,7 +554,7 @@ async function storeEnvelope(pin,key,settings={}){
  speechSession={pin,key,envelope:speechVault.data};clearSpeechCache();refreshSecret();
 }
 function resetSecrets(){
- return askDialog('Reset secrets','<p>Erase the saved speech key and replace its PIN.</p>'+deleteField+newPinFields(),'Reset secrets',async data=>{
+ return askDialog('Reset secrets','<p>Erase the saved speech key and replace its PIN.</p>'+confirmationField+newPinFields(),'Reset secrets',async data=>{
   await storeEnvelope(data.get('pin'),'');return true;
  },{danger:true});
 }
@@ -623,7 +623,11 @@ function mountListening(){
  lastListening=id;stopStudyAudio();
  if(id&&!s.input?.revealed)void sayText(plainSentence(grammarById(e.id).markup));
 }
+let draftTunings,editingVoice;
 function speechSettings(){
+ draftTunings=Object.assign(Object.create(null),state.settings.voiceProfiles);
+ editingVoice=state.settings.speechVoice||'';
+ draftTunings[editingVoice]=voiceTuning(state.settings,editingVoice);
  const s=state.settings,voices=mandarinVoices(window.speechSynthesis?.getVoices()||[]);
  const list=[['','System Mandarin'],...voices.map(v=>[v.voiceURI,voiceDescription(v)]),...cloudVoices];
  if(s.speechVoice&&!list.some(([id])=>id===s.speechVoice))list.push([s.speechVoice,'Saved system voice']);
@@ -652,6 +656,7 @@ function speechDraft(){
   if(!input.checkValidity())throw Error('Check '+input.parentElement.textContent.trim()+'.');
   settings[field]=Number(input.value);
  }
+ settings.voiceProfiles={...draftTunings,[settings.speechVoice]:{readerCpm:settings.readerCpm,speechPitch:settings.speechPitch}};
  return settings;
 }
 function keyEdited(){
@@ -687,8 +692,8 @@ async function speechAction(action,el){
 }
 function renderSettings(){const s=state.settings,draft=pendingFont||lastAcceptedFont;
  const group=(title,content)=>`<details class="settings-section"><summary><span>${title}</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-section-body">${content}</div></details>`;
-  return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1><button class="btn btn-secondary" data-action="navigate" data-page="${settingsOrigin}">‹ ${settingsOrigin==='study'&& (state.activePractice||state.activeSession||state.activeGrammarSession)?'Return to study session':'Back'}</button></div>
-${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
+  return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1></div>
+${group('Appearance',`<label class="settings-row">Theme<select data-setting="theme">${options([['system','System'],['light','Light'],['dark','Dark']],s.theme||'system')}</select></label>`)}${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
    <div class="panel"><div class="settings-row"><div><strong>New vocabulary words per day</strong><small>Leave empty for unlimited. Zero blocks new words but not due reviews. Resets each local calendar day.</small></div><input type="number" min="0" max="20000" placeholder="Unlimited" data-setting="newWordsPerDay" value="${s.newWordsPerDay??''}" aria-label="New vocabulary words per day"></div>
     <div class="settings-row"><div><strong>Target retention</strong><small>FSRS retention target and Auto urgency; score intervals are set above</small></div><select data-setting="desiredRetention">${options([[.85,'85%'],[.9,'90%'],[.95,'95%']],s.desiredRetention)}</select></div>
     <div class="settings-row"><div><strong>Show pinyin on front</strong><small>Word meaning is still hidden</small></div><input class="toggle" type="checkbox" role="switch" data-setting="showPinyinPrompt" ${s.showPinyinPrompt?'checked':''}></div>
@@ -709,15 +714,15 @@ ${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}
 
      <p class="subtle">Loading a master explicitly replaces your current content; the replacement persists after restarting. Matching words retain their learning records. Full backups contain content and progress; a master export contains only content.</p>
      <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
-   `)}${group('Reset & recovery',`<div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. You must type <strong>delete</strong> to confirm.</p>
+   `)}${group('Reset & recovery',`<div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. Type <strong>confirm</strong> for destructive actions.</p>
      <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button>
      <button class="btn btn-secondary" data-action="speech-change-pin" ${state.speechVault?'':'disabled'}>Change PIN</button>
      <button class="btn btn-danger" data-action="speech-reset" ${state.speechVault?'':'disabled'}>Reset secrets</button>
      <button class="btn btn-danger" data-action="clear-settings">Clear settings</button>
      <button class="btn btn-danger" data-action="clear-dictionary">Clear dictionary</button>
-     <button class="btn btn-secondary" data-action="reload-cards">Reload cards from default master</button></div>`)}
+     <button class="btn btn-danger" data-action="reload-cards">Reload cards from default master</button></div>`)}
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel"><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel stack"><button class="btn btn-secondary" data-action="reload-app">Check for updates and reload</button><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
 }
 let lastStudyFocus='',lastScreen='';
@@ -740,7 +745,15 @@ function positionStudyScreen(){
  }
  lastScreen=page;lastStudyFocus=key;
 }
-function render(){if(!state)return;setSpeechCacheLimit(state.settings.speechCacheLimit);const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
+const darkSystem=window.matchMedia?.('(prefers-color-scheme: dark)');
+function applyTheme(){
+ const choice=state?.settings?.theme||'system';
+ const theme=choice==='system'?(darkSystem?.matches?'dark':'light'):choice;
+ if(document.documentElement)document.documentElement.dataset.theme=theme;
+ document.querySelector('meta[name="theme-color"]')?.setAttribute('content',theme==='dark'?'#121a17':'#f6f6f1');
+}
+darkSystem?.addEventListener?.('change',applyTheme);
+function render(){if(!state)return;applyTheme();setSpeechCacheLimit(state.settings.speechCacheLimit);const views={study:renderStudy,complete:renderComplete,browse:()=>renderCollection('words'),grammar:()=>renderCollection('grammar'),reader:reader.view,stats:renderStats,settings:renderSettings};
   reader.unmount();app.innerHTML=shell((views[page]||renderStudy)());if(['browse','grammar'].includes(page))updateCollection();applyFontToRoot(app,state.settings);mountDrawing();mountListening();if(page==='reader')reader.mount();positionStudyScreen();}
 let settingsOrigin='study',beforeSettingsReveal=false;
 function navigate(dest){
@@ -867,13 +880,13 @@ async function saveGrammarEditor(form){const id=form.dataset.id||null,existing=i
 }
 async function deleteWord(id){const c=wordById(id);if(!c)return;
   const uses=contextMatches(state,c).length;
-  if(!window.confirm(`Delete “${c.hanzi}” and all of its vocabulary reviews? ${uses} linked grammar sentences will remain but may be locked until a replacement word is added. This is irreversible without a backup.`))return;
+  if(!await confirmRemoval('Delete word',`Delete “${c.hanzi}” and all of its vocabulary reviews? ${uses} linked grammar sentences will remain but may be locked until a replacement word is added. This is irreversible without a backup.`))return;
   if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.cards=d.cards.filter(c=>c.id!==id);delete d.schedules[id];delete d.skillSchedules.drawing[id];d.skillHistory=d.skillHistory.filter(h=>!(h.mode==='drawing'&&h.id===id));if(d.activePractice?.current?.id===id)d.activePractice=null;d.history=d.history.filter(h=>h.cardId!==id);
     d.activeSession?.queue&&(d.activeSession.queue=d.activeSession.queue.filter(x=>x!==id));
     if(d.activeSession&&!d.activeSession.queue.length)d.activeSession=null;},true,true)){invalidateTagOdds();closeModal();toast('Word deleted');}
 }
 async function deleteGrammar(id){const g=grammarById(id);if(!g)return;
-  if(!window.confirm(`Delete grammar sentence “${plainSentence(g.markup)}” and its ${state.grammarHistory.filter(h=>h.grammarId===id).length} attempts? This cannot be undone without a backup.`))return;
+  if(!await confirmRemoval('Delete grammar sentence',`Delete grammar sentence “${plainSentence(g.markup)}” and its ${state.grammarHistory.filter(h=>h.grammarId===id).length} attempts? This cannot be undone without a backup.`))return;
   if(await change(d=>{d.lastPracticeUndo=null;if(d.activePractice)d.activePractice.undo=[];d.grammar=d.grammar.filter(g=>g.id!==id);delete d.skillSchedules.grammar[id];delete d.skillSchedules.listening[id];d.skillHistory=d.skillHistory.filter(h=>h.mode!=='listening'||h.id!==id);for(const key of Object.keys(d.skillSchedules.particles))if(key.startsWith(id+':particle:'))delete d.skillSchedules.particles[key];d.skillHistory=d.skillHistory.filter(h=>!h.id.startsWith(id+':particle:'));if(d.activePractice?.current?.id===id||d.activePractice?.current?.id.startsWith(id+':particle:'))d.activePractice=null;d.grammarHistory=d.grammarHistory.filter(h=>h.grammarId!==id);
     d.activeGrammarSession?.queue&&(d.activeGrammarSession.queue=d.activeGrammarSession.queue.filter(x=>x!==id));
     if(d.activeGrammarSession&&!d.activeGrammarSession.queue.length)d.activeGrammarSession=null;},true,true)){closeModal();toast('Grammar sentence deleted');}
@@ -893,7 +906,7 @@ for(const name of ['gesturestart','gesturechange','gestureend']){
 }
 document.addEventListener('touchmove',e=>{if(e.touches.length>1)e.preventDefault();},{passive:false});
 function confirmRemoval(title,message){
- return askDialog(title,'<p>'+esc(message)+'</p>'+deleteField,title,()=>true,{danger:true});
+ return askDialog(title,'<p>'+esc(message)+'</p>'+confirmationField,title,()=>true,{danger:true});
 }
 async function clearData(){
  if(!await confirmRemoval('Clear learning records','Remove review history, schedules, grades, streaks, grammar attempts and active sessions. Your words, grammar cards and settings are kept.'))return;
@@ -934,7 +947,7 @@ function requestFile(kind){const input=document.createElement('input');input.typ
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
 
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
-  if(!window.confirm(`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
+  if(!await confirmRemoval('Restore full backup',`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
   try{
    if(!parsed.speechVault&&state.speechVault){parsed.speechVault=state.speechVault;parsed.settings.azureRegion ||= state.settings.azureRegion;}
    ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);addTskTags(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;if(!unlocked())speechSession=null;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!unlocked()?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
@@ -942,7 +955,7 @@ async function restoreBackup(content){if(saving)return;const parsed=parseBackup(
 }
 async function importDeck(content){
  const draft=structuredClone(state);reloadCards(draft,content,replaceMaster);
- if(!window.confirm(`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. The imported master persists after restarting the app.`))return;
+ if(!await confirmRemoval('Replace dictionary',`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. The imported master persists after restarting the app.`))return;
  if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.archived=draft.archived;d.explicitDictionary=true;d.bundledMasterVersion=APP_VERSION;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection saved locally.');}
 }
 function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
@@ -1046,7 +1059,7 @@ document.addEventListener('click',async event=>{
     case 'navigate':{
      const openSpeech=element.dataset.section==='Speech'||(element.dataset.page==='settings'&&page==='study'&&state.activePractice?.current?.mode==='listening');
      closeModal();navigate(element.dataset.page);
-     if(openSpeech&&page==='settings')document.querySelector('.settings-section').open=true;
+     if(openSpeech&&page==='settings')document.querySelector('#speechVoice')?.closest('details')?.setAttribute('open','');
      break;
     }
     case 'apply-font':await applyPendingFont();break;
@@ -1097,6 +1110,7 @@ document.addEventListener('click',async event=>{
     case 'import-deck':requestFile('deck');break;
     case 'export-deck':exportDeck();break;
     case 'template':downloadTemplate();break;
+    case 'reload-app':await updateAndReload(element);break;
     case 'clear-settings':
      if(await confirmRemoval('Clear settings','Restore all settings, including fonts and the reader gate, to their defaults?')&&await change(d=>{d.settings=defaultState().settings;ensureStudy(d);},false)){
       lastAcceptedFont=cloneFont(state.settings);pendingFont=cloneFont(lastAcceptedFont);render();toast('Default settings restored.');
@@ -1128,6 +1142,13 @@ document.addEventListener('input',event=>{
 document.addEventListener('compositionstart',event=>{if(event.target.id==='study-search')studyComposing=true;});
 document.addEventListener('compositionend',event=>{if(event.target.id==='study-search'){studyComposing=false;studyFilters.search=event.target.value;render();const search=$('#study-search');search?.focus?.({preventScroll:true});}});
 document.addEventListener('change',async event=>{
+  if(event.target.id==='speechVoice'){
+   const rate=$('#readerCpm'),pitch=$('#speechPitch');
+   if(rate.checkValidity()&&pitch.checkValidity())draftTunings[editingVoice]={readerCpm:Number(rate.value),speechPitch:Number(pitch.value)};
+   editingVoice=event.target.value;
+   const tuning=voiceTuning({...state.settings,voiceProfiles:draftTunings},editingVoice);
+   rate.value=tuning.readerCpm;pitch.value=tuning.speechPitch;return;
+  }
   if(event.target.id==='ciyan-font-file-input'){
     const file=event.target.files?.[0],slot=uploadingFontSlot;uploadingFontSlot=null;
     if(!file||!slot)return;
@@ -1149,6 +1170,7 @@ document.addEventListener('change',async event=>{
   const key=event.target.dataset.setting;if(!key)return;
   let value=event.target.type==='checkbox'?event.target.checked:Number(event.target.value);
   if(key==='newWordsPerDay')value=event.target.value.trim()===''?null:Math.max(0,Math.min(20000,Math.round(Number(event.target.value)||0)));
+  if(key==='theme')value=['light','dark'].includes(event.target.value)?event.target.value:'system';
   if(key==='readerGate')value=event.target.value==='auto'?'auto':'authored';
   if(key==='sessionSize')value=Math.max(1,Math.min(500,Math.round(value)||12));
   if(key==='desiredRetention')value=[.85,.9,.95].includes(value)?value:.9;
@@ -1160,6 +1182,35 @@ document.addEventListener('keydown',event=>{
   if(['Enter',' '].includes(event.key)&&!revealed&&page==='study'&&event.target.closest('.review-card')&&!state.settings.toneTest){event.preventDefault();revealed=true;render();}
   if(page==='study'&&revealed&&!currentModal&&['1','2','3','4'].includes(event.key)){if(state.activePractice)gradePractice(Number(event.key));else gradeCard(Number(event.key));}
 });
+async function updateAndReload(button){
+ button.disabled=true;button.textContent='Checking for updates…';
+ try{
+  if(navigator.onLine===false)throw Error('Connect to the internet to check for an update.');
+  const workers=navigator.serviceWorker;
+  if(workers){
+   const registration=await workers.register('./sw.js',{updateViaCache:'none'});
+   if(!registration.waiting)await registration.update();
+   const worker=registration.waiting||registration.installing;
+   if(worker&&worker.state!=='activated'){
+    button.textContent='Installing update…';
+    await new Promise((resolve,reject)=>{
+     const timer=setTimeout(()=>finish(Error('Update is taking longer than expected. Try again.')),90000);
+     function finish(error){
+      clearTimeout(timer);worker.removeEventListener('statechange',check);
+      workers.removeEventListener('controllerchange',check);error?reject(error):resolve();
+     }
+     function check(){
+      if(worker.state==='redundant')finish(Error('Update failed. Your current version is available.'));
+      else if(worker.state==='activated'&&workers.controller===worker)finish();
+      else if(worker.state==='installed')worker.postMessage('activate-update');
+     }
+     worker.addEventListener('statechange',check);workers.addEventListener('controllerchange',check);check();
+    });
+   }
+  }
+  location.reload();
+ }catch(error){toast(error.message);button.disabled=false;button.textContent='Check for updates and reload';}
+}
 async function boot(){try{
   // Load automatically downloaded or user-imported font bytes before verifying saved typography.
   // A missing font library does not interfere with the independent study database.

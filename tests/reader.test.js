@@ -61,6 +61,9 @@ test('reader screen handles a graded file import, settings gate, unlock, missing
  async function upload(n){file=new Blob([fs.readFileSync(new URL('../reader/panlong/chapters/00'+n+'.json',import.meta.url))]);await action('import');await done;}
  await upload(2);assert.match(messages.at(-1),/chapter 1/);
  await upload(1);assert.match(html,/Authored study list · 20/);
+ assert.match(html,/Chapter vocabulary/);assert.equal((html.match(/class="list-card reader-vocab-row"/g)||[]).length,20);
+ const firstPage=html;await action('vocab-next');assert.notEqual(html,firstPage);
+ await action('vocab-group',{group:'due'});assert.match(html,/No words in this group/);
  s.settings.readerGate='auto';assert.match(ui.view(),/All words and terms · 1086/);
  s.settings.readerGate='authored';await action('study');await action('reveal');
  const key=html.match(/data-action="reader-grade" data-key="([^"]+)"/)[1];

@@ -1,3 +1,9 @@
+export function voiceTuning(settings,voice){
+ const saved=settings.voiceProfiles;
+ if(saved&&Object.hasOwn(saved,voice))return saved[voice];
+ if(voice===(settings.speechVoice||''))return {readerCpm:settings.readerCpm??120,speechPitch:settings.speechPitch??0};
+ return {readerCpm:120,speechPitch:0};
+}
 export function voiceDescription(v){
  const lang=v.lang.toLowerCase().replaceAll('_','-');
  const place=/-(tw|hant)(-|$)/.test(lang)?'Taiwan':/-(cn|hans)(-|$)/.test(lang)?'Mainland':lang;
@@ -30,14 +36,24 @@ export function speechPassage(word){
  return {text:row.textContent.slice(start,end),start,words};
 }
 
+const SILENT_WAV='UklGRmQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YUAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA';
 export function createNarrator(win,select,advance,failed){
- let active=null,timer,startTimeout;
+ let active=null,timer,startTimeout,primer;
+ function prepareOutput(){
+  const session=win.navigator?.audioSession;
+  try{if(session&&session.type!=='playback')session.type='playback';}catch{}
+  // A short silent PCM media clip opens the iOS media route on a playback gesture.
+  const nav=win.navigator;
+  if(!win.Audio||!(/iPhone|iPad|iPod/.test(nav?.userAgent)||nav?.platform==='MacIntel'&&nav.maxTouchPoints>1))return;
+  primer??=new win.Audio('data:audio/wav;base64,'+SILENT_WAV);
+  if(primer.paused)void primer.play().catch(()=>{});
+ }
  function cancel(){
   clearTimeout(startTimeout);clearTimeout(timer);
   if(active){active=null;win.speechSynthesis.cancel();}
  }
  function speak(word,voice,cpm,pitch=0){
-  cancel();
+  cancel();prepareOutput();
   const {text,start,words}=typeof word==='string'?{text:word,start:0,words:[]}:speechPassage(word);
   const utterance=new win.SpeechSynthesisUtterance(text);
   active=utterance;
@@ -81,5 +97,5 @@ export function createNarrator(win,select,advance,failed){
    win.speechSynthesis.speak(utterance);
   }catch{error();}
  }
- return {cancel,speak};
+ return {cancel,speak,prepareOutput};
 }

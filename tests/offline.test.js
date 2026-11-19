@@ -6,7 +6,7 @@ const source=fs.readFileSync(new URL('../sw.js',import.meta.url),'utf8');
 test('service worker precaches app and the complete master collection without forced activation',async()=>{
  const handlers={},cached=[];let skipped=false;
  const manifest=JSON.parse(fs.readFileSync(new URL('../decks/manifest.json',import.meta.url)));
- vm.runInNewContext(source,{self:{addEventListener:(name,fn)=>handlers[name]=fn,skipWaiting:()=>{skipped=true;}},fetch:async()=>({ok:true,json:async()=>manifest}),caches:{open:async()=>({addAll:async items=>cached.push(...items)})}});
+ vm.runInNewContext(source,{URL,Request,self:{registration:{scope:"https://ciyan.test/"},addEventListener:(name,fn)=>handlers[name]=fn,skipWaiting:()=>{skipped=true;}},fetch:async()=>({ok:true,json:async()=>manifest}),caches:{open:async()=>({addAll:async items=>{for(const r of items){assert.equal(r.cache,"reload");cached.push("."+new URL(r.url).pathname);}}})}});
  let pending;handlers.install({waitUntil:p=>pending=p});await pending;
  assert.equal(skipped,false);assert.ok(cached.includes('./master-data.js'));assert.ok(!cached.some(p=>p.startsWith('./decks/')));
  for(const path of cached.filter(p=>p!=='./'))assert.ok(fs.existsSync(new URL('../'+path.slice(2),import.meta.url)),path);

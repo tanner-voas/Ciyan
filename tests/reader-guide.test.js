@@ -74,3 +74,16 @@ test('guide transport still steps through words and saves the bookmark',t=>{
  f.pages.fire('click',{target:target('play')});
  dispose();
 });
+
+test('paused reader and touch grace period allow free scrolling',t=>{
+ t.mock.timers.enable({apis:['setTimeout']});
+ const f=fixture();
+ const dispose=mountReadingGuide(f.pages,{save(){},define(){},initialRate:10,rateChanged(){},extend:async()=>{},initialGuide:true});
+ const press=action=>f.pages.fire('click',{target:{closest:q=>q==='[data-guide]'?{dataset:{guide:action}}:null}});
+ f.win.scrollBy(0,400);press('forward');assert.equal(f.getScroll(),400);
+ f.win.fire('touchstart');press('play');f.win.fire('touchend',{touches:[]});
+ t.mock.timers.tick(2999);assert.equal(f.getScroll(),400);
+ f.win.fire('touchstart');t.mock.timers.tick(1);assert.equal(f.getScroll(),400);
+ f.win.fire('touchend',{touches:[]});t.mock.timers.tick(3000);assert.notEqual(f.getScroll(),400);
+ dispose();
+});

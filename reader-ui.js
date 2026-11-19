@@ -1,3 +1,4 @@
+import {voiceTuning} from './reader-speech.js';
 import {catalog,downloadChapter} from './chapter-download.js';
 import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,chaptersInVolume,volumeLabel} from './reader-library.js';
 import {mountReadingGuide} from './reader-guide.js';
@@ -83,12 +84,33 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    chromeVisible=true;render();
   }catch(e){toast(e.message);mode='review';render();}
  }
+ let vocabGroup='practice',vocabPage=0,vocabChapter='';
+ function vocabulary(b,c,a){
+  if(vocabChapter!==c.digest){vocabChapter=c.digest;vocabPage=0;vocabGroup='practice';}
+  const groups={ready:[],due:[],practice:[]};
+  const earlier=new Set(a.earlier.filter(key=>!c.all.includes(key)));
+  for(const key of new Set([...c.all,...earlier])){
+   if(b.items[key].kind==='grammar')continue;
+   const group=a.group(key)===0?'due':a.qualifies(key)?'ready':'practice';
+   groups[group].push(key);
+  }
+  const keys=groups[vocabGroup],pages=Math.max(1,Math.ceil(keys.length/20));
+  vocabPage=Math.min(Math.max(0,vocabPage),pages-1);
+  const labels={ready:'Ready',due:'Due',practice:'To practice'};
+  const tabs=Object.entries(labels).map(([group,label])=>btn('vocab-group',label+' · '+groups[group].length,`data-group="${group}" aria-pressed="${group===vocabGroup}"`)).join('');
+  const rows=keys.slice(vocabPage*20,vocabPage*20+20).map(key=>{
+   const item=b.items[key];
+   return `<button class="list-card reader-vocab-row" data-action="reader-define" data-key="${esc(key)}"><strong lang="zh-Hans">${esc(item.hanzi)}</strong><span>${esc(item.pinyin)}</span><small>${esc(item.english)}${earlier.has(key)?' · Earlier chapter':''}</small></button>`;
+  }).join('');
+  return `<section class="panel stack"><h2>Chapter vocabulary</h2><div class="reader-tabs">${tabs}</div>${rows||'<p class="subtle">No words in this group.</p>'}
+   ${pages>1?`<div class="row">${btn('vocab-prev','Previous',vocabPage?'':'disabled')}<span>${vocabPage+1} / ${pages}</span>${btn('vocab-next','Next',vocabPage+1<pages?'':'disabled')}</div>`:''}</section>`;
+ }
  function review(b,c,a){
   return `<div class="panel stack"><h2>Chapter readiness</h2><p>${state().settings.readerGate==='auto'?'All words and terms':'Authored study list'} · ${a.keys.length} items</p>
   <div class="reader-metrics"><span><strong>${a.keys.length-a.weak.length} / ${a.keys.length}</strong>Ready</span><button data-action="reader-weak"><strong>${a.weak.length}</strong>Still to practice</button><button data-action="reader-earlier"><strong>${a.earlier.length}</strong>Earlier items due</button></div>
   <p>${c.complete?'Finished reading':c.unlocked||a.ready?'Ready to read':'Each item needs a saved score of 1.50, three Good grades, or one Easy this session.'}</p>
   ${btn('study','Study chapter')}${btn('read',c.position?'Continue reading':'Read chapter',c.unlocked||a.ready?'':'disabled')}
-  <small>Next import · Chapter ${b.chapters.length+1}</small></div>`;
+  <small>Next import · Chapter ${b.chapters.length+1}</small></div>${vocabulary(b,c,a)}`;
  }
  function study(b,c,a){
   let queue=a.queue;
@@ -165,7 +187,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   clearTimeout(timer);const pos=pending,cpm=pendingRate;if(!pos&&cpm===null)return;
   pendingRate=null;
   pending=null;
-  writingPosition=change(d=>{if(cpm!==null)d.settings.readerCpm=cpm;if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
+  writingPosition=change(d=>{if(cpm){
+   const s=d.settings,old=s.speechVoice||'',tuning={...voiceTuning(s,cpm.voice),readerCpm:cpm.rate};
+   s.voiceProfiles={...s.voiceProfiles,[old]:voiceTuning(s,old),[cpm.voice]:tuning};
+   Object.assign(s,tuning,{speechVoice:cpm.voice});
+  }if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
   const ok=await writingPosition;writingPosition=null;
   if(!ok){if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
  }
@@ -199,12 +225,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    return;
   }
   const c=chapter();
-  disposeGuide=mountReadingGuide(el,{position:pending?.digest===c.digest?pending.position:c.position,initialRate:pendingRate??state().settings.readerCpm??120,
-   speechSettings:()=>state().settings,credentials:()=>credentials(),voiceChanged:value=>change(d=>{d.settings.speechVoice=value;},false),
+  disposeGuide=mountReadingGuide(el,{position:pending?.digest===c.digest?pending.position:c.position,initialRate:pendingRate?.rate??state().settings.readerCpm??120,
+   speechSettings:()=>state().settings,credentials:()=>credentials(),voiceChanged:voice=>{pendingRate={voice,rate:voiceTuning(state().settings,voice).readerCpm};return flush();},
    initialGuide:state().settings.readerGuideEnabled===true,initialAudio:state().settings.readerTtsEnabled===true,
    onGuideChange:value=>{void change(d=>{d.settings.readerGuideEnabled=value;},false);},
    onAudioChange:value=>{void change(d=>{d.settings.readerTtsEnabled=value;},false);},
-   onTap:toggleChrome,rateChanged:value=>{pendingRate=value;void flush();},extend:async()=>{},
+   onTap:toggleChrome,rateChanged:(rate,voice)=>{pendingRate={rate,voice};void flush();},extend:async()=>{},
    define:(word,focus)=>{focusWord=focus;void action('define',word);},
    save:(n,position)=>{
     position.guided=el.classList.contains('guided');
@@ -261,10 +287,15 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     if(target)await choose(novel,target.number,{reading:true});return;
    }
    const b=book(),c=chapter();if(!c)return;
+   if(name==='vocab-group'||name==='vocab-prev'||name==='vocab-next'){
+    if(name==='vocab-group'){vocabGroup=el.dataset.group;vocabPage=0;}
+    else vocabPage+=name==='vocab-prev'?-1:1;
+    render();return;
+   }
    if(name==='define'){
     const item=b.items[el.dataset.key];if(!item)return;
     const match=state().cards.find(card=>card.hanzi===item.hanzi);
-    modal(el.textContent||item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="edit-card" data-id="${esc(match.id)}">Edit word</button>`:''}</div></div>`);return;
+    modal(item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="edit-card" data-id="${esc(match.id)}">Edit word</button>`:''}</div></div>`);return;
    }
    await flush();
    if(name==='exit'){mode='review';chromeVisible=true;render();globalThis.scrollTo?.(0,0);return;}

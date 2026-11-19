@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import {FONT_LEVELS,normalizeFontSettings,fontChoices,fontFace,mixedFace} from '../fonts.js';
 import {DRAWING_RATINGS,drawingResult,withDrawingRating,ratingGrade} from '../drawing-grades.js';
 import {APP_VERSION,prepareVersionedBackup} from '../backup-versions.js';
-import {defaultState,deleteConfirmationValid,makeBackup,parseBackup,migrateState,clearLearningRecords} from '../storage.js';
+import {defaultState,resetConfirmationValid,makeBackup,parseBackup,migrateState,clearLearningRecords} from '../storage.js';
 import {MASTER} from '../master-data.js';
 
 test('v0.6.5 preserves content and supports identity migration from the v0.6.4 release',()=>{
- assert.equal(APP_VERSION,'0.8.1');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.8.2');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.3',state:{appVersion:'0.6.3',schemaVersion:2}};
  const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,APP_VERSION);
  assert.deepEqual(migrated.state,old.state);
@@ -46,9 +46,9 @@ test('drawing grade is the minimum per-character grade; all character ratings ar
  const single=withDrawingRating({},0,'easy',1);
  assert.equal(drawingResult('热',single).grade,4);
 });
-test('case-insensitive delete confirmation has no effect on records until confirmed',()=>{
- for(const value of ['delete','Delete','DELETE','dElete',' delete ','  DeLeTe\n'])assert.equal(deleteConfirmationValid(value),true);
- for(const value of ['delete now','deleted','del','',undefined,null])assert.equal(deleteConfirmationValid(value),false);
+test('case-insensitive reset confirmation has no effect on records until confirmed',()=>{
+ for(const value of ['confirm','Confirm','CONFIRM','cOnfirm',' confirm ','  CoNfIrM\n'])assert.equal(resetConfirmationValid(value),true);
+ for(const value of ['delete','confirm now','confirmed','',undefined,null])assert.equal(resetConfirmationValid(value),false);
  const s=defaultState();s.settings.enabledFonts=['print','mashan'];
  const keep=structuredClone(s.cards);
  s.history.push({cardId:s.cards[0].id,grade:2,at:'2026-11-18T03:00:00.000Z'});
