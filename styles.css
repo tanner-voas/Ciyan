@@ -442,25 +442,37 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 .study-scroll-anchor{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 12px)}
 #main:has(.study-scroll-anchor){padding-bottom:32vh}
 #reader-pages{padding-bottom:1rem;overflow-anchor:none}
-.reader-guide-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:2;background:#fffef9;padding:5px 0;display:flex;flex-wrap:wrap;align-items:center;gap:4px}
 .reader-guide-bar button{min-height:40px;padding:5px 9px;border-radius:10px;color:var(--forest);background:#f0f5ef;font-weight:650}
-.reader-guide-bar [data-guide-controls]:not([hidden]){display:flex;align-items:center;gap:3px}
-.reader-guide-bar output{font-size:.78rem;white-space:nowrap;font-variant-numeric:tabular-nums}
 #reader-pages [data-word-index]{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #reader-pages .reader-current{background:#d9ebcd;border-radius:.2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-#reader-pages .reader-guide-bar{position:fixed;top:auto;bottom:calc(env(safe-area-inset-bottom,0px) + 86px);left:50%;transform:translateX(-50%);width:max-content;max-width:calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px));justify-content:center;border:1px solid var(--stroke);border-radius:14px;padding:4px 7px;z-index:19;box-shadow:0 3px 12px #18312818}
 .app-frame:has(#reader-pages){padding-bottom:calc(174px + env(safe-area-inset-bottom,0px))}
 html,body{touch-action:pan-x pan-y}
 @media(max-width:700px){input:not([type=checkbox]):not([type=range]),select,textarea{font-size:max(16px,1em)!important}}
 .immersive-reader{padding-top:calc(8px + env(safe-area-inset-top,0px))}
 .app-frame:has(.immersive-reader){padding:0 max(8px,env(safe-area-inset-right)) calc(54px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
-#reader-pages details.reader-guide-bar{display:block;left:max(8px,env(safe-area-inset-left));bottom:calc(8px + env(safe-area-inset-bottom));transform:none;padding:0;background:#fffef8f2}
 .reader-guide-bar summary{display:grid;place-items:center;width:42px;height:42px;cursor:pointer;list-style:none}
 .reader-guide-bar summary::-webkit-details-marker{display:none}
 .reader-menu{padding:0 8px 8px;display:grid;gap:6px}
 .reader-menu label{padding:8px;font-size:.9rem}
 #reader-pages article>[data-action=reader-exit]{font-size:.8rem;padding:8px 12px;margin:6px 0}
 
-[data-guide-controls][hidden]+.reader-audio{display:none}
-.reader-audio select{max-width:100%;font-size:16px}
-.reader-audio small:not(:empty){display:block;margin-top:.35rem}
+
+.reader-definition{display:grid;gap:12px;overflow-wrap:anywhere}
+.reader-definition p,.reader-definition small{margin:0}
+.reader-definition button{justify-self:start;margin-top:4px}
+.reader-dock{position:fixed;z-index:19;bottom:calc(6px + env(safe-area-inset-bottom));left:max(6px,env(safe-area-inset-left));right:max(6px,env(safe-area-inset-right));display:flex;align-items:flex-end;gap:5px;pointer-events:none}
+.reader-dock>*{pointer-events:auto;background:#fffef9;color:var(--forest);border:1px solid var(--stroke);border-radius:13px;box-shadow:0 3px 12px #18312818}
+.reader-dock details{flex:none}
+.reader-dock .reader-menu{position:absolute;bottom:calc(100% + 5px);left:0;max-height:55dvh;overflow:auto;width:min(300px,100%);box-sizing:border-box;border:1px solid var(--stroke);border-radius:12px;background:#fffef9;padding:8px}
+.reader-playback{padding:3px;max-width:calc(100% - 50px);min-width:0}
+.reader-playback[hidden],.reader-dock [hidden]{display:none}
+.reader-transport{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.reader-transport button{min-height:42px;min-width:32px;padding:4px 8px;border-radius:9px;background:#edf3ed;color:var(--forest);font-weight:650}
+.reader-transport output{font-size:.8rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.reader-voice{display:flex;align-items:center;gap:6px;padding:4px;font-size:.85rem}
+.reader-voice select{min-width:0;max-width:100%;flex:1}
+.reader-cloud-config{display:grid;gap:4px}
+.reader-cloud-config label{display:grid;gap:3px}
+.reader-cloud-config input{width:100%;box-sizing:border-box}
+.reader-playback small:not(:empty){display:block;padding:4px}
+#reader-pages.guided{padding-bottom:calc(96px + env(safe-area-inset-bottom))}

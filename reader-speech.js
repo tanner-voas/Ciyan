@@ -1,3 +1,11 @@
+export function voiceDescription(v){
+ const lang=v.lang.toLowerCase().replaceAll('_','-');
+ const place=/-(tw|hant)(-|$)/.test(lang)?'Taiwan':/-(cn|hans)(-|$)/.test(lang)?'Mainland':lang;
+ const id=(v.voiceURI||'')+' '+v.name;
+ const tier=/premium/i.test(id)?'Premium':/enhanced/i.test(id)?'Enhanced':/compact/i.test(id)?'Compact':'';
+ return [v.name,place,tier,v.localService?'Device':'Network'].filter(Boolean).join(' · ');
+}
+
 // Web Speech boundary indices and the reader's offsets both count UTF-16 code units.
 export function mandarinVoices(voices){
  function rank(voice){
@@ -5,7 +13,12 @@ export function mandarinVoices(voices){
   if(!/^(zh|cmn)(-|$)/.test(lang)||/-(hk|mo|yue)(-|$)/.test(lang)||/cantonese|粤语|廣東話/i.test(voice.name))return -1;
   return (voice.localService?8:0)+(/-(cn|hans)(-|$)/.test(lang)?4:0)+(/premium|enhanced|优质|增强/i.test(voice.name)?2:0)+(voice.default?1:0);
  }
- return voices.filter(v=>rank(v)>=0).sort((a,b)=>rank(b)-rank(a));
+ const unique=new Map();
+ for(const v of voices.filter(v=>rank(v)>=0).sort((a,b)=>rank(b)-rank(a))){
+  const label=voiceDescription(v);
+  if(!unique.has(label))unique.set(label,v);
+ }
+ return [...unique.values()];
 }
 
 export function speechPassage(word){

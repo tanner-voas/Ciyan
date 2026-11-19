@@ -1,4 +1,5 @@
-import {mandarinVoices,createNarrator} from './reader-speech.js';
+import {mandarinVoices,voiceDescription,createNarrator} from './reader-speech.js';
+import {cloudVoices,createCloudNarrator} from './reader-cloud-speech.js';
 // The document scrolls as one reading surface. Word indices count annotated
 // words in a paragraph, while offset keeps older character-based bookmarks usable.
 export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend}){
@@ -33,21 +34,38 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   }
   pause();speechStatus.textContent='Mandarin audio could not play ('+reason+'). Check media volume and output, or choose another voice and tap Play.';
  });
+ const menu=pages.querySelector('.reader-guide-bar'),dock=pages.querySelector('.reader-dock');
+ const audioControls=pages.querySelector('[data-audio-controls]');
+ const config=pages.querySelector('[data-cloud-config]');
+ const region=pages.querySelector('[data-cloud-region]'),key=pages.querySelector('[data-cloud-key]');
+ const cloud=createCloudNarrator(win,select,()=>void step(1),msg=>{pause();speechStatus.textContent=msg;});
  function refreshVoices(){
-  voices=mandarinVoices(synth.getVoices());
-  const system=doc.createElement('option');system.value='';system.textContent='System Mandarin';
-  voiceSelect.replaceChildren(system,...voices.map(v=>{
-   const option=doc.createElement('option');option.value=v.voiceURI;option.textContent=v.name+(v.localService?'':' (network)');return option;
-  }));
-  voiceSelect.value=voices.some(v=>v.voiceURI===voiceSelect.dataset.selected)?voiceSelect.dataset.selected:'';
-  voiceSelect.hidden=!aloud||!voices.length;
+  voices=mandarinVoices(synth?.getVoices()||[]);
+  function option(value,text){const o=doc.createElement('option');o.value=value;o.textContent=text;return o;}
+  const local=doc.createElement('optgroup');local.label='System voices';
+  if(synth&&win.SpeechSynthesisUtterance)local.append(option('','System Mandarin'),...voices.map(v=>option(v.voiceURI,voiceDescription(v))));
+  const online=doc.createElement('optgroup');online.label='Azure neural · key required';
+  for(const [id,label] of cloudVoices)online.append(option(id,label));
+  voiceSelect.replaceChildren(local,online);
+  const preferred=voiceSelect.dataset.selected;
+  if(cloudVoices.has(preferred)||voices.some(v=>v.voiceURI===preferred))voiceSelect.value=preferred;
+  audioControls.hidden=!aloud;
+  config.hidden=!aloud||!cloudVoices.has(voiceSelect.value);
  }
- if(synth&&win.SpeechSynthesisUtterance){
-  refreshVoices();synth.addEventListener?.('voiceschanged',refreshVoices,options);
-  audio.addEventListener('click',()=>{aloud=audio.checked;systemFallback=null;refreshVoices();if(aloud&&current){playing=true;play.textContent='Pause';}else releasePlayback();schedule();},options);
-  voiceSelect.addEventListener('change',()=>{voiceSelect.dataset.selected=voiceSelect.value;systemFallback=null;schedule();},options);
- }else if(audio?.matches?.('[data-guide-audio]')){
-  audio.disabled=true;speechStatus.textContent='This browser does not provide speech playback.';
+ if(voiceSelect?.matches?.('[data-voice-select]')){
+  refreshVoices();synth?.addEventListener?.('voiceschanged',refreshVoices,options);
+  audio.addEventListener('click',()=>{
+   aloud=audio.checked;systemFallback=null;refreshVoices();
+   if(aloud&&enabled&&current){playing=true;play.textContent='Pause';}
+   else releasePlayback();
+   schedule();
+  },options);
+  voiceSelect.addEventListener('change',()=>{
+   voiceSelect.dataset.selected=voiceSelect.value;systemFallback=null;speechStatus.textContent='';
+   refreshVoices();
+   if(!config.hidden&&(!region.value||!key.value)){pause();menu.open=true;return;}
+   schedule();
+  },options);
  }
  const viewport=()=>win.visualViewport;
  function bookmark(row,word){
@@ -72,7 +90,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  function center(time=performance.now()){
   if(!current||stopped||doc.hidden||Math.abs((viewport()?.scale||1)-1)>0.01)return;
   const first=pages.querySelector('article'),last=pages.querySelector('article:last-of-type');
-  const top=topEdge(),bottom=Math.min(win.innerHeight,pages.querySelector('.reader-guide-bar').getBoundingClientRect().top);
+  const top=topEdge(),bottom=Math.min(win.innerHeight,(dock?.getBoundingClientRect?dock:menu).getBoundingClientRect().top);
   if(bottom<=top||!first||!last)return;
   const target=current.getBoundingClientRect(),height=bottom-top;
   const delta=target.top+target.height/2-(top+height/2);
@@ -92,15 +110,19 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   current?.classList.remove('reader-current');current=word;current.classList.add('reader-current');
   center();bookmark(current.closest('[data-pid]'),current);
  }
- function pause(){releasePlayback();sequence++;narrator.cancel();win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
+ function pause(){releasePlayback();sequence++;cloud.cancel();narrator.cancel();win.cancelAnimationFrame(drift);drift=0;clearTimeout(tick);playing=false;play.textContent='Play';}
  function schedule(){
-  sequence++;narrator.cancel();clearTimeout(tick);
-  if(playing&&current&&aloud){usePlayback();speechStatus.textContent='';narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback,rate);return;}
+  sequence++;cloud.cancel();narrator.cancel();clearTimeout(tick);
+  if(playing&&current&&aloud){usePlayback();speechStatus.textContent='';
+   if(cloudVoices.has(voiceSelect.value)){
+    void cloud.speak(current,voiceSelect.value,rate,region.value.trim().toLowerCase(),key.value.trim());return;
+   }
+   narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback,rate);return;}
   if(playing&&current)tick=setTimeout(()=>void step(1),60000*[...current.textContent].length/rate);
  }
  async function step(direction){
   if(!current)return;
-  const request=++sequence;clearTimeout(tick);narrator.cancel();
+  const request=++sequence;clearTimeout(tick);cloud.cancel();narrator.cancel();
   const source=current;
   if(!wordList.includes(source))wordList=Array.from(pages.querySelectorAll('[data-word-index]'));
   let index=wordList.indexOf(source)+direction;
@@ -110,7 +132,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  }
  function switchGuide(on,target){
   const start=target||current||visibleRow()?.querySelector('[data-word-index]')||wordList[0];
-  enabled=on;toolbar.hidden=!on;toggle.setAttribute('aria-expanded',String(on));
+  enabled=on;toolbar.hidden=!on;toggle.setAttribute('aria-pressed',String(on));toggle.textContent=on?'Disable reading guide':'Enable reading guide';
   pages.classList.toggle('guided',on);
   if(on){select(start);schedule();}
   else{pause();current?.classList.remove('reader-current');current=null;bookmark(visibleRow());}
@@ -135,7 +157,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   const word=e.target.closest('[data-word-index]');
   if(word){lookup(word);return;}
   const action=e.target.closest('[data-guide]')?.dataset.guide;
-  if(action==='toggle'){if(!enabled&&synth&&win.SpeechSynthesisUtterance)refreshVoices();switchGuide(!enabled);}
+  if(action==='toggle'){switchGuide(!enabled);menu.open=false;}
   if(action==='play'){if(playing)pause();else{playing=true;play.textContent='Pause';schedule();}}
   if(action==='back'||action==='forward')void step(action==='back'?-1:1);
   if(action==='slower'||action==='faster'){
@@ -155,5 +177,5 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  if(position?.guided&&resume)switchGuide(true,resume);
  else if(!position)win.scrollTo?.(0,0);
  else if(row)win.scrollBy(0,row.getBoundingClientRect().top-parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top')||0));
- return ()=>{stopped=true;listeners.abort();pause();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
+ return ()=>{stopped=true;listeners.abort();pause();cloud.dispose();win.cancelAnimationFrame(frame);win.cancelAnimationFrame(drift);};
 }

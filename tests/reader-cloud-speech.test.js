@@ -1,0 +1,32 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createCloudNarrator} from '../reader-cloud-speech.js';
+import {mandarinVoices,voiceDescription} from '../reader-speech.js';
+
+test('duplicates collapse while distinct regions and installed quality tiers remain labeled',()=>{
+ const base={name:'Tingting',lang:'zh-CN',localService:true};
+ const voices=mandarinVoices(['compact.one','compact.two','enhanced.one'].map(voiceURI=>({...base,voiceURI})).concat({...base,lang:'zh-TW'}));
+ assert.equal(voices.length,3);
+ assert.equal(new Set(voices.map(voiceDescription)).size,3);
+ assert.match(voiceDescription(voices.find(v=>v.lang==='zh-TW')),/Taiwan/);
+});
+test('Azure narration requests only the current sentence, reuses audio, and cancels stale playback',async()=>{
+ const row={textContent:'我喜欢。明天去。'};
+ const words=['我','喜欢'].map((textContent,i)=>({textContent,dataset:{offset:i},closest:()=>row}));row.querySelectorAll=()=>words;
+ let requests=0,source,ended=0;const errors=[];
+ class Context{
+  state='running';currentTime=0;
+  async decodeAudioData(){return {duration:1};}
+  createBufferSource(){return source={connect(){},start(){},stop(){},disconnect(){}};}
+  close(){return Promise.resolve();}
+ }
+ const win={AudioContext:Context,requestAnimationFrame(){return 1;},cancelAnimationFrame(){},
+  async fetch(url,init){requests++;assert.equal(url,'https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1');
+   assert.equal(init.headers['Ocp-Apim-Subscription-Key'],'test');assert.match(init.body,/我喜欢。/);assert.doesNotMatch(init.body,/明天/);
+   return new Response(new Uint8Array(1));}};
+ const n=createCloudNarrator(win,()=>{},()=>ended++,s=>errors.push(s));
+ await n.speak(words[0],'zh-CN-YunxiNeural',240,'eastasia','test');source.onended();assert.equal(ended,1);
+ await n.speak(words[0],'zh-CN-YunxiNeural',240,'eastasia','test');const stale=source.onended;n.cancel();stale();assert.equal(ended,1);assert.equal(requests,1);
+ await n.speak(words[0],'zh-CN-YunxiNeural',240,'bad/region','test');assert.equal(errors.length,1);assert.equal(requests,1);
+ n.dispose();
+});

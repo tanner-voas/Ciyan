@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.7.5
+# Cíyán (词言) v0.7.6
 
 Open the Reader tab and choose a hosted chapter from the catalog, or import your own JSON. The app fetches chapter ZIPs relative to its own installation, verifies their contents, and keeps opened chapters available offline. Each hosted chapter retains the same identity as the original JSON.
 
@@ -6,6 +6,12 @@ Tap a word for its dictionary entry. With the guide on, **Read from here** moves
 
 Offline-first Mandarin flashcards, grammar, Particle Zoo, drawing practice,
 advanced SRS scheduling, and user-controlled Chinese typography.
+
+## Reader narration in v0.7.6
+
+Use the sliders menu to enable the guide. Transport controls stay in the bottom bar while the menu is closed. Enable **Read aloud in Mandarin** to show the voice selector. Equivalent system voices are grouped. When the browser identifies them, region and installed voice quality distinguish variants.
+
+The two additional male Mandarin voices, Yunxi and Yunyang, use Azure Speech. Select a voice in the bottom bar, enter your Azure Speech resource region (such as `eastasia`) and resource key in the menu, then close the menu and tap Play. Use a free-tier F0 resource for the free allowance. The app sends the current sentence directly to Microsoft's regional synthesis endpoint. Credentials stay in the open reader and are omitted from exports. Native audio continues to work without Azure.
 
 ## Latest release
 
