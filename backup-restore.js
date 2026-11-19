@@ -10,7 +10,7 @@ export function mergeRestoredContent(restored,current,master){
   if(ids.has(source.id))throw new Error('Word ID conflict while merging backup');
   wordMap.set(source.hanzi,source);ids.add(source.id);
  }
- restored.cards=[...wordMap.values()];
+
  const grammarMap=new Map(restored.grammar.map(g=>[g.markup,g]));
  const grammarIds=new Set(restored.grammar.map(g=>g.id));
  for(const source of [...current.grammar,...master.grammar]){
@@ -18,6 +18,8 @@ export function mergeRestoredContent(restored,current,master){
   if(grammarIds.has(source.id))throw new Error('Grammar ID conflict while merging backup');
   grammarMap.set(source.markup,source);grammarIds.add(source.id);
  }
+ if(wordMap.size>20000||grammarMap.size>20000)throw Error('Merged dictionary exceeds the 20,000-entry limit. Restore canceled.');
+ restored.cards=[...wordMap.values()];
  restored.grammar=[...grammarMap.values()];
  // Keep existing synonym relationships and tags for matching backup words only
  // when absent from the backup; never mutate the historical review identity.

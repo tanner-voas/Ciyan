@@ -105,11 +105,11 @@ function deferredUntil(session,item,now){
  // After another two exercises, or after 15 seconds if no other work remains.
  return (session.turn||0)>=(data.turn||0)?0:(now>=data.at?0:data.at);
 }
-function sessionAllowed(s,session,item,now){
+function sessionAllowed(session,item,now,remaining){
  if(session?.skipped?.includes(`${item.mode}:${item.id}`))return false;
  if(session?.allowedWords&&item.mode==='words'&&!session.allowedWords.includes(item.id))return false;
  if(deferredUntil(session,item,now)>now)return false;
- if(!item.dueAt&&item.mode==='words'&&newVocabRemaining(s,now)<=0)return false;
+ if(!item.dueAt&&item.mode==='words'&&remaining<=0)return false;
  return true;
 }
 export function modeCounts(s,mode,filters=null,now=Date.now(),session=null){
@@ -143,8 +143,9 @@ function pickWeighted(pool,rng){
 // Randomly choose a mode according to preferences, then draw a random eligible
 // card using overdue/forgetting urgency. A large deck does not overwhelm modes.
 export function nextExercise(s,session,now=Date.now(),rng=Math.random){
+ const remaining=newVocabRemaining(s,now);
  const all=availableModes(s,session).flatMap(mode=>candidates(s,mode,false,now,false,session.filters||null))
-  .filter(item=>sessionAllowed(s,session,item,now));
+  .filter(item=>sessionAllowed(session,item,now,remaining));
  const pool=currentPool(session);
  const due=all.filter(item=>!!item.dueAt),fresh=all.filter(item=>!item.dueAt);
  const selected=pool==='due'?due:pool==='new'?fresh:due.length?due:fresh;

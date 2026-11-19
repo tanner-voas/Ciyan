@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.8.3
+# Cíyán (词言) v0.8.4
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and

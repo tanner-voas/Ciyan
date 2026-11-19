@@ -14,6 +14,7 @@ export function chapterLabel(c){
 export function createReader({state,change,render,esc,modal,closeModal,toast,credentials,applyFonts}){
  let novel='',number=1,mode='review',scope='gate',revealed=false,shown='',busy=false,epoch=0,observer=null,timer=null,pending=null;
  let focusWord=null;
+ let pendingPlayback=null;
  let disposeGuide=null,pendingRate=null,writingPosition=null;
  let chromeVisible=true,requestedUpload=null,attemptedInitial='';
  const sessions=new Map();
@@ -185,16 +186,17 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  }
  async function flush(){
   while(writingPosition)await writingPosition;
-  clearTimeout(timer);const pos=pending,cpm=pendingRate;if(!pos&&cpm===null)return;
+  clearTimeout(timer);const pos=pending,cpm=pendingRate;const playback=pendingPlayback;if(!pos&&cpm===null&&!playback)return;
+  pendingPlayback=null;
   pendingRate=null;
   pending=null;
-  writingPosition=change(d=>{if(cpm){
+  writingPosition=change(d=>{if(playback)Object.assign(d.settings,playback);if(cpm){
    const s=d.settings,old=s.speechVoice||'',tuning={...voiceTuning(s,cpm.voice),readerCpm:cpm.rate};
    s.voiceProfiles={...s.voiceProfiles,[old]:voiceTuning(s,old),[cpm.voice]:tuning};
    Object.assign(s,tuning,{speechVoice:cpm.voice});
   }if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
   const ok=await writingPosition;writingPosition=null;
-  if(!ok){if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
+  if(!ok){pendingPlayback??=playback;if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
  }
  function unmount(){focusWord=null;disposeGuide?.();disposeGuide=null;observer?.disconnect();epoch++;}
  function toggleChrome(){
@@ -229,8 +231,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   disposeGuide=mountReadingGuide(el,{position:pending?.digest===c.digest?pending.position:c.position,initialRate:pendingRate?.rate??state().settings.readerCpm??120,
    speechSettings:()=>state().settings,credentials:()=>credentials(),voiceChanged:voice=>{pendingRate={voice,rate:voiceTuning(state().settings,voice).readerCpm};return flush();},
    initialGuide:state().settings.readerGuideEnabled===true,initialAudio:state().settings.readerTtsEnabled===true,
-   onGuideChange:value=>{void change(d=>{d.settings.readerGuideEnabled=value;},false);},
-   onAudioChange:value=>{void change(d=>{d.settings.readerTtsEnabled=value;},false);},
+   onPlaybackChange:(guide,audio)=>{pendingPlayback={readerGuideEnabled:guide,readerTtsEnabled:audio};void flush();},
    onTap:toggleChrome,rateChanged:(rate,voice)=>{pendingRate={rate,voice};void flush();},extend:async()=>{},
    define:(word,focus)=>{focusWord=focus;void action('define',word);},
    save:(n,position)=>{
@@ -355,5 +356,5 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  });
  globalThis.addEventListener?.('pagehide',()=>void flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)void flush();});
- return {view,isReading,mount,unmount,action,flush,reset(){unmount();pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';}};
+ return {view,isReading,mount,unmount,action,flush,reset(){unmount();pendingPlayback=null;pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';}};
 }

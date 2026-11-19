@@ -2,7 +2,7 @@ import {voiceTuning,speechPassage,mandarinVoices,voiceDescription,createNarrator
 import {cloudVoices,createCloudNarrator} from './reader-cloud-speech.js';
 // The document scrolls as one reading surface. Word indices count annotated
 // words in a paragraph, while offset keeps older character-based bookmarks usable.
-export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend,speechSettings=()=>({}),credentials=async()=>({}),voiceChanged=()=>{},initialGuide=false,initialAudio=false,onGuideChange=()=>{},onAudioChange=()=>{},onTap=()=>{}}){
+export function mountReadingGuide(pages,{position,save,define,rateChanged,initialRate,extend,speechSettings=()=>({}),credentials=async()=>({}),voiceChanged=()=>{},initialGuide=false,initialAudio=false,onPlaybackChange=()=>{},onTap=()=>{}}){
  const doc=pages.ownerDocument,win=doc.defaultView;
  const listeners=new AbortController(),options={signal:listeners.signal};
  const toolbar=pages.querySelector('[data-guide-controls]');
@@ -61,8 +61,8 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   refreshVoices();synth?.addEventListener?.('voiceschanged',refreshVoices,options);
   audio.addEventListener('click',()=>{
    aloud=audio.checked;systemFallback=null;refreshVoices();
-   if(aloud&&!enabled){switchGuide(true);onGuideChange(true);}
-   onAudioChange(aloud);
+   if(aloud&&!enabled){switchGuide(true);}
+   onPlaybackChange(enabled,aloud);
    if(!aloud)releasePlayback();
    schedule();
   },options);
@@ -179,7 +179,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   pause();
   define(word,()=>{
    if(stopped)return;
-   if(!enabled){switchGuide(true,word);onGuideChange(true);}else select(word);
+   if(!enabled){switchGuide(true,word);onPlaybackChange(true,aloud);}else select(word);
    if(aloud||wasPlaying){playing=true;play.textContent='Pause';if(aloud&&!cloudVoices.has(voiceSelect.value))narrator.prepareOutput();schedule();}
   });
  }
@@ -192,8 +192,8 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  let tapped=null,tappedAt=0,tapTimer;
  pages.addEventListener('click',e=>{
   const action=e.target.closest?.('[data-guide]')?.dataset.guide;
-  if(action==='toggle'){const next=!enabled;if(!next&&aloud){aloud=false;audio.checked=false;onAudioChange(false);refreshVoices();}switchGuide(next);onGuideChange(enabled);if(menu)menu.hidden=true;return;}
-  if(action==='play'){if(playing)pause();else{if(!enabled){switchGuide(true);onGuideChange(true);}playing=true;play.textContent='Pause';if(aloud&&!cloudVoices.has(voiceSelect.value))narrator.prepareOutput();schedule();}return;}
+  if(action==='toggle'){const next=!enabled;if(!next&&aloud){aloud=false;audio.checked=false;refreshVoices();}switchGuide(next);onPlaybackChange(enabled,aloud);if(menu)menu.hidden=true;return;}
+  if(action==='play'){if(playing)pause();else{if(!enabled){switchGuide(true);onPlaybackChange(enabled,aloud);}playing=true;play.textContent='Pause';if(aloud&&!cloudVoices.has(voiceSelect.value))narrator.prepareOutput();schedule();}return;}
   if(action==='back'||action==='forward'){void step(action==='back'?-1:1);return;}
   if(action==='slower'||action==='faster'){
    rate=Math.max(10,Math.min(1200,rate+(action==='slower'?-10:10)));

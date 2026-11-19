@@ -266,9 +266,9 @@ function studySummary(mode,counts=modeCounts(state,mode,studyFilters)){return `<
 function renderStudyIntro(){
  const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),all=enabled.map(m=>countsByMode[m]);
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
- return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Continuous recognition, grammar, character writing, and particles. Stop whenever you choose.</p></div>
+ return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Practice vocabulary, grammar, listening, character writing, and particles. Stop whenever you choose.</p></div>
  <section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
- ${autoControls()}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=countsByMode[mode];return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode,c)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
+ ${autoControls(countsByMode)}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=countsByMode[mode];return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode,c)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
  ${backupBanner()}${studyFilterTree()}`;
 }
 function modeStartable(mode,counts){
@@ -862,20 +862,28 @@ function grammarEditor(id=null){const g=id?grammarById(id):{markup:'',pinyin:'',
 async function saveWordEditor(form){const id=form.dataset.id||null,existing=id?wordById(id):null;
   let candidate;try{candidate=normalizeCard({...existing,...Object.fromEntries(new FormData(form)),id:id||undefined,source:existing?.source||'My words'});}catch(e){toast(e.message);return;}
   if(state.cards.some(c=>c.id!==id&&c.hanzi===candidate.hanzi)){toast('A word with this exact Chinese text already exists. Edit that word instead.');return;}
+  const archived=state.archived?.cards.find(c=>c.hanzi===candidate.hanzi);
+  if(archived&&id){toast('Another studied word already uses that spelling.');return;}
+  if(!id&&state.cards.length>=20000){toast('Vocabulary collection limit reached.');return;}
+  if(archived)candidate={...archived,...candidate,id:archived.id};
   if(existing&&existing.hanzi!==candidate.hanzi)delete candidate.synonyms;
   if(existing?.hanzi!==candidate.hanzi&&state.schedules[id]&&
     !window.confirm('You changed the Chinese word of a studied card. Keep its existing memory history for the new spelling?'))return;
   const done=await change(d=>{if(id){const i=d.cards.findIndex(c=>c.id===id);if(i<0)throw new Error('Word no longer exists');d.cards[i]=candidate;}
-    else d.cards.push(candidate);ensureStudy(d);},true,true);
+    else {if(archived)d.archived.cards=d.archived.cards.filter(c=>c.id!==archived.id);d.cards.push(candidate);}ensureStudy(d);},true,true);
   if(done){invalidateTagOdds();closeModal();toast(id?'Word edited':'Word added');}
 }
 async function saveGrammarEditor(form){const id=form.dataset.id||null,existing=id?grammarById(id):null;
   let candidate;try{candidate=normalizeGrammar({...existing,...Object.fromEntries(new FormData(form)),id:id||undefined,source:existing?.source||'My grammar'});}catch(e){toast(e.message);return;}
+  if(!id&&state.grammar.length>=20000){toast('Grammar collection limit reached.');return;}
   if(state.grammar.some(g=>g.id!==id&&g.markup===candidate.markup)){toast('That sentence is already in your grammar collection.');return;}
+  const archived=state.archived?.grammar.find(g=>g.markup===candidate.markup);
+  if(archived&&id){toast('Another studied sentence already uses that markup.');return;}
+  if(archived)candidate={...archived,...candidate,id:archived.id};
   if(existing?.markup!==candidate.markup&&state.grammarHistory.some(h=>h.grammarId===id)&&
       !window.confirm('Changing this studied sentence will keep its prior attempt history. Continue?'))return;
   const done=await change(d=>{if(id){const i=d.grammar.findIndex(g=>g.id===id);if(i<0)throw new Error('Grammar card no longer exists');d.grammar[i]=candidate;}
-    else d.grammar.push(candidate);},true,true);
+    else {if(archived)d.archived.grammar=d.archived.grammar.filter(g=>g.id!==archived.id);d.grammar.push(candidate);}},true,true);
   if(done){closeModal();toast(id?'Grammar edited':'Grammar card created');}
 }
 async function deleteWord(id){const c=wordById(id);if(!c)return;
@@ -1266,8 +1274,8 @@ async function startFilteredSession(){
  const ids=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&(f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&(!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q))).map(c=>c.id);
  await startPractice('words',ids);
 }
-function autoControls(){
- const enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),rows=enabled.map(m=>modeCounts(state,m,studyFilters));
+function autoControls(countsByMode){
+ const enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),rows=enabled.map(m=>countsByMode[m]);
  const due=rows.reduce((n,x)=>n+x.due,0),started=rows.reduce((n,x)=>n+x.started,0),total=rows.reduce((n,x)=>n+selectedCount(x),0),newCards=rows.reduce((n,x)=>n+x.new,0);
  const canStart=!!enabled.length&&(selectedPool==='due'?due>0:selectedPool==='new'?newCards>0:due+newCards>0)&&(selectedPool==='due'||due>0||enabled.some(m=>m!=='words')||newVocabRemaining(state)>0);
  return `<section class="panel stack auto-panel"><div class="eyebrow">MIXED PRACTICE</div><h2>Auto Study</h2><p>Weighted-random modes and overdue cards, using your preferred weights. No fixed session length.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${autoEnabled(state,m)?'checked':''}> ${label}</label>`).join('')}</div><div class="study-counts"><span><strong>${due}</strong><small>Due now</small></span><span><strong>${started}</strong><small>Started · not due</small></span><span><strong>${total}</strong><small>Available to study</small></span></div><p class="subtle">${newCards} new available across enabled modes</p><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${canStart?'':'disabled'}>Start Auto Study</button></section>`;
@@ -1422,7 +1430,6 @@ async function practiceAction(action,el){
 }
 function extendedStats(){
  const counts=reviewDayCounts(),now=Date.now();
- const total=state.history.length+state.grammarHistory.length+state.skillHistory.length;
  const days=Array.from({length:28},(_,i)=>{const d=new Date();d.setDate(d.getDate()-27+i);const key=formatDay(d);return {key,count:counts.get(key)||0};});
  const max=Math.max(1,...days.map(d=>d.count));
  const dueCounts=new Map();for(const e of activeDueEntries()){const key=dateKey(e.dueAt);dueCounts.set(key,(dueCounts.get(key)||0)+1);}
@@ -1432,7 +1439,7 @@ function extendedStats(){
  }
  const trouble=allParticles(state).map(p=>({p,...(particleCounts.get(p.id)||{n:0,bad:0})})).filter(x=>x.bad).sort((a,b)=>b.bad-a.bad).slice(0,6);
  return `${feedbackStats()}${dueChart()}<section class="panel stack"><h2>Skill balance</h2><p class="subtle">Success means Good/Easy; recall is the model’s estimate, not a measured test score.</p><div class="stats-table-wrap"><table class="skill-table"><thead><tr><th>Skill</th><th>Seen</th><th>Due</th><th>Attempts</th><th>Success</th><th>Recall</th></tr></thead><tbody>${Object.entries(MODES).map(([m,name])=>{const x=skillSummary(state,m,now);return `<tr><th>${name}</th><td>${x.seen}</td><td>${x.due}</td><td>${x.attempts}</td><td>${x.success===null?'—':percent(x.success)}</td><td>${x.recall===null?'—':percent(x.recall)}</td></tr>`;}).join('')}</tbody></table></div></section>
- <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">All four modes · ${total} recorded attempts</p></section>
+ <section class="panel stack" style="margin-top:16px"><h2>28-day activity</h2><div class="activity-grid">${days.map(d=>`<div title="${d.key}: ${d.count} reviews" style="background:rgba(45,128,108,${.08+.85*d.count/max})"><small>${d.key.slice(8)}</small><strong>${d.count}</strong></div>`).join('')}</div><p class="subtle">${days.reduce((n,d)=>n+d.count,0)} attempts across all modes in these 28 days</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Next seven days</h2><div class="forecast">${forecasts.map(d=>`<div><small>${d.key.slice(5)}</small><strong>${d.n}</strong></div>`).join('')}</div><p class="subtle">Scheduled reviews only, excluding new items and overdue backlog. Dates will change as you study.</p></section>
  <section class="panel stack" style="margin-top:16px"><h2>Particles to revisit</h2>${trouble.length?trouble.map(x=>`<div class="particle-issue"><strong>${esc(x.p.focus)}</strong><span>${x.bad} incorrect · ${x.n} attempts</span></div>`).join(''):'<p class="subtle">Particle choice and placement errors will appear here after practice.</p>'}</section>`;
 }
@@ -1489,10 +1496,13 @@ function dueChart(){
  const windowSeconds=windows[dueWindow]??null;
  const points=entries.map(e=>({...e,offset:(Date.parse(e.dueAt)-now)/1000})).filter(e=>Number.isFinite(e.offset));
  const selected=windowSeconds===null?points:points.filter(e=>e.offset>=-windowSeconds&&e.offset<=windowSeconds);
- const offsets=selected.map(e=>e.offset);
- const min=offsets.length?Math.min(0,...offsets):0,maxOffset=offsets.length?Math.max(0,...offsets):0;
+ let min=0,maxOffset=0;
+ for(const {offset} of selected){min=Math.min(min,offset);maxOffset=Math.max(maxOffset,offset);}
  const autoStep=(()=>{const span=Math.max(1,maxOffset-min);const target=Math.max(8,Math.min(28,Math.floor((globalThis.innerWidth||390)/24)));const sizes=[3600,21600,86400,259200,604800,1209600,2592000,7776000,31536000];return sizes.find(x=>span/x<=target)||sizes.at(-1);})();
- const step=steps[dueResolution]||autoStep;
+ const requestedStep=steps[dueResolution]||autoStep;
+ // Expand whole buckets when the selected range exceeds the plotting budget.
+ const multiple=Math.max(1,Math.ceil((maxOffset-min)/(358*requestedStep)));
+ const step=requestedStep*multiple;
  const start=Math.floor(min/step)*step,end=Math.ceil(maxOffset/step)*step;
  const count=Math.max(1,Math.min(360,Math.round((end-start)/step)+1));
  const bins=Array.from({length:count},(_,i)=>({start:start+i*step,end:start+(i+1)*step,total:0,counts:Object.fromEntries(Object.keys(MODES).map(m=>[m,0]))}));
@@ -1516,7 +1526,7 @@ function autoDistribution(s){
  const sum=Object.values(s.spent).reduce((n,x)=>n+x,0),weights=state.settings.autoShares||SHARES;
  const total=Object.keys(MODES).reduce((n,m)=>n+(autoEnabled(state,m)?weights[m]:0),0)||1;
  const status=availability(state,s);
- return `<details class="panel auto-distribution"><summary>Auto Study balance · actual vs preferred</summary><p class="subtle">Shares use practice time, not card count. Due/relearning reviews take priority; vocabulary prerequisites can block other modes.</p><table class="skill-table"><tr><th>Mode</th><th>Actual</th><th>Preferred</th><th>Ready now</th></tr>${Object.entries(MODES).map(([m,n])=>`<tr><th>${n}</th><td>${percent(sum?(s.spent[m]||0)/sum:0)}</td><td>${autoEnabled(state,m)?percent(weights[m]/total):'Off'}</td><td>${status.modes.find(x=>x.mode===m)?.due||0}</td></tr>`).join('')}</table>${status.modes.filter(m=>m.blocked).map(m=>`<p class="subtle">${MODES[m.mode]}: ${m.blocked} excluded by session filters or waiting on vocabulary scores.</p>`).join('')}</details>`;
+ return `<details class="panel auto-distribution"><summary>Auto Study balance · actual vs preferred</summary><p class="subtle">Actual shows time spent. Preferred weights guide the choice of the next exercise among eligible modes. Due reviews take priority.</p><table class="skill-table"><tr><th>Mode</th><th>Actual</th><th>Preferred</th><th>Ready now</th></tr>${Object.entries(MODES).map(([m,n])=>`<tr><th>${n}</th><td>${percent(sum?(s.spent[m]||0)/sum:0)}</td><td>${autoEnabled(state,m)?percent(weights[m]/total):'Off'}</td><td>${status.modes.find(x=>x.mode===m)?.due||0}</td></tr>`).join('')}</table>${status.modes.filter(m=>m.blocked).map(m=>`<p class="subtle">${MODES[m.mode]}: ${m.blocked} excluded by session filters or waiting on vocabulary scores.</p>`).join('')}</details>`;
 }
 let waitTimer;
 function sessionCounts(session){const info=sessionAvailability(state,session);return `<div class="study-counts"><span><strong>${info.due}</strong><small>Due now</small></span><span><strong>${info.started}</strong><small>Started · not due</small></span><span><strong>${info.available}</strong><small>Available to study</small></span></div>`;}

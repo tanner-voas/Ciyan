@@ -8,8 +8,8 @@ import {defaultState,makeBackup,parseBackup} from '../storage.js';
 import {scheduleReview,rescheduleExisting,previewOutcomes,retrySeconds,DEFAULT_RETRY} from '../review-scheduler.js';
 
 test('v0.6.7 version and exact installed font names are exposed to users',()=>{
- assert.equal(APP_VERSION,'0.8.3');
- assert.equal(prepareVersionedBackup({...makeBackup(defaultState()),appVersion:'0.6.6'}).appVersion,'0.8.3');
+ assert.equal(APP_VERSION,'0.8.4');
+ assert.equal(prepareVersionedBackup({...makeBackup(defaultState()),appVersion:'0.6.6'}).appVersion,'0.8.4');
  const expected={xiaowei:'xiaowei',kuaile:'HappyZcool-2016',zhushi:'YRDZST',mashan:'Ma Shan Zheng',muyao:'Muyao-Softbrush',zhimang:'Zhi Mang Xing'};
  for(const [id,alias] of Object.entries(expected)){
   assert.equal(FONT_CATALOG[id].aliases[0],alias);
