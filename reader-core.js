@@ -199,7 +199,9 @@ export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...chapterFocus(ch,b.items)]));
  const earlier=[...previous].filter(k=>!selected.has(k)&&due(k)).sort(order);
  const remaining=newVocabRemaining(s,now);
- const quotaBlocked=k=>remaining<=0&&b.items[k].kind==='vocab'&&!schedule(k);
+ // The daily vocabulary limit also pauses introduction of novel-specific terms
+ // and grammar. These do not themselves consume vocabulary quota.
+ const quotaBlocked=k=>remaining<=0&&!schedule(k);
  const queue=[...new Set([...earlier,...keys.filter(k=>!quotaBlocked(k)&&(due(k)||!qualifies(k)) )])].sort(order);
  const blocked=keys.filter(k=>quotaBlocked(k)&&!qualifies(k));
  const focus=new Set([...focused,...b.chapters.slice(0,c.number-1).flatMap(ch=>chapterFocus(ch,b.items))]);
@@ -220,7 +222,8 @@ export function gradeReader(s,b,key,grade,now=Date.now()){
  const grammar=item.kind==='grammar'?s.grammar.find(g=>g.readerPattern===item.hanzi):null;
  const previous=item.kind==='vocab'?s.schedules[existing?.id]:grammar?(s.skillSchedules?.grammar?.[grammar.id]||b.progress[key]):b.progress[key];
  if(previous&&Date.parse(previous.dueAt)>now)return false;
- if(!previous&&item.kind==='vocab'&&newVocabRemaining(s,now)<=0)return false;
+ // Do not allow direct grades to bypass the reader's exhausted new-card gate.
+ if(!previous&&newVocabRemaining(s,now)<=0)return false;
  const at=new Date(now).toISOString();
  if(item.kind==='vocab'){
   const tag='Reader/'+b.title;

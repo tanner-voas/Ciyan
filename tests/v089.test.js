@@ -63,7 +63,7 @@ test('v089: chapter grammar grades update global Grammar mastery; imported histo
  assert.ok(readerAnalysis(ahead,ahead.reader.panlong,ahead.reader.panlong.chapters[0],now).qualifies(key));
 });
 
-test('v089: new Reader vocabulary shares the main daily cap, while terms remain studyable',()=>{
+test('v089: Reader new vocabulary shares the main daily cap; new terms pause at the cap',()=>{
  const {s,b,c,p}=loaded();const now=Date.now();s.settings.newWordsPerDay=1;
  const [first,second]=p.lexicon.vocabulary.filter(k=>!s.schedules[s.cards.find(w=>w.hanzi===p.items[k].hanzi)?.id]).slice(0,2);
  assert.ok(gradeReader(s,b,first,3,now));
@@ -77,8 +77,9 @@ test('v089: new Reader vocabulary shares the main daily cap, while terms remain 
  assert.ok(a.blocked.includes(second));
  assert.ok(!a.queue.includes(second),'Daily limit cannot be bypassed through the default Reader queue');
  const term=p.lexicon.terms[0];
- assert.ok(a.queue.includes(term));
- assert.ok(gradeReader(s,b,term,3,now+20));
+ assert.ok(a.blocked.includes(term));
+ assert.ok(!a.queue.includes(term));
+ assert.equal(gradeReader(s,b,term,3,now+20),false);
 });
 
 test('v089: not-yet-due Reader practice never changes schedule; 3 Good or 1 Easy makes it ready this chapter',()=>{
@@ -115,7 +116,8 @@ test('v089: Reading is available at 0% with a warning, dictionary details are fu
  const ui=createReader({state:()=>s,change:async fn=>{fn(s);return true;},render(){},esc:String,modal:(title,html)=>{latest=title;content=html;},closeModal(){},toast:m=>{throw Error(m)},applyFonts(){}});
  const overview=ui.view();
  assert.match(overview,/0% ready/);
- assert.match(overview,/reader-read-action--caution/);
+ assert.doesNotMatch(overview,/reader-read-action--caution/);
+ assert.doesNotMatch(overview,/data-action="reader-read"(?=[^>]*>Read chapter)/);
  assert.match(overview,/data-read-state="caution"/);
  assert.doesNotMatch(overview,/How chapter preparation works/);
  assert.match(overview,/data-action="card-detail"/);
@@ -143,14 +145,14 @@ test('v089: Reader weak/full scopes cannot bypass the daily new-word quota',asyn
  const ui=createReader({state:()=>s,change:async fn=>{fn(s);return true},render(){},esc:String,modal(){},toast:m=>{throw Error(m)},applyFonts(){}});
  ui.view();await ui.action('study',{dataset:{}});
  let html=ui.view();
- assert.match(html,/Daily new-vocabulary limit reached/);
+ assert.doesNotMatch(html,/Daily study limit reached/);
  const match=html.match(/data-study-key="([^"]+)"/);assert.ok(match);
- assert.notEqual(b.items[match[1]].kind,'vocab');
+ assert.ok(readerAnalysis(s,b,c).schedule(match[1]),'Only previously introduced cards can appear after quota');
  for(const value of ['weak','full']){
   listeners.change({target:{id:'reader-scope',value}});
   html=ui.view();
   const chosen=html.match(/data-study-key="([^"]+)"/);assert.ok(chosen);
-  assert.notEqual(b.items[chosen[1]].kind,'vocab',`${value} circumvented the new-card limit`);
-  assert.match(html,/new vocabulary items remain|new vocabulary item remains/);
+  assert.ok(readerAnalysis(s,b,c).schedule(chosen[1]),`${value} circumvented the new-card limit`);
+  assert.doesNotMatch(html,/Daily study limit reached/);
  }
 });

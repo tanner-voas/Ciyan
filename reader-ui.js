@@ -19,7 +19,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  let focusWord=null;
  let pendingPlayback=null;
  let disposeGuide=null,pendingRate=null,writingPosition=null;
- let chromeVisible=true,requestedUpload=null,attemptedInitial='';
+ let chromeVisible=true,requestedUpload=null,attemptedInitial='',quotaDialogShownFor='';
  const sessions=new Map(),chapterDueSnapshots=new Map();
  function evidence(){const key=`${novel}:${chapter()?.digest||number}`;if(!sessions.has(key))sessions.set(key,new Map());return sessions.get(key);}
  const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now(),evidence());
@@ -63,7 +63,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  }
  async function loadSelection(id,n,{reading=false,automatic=false}={}){
   if(!libraryBook(id))return;
-  await flush();novel=id;number=n;shown='';revealed=false;
+  await flush();novel=id;number=n;shown='';revealed=false;quotaDialogShownFor='';
   const entry=libraryChapter(id,n);
   if(!entry)return;
   try{
@@ -121,7 +121,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   <div class="reader-readiness-progress" role="progressbar" aria-label="Chapter ready items" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}"><span style="width:${percent}%"></span></div>
   <p class="reader-readiness-summary">${a.keys.length} study items · <strong>${c.focus.length} chapter terms/grammar</strong> (6× priority)</p>
   <div class="reader-readiness-stats"><span><strong>${ready}</strong> Ready</span><span><strong>${a.weak.length}</strong> To practice</span><button data-action="reader-earlier"><strong>${a.earlier.length}</strong> Earlier due</button></div>
-  <div class="reader-readiness-actions">${btn('study','Study chapter')}<button class="btn reader-read-action ${a.ready?'reader-read-action--ready':'reader-read-action--caution'}" data-action="reader-read">${c.position?'Continue reading':'Read chapter'}</button></div>
+  <div class="reader-readiness-actions">${btn('study','Study chapter')}</div>
   </section>${vocabulary(b,c,a)}`;
  }
  function study(b,c,a){
@@ -129,10 +129,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(scope==='earlier')queue=a.earlier;
   if(scope==='weak')queue=a.weak;
   if(scope==='full')queue=[...new Set([...a.earlier,...a.keys])];
-  // Even explicit study scopes must honor the daily cap on NEW vocabulary;
-  // due and already-introduced cards remain available for rehearsal.
+  // Every scope obeys the daily new-card gate and chapter exclusion rules.
+  // Due cards remain eligible even with a high knowledge score.
   const blocked=new Set(a.blocked);
-  queue=queue.filter(key=>!blocked.has(key));
+  queue=queue.filter(key=>!blocked.has(key)&&(a.group(key)===0||!a.qualifies(key)));
   const dueNow=queue.filter(key=>a.group(key)===0);
   const snapshotKey=`${novel}:${c.digest}:${scope}`;
   if(!chapterDueSnapshots.has(snapshotKey))chapterDueSnapshots.set(snapshotKey,[...dueNow]);
@@ -140,18 +140,31 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(!queue.includes(shown)){shown=pickReaderItem(queue,a);revealed=false;}
   const choices=`<label class="reader-scope">Study list<select id="reader-scope">${[['gate','Auto chapter preparation'],['weak','Still to practice'],['earlier','Earlier items due'],['full','All chapter items']].map(([v,t])=>`<option value="${v}" ${v===scope?'selected':''}>${t}</option>`).join('')}</select></label>`;
   const item=b.items[shown];
-  const limitNotice=a.blocked.length?`<div class="reader-quota-notice" role="status"><strong>Daily new-vocabulary limit reached</strong><span>${a.blocked.length} new vocabulary ${a.blocked.length===1?'item remains':'items remain'} in this chapter. You can continue reviewing due and previously introduced items, or raise the daily limit in Settings.</span><button class="btn btn-secondary btn-small" data-action="navigate" data-page="settings">Daily limit settings</button></div>`:'';
-  if(!item)return `${choices}${progress}${limitNotice}<div class="panel stack"><h2>${a.blocked.length?'New vocabulary paused':'Chapter study list clear'}</h2><p class="subtle">${a.blocked.length?'Your existing cards are caught up for this list. Increase the daily new-vocabulary limit or return tomorrow.':'No eligible cards are pending in this list.'}</p>${btn('read','Read chapter')}${btn('review','Chapter overview')}</div>`;
+  if(!item)return `${choices}${progress}<div class="panel stack"><h2>${a.blocked.length&&a.queue.length===0?'Daily study limit reached':'Chapter study list clear'}</h2><p class="subtle">${a.blocked.length&&a.queue.length===0?'No due or previously introduced cards remain to practise right now. Increase your daily limit or return after more reviews become due.':'No eligible cards are pending in this study list. Try another study list if you would like to continue.'}</p>${btn('review','Chapter overview')}</div>`;
   // The general flashcard hero assumes a one- or two-character word. Chapter
   // terms and grammar patterns can be 6–20+ characters and need their own scale.
   const length=[...item.hanzi].length;
   const size=item.kind==='grammar'||length>10?'extended':length>6?'long':length>3?'medium':'short';
-  return `${choices}${progress}${limitNotice}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
+  return `${choices}${progress}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
   <div class="reader-study-head"><span>${a.earlier.includes(shown)?'Earlier review':'Chapter '+c.number} · ${esc(item.kind)}</span><span>Score ${a.score(shown).toFixed(2)}</span></div>
   <div class="reader-study-prompt reader-study-prompt--${size}" lang="zh-Hans">${esc(item.hanzi)}</div>
   ${revealed?`<div class="reader-study-answer"><div class="reader-study-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p></div><div class="review-controls reader-study-grades">${['Again','Hard','Good','Easy'].map((x,i)=>{const due=a.group(shown)!==2;const next=readerGradePreview(state(),b,shown)[i];return `<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}"><strong>${x}</strong><span>${due?intervalText(next.intervalMinutes*60):'Practice only'}</span><small>${due?'Score '+next.score.toFixed(2):'No score change'}</small></button>`;}).join('')}</div>`:`<div class="reader-study-reveal">${btn('reveal','Show answer')}</div>`}
   <footer class="reader-study-footer"><span>${a.focus.has(shown)?'Priority focus · 6× weight':'Automatic vocabulary'} · ${['Due review','New','Practice'][a.group(shown)]}</span><span>${evidence().get(shown)?.goods||0}/3 Good · ${a.weak.length} left</span></footer>
-  ${btn('read','Read chapter')}</section>`;
+  </section>`;
+ }
+ // Notify only once per exhausted chapter/day, and only when there is no
+ // remaining due or previously introduced practice in *any* study scope.
+ // Rendering the flashcard must remain free of modal side effects.
+ function notifyQuotaExhaustion(){
+  if(mode!=='study')return;
+  const b=book(),c=chapter();if(!b||!c)return;
+  const a=analysis(state(),b,c);
+  if(a.queue.length||!a.blocked.length){quotaDialogShownFor='';return;}
+  const day=new Date().toLocaleDateString('en-CA');
+  const key=`${novel}:${c.digest}:${day}`;
+  if(quotaDialogShownFor===key)return;
+  quotaDialogShownFor=key;
+  modal('Daily study limit reached',`<p>You have reached today's new-vocabulary limit, and there are no due or previously introduced chapter cards left to practise right now.</p><p><strong>${a.blocked.length}</strong> new chapter ${a.blocked.length===1?'item remains':'items remain'} (vocabulary, terms or grammar). To introduce more today, increase the daily limit in Settings. Otherwise, return when more reviews are due.</p><div class="reader-read-confirm"><button class="btn btn-primary" data-action="navigate" data-page="settings">Daily limit settings</button><button class="btn btn-secondary" data-action="reader-review">Chapter overview</button></div>`);
  }
  function article(p,a){
   const later=libraryChapter(novel,p.number+1);
@@ -365,13 +378,14 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      // automatic lexicon import. Persist any resulting card/tag additions.
      const contentChange=learningItem.kind==='vocab'&&(!master||!master.tags.includes(`Reader/${b.title}`));
      const ok=await change(d=>{applied=gradeReader(d,d.reader[novel],shown,grade,now);},false,contentChange);
-     if(!ok||!applied){toast('Daily new-vocabulary limit reached, or review is not due yet.');shown='';revealed=false;render();return;}
+     if(!ok||!applied){toast('Daily new-vocabulary limit reached, or review is not due yet.');shown='';revealed=false;render();notifyQuotaExhaustion();return;}
     }
     recordPractice(session,shown,grade);
     shown='';revealed=false;
    }else if(name==='reveal'){revealed=true;}
    else if(['study','review','weak','earlier'].includes(name)){closeModal?.();chapterDueSnapshots.clear();scope=['weak','earlier'].includes(name)?name:'gate';mode=name==='review'?'review':'study';shown='';revealed=false;}
    render();
+   notifyQuotaExhaustion();
   }catch(e){toast(e.message);}finally{busy=false;}
  }
  document.addEventListener('change',async e=>{
@@ -385,7 +399,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    if(await change(d=>{d.settings.readerTermsHighlight=checked;},false))document.querySelector('#reader-pages')?.classList.toggle('show-terms',checked);
    else e.target.checked=state().settings.readerTermsHighlight!==false;
   }
-  if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;chapterDueSnapshots.clear();render();}
+  if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;chapterDueSnapshots.clear();render();notifyQuotaExhaustion();}
   if(e.target.id==='reader-volume'){
    const destination=chaptersInVolume(libraryBook(novel),Number(e.target.value))[0];
    if(destination)void choose(novel,destination.number);
@@ -399,5 +413,5 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  });
  globalThis.addEventListener?.('pagehide',()=>void flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)void flush();});
- return {view,isReading,mount,unmount,action,flush,reset(){unmount();pendingPlayback=null;pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';}};
+ return {view,isReading,mount,unmount,action,flush,reset(){unmount();pendingPlayback=null;pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';quotaDialogShownFor='';}};
 }
