@@ -135,7 +135,7 @@ const ratingLabels=['Unseen','Again','Hard','Good','Easy'];
 const ratingMeaning=['New','Forgot / incorrect','Recalled with difficulty','Recalled normally','Effortless recall'];
 const opText=['>','>=','=','<=','<'];
 let state=null,page='study',studyMode='words',revealed=false,toneSelections=[],lastFinished=null,grammarFeedback=null;
-let currentModal=null,pendingBackupRevision=null,saving=false,toastTimer;
+let currentModal=null,pendingBackupRevision=null,saving=false,exitInProgress=false,toastTimer;
 // One shared tag selection across Words, Grammar and Study. Search/score controls stay independent.
 const sharedTagFilters={};
 const filters={words:{search:'',tags:sharedTagFilters,op:'>=',rating:'any'},grammar:{search:'',tags:sharedTagFilters,knowledgeOp:'>=',knowledgeValue:0,usageOp:'>=',usageValue:0}};
@@ -712,6 +712,7 @@ async function speechAction(action,el){
 function renderSettings(){const s=state.settings,draft=pendingFont||lastAcceptedFont;
  const group=(title,content)=>`<details class="settings-section"><summary><span>${title}</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-section-body">${content}</div></details>`;
   return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1></div>
+<div class="panel stack exit-action-panel"><button type="button" class="btn btn-secondary btn-full" data-action="exit-to-launcher">← Save &amp; Exit to My Apps</button><p class="subtle">Save any pending reader position and return to your apps. Your study progress and unfinished sessions are preserved locally.</p></div>
 ${group('Appearance',`<label class="settings-row">Theme<select data-setting="theme">${options([['system','System'],['light','Light'],['dark','Dark']],s.theme||'system')}</select></label>`)}${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
    <div class="panel"><div class="settings-row"><div><strong>New vocabulary words per day</strong><small>Leave empty for unlimited. Zero blocks new words but not due reviews. Resets each local calendar day.</small></div><input type="number" min="0" max="20000" placeholder="Unlimited" data-setting="newWordsPerDay" value="${s.newWordsPerDay??''}" aria-label="New vocabulary words per day"></div>
     <div class="settings-row"><div><strong>Target retention</strong><small>FSRS retention target and Auto urgency; score intervals are set above</small></div><select data-setting="desiredRetention">${options([[.85,'85%'],[.9,'90%'],[.95,'95%']],s.desiredRetention)}</select></div>
@@ -1126,6 +1127,7 @@ document.addEventListener('click',async event=>{
     case 'export-deck':exportDeck();break;
     case 'template':downloadTemplate();break;
     case 'reload-app':await updateAndReload(element);break;
+    case 'exit-to-launcher':await saveAndExitToLauncher(element);break;
     case 'clear-settings':
      if(await confirmRemoval('Clear settings','Restore all settings, including fonts and the reader gate, to their defaults?')&&await change(d=>{d.settings=defaultState().settings;ensureStudy(d);},false)){
       lastAcceptedFont=cloneFont(state.settings);pendingFont=cloneFont(lastAcceptedFont);render();toast('Default settings restored.');
@@ -1196,6 +1198,45 @@ document.addEventListener('keydown',event=>{
   if(['Enter',' '].includes(event.key)&&!revealed&&page==='study'&&event.target.closest('.review-card')&&!state.settings.toneTest){event.preventDefault();revealed=true;render();}
   if(page==='study'&&revealed&&!currentModal&&['1','2','3','4'].includes(event.key)){if(state.activePractice)gradePractice(Number(event.key));else gradeCard(Number(event.key));}
 });
+async function saveAndExitToLauncher(button){
+ if(exitInProgress)return;
+ if(applyingFont||fontSettingChanged(pendingFont||lastAcceptedFont,lastAcceptedFont)){
+  toast('Apply or discard pending font changes before exiting.');return;
+ }
+ exitInProgress=true;
+ button.disabled=true;
+ const previousLabel=button.innerHTML;
+ button.textContent='Saving and exiting…';
+ app.classList.add('exit-saving');
+ try{
+  // Regular study changes are committed immediately. Wait for any in-flight
+  // IndexedDB transaction, then flush reader bookmark/playback preferences.
+  const waitForWrites=async()=>{
+   const deadline=Date.now()+12000;
+   while(saving){
+    if(Date.now()>deadline)throw new Error('A save is still in progress. Try again.');
+    await new Promise(resolve=>setTimeout(resolve,25));
+   }
+  };
+  await waitForWrites();
+  if(!await reader.flush())throw new Error('The reader could not save its latest position.');
+  await waitForWrites();
+  // Verify the committed version before navigating away. This does NOT export a
+  // backup; the existing backup/share feature remains a separate user action.
+  const persisted=await loadState();
+  if(!persisted||persisted.revision!==state.revision)
+   throw new Error('The latest local state could not be verified.');
+  location.assign(new URL('./',location.href).href);
+ }catch(error){
+  toast(`Exit cancelled: ${error.message}`);
+  button.disabled=false;
+  button.innerHTML=previousLabel;
+ }finally{
+  app.classList.remove('exit-saving');
+  exitInProgress=false;
+ }
+}
+
 async function updateAndReload(button){
  button.disabled=true;button.textContent='Checking for updates…';
  try{

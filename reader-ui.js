@@ -234,8 +234,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    memory.set(c.digest,p);return p;}
  }
  async function flush(){
-  while(writingPosition)await writingPosition;
-  clearTimeout(timer);const pos=pending,cpm=pendingRate;const playback=pendingPlayback;if(!pos&&cpm===null&&!playback)return;
+  let previousOk=true;
+  while(writingPosition)previousOk=(await writingPosition)!==false&&previousOk;
+  clearTimeout(timer);const pos=pending,cpm=pendingRate;const playback=pendingPlayback;
+  if(!pos&&cpm===null&&!playback)return previousOk;
   pendingPlayback=null;
   pendingRate=null;
   pending=null;
@@ -246,6 +248,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   }if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
   const ok=await writingPosition;writingPosition=null;
   if(!ok){pendingPlayback??=playback;if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
+  return ok===true;
  }
  function unmount(){focusWord=null;disposeGuide?.();disposeGuide=null;observer?.disconnect();epoch++;}
  function toggleChrome(){

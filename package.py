@@ -13,7 +13,7 @@ import shutil
 ROOT = Path(__file__).resolve().parent
 TARGET = ROOT / "dist" / "ciyan"
 STATIC_FILES = (
-    "index.html",
+    "index.html", "launcher.js",
     "styles.css",
     "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js",
