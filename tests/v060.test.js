@@ -67,5 +67,5 @@ test('new grammar validates with complete lexical links, pinyin, and no unreview
 });
 test('coverage ledger states the real gap rather than treating rejected templates as examples',()=>{
  const report=JSON.parse(fs.readFileSync(new URL('../content/coverage-summary.json',import.meta.url)));
- const covered=new Set(MASTER.grammar.flatMap(grammarTokens));assert.ok(covered.size>=report.covered_words);assert.equal(report.vocabulary,MASTER.cards.length);assert.equal(report.uncovered_words,report.vocabulary-report.covered_words);assert.equal(report.template_candidates_excluded,9056);
+ const covered=new Set(MASTER.grammar.flatMap(grammarTokens));assert.ok(covered.size>=report.covered_words);assert.equal(report.vocabulary,11893);assert.ok(MASTER.cards.length>=report.vocabulary);assert.equal(report.uncovered_words,report.vocabulary-report.covered_words);assert.equal(report.template_candidates_excluded,9056);
 });

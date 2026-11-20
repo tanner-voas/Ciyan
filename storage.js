@@ -12,10 +12,13 @@ import {initialCards,extraWords} from './cards.js';
 import {initialGrammar,normalizeGrammar} from './grammar.js';
 import {hskTagFor} from './hsk-tag-map.js';
 // Assign exactly one canonical HSK band based on the headword, regardless of
-// which topic deck supplies it. No migration of historical data is needed.
+// which topic deck supplies it. The 2025 change requires retagging historical entries.
 export function canonicalHSKTags(hanzi,tags){
-  const cleaned=normalizeTags(tags||[]);
-  if(!cleaned.some(t=>/^HSK\//i.test(t))){const level=hskTagFor(hanzi);if(level)cleaned.push('HSK/'+level.toUpperCase());}
+  // 2025 syllabus is authoritative: imports of historical decks/backups must
+  // not silently restore obsolete HSK levels (or an HSK tag for an excluded word).
+  const cleaned=normalizeTags(tags||[]).filter(t=>!/^HSK\//i.test(t)&&!/^TSK\/TSK[1-9]$/.test(t));
+  const level=hskTagFor(hanzi);
+  if(level)cleaned.push('HSK/'+level.toUpperCase());
   return cleaned;
 }
 export const DB_NAME='ciyan-mandarin';

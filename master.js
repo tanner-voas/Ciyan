@@ -48,3 +48,27 @@ export function reconcileBundledMaster(state,source){
  if(state.cards.length>20000||state.grammar.length>20000)throw new Error('Reconciled master is too large; restore an earlier backup.');
  return {changed:!!(incomingCards.length||incomingGrammar.length),addedCards:incomingCards.length,addedGrammar:incomingGrammar.length};
 }
+
+// Versioned classification refresh. Keep local card IDs, definitions, synonyms,
+// review history and every non-HSK/TSK category. Only the globally defined HSK
+// and TSK tier assignments are authoritative; an imported reader tag is not lost.
+export function syncBundledClassification(state,source){
+ const sourceByHanzi=new Map(source.cards.map(c=>[c.hanzi,c]));
+ let updated=0;
+ state.cards=state.cards.map(card=>{
+  const bundled=sourceByHanzi.get(card.hanzi);
+  const classification=bundled?.tags?.filter(t=>t.startsWith('HSK/')||/^TSK\/TSK(?:0?[1-9]|1[0-2])$/.test(t))||[];
+  const local=card.tags.filter(t=>!t.startsWith('HSK/')&&!/^TSK\/TSK(?:0?[1-9]|1[0-2])$/.test(t));
+  // For genuinely custom cards, the official HSK classification still applies.
+  if(!bundled){
+   const normalized=normalizeCard(card);
+   for(const tag of normalized.tags.filter(t=>t.startsWith('HSK/')))classification.push(tag);
+   // Preserve user-defined noncanonical TSK paths.
+  }
+  const next=[...new Set([...local,...classification])];
+  if(next.length===card.tags.length&&next.every((tag,i)=>tag===card.tags[i]))return card;
+  updated++;
+  return {...card,tags:next};
+ });
+ return updated;
+}

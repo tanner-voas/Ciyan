@@ -12,18 +12,18 @@ import {APP_VERSION} from '../backup-versions.js';
 const fixture=JSON.parse(fs.readFileSync(new URL('../reader/panlong/chapters/001.json',import.meta.url),'utf8'));
 const digest=createHash('sha256').update(fs.readFileSync(new URL('../reader/panlong/chapters/001.json',import.meta.url))).digest('hex');
 
-test('0.7.8 has the requested 9 non-neutral TSK defaults and preserves custom weights',()=>{
- assert.equal(APP_VERSION,'0.8.9');
- assert.deepEqual(Object.values(TSK_DEFAULTS),[2560,1280,640,320,160,80,40,20,10]);
- assert.equal(defaultTagWeight('TSK/TSK5'),160);
+test('twelve zero-padded TSK defaults; old personalized weights migrate intact',()=>{
+ assert.equal(APP_VERSION,'0.8.10');
+ assert.deepEqual(Object.values(TSK_DEFAULTS),[2560,1280,640,320,160,80,40,20,10,5,2.5,1.25]);
+ assert.equal(defaultTagWeight('TSK/TSK05'),160);
  assert.equal(defaultTagWeight('Topics/anything'),0);
  const older=defaultState();older.appVersion='0.7.7';
- for(const key of Object.keys(TSK_DEFAULTS))older.settings.tagWeights[key]=0;
+ for(let i=1;i<=9;i++)older.settings.tagWeights['TSK/TSK'+i]=0;
  const migrated=migrateState(older);
  for(const [key,value] of Object.entries(TSK_DEFAULTS))assert.equal(migrated.settings.tagWeights[key],value);
  const personalized=structuredClone(older);personalized.settings.tagWeights['TSK/TSK3']=25;
- assert.equal(migrateState(personalized).settings.tagWeights['TSK/TSK1'],0);
- assert.equal(migrateState(personalized).settings.tagWeights['TSK/TSK3'],25);
+ assert.equal(migrateState(personalized).settings.tagWeights['TSK/TSK01'],0);
+ assert.equal(migrateState(personalized).settings.tagWeights['TSK/TSK03'],25);
 });
 
 test('remote master index and custom chapter index form a combined library',()=>{

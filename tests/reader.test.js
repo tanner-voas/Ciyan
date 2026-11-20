@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {acceptChapter,readerAnalysis,gradeReader,validateChapter,chapterFocus,pickReaderItem,recordPractice} from '../reader-core.js';
 import {clearDictionary,reloadCards} from '../collection-reset.js';
-import {defaultState,parseBackup,clearLearningRecords,migrateState} from '../storage.js';
+import {normalizeCard,defaultState,parseBackup,clearLearningRecords,migrateState} from '../storage.js';
 import {replaceMaster} from '../master.js';
 import {prepareVerifiedBackup} from '../backup-integrity.js';
 import {scheduleReview} from '../review-scheduler.js';
@@ -42,11 +42,11 @@ test('all vocabulary is auto-selected, while high-priority terms/grammar survive
 });
 test('clear dictionary keeps drawing-only and grammar records; default reload archives studied custom entries',()=>{
  const s=defaultState(),now=Date.now(),master={cards:s.cards,grammar:s.grammar};
- const extra={...s.cards[0],id:'custom-lit',hanzi:'斑驳'};s.cards=[...s.cards,extra];s.schedules[extra.id]=scheduleReview(null,3,now,s.settings);
+ const extra=normalizeCard({...s.cards[0],id:'custom-lit',hanzi:'斑驳'});s.cards=[...s.cards,extra];s.schedules[extra.id]=scheduleReview(null,3,now,s.settings);
  s.skillSchedules.drawing[s.cards[0].id]=scheduleReview(null,2,now,s.settings);
  s.grammarHistory.push({grammarId:s.grammar[0].id,at:new Date(now).toISOString(),grade:3});
  clearDictionary(s);assert.equal(s.cards.length,2);assert.equal(s.grammar.length,1);
- assert.deepEqual(restored(s).cards,s.cards);reloadCards(s,master,replaceMaster);
+ assert.deepEqual(restored(s).cards,s.cards.map(c=>normalizeCard(c)));reloadCards(s,master,replaceMaster);
  assert.ok(!s.cards.some(w=>w.id===extra.id));assert.equal(restored(s).schedules[extra.id].reps,1);
  acceptChapter(s,...chapters[0]);gradeReader(s,s.reader.panlong,'vocab-斑驳',3);assert.equal(s.schedules[extra.id].reps,1);assert.equal(restored(s).archived.cards.length,0,'Chapter import promotes the archived matching word without duplicating it');
 });

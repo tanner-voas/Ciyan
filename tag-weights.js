@@ -1,16 +1,28 @@
 // Applied preferences live in Settings and full progress backups, never in cards.
 // A tag is a leaf only if no other loaded tag is below it in the tree.
 const HSK_DEFAULTS={'HSK/HSK1':4096,'HSK/HSK2':1024,'HSK/HSK3':256,'HSK/HSK4':64,'HSK/HSK5':16,'HSK/HSK6':8,'HSK/HSK7-9':0};
-export const TSK_DEFAULTS=Object.freeze(Object.fromEntries([2560,1280,640,320,160,80,40,20,10].map((n,i)=>['TSK/TSK'+(i+1),n])));
+export const TSK_DEFAULTS=Object.freeze(Object.fromEntries(
+ [2560,1280,640,320,160,80,40,20,10,5,2.5,1.25].map((n,i)=>['TSK/TSK'+String(i+1).padStart(2,'0'),n])));
+const OLD_TSK_DEFAULTS=[2560,1280,640,320,160,80,40,20,10];
 export const defaultTagWeight=tag=>Object.hasOwn(HSK_DEFAULTS,tag)?HSK_DEFAULTS[tag]:(TSK_DEFAULTS[tag]??0);
 // Versions through 0.7.7 initialized all TSK weights to zero. Upgrade that
 // recognizable untouched preset once, without replacing personalized weights.
 export function upgradeTskDefaults(settings,version){
  const weights=settings?.tagWeights;
  if(!weights||typeof weights!=='object'||Array.isArray(weights))return;
+ const legacyTags=OLD_TSK_DEFAULTS.map((_,i)=>'TSK/TSK'+(i+1));
  if(typeof version==='string'&&/^v?0\.7\.[0-7]$/.test(version)&&
-   Object.keys(TSK_DEFAULTS).every(k=>weights[k]===undefined||weights[k]===0))
-  for(const [tag,n] of Object.entries(TSK_DEFAULTS))weights[tag]=n;
+   legacyTags.every(k=>weights[k]===undefined||weights[k]===0))
+  for(let i=0;i<legacyTags.length;i++)weights[legacyTags[i]]=OLD_TSK_DEFAULTS[i];
+ // Rename saved preferences without changing personalized weights. Newly added
+ // TSK10-12 use their defaults until explicitly customized.
+ for(let i=1;i<=9;i++){
+  const legacy='TSK/TSK'+i,canonical='TSK/TSK'+String(i).padStart(2,'0');
+  if(weights[canonical]===undefined&&weights[legacy]!==undefined)weights[canonical]=weights[legacy];
+  delete weights[legacy];
+ }
+ if(typeof version==='string'&&/^v?0\.7\.[0-7]$/.test(version))
+  for(let i=10;i<=12;i++){const tag='TSK/TSK'+i;if(weights[tag]===undefined)weights[tag]=TSK_DEFAULTS[tag];}
 }
 
 export function leafTagPaths(cards){

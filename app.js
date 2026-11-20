@@ -4,6 +4,7 @@ import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
 import {createReader} from './reader-ui.js';
 import {clearDictionary,reloadCards} from './collection-reset.js';
 import {APP_VERSION} from './backup-versions.js';
+import {upgradeTskDefaults} from './tag-weights.js';
 import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './tags.js';
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
 import {contextsForWord} from './grammar-context.js';
@@ -19,7 +20,7 @@ import {mergeRestoredContent} from './backup-restore.js';
 import {FONT_LEVELS,FONT_IDS,fontChoices,selectedFonts,normalizeFontSettings,applyFontToRoot,verifyFontSelection,FONT_CATALOG,requiredFonts,normalizeFontSizing,normalizeTypographySettings,FONT_SCALE_MIN,FONT_SCALE_MAX,MASTER_SCALE_MIN,MASTER_SCALE_MAX} from './fonts.js';
 import {initializeFontLibrary,importFontFile,removeFontFile,getImportedFonts,fontLibraryError} from './font-library.js';
 import {MASTER} from './master-data.js';
-import {replaceMaster,reconcileBundledMaster} from './master.js';
+import {replaceMaster,reconcileBundledMaster,syncBundledClassification} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
@@ -909,16 +910,6 @@ async function deleteGrammar(id){const g=grammarById(id);if(!g)return;
     d.activeGrammarSession?.queue&&(d.activeGrammarSession.queue=d.activeGrammarSession.queue.filter(x=>x!==id));
     if(d.activeGrammarSession&&!d.activeGrammarSession.queue.length)d.activeGrammarSession=null;},true,true)){closeModal();toast('Grammar sentence deleted');}
 }
-const tskByWord=new Map(MASTER.cards.flatMap(c=>c.tags.filter(t=>t.startsWith('TSK/')).map(t=>[c.hanzi,t])));
-function addTskTags(s){
- let changed=false;
- s.cards=s.cards.map(c=>{
-  const tag=tskByWord.get(c.hanzi);
-  if(!tag||c.tags.includes(tag))return c;
-  changed=true;return {...c,tags:[...c.tags,tag]};
- });
- return changed;
-}
 // Gesture prevention is scoped to the drawing canvas and draggable tiles.
 // Globally cancelling Safari gesture/touch events blocks accessibility pinch zoom.
 function confirmRemoval(title,message){
@@ -966,7 +957,7 @@ async function restoreBackup(content){if(saving)return;const parsed=parseBackup(
   if(!await confirmRemoval('Restore full backup',`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
   try{
    if(!parsed.speechVault&&state.speechVault){parsed.speechVault=state.speechVault;parsed.settings.azureRegion ||= state.settings.azureRegion;}
-   ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);addTskTags(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;if(!unlocked())speechSession=null;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!unlocked()?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
+   ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);syncBundledClassification(parsed,MASTER);upgradeTskDefaults(parsed.settings);ensureStudy(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;if(!unlocked())speechSession=null;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!unlocked()?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -1251,7 +1242,8 @@ async function boot(){try{
     }
   }
   if(!Array.isArray(state.cards)||!Array.isArray(state.grammar)||!Array.isArray(state.history)||!state.schedules)throw new Error('Local data appears invalid. Import a JSON backup to restore it.');
-  changedContent=addTskTags(state)||changedContent;
+  changedContent=syncBundledClassification(state,MASTER)>0||changedContent;
+  upgradeTskDefaults(state.settings);
   ensureStudy(state);
   const selected=normalizeTypographySettings(state.settings);
   const previous=Array.isArray(state.settings.enabledFonts)?state.settings.enabledFonts:null;
@@ -1487,7 +1479,7 @@ document.addEventListener('touchend',async event=>{const touch=practiceTouch;pra
 function tagWeightSettings(){
  const odds=appliedNewWordOdds();const weights=state.settings.tagWeights||{};
  const grouped=new Map();for(const tag of odds.leaves){const root=tag.split('/')[0];if(!grouped.has(root))grouped.set(root,[]);grouped.get(root).push(tag);}
- return `<section class="panel stack tag-weight-settings"><div class="row"><h2>New vocabulary · tag weights</h2></div><p class="subtle">Each unstudied word has weight max(1, 1 + the sum of its leaf-tag weights). Weights may be negative or decimal; zero is neutral. Tags on the same word share that word's selection chance, so their inclusive odds can add to more than 100%. Untagged words have weight 1.</p><p class="subtle">${odds.newCount} unstudied words · ${odds.totalWeight.toFixed(1)} total weighted tickets · ${odds.untagged} untagged. Odds reflect the currently <strong>applied</strong> weights, not pending edits.</p><form id="tag-weight-form"><div class="tag-weight-groups">${[...grouped].map(([root,tags])=>`<details class="tag-weight-group"><summary>${esc(tagLabel(root))} <small>${tags.length} tags</small></summary><div class="tag-weight-table"><div class="tag-weight-head"><span>Leaf tag</span><span>Weight</span><span>New-card odds</span></div>${tags.map(t=>`<div class="tag-weight-row"><label for="weight-${esc(t)}">${esc(tagLabel(t.split('/').at(-1)))} <small>${odds.counts[t]} new</small></label><input id="weight-${esc(t)}" data-tag-weight="${esc(t)}" type="number" step="any" value="${esc(weights[t]??0)}" required aria-label="Weight for ${esc(tagLabel(t))}"><output>${odds.odds[t].toFixed(2)}%</output></div>`).join('')}</div></details>`).join('')}</div><button type="submit" class="btn btn-primary btn-full">Apply tag weights &amp; recalculate odds</button></form><p class="subtle">HSK levels have preset weights. TSK1–TSK9 have presets (2560 to 10); other tags default to zero. These preferences are stored in settings and the full progress backup, not the master collection. Due reviews ignore introduction weights.</p></section>`;
+ return `<section class="panel stack tag-weight-settings"><div class="row"><h2>New vocabulary · tag weights</h2></div><p class="subtle">Each unstudied word has weight max(1, 1 + the sum of its leaf-tag weights). Weights may be negative or decimal; zero is neutral. Tags on the same word share that word's selection chance, so their inclusive odds can add to more than 100%. Untagged words have weight 1.</p><p class="subtle">${odds.newCount} unstudied words · ${odds.totalWeight.toFixed(1)} total weighted tickets · ${odds.untagged} untagged. Odds reflect the currently <strong>applied</strong> weights, not pending edits.</p><form id="tag-weight-form"><div class="tag-weight-groups">${[...grouped].map(([root,tags])=>`<details class="tag-weight-group"><summary>${esc(tagLabel(root))} <small>${tags.length} tags</small></summary><div class="tag-weight-table"><div class="tag-weight-head"><span>Leaf tag</span><span>Weight</span><span>New-card odds</span></div>${tags.map(t=>`<div class="tag-weight-row"><label for="weight-${esc(t)}">${esc(tagLabel(t.split('/').at(-1)))} <small>${odds.counts[t]} new</small></label><input id="weight-${esc(t)}" data-tag-weight="${esc(t)}" type="number" step="any" value="${esc(weights[t]??0)}" required aria-label="Weight for ${esc(tagLabel(t))}"><output>${odds.odds[t].toFixed(2)}%</output></div>`).join('')}</div></details>`).join('')}</div><button type="submit" class="btn btn-primary btn-full">Apply tag weights &amp; recalculate odds</button></form><p class="subtle">HSK levels have preset weights. TSK01–TSK12 have descending presets (2560 to 1.25); other tags default to zero. These preferences are stored in settings and the full progress backup, not the master collection. Due reviews ignore introduction weights.</p></section>`;
 }
 async function saveTagWeights(form){try{
  const weights={...state.settings.tagWeights};

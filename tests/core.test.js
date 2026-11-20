@@ -58,7 +58,7 @@ test('invalid backups rejected without affecting user data', () => {
 test('user cards are sanitized, validated, and tagged', () => {
   const c=normalizeCard({hanzi:' 测试 ',english:' Test ',tags:['Food','food',' Work ']},'test-1');
   assert.equal(c.hanzi,'测试');
-  assert.deepEqual(c.tags,['Food','Food/food','Work','HSK/HSK4']);
+  assert.deepEqual(c.tags,['Food','Food/food','Work','HSK/HSK5']);
   assert.throws(()=>normalizeCard({hanzi:'',english:'meaning'}));
 });
 

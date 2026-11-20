@@ -9,9 +9,9 @@ import {MASTER} from '../master-data.js';
 import {retrievability} from '../fsrs.js';
 
 test('v0.6.4 preserves the v0.6.3 master and upgrades historical backups by identity',()=>{
- assert.equal(APP_VERSION,'0.8.9');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.8.10');assert.equal(MASTER.cards.length,12505);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.3',state:{appVersion:'0.6.3',schemaVersion:2}};
- const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,'0.8.9');
+ const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,'0.8.10');
  assert.deepEqual(migrated.state,old.state);assert.equal(old.appVersion,'0.6.3');
 });
 
@@ -26,7 +26,7 @@ test('sharing immutable content during review cannot change prior state or lose 
  draft.history.push({cardId:'word-2',grade:2,at:'2026-11-18T01:00:00Z'});
  draft.settings.newWordsPerDay=10;
  assert.equal(state.history.length,1);assert.equal(state.settings.newWordsPerDay,null);
- assert.equal(draft.history.length,2);assert.equal(draft.cards.length,11893);
+ assert.equal(draft.history.length,2);assert.equal(draft.cards.length,12505);
  const content=cloneProgressState(state,true);
  assert.notEqual(content.cards,state.cards);assert.notEqual(content.grammar,state.grammar);
  content.cards[0].english='Test edit';assert.notEqual(content.cards[0].english,state.cards[0].english);
@@ -50,7 +50,7 @@ test('backup JSON remains complete, independent of internal database chunk layou
   history:[{id:'review64',cardId:MASTER.cards[0].id,grade:3,at:'2026-11-18T00:00:00Z'}]};
  const exported=makeBackup(s);
  assert.equal(exported.format,'ciyan-backup');assert.equal(exported.version,2);
- assert.equal(exported.state.cards.length,11893);assert.equal(exported.state.grammar.length,3444);
+ assert.equal(exported.state.cards.length,12505);assert.equal(exported.state.grammar.length,3444);
  assert.equal(exported.state.history.length,1);
  assert.equal(exported.state.__historyChunks,undefined);
  const parsed=parseBackup(exported);assert.equal(parsed.history.length,1);

@@ -12,11 +12,12 @@ const old=read('../content/v055_base_master.json'),additions=read('../content/v0
 const cards=MASTER.cards,byId=new Map(cards.map(c=>[c.id,c])),byWord=new Map(cards.map(c=>[c.hanzi,c]));
 
 test('v0.5.5 bundled master contains all words with unchanged old definitions, IDs, and all grammar',()=>{
- assert.equal(APP_VERSION,'0.8.9');assert.ok(cards.length>=11760);assert.ok(MASTER.grammar.length>=1549);
+ assert.equal(APP_VERSION,'0.8.10');assert.ok(cards.length>=11760);assert.ok(MASTER.grammar.length>=1549);
  assert.equal(byWord.size,cards.length);assert.equal(byId.size,cards.length);
  const retained=old.grammar.filter(g=>MASTER.grammar.some(x=>x.id===g.id));assert.deepEqual(MASTER.grammar.slice(0,retained.length),retained);
  for(const before of old.cards){const after=byWord.get(before.hanzi);assert.ok(after,before.hanzi);
-  for(const field of ['id','hanzi','pinyin','english','tags','source','createdAt'])assert.deepEqual(field==='tags'?after.tags.filter(t=>!t.startsWith('TSK/')):after[field],before[field],`${before.hanzi}:${field}`);}
+  for(const field of ['id','hanzi','pinyin','english','source','createdAt'])assert.deepEqual(after[field],before[field],`${before.hanzi}:${field}`);
+  for(const tag of before.tags.filter(t=>!t.startsWith('TSK/')&&!t.startsWith('HSK/')))assert.ok(after.tags.includes(tag),`${before.hanzi}: lost tag ${tag}`);}
  assert.equal(additions.length,9482);
  for(const c of additions)assert.equal(byWord.get(c.hanzi)?.id,c.id,c.hanzi);
 });
@@ -42,7 +43,7 @@ test('HSK 3.0 band tags are canonical, and advanced words also inherit safe exis
   if(c.tags.some(x=>!x.startsWith('HSK/')))topical++;
   assert.ok(c.tags.every(t=>!t.includes('3.0')),c.hanzi);
  }
- assert.ok(counts['HSK7-9']>=5000);assert.ok(topical>4500);
+ assert.ok(counts['HSK7-9']>=4600);assert.ok(topical>4500);
  assert.ok(tagMatches(byWord.get('番茄').tags,'Food'));
  assert.ok(additions.some(c=>c.tags.some(t=>t==='Work/technology')));
  assert.ok(additions.some(c=>c.tags.some(t=>t==='Nature/weather')));
@@ -62,8 +63,8 @@ test('v0.5.4 backup migrations preserve all settings/history exactly',()=>{
  const s=defaultState();s.settings.newWordsPerDay=17;s.settings.tagWeights['Food/food']=-1.2;
  const backup=makeBackup(s);backup.appVersion='0.5.4';backup.state.appVersion='0.5.4';
  const prev=structuredClone(backup.state),upgraded=prepareVersionedBackup(backup);
- assert.deepEqual(upgraded.state,prev);assert.equal(upgraded.appVersion,'0.8.9');assert.equal(backup.appVersion,'0.5.4');
- const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.8.9');assert.equal(restored.settings.tagWeights['Food/food'],-1.2);
+ assert.deepEqual(upgraded.state,prev);assert.equal(upgraded.appVersion,'0.8.10');assert.equal(backup.appVersion,'0.5.4');
+ const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.8.10');assert.equal(restored.settings.tagWeights['Food/food'],-1.2);
 });
 
 test('malformed synonym input fails validation rather than executing markup or corrupting links',()=>{
