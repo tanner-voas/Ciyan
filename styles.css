@@ -439,6 +439,48 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 #reader-boundary{margin:1rem 0}
 .reader-metrics button{display:grid;gap:.15rem;text-align:left;padding:.35rem .5rem;background:#eff4ed;border:0;border-radius:.45rem;color:inherit;font:inherit;font-size:.8rem;cursor:pointer}
 .reader-scope{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:.5rem 0 1rem}.reader-scope select{padding:.55rem}
+/* v0.8.7: compact chapter preparation summary with a single prominent action.
+   Labels and percentages describe the selected chapter, not accumulated focus. */
+.reader-heading{min-width:0;gap:12px}
+.reader-heading .h1{min-width:0;margin:0}
+.reader-heading .btn{flex:none;max-width:55%;white-space:normal;text-align:center;min-height:42px;padding:9px 12px;font-size:12px;line-height:1.3}
+.reader-readiness{min-width:0;gap:12px}
+.reader-readiness-heading{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;justify-content:space-between}
+.reader-readiness-heading h2{margin:0;font-size:clamp(18px,4.5vw,23px)}
+.reader-readiness-heading>strong{color:var(--forest);font-size:14px;white-space:nowrap}
+.reader-readiness-progress{height:9px;border-radius:999px;background:#e4ece5;overflow:hidden}
+.reader-readiness-progress span{display:block;height:100%;max-width:100%;background:var(--forest);border-radius:inherit}
+.reader-readiness-summary{margin:0;font-size:12px;line-height:1.55;color:var(--muted);overflow-wrap:anywhere}
+.reader-readiness-summary strong{color:var(--ink)}
+.reader-readiness .reader-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.reader-readiness .reader-metrics :is(button,span){min-width:0;min-height:64px;padding:10px;border:1px solid var(--stroke);border-radius:13px;background:var(--cream);font-size:11px;line-height:1.3;color:var(--muted);text-align:left;overflow-wrap:break-word}
+.reader-readiness .reader-metrics strong{font-size:20px;color:var(--ink)}
+.reader-readiness-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+.reader-readiness-actions .btn{width:100%;min-width:0;min-height:46px;padding:10px 7px;white-space:normal;line-height:1.25;font-size:13px}
+.reader-readiness-actions [data-action=reader-study]{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+.reader-readiness-help{border-top:1px solid var(--stroke);padding-top:11px;font-size:12px;line-height:1.5;color:var(--muted)}
+.reader-readiness-help summary{cursor:pointer;color:var(--forest);font-weight:650;min-height:28px}
+.reader-readiness-help p{margin:5px 0 0}
+@media(max-width:360px){.reader-readiness .reader-metrics :is(button,span){padding:8px 6px;font-size:10px}.reader-readiness .reader-metrics strong{font-size:17px}.reader-readiness-actions .btn{font-size:12px}}
+/* Chapter preparation is not the same as a short-word flashcard. Avoid using
+   .review-hanzi here: long names, spell names, and …… grammar patterns wrap. */
+.reader-study-card{min-width:0;max-width:100%;padding:clamp(16px,4vw,24px);gap:15px;overflow-wrap:anywhere}
+.reader-study-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 12px;font-size:11px;line-height:1.5;font-weight:700;letter-spacing:.02em;color:var(--muted)}
+.reader-study-prompt{max-width:100%;min-width:0;text-align:center;margin:5px 0 8px;font-weight:680;line-height:1.35;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word;text-wrap:balance}
+.reader-study-prompt--short{font-size:clamp(45px,12vw,68px)}
+.reader-study-prompt--medium{font-size:clamp(35px,9vw,48px)}
+.reader-study-prompt--long{font-size:clamp(28px,7vw,38px)}
+.reader-study-prompt--extended{font-size:clamp(23px,6.4vw,31px);line-height:1.48}
+.reader-study-answer{min-width:0;border-top:1px solid var(--stroke);padding-top:14px;display:grid;gap:7px;overflow-wrap:anywhere}
+.reader-study-answer p{margin:0;font-size:clamp(14px,3.7vw,16px);line-height:1.55;hyphens:auto}
+.reader-study-pinyin{font-size:clamp(14px,3.7vw,18px);font-weight:620;color:#5c957a;overflow-wrap:anywhere}
+.reader-study-reveal{display:grid;justify-items:stretch}.reader-study-reveal button{min-height:46px}
+.reader-study-grades{width:100%;min-width:0;gap:6px;margin:0}
+.reader-study-grades .grade{min-width:0;min-height:48px;padding:11px 4px;border-radius:13px;font-size:12px}
+.reader-study-footer{border-top:1px solid var(--stroke);padding-top:12px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 10px;color:var(--muted);font-size:11px;line-height:1.45}
+.reader-scope{min-width:0;flex-wrap:wrap}.reader-scope select{max-width:100%;min-width:0;border:1px solid var(--stroke);border-radius:12px;color:var(--ink);background:var(--paper)}
+@media(max-width:360px){.reader-study-card{padding:14px}.reader-study-prompt--extended{font-size:22px}.reader-study-head{font-size:10px}}
+
 
 .study-scroll-anchor{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 12px)}
 #main:has(.study-scroll-anchor){padding-bottom:32vh}
@@ -560,7 +602,8 @@ html,body{touch-action:manipulation}
 .dialog-error{color:#a43731}.dialog-error:empty{display:none}
 
 .reader-vocab-row{display:grid;grid-template-columns:minmax(4em,auto) 1fr;gap:4px 12px;margin:0;color:var(--ink)}
-.reader-vocab-row strong{font-size:1.15rem}.reader-vocab-row span,.reader-vocab-row small{color:var(--muted)}
+.reader-vocab-row strong{font-size:1.15rem;min-width:0;overflow-wrap:anywhere}.reader-vocab-row span,.reader-vocab-row small{color:var(--muted);min-width:0;overflow-wrap:anywhere}
+.reader-vocab-row--long{grid-template-columns:minmax(0,1fr)}.reader-vocab-row--long span{grid-column:1}
 .reader-vocab-row small{grid-column:1/-1}
 :root[data-theme=dark]{
  color-scheme:dark;

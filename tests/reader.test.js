@@ -77,7 +77,7 @@ test('reader screen offers automatic chapter study and preserves the imported na
  const ui=createReader(adapter);const action=(n,data={})=>ui.action(n,{dataset:data});
  async function upload(n){file=new Blob([fs.readFileSync(new URL('../reader/panlong/chapters/00'+n+'.json',import.meta.url))]);await action('import');await done;}
  await upload(2);assert.match(messages.at(-1),/chapter 1/);
- await upload(1);assert.match(html,/Automatic vocabulary · 1090 items/);assert.match(html,/27 priority terms\/grammar/);
+ await upload(1);assert.match(html,/1090 study items/);assert.match(html,/27 chapter terms\/grammar/);
  assert.doesNotMatch(html,/Authored study list|Reading gate/);
  assert.match(html,/Chapter vocabulary/);assert.equal((html.match(/class="list-card reader-vocab-row"/g)||[]).length,20);
  const firstPage=html;await action('vocab-next');assert.notEqual(html,firstPage);

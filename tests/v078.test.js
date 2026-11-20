@@ -13,7 +13,7 @@ const fixture=JSON.parse(fs.readFileSync(new URL('../reader/panlong/chapters/001
 const digest=createHash('sha256').update(fs.readFileSync(new URL('../reader/panlong/chapters/001.json',import.meta.url))).digest('hex');
 
 test('0.7.8 has the requested 9 non-neutral TSK defaults and preserves custom weights',()=>{
- assert.equal(APP_VERSION,'0.8.6');
+ assert.equal(APP_VERSION,'0.8.7');
  assert.deepEqual(Object.values(TSK_DEFAULTS),[2560,1280,640,320,160,80,40,20,10]);
  assert.equal(defaultTagWeight('TSK/TSK5'),160);
  assert.equal(defaultTagWeight('Topics/anything'),0);
@@ -30,7 +30,7 @@ test('remote master index and custom chapter index form a combined library',()=>
  const state=defaultState();
  const books=novelLibrary(state);
  assert.deepEqual(books.map(b=>b.novel),['two-cups','which-exit','takeaway','panlong']);
- assert.equal(books.find(b=>b.novel==='panlong').chapters.length,11);
+ assert.equal(books.find(b=>b.novel==='panlong').chapters.length,23);
  assert.ok(books.find(b=>b.novel==='panlong').chapters.every(c=>c.source==='master'));
  const own={...fixture,novel:'my-novel',book:'我的小说',title:'第一章'};
  acceptChapter(state,own,digest);

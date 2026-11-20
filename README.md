@@ -1,19 +1,37 @@
-# Cíyán (词言) v0.8.6
+# Cíyán (词言) v0.8.7
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
 user-controlled typography.
 
-## v0.8.6 audit fixes
+## v0.8.7 chapter expansion and UI audit
 
-The Words and Grammar collections show their first 20 entries without forcing a scroll past topic filters. The complete filter tree remains available under **Filters & topics**, whose compact summary indicates active filters. Reader and drawing functionality are unchanged except that document-global touch/gesture suppression was removed to permit pinch zoom. See `AUDIT_v0.8.6.md` for browser test evidence and remaining real-iPhone testing requirements.
+Panlong Volume 1 now ships **all 23 chapters**, including the twelve newly
+provided original-text Chapters 12–23. They reproduce the supplied prose
+exactly and contain dedicated chapter-specific terms and grammar; recurring
+important terms are focused again when used in subsequent chapters. All
+chapter packages are integrity-checked, and the novel remains one linear
+sequence across the volume. The original 11 chapter JSON packages remain
+unchanged. Build and curation inputs are in `reader/panlong/volume-1-*`;
+`node tools/build-panlong-12-23.mjs` regenerates Chapters 12–23 from their
+verbatim text and curated annotations, then `python3 tools/package-chapters.py`
+regenerates the hosted ZIP archives and manifest.
+
+Chapter Study now uses content-length-aware typography and accessible wrapping
+for long grammar patterns and terms, with tested 428px, 390px, and 320px
+viewports. Chapter readiness shows the current chapter's focused items (not
+prior chapters' accumulated priorities), a compact progress summary, and a
+prominent Study action. Words and Grammar topic filters remain collapsed by
+default with the full options intact. Reader and drawing retain their existing
+behaviors; the previous global pinch-zoom suppression was removed in v0.8.6.
+See `AUDIT_v0.8.7.md` for test evidence and remaining native-iOS checks.
 
 ## Reader in v0.8.0
 
 The **Reader** library has vertically stacked Novel, optional Volume, and
 Chapter selectors, plus Upload chapter JSON. Novel names display as **author •
-novel** in alphabetical order. The shipped Panlong story has a `V01 · 盘龙之戒`
-volume filter; volume is only a navigation convenience and never changes the
+novel** in alphabetical order. Panlong Volume 1 is labeled `V01 · 盘龙之戒`
+in the chapter metadata; a single volume omits the redundant volume selector. volume is only a navigation convenience and never changes the
 global novel-to-chapter order, chapter unlocking or reading progress. The three
 sample story entries are labeled TSK1, TSK2 and TSK3 collections, and have no
 Volume selector. The Novel and Chapter selectors combine the master hosted
@@ -43,7 +61,7 @@ except for About. The new default weights for TSK/TSK1 through TSK/TSK9 are
 2560, 1280, 640, 320, 160, 80, 40, 20 and 10, respectively. Previously
 customized weights are preserved.
 
-Panlong Volume 1 now includes Chapters 1–11. The new Chapters 4–11 retain
+Panlong Volume 1 now includes Chapters 1–23. Chapters 4–11 retain
 the text of the supplied PDF-verified source, including unusual historical
 glyphs; the first three JSON and chapter hashes are unchanged, preserving your
 previous study work. All new chapter ZIPs are deployed automatically alongside

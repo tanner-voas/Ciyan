@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import {catalog,downloadChapter} from '../chapter-download.js';
 import {validateChapter} from '../reader-core.js';
-test('all fourteen hosted ZIPs decompress to the original importable JSON bytes',async t=>{
+test('all twenty-six hosted ZIPs decompress to the original importable JSON bytes',async t=>{
  t.mock.method(globalThis,'fetch',async url=>new Response(await fs.readFile(url)));
- assert.equal(catalog.length,14);
+ assert.equal(catalog.length,26);
  for(const entry of catalog){
   const bytes=await downloadChapter(entry);
   const path=entry.novel==='panlong'?'panlong/chapters/'+String(entry.number).padStart(3,'0'):'samples/'+entry.novel;

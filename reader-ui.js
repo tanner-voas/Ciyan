@@ -102,17 +102,24 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const tabs=Object.entries(labels).map(([group,label])=>btn('vocab-group',label+' · '+groups[group].length,`data-group="${group}" aria-pressed="${group===vocabGroup}"`)).join('');
   const rows=keys.slice(vocabPage*20,vocabPage*20+20).map(key=>{
    const item=b.items[key];
-   return `<button class="list-card reader-vocab-row" data-action="reader-define" data-key="${esc(key)}"><strong lang="zh-Hans">${esc(item.hanzi)}</strong><span>${esc(item.pinyin)}</span><small>${esc(item.english)}${earlier.has(key)?' · Earlier chapter':''}</small></button>`;
+   return `<button class="list-card reader-vocab-row${[...item.hanzi].length>6?' reader-vocab-row--long':''}" data-action="reader-define" data-key="${esc(key)}"><strong lang="zh-Hans">${esc(item.hanzi)}</strong><span>${esc(item.pinyin)}</span><small>${esc(item.english)}${earlier.has(key)?' · Earlier chapter':''}</small></button>`;
   }).join('');
   return `<section class="panel stack"><h2>Chapter vocabulary</h2><div class="reader-tabs">${tabs}</div>${rows||'<p class="subtle">No words in this group.</p>'}
    ${pages>1?`<div class="row">${btn('vocab-prev','Previous',vocabPage?'':'disabled')}<span>${vocabPage+1} / ${pages}</span>${btn('vocab-next','Next',vocabPage+1<pages?'':'disabled')}</div>`:''}</section>`;
  }
  function review(b,c,a){
-  return `<div class="panel stack"><h2>Chapter readiness</h2><p>Automatic vocabulary · ${a.keys.length} items · ${a.focus.size} priority terms/grammar (6× weight)</p>
-  <div class="reader-metrics"><span><strong>${a.keys.length-a.weak.length} / ${a.keys.length}</strong>Ready</span><button data-action="reader-weak"><strong>${a.weak.length}</strong>Still to practice</button><button data-action="reader-earlier"><strong>${a.earlier.length}</strong>Earlier items due</button></div>
-  <p>${c.complete?'Finished reading':c.unlocked||a.ready?'Ready to read':'HSK1–4 is the assumed base; advanced/unknown words and priority focus need a score of 1.50, three Good grades, or one Easy this session.'}</p>
-  ${btn('study','Study chapter')}${btn('read',c.position?'Continue reading':'Read chapter',c.unlocked||a.ready?'':'disabled')}
-  <small>Next import · Chapter ${b.chapters.length+1}</small></div>${vocabulary(b,c,a)}`;
+  const ready=a.keys.length-a.weak.length;
+  const percent=Math.round(100*ready/Math.max(1,a.keys.length));
+  // a.focus includes earlier chapters' due terms for sampling. Only c.focus
+  // describes THIS chapter's authored priority list; never label the union
+  // as this chapter's new focused terms.
+  return `<section class="panel stack reader-readiness"><div class="reader-readiness-heading"><h2>Chapter readiness</h2><strong>${percent}% ready</strong></div>
+  <div class="reader-readiness-progress" role="progressbar" aria-label="Chapter ready items" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}"><span style="width:${percent}%"></span></div>
+  <p class="reader-readiness-summary">${a.keys.length} study items · <strong>${c.focus.length} chapter terms/grammar</strong> (6× priority)</p>
+  <div class="reader-metrics"><span><strong>${ready}</strong>Ready</span><button data-action="reader-weak"><strong>${a.weak.length}</strong>To practice</button><button data-action="reader-earlier"><strong>${a.earlier.length}</strong>Earlier due</button></div>
+  <div class="reader-readiness-actions">${btn('study','Study chapter')}${btn('read',c.position?'Continue reading':'Read chapter',c.unlocked||a.ready?'':'disabled')}</div>
+  <details class="reader-readiness-help"><summary>How chapter preparation works</summary><p>${c.complete?'You have already finished reading this chapter.':c.unlocked||a.ready?'You are ready to read this chapter.':'HSK1–4 is the assumed base. Advanced and unknown words, plus priority terms and grammar, need a score of 1.50, three Good grades, or one Easy this session.'}</p></details>
+  </section>${vocabulary(b,c,a)}`;
  }
  function study(b,c,a){
   let queue=a.queue;
@@ -123,10 +130,16 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const choices=`<label class="reader-scope">Study list<select id="reader-scope">${[['gate','Auto chapter preparation'],['weak','Still to practice'],['earlier','Earlier items due'],['full','All chapter items']].map(([v,t])=>`<option value="${v}" ${v===scope?'selected':''}>${t}</option>`).join('')}</select></label>`;
   const item=b.items[shown];
   if(!item)return `${choices}<div class="panel stack"><h2>No cards pending in this list</h2>${a.ready||c.unlocked?btn('read','Read chapter'):btn('study','Study chapter')}</div>`;
-  return `${choices}<div class="panel stack reader-study-card" data-study-key="${esc(shown)}"><small>${a.earlier.includes(shown)?'Earlier chapter review':'Chapter study'} · ${esc(item.kind)} · Score ${a.score(shown).toFixed(2)}</small>
-  <div class="review-hanzi">${esc(item.hanzi)}</div>${revealed?`<div class="review-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p><div class="review-controls">${['Again','Hard','Good','Easy'].map((x,i)=>`<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}">${x}</button>`).join('')}</div>`:btn('reveal','Show answer')}
-  <small>${a.focus.has(shown)?'Priority focus (6×) · ':''}${['Due review','New item','Early practice · schedule unchanged'][a.group(shown)]} · ${evidence().get(shown)?.goods||0}/3 Good · ${a.weak.length} left to qualify</small>
-  ${c.unlocked||a.ready?btn('read','Read chapter'):''}</div>`;
+  // The general flashcard hero assumes a one- or two-character word. Chapter
+  // terms and grammar patterns can be 6–20+ characters and need their own scale.
+  const length=[...item.hanzi].length;
+  const size=item.kind==='grammar'||length>10?'extended':length>6?'long':length>3?'medium':'short';
+  return `${choices}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
+  <div class="reader-study-head"><span>${a.earlier.includes(shown)?'Earlier review':'Chapter '+c.number} · ${esc(item.kind)}</span><span>Score ${a.score(shown).toFixed(2)}</span></div>
+  <div class="reader-study-prompt reader-study-prompt--${size}" lang="zh-Hans">${esc(item.hanzi)}</div>
+  ${revealed?`<div class="reader-study-answer"><div class="reader-study-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p></div><div class="review-controls reader-study-grades">${['Again','Hard','Good','Easy'].map((x,i)=>`<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}">${x}</button>`).join('')}</div>`:`<div class="reader-study-reveal">${btn('reveal','Show answer')}</div>`}
+  <footer class="reader-study-footer"><span>${a.focus.has(shown)?'Priority focus · 6× weight':'Automatic vocabulary'} · ${['Due review','New','Practice'][a.group(shown)]}</span><span>${evidence().get(shown)?.goods||0}/3 Good · ${a.weak.length} left</span></footer>
+  ${c.unlocked||a.ready?btn('read','Read chapter'):''}</section>`;
  }
  function article(p,a){
   const later=libraryChapter(novel,p.number+1);
@@ -156,12 +169,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   selectBook();
   const available=books(),lib=libraryBook(novel),entry=libraryChapter(novel,number);
   const b=book(),c=chapter();
-  const importBtn=btn('import','Upload chapter JSON');
+  const importBtn=btn('import','Import chapter JSON');
   const volumes=volumeList(lib),currentVolume=lib?.chapters.find(c=>c.number===number)?.volume??volumes[0]?.number;
   // Volume is solely a chapter picker filter. No volume-specific progress or
   // unlock state is created; chapters remain globally numbered and linear.
   const chapterChoices=volumes.length?chaptersInVolume(lib,currentVolume):lib?.chapters||[];
-  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label></div>`;
+  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length>1?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label></div>`;
   if(!entry)return `${chooser}<div class="panel stack"><h2>No chapters yet</h2>${importBtn}</div>`;
   if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(chapterLabel(entry))}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
