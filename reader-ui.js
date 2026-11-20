@@ -3,6 +3,7 @@ import {catalog,downloadChapter} from './chapter-download.js';
 import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,chaptersInVolume,volumeLabel} from './reader-library.js';
 import {mountReadingGuide} from './reader-guide.js';
 import {acceptChapter,validateChapter,readerAnalysis,pickReaderItem,gradeReader,recordPractice} from './reader-core.js';
+import {dueCompletion,studyProgressForState} from './study-progress.js';
 
 function chapterTitle(c){
  return c.title.replace(/^第[〇零一二三四五六七八九十百千万\d]+章\s*/u,'').replace(/[（(][上下][）)]\s*$/u,'').trim();
@@ -17,7 +18,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  let pendingPlayback=null;
  let disposeGuide=null,pendingRate=null,writingPosition=null;
  let chromeVisible=true,requestedUpload=null,attemptedInitial='';
- const sessions=new Map();
+ const sessions=new Map(),chapterDueSnapshots=new Map();
  function evidence(){if(!sessions.has(novel))sessions.set(novel,new Map());return sessions.get(novel);}
  const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now(),evidence());
  const memory=new Map();
@@ -126,15 +127,19 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(scope==='earlier')queue=a.earlier;
   if(scope==='weak')queue=a.weak;
   if(scope==='full')queue=[...new Set([...a.earlier,...a.keys])];
+  const dueNow=queue.filter(key=>a.group(key)===0);
+  const snapshotKey=`${novel}:${c.digest}:${scope}`;
+  if(!chapterDueSnapshots.has(snapshotKey))chapterDueSnapshots.set(snapshotKey,[...dueNow]);
+  const progress=studyProgressForState(state(),dueCompletion(chapterDueSnapshots.get(snapshotKey),dueNow));
   if(!queue.includes(shown)){shown=pickReaderItem(queue,a);revealed=false;}
   const choices=`<label class="reader-scope">Study list<select id="reader-scope">${[['gate','Auto chapter preparation'],['weak','Still to practice'],['earlier','Earlier items due'],['full','All chapter items']].map(([v,t])=>`<option value="${v}" ${v===scope?'selected':''}>${t}</option>`).join('')}</select></label>`;
   const item=b.items[shown];
-  if(!item)return `${choices}<div class="panel stack"><h2>No cards pending in this list</h2>${a.ready||c.unlocked?btn('read','Read chapter'):btn('study','Study chapter')}</div>`;
+  if(!item)return `${choices}${progress}<div class="panel stack"><h2>No cards pending in this list</h2>${a.ready||c.unlocked?btn('read','Read chapter'):btn('study','Study chapter')}</div>`;
   // The general flashcard hero assumes a one- or two-character word. Chapter
   // terms and grammar patterns can be 6–20+ characters and need their own scale.
   const length=[...item.hanzi].length;
   const size=item.kind==='grammar'||length>10?'extended':length>6?'long':length>3?'medium':'short';
-  return `${choices}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
+  return `${choices}${progress}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
   <div class="reader-study-head"><span>${a.earlier.includes(shown)?'Earlier review':'Chapter '+c.number} · ${esc(item.kind)}</span><span>Score ${a.score(shown).toFixed(2)}</span></div>
   <div class="reader-study-prompt reader-study-prompt--${size}" lang="zh-Hans">${esc(item.hanzi)}</div>
   ${revealed?`<div class="reader-study-answer"><div class="reader-study-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p></div><div class="review-controls reader-study-grades">${['Again','Hard','Good','Easy'].map((x,i)=>`<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}">${x}</button>`).join('')}</div>`:`<div class="reader-study-reveal">${btn('reveal','Show answer')}</div>`}
@@ -345,7 +350,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     }
     session.set(shown,trial.get(shown));shown='';revealed=false;
    }else if(name==='reveal'){revealed=true;}
-   else if(['study','review','weak','earlier'].includes(name)){scope=['weak','earlier'].includes(name)?name:'gate';mode=name==='review'?'review':'study';shown='';revealed=false;}
+   else if(['study','review','weak','earlier'].includes(name)){chapterDueSnapshots.clear();scope=['weak','earlier'].includes(name)?name:'gate';mode=name==='review'?'review':'study';shown='';revealed=false;}
    render();
   }catch(e){toast(e.message);}finally{busy=false;}
  }
@@ -355,7 +360,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    if(await change(d=>{d.settings.readerHighlight=checked;},false))document.querySelector('#reader-pages')?.classList.toggle('show-weak',checked);
    else e.target.checked=state().settings.readerHighlight;
   }
-  if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;render();}
+  if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;chapterDueSnapshots.clear();render();}
   if(e.target.id==='reader-volume'){
    const destination=chaptersInVolume(libraryBook(novel),Number(e.target.value))[0];
    if(destination)void choose(novel,destination.number);

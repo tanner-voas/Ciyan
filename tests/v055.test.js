@@ -12,7 +12,7 @@ const old=read('../content/v055_base_master.json'),additions=read('../content/v0
 const cards=MASTER.cards,byId=new Map(cards.map(c=>[c.id,c])),byWord=new Map(cards.map(c=>[c.hanzi,c]));
 
 test('v0.5.5 bundled master contains all words with unchanged old definitions, IDs, and all grammar',()=>{
- assert.equal(APP_VERSION,'0.8.7');assert.ok(cards.length>=11760);assert.ok(MASTER.grammar.length>=1549);
+ assert.equal(APP_VERSION,'0.8.8');assert.ok(cards.length>=11760);assert.ok(MASTER.grammar.length>=1549);
  assert.equal(byWord.size,cards.length);assert.equal(byId.size,cards.length);
  const retained=old.grammar.filter(g=>MASTER.grammar.some(x=>x.id===g.id));assert.deepEqual(MASTER.grammar.slice(0,retained.length),retained);
  for(const before of old.cards){const after=byWord.get(before.hanzi);assert.ok(after,before.hanzi);
@@ -62,8 +62,8 @@ test('v0.5.4 backup migrations preserve all settings/history exactly',()=>{
  const s=defaultState();s.settings.newWordsPerDay=17;s.settings.tagWeights['Food/food']=-1.2;
  const backup=makeBackup(s);backup.appVersion='0.5.4';backup.state.appVersion='0.5.4';
  const prev=structuredClone(backup.state),upgraded=prepareVersionedBackup(backup);
- assert.deepEqual(upgraded.state,prev);assert.equal(upgraded.appVersion,'0.8.7');assert.equal(backup.appVersion,'0.5.4');
- const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.8.7');assert.equal(restored.settings.tagWeights['Food/food'],-1.2);
+ assert.deepEqual(upgraded.state,prev);assert.equal(upgraded.appVersion,'0.8.8');assert.equal(backup.appVersion,'0.5.4');
+ const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.8.8');assert.equal(restored.settings.tagWeights['Food/food'],-1.2);
 });
 
 test('malformed synonym input fails validation rather than executing markup or corrupting links',()=>{

@@ -1,6 +1,6 @@
 {
   "name": "ciyan-mandarin-pwa",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "private": true,
   "type": "module",
   "description": "Offline Mandarin FSRS flashcards, exportable local progress, no dependencies.",

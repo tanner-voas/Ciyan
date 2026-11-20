@@ -64,5 +64,5 @@ test('master preserves all vocabulary IDs, tags and synonyms; prunes only named 
 test('0.6.1 backup upgrades to 0.6.2 without changing card scores or preferences',()=>{
  const s=defaultState();replaceMaster(s,MASTER);s.schedules[s.cards[0].id]={...scheduleReview(null,3,Date.now(),s.settings),score:2.13};
  s.settings.newWordsPerDay=57;const backup=makeBackup(s);backup.appVersion='0.6.1';
- const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.8.7');assert.equal(restored.schedules[s.cards[0].id].score,2.13);assert.equal(restored.settings.newWordsPerDay,57);
+ const restored=parseBackup(backup);assert.equal(restored.appVersion,'0.8.8');assert.equal(restored.schedules[s.cards[0].id].score,2.13);assert.equal(restored.settings.newWordsPerDay,57);
 });

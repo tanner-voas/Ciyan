@@ -8,10 +8,10 @@ import {MASTER} from '../master-data.js';
 import {defaultState,parseBackup,makeBackup} from '../storage.js';
 
 test('v0.6.6 version migration is identity-safe and all 3444 bundled grammar examples remain',()=>{
- assert.equal(APP_VERSION,'0.8.7');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.8.8');assert.equal(MASTER.cards.length,11893);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.5',state:{appVersion:'0.6.5',schemaVersion:2,foo:11}};
  const next=prepareVersionedBackup(old);
- assert.equal(next.appVersion,'0.8.7');assert.deepEqual(next.state,old.state);
+ assert.equal(next.appVersion,'0.8.8');assert.deepEqual(next.state,old.state);
 });
 
 test('reconciliation is additive and preserves custom/edited words, grammar and learning data',()=>{

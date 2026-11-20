@@ -656,3 +656,23 @@ html,body{touch-action:manipulation}
 .collection-filter-body{padding:0 14px 15px;border-top:1px solid var(--stroke)}
 .collection-filter-body .section-row{margin:14px 0 9px}
 .collection-filter-body .filter-controls{margin-top:14px}
+
+/* v0.8.8 — tiny, accessible Due/New progress rows; the exercise remains dominant. */
+.study-mini-progress{display:grid;gap:6px;margin:8px 0 12px;max-width:100%;padding:0 2px}
+.study-mini-row{display:grid;grid-template-columns:32px minmax(0,1fr) 68px;gap:9px;align-items:center;min-height:15px}
+.study-mini-label{font-size:11px;font-weight:750;color:var(--muted);letter-spacing:.01em}
+.study-mini-track{height:7px;min-width:0;overflow:hidden;border-radius:999px;background:#e3ebe4}
+.study-mini-fill{display:block;height:100%;border-radius:999px;background:var(--forest);transition:width .24s ease}
+.study-mini-fill-new{background:#8cb8d5}
+.study-mini-value{font-size:11px;line-height:1.2;text-align:right;white-space:nowrap;color:var(--muted);font-variant-numeric:tabular-nums}
+.study-quick-start+.study-mini-progress{margin:10px 0 0}
+.reader-scope+.study-mini-progress{margin:6px 0 4px}
+@media(prefers-reduced-motion:reduce){.study-mini-fill{transition:none}}
+[data-theme=dark] .study-mini-track{background:#354c44}
+[data-theme=dark] .study-mini-fill-new{background:#78a7c9}
+
+.study-session-details{margin:12px 0 4px;border-top:1px solid var(--stroke);padding-top:10px}
+.study-session-details summary{font-size:12px;font-weight:650;color:var(--muted);cursor:pointer;min-height:30px;display:flex;align-items:center}
+.study-session-details .study-counts{margin:4px 0 10px}
+/* Dark-mode particles: gap controls should not flash as white tiles. */
+[data-theme=dark] .gap{background:#253b32;color:#d5e8dc;border-color:#5e7e70}

@@ -10,6 +10,7 @@ import {contextsForWord} from './grammar-context.js';
 import {contextMatches,contextSort,contextMatchLabel,literalGrammarTokens} from './context-matching.js';
 import {MODES,SHARES,autoEnabled,setListeningAuto,ensureStudy,nextExercise,recordExercise,scheduleFor,skillSummary,contextFor,modeCounts,availableModes,newVocabToday,newVocabRemaining,sessionAvailability,POOLS} from './study-engine.js';
 import {allParticles,particleCorrect,particleSentence,particleError,particleLabel,OMIT} from './particles.js';
+import {dueKeysForSession,homeDueProgress,sessionDueProgress,studyProgressForState} from './study-progress.js';
 import {characterEvidence,familyEvidence,drawingProfile} from './learning-feedback.js';
 import {drawPad,attachPad} from './drawing.js';
 import {DRAWING_RATINGS,drawingResult,withDrawingRating} from './drawing-grades.js';
@@ -266,7 +267,8 @@ function studySummary(mode,counts=modeCounts(state,mode,studyFilters)){return `<
 function renderStudyIntro(){
  const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),all=enabled.map(m=>countsByMode[m]);
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
- return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Practice vocabulary, grammar, listening, character writing, and particles. Stop whenever you choose.</p><div class="study-quick-start"><button class="btn btn-primary" data-action="practice-start" data-mode="auto" ${canStartAuto(countsByMode)?'':'disabled'}>Start Auto Study</button><small>${due} due now · ${newCards} new available in enabled modes</small></div></div>
+ const progress=studyProgressForState(state,homeDueProgress(state,Date.now(),enabled));
+ return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Practice vocabulary, grammar, listening, character writing, and particles. Stop whenever you choose.</p><div class="study-quick-start"><button class="btn btn-primary" data-action="practice-start" data-mode="auto" ${canStartAuto(countsByMode)?'':'disabled'}>Start Auto Study</button><small>${due} due now · ${newCards} new available in enabled modes</small></div>${progress}</div>
  <section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
  ${autoControls(countsByMode)}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=countsByMode[mode];return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode,c)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
  ${backupBanner()}${studyFilterTree()}`;
@@ -292,7 +294,8 @@ function renderWordStudy(){
   const tone=wordToneCheck(card),badTone=!!tone?.wrong.length;
   const ratingOptions=[['again','Again',1],['hard','Hard',2],['good','Good',3],['easy','Easy',4]];
   return `<div class="review-top"><button class="icon-btn" data-action="finish-prompt" aria-label="End session">${icon('x')}</button>
-    <div class="review-progress"><span style="width:${100*processed/s.initialTotal}%"></span></div><span class="review-note">${processed+1} / ${s.initialTotal}</span></div>
+    <span class="review-note">${processed+1} / ${s.initialTotal} cards</span></div>
+    ${studyProgressForState(state,homeDueProgress(state,Date.now(),['words']))}
     <div class="review-card ${state.settings.toneTest?'tone-review':''}" ${revealed||state.settings.toneTest?'':'data-action="reveal" role="button" tabindex="0" aria-label="Reveal answer"'}>
       <div class="card-kicker">${previous?'REVIEW WORD':'NEW WORD'} · CHINESE → ENGLISH</div>
       ${card.tags.length?`<span class="review-tag">${tagHtml(card.tags[0])}</span>`:''}
@@ -330,7 +333,7 @@ function buildSentence(grammar,picks,feedback=false){
 function renderGrammarStudy(){
   if(grammarFeedback){
     const f=grammarFeedback,g=f.grammar;
-    return `<div class="eyebrow" style="margin-top:25px">SENTENCE RESULT</div><h1 class="h1">${f.correct?'Nicely assembled.':'One to revisit.'}</h1>
+    return `${studyProgressForState(state,homeDueProgress(state,Date.now(),['grammar']))}<div class="eyebrow" style="margin-top:25px">SENTENCE RESULT</div><h1 class="h1">${f.correct?'Nicely assembled.':'One to revisit.'}</h1>
       <p class="lead">${f.correct?'Correct ordering and word choice.':'Compare the highlighted words with the target sentence. Other natural Chinese word orders may exist.'}</p>
       <div class="panel stack" style="margin:22px 0"><div class="eyebrow">YOUR ANSWER</div><div class="grammar-sentence">${buildSentence(g,f.picks,true)}</div>
         <div class="eyebrow">CORRECT SENTENCE</div><div class="grammar-sentence sentence-answer">${esc(plainSentence(g.markup))}</div>
@@ -341,8 +344,8 @@ function renderGrammarStudy(){
   const bank=shuffledBank(g,s),tokens=parseSegments(g.markup).filter(x=>x.type==='token'),picks=s.picks||[];
   const chosen=new Set(picks.filter(Boolean));
   return `<div class="review-top"><button class="icon-btn" data-action="finish-prompt" aria-label="End session">${icon('x')}</button>
-      <div class="review-progress"><span style="width:${100*s.results.length/s.initialTotal}%"></span></div>
-      <span class="review-note">${s.results.length+1} / ${s.initialTotal}</span></div>
+      <span class="review-note">${s.results.length+1} / ${s.initialTotal} cards</span></div>
+    ${studyProgressForState(state,homeDueProgress(state,Date.now(),['grammar']))}
     <div class="grammar-puzzle"><div class="eyebrow">GRAMMAR LAB · ENGLISH → CHINESE</div>
       <h2>${esc(g.english)}</h2><p class="subtle">Tap the tiles in order, or drag them to a slot. Tap a placed tile to remove it.</p>
       <div class="grammar-sentence" aria-label="Sentence composition">${buildSentence(g,picks)}</div>
@@ -738,11 +741,11 @@ function positionStudyScreen(){
  const readerCard=page==='reader'?document.querySelector('.reader-study-card'):null;
  let target=null,key='';
  if(page==='study'&&(active?.current||legacy||grammarFeedback)){
-  target=app.querySelector?.('.drawing-comparison')||app.querySelector?.('.drawing-prompt,.review-card,.grammar-puzzle,.study-live-counts + section,.grammar-sentence')||null;
+  target=app.querySelector?.('.drawing-comparison')||app.querySelector?.('.study-mini-progress')||app.querySelector?.('.drawing-prompt,.review-card,.grammar-puzzle,.grammar-sentence')||null;
   key=JSON.stringify([page,active?.id||legacy?.id,active?.current?.id||legacy?.queue?.[0],active?.current?.mode,
    active?.results?.length||legacy?.results?.length||0,!!(active?.input?.revealed||revealed||grammarFeedback)]);
  }else if(readerCard){
-  target=readerCard;key=page+':'+readerCard.dataset.studyKey+':'+!!readerCard.querySelector('[data-action="reader-grade"]');
+  target=readerCard.previousElementSibling?.classList.contains('study-mini-progress')?readerCard.previousElementSibling:readerCard;key=page+':'+readerCard.dataset.studyKey+':'+!!readerCard.querySelector('[data-action="reader-grade"]');
  }
  if(target)target.classList.add('study-scroll-anchor');
  if(target&&key!==lastStudyFocus){
@@ -1295,6 +1298,7 @@ async function startPractice(mode,allowedWords=null){
  if(state.activeSession||state.activeGrammarSession){await startSession();return;}
  if(state.activePractice){page='study';render();return;}
  const session={id:crypto.randomUUID(),mode,filters:structuredClone(studyFilters),pool:selectedPool,allowedWords,startedAt:new Date().toISOString(),continuous:true,limit:state.settings.sessionSize,spent:{},results:[],input:{},skipped:[],deferred:{},turn:0,undo:[]};
+ session.dueAtStart=dueKeysForSession(state,session);
  session.current=nextExercise(state,session);if(!session.current){const info=sessionAvailability(state,session);toast(info.due?'Those exercises are temporarily deferred.':'No eligible exercises in this mode and pool.');return;}
  session.itemStartedAt=Date.now();
  if(await change(d=>{d.activePractice=session;d.lastPracticeUndo=null;},false)){page='study';render();}
@@ -1305,7 +1309,7 @@ function drawingDetail(c){const map=new Map(characterEvidence(state).map(x=>[x.c
 function practiceRender(){
  const s=state.activePractice,e=s.current,input=s.input||{};
  if(!e)return waitingPractice(s);
- const top=`<div class="review-top"><button class="icon-btn" data-action="practice-finish" aria-label="Finish session">${icon('x')}</button><div class="review-progress"><span style="width:${Math.min(100,100*s.results.length/Math.max(1,state.settings.sessionSize))}%"></span></div><span>${s.results.length} answered · continuous</span></div><div class="eyebrow">${MODES[e.mode]} · ${esc(e.reason)}${s.mode==='auto'?' · AUTO':''}</div>`;
+ const top=`<div class="review-top"><button class="icon-btn" data-action="practice-finish" aria-label="Finish session">${icon('x')}</button><span class="review-note">${s.results.length} answered · continuous</span></div>${studyProgressForState(state,sessionDueProgress(state,s))}<div class="eyebrow">${MODES[e.mode]} · ${esc(e.reason)}${s.mode==='auto'?' · AUTO':''}</div>`;
  let body='';
  if(e.mode==='words'){
   const c=wordById(e.id);toneSelections=input.tones||[];revealed=!!input.revealed;
@@ -1342,7 +1346,7 @@ function practiceRender(){
   body=`<section class="panel stack"><h2>${esc(p.focus)}</h2><p>${esc(p.prompt)}</p><div class="eyebrow">1. CHOOSE THE PARTICLE OR CLASSIFIER</div><div class="grammar-bank">${p.choices.map(c=>`<button class="bank-tile ${input.choice===c?'chosen':''}" data-action="particle-choice" data-choice="${esc(c)}" ${input.revealed?'disabled':''}>${esc(particleLabel(c))}</button>`).join('')}</div><div class="eyebrow">2. TAP ITS GAP (NOT NEEDED FOR NO PARTICLE)</div><div class="particle-line">${Array.from({length:p.base.length+1},(_,i)=>`<button class="gap ${input.slot===i?'chosen':''}" data-action="particle-slot" data-slot="${i}" aria-label="Gap ${i+1}" ${input.revealed?'disabled':''}>${input.slot===i?esc(input.choice||'?'):'＋'}</button>${i<p.base.length?`<span>${esc(p.base[i])}</span>`:''}`).join('')}</div></section>`;
   body+=input.revealed?`<div class="notice ${input.correct?'':'warning'}"><strong>${input.correct?'Correct':'One to revisit'}</strong>${input.errorType?`<p>Error: ${esc({omission:'a required marker was omitted',unnecessary:'no particle was needed',placement:'right marker, wrong position',choice:'different marker needed'}[input.errorType])}</p>`:''}<p>${esc(particleSentence(p,input.correct?{choice:input.choice,slot:input.slot}:undefined))}</p><p>${esc(input.correct&&input.choice===OMIT&&p.accepted[0].choice!==OMIT?p.pinyin.replace(/ de /,' '):p.pinyin)}</p><p>${esc(p.explanation)}</p></div>${practiceRatings(e.mode,e.id,input.correct?4:2)}`:`<button class="btn btn-primary btn-full" data-action="practice-check" ${!input.choice||(input.choice!==OMIT&&!Number.isInteger(input.slot))?'disabled':''}>Check particle and placement</button>`;
  }
- return top+`<div class="study-live-counts">${sessionCounts(s)}</div>`+body+sessionControls(s)+autoDistribution(s)+'<p class="study-captions">Answers save automatically. Export your progress after studying.</p>';
+ return top+body+sessionControls(s)+`<details class="study-session-details"><summary>Session details</summary>${sessionCounts(s)}</details>`+autoDistribution(s)+'<p class="study-captions">Answers save automatically. Export your progress after studying.</p>';
 }
 let drawingSave=Promise.resolve();
 function mountDrawing(){
@@ -1545,7 +1549,7 @@ function waitingPractice(s){
  const a=sessionAvailability(state,s),seconds=a.nextAt?Math.max(0,(a.nextAt-Date.now())/1000):null;
  clearTimeout(waitTimer);
  if(seconds!==null){waitTimer=setTimeout(()=>{if(page==='study'&&state.activePractice?.id===s.id&&!state.activePractice.current)wakePractice();},Math.max(1000,Math.min(60000,seconds*1000+30)));waitTimer.unref?.();}
- return `<section class="panel stack"><div class="eyebrow">CONTINUOUS STUDY</div><h2>${seconds!==null?'Postponed item returning soon':'No eligible exercises remain'}</h2><p>${seconds!==null?`Postponed exercises can return in ${intervalText(seconds)}, or after other turns. No grade or due-date change was recorded.`:'All due work is complete, and no new exercises remain under your chosen pool, filters and daily vocabulary limit.'}</p><button class="btn btn-primary" data-action="practice-check-ready">Check again</button></section>${sessionCounts(s)}${sessionControls(s)}${autoDistribution(s)}`;
+ return `${studyProgressForState(state,sessionDueProgress(state,s))}<section class="panel stack"><div class="eyebrow">CONTINUOUS STUDY</div><h2>${seconds!==null?'Postponed item returning soon':'No eligible exercises remain'}</h2><p>${seconds!==null?`Postponed exercises can return in ${intervalText(seconds)}, or after other turns. No grade or due-date change was recorded.`:'All due work is complete, and no new exercises remain under your chosen pool, filters and daily vocabulary limit.'}</p><button class="btn btn-primary" data-action="practice-check-ready">Check again</button></section>${sessionCounts(s)}${sessionControls(s)}${autoDistribution(s)}`;
 }
 async function settlePractice(){
  if(!state.activePractice)return;

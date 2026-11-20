@@ -1,8 +1,30 @@
-# Cíyán (词言) v0.8.7
+# Cíyán (词言) v0.8.8
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
 user-controlled typography.
+
+## v0.8.8 — compact Due/New study progress
+
+Every active study mode (Vocabulary, Grammar, Drawing, Particles, Listening,
+Auto Study and Reader chapter flashcards) now shows the same unobtrusive bars:
+**Due** counts only scheduled due reviews cleared from the study scope;
+**New** counts distinct vocabulary words first encountered today against the
+optional New vocabulary words per day limit. If the limit is unlimited, the
+New bar is hidden; zero is a valid limit. The bars are intentionally separate
+from total answered exercises and chapter-readiness percentage.
+
+The study scroll anchor keeps the bars visible above the flashcard, and verbose
+session counters are under an optional Session details expander. Existing
+backup/study data is preserved by an identity migration from v0.8.7.
+
+To develop from a fresh checkout, install Node.js 22+ and Python 3, run
+`npm test`, `npm run build`, and `npm run serve` in the repository root.
+Deploy using the built `dist/ciyan/` folder. No `npm install` is needed for
+the application itself. The Git repository includes original history through
+v0.8.4 and reconstructed release snapshots for v0.8.5–v0.8.7.
+
+See `AUDIT_v0.8.8.md` for runtime testing details and limitations.
 
 ## v0.8.7 chapter expansion and UI audit
 
