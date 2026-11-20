@@ -36,12 +36,12 @@ test('all fourteen chapters use auto vocabulary and critical term/grammar focus,
  }
 });
 
-test('HSK4 is the automatic base, while advanced/unclassified vocabulary and critical grammar remain visible',()=>{
+test('all vocabulary requires actual learning records, without assumed HSK knowledge',()=>{
  const p=JSON.parse(file('reader/panlong/chapters/001.json'));
  const s=defaultState();acceptChapter(s,p,catalog.find(c=>c.novel==='panlong'&&c.number===1).digest);
  const b=s.reader.panlong,c=b.chapters[0],a=readerAnalysis(s,b,c);
  assert.ok(a.keys.length>=1000);
- assert.ok(!a.weak.includes('vocab-的'));
+ assert.ok(a.weak.includes('vocab-的'));
  assert.ok(a.weak.includes('vocab-斑驳'));
  assert.ok(a.weak.includes('grammar-即使……也……'));
  assert.ok(a.focus.has('term-乌山镇'));

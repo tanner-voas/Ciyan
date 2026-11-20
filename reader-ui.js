@@ -2,7 +2,9 @@ import {voiceTuning} from './reader-speech.js';
 import {catalog,downloadChapter} from './chapter-download.js';
 import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,chaptersInVolume,volumeLabel} from './reader-library.js';
 import {mountReadingGuide} from './reader-guide.js';
-import {acceptChapter,validateChapter,readerAnalysis,pickReaderItem,gradeReader,recordPractice} from './reader-core.js';
+import {acceptChapter,validateChapter,readerAnalysis,pickReaderItem,gradeReader,recordPractice,readerGradePreview} from './reader-core.js';
+import {newVocabRemaining} from './study-engine.js';
+import {intervalText} from './review-scheduler.js';
 import {dueCompletion,studyProgressForState} from './study-progress.js';
 
 function chapterTitle(c){
@@ -19,7 +21,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  let disposeGuide=null,pendingRate=null,writingPosition=null;
  let chromeVisible=true,requestedUpload=null,attemptedInitial='';
  const sessions=new Map(),chapterDueSnapshots=new Map();
- function evidence(){if(!sessions.has(novel))sessions.set(novel,new Map());return sessions.get(novel);}
+ function evidence(){const key=`${novel}:${chapter()?.digest||number}`;if(!sessions.has(key))sessions.set(key,new Map());return sessions.get(key);}
  const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now(),evidence());
  const memory=new Map();
  const contentDigest=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
@@ -50,7 +52,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   }
   await flush();
   if(imported.length){
-   if(!await change(d=>{for(const {p,digest} of imported)acceptChapter(d,p,digest);},false))return false;
+   if(!await change(d=>{for(const {p,digest} of imported)acceptChapter(d,p,digest);},false,true))return false;
    for(const {p,digest} of imported)memory.set(digest,p);
   }
   return true;
@@ -82,7 +84,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     }
    }
    const ch=state().reader?.[id]?.chapters[n-1];
-   if(ch){await change(d=>{d.reader[id].current=n;},false);mode=reading&&ch.unlocked?'read':'review';}
+   if(ch){await change(d=>{d.reader[id].current=n;},false);mode=reading?'read':'review';}
    else mode='review';
    chromeVisible=true;render();
   }catch(e){toast(e.message);mode='review';render();}
@@ -100,12 +102,13 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const keys=groups[vocabGroup],pages=Math.max(1,Math.ceil(keys.length/20));
   vocabPage=Math.min(Math.max(0,vocabPage),pages-1);
   const labels={ready:'Ready',due:'Due',practice:'To practice'};
-  const tabs=Object.entries(labels).map(([group,label])=>btn('vocab-group',label+' · '+groups[group].length,`data-group="${group}" aria-pressed="${group===vocabGroup}"`)).join('');
+  const tabs=Object.entries(labels).map(([group,label])=>`<button class="reader-vocab-filter" data-action="reader-vocab-group" data-group="${group}" aria-pressed="${group===vocabGroup}"><span>${label}</span><strong>${groups[group].length}</strong></button>`).join('');
   const rows=keys.slice(vocabPage*20,vocabPage*20+20).map(key=>{
    const item=b.items[key];
-   return `<button class="list-card reader-vocab-row${[...item.hanzi].length>6?' reader-vocab-row--long':''}" data-action="reader-define" data-key="${esc(key)}"><strong lang="zh-Hans">${esc(item.hanzi)}</strong><span>${esc(item.pinyin)}</span><small>${esc(item.english)}${earlier.has(key)?' · Earlier chapter':''}</small></button>`;
+   const card=item.kind==='vocab'?state().cards.find(w=>w.hanzi===item.hanzi):null;
+   return `<button class="list-card reader-vocab-row${[...item.hanzi].length>6?' reader-vocab-row--long':''}" ${card?`data-action="card-detail" data-id="${esc(card.id)}"`:`data-action="reader-term-detail" data-key="${esc(key)}"`}><strong lang="zh-Hans">${esc(item.hanzi)}</strong><span>${esc(item.pinyin)}</span><small>${esc(item.english)}${earlier.has(key)?' · Earlier chapter':''}</small></button>`;
   }).join('');
-  return `<section class="panel stack"><h2>Chapter vocabulary</h2><div class="reader-tabs">${tabs}</div>${rows||'<p class="subtle">No words in this group.</p>'}
+  return `<section class="panel stack"><h2>Chapter vocabulary</h2><div class="reader-vocab-filters" role="group" aria-label="Chapter vocabulary filters">${tabs}</div>${rows||'<p class="subtle">No words in this group.</p>'}
    ${pages>1?`<div class="row">${btn('vocab-prev','Previous',vocabPage?'':'disabled')}<span>${vocabPage+1} / ${pages}</span>${btn('vocab-next','Next',vocabPage+1<pages?'':'disabled')}</div>`:''}</section>`;
  }
  function review(b,c,a){
@@ -117,9 +120,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   return `<section class="panel stack reader-readiness"><div class="reader-readiness-heading"><h2>Chapter readiness</h2><strong>${percent}% ready</strong></div>
   <div class="reader-readiness-progress" role="progressbar" aria-label="Chapter ready items" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${percent}"><span style="width:${percent}%"></span></div>
   <p class="reader-readiness-summary">${a.keys.length} study items · <strong>${c.focus.length} chapter terms/grammar</strong> (6× priority)</p>
-  <div class="reader-metrics"><span><strong>${ready}</strong>Ready</span><button data-action="reader-weak"><strong>${a.weak.length}</strong>To practice</button><button data-action="reader-earlier"><strong>${a.earlier.length}</strong>Earlier due</button></div>
-  <div class="reader-readiness-actions">${btn('study','Study chapter')}${btn('read',c.position?'Continue reading':'Read chapter',c.unlocked||a.ready?'':'disabled')}</div>
-  <details class="reader-readiness-help"><summary>How chapter preparation works</summary><p>${c.complete?'You have already finished reading this chapter.':c.unlocked||a.ready?'You are ready to read this chapter.':'HSK1–4 is the assumed base. Advanced and unknown words, plus priority terms and grammar, need a score of 1.50, three Good grades, or one Easy this session.'}</p></details>
+  <div class="reader-readiness-stats"><span><strong>${ready}</strong> Ready</span><span><strong>${a.weak.length}</strong> To practice</span><button data-action="reader-earlier"><strong>${a.earlier.length}</strong> Earlier due</button></div>
+  <div class="reader-readiness-actions">${btn('study','Study chapter')}<button class="btn reader-read-action ${a.ready?'reader-read-action--ready':'reader-read-action--caution'}" data-action="reader-read">${c.position?'Continue reading':'Read chapter'}</button></div>
   </section>${vocabulary(b,c,a)}`;
  }
  function study(b,c,a){
@@ -127,6 +129,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(scope==='earlier')queue=a.earlier;
   if(scope==='weak')queue=a.weak;
   if(scope==='full')queue=[...new Set([...a.earlier,...a.keys])];
+  // Even explicit study scopes must honor the daily cap on NEW vocabulary;
+  // due and already-introduced cards remain available for rehearsal.
+  const blocked=new Set(a.blocked);
+  queue=queue.filter(key=>!blocked.has(key));
   const dueNow=queue.filter(key=>a.group(key)===0);
   const snapshotKey=`${novel}:${c.digest}:${scope}`;
   if(!chapterDueSnapshots.has(snapshotKey))chapterDueSnapshots.set(snapshotKey,[...dueNow]);
@@ -134,17 +140,18 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(!queue.includes(shown)){shown=pickReaderItem(queue,a);revealed=false;}
   const choices=`<label class="reader-scope">Study list<select id="reader-scope">${[['gate','Auto chapter preparation'],['weak','Still to practice'],['earlier','Earlier items due'],['full','All chapter items']].map(([v,t])=>`<option value="${v}" ${v===scope?'selected':''}>${t}</option>`).join('')}</select></label>`;
   const item=b.items[shown];
-  if(!item)return `${choices}${progress}<div class="panel stack"><h2>No cards pending in this list</h2>${a.ready||c.unlocked?btn('read','Read chapter'):btn('study','Study chapter')}</div>`;
+  const limitNotice=a.blocked.length?`<div class="reader-quota-notice" role="status"><strong>Daily new-vocabulary limit reached</strong><span>${a.blocked.length} new vocabulary ${a.blocked.length===1?'item remains':'items remain'} in this chapter. You can continue reviewing due and previously introduced items, or raise the daily limit in Settings.</span><button class="btn btn-secondary btn-small" data-action="navigate" data-page="settings">Daily limit settings</button></div>`:'';
+  if(!item)return `${choices}${progress}${limitNotice}<div class="panel stack"><h2>${a.blocked.length?'New vocabulary paused':'Chapter study list clear'}</h2><p class="subtle">${a.blocked.length?'Your existing cards are caught up for this list. Increase the daily new-vocabulary limit or return tomorrow.':'No eligible cards are pending in this list.'}</p>${btn('read','Read chapter')}${btn('review','Chapter overview')}</div>`;
   // The general flashcard hero assumes a one- or two-character word. Chapter
   // terms and grammar patterns can be 6–20+ characters and need their own scale.
   const length=[...item.hanzi].length;
   const size=item.kind==='grammar'||length>10?'extended':length>6?'long':length>3?'medium':'short';
-  return `${choices}${progress}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
+  return `${choices}${progress}${limitNotice}<section class="panel stack reader-study-card" data-study-key="${esc(shown)}" aria-label="Chapter flashcard">
   <div class="reader-study-head"><span>${a.earlier.includes(shown)?'Earlier review':'Chapter '+c.number} · ${esc(item.kind)}</span><span>Score ${a.score(shown).toFixed(2)}</span></div>
   <div class="reader-study-prompt reader-study-prompt--${size}" lang="zh-Hans">${esc(item.hanzi)}</div>
-  ${revealed?`<div class="reader-study-answer"><div class="reader-study-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p></div><div class="review-controls reader-study-grades">${['Again','Hard','Good','Easy'].map((x,i)=>`<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}">${x}</button>`).join('')}</div>`:`<div class="reader-study-reveal">${btn('reveal','Show answer')}</div>`}
+  ${revealed?`<div class="reader-study-answer"><div class="reader-study-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p></div><div class="review-controls reader-study-grades">${['Again','Hard','Good','Easy'].map((x,i)=>{const due=a.group(shown)!==2;const next=readerGradePreview(state(),b,shown)[i];return `<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}"><strong>${x}</strong><span>${due?intervalText(next.intervalMinutes*60):'Practice only'}</span><small>${due?'Score '+next.score.toFixed(2):'No score change'}</small></button>`;}).join('')}</div>`:`<div class="reader-study-reveal">${btn('reveal','Show answer')}</div>`}
   <footer class="reader-study-footer"><span>${a.focus.has(shown)?'Priority focus · 6× weight':'Automatic vocabulary'} · ${['Due review','New','Practice'][a.group(shown)]}</span><span>${evidence().get(shown)?.goods||0}/3 Good · ${a.weak.length} left</span></footer>
-  ${c.unlocked||a.ready?btn('read','Read chapter'):''}</section>`;
+  ${btn('read','Read chapter')}</section>`;
  }
  function article(p,a){
   const later=libraryChapter(novel,p.number+1);
@@ -154,11 +161,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    return `<p data-pid="${esc(row.id)}" data-index="${index}">${row.tokens.map(t=>{
     if(typeof t==='string'){offset+=t.length;return esc(t);}
     const k=t[0],surface=t[1]??p.items[k].hanzi,start=offset;offset+=surface.length;
-    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-offset="${start}" class="${!a.qualifies(k)?'reader-weak':''}" aria-label="${esc(surface)}. Double-tap for dictionary">${esc(surface)}</span>`;
+    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-offset="${start}" class="${p.items[k].kind==='term'?'reader-term':!a.qualifies(k)?'reader-weak':''}" aria-label="${esc(surface)}. Double-tap for dictionary">${esc(surface)}</span>`;
    }).join('')}</p>`;
   }).join('')}<div class="reader-end"><div class="reader-end-label">End of chapter ${p.number}</div><button class="reader-finish-next" data-action="reader-finish-next" data-number="${p.number}">${complete?'Completed · ':''}${later?'Mark complete & next chapter →':'Mark chapter complete ✓'}</button></div></article>`;
  }
- function isReading(){return mode==='read'&&chapter()?.unlocked&&memory.has(chapter().digest);}
+ function isReading(){return mode==='read'&&!!chapter()&&memory.has(chapter().digest);}
  function chapterNavigation(){
   const list=libraryBook(novel)?.chapters||[];
   const position=list.findIndex(c=>c.number===number),previous=list[position-1],next=list[position+1];
@@ -168,7 +175,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const entries=libraryBook(novel)?.chapters||[];
   return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(chapterTitle(c))}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
   <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-selected="${esc(state().settings.speechVoice||'')}" data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
-  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div><button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
+  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div><button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
  }
  function view(){
   selectBook();
@@ -183,9 +190,9 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(!entry)return `${chooser}<div class="panel stack"><h2>No chapters yet</h2>${importBtn}</div>`;
   if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(chapterLabel(entry))}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
-  const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),x==='read'&&!c.unlocked&&!a.ready?'disabled':`aria-pressed="${mode===x}"`)).join('');
+  const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),`aria-pressed="${mode===x}"${x==='read'?` data-read-state="${a.ready?'ready':'caution'}"`:''}`)).join('');
   const p=memory.get(c.digest);
-  const body=mode==='study'?study(b,c,a):mode==='read'&&c.unlocked?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
+  const body=mode==='study'?study(b,c,a):mode==='read'?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${state().settings.readerTermsHighlight!==false?'show-terms':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
   if(isReading())return body;
   return `${chooser}<div class="reader-tabs">${tabs}</div>${body}`;
  }
@@ -275,11 +282,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     if(!matchesRequestedChapter(p,requestedUpload,digest))
      throw Error(`Wrong chapter. Select ${requestedUpload?.title||'the requested chapter'} (Chapter ${requestedUpload?.number}) from ${libraryBook(requestedUpload?.novel)?.title||requestedUpload?.novel}.`);
     // Stage and validate before writing any text. An interrupted import can only leave an unreferenced cache entry.
-    const staged={reader:{[p.novel]:structuredClone(state().reader?.[p.novel])}};
+    const staged=structuredClone(state());
     acceptChapter(staged,p,digest);
     await (await caches.open(cacheName)).put(cacheKey(digest),new Response(bytes));
     await flush();
-    if(await change(d=>{acceptChapter(d,p,digest);registerCustomChapter(d,p,digest);},false)){
+    if(await change(d=>{acceptChapter(d,p,digest);registerCustomChapter(d,p,digest);},false,true)){
      memory.set(digest,p);novel=p.novel;number=p.number;mode='review';shown='';revealed=false;attemptedInitial=`${novel}:${number}`;requestedUpload=null;closeModal?.();render();toast('Chapter loaded.');
     }
    }catch(e){toast(e.message);}finally{input.remove?.();}
@@ -312,10 +319,16 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     else vocabPage+=name==='vocab-prev'?-1:1;
     render();return;
    }
+   if(name==='term-detail'){
+    const key=el.dataset.key,item=b.items[key];if(!item)return;
+    const hits=b.history.filter(h=>h.key===key),score=b.progress[key];
+    const chapterCount=b.chapters.filter(ch=>ch.all.includes(key)).length;
+    modal('Novel-specific term',`<div class="reader-term-full"><div class="detail-hero"><div class="review-hanzi">${esc(item.hanzi)}</div><div class="review-pinyin">${esc(item.pinyin)}</div><div class="review-english">${esc(item.english)}</div></div><p class="subtle">Novel: ${esc(b.title)} · Found in ${chapterCount} loaded chapter${chapterCount===1?'':'s'}. This term is deliberately separate from your master dictionary.</p><div class="reader-term-stats"><span><strong>${hits.length}</strong> Reviews</span><span><strong>${score?.score.toFixed(2)??'0.00'}</strong> Score</span><span><strong>${score?.dueAt?new Date(score.dueAt).toLocaleString():'Not studied'}</strong> Next review</span></div><button class="btn btn-secondary btn-full" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button></div>`);return;
+   }
    if(name==='define'){
     const item=b.items[el.dataset.key];if(!item)return;
     const match=state().cards.find(card=>card.hanzi===item.hanzi);
-    modal(item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="edit-card" data-id="${esc(match.id)}">Edit word</button>`:''}</div></div>`);return;
+    modal(item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="card-detail" data-id="${esc(match.id)}">View full entry</button>`:''}</div></div>`);return;
    }
    await flush();
    if(name==='exit'){mode='review';chromeVisible=true;render();globalThis.scrollTo?.(0,0);return;}
@@ -329,28 +342,35 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     }
     return;
    }
-   if(name==='read'){
-    const a=analysis(state(),b,c);if(!c.unlocked&&!a.ready)return;
-    if(!c.unlocked&&!await change(d=>{d.reader[novel].chapters[number-1].unlocked=true;},false))return;
+   if(name==='read'||name==='read-anyway'){
+    const a=analysis(state(),b,c);
+    if(name==='read'&&!a.ready){
+     modal('Read before finishing study?',`<p>You have <strong>${a.keys.length-a.weak.length} out of ${a.keys.length}</strong> study items ready (${Math.round(100*(a.keys.length-a.weak.length)/Math.max(1,a.keys.length))}%). We recommend studying more before reading this chapter, but you can continue whenever you want.</p><div class="reader-read-confirm"><button class="btn btn-primary" data-action="reader-study">Return to study</button><button class="btn btn-secondary" data-action="reader-read-anyway">Read anyway</button></div>`);return;
+    }
+    closeModal?.();
     if(!(await cached(c))){showMissing(libraryChapter(novel,number));return;}
     mode='read';chromeVisible=true;
    }else if(name==='grade'){
     if(!revealed||shown!==el.dataset.key)return;
     const grade=Number(el.dataset.grade),now=Date.now(),session=evidence();
-    const trial=new Map(session);recordPractice(trial,shown,grade);
     const early=readerAnalysis(state(),b,c,now,session).group(shown)===2;
-    const unlock=!c.unlocked&&readerAnalysis(state(),b,c,now,trial).ready;
-    if(!early||unlock){
-     const ok=await change(d=>{
-      const book=d.reader[novel],ch=book.chapters[number-1];
-      if(!early)gradeReader(d,book,shown,grade,now);
-      if(!ch.unlocked&&readerAnalysis(d,book,ch,now,trial).ready)ch.unlocked=true;
-     },false);
-     if(!ok)return;
+    // Not-due cards can be practiced indefinitely, but must not modify their
+    // original score, due date, or review history. The three-Good/one-Easy
+    // threshold retires them from this chapter practice session.
+    if(!early){
+     let applied=false;
+     const learningItem=b.items[shown];
+     const master=learningItem.kind==='vocab'?state().cards.find(x=>x.hanzi===learningItem.hanzi):null;
+     // Legacy or offline chapters can still have vocabulary that predates the
+     // automatic lexicon import. Persist any resulting card/tag additions.
+     const contentChange=learningItem.kind==='vocab'&&(!master||!master.tags.includes(`Reader/${b.title}`));
+     const ok=await change(d=>{applied=gradeReader(d,d.reader[novel],shown,grade,now);},false,contentChange);
+     if(!ok||!applied){toast('Daily new-vocabulary limit reached, or review is not due yet.');shown='';revealed=false;render();return;}
     }
-    session.set(shown,trial.get(shown));shown='';revealed=false;
+    recordPractice(session,shown,grade);
+    shown='';revealed=false;
    }else if(name==='reveal'){revealed=true;}
-   else if(['study','review','weak','earlier'].includes(name)){chapterDueSnapshots.clear();scope=['weak','earlier'].includes(name)?name:'gate';mode=name==='review'?'review':'study';shown='';revealed=false;}
+   else if(['study','review','weak','earlier'].includes(name)){closeModal?.();chapterDueSnapshots.clear();scope=['weak','earlier'].includes(name)?name:'gate';mode=name==='review'?'review':'study';shown='';revealed=false;}
    render();
   }catch(e){toast(e.message);}finally{busy=false;}
  }
@@ -359,6 +379,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    const checked=e.target.checked;await flush();
    if(await change(d=>{d.settings.readerHighlight=checked;},false))document.querySelector('#reader-pages')?.classList.toggle('show-weak',checked);
    else e.target.checked=state().settings.readerHighlight;
+  }
+  if(e.target.id==='reader-terms-in-book'){
+   const checked=e.target.checked;await flush();
+   if(await change(d=>{d.settings.readerTermsHighlight=checked;},false))document.querySelector('#reader-pages')?.classList.toggle('show-terms',checked);
+   else e.target.checked=state().settings.readerTermsHighlight!==false;
   }
   if(e.target.id==='reader-scope'){scope=e.target.value;shown='';revealed=false;chapterDueSnapshots.clear();render();}
   if(e.target.id==='reader-volume'){

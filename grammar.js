@@ -56,7 +56,7 @@ export function normalizeGrammar(source,fallbackId=null) {
   });
   if(acceptedOrders.length>12)throw new Error('Too many alternative orders');
   const id=clean(source.id||fallbackId||crypto.randomUUID(),120);if(id==='prototype'||Object.hasOwn(Object.prototype,id))throw new Error('Reserved grammar ID');
-  return {id,markup,pinyin:clean(source.pinyin,900),english,
+  return {id,markup,pinyin:clean(source.pinyin,900),english,...(source.readerPattern?{readerPattern:clean(source.readerPattern,120)}:{}),tags:Array.isArray(source.tags)?[...new Set(source.tags.filter(t=>typeof t==='string'&&t.length<=160))].slice(0,24):[],
     distractors,...(acceptedOrders.length?{acceptedOrders}:{}),particleTests:(source.particleTests||[]).map(normalizeParticle),source:clean(source.source||'My grammar',80),createdAt:clean(source.createdAt||new Date().toISOString(),80)};
 }
 export function initialGrammar(){return STARTER_GRAMMAR.map(g=>normalizeGrammar({...g,source:'Starter Mandarin',createdAt:'2026-11-16T00:00:00.000Z'}));}
@@ -68,7 +68,7 @@ const grammarTagCache=new WeakMap();
 export function grammarTags(grammar,cards) {
   const previous=grammarTagCache.get(grammar);
   if(previous?.cards===cards)return previous.tags;
-  const tags=[...new Set(linkedWords(grammar,cards).flatMap(c=>c.tags||[]))].sort();
+  const tags=[...new Set([...(grammar.tags||[]),...linkedWords(grammar,cards).flatMap(c=>c.tags||[])])].sort();
   grammarTagCache.set(grammar,{cards,tags});return tags;
 }
 export function requiredWords(grammar,cards) {

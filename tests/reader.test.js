@@ -20,11 +20,11 @@ test('all vocabulary is auto-selected, while high-priority terms/grammar survive
  assert.equal(first.keys.length,c.all.length+4);
  assert.ok(first.weak.includes('grammar-即使……也……'));
  assert.ok(first.weak.includes('vocab-斑驳'));
- assert.ok(!first.weak.includes('vocab-的'),'HSK1–4 words without weakness are assumed known');
+ assert.ok(first.weak.includes('vocab-的'),'No unstudied word is assumed known from HSK level');
  assert.ok(first.focus.has('term-希尔曼'));
  assert.ok(first.focus.has('grammar-一旦……就……'));
  assert.ok(!first.focus.has('vocab-斑驳'));
- s.settings.newWordsPerDay=0;const t=Date.UTC(2026,10,1);
+ s.settings.newWordsPerDay=2;const t=Date.UTC(2026,10,1);
  gradeReader(s,b,'vocab-斑驳',4,t);gradeReader(s,b,'term-蕴气式',4,t);
  assert.ok(s.cards.some(w=>w.hanzi==='斑驳'&&w.tags.includes('Reader/盘龙')));
  assert.ok(!s.cards.some(w=>w.hanzi==='希尔曼'||w.hanzi.includes('……')));
@@ -48,7 +48,7 @@ test('clear dictionary keeps drawing-only and grammar records; default reload ar
  clearDictionary(s);assert.equal(s.cards.length,2);assert.equal(s.grammar.length,1);
  assert.deepEqual(restored(s).cards,s.cards);reloadCards(s,master,replaceMaster);
  assert.ok(!s.cards.some(w=>w.id===extra.id));assert.equal(restored(s).schedules[extra.id].reps,1);
- acceptChapter(s,...chapters[0]);gradeReader(s,s.reader.panlong,'vocab-斑驳',3);assert.equal(s.schedules[extra.id].reps,1);assert.equal(restored(s).archived.cards.length,1);
+ acceptChapter(s,...chapters[0]);gradeReader(s,s.reader.panlong,'vocab-斑驳',3);assert.equal(s.schedules[extra.id].reps,1);assert.equal(restored(s).archived.cards.length,0,'Chapter import promotes the archived matching word without duplicating it');
 });
 test('chapter focus contains only existing terms/grammar, while legacy authored chapters remain importable',()=>{
  const p=structuredClone(chapters[0][0]);p.focus.push('absent');assert.throws(()=>validateChapter(p),/study list/);
@@ -86,13 +86,13 @@ test('reader screen offers automatic chapter study and preserves the imported na
  const key=html.match(/data-action="reader-grade" data-key="([^"]+)"/)[1];
  await action('grade',{key,grade:'4'});assert.equal(s.reader.panlong.history.length,1);
  const b=s.reader.panlong;b.chapters[0].unlocked=true;
- await action('read');assert.match(html,/id="reader-pages"/);
+ await action('read-anyway');assert.match(html,/id="reader-pages"/);
  const text=[...html.matchAll(/<p data-pid="[^"]+" data-index="\d+">(.*?)<\/p>/gs)].map(x=>x[1].replace(/<[^>]+>/g,'').replaceAll('&amp;','&'));
  const ref=fs.readFileSync(new URL('../reader/panlong/reference/001.txt',import.meta.url),'utf8');
  assert.equal([b.chapters[0].title,...text].join('\n\n'),ref);
  await action('define',{key:'term-乌山镇'});assert.equal(definition,'乌山镇');
- ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/);
- cached.clear();ui.reset();ui.view();await action('read');assert.match(html,/id="reader-pages"/);
+ ui.reset();ui.view();await action('read-anyway');assert.match(html,/id="reader-pages"/);
+ cached.clear();ui.reset();ui.view();await action('read-anyway');assert.match(html,/id="reader-pages"/);
  await upload(1);await upload(2);await upload(3);assert.equal(b.chapters.length,3);
 });
 test('focus cards are sampled six times more often than normal vocabulary, and early practice remains provisional',()=>{

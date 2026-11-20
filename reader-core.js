@@ -1,5 +1,7 @@
 import {defaultTagWeight} from './tag-weights.js';
 import {hskTagFor} from './hsk-tag-map.js';
+import {newVocabRemaining} from './study-engine.js';
+import {normalizeGrammar} from './grammar.js';
 import {scheduleReview} from './review-scheduler.js';
 
 const check=(ok,message)=>{if(!ok)throw Error(message);};
@@ -32,6 +34,22 @@ export function validateChapter(p){
  if(p.authored!==undefined)checkIds(p.authored,p.items); // Legacy chapter compatibility.
  const focus=chapterFocus(p,p.items);checkIds(focus,p.items);
  check(focus.every(id=>['term','grammar'].includes(p.items[id].kind)),'Chapter focus must contain only terms and grammar');
+ if(p.lexicon){
+  check(object(p.lexicon),'Invalid chapter lexicon');
+  for(const [name,kind] of [['vocabulary','vocab'],['grammar','grammar'],['terms','term']]){
+   checkIds(p.lexicon[name],p.items);
+   check(p.lexicon[name].every(k=>p.items[k].kind===kind),'Incorrect chapter lexicon category');
+   check(p.lexicon[name].length===Object.values(p.items).filter(x=>x.kind===kind).length,'Incomplete chapter lexicon');
+  }
+ }
+ if(p.grammarCards){
+  check(object(p.grammarCards),'Invalid chapter grammar cards');
+  for(const [id,g] of Object.entries(p.grammarCards)){
+   check(p.items[id]?.kind==='grammar'&&object(g),'Invalid chapter grammar example');
+   normalizeGrammar({...g,id:'reader-check-'+id});
+  }
+  check(Object.keys(p.grammarCards).length===Object.values(p.items).filter(x=>x.kind==='grammar').length,'Chapter grammar examples missing');
+ }
  check(Array.isArray(p.paragraphs)&&p.paragraphs.length>0,'This chapter has no paragraphs');
  const used=new Set(),anchors=new Set();
  for(const row of p.paragraphs){
@@ -50,8 +68,58 @@ export function validateChapter(p){
 }
 export function paragraphText(p,row){return row.tokens.map(t=>typeof t==='string'?t:(t[1]??p.items[t[0]].hanzi)).join('');}
 export function chapterText(p){return [p.title,...p.paragraphs.map(r=>paragraphText(p,r))].join('\n\n');}
+export function importChapterLexicon(s,p){
+ const tag=`Reader/${p.book}`;
+ s.settings??={};s.settings.tagWeights??={};s.settings.tagWeights[tag]??=defaultTagWeight(tag);
+ const byWord=new Map(s.cards.map(c=>[c.hanzi,c]));
+ const ids=new Set(s.cards.map(c=>c.id));
+ for(const [key,item] of Object.entries(p.items)){
+  if(item.kind!=='vocab')continue;
+  let card=byWord.get(item.hanzi);
+  if(!card){
+   check(s.cards.length<20000,'Dictionary limit reached');
+   let id=`reader-${p.novel}-${key}`;let suffix=1;
+   while(ids.has(id))id=`reader-${p.novel}-${key}-${suffix++}`;
+   ids.add(id);
+   const hsk=hskTagFor(item.hanzi);
+   const archived=s.archived?.cards?.find(w=>w.hanzi===item.hanzi);
+   card=archived?{...archived,tags:[...new Set([...archived.tags,tag])]}:{id,hanzi:item.hanzi,pinyin:item.pinyin,english:item.english,tags:[tag,...(hsk?[`HSK/${hsk.toUpperCase()}`]:[])],source:'Reader',createdAt:new Date().toISOString()};
+   if(archived)s.archived.cards=s.archived.cards.filter(w=>w.hanzi!==item.hanzi);
+   s.cards.push(card);byWord.set(card.hanzi,card);
+  }else if(!card.tags.includes(tag)){
+   // Retain IDs, definitions and all accumulated learning history.
+   card.tags=[...card.tags,tag];
+  }
+  for(const t of card.tags)s.settings.tagWeights[t]??=defaultTagWeight(t);
+ }
+ if(!p.grammarCards)return;
+ const known=new Map(s.grammar.map(g=>[g.markup,g]));
+ const existingIds=new Set(s.grammar.map(g=>g.id));
+ for(const [key,example] of Object.entries(p.grammarCards)){
+  const markup=example.markup;
+  const pattern=p.items[key]?.hanzi;
+  let card=known.get(markup);
+  if(card){
+   // Previously existing grammar is still part of the novel's lexicon.
+   // Do not reset its score or duplicate the card.
+   card.tags=[...new Set([...(card.tags||[]),tag])];
+   card.readerPattern??=pattern;
+  }else{
+   let id=`reader-grammar-${p.novel}-${key}`,i=1;
+   while(existingIds.has(id))id=`reader-grammar-${p.novel}-${key}-${i++}`;
+   card=normalizeGrammar({...example,id,readerPattern:pattern,source:`Reader/${p.book}`,tags:[tag]});
+   s.grammar.push(card);known.set(markup,card);existingIds.add(id);
+  }
+  // Preserve reviews made in previous reader versions, but only when the
+  // corresponding general grammar entry has not been studied yet.
+  const legacy=s.reader?.[p.novel]?.progress?.[key];
+  s.skillSchedules??={};s.skillSchedules.grammar??={};
+  if(legacy&&!s.skillSchedules.grammar[card.id])s.skillSchedules.grammar[card.id]=structuredClone(legacy);
+ }
+}
 export function acceptChapter(s,p,digest){
  const all=validateChapter(p);
+ importChapterLexicon(s,p);
  s.reader??={};
  const b=s.reader[p.novel]??{title:p.book,chapters:[],items:{},progress:{},history:[],current:1};
  const next=b.chapters.length+1;
@@ -114,15 +182,14 @@ export function recordPractice(evidence,key,grade){
 }
 export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const byWord=new Map([...(s.archived?.cards||[]),...s.cards].map(w=>[w.hanzi,w.id]));
- const schedule=key=>{const w=b.items[key];return w.kind==='vocab'?s.schedules[byWord.get(w.hanzi)]:b.progress[key];};
+ const byGrammar=new Map(s.grammar.filter(g=>g.readerPattern).map(g=>[g.readerPattern,g.id]));
+ const schedule=key=>{const w=b.items[key];return w.kind==='vocab'?s.schedules[byWord.get(w.hanzi)]:w.kind==='grammar'?(s.skillSchedules?.grammar?.[byGrammar.get(w.hanzi)]||b.progress[key]):b.progress[key];};
  const score=key=>schedule(key)?.score||0;
  const focused=new Set(chapterFocus(c,b.items));
  const keys=[...new Set([...c.all,...focused])];
- // HSK1–4 is the assumed general vocabulary baseline. A recorded low
- // mastery score overrides that assumption; advanced and unclassified words
- // are automatically included in preparation until learned.
- const background=k=>b.items[k].kind==='vocab'&&/^hsk[1-4]$/.test(hskTagFor(b.items[k].hanzi)||'')&&!schedule(k);
- const qualifies=k=>background(k)||score(k)>=1.5||evidence.get(k)?.goods>=3||evidence.get(k)?.easy;
+ // No inferred HSK proficiency: only actual learning records or this session's
+ // provisional chapter evidence can make an item ready.
+ const qualifies=k=>score(k)>=1.5||evidence.get(k)?.goods>=3||evidence.get(k)?.easy;
  const due=k=>schedule(k)&&Date.parse(schedule(k).dueAt)<=now;
  const group=k=>due(k)?0:schedule(k)?2:1;
  const order=(a,b)=>group(a)-group(b)||(evidence.get(a)?.turn||0)-(evidence.get(b)?.turn||0)||
@@ -131,9 +198,12 @@ export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const selected=new Set(keys);
  const previous=new Set(b.chapters.slice(0,c.number-1).flatMap(ch=>[...ch.all,...chapterFocus(ch,b.items)]));
  const earlier=[...previous].filter(k=>!selected.has(k)&&due(k)).sort(order);
- const queue=[...new Set([...earlier,...keys.filter(k=>due(k)||!qualifies(k))])].sort(order);
+ const remaining=newVocabRemaining(s,now);
+ const quotaBlocked=k=>remaining<=0&&b.items[k].kind==='vocab'&&!schedule(k);
+ const queue=[...new Set([...earlier,...keys.filter(k=>!quotaBlocked(k)&&(due(k)||!qualifies(k)) )])].sort(order);
+ const blocked=keys.filter(k=>quotaBlocked(k)&&!qualifies(k));
  const focus=new Set([...focused,...b.chapters.slice(0,c.number-1).flatMap(ch=>chapterFocus(ch,b.items))]);
- return {weak,ready:weak.length===0,keys,earlier,queue,score,group,qualifies,focus};
+ return {weak,ready:weak.length===0,keys,earlier,queue,blocked,score,schedule,group,qualifies,focus};
 }
 // Chapter-specific terms and grammar receive 6x selection weight. Due cards
 // still receive a modest boost, without permanently starving other vocabulary.
@@ -147,8 +217,10 @@ export function pickReaderItem(queue,analysis,random=Math.random){
 export function gradeReader(s,b,key,grade,now=Date.now()){
  const item=b.items[key];check(item&&integer(grade)&&grade<=4,'Invalid reader grade');
  const existing=item.kind==='vocab'?(s.cards.find(c=>c.hanzi===item.hanzi)||s.archived?.cards?.find(c=>c.hanzi===item.hanzi)):null;
- const previous=item.kind==='vocab'?s.schedules[existing?.id]:b.progress[key];
+ const grammar=item.kind==='grammar'?s.grammar.find(g=>g.readerPattern===item.hanzi):null;
+ const previous=item.kind==='vocab'?s.schedules[existing?.id]:grammar?(s.skillSchedules?.grammar?.[grammar.id]||b.progress[key]):b.progress[key];
  if(previous&&Date.parse(previous.dueAt)>now)return false;
+ if(!previous&&item.kind==='vocab'&&newVocabRemaining(s,now)<=0)return false;
  const at=new Date(now).toISOString();
  if(item.kind==='vocab'){
   const tag='Reader/'+b.title;
@@ -167,9 +239,23 @@ export function gradeReader(s,b,key,grade,now=Date.now()){
   const prev=s.schedules[card.id],after=scheduleReview(prev,grade,now,s.settings);
   s.schedules[card.id]=after;
   s.history.push({id:crypto.randomUUID(),cardId:card.id,mode:'words',grade,score:after.score,at,first:!prev,nextDueAt:after.dueAt,source:'Reader'});
- }else b.progress[key]=scheduleReview(b.progress[key],grade,now,s.settings);
+ }else if(grammar){
+  const after=scheduleReview(previous,grade,now,s.settings);
+  s.skillSchedules.grammar[grammar.id]=after;
+  // Retain the chapter-level record for old backups and the Reader's own
+  // history, while sharing the mastery schedule with main Grammar practice.
+  b.progress[key]=after;
+  s.grammarHistory.push({id:crypto.randomUUID(),grammarId:grammar.id,mode:'grammar',grade,score:after.score,at,nextDueAt:after.dueAt,correct:grade>=3,source:'Reader'});
+ }else b.progress[key]=scheduleReview(previous,grade,now,s.settings);
  b.history.push({key,grade,at});
  return true;
+}
+export function readerGradePreview(s,b,key,now=Date.now()){
+ const item=b.items[key];if(!item)return [];
+ const card=item.kind==='vocab'?s.cards.find(w=>w.hanzi===item.hanzi):null;
+ const grammar=item.kind==='grammar'?s.grammar.find(g=>g.readerPattern===item.hanzi):null;
+ const previous=item.kind==='vocab'?s.schedules[card?.id]:grammar?(s.skillSchedules?.grammar?.[grammar.id]||b.progress[key]):b.progress[key];
+ return [1,2,3,4].map(grade=>scheduleReview(previous,grade,now,s.settings));
 }
 export function resetReaderProgress(s){
  for(const b of Object.values(s.reader||{})){
