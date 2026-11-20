@@ -1,4 +1,4 @@
-import {runUpdateButton,returnToLauncher} from './app-host-bridge.js';
+import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
@@ -713,7 +713,7 @@ async function speechAction(action,el){
 function renderSettings(){const s=state.settings,draft=pendingFont||lastAcceptedFont;
  const group=(title,content)=>`<details class="settings-section"><summary><span>${title}</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-section-body">${content}</div></details>`;
   return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1></div>
-<div class="panel stack exit-action-panel"><button type="button" class="btn btn-secondary btn-full" data-action="exit-to-launcher">← Save &amp; Exit to My Apps</button><p class="subtle">Save any pending reader position and return to your apps. Your study progress and unfinished sessions are preserved locally.</p></div>
+${hasLauncherHost()?`<div class="panel stack exit-action-panel"><button type="button" class="btn btn-secondary btn-full" data-action="exit-to-launcher">← Save &amp; Exit to My Apps</button><p class="subtle">Save any pending reader position and return to your apps. Your study progress and unfinished sessions are preserved locally.</p></div>`:''}
 ${group('Appearance',`<label class="settings-row">Theme<select data-setting="theme">${options([['system','System'],['light','Light'],['dark','Dark']],s.theme||'system')}</select></label>`)}${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
    <div class="panel"><div class="settings-row"><div><strong>New vocabulary words per day</strong><small>Leave empty for unlimited. Zero blocks new words but not due reviews. Resets each local calendar day.</small></div><input type="number" min="0" max="20000" placeholder="Unlimited" data-setting="newWordsPerDay" value="${s.newWordsPerDay??''}" aria-label="New vocabulary words per day"></div>
     <div class="settings-row"><div><strong>Target retention</strong><small>FSRS retention target and Auto urgency; score intervals are set above</small></div><select data-setting="desiredRetention">${options([[.85,'85%'],[.9,'90%'],[.95,'95%']],s.desiredRetention)}</select></div>

@@ -1,3 +1,30 @@
+# Cíyán (词言) v0.8.18
+
+Cíyán remains an offline-first Mandarin learning PWA with vocabulary review,
+grammar, graded reader, drawing practice and typography settings. It has two
+**independent deployment targets** from the same repository:
+
+- **Standalone Ciyan:** `dist/standalone/` — opens directly into the Study
+  home screen, uses Ciyan's own icon and service worker, and does not display
+  AppLauncher's My Workspace or Save & Exit action.
+- **AppLauncher module:** `dist/ciyan/` — only Ciyan's application modules,
+  styles and assets. AppLauncher v0.1.2 supplies the installed PWA shell,
+  update button and Save & Exit behavior, without any duplicated launcher code.
+
+Build both with `python3 package.py` (equivalently `npm run build`). To deploy
+standalone Ciyan through Cloudflare Workers Builds, configure the repository
+root `/`, build command `python3 package.py`, deploy command `npx wrangler deploy`.
+The root `wrangler.jsonc` points at `./dist/standalone` and names the worker
+`ciyan`, preserving its existing workers.dev address. For Cloudflare Pages,
+set the output directory to `dist/standalone`.
+
+Use `npm run serve` to preview standalone Ciyan locally. AppLauncher builds
+its module by calling Ciyan's `package.py` within the checked-out submodule.
+**There is no automatic study-data synchronization** between separately
+installed iOS web apps; use Ciyan's full backup export/restore if required.
+
+## Earlier release history
+
 # Cíyán (词言) v0.8.8
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,

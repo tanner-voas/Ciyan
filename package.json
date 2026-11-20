@@ -1,12 +1,12 @@
 {
   "name": "ciyan-mandarin-pwa",
-  "version": "0.8.17",
+  "version": "0.8.18",
   "private": true,
   "type": "module",
-  "description": "Ciyan app module for the AppLauncher PWA, offline-first Mandarin learning.",
+  "description": "Offline-first Mandarin learning PWA: standalone and AppLauncher module builds.",
   "scripts": {
     "build": "python3 package.py",
     "test": "node --test tests/*.test.js",
-    "serve": "python3 -m http.server 8765"
+    "serve": "python3 -m http.server 8765 --directory dist/standalone"
   }
 }

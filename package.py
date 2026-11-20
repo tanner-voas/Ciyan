@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
-"""Build Ciyan application assets in dist/ciyan for the AppLauncher host.
+"""Build both deployable outputs without mixing their PWA shells.
 
-Usage: python3 package.py
+- dist/ciyan: Ciyan app module for AppLauncher (no HTML, manifest or SW).
+- dist/standalone: independent Ciyan PWA, directly deployed by Wrangler.
 
-This copies only deployable files. No dependencies, command-line arguments,
-or build tooling are required. Run it from any working directory.
+Usage: python3 package.py (also npm run build)
 """
 
 from pathlib import Path
+import hashlib
+import json
 import shutil
 
 ROOT = Path(__file__).resolve().parent
 TARGET = ROOT / "dist" / "ciyan"
+STANDALONE = ROOT / "dist" / "standalone"
+STANDALONE_SHELL = (
+    "index.html", "manifest.webmanifest", "standalone-boot.js",
+    "pwa-update.js", "viewport-lock.js", "_headers",
+)
 STATIC_FILES = (
     "styles.css", "app-host-bridge.js",
     "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
@@ -55,7 +62,28 @@ def main() -> None:
     for name in STATIC_DIRS:
         shutil.copytree(ROOT / name, TARGET / name)
 
+    # The standalone build consumes the exact same application asset bytes,
+    # then layers on only its own entry point and PWA infrastructure.
+    if STANDALONE.exists():
+        shutil.rmtree(STANDALONE)
+    shutil.copytree(TARGET, STANDALONE)
+    for name in STANDALONE_SHELL:
+        shutil.copy2(ROOT / name, STANDALONE / name)
+    shell = [file for file in sorted(STANDALONE.rglob("*"))
+             if file.is_file() and file.suffix.lower() in
+             {".html", ".css", ".js", ".webmanifest", ".png", ".svg", ".woff", ".woff2", ".ttf", ".otf"}]
+    digest = hashlib.sha256()
+    for file in shell:
+        digest.update(file.relative_to(STANDALONE).as_posix().encode() + b"\0")
+        digest.update(hashlib.sha256(file.read_bytes()).digest())
+    cache = f"ciyan-shell-v0.8.18-{digest.hexdigest()[:16]}"
+    paths = ["./" + file.relative_to(STANDALONE).as_posix() for file in shell]
+    template = (ROOT / "sw.standalone.template.js").read_text(encoding="utf-8")
+    worker = template.replace("__SHELL_CACHE_NAME__", cache).replace(
+        "__PRECACHE_ASSETS__", json.dumps(paths, ensure_ascii=False, separators=(",", ":")))
+    (STANDALONE / "sw.js").write_text(worker, encoding="utf-8")
     print(f"Ciyan app module build: {TARGET}")
+    print(f"Ciyan standalone PWA build: {STANDALONE} (offline cache {cache})")
 
 
 if __name__ == "__main__":

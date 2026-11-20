@@ -11,7 +11,7 @@ import {APP_VERSION,prepareVersionedBackup} from '../backup-versions.js';
 
 const content=path=>fs.readFileSync(new URL(path,import.meta.url),'utf8');
 test('v0.7.9 includes 11 linear Panlong chapters under V01; existing three digests unchanged',()=>{
- assert.equal(APP_VERSION,'0.8.17');
+ assert.equal(APP_VERSION,'0.8.18');
  assert.equal(catalog.length,26);
  const entries=catalog.filter(c=>c.novel==='panlong');
  assert.deepEqual(entries.map(c=>c.number),Array.from({length:23},(_,i)=>i+1));
@@ -94,5 +94,5 @@ test('custom author and volume metadata survive backup without adding new progre
  assert.ok(!JSON.stringify(saved.reader).includes('paragraphs'));
  assert.ok(!JSON.stringify(saved.readerCustomIndex).includes('tokens'));
  const older=defaultState();older.appVersion='0.7.8';
- assert.equal(prepareVersionedBackup(older).appVersion,'0.8.17');
+ assert.equal(prepareVersionedBackup(older).appVersion,'0.8.18');
 });
