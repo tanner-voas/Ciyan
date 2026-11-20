@@ -133,7 +133,7 @@ export function acceptChapter(s,p,digest){
   b.items[key]={kind:c.kind,hanzi:c.hanzi,pinyin:c.pinyin,english:c.english};
  }
  let position=old?.position;
- if(position&&old.digest!==digest){
+ if(position&&(old.digest!==digest||old.boundaries!==p.boundaries)){
   const row=p.paragraphs.find(r=>r.id===position.id);
   if(row){
    let offset=0,wordIndex=-1,restored=null;
@@ -149,7 +149,7 @@ export function acceptChapter(s,p,digest){
   const index=Math.min(position.index||0,p.paragraphs.length-1);
   position={id:p.paragraphs[index].id,index,offset:0};
  }
- b.chapters[p.number-1]={number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null};
+ b.chapters[p.number-1]={...(p.boundaries?{boundaries:p.boundaries}:{}),number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null};
  b.current=p.number;s.reader[p.novel]=b;
 }
 export function validateReader(books={}){

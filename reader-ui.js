@@ -1,3 +1,4 @@
+import {normalizeBoundaries} from './reader-boundaries.js';
 import {voiceTuning} from './reader-speech.js';
 import {catalog,downloadChapter} from './chapter-download.js';
 import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,chaptersInVolume,volumeLabel} from './reader-library.js';
@@ -24,6 +25,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  function evidence(){const key=`${novel}:${chapter()?.digest||number}`;if(!sessions.has(key))sessions.set(key,new Map());return sessions.get(key);}
  const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now(),evidence());
  const memory=new Map();
+ function parseText(bytes){
+  const raw=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));validateChapter(raw);
+  return normalizeBoundaries(raw,state());
+ }
  const contentDigest=async bytes=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),n=>n.toString(16).padStart(2,'0')).join('');
  const cacheName='ciyan-reader-text-v1';
  const cacheKey=d=>new URL('./reader-content/'+d,location.href).href;
@@ -45,7 +50,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const needed=catalog.filter(e=>e.novel===entry.novel&&e.number<=entry.number&&(e.number>known.length||known[e.number-1]?.digest!==e.digest&&knownMasterDigest(e,known[e.number-1]?.digest))).sort((a,b)=>a.number-b.number);
   const imported=[];
   for(const e of needed){
-   const bytes=await downloadChapter(e),p=JSON.parse(new TextDecoder().decode(bytes));
+   const bytes=await downloadChapter(e),p=parseText(bytes);
    validateChapter(p);
    await (await caches.open(cacheName)).put(cacheKey(e.digest),new Response(bytes));
    imported.push({p,digest:e.digest});
@@ -53,6 +58,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   await flush();
   if(imported.length){
    if(!await change(d=>{for(const {p,digest} of imported)acceptChapter(d,p,digest);},false,true))return false;
+   memory.clear();
    for(const {p,digest} of imported)memory.set(digest,p);
   }
   return true;
@@ -76,10 +82,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      }
     }
     const ch=state().reader?.[id]?.chapters[n-1];
-    if(ch)await cached(ch);
+    if(ch)await cached(ch,true);
    }else{
     const ch=state().reader?.[id]?.chapters[n-1];
-    if(!ch||!(await cached(ch))){
+    if(!ch||!(await cached(ch,true))){
      mode='review';render();if(!automatic)showMissing(entry);return;
     }
    }
@@ -209,18 +215,23 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(isReading())return body;
   return `${chooser}<div class="reader-tabs">${tabs}</div>${body}`;
  }
- async function cached(c){
-  if(memory.has(c.digest))return memory.get(c.digest);
+ async function cached(c,refresh=false){
+  if(!refresh&&memory.has(c.digest))return memory.get(c.digest);
   const cache=await caches.open(cacheName);
   let res=await cache.match(cacheKey(c.digest));
   const hosted=catalog.find(e=>e.digest===c.digest);
+  if(!res&&memory.has(c.digest))return memory.get(c.digest);
   if(!res&&hosted){
    try{res=new Response(await downloadChapter(hosted));await cache.put(cacheKey(c.digest),res.clone());}
    catch(e){toast(e.message);return;}
   }
   if(res){const bytes=await res.arrayBuffer();
    if(await contentDigest(bytes)!==c.digest)throw Error('Cached chapter changed. Reload its original file.');
-   const p=JSON.parse(new TextDecoder().decode(bytes));validateChapter(p);memory.set(c.digest,p);return p;}
+   const p=parseText(bytes);validateChapter(p);
+   if(c.boundaries!==p.boundaries){
+    if(!await change(d=>{const b=d.reader[p.novel],current=b.current;acceptChapter(d,p,c.digest);b.current=current;},false,true))return;
+   }
+   memory.set(c.digest,p);return p;}
  }
  async function flush(){
   while(writingPosition)await writingPosition;
@@ -289,7 +300,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    try{
     const file=input.files[0];if(!file)return;
     if(file.size>8*1024*1024)throw Error('Chapter exceeds 8 MiB');
-    const bytes=await file.arrayBuffer(),p=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+    const bytes=await file.arrayBuffer(),p=parseText(bytes);
     const digest=await contentDigest(bytes);
     validateChapter(p);
     if(!matchesRequestedChapter(p,requestedUpload,digest))
@@ -300,7 +311,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     await (await caches.open(cacheName)).put(cacheKey(digest),new Response(bytes));
     await flush();
     if(await change(d=>{acceptChapter(d,p,digest);registerCustomChapter(d,p,digest);},false,true)){
-     memory.set(digest,p);novel=p.novel;number=p.number;mode='review';shown='';revealed=false;attemptedInitial=`${novel}:${number}`;requestedUpload=null;closeModal?.();render();toast('Chapter loaded.');
+     memory.clear();memory.set(digest,p);novel=p.novel;number=p.number;mode='review';shown='';revealed=false;attemptedInitial=`${novel}:${number}`;requestedUpload=null;closeModal?.();render();toast('Chapter loaded.');
     }
    }catch(e){toast(e.message);}finally{input.remove?.();}
   };input.click();

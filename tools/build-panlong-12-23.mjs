@@ -53,7 +53,9 @@ for(const [alternate,base] of Object.entries(aliases)){
 }
 const expression=new RegExp('('+[...special.keys()].sort((a,b)=>b.length-a.length||a.localeCompare(b))
  .map(word=>word.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gu');
-const segmenter=new Intl.Segmenter('zh-Hans',{granularity:'word'});
+const maxWordLength=Math.max(...[...dict.keys()].map(word=>word.length));
+// Resolve each continuous Han run against the full dictionary. General Chinese
+// segmentation can put an artificial boundary in the middle of a defined word.
 const unknown=new Map();
 const getWords=text=>{
  // Prefer longest annotated compounds. A one-character fallback is allowed
@@ -61,7 +63,7 @@ const getWords=text=>{
  const memo=new Array(text.length+1);memo[text.length]={cost:0,words:[]};
  for(let pos=text.length-1;pos>=0;pos--){
   let best=null;
-  for(let end=pos+1;end<=Math.min(text.length,pos+13);end++){
+  for(let end=pos+1;end<=Math.min(text.length,pos+maxWordLength);end++){
    const word=text.slice(pos,end),known=dict.has(word);
    if(!known&&end!==pos+1||!memo[end])continue;
    const cost=memo[end].cost+(known?0:250)+1/word.length**2;
@@ -74,8 +76,7 @@ const getWords=text=>{
 const tokensFor=(s)=>{
  const tokens=[];
  for(const piece of s.split(expression).filter(Boolean)){
-  const sub=dict.has(piece)?[piece]:[...segmenter.segment(piece)].map(r=>r.segment);
-  for(const word of sub)for(const part of (word.match(/\p{Script=Han}+|[^\p{Script=Han}]+/gu)||[])){
+  for(const part of (piece.match(/\p{Script=Han}+|[^\p{Script=Han}]+/gu)||[])){
    if(!/\p{Script=Han}/u.test(part)){tokens.push(part);continue;}
    for(const term of getWords(part)){
     const card=dict.get(term);

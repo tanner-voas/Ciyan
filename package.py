@@ -15,7 +15,7 @@ TARGET = ROOT / "dist" / "ciyan"
 STATIC_FILES = (
     "index.html",
     "styles.css",
-    "app.js", "reader-core.js", "reader-ui.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
+    "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js",
     "study-engine.js", "study-progress.js",
     "tag-weights.js",

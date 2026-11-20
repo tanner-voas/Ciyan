@@ -30,7 +30,9 @@ for(const [word,english] of Object.entries(focusSpec.termOverrides))if(dictionar
 const aliases=JSON.parse(read('aliases.json'));
 for(const [alias,name] of Object.entries(aliases))if(dictionary.has(name)){dictionary.set(alias,dictionary.get(name));specialWords.add(alias);}
 const wordRegex=new RegExp('('+[...specialWords].sort((a,b)=>b.length-a.length).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')','gu');
-const segmenter=new Intl.Segmenter('zh-Hans',{granularity:'word'});
+const maxWordLength=Math.max(...[...dictionary.keys()].map(word=>word.length));
+// Resolve each continuous Han run against the full dictionary. General Chinese
+// segmentation can put an artificial boundary in the middle of a defined word.
 const missing=new Set();
 const tokenizeChinese=text=>{
  if(dictionary.has(text))return [text];
@@ -38,7 +40,7 @@ const tokenizeChinese=text=>{
  // individual characters when a recognizable expression is available.
  const dp=Array(text.length+1).fill(null);dp[text.length]={cost:0,words:[]};
  for(let i=text.length-1;i>=0;i--){
-  for(let j=i+1;j<=Math.min(text.length,i+8);j++){
+  for(let j=i+1;j<=Math.min(text.length,i+maxWordLength);j++){
    const part=text.slice(i,j),item=dictionary.get(part);
    if(!item&&j!==i+1)continue;
    if(!dp[j])continue;
@@ -52,9 +54,8 @@ const tokenizeChinese=text=>{
 const tokensFor=text=>{
  const tokens=[];
  for(const piece of text.split(wordRegex).filter(Boolean)){
-  const words=dictionary.has(piece)?[piece]:Array.from(segmenter.segment(piece),x=>x.segment);
-  for(const word of words){
-   for(const part of word.match(/\p{Script=Han}+|[^\p{Script=Han}]+/gu)||[]){
+  {
+   for(const part of piece.match(/\p{Script=Han}+|[^\p{Script=Han}]+/gu)||[]){
     if(!/\p{Script=Han}/u.test(part)){tokens.push(part);continue;}
     for(const chunk of tokenizeChinese(part)){
      const item=dictionary.get(chunk);
