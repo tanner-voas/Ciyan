@@ -10,7 +10,7 @@ const progress=(s,session)=>sessionDueProgress(s,session,now);
 const due=(minutes=0)=>({score:2,intervalMinutes:60,lastReviewedAt:'2026-11-19T08:00:00.000Z',dueAt:new Date(now+minutes*60000).toISOString()});
 
 test('v0.8.8 progress renders only Due when the new-vocabulary cap is unlimited',()=>{
- assert.equal(APP_VERSION,'0.8.16');
+ assert.equal(APP_VERSION,'0.8.17');
  const html=studyProgressMarkup({done:2,total:5},43,null);
  assert.match(html,/study-mini-label">Due/);
  assert.doesNotMatch(html,/study-mini-label">New/);
@@ -79,14 +79,11 @@ test('v0.8.7 backups migrate by identity into v0.8.8',()=>{
  const backup=makeBackup(state);backup.appVersion='0.8.7';backup.state.appVersion='0.8.7';
  const original=structuredClone(backup.state);
  const migrated=prepareVersionedBackup(backup);
- assert.equal(migrated.appVersion,'0.8.16');assert.deepEqual(migrated.state,original);
+ assert.equal(migrated.appVersion,'0.8.17');assert.deepEqual(migrated.state,original);
  assert.equal(parseBackup(backup).settings.newWordsPerDay,7);
 });
 
-test('offline shell caches the new progress module and uses a fresh v0.8.8 cache',()=>{
- const sw=fs.readFileSync(new URL('../sw.js',import.meta.url),'utf8');
+test('Ciyan app package includes progress module for host precaching',()=>{
  const pkg=fs.readFileSync(new URL('../package.py',import.meta.url),'utf8');
- assert.match(sw,/ciyan-shell-v8\.16/);
- assert.match(sw,/\.\/study-progress\.js/);
  assert.match(pkg,/study-progress\.js/);
 });

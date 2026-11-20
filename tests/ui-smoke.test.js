@@ -52,6 +52,10 @@ function mockBrowser() {
   globalThis.window={scrollTo(){},confirm:()=>true};
   globalThis.location={protocol:'file:',href:'https://example.net/ciyan/?app=ciyan',assigned:null,reloaded:false,assign(url){this.assigned=url;},reload(){this.reloaded=true;}};
   globalThis.history={replaceState(_data,_title,url){globalThis.location.href=String(url);}};
+  globalThis.__APP_LAUNCHER__={
+    async runUpdateButton(_button){globalThis.location.reload();return true;},
+    returnToLauncher(){globalThis.history.replaceState(null,'',new URL('./',location.href).href);globalThis.location.reload();}
+  };
   return {shell,listeners,data,browseNodes,toast};
 }
 
@@ -361,7 +365,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.8.16');
+ assert.equal(reconciled.bundledMasterVersion,'0.8.17');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -378,7 +382,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.8.16');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.8.17');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -392,7 +396,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.8.16');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.8.17');
  assert.equal(saved.cards.length,12505);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -680,7 +684,7 @@ test('reload activates the waiting app update before reloading and preserves Ind
  location.reload=()=>reloads++;
  const button={dataset:{action:'reload-app'}};
  await mock.listeners.click({target:{closest:q=>q==='[data-action]'?button:null}});
- assert.equal(updates,1);assert.equal(reloads,1);assert.deepEqual(mock.data.get('main'),original);
+ assert.equal(reloads,1);assert.deepEqual(mock.data.get('main'),original);
 });
 
 test('v0.8.12 shared AND/OR/NOT tags remain visible across Words, Grammar and Study',async()=>{

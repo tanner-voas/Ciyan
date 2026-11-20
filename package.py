@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the static Cloudflare Pages upload folder in dist/ciyan.
+"""Build Ciyan application assets in dist/ciyan for the AppLauncher host.
 
 Usage: python3 package.py
 
@@ -13,8 +13,7 @@ import shutil
 ROOT = Path(__file__).resolve().parent
 TARGET = ROOT / "dist" / "ciyan"
 STATIC_FILES = (
-    "index.html", "launcher.js", "pwa-update.js", "viewport-lock.js",
-    "styles.css",
+    "styles.css", "app-host-bridge.js",
     "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js",
     "study-engine.js", "study-progress.js",
@@ -37,9 +36,6 @@ STATIC_FILES = (
     "master.js",
     "session-controls.js",
     "hsk-tag-map.js",
-    "sw.js",
-    "manifest.webmanifest",
-    "_headers",
 )
 STATIC_DIRS = ("icons", "chapters")
 
@@ -59,7 +55,7 @@ def main() -> None:
     for name in STATIC_DIRS:
         shutil.copytree(ROOT / name, TARGET / name)
 
-    print(f"Cloudflare Pages upload folder: {TARGET}")
+    print(f"Ciyan app module build: {TARGET}")
 
 
 if __name__ == "__main__":

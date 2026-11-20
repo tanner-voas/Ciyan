@@ -1,13 +1,12 @@
 {
   "name": "ciyan-mandarin-pwa",
-  "version": "0.8.16",
+  "version": "0.8.17",
   "private": true,
   "type": "module",
-  "description": "Offline Mandarin FSRS flashcards, exportable local progress, no dependencies.",
+  "description": "Ciyan app module for the AppLauncher PWA, offline-first Mandarin learning.",
   "scripts": {
     "build": "python3 package.py",
     "test": "node --test tests/*.test.js",
-    "serve": "python3 -m http.server 8765",
-    "deploy:worker": "npx --yes wrangler@4 deploy"
+    "serve": "python3 -m http.server 8765"
   }
 }

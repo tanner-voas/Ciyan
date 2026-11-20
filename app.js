@@ -1,4 +1,4 @@
-import {runUpdateButton} from './pwa-update.js';
+import {runUpdateButton,returnToLauncher} from './app-host-bridge.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
@@ -1230,8 +1230,7 @@ async function saveAndExitToLauncher(button){
   // Changing the URL in-place before reloading keeps iOS in the installed
   // PWA rather than handing a cross-document link to Safari. Reloading also
   // fully destroys the Cíyán runtime before the Home Screen starts.
-  history.replaceState(null,'',new URL('./',location.href).href);
-  location.reload();
+  await returnToLauncher();
  }catch(error){
   toast(`Exit cancelled: ${error.message}`);
   button.disabled=false;
@@ -1290,7 +1289,6 @@ async function boot(){try{
   studyMode=state.activeGrammarSession?'grammar':'words';render();
   if(fontError)fontUnavailableDialog(fontError.selected,fontError.validation);
   if(state.activePractice&&!state.activePractice.current)void settlePractice();
-  if('serviceWorker' in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
 }catch(error){app.innerHTML=`<div class="loading-state" style="text-align:center"><div class="brand-mark">!</div>
   <h2>Local storage unavailable</h2><p>${esc(error.message)}</p><p>Use Safari or the installed Home Screen app, not a private tab or file preview. No data was reset.</p>

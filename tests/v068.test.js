@@ -15,7 +15,7 @@ function fakeDocument(){
  return doc;
 }
 test('v0.6.8 has exactly seven independent selectable fonts, including the standard iPhone font',()=>{
- assert.equal(APP_VERSION,'0.8.16');
+ assert.equal(APP_VERSION,'0.8.17');
  assert.deepEqual(FONT_IDS,['print','xiaowei','kuaile','zhushi','mashan','muyao','zhimang']);
  assert.equal(Object.keys(FONT_CATALOG).length,6);
  assert.deepEqual(normalizeFontSettings({enabledFonts:[]}),{enabledFonts:[]});
@@ -67,9 +67,8 @@ test('font CSS is only one rule per web font, with no codepoint-based font mixin
  assert.match(css,/CiyanMaShan/);assert.match(css,/CiyanZhuShi/);assert.doesNotMatch(css,/CiyanMixed/);
  assert.doesNotMatch(css,/unicode-range/);
  assert.equal((css.match(/@font-face/g)||[]).length,2);
- const manifest=fs.readFileSync(new URL('../sw.js',import.meta.url),'utf8');
  const packagePy=fs.readFileSync(new URL('../package.py',import.meta.url),'utf8');
- assert.doesNotMatch(manifest,/mixed-fonts\.css/);assert.doesNotMatch(packagePy,/mixed-fonts\.css/);
+ assert.doesNotMatch(packagePy,/mixed-fonts\.css/);
 });
 test('v0.6.8 saves all selected IDs in a normal full backup and never adds font bytes',()=>{
  const s=defaultState();s.settings.enabledFonts=['print','xiaowei','mashan','muyao'];
