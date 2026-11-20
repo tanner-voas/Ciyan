@@ -2,7 +2,7 @@ import {normalizeFontSettings} from './fonts.js';
 import {defaultTagWeight,weightForNewCard,leafTagPaths,validatedTagWeights} from './tag-weights.js';
 import {retrievability} from './fsrs.js';
 import {scheduleReview,DEFAULT_RETRY} from './review-scheduler.js';
-import {grammarTokens,wordKnowledge} from './grammar.js';
+import {grammarTokens,wordKnowledge,grammarTags} from './grammar.js';
 import {contextMatches} from './context-matching.js';
 import {allParticles,particleWords,particleFamily} from './particles.js';
 import {familyEvidence,weaknessWeight,characterEvidence,drawingProfile} from './learning-feedback.js';
@@ -64,19 +64,26 @@ function isFiltered(filters){return !!filters&&(!!String(filters.search||'').tri
 function info(s,mode,now,filters){
  const byWord=new Map(s.cards.map(c=>[c.hanzi,c])),cards=s.cards;
  const toCard=w=>byWord.get(w);
- const acceptsGroup=(words)=>{
+ const acceptsGroup=(words,groupTags=null)=>{
   const terms=[...new Set(words)].map(w=>({word:w,card:toCard(w)}));
   if(!terms.length||terms.some(x=>!x.card||netScore(s,x.card.id)<1))return false;
   const average=terms.reduce((sum,x)=>sum+netScore(s,x.card.id),0)/terms.length;
   if(average<2)return false;
-  if(isFiltered(filters)&&!terms.some(x=>netScore(s,x.card.id)>=2&&anchorMatches(x.card,filters)))return false;
+  if(isFiltered(filters)){
+   // Sentence tags are the UNION of vocabulary tags plus the grammar's own tags.
+   // NOT therefore excludes a sentence if ANY constituent word has that tag.
+   const tags=groupTags||[...new Set(terms.flatMap(x=>x.card.tags||[]))];
+   if(!matchesTagFilters(tags,filters.tags||{}))return false;
+   const q=String(filters.search||'').trim().toLowerCase();
+   if(q&&!terms.some(x=>netScore(s,x.card.id)>=2&&[x.card.hanzi,x.card.pinyin,x.card.english,...(x.card.tags||[])].join(' ').toLowerCase().includes(q)))return false;
+  }
   return true;
  };
  if(mode==='words')return cards.filter(c=>anchorMatches(c,filters)).map(c=>({id:c.id,wordIds:[c.id]}));
  if(mode==='drawing'){
   return cards.filter(c=>HAS_HAN.test(c.hanzi)&&c.pinyin&&netScore(s,c.id)>=2&&anchorMatches(c,filters)).map(c=>({id:c.id,wordIds:[c.id]}));
  }
- if(mode==='grammar'||mode==='listening')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
+ if(mode==='grammar'||mode==='listening')return s.grammar.filter(g=>acceptsGroup([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)],grammarTags(g,s.cards))).map(g=>({id:g.id,wordIds:[...new Set([...grammarTokens(g),...(g.distractors||[]).map(d=>d.word)])].map(w=>toCard(w)?.id).filter(Boolean)}));
  if(mode==='particles')return allParticles(s).filter(p=>acceptsGroup(particleWords(p))).map(p=>({id:p.id,family:particleFamily(p),wordIds:[...new Set(particleWords(p))].map(w=>toCard(w)?.id).filter(Boolean)}));
  return [];
 }

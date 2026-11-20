@@ -18,7 +18,20 @@ export function tagPath(value){
 }
 export const normalizeTags=tags=>[...new Set(tags.map(tagPath).filter(Boolean))];
 export function tagMatches(tags,path){const p=path.toLowerCase();return tags.some(t=>{t=tagPath(t).toLowerCase();return t===p||t.startsWith(p+'/');});}
-export function matchesTagFilters(tags,filters){return Object.entries(filters).every(([p,v])=>!v||(v===1?tagMatches(tags,p):!tagMatches(tags,p)));}
+// An individual path can be required (AND), accepted among alternatives (OR),
+// excluded (NOT), or neutral. Older saved session filters use 1/-1 and still work.
+export const TAG_AND=1, TAG_OR=2, TAG_NOT=-1;
+export function nextTagFilterState(value){
+ return value===TAG_AND?TAG_OR:value===TAG_OR?TAG_NOT:value===TAG_NOT?0:TAG_AND;
+}
+export function matchesTagFilters(tags,filters={}){
+ const entries=Object.entries(filters||{});
+ // A negative wins even if an OR or AND also matches the same word.
+ if(entries.some(([path,mode])=>mode===TAG_NOT&&tagMatches(tags,path)))return false;
+ if(entries.some(([path,mode])=>mode===TAG_AND&&!tagMatches(tags,path)))return false;
+ const any=entries.filter(([,mode])=>mode===TAG_OR);
+ return !any.length||any.some(([path])=>tagMatches(tags,path));
+}
 export function tagNodes(tags){const nodes=new Map();for(const t of normalizeTags(tags)){const parts=t.split('/');for(let i=1;i<=parts.length;i++){const path=parts.slice(0,i).join('/');nodes.set(path,{path,label:parts[i-1],parent:parts.slice(0,i-1).join('/'),depth:i-1});}}return [...nodes.values()].sort((a,b)=>a.path.localeCompare(b.path));}
 // Labels are presentation only: saved paths and filtering semantics stay stable.
 const labels={'china-food':'Chinese food','global-food':'Global food','china-regions':'Chinese regions','us-states':'US states','eu-capitals':'EU capitals','world-capitals':'World capitals','major-cities':'Major cities','grammar-support':'Supporting vocabulary','grammar-words':'Grammar vocabulary','measure-words':'Measure words','friend-chat':'Chat with friends','visited':'Places visited','food':'General food','work':'General work','daily':'Daily life'};

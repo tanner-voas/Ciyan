@@ -205,7 +205,7 @@ test('tag tree expands branches, selects a parent and excludes its child',async(
  const before=parseInt(mock.browseNodes['#browse-count'].textContent);
  await click('cycle-tag',{kind:'words',tag:'HSK/HSK1'});await click('cycle-tag',{kind:'words',tag:'HSK/HSK1'});
  const after=parseInt(mock.browseNodes['#browse-count'].textContent);assert.ok(after<before);
- await click('reset-tags',{kind:'words'});assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/No active tags/);
+ await click('reset-tags',{kind:'words'});assert.equal(mock.browseNodes['#active-tag-filter'].innerHTML,'');
 });
 
 test('timing settings save unit controls and update existing due dates',async()=>{
@@ -360,7 +360,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.8.11');
+ assert.equal(reconciled.bundledMasterVersion,'0.8.12');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -377,7 +377,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.8.11');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.8.12');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -391,7 +391,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.8.11');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.8.12');
  assert.equal(saved.cards.length,12505);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -680,4 +680,31 @@ test('reload activates the waiting app update before reloading and preserves Ind
  const button={dataset:{action:'reload-app'}};
  await mock.listeners.click({target:{closest:q=>q==='[data-action]'?button:null}});
  assert.equal(updates,1);assert.equal(reloads,1);assert.deepEqual(mock.data.get('main'),original);
+});
+
+test('v0.8.12 shared AND/OR/NOT tags remain visible across Words, Grammar and Study',async()=>{
+ const mock=mockBrowser();await import('../app.js?smoke=sharedTags0812');await delay(25);
+ const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay(5);};
+ await click('navigate',{page:'browse'});
+ assert.match(mock.shell.innerHTML,/<\/details>\s*<div id="active-tag-filter"/, 'selected chips are outside collapsible menu');
+ await click('cycle-tag',{kind:'words',tag:'TSK/TSK01'});
+ assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/AND.*TSK01/);
+ await click('cycle-tag',{kind:'words',tag:'TSK/TSK01'});
+ assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/either.*OR.*TSK01/);
+ for(let i=0;i<3;i++)await click('cycle-tag',{kind:'words',tag:'HSK'});
+ assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/exclude.*NOT.*HSK/);
+ await click('navigate',{page:'grammar'});
+ assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/either.*OR.*TSK01/);
+ assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/exclude.*NOT.*HSK/);
+ await click('navigate',{page:'study'});
+ assert.match(mock.shell.innerHTML,/data-action="study-tag"\s+data-tag="TSK\/TSK01"/);
+ assert.match(mock.shell.innerHTML,/OR.*TSK01/);
+ assert.match(mock.shell.innerHTML,/NOT.*HSK/);
+ await click('study-tag',{tag:'HSK'}); // clears NOT
+ await click('navigate',{page:'browse'});
+ assert.doesNotMatch(mock.browseNodes['#active-tag-filter'].innerHTML,/NOT.*HSK/);
+ assert.match(mock.browseNodes['#active-tag-filter'].innerHTML,/OR.*TSK01/);
+ await click('reset-tags',{kind:'words'});
+ await click('navigate',{page:'study'});
+ assert.doesNotMatch(mock.shell.innerHTML,/class="pill filter-chip/);
 });

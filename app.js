@@ -5,7 +5,7 @@ import {createReader} from './reader-ui.js';
 import {clearDictionary,reloadCards} from './collection-reset.js';
 import {APP_VERSION} from './backup-versions.js';
 import {upgradeTskDefaults} from './tag-weights.js';
-import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel} from './tags.js';
+import {normalizeTags,tagNodes,matchesTagFilters,tagMatches,tagLabel,nextTagFilterState,TAG_AND,TAG_OR,TAG_NOT} from './tags.js';
 import {leafTagPaths,newWordOdds,validatedTagWeights} from './tag-weights.js';
 import {contextsForWord} from './grammar-context.js';
 import {contextMatches,contextSort,contextMatchLabel,literalGrammarTokens} from './context-matching.js';
@@ -136,7 +136,9 @@ const ratingMeaning=['New','Forgot / incorrect','Recalled with difficulty','Reca
 const opText=['>','>=','=','<=','<'];
 let state=null,page='study',studyMode='words',revealed=false,toneSelections=[],lastFinished=null,grammarFeedback=null;
 let currentModal=null,pendingBackupRevision=null,saving=false,toastTimer;
-const filters={words:{search:'',tags:{},op:'>=',rating:'any'},grammar:{search:'',tags:{},knowledgeOp:'>=',knowledgeValue:0,usageOp:'>=',usageValue:0}};
+// One shared tag selection across Words, Grammar and Study. Search/score controls stay independent.
+const sharedTagFilters={};
+const filters={words:{search:'',tags:sharedTagFilters,op:'>=',rating:'any'},grammar:{search:'',tags:sharedTagFilters,knowledgeOp:'>=',knowledgeValue:0,usageOp:'>=',usageValue:0}};
 let lookupCache=null;
 function lookups(){
  if(lookupCache?.cards===state.cards&&lookupCache?.grammar===state.grammar)return lookupCache;
@@ -155,15 +157,15 @@ const countReadyGrammar=()=>modeCounts(state,'grammar').available;
 const recall=s=>s?(retrievability(s)??0):0;
 const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.id]));
 const scoreGrammar=g=>grammarScores(g,state.cards,state.schedules,recall,state.grammarHistory);
-const topicTagCache={words:null,grammar:null};
+const topicTagCache={words:null,grammar:null,all:null};
 const tagsFor=kind=>{
  const cached=topicTagCache[kind];
  if(cached?.cards===state.cards&&(kind==='words'||cached.grammar===state.grammar))return cached.tags;
- const tags=tagNodes((kind==='words'?state.cards.map(c=>c.tags):state.grammar.map(g=>grammarTags(g,state.cards))).flat()).map(n=>n.path);
+ const tags=tagNodes((kind==='words'?state.cards.map(c=>c.tags):kind==='grammar'?state.grammar.map(g=>grammarTags(g,state.cards)):[...state.cards.map(c=>c.tags),...state.grammar.map(g=>grammarTags(g,state.cards))]).flat()).map(n=>n.path);
  topicTagCache[kind]={cards:state.cards,grammar:state.grammar,tags};return tags;
 };
 const expandedTags={words:new Set(),grammar:new Set(),study:new Set()};
-const studyFilters={tags:{},search:''};let selectedPool='all',studyComposing=false;
+const studyFilters={tags:sharedTagFilters,search:''};let selectedPool='all',studyComposing=false;
 let tagOddsCache=null,tagContentRevision=0;
 function invalidateTagOdds(){tagOddsCache=null;tagContentRevision++;}
 function appliedNewWordOdds(){
@@ -257,11 +259,17 @@ async function finishEarly(){
   const done=await change(d=>{if(g){d.grammarSessions.push(finished);d.activeGrammarSession=null;}else{d.sessions.push(finished);d.activeSession=null;}},false);
   if(done){lastFinished=finished;grammarFeedback=null;page='complete';render();}
 }
+function filterValueLabel(v){return v===TAG_AND?'AND':v===TAG_OR?'OR':'NOT';}
+function filterValueClass(v){return v===TAG_AND?'include':v===TAG_OR?'either':'exclude';}
+function selectedTagPills(kind,action){
+ const selected=Object.entries(sharedTagFilters).filter(([,v])=>v);
+ return selected.map(([tag,mode])=>`<button type="button" class="pill filter-chip ${filterValueClass(mode)}" data-action="${action}" ${kind?`data-kind="${kind}"`:''} data-tag="${esc(tag)}" aria-label="${esc(tagLabel(tag))}: ${filterValueLabel(mode)}. Tap to change"><strong>${filterValueLabel(mode)}</strong> ${esc(tagLabel(tag))}</button>`).join('');
+}
 function studyFilterTree(){
- const tags=tagsFor('words'),nodes=tagNodes(tags),selected=Object.entries(studyFilters.tags).filter(([,v])=>v);
+ const tags=tagsFor('all'),nodes=tagNodes(tags);
  const visible=nodes.filter(n=>n.path.split('/').slice(0,-1).every((_,i)=>expandedTags.study.has(n.path.split('/').slice(0,i+1).join('/'))));
- return `<section class="panel stack study-filter-panel"><div class="row"><h2>Session filters</h2><button class="text-link" data-action="study-clear-filters">Reset</button></div><p class="subtle">A word must match the chosen tags. A grammar or particle exercise needs only one matching word with score ≥ 2.0; other words don't exclude the sentence.</p><label class="search-field">${icon('search')}<input id="study-search" placeholder="Search words or tags…" value="${esc(studyFilters.search)}" autocomplete="off"></label><div class="active-tags">${selected.map(([t,v])=>`<button class="pill ${v===1?'include':'exclude'}" data-action="study-tag" data-tag="${esc(t)}">${v===1?'✓':'−'} ${esc(tagLabel(t))}</button>`).join('')||'<span class="subtle">All topics included</span>'}</div><div class="tag-tree">${visible.map(n=>{const children=tags.some(t=>t.startsWith(n.path+'/')),v=studyFilters.tags[n.path]||0;
-  return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="study-expand-tag" data-tag="${esc(n.path)}" aria-expanded="${expandedTags.study.has(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}">${expandedTags.study.has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="study-tag" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}</button></div>`;}).join('')}</div><p class="subtle">Tap tag to require → exclude → neutral. Expand branches with arrows. Filters apply only to the session, not your backup.</p></section>`;
+ return `<section class="panel stack study-filter-panel"><div class="row"><h2>Session filters</h2><button class="text-link" data-action="study-clear-filters">Reset</button></div><p class="subtle">Tags are shared with Words and Grammar. AND: match every required tag · OR: match at least one yellow tag · NOT: exclude any matching tag. Grammar uses the union of its words' tags.</p><label class="search-field">${icon('search')}<input id="study-search" placeholder="Search words or tags…" value="${esc(studyFilters.search)}" autocomplete="off"></label><div class="active-tags">${selectedTagPills(null,'study-tag')||'<span class="subtle">No tag filters</span>'}</div><div class="tag-tree">${visible.map(n=>{const children=tags.some(t=>t.startsWith(n.path+'/')),v=sharedTagFilters[n.path]||0;
+  return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="study-expand-tag" data-tag="${esc(n.path)}" aria-expanded="${expandedTags.study.has(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}">${expandedTags.study.has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v?filterValueClass(v):''}" data-action="study-tag" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v?filterValueLabel(v):'neutral'}">${v?filterValueLabel(v):'○'} ${esc(tagLabel(n.label))}</button></div>`;}).join('')}</div><p class="subtle">Tap: AND (green) → OR (yellow) → NOT (red) → clear. Parent tags include descendants.</p></section>`;
 }
 function selectedCount(counts,pool=selectedPool){return pool==='due'?counts.due:pool==='new'?counts.new:counts.available;}
 function studySummary(mode,counts=modeCounts(state,mode,studyFilters)){return `<div class="study-counts"><span><strong>${counts.due}</strong><small>Due now</small></span><span><strong>${counts.started}</strong><small>Started · not due</small></span><span><strong>${selectedCount(counts)}</strong><small>Available to study</small></span></div><p class="subtle">${counts.new} new available${mode==='words'?` of ${counts.newTotal} unstarted matching words`: ''} · ${counts.blocked} excluded or awaiting prerequisites</p>`;}
@@ -390,7 +398,7 @@ function renderCollection(kind){
     <label class="search-field">${icon('search')}<input id="collection-search" placeholder="Search Chinese, English, pinyin, tags…" value="${esc(f.search)}" autocomplete="off"></label>
     <details class="collection-filter-panel"><summary><strong>Filters &amp; topics</strong><small id="collection-filter-count">All entries</small></summary>
     <div class="collection-filter-body"><div class="section-row compact"><strong class="subtle">TOPIC FILTERS</strong><button class="text-link" data-action="reset-tags" data-kind="${kind}">Reset tags</button></div>
-    <div id="active-tag-filter" class="active-tags"></div><div id="tag-filter" class="tag-tree"></div>
+    <div id="tag-filter" class="tag-tree"></div>
     <div class="filter-controls">${grammar?`<div class="filter-line"><span>Knowledge</span>
        <select aria-label="Knowledge comparison" data-filter="knowledgeOp" data-kind="grammar">${compareOptions(f.knowledgeOp)}</select>
        <select aria-label="Knowledge percentage" data-filter="knowledgeValue" data-kind="grammar">${options(Array.from({length:21},(_,i)=>[i*5,`${i*5}%`]),f.knowledgeValue)}</select></div>
@@ -403,6 +411,7 @@ function renderCollection(kind){
     ${grammar?`<p class="subtle">Knowledge is estimated from the sentence's vocabulary. Usage risk is the error rate over the last 20 checked attempts at this sentence. No attempts means no evidence; this is not a measure of overall Mandarin proficiency. Combined ranking = knowledge × (1 − usage risk).</p>`:
        `<p class="subtle">Again, Hard, Good, and Easy are review ratings, not linear learning stages. Filtering compares each word's <strong>most recent rating</strong>; Unseen is 0.</p>`}
     </div></details>
+    <div id="active-tag-filter" class="active-tags active-filter-strip" aria-label="Active shared tag filters"></div>
     <div class="row" style="margin:15px 0 12px"><div id="browse-count" class="filter-count"></div>
       <button class="text-link" data-action="new-entry" data-kind="${kind}">${icon('plus')} Add ${grammar?'sentence':'word'}</button></div>
     ${!grammar?'<button class="btn btn-secondary btn-full" data-action="study-filtered">Study matching words</button>':''}<div id="collection-list"></div>${backupBanner()}`;
@@ -441,9 +450,9 @@ function pageControl(kind,number,total){
  </nav>`;
 }
 function updateCollection(keepPage=false){
- const kind=page==='grammar'?'grammar':'words',f=filters[kind],tags=tagsFor(kind);
+ const kind=page==='grammar'?'grammar':'words',f=filters[kind],tags=tagsFor('all');
  if(!keepPage)collectionPages[kind]=0;
- const positives=tags.filter(t=>f.tags[t]===1),negatives=tags.filter(t=>f.tags[t]===-1),active=[...positives,...negatives];
+ const active=Object.values(sharedTagFilters).filter(Boolean);
  const activeNode=$('#active-tag-filter'),availableNode=$('#tag-filter');if(!activeNode||!availableNode)return;
  const filterCount=$('#collection-filter-count');
  if(filterCount){
@@ -451,13 +460,12 @@ function updateCollection(keepPage=false){
   const count=active.length+Number(other);
   filterCount.textContent=count?`${count} active filter${count===1?'':'s'}`:'All entries';
  }
- activeNode.innerHTML=active.length?active.map(t=>`<button class="pill ${f.tags[t]===1?'include':'exclude'}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(t)}">${f.tags[t]===1?'✓':'−'} # ${esc(tagLabel(t))}</button>`).join(''):
-   '<span class="subtle">No active tags. Tap a topic to include it.</span>';
+ activeNode.innerHTML=selectedTagPills(kind,'cycle-tag');
  availableNode.innerHTML=tagNodes(tags).filter(n=>{const parts=n.path.split('/');return parts.slice(0,-1).every((_,i)=>expandedTags[kind].has(parts.slice(0,i+1).join('/')));}).map(n=>{
-    const children=tags.some(t=>t.startsWith(n.path+'/')),v=f.tags[n.path]||0;
-    const inherited=Object.entries(f.tags).find(([t,value])=>value&&n.path.startsWith(t+'/'));
-    return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="expand-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}" aria-expanded="${expandedTags[kind].has(n.path)}">${expandedTags[kind].has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v===1?'include':v===-1?'exclude':''}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v===1?'required':v===-1?'excluded':'neutral'}">${v===1?'✓':v===-1?'−':'○'} ${esc(tagLabel(n.label))}${!v&&inherited?`<small> · parent ${inherited[1]===1?'required':'excluded'}</small>`:''}</button></div>`;
- }).join('')+'<p class="subtle">Tap a label: require → exclude → neutral. Required tags all must match; parents include descendants. Exclusions win. Use arrows to expand.</p>';
+    const children=tags.some(t=>t.startsWith(n.path+'/')),v=sharedTagFilters[n.path]||0;
+    const inherited=Object.entries(sharedTagFilters).find(([t,value])=>value&&n.path.startsWith(t+'/'));
+    return `<div class="tag-tree-row" style="padding-left:${n.depth*18}px">${children?`<button class="tree-toggle" data-action="expand-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="Expand ${esc(tagLabel(n.label))}" aria-expanded="${expandedTags[kind].has(n.path)}">${expandedTags[kind].has(n.path)?'▾':'▸'}</button>`:'<span class="tree-spacer"></span>'}<button class="tree-label ${v?filterValueClass(v):''}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(n.path)}" aria-label="${esc(n.path)}: ${v?filterValueLabel(v):'neutral'}">${v?filterValueLabel(v):'○'} ${esc(tagLabel(n.label))}${!v&&inherited?`<small> · parent ${filterValueLabel(inherited[1])}</small>`:''}</button></div>`;
+ }).join('')+'<p class="subtle">Tap: AND (green) → OR (yellow) → NOT (red) → clear. AND requires every selected tag; OR requires at least one; NOT always excludes.</p>';
  updateCollectionPage(kind);
  applyFontToRoot(activeNode,state.settings);applyFontToRoot(availableNode,state.settings);
 }
@@ -1077,11 +1085,11 @@ document.addEventListener('click',async event=>{
     case 'grade':await gradeCard(Number(element.dataset.grade));break;
     case 'finish-prompt':finishPrompt();break;
     case 'end-session':closeModal();await finishEarly();break;
-    case 'open-tag':filters.words.tags={[element.dataset.tag]:1};filters.words.search='';navigate('browse');break;
+    case 'open-tag':{for(const tag of Object.keys(sharedTagFilters))delete sharedTagFilters[tag];sharedTagFilters[element.dataset.tag]=TAG_AND;filters.words.search='';navigate('browse');break;}
     case 'expand-tag':{const set=expandedTags[element.dataset.kind],tag=element.dataset.tag;if(set.has(tag))set.delete(tag);else set.add(tag);updateCollection(true);break;}
-    case 'cycle-tag':{const f=filters[element.dataset.kind],tag=element.dataset.tag,current=f.tags[tag]||0;
-      if(current===0)f.tags[tag]=1;else if(current===1)f.tags[tag]=-1;else delete f.tags[tag];updateCollection();break;}
-    case 'reset-tags':filters[element.dataset.kind].tags={};updateCollection();break;
+    case 'cycle-tag':{const tag=element.dataset.tag,next=nextTagFilterState(sharedTagFilters[tag]||0);
+      if(next)sharedTagFilters[tag]=next;else delete sharedTagFilters[tag];updateCollection();break;}
+    case 'reset-tags':for(const tag of Object.keys(sharedTagFilters))delete sharedTagFilters[tag];updateCollection();break;
     case 'card-detail':wordDetails(element.dataset.id);break;
     case 'synonym-detail':wordDetails(element.dataset.id,'synonym');break;
     case 'context-more':wordContextLimit+=20;wordDetails(element.dataset.id,'more');break;
@@ -1405,8 +1413,8 @@ async function practiceAction(action,el){
  if(action==='undo-completed'){await undoCompleted();return true;}
  if(action==='apply-timing'){await applyTiming(el.dataset.scope);return true;}
  if(action==='study-expand-tag'){const tag=el.dataset.tag;if(expandedTags.study.has(tag))expandedTags.study.delete(tag);else expandedTags.study.add(tag);render();return true;}
- if(action==='study-tag'){const tag=el.dataset.tag,v=studyFilters.tags[tag]||0;if(v===-1)delete studyFilters.tags[tag];else studyFilters.tags[tag]=v===0?1:-1;render();return true;}
- if(action==='study-clear-filters'){studyFilters.tags={};studyFilters.search='';render();return true;}
+ if(action==='study-tag'){const tag=el.dataset.tag,next=nextTagFilterState(sharedTagFilters[tag]||0);if(next)sharedTagFilters[tag]=next;else delete sharedTagFilters[tag];render();return true;}
+ if(action==='study-clear-filters'){for(const tag of Object.keys(sharedTagFilters))delete sharedTagFilters[tag];studyFilters.search='';render();return true;}
  if(action==='study-pool'){if(POOLS.includes(el.dataset.pool))selectedPool=el.dataset.pool;render();return true;}
  if(action==='practice-start'){await startPractice(el.dataset.mode);return true;}
  if(!state.activePractice)return false;

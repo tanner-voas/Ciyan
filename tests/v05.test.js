@@ -55,18 +55,20 @@ test('particle zoo treats all base and choice words as prerequisites',()=>{
  seen(s,'地',1);assert.equal(modeCounts(s,'particles').eligible.some(x=>x.id===p.id),false);
  const other=terms.find(w=>w!=='地');seen(s,other,3);assert.equal(modeCounts(s,'particles').eligible.some(x=>x.id===p.id),true);
 });
-test('one >=2 matching anchor includes a grammar sentence despite unrelated excluded tokens',()=>{
+test('grammar NOT excludes a sentence containing any matching word, even with a matching AND',()=>{
  const s=state(),g=s.grammar[0],words=groupWords(g);prepareGroup(s,words,2.5);
  const first=s.cards.find(c=>c.hanzi===words[0]);const second=s.cards.find(c=>c.hanzi===words[1]);
  first.tags=['Topics/Anchor'];second.tags=['Topics/Excluded'];
  const f={tags:{'Topics/Anchor':1,'Topics/Excluded':-1}};
- assert.equal(modeCounts(s,'grammar',f).eligible.some(x=>x.id===g.id),true);
- seen(s,first.hanzi,1.5);assert.equal(modeCounts(s,'grammar',f).eligible.some(x=>x.id===g.id),false);
+ assert.equal(modeCounts(s,'grammar',f).eligible.some(x=>x.id===g.id),false);
+ assert.equal(modeCounts(s,'grammar',{tags:{'Topics/Anchor':1}}).eligible.some(x=>x.id===g.id),true);
+ seen(s,first.hanzi,1.5);assert.equal(modeCounts(s,'grammar',{tags:{'Topics/Anchor':1}}).eligible.some(x=>x.id===g.id),true);
 });
-test('filtered particles use qualifying vocabulary anchors, not full-sentence exclusion',()=>{
+test('particle study likewise excludes a group if one included word matches NOT',()=>{
  const s=state(),p=PARTICLES[0],words=[...new Set([...p.base,...p.choices])];prepareGroup(s,words,2.5);
  const first=s.cards.find(c=>c.hanzi===words[0]),second=s.cards.find(c=>c.hanzi===words[1]);first.tags=['Topics/Selected'];second.tags=['Topics/Excluded'];
- assert.ok(modeCounts(s,'particles',{tags:{'Topics/Selected':1,'Topics/Excluded':-1}}).eligible.some(x=>x.id===p.id));
+ assert.equal(modeCounts(s,'particles',{tags:{'Topics/Selected':1,'Topics/Excluded':-1}}).eligible.some(x=>x.id===p.id),false);
+ assert.equal(modeCounts(s,'particles',{tags:{'Topics/Selected':1}}).eligible.some(x=>x.id===p.id),true);
 });
 test('per-mode counters distinguish due, started future, new and eligible total',()=>{
  const s=state(),words=s.cards.slice(0,3);s.cards=words;
