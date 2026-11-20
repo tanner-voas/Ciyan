@@ -384,7 +384,8 @@ function renderCollection(kind){
     <div class="headline-row"><div><h1 class="h1">${grammar?'Words in<br>context.':'Every word<br>has a story.'}</h1><p class="lead">${grammar?'Browse, edit, and explore grammar sentences.':'Search, collect, and grow your vocabulary.'}</p></div>
       <button class="icon-btn" data-action="new-entry" data-kind="${kind}" aria-label="Add ${grammar?'grammar':'word'}" style="margin-top:12px">${icon('plus')}</button></div></div>
     <label class="search-field">${icon('search')}<input id="collection-search" placeholder="Search Chinese, English, pinyin, tags…" value="${esc(f.search)}" autocomplete="off"></label>
-    <div class="section-row compact"><strong class="subtle">TOPIC FILTERS</strong><button class="text-link" data-action="reset-tags" data-kind="${kind}">Reset tags</button></div>
+    <details class="collection-filter-panel"><summary><strong>Filters &amp; topics</strong><small id="collection-filter-count">All entries</small></summary>
+    <div class="collection-filter-body"><div class="section-row compact"><strong class="subtle">TOPIC FILTERS</strong><button class="text-link" data-action="reset-tags" data-kind="${kind}">Reset tags</button></div>
     <div id="active-tag-filter" class="active-tags"></div><div id="tag-filter" class="tag-tree"></div>
     <div class="filter-controls">${grammar?`<div class="filter-line"><span>Knowledge</span>
        <select aria-label="Knowledge comparison" data-filter="knowledgeOp" data-kind="grammar">${compareOptions(f.knowledgeOp)}</select>
@@ -397,6 +398,7 @@ function renderCollection(kind){
        <select aria-label="Rating filter" data-filter="rating" data-kind="words">${options([['any','Any'],...ratingLabels.map((r,i)=>[i,r])],f.rating)}</select></div>`}</div>
     ${grammar?`<p class="subtle">Knowledge is estimated from the sentence's vocabulary. Usage risk is the error rate over the last 20 checked attempts at this sentence. No attempts means no evidence; this is not a measure of overall Mandarin proficiency. Combined ranking = knowledge × (1 − usage risk).</p>`:
        `<p class="subtle">Again, Hard, Good, and Easy are review ratings, not linear learning stages. Filtering compares each word's <strong>most recent rating</strong>; Unseen is 0.</p>`}
+    </div></details>
     <div class="row" style="margin:15px 0 12px"><div id="browse-count" class="filter-count"></div>
       <button class="text-link" data-action="new-entry" data-kind="${kind}">${icon('plus')} Add ${grammar?'sentence':'word'}</button></div>
     ${!grammar?'<button class="btn btn-secondary btn-full" data-action="study-filtered">Study matching words</button>':''}<div id="collection-list"></div>${backupBanner()}`;
@@ -439,6 +441,12 @@ function updateCollection(keepPage=false){
  if(!keepPage)collectionPages[kind]=0;
  const positives=tags.filter(t=>f.tags[t]===1),negatives=tags.filter(t=>f.tags[t]===-1),active=[...positives,...negatives];
  const activeNode=$('#active-tag-filter'),availableNode=$('#tag-filter');if(!activeNode||!availableNode)return;
+ const filterCount=$('#collection-filter-count');
+ if(filterCount){
+  const other=kind==='grammar'?f.knowledgeOp!=='>='||f.knowledgeValue!==0||f.usageOp!=='>='||f.usageValue!==0:f.rating!=='any';
+  const count=active.length+Number(other);
+  filterCount.textContent=count?`${count} active filter${count===1?'':'s'}`:'All entries';
+ }
  activeNode.innerHTML=active.length?active.map(t=>`<button class="pill ${f.tags[t]===1?'include':'exclude'}" data-action="cycle-tag" data-kind="${kind}" data-tag="${esc(t)}">${f.tags[t]===1?'✓':'−'} # ${esc(tagLabel(t))}</button>`).join(''):
    '<span class="subtle">No active tags. Tap a topic to include it.</span>';
  availableNode.innerHTML=tagNodes(tags).filter(n=>{const parts=n.path.split('/');return parts.slice(0,-1).every((_,i)=>expandedTags[kind].has(parts.slice(0,i+1).join('/')));}).map(n=>{
@@ -467,7 +475,6 @@ function updateCollectionPage(kind=page==='grammar'?'grammar':'words'){
   <small>${esc(tags.slice(0,4).map(t=>'#'+tagLabel(t)).join('  '))}</small></div><div class="list-meta"><strong>${percent(score.combined)}</strong>
   <small>${ready?'Ready':'Locked'}</small></div>${icon('right')}</button>`).join('');
  list.innerHTML=results.length?content+pageControl(kind,collectionPages[kind],results.length):`<div class="empty"><strong>No matching ${kind==='words'?'words':'sentences'}</strong>Adjust your search or filters.</div>`;
- applyFontToRoot(list,state.settings);
  applyFontToRoot(list,state.settings);
 }
 
@@ -909,10 +916,8 @@ function addTskTags(s){
  });
  return changed;
 }
-for(const name of ['gesturestart','gesturechange','gestureend']){
- document.addEventListener(name,e=>e.preventDefault(),{passive:false});
-}
-document.addEventListener('touchmove',e=>{if(e.touches.length>1)e.preventDefault();},{passive:false});
+// Gesture prevention is scoped to the drawing canvas and draggable tiles.
+// Globally cancelling Safari gesture/touch events blocks accessibility pinch zoom.
 function confirmRemoval(title,message){
  return askDialog(title,'<p>'+esc(message)+'</p>'+confirmationField,title,()=>true,{danger:true});
 }

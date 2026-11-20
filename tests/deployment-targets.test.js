@@ -9,7 +9,7 @@ const workerConfig = readFileSync(new URL('../wrangler.jsonc', import.meta.url),
 const worker = JSON.parse(workerConfig);
 
 test('Pages and Workers use one static deployment bundle', () => {
-  assert.equal(pkg.version, '0.8.5');
+  assert.equal(pkg.version, '0.8.6');
   assert.equal(pkg.scripts.build, 'python3 package.py');
   assert.equal(worker.assets.directory, './dist/ciyan');
   assert.equal(worker.name, 'empty-dawn-08a7');

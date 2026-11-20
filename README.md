@@ -1,8 +1,12 @@
-# Cíyán (词言) v0.8.5
+# Cíyán (词言) v0.8.6
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
 user-controlled typography.
+
+## v0.8.6 audit fixes
+
+The Words and Grammar collections show their first 20 entries without forcing a scroll past topic filters. The complete filter tree remains available under **Filters & topics**, whose compact summary indicates active filters. Reader and drawing functionality are unchanged except that document-global touch/gesture suppression was removed to permit pinch zoom. See `AUDIT_v0.8.6.md` for browser test evidence and remaining real-iPhone testing requirements.
 
 ## Reader in v0.8.0
 
