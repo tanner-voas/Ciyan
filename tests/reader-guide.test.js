@@ -99,14 +99,14 @@ test('paused reader and touch grace period allow free scrolling',t=>{
 });
 
 
-test('scrolling while the guide is paused seeks to the visible word and saves that bookmark',()=>{
+test('scrolling while the guide is paused preserves the selected word and bookmark',()=>{
  const f=fixture(),saved=[];
  const dispose=mountReadingGuide(f.pages,{save:(n,p)=>saved.push(p),define(){},initialRate:120,rateChanged(){},extend:async()=>{},initialGuide:true});
  assert.equal(saved.at(-1).wordIndex,0);
  f.win.scrollBy(0,43);
  f.win.fire('scroll');f.win.runFrames();
  assert.equal(f.getScroll(),43,'paused guide must not scroll-lock');
- assert.equal(saved.at(-1).wordIndex,1,'saved bookmark should move to the first visible word');
- assert.ok(f.words[1].classes.has('reader-current'));
+ assert.equal(saved.at(-1).wordIndex,0,'saved bookmark stays at the paused target');
+ assert.ok(f.words[0].classes.has('reader-current'));
  dispose();
 });

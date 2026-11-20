@@ -77,7 +77,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const viewport=()=>win.visualViewport;
  function bookmark(row,word){
   if(row)save(+row.closest('article').dataset.readerNumber,{id:row.dataset.pid,index:+row.dataset.index,
-   wordIndex:word?+word.dataset.wordIndex:0,offset:word?+word.dataset.offset:0});
+   wordIndex:word?+word.dataset.wordIndex:0,sourceOffset:word?Number(word.dataset.sourceOffset??word.dataset.offset):0,offset:word?+word.dataset.offset:0});
  }
  function topEdge(){
   return parseFloat(win.getComputedStyle(pages).getPropertyValue('scroll-padding-top'))||0;
@@ -170,31 +170,12 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   if(on){select(start);schedule();}
   else{pause();current?.classList.remove('reader-current');current=null;bookmark(visibleRow());}
  }
- function visibleWord(row){
-  if(!row)return null;
-  const top=topEdge()+2;
-  const words=Array.from(row.querySelectorAll('[data-word-index]'));
-  return words.find(word=>{
-   const rect=word.getBoundingClientRect();
-   return (rect.bottom??rect.top+rect.height)>top;
-  })||words.at(-1)||null;
- }
  function track(){
   if(frame)return;
   frame=win.requestAnimationFrame(()=>{
    frame=0;
    if(enabled){
     if(playing&&!drift)center();
-    else if(!playing){
-     // When playback is paused, the reader follows the *user's* scrolling,
-     // not the old guide location. Resuming starts at the visible word.
-     const row=visibleRow(),word=visibleWord(row);
-     if(word&&word!==current){
-      current?.classList.remove('reader-current');
-      current=word;current.classList.add('reader-current');
-     }
-     bookmark(row,word);
-    }
    }else bookmark(visibleRow());
   });
  }
@@ -241,7 +222,8 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
  const paragraphs=Array.from(rows());
  const row=paragraphs.find(r=>r.dataset.pid===position?.id)||paragraphs[0];
  const spans=row?Array.from(row.querySelectorAll('[data-word-index]')):[];
- const resume=(position?.wordIndex!=null?spans[position.wordIndex]:spans.find(w=>+w.dataset.offset>=(position?.offset??0)))||spans[0];
+ const mapped=position&&spans.filter(w=>Number(w.dataset.sourceOffset??w.dataset.offset)<=(position.sourceOffset??position.offset)).at(-1);
+ const resume=mapped||(position?.wordIndex!=null?spans[position.wordIndex]:spans.find(w=>+w.dataset.offset>=(position?.offset??0)))||spans[0];
  audio.checked=!!initialAudio;aloud=audio.checked;refreshVoices();
  if((initialGuide||initialAudio||position?.guided)&&resume){
   switchGuide(true,resume);if(position)resume.scrollIntoView?.({block:'center'});

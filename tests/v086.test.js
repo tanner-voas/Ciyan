@@ -5,10 +5,10 @@ import {APP_VERSION,prepareVersionedBackup} from '../backup-versions.js';
 import {makeBackup,defaultState} from '../storage.js';
 
 test('v0.8.6 backup migration retains v0.8.5 data without modifications',()=>{
- assert.equal(APP_VERSION,'0.8.18');
+ assert.equal(APP_VERSION,'0.9.0');
  const old=makeBackup(defaultState()); old.appVersion='0.8.5';
  const next=prepareVersionedBackup(old);
- assert.equal(next.appVersion,'0.8.18');
+ assert.equal(next.appVersion,'0.9.0');
  assert.deepEqual(next.state,old.state);
 });
 test('Ciyan keeps drawing touch gestures isolated from browser scroll',()=>{

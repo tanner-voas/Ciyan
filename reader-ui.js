@@ -1,3 +1,4 @@
+import {deriveEdition,learnerIndex} from './reader-editions.js';
 import {normalizeBoundaries} from './reader-boundaries.js';
 import {voiceTuning} from './reader-speech.js';
 import {catalog,downloadChapter} from './chapter-download.js';
@@ -36,8 +37,87 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const knownMasterDigest=(entry,digest)=>entry?.digest===digest||entry?.previousDigest===digest||entry?.previousDigests?.includes(digest);
  const libraryBook=id=>books().find(b=>b.novel===id);
  const libraryChapter=(id,n)=>libraryBook(id)?.chapters.find(c=>c.number===n);
- const book=()=>state().reader?.[novel];
- const chapter=()=>book()?.chapters[number-1];
+ const gradedAssets=new Map();
+ let activeView=null,preview=null;
+ const prefs=()=>chapter()?.editionPrefs||{};
+ const hasGraded=()=>novel==='panlong'&&catalog.some(e=>e.novel===novel&&e.number===number&&e.digest===chapter()?.digest);
+ const sourceBook=()=>state().reader?.[novel];
+ const chapter=()=>sourceBook()?.chapters[number-1];
+ const projection=()=>activeView?.digest===chapter()?.digest?activeView:null;
+ const book=()=>{
+  const b=sourceBook(),v=projection();return b&&v?{...b,items:{...b.items,...v.p.items}}:b;
+ };
+ const studyChapter=()=>{const c=chapter(),v=projection();return c&&v?{...c,all:v.all}:c;};
+ function editionControls(){
+  const p=prefs();
+  return '<div class="reader-editions">'+(hasGraded()?btn('edition',p.graded?'Edition · HSK6 + TSK12':'Edition · Original'):'')+
+   btn('auto',p.auto?'Auto · '+Number(p.minimum??.92).toFixed(2):'Auto simplify')+'</div>';
+ }
+ async function baseEdition(original,graded){
+  if(!graded||!hasGraded())return original;
+  const digest=chapter().digest;
+  if(!gradedAssets.has(digest)){
+   const {default:asset}=await import('./chapters/graded-v090/'+number+'.js');
+   if(asset.sourceDigest!==digest||asset.paragraphs.length!==original.paragraphs.length||
+    !asset.paragraphs.every((r,i)=>r.id===original.paragraphs[i].id))throw Error('This edition requires its matching original.');
+   gradedAssets.set(digest,asset);
+  }
+  const asset=gradedAssets.get(digest);
+  return {...original,paragraphs:asset.paragraphs,items:{...original.items,...asset.items},extras:asset.extras,graded:true};
+ }
+ function compute(base,index,minimum,restored){
+  const permit=w=>!base.graded||base.extras.includes(w)||index.words.get(w)?.tags?.some(t=>/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/.test(t));
+  return deriveEdition(base,index,minimum,{restore:new Set(restored),permit,termScore:key=>sourceBook()?.progress[key]?.score||0});
+ }
+ function installView(p,result,digest){
+  const text=result?.p||p;
+  const changed=new Map();
+  for(const [loc,c] of result?.changes||[])for(let i=c.start;i<c.end;i++)changed.set(c.row+':'+i,loc);
+  activeView={p:text,digest,result,changed,all:[...new Set(text.paragraphs.flatMap(r=>r.tokens.filter(Array.isArray).map(t=>t[0])))]};
+  shown='';revealed=false;vocabPage=0;chapterDueSnapshots.clear();
+ }
+ async function reopenView(){
+  activeView=null;const c=chapter(),pref=prefs(),original=memory.get(c?.digest);
+  if(!original||(!pref.graded&&!pref.auto))return;
+  const base=await baseEdition(original,pref.graded);
+  if(c.digest!==chapter()?.digest)return;
+  installView(base,pref.auto?compute(base,learnerIndex(state()),pref.minimum??.92,pref.restored):null,c.digest);
+ }
+ const fmt=v=>v==null?'—':v.toFixed(2);
+ const ratio=(n,d)=>d?(100*n/d).toFixed(1)+'%':'—';
+ function previewStats(result){
+  const s=result.stats,changed=result.changes.size;
+  return '<p><strong>'+['Ready','Some study may help','Frequent lookups or looser wording','Substantial difficulty or meaning risk'][s.tier]+'</strong></p>'+
+   '<p>Replaced '+changed+' / '+s.total+' word occurrences ('+ratio(changed,s.total)+'), including '+changed+' / '+s.eligible+' unfamiliar occurrences ('+ratio(changed,s.eligible)+').</p>'+
+   '<p>Mean chapter mastery '+fmt(s.before)+' → <strong>'+fmt(s.after)+'</strong>. Mean synonym score '+fmt(s.strength)+' ('+s.count+' replacements). Minimum '+fmt(s.min)+' · distinct-pair mean '+fmt(s.pairMean)+' · below 0.90 '+ratio(s.low,s.count)+'. Reviewed phrases '+s.phrases+'.</p>'+
+   '<p>Unfamiliar vocabulary '+s.unresolved.size+' distinct · '+s.unknown+' / '+s.displayed+' occurrences ('+ratio(s.unknown,s.displayed)+'). Unfamiliar terms '+s.terms.size+'.</p>'+
+   '<details><summary>Remaining words and skipped alternatives</summary><p lang="zh-Hans">'+[...s.unresolved].sort((a,b)=>b[1]-a[1]).map(([w,n])=>esc(w)+' ×'+n).join('、')+'</p><p>Missing edge '+s.denied.missing+' · context '+s.denied.context+' · score '+s.denied.threshold+' · learning evidence '+s.denied.unfamiliar+'.</p></details>';
+ }
+ async function openAuto(original){
+  const c=chapter(),pref=prefs(),base=await baseEdition(original,pref.graded),index=learnerIndex(state());
+  const minimum=pref.minimum??.92,restore=pref.restored||[];
+  const result=compute(base,index,minimum,restore);
+  preview={digest:c.digest,base,index,restore,result,minimum};
+  modal('Auto simplify',`<label>Minimum synonym score <output id="reader-min-score">${minimum.toFixed(2)}</output><input aria-label="Minimum synonym score" style="width:100%" id="reader-score-slider" type="range" min="85" max="100" step="1" value="${Math.round(100*minimum)}"></label><div id="reader-preview" aria-live="polite">${previewStats(result)}</div><div class="row">${btn('auto-apply',pref.auto?'Refresh and apply':'Apply to this edition')}${pref.auto?btn('auto-off','Turn Auto off'):''}</div>`);
+  const slider=document.querySelector('#reader-score-slider');
+  let timeout;
+  const update=()=>{
+   clearTimeout(timeout);if(!slider.isConnected||preview?.digest!==c.digest)return;
+   const min=Number(slider.value)/100;if(preview.minimum===min)return;
+   preview.minimum=min;preview.result=compute(base,index,min,restore);
+   document.querySelector('#reader-preview').innerHTML=previewStats(preview.result);
+  };
+  slider.oninput=()=>{document.querySelector('#reader-min-score').textContent=(Number(slider.value)/100).toFixed(2);clearTimeout(timeout);timeout=setTimeout(update,1000);};
+  slider.onpointerup=slider.onchange=slider.ontouchend=update;
+  preview.update=update;
+ }
+ async function saveEdition(pref,base,result,digest){
+  await flush();
+  if(chapter()?.digest!==digest)return;
+  if(!await change(d=>{d.reader[novel].chapters[number-1].editionPrefs=pref;},false))return;
+  installView(base,result,digest);preview=null;closeModal?.();render();
+ }
+
  const btn=(action,label,extra='')=>`<button class="btn btn-secondary" data-action="reader-${action}" ${extra}>${esc(label)}</button>`;
  function selectBook(){
   const available=books();
@@ -69,7 +149,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  }
  async function loadSelection(id,n,{reading=false,automatic=false}={}){
   if(!libraryBook(id))return;
-  await flush();novel=id;number=n;shown='';revealed=false;quotaDialogShownFor='';
+  await flush();activeView=null;preview=null;novel=id;number=n;shown='';revealed=false;quotaDialogShownFor='';
   const entry=libraryChapter(id,n);
   if(!entry)return;
   try{
@@ -90,7 +170,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     }
    }
    const ch=state().reader?.[id]?.chapters[n-1];
-   if(ch){await change(d=>{d.reader[id].current=n;},false);mode=reading?'read':'review';}
+   if(ch){await reopenView();await change(d=>{d.reader[id].current=n;},false);mode=reading?'read':'review';}
    else mode='review';
    chromeVisible=true;render();
   }catch(e){toast(e.message);mode='review';render();}
@@ -163,7 +243,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  // Rendering the flashcard must remain free of modal side effects.
  function notifyQuotaExhaustion(){
   if(mode!=='study')return;
-  const b=book(),c=chapter();if(!b||!c)return;
+  const b=book(),c=studyChapter();if(!b||!c)return;
   const a=analysis(state(),b,c);
   if(a.queue.length||!a.blocked.length){quotaDialogShownFor='';return;}
   const day=new Date().toLocaleDateString('en-CA');
@@ -177,10 +257,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const complete=book()?.chapters[p.number-1]?.complete;
   return `<article data-reader-number="${p.number}"><h2>${esc(chapterLabel(p))}</h2>${p.paragraphs.map((row,index)=>{
    let offset=0,wordIndex=0;
-   return `<p data-pid="${esc(row.id)}" data-index="${index}">${row.tokens.map(t=>{
+   return `<p data-pid="${esc(row.id)}" data-index="${index}">${row.tokens.map((t,i)=>{
     if(typeof t==='string'){offset+=t.length;return esc(t);}
     const k=t[0],surface=t[1]??p.items[k].hanzi,start=offset;offset+=surface.length;
-    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-offset="${start}" class="${p.items[k].kind==='term'?'reader-term':!a.qualifies(k)?'reader-weak':''}" aria-label="${esc(surface)}. Double-tap for dictionary">${esc(surface)}</span>`;
+    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-source-offset="${row.anchors?.[i]??start}" data-change="${esc(projection()?.changed.get(row.id+':'+i)||'')}" data-offset="${start}" class="${p.items[k].kind==='term'?'reader-term':!a.qualifies(k)?'reader-weak':''}" aria-label="${esc(surface)}. Double-tap for dictionary">${esc(surface)}</span>`;
    }).join('')}</p>`;
   }).join('')}<div class="reader-end"><div class="reader-end-label">End of chapter ${p.number}</div><button class="reader-finish-next" data-action="reader-finish-next" data-number="${p.number}">${complete?'Completed · ':''}${later?'Mark complete & next chapter →':'Mark chapter complete ✓'}</button></div></article>`;
  }
@@ -194,12 +274,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const entries=libraryBook(novel)?.chapters||[];
   return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(chapterTitle(c))}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
   <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-selected="${esc(state().settings.speechVoice||'')}" data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
-  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div><button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
+  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div>${editionControls()}<button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
  }
  function view(){
   selectBook();
   const available=books(),lib=libraryBook(novel),entry=libraryChapter(novel,number);
-  const b=book(),c=chapter();
+  const b=book(),c=studyChapter();
   const importBtn=btn('import','Import chapter JSON');
   const volumes=volumeList(lib),currentVolume=lib?.chapters.find(c=>c.number===number)?.volume??volumes[0]?.number;
   // Volume is solely a chapter picker filter. No volume-specific progress or
@@ -210,10 +290,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(chapterLabel(entry))}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
   const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),`aria-pressed="${mode===x}"${x==='read'?` data-read-state="${a.ready?'ready':'caution'}"`:''}`)).join('');
-  const p=memory.get(c.digest);
+  const p=projection()?.p||memory.get(c.digest);
   const body=mode==='study'?study(b,c,a):mode==='read'?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${state().settings.readerTermsHighlight!==false?'show-terms':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
   if(isReading())return body;
-  return `${chooser}<div class="reader-tabs">${tabs}</div>${body}`;
+  return `${chooser}${editionControls()}<div class="reader-tabs">${tabs}</div>${body}`;
  }
  async function cached(c,refresh=false){
   if(!refresh&&memory.has(c.digest))return memory.get(c.digest);
@@ -340,7 +420,21 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     const target=chapters[index+(name==='previous'?-1:1)];
     if(target)await choose(novel,target.number,{reading:true});return;
    }
-   const b=book(),c=chapter();if(!c)return;
+   const b=book(),c=studyChapter();if(!c)return;
+   if(name==='edition'||name==='auto'||name==='auto-apply'||name==='auto-off'||name==='restore-word'){
+    const original=await cached(chapter());if(!original)return;
+    const pref={...prefs()},digest=c.digest;
+    if(name==='auto'){await openAuto(original);return;}
+    if(name==='auto-apply'){
+     if(!preview||preview.digest!==digest)return;preview.update();
+     await saveEdition({...pref,minimum:preview.minimum,auto:true},preview.base,preview.result,digest);return;
+    }
+    if(name==='edition'){pref.graded=!pref.graded;pref.restored=[];}
+    if(name==='auto-off')pref.auto=false;
+    if(name==='restore-word')pref.restored=[...new Set([...(pref.restored||[]),el.dataset.loc])];
+    const base=await baseEdition(original,pref.graded);
+    await saveEdition(pref,base,pref.auto?compute(base,learnerIndex(state()),pref.minimum??.92,pref.restored):null,digest);return;
+   }
    if(name==='vocab-group'||name==='vocab-prev'||name==='vocab-next'){
     if(name==='vocab-group'){vocabGroup=el.dataset.group;vocabPage=0;}
     else vocabPage+=name==='vocab-prev'?-1:1;
@@ -355,7 +449,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    if(name==='define'){
     const item=b.items[el.dataset.key];if(!item)return;
     const match=state().cards.find(card=>card.hanzi===item.hanzi);
-    modal(item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small><div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="card-detail" data-id="${esc(match.id)}">View full entry</button>`:''}</div></div>`);return;
+    const replacement=projection()?.result?.changes.get(el.dataset.change);
+    const source=el.closest?.('p')?.dataset.pid;
+    const raw=source&&memory.get(c.digest),row=raw?.paragraphs?.find(r=>r.id===source);
+    const sourceText=row?.tokens.map(t=>typeof t==='string'?t:t[1]??raw.items[t[0]].hanzi).join('');
+    modal(item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small>${replacement?`<p>Before Auto · ${esc(replacement.src)} → ${esc(replacement.targets.join(''))} · ${replacement.similarity??'reviewed phrase'}</p>${btn('restore-word','Restore this occurrence','data-loc="'+esc(el.dataset.change)+'"')}`:''}${sourceText&&projection()?`<details><summary>Original paragraph</summary><p>${esc(sourceText)}</p></details>`:''}<div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="card-detail" data-id="${esc(match.id)}">View full entry</button>`:''}</div></div>`);return;
    }
    await flush();
    if(name==='exit'){mode='review';chromeVisible=true;render();globalThis.scrollTo?.(0,0);return;}
@@ -391,7 +489,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      // Legacy or offline chapters can still have vocabulary that predates the
      // automatic lexicon import. Persist any resulting card/tag additions.
      const contentChange=learningItem.kind==='vocab'&&(!master||!master.tags.includes(`Reader/${b.title}`));
-     const ok=await change(d=>{applied=gradeReader(d,d.reader[novel],shown,grade,now);},false,contentChange);
+     const ok=await change(d=>{const saved=d.reader[novel];if(!saved.items[shown])saved.items={...saved.items,[shown]:learningItem};applied=gradeReader(d,saved,shown,grade,now);},false,contentChange);
      if(!ok||!applied){toast('Daily new-vocabulary limit reached, or review is not due yet.');shown='';revealed=false;render();notifyQuotaExhaustion();return;}
     }
     recordPractice(session,shown,grade);
@@ -427,5 +525,5 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  });
  globalThis.addEventListener?.('pagehide',()=>void flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)void flush();});
- return {view,isReading,mount,unmount,action,flush,reset(){unmount();pendingPlayback=null;pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';quotaDialogShownFor='';}};
+ return {view,isReading,mount,unmount,action,flush,reset(){unmount();activeView=null;preview=null;gradedAssets.clear();pendingPlayback=null;pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';quotaDialogShownFor='';}};
 }

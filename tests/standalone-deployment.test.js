@@ -23,7 +23,7 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
   for(const shell of ['index.html','sw.js','manifest.webmanifest','standalone-boot.js','pwa-update.js'])
     assert.equal(fs.existsSync(new URL(shell,modPath)),false,`host shell leaked into module: ${shell}`);
   const html=read(standalonePath,'index.html');
-  assert.match(html,/Cíyán v0\.8\.18/);
+  assert.match(html,/Cíyán v0\.9\.0/);
   assert.match(html,/src="\.\/standalone-boot\.js"/);
   assert.doesNotMatch(html,/My Workspace|launcher\.js|apps-registry/);
   const manifest=JSON.parse(read(standalonePath,'manifest.webmanifest'));
@@ -63,7 +63,7 @@ test('standalone updater uses its own SW, but launcher API remains authoritative
 
 test('offline standalone cache refreshes on build changes without deleting reader content',()=>{
   const code=read(standalonePath,'sw.js');
-  assert.match(code,/ciyan-shell-v0\.8\.18-[a-f0-9]{16}/);
+  assert.match(code,/ciyan-shell-v0\.9\.0-[a-f0-9]{16}/);
   assert.match(code,/"\.\/index\.html"/);
   assert.match(code,/"\.\/app\.js"/);
   assert.match(code,/"\.\/chapters\/index\.js"/);
