@@ -14,10 +14,13 @@ function fixture(){
  }
  const win=element(),doc=element(),pages=element(),toolbar=element(),play=element(),output=element();
  const toggle=element(),audio=element(),speechStatus=element(),voice=element(),config=element(),region=element(),key=element(),dock=element(),sheet=element(),audioControls=element();
- let y=0;
+ let y=0,frameId=0;
+ const frames=new Map();
  Object.assign(win,{innerHeight:800,scrollTo(x,dy){y=dy;},scrollBy(x,dy){y+=dy;},
   getComputedStyle:()=>({getPropertyValue:()=> '12px'}),
-  requestAnimationFrame:()=>1,cancelAnimationFrame(){}});
+  requestAnimationFrame(fn){const id=++frameId;frames.set(id,fn);return id;},
+  cancelAnimationFrame(id){frames.delete(id);},
+  runFrames(){const queued=[...frames.values()];frames.clear();for(const fn of queued)fn(16);}});
  doc.defaultView=win;doc.createElement=()=>({append(){},replaceChildren(){},label:''});
  pages.ownerDocument=doc;
  toolbar.querySelector=q=>q==='output'?output:play;
@@ -52,13 +55,20 @@ test('single tap shows controls; double tap opens dictionary without toggling co
  const wordTarget=w=>({closest:q=>q==='[data-word-index]'?w:null});
  f.pages.fire('click',{target:wordTarget(f.words[0])});
  assert.equal(definitions.length,0);
- t.mock.timers.tick(285);
+ t.mock.timers.tick(360);
  assert.deepEqual(taps,['tap']);
  f.pages.fire('click',{target:wordTarget(f.words[1])});
  f.pages.fire('click',{target:wordTarget(f.words[1])});
  assert.deepEqual(definitions,[f.words[1]]);
  assert.equal(taps.length,1);
  focus();assert.equal(saved.at(-1).wordIndex,1); // guide from here also works if off
+ // A double tap at 300ms must still work: it used to be lost when the
+ // 285ms single-tap timer cleared the target before the 360ms cutoff.
+ f.pages.fire('click',{target:wordTarget(f.words[2])});
+ t.mock.timers.tick(300);
+ f.pages.fire('click',{target:wordTarget(f.words[2])});
+ assert.deepEqual(definitions,[f.words[1],f.words[2]]);
+ assert.equal(taps.length,1);
  dispose();
 });
 
@@ -85,5 +95,18 @@ test('paused reader and touch grace period allow free scrolling',t=>{
  t.mock.timers.tick(2999);assert.equal(f.getScroll(),400);
  f.win.fire('touchstart');t.mock.timers.tick(1);assert.equal(f.getScroll(),400);
  f.win.fire('touchend',{touches:[]});t.mock.timers.tick(3000);assert.notEqual(f.getScroll(),400);
+ dispose();
+});
+
+
+test('scrolling while the guide is paused seeks to the visible word and saves that bookmark',()=>{
+ const f=fixture(),saved=[];
+ const dispose=mountReadingGuide(f.pages,{save:(n,p)=>saved.push(p),define(){},initialRate:120,rateChanged(){},extend:async()=>{},initialGuide:true});
+ assert.equal(saved.at(-1).wordIndex,0);
+ f.win.scrollBy(0,43);
+ f.win.fire('scroll');f.win.runFrames();
+ assert.equal(f.getScroll(),43,'paused guide must not scroll-lock');
+ assert.equal(saved.at(-1).wordIndex,1,'saved bookmark should move to the first visible word');
+ assert.ok(f.words[1].classes.has('reader-current'));
  dispose();
 });

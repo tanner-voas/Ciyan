@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.8.4
+# Cíyán (词言) v0.8.5
 
 Cíyán is an offline-first Mandarin learning PWA with flashcards, grammar,
 FSRS review scheduling, a graded novel reader, drawing practice and
@@ -59,9 +59,10 @@ Listening uses the same sentence prerequisites as Grammar and maintains its own 
 
 ## Chapter preparation and study
 
-**Settings → Reader** selects the reading gate. Authored uses the writer’s
-selection of vocabulary, terms and grammar. Auto checks all distinct annotated
-words and terms. Each required item qualifies with a saved score of 1.5,
+**Reader** automatically checks distinct annotated words in each chapter,
+plus chapter-critical terms and grammar from its focus list. There is no
+authored-vocabulary mode; HSK1–4 vocabulary is assumed as the starting base
+unless a recorded low score overrides that assumption. Each required item qualifies with a saved score of 1.5,
 three Good grades or one Easy during this app run. Study prioritizes due
 reviews, new items and then early practice. Early practice leaves the saved
 schedule and history untouched. Study lists also offer earlier due items and
@@ -72,8 +73,9 @@ travel in the full backup. Chapter prose remains in the hosted package or
 browser cache, not in full backups.
 
 The optional reading guide starts paused at 120 characters per minute. Step
-through words or play continuously. While active, the bookmark follows the
-highlighted word. Manual scrolling saves the first visible paragraph.
+through words or play continuously. While playing, the bookmark follows the
+highlighted word. When paused, manual scrolling seeks to the first visible
+annotated word, so the guide can resume from that point.
 
 In Settings, **Clear learning records** resets review data and reading
 progress, **Clear settings** restores default preferences, and **Clear

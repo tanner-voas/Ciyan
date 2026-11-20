@@ -34,9 +34,9 @@ function database(){
 }
 export function resetConfirmationValid(value){return String(value??'').trim().toLowerCase()==='confirm';}
 export function speechPreferences(s={}){
- const number=(v,min,max,fallback)=>Number.isInteger(v)&&v>=min&&v<=max?v:fallback;
+ const number=(v,min,max,fallback)=>Number.isInteger(v)&&v>=min?Math.min(v,max):fallback;
  const voiceProfiles=Object.fromEntries(Object.entries(s.voiceProfiles||{}).filter(([id,v])=>id.length<=512&&v&&typeof v==='object').map(([id,v])=>[id,{readerCpm:number(v.readerCpm,10,1200,120),speechPitch:number(v.speechPitch,-50,50,0)}]));
- return {theme:['light','dark'].includes(s.theme)?s.theme:'system',voiceProfiles,speechCacheLimit:number(s.speechCacheLimit,0,Number.MAX_SAFE_INTEGER,8),azureRegion:typeof s.azureRegion==='string'&&/^[a-z0-9]{1,64}$/.test(s.azureRegion)?s.azureRegion:'',speechVoice:typeof s.speechVoice==='string'?s.speechVoice.slice(0,512):'',speechPitch:number(s.speechPitch,-50,50,0),speechPreload:number(s.speechPreload,0,Number.MAX_SAFE_INTEGER,2),paragraphDelay:number(s.paragraphDelay,0,5000,110)};
+ return {theme:['light','dark'].includes(s.theme)?s.theme:'system',voiceProfiles,speechCacheLimit:number(s.speechCacheLimit,0,64,8),azureRegion:typeof s.azureRegion==='string'&&/^[a-z0-9]{1,64}$/.test(s.azureRegion)?s.azureRegion:'',speechVoice:typeof s.speechVoice==='string'?s.speechVoice.slice(0,512):'',speechPitch:number(s.speechPitch,-50,50,0),speechPreload:number(s.speechPreload,0,12,2),paragraphDelay:number(s.paragraphDelay,0,5000,110)};
 }
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
@@ -217,6 +217,11 @@ export function migrateState(input){
     const migratedSettings={...input.settings,tagWeights:{...input.settings?.tagWeights}};
     delete migratedSettings.readerGate; // Obsolete authored/auto switch.
     upgradeTskDefaults(migratedSettings,input.appVersion);
+    // Bound restored cloud prefetch/cache settings as well as newly edited ones.
+    // This avoids unexpected Azure requests from oversized legacy values.
+    const boundedSpeech=speechPreferences(migratedSettings);
+    migratedSettings.speechPreload=boundedSpeech.speechPreload;
+    migratedSettings.speechCacheLimit=boundedSpeech.speechCacheLimit;
     return ensureStudy({...input,reader:validateReader(input.reader||{}),cards:same?input.cards:normalizedCards,grammar:Array.isArray(input.grammar)?input.grammar:[],
       grammarHistory:Array.isArray(input.grammarHistory)?input.grammarHistory:[],
       grammarSessions:Array.isArray(input.grammarSessions)?input.grammarSessions:[],

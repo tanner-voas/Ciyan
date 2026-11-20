@@ -266,7 +266,7 @@ function studySummary(mode,counts=modeCounts(state,mode,studyFilters)){return `<
 function renderStudyIntro(){
  const today=newVocabToday(state),left=newVocabRemaining(state),countsByMode=Object.fromEntries(Object.keys(MODES).map(m=>[m,modeCounts(state,m,studyFilters)])),enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),all=enabled.map(m=>countsByMode[m]);
  const due=all.reduce((n,x)=>n+x.due,0),newCards=all.reduce((n,x)=>n+x.new,0);
- return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Practice vocabulary, grammar, listening, character writing, and particles. Stop whenever you choose.</p></div>
+ return `<div class="page-heading"><div class="eyebrow">STUDY · YOUR HOME</div><h1 class="h1">Learn it.<br>Then use it.</h1><p class="lead">Practice vocabulary, grammar, listening, character writing, and particles. Stop whenever you choose.</p><div class="study-quick-start"><button class="btn btn-primary" data-action="practice-start" data-mode="auto" ${canStartAuto(countsByMode)?'':'disabled'}>Start Auto Study</button><small>${due} due now · ${newCards} new available in enabled modes</small></div></div>
  <section class="panel stack study-pool"><h2>Choose what is eligible</h2><div class="study-pool-options">${[['all','All'],['due','Due only'],['new','New only']].map(([p,label])=>`<button class="btn ${selectedPool===p?'btn-primary':'btn-secondary'}" data-action="study-pool" data-pool="${p}" aria-pressed="${selectedPool===p}">${label}</button>`).join('')}</div><p class="subtle">All: review due cards first, then introduce new exercises. Due only never introduces cards; New only never asks scheduled reviews.</p><p class="subtle">New vocabulary today: ${today}${Number.isFinite(left)?` · ${left} introductions remaining`:' · Unlimited introductions'}</p></section>
  ${autoControls(countsByMode)}<div class="mode-grid">${Object.entries(MODES).map(([mode,name])=>{const c=countsByMode[mode];return `<section class="panel mode-panel"><h2>${name}</h2>${studySummary(mode,c)}<button class="btn btn-secondary btn-full" data-action="practice-start" data-mode="${mode}" ${!modeStartable(mode,c)?'disabled':''}>Study ${name.toLowerCase()}</button></section>`;}).join('')}</div>
  ${backupBanner()}${studyFilterTree()}`;
@@ -633,7 +633,7 @@ function speechSettings(){
  if(s.speechVoice&&!list.some(([id])=>id===s.speechVoice))list.push([s.speechVoice,'Saved system voice']);
  const numeric=(name,label,min,max)=>`<label class="settings-row">${label}<input type="number" required id="${name}" min="${min}" max="${max}" value="${s[name]}"></label>`;
  return `<div class="stack"><label>Mandarin voice<select id="speechVoice">${list.map(([id,label])=>`<option value="${esc(id)}" ${s.speechVoice===id?'selected':''}>${esc(label)}</option>`).join('')}</select></label>
- ${numeric('readerCpm','Characters per minute',10,1200)}${numeric('speechPitch','Pitch adjustment (%)',-50,50)}${numeric('speechPreload','Azure sentences ahead',0,Number.MAX_SAFE_INTEGER)}${numeric('speechCacheLimit','Maximum cached sentences',0,Number.MAX_SAFE_INTEGER)}${numeric('paragraphDelay','Paragraph pause (ms)',0,5000)}
+ ${numeric('readerCpm','Characters per minute',10,1200)}${numeric('speechPitch','Pitch adjustment (%)',-50,50)}${numeric('speechPreload','Azure sentences ahead',0,12)}${numeric('speechCacheLimit','Maximum cached sentences',0,64)}${numeric('paragraphDelay','Paragraph pause (ms)',0,5000)}
  <details><summary>Azure credentials</summary><div class="stack"><label>Azure region<input id="speech-region" autocapitalize="none" autocomplete="off" placeholder="eastasia" value="${esc(s.azureRegion)}"></label>
  <div id="speech-key-area">${secretControls()}</div></div></details>
  <button class="btn btn-primary" data-action="save-speech">Save speech settings</button>
@@ -1274,10 +1274,16 @@ async function startFilteredSession(){
  const ids=state.cards.filter(c=>matchesTags(c.tags,f.tags)&&(f.rating==='any'||compare(state.schedules[c.id]?.lastRating||0,f.op,Number(f.rating)))&&(!q||[c.hanzi,c.pinyin,c.english,...c.tags].join(' ').toLowerCase().includes(q))).map(c=>c.id);
  await startPractice('words',ids);
 }
+function canStartAuto(countsByMode){
+ const enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),rows=enabled.map(m=>countsByMode[m]);
+ const due=rows.reduce((n,x)=>n+x.due,0),newCards=rows.reduce((n,x)=>n+x.new,0);
+ return !!enabled.length&&(selectedPool==='due'?due>0:selectedPool==='new'?newCards>0:due+newCards>0)&&
+  (selectedPool==='due'||due>0||enabled.some(m=>m!=='words')||newVocabRemaining(state)>0);
+}
 function autoControls(countsByMode){
  const enabled=Object.keys(MODES).filter(m=>autoEnabled(state,m)),rows=enabled.map(m=>countsByMode[m]);
  const due=rows.reduce((n,x)=>n+x.due,0),started=rows.reduce((n,x)=>n+x.started,0),total=rows.reduce((n,x)=>n+selectedCount(x),0),newCards=rows.reduce((n,x)=>n+x.new,0);
- const canStart=!!enabled.length&&(selectedPool==='due'?due>0:selectedPool==='new'?newCards>0:due+newCards>0)&&(selectedPool==='due'||due>0||enabled.some(m=>m!=='words')||newVocabRemaining(state)>0);
+ const canStart=canStartAuto(countsByMode);
  return `<section class="panel stack auto-panel"><div class="eyebrow">MIXED PRACTICE</div><h2>Auto Study</h2><p>Weighted-random modes and overdue cards, using your preferred weights. No fixed session length.</p><div class="auto-modes">${Object.entries(MODES).map(([m,label])=>`<label><input type="checkbox" data-auto-mode="${m}" ${autoEnabled(state,m)?'checked':''}> ${label}</label>`).join('')}</div><div class="study-counts"><span><strong>${due}</strong><small>Due now</small></span><span><strong>${started}</strong><small>Started · not due</small></span><span><strong>${total}</strong><small>Available to study</small></span></div><p class="subtle">${newCards} new available across enabled modes</p><button class="btn btn-primary btn-full" data-action="practice-start" data-mode="auto" ${canStart?'':'disabled'}>Start Auto Study</button></section>`;
 }
 async function startPractice(mode,allowedWords=null){

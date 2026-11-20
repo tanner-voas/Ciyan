@@ -135,7 +135,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
     const ticket=sequence,preferences=speechSettings(),first=current;
     function* upcoming(){
      let passage=speechPassage(first);
-     for(let n=0;n<Math.min(preferences.speechPreload??2,preferences.speechCacheLimit??8);n++){
+     for(let n=0;n<Math.min(preferences.speechPreload??2,preferences.speechCacheLimit??8,12);n++){
       const last=passage.words.at(-1),word=last&&wordList[wordList.indexOf(last)+1];
       if(!word)return;
       passage=speechPassage(word);yield passage.text;
@@ -170,9 +170,33 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   if(on){select(start);schedule();}
   else{pause();current?.classList.remove('reader-current');current=null;bookmark(visibleRow());}
  }
+ function visibleWord(row){
+  if(!row)return null;
+  const top=topEdge()+2;
+  const words=Array.from(row.querySelectorAll('[data-word-index]'));
+  return words.find(word=>{
+   const rect=word.getBoundingClientRect();
+   return (rect.bottom??rect.top+rect.height)>top;
+  })||words.at(-1)||null;
+ }
  function track(){
   if(frame)return;
-  frame=win.requestAnimationFrame(()=>{frame=0;if(enabled){if(playing&&!drift)center();}else bookmark(visibleRow());});
+  frame=win.requestAnimationFrame(()=>{
+   frame=0;
+   if(enabled){
+    if(playing&&!drift)center();
+    else if(!playing){
+     // When playback is paused, the reader follows the *user's* scrolling,
+     // not the old guide location. Resuming starts at the visible word.
+     const row=visibleRow(),word=visibleWord(row);
+     if(word&&word!==current){
+      current?.classList.remove('reader-current');
+      current=word;current.classList.add('reader-current');
+     }
+     bookmark(row,word);
+    }
+   }else bookmark(visibleRow());
+  });
  }
  function lookup(word){
   const wasPlaying=playing;
@@ -204,7 +228,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
   if(word){
    const now=Date.now();
    if(tapped===word&&now-tappedAt<360){clearTimeout(tapTimer);tapped=null;tappedAt=0;lookup(word);}
-   else{clearTimeout(tapTimer);tapped=word;tappedAt=now;tapTimer=setTimeout(()=>{tapped=null;onTap();},285);}
+   else{clearTimeout(tapTimer);tapped=word;tappedAt=now;tapTimer=setTimeout(()=>{tapped=null;onTap();},360);}
    return;
   }
   clearTimeout(tapTimer);tapped=null;onTap();

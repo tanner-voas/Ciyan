@@ -13,7 +13,7 @@ const pending=new Map();
 let cacheGeneration=0,cacheLimit=8;
 export function setSpeechCacheLimit(limit){
  if(!Number.isSafeInteger(limit)||limit<0)return;
- cacheLimit=limit;
+ cacheLimit=Math.min(limit,64);
  while(clips.size>cacheLimit)clips.delete(clips.keys().next().value);
 }
 export function clearSpeechCache(){

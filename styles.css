@@ -447,7 +447,7 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 #reader-pages [data-word-index]{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #reader-pages .reader-current{background:#d9ebcd;border-radius:.2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .app-frame:has(#reader-pages){padding-bottom:calc(174px + env(safe-area-inset-bottom,0px))}
-html,body{touch-action:pan-x pan-y}
+html,body{touch-action:manipulation}
 @media(max-width:700px){input:not([type=checkbox]):not([type=range]),select,textarea{font-size:max(16px,1em)!important}}
 .immersive-reader{padding-top:calc(8px + env(safe-area-inset-top,0px))}
 .app-frame:has(.immersive-reader){padding:0 max(8px,env(safe-area-inset-right)) calc(54px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
@@ -594,3 +594,9 @@ html,body{touch-action:pan-x pan-y}
  :root:not([data-theme]){color-scheme:dark;background:#121a17;color:#e3ebe6;--cream:#121a17;--ink:#e3ebe6}
 }
 [data-theme=dark] :is(.collection-page-status,.stat-feedback-row span,.list-meta strong,.filter-line,.review-example,.tree-toggle,.reader-audio-line small){color:var(--muted)}
+
+/* v0.8.5: offer a first-screen entry point without changing study selection. */
+.study-quick-start{display:flex;align-items:center;gap:12px;margin-top:16px}
+.study-quick-start .btn{flex:none;min-height:48px}
+.study-quick-start small{font-size:12px;line-height:1.45;color:var(--muted)}
+@media(max-width:360px){.study-quick-start{display:grid;gap:8px}.study-quick-start .btn{width:100%}}
