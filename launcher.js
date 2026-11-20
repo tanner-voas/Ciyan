@@ -1,4 +1,6 @@
-// v0.8.15: one installed PWA, independently loaded app runtimes.
+import {runUpdateButton} from './pwa-update.js';
+
+// v0.8.16: one installed PWA, independently loaded app runtimes.
 // Only the selected app's module is imported; going Home unloads its entire runtime.
 // Add future entries here, with their own modules and storage namespaces.
 export const APPS = Object.freeze([
@@ -16,11 +18,13 @@ export function activeAppId(current){
 }
 
 export function homeScreen(current){
-  const tiles=APPS.map(app=>`<a class="launcher-tile" data-launch-app="${app.id}" href="${appLaunchUrl(current,app.id)}" aria-label="Open ${app.name}"><span class="launcher-tile-icon" aria-hidden="true">${app.glyph}</span><span class="launcher-tile-name">${app.name}</span><span class="launcher-tile-description">${app.description}</span></a>`).join('');
-  return `<div class="launcher-screen"><header class="launcher-header"><span class="launcher-eyebrow">YOUR WORKSPACE</span><div class="launcher-monogram" aria-hidden="true">M</div></header>
-    <h1 class="launcher-title">My Apps</h1><p class="launcher-subtitle">Your apps, in one place.</p>
-    <section class="launcher-section" aria-labelledby="launcher-apps-heading"><div class="launcher-section-heading"><h2 id="launcher-apps-heading">Installed apps</h2><span>${APPS.length} ${APPS.length===1?'app':'apps'}</span></div>
-    <div class="launcher-grid">${tiles}</div></section></div>`;
+  const tiles=APPS.map(app=>`<a class="launcher-tile" data-launch-app="${app.id}" href="${appLaunchUrl(current,app.id)}" aria-label="Open ${app.name}"><span class="launcher-tile-icon" aria-hidden="true">${app.glyph}</span><span class="launcher-tile-name">${app.name}</span></a>`).join('');
+  return `<div class="launcher-screen"><header class="launcher-header"><h1 class="launcher-workspace-title">My Workspace</h1>
+    <button type="button" class="launcher-refresh icon-btn" data-update-launcher aria-label="Check for updates and reload" title="Check for updates and reload">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14-5L3 9V3m0 6h6M4 13a8 8 0 0 0 14 5l3-3v6m0-6h-6"/></svg>
+    </button></header>
+    <nav class="launcher-grid" aria-label="Applications">${tiles}</nav>
+    <p class="launcher-error" aria-live="polite"></p></div>`;
 }
 
 // Launch inside this document. iOS Home Screen PWAs can hand a normal <a>
@@ -34,7 +38,7 @@ export async function launchApp(id){
   const previous=location.href;
   try{
     history.replaceState(null,'',appLaunchUrl(previous,id));
-    document.title='Cíyán v0.8.15';
+    document.title='Cíyán v0.8.16';
     document.body.classList.remove('launcher-mode');
     document.querySelector('#app').innerHTML='<div class="loading-state"><div class="brand-mark">词</div><div class="loading-spinner"></div><p>Opening Cíyán…</p></div>';
     // App boot is the same module as before the launcher was introduced.
@@ -53,7 +57,7 @@ export async function launchApp(id){
 export async function startLauncher(){
   const id=activeAppId(location.href);
   if(id==='ciyan'){
-    document.title='Cíyán v0.8.15';
+    document.title='Cíyán v0.8.16';
     await import('./app.js');
     return;
   }
@@ -62,6 +66,16 @@ export async function startLauncher(){
   const host=document.querySelector('#app');
   host.innerHTML=homeScreen(location.href);
   host.addEventListener('click',event=>{
+    const refresh=event.target.closest?.('[data-update-launcher]');
+    if(refresh){
+      event.preventDefault();
+      const errorNode=host.querySelector('.launcher-error');
+      if(errorNode)errorNode.textContent='';
+      void runUpdateButton(refresh,{
+        onError:message=>{if(errorNode)errorNode.textContent=`Update failed: ${message}`;}
+      });
+      return;
+    }
     const tile=event.target.closest?.('[data-launch-app]');
     if(!tile||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
     event.preventDefault();
@@ -69,7 +83,7 @@ export async function startLauncher(){
       const message=document.createElement('p');
       message.className='subtle launcher-error';
       message.textContent=`Unable to open app: ${error?.message||error}`;
-      host.querySelector('.launcher-section')?.append(message);
+      host.querySelector('.launcher-screen')?.append(message);
     });
   });
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){

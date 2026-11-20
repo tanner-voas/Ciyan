@@ -1,3 +1,4 @@
+import {runUpdateButton} from './pwa-update.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
@@ -1242,33 +1243,8 @@ async function saveAndExitToLauncher(button){
 }
 
 async function updateAndReload(button){
- button.disabled=true;button.textContent='Checking for updates…';
- try{
-  if(navigator.onLine===false)throw Error('Connect to the internet to check for an update.');
-  const workers=navigator.serviceWorker;
-  if(workers){
-   const registration=await workers.register('./sw.js',{updateViaCache:'none'});
-   if(!registration.waiting)await registration.update();
-   const worker=registration.waiting||registration.installing;
-   if(worker&&worker.state!=='activated'){
-    button.textContent='Installing update…';
-    await new Promise((resolve,reject)=>{
-     const timer=setTimeout(()=>finish(Error('Update is taking longer than expected. Try again.')),90000);
-     function finish(error){
-      clearTimeout(timer);worker.removeEventListener('statechange',check);
-      workers.removeEventListener('controllerchange',check);error?reject(error):resolve();
-     }
-     function check(){
-      if(worker.state==='redundant')finish(Error('Update failed. Your current version is available.'));
-      else if(worker.state==='activated'&&workers.controller===worker)finish();
-      else if(worker.state==='installed')worker.postMessage('activate-update');
-     }
-     worker.addEventListener('statechange',check);workers.addEventListener('controllerchange',check);check();
-    });
-   }
-  }
-  location.reload();
- }catch(error){toast(error.message);button.disabled=false;button.textContent='Check for updates and reload';}
+ // The same bounded update behavior is used by My Workspace and Cíyán.
+ await runUpdateButton(button,{onError:message=>toast(`Update failed: ${message}`)});
 }
 async function boot(){try{
   // Load automatically downloaded or user-imported font bytes before verifying saved typography.

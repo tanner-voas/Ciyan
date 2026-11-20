@@ -60,6 +60,6 @@ test('v0.8.15 launcher selects a module without an anchor-driven page change',()
   assert.match(js,/history.replaceState\(null,'',appLaunchUrl/);
   assert.match(js,/await import\(selected.module\)/);
   assert.equal(activeAppId(appLaunchUrl('https://ciyan.example/','ciyan')),'ciyan');
-  assert.equal(APP_VERSION,'0.8.15');
-  assert.equal(prepareVersionedBackup({appVersion:'0.8.14',state:{revision:1}}).appVersion,'0.8.15');
+  assert.equal(APP_VERSION,'0.8.16');
+  assert.equal(prepareVersionedBackup({appVersion:'0.8.14',state:{revision:1}}).appVersion,'0.8.16');
 });

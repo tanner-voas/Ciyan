@@ -17,10 +17,10 @@ test('v0.8.14 launcher routes only registered apps without changing the website 
 });
 
 test('v0.8.14 keeps Cíyán state and supports lossless backup upgrades',()=>{
- assert.equal(APP_VERSION,'0.8.15');
+ assert.equal(APP_VERSION,'0.8.16');
  const data={appVersion:'0.8.13',state:{cards:[{id:'custom',english:'my word'}],revision:77}};
  const upgraded=prepareVersionedBackup(data);
- assert.equal(upgraded.appVersion,'0.8.15');
+ assert.equal(upgraded.appVersion,'0.8.16');
  assert.deepEqual(upgraded.state,data.state);
  assert.equal(data.appVersion,'0.8.13');
 });

@@ -7,8 +7,8 @@
   -webkit-font-smoothing:antialiased;
 }
 * {box-sizing:border-box}
-html{background:var(--cream);min-height:100%;scroll-behavior:auto}
-body{margin:0;min-height:100dvh;color:var(--ink);overscroll-behavior-y:contain}
+html{background:var(--cream);min-height:100%;scroll-behavior:auto;overflow-x:hidden}
+body{margin:0;min-height:100dvh;max-width:100%;overflow-x:hidden;color:var(--ink);overscroll-behavior-y:contain}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 button:disabled{opacity:.45;cursor:not-allowed}
@@ -494,7 +494,7 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 #reader-pages [data-word-index]{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #reader-pages .reader-current{outline:2px solid #b88700;outline-offset:0;border-radius:.2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .app-frame:has(#reader-pages){padding-bottom:calc(174px + env(safe-area-inset-bottom,0px))}
-html,body{touch-action:manipulation}
+html,body{touch-action:pan-x pan-y}
 @media(max-width:700px){input:not([type=checkbox]):not([type=range]),select,textarea{font-size:max(16px,1em)!important}}
 .immersive-reader{padding-top:calc(8px + env(safe-area-inset-top,0px))}
 .app-frame:has(.immersive-reader){padding:0 max(8px,env(safe-area-inset-right)) calc(54px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
@@ -731,24 +731,21 @@ html,body{touch-action:manipulation}
 [data-theme=dark] .reader-read-action--caution{background:#392623;color:#f5b3a6;border-color:#a86956}
 [data-theme=dark] .show-terms .reader-term{background:rgba(115,195,155,.24)}
 
-/* v0.8.14: compact, standalone application launcher (not a Cíyán screen). */
-.launcher-mode .app-frame{padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+/* v0.8.16: minimal workspace launcher. The page remains vertically scrollable
+   when more application tiles are added, but the viewport cannot pan/zoom. */
+.launcher-mode .app-frame{padding-bottom:calc(40px + env(safe-area-inset-bottom));height:auto;min-height:100dvh}
 .launcher-screen{padding-top:calc(29px + env(safe-area-inset-top));padding-bottom:24px}
-.launcher-header{display:flex;align-items:center;justify-content:space-between}
-.launcher-eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--muted)}
-.launcher-monogram{width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--stroke);border-radius:13px;background:var(--paper);font-size:17px;font-weight:850;color:var(--forest)}
-.launcher-title{font-size:clamp(35px,9vw,48px);letter-spacing:-2px;line-height:1.12;font-weight:830;margin:47px 0 7px}
-.launcher-subtitle{color:var(--muted);font-size:15px;line-height:1.5;margin:0}
-.launcher-section{margin-top:45px}
-.launcher-section-heading{display:flex;align-items:baseline;justify-content:space-between;gap:15px;border-bottom:1px solid var(--stroke);padding-bottom:14px;margin-bottom:22px}
-.launcher-section-heading h2{font-size:16px;letter-spacing:-.3px;margin:0}
-.launcher-section-heading span{color:var(--muted);font-size:12px}
+.launcher-header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.launcher-workspace-title{font-size:clamp(24px,7vw,30px);letter-spacing:-1.1px;line-height:1.2;font-weight:820;margin:0}
+.launcher-refresh{flex-shrink:0;border-radius:14px;min-width:42px;min-height:42px}
+.launcher-refresh:disabled{opacity:.7;min-width:135px;font-size:11px;padding:0 8px}
+.launcher-grid{margin-top:42px;}
+.launcher-error{color:#a33d34;font-size:13px;line-height:1.5;margin-top:20px}
 .launcher-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 13px}
 .launcher-tile{text-decoration:none;color:inherit;display:flex;flex-direction:column;align-items:center;gap:5px;padding:4px 2px 12px;border-radius:20px;transition:transform .18s var(--ease);-webkit-tap-highlight-color:transparent}
 .launcher-tile:active{transform:scale(.95)}
 .launcher-tile-icon{display:grid;place-items:center;width:min(100%,96px);aspect-ratio:1;flex-shrink:0;border-radius:23px;background:linear-gradient(155deg,#2c6650,#204b3b);box-shadow:0 10px 22px #204b3b2c,inset 0 1px 0 #ffffff32;color:white;font-size:43px;font-weight:650;line-height:1}
 .launcher-tile-name{font-size:14px;font-weight:760;margin-top:9px}
-.launcher-tile-description{font-size:11px;color:var(--muted);text-align:center;line-height:1.3}
 @media(max-width:360px){.launcher-grid{gap:12px 7px}.launcher-tile-icon{border-radius:20px}}
 [data-theme="dark"] .launcher-tile-icon{box-shadow:0 10px 22px #0004}
 .exit-action-panel{margin-top:17px}

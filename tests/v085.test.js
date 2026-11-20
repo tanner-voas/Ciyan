@@ -5,7 +5,7 @@ import {APP_VERSION} from '../backup-versions.js';
 import {defaultState,migrateState,speechPreferences} from '../storage.js';
 
 test('v0.8.5 bounds expensive Azure prefetch and cache values, including restored backups',()=>{
- assert.equal(APP_VERSION,'0.8.15');
+ assert.equal(APP_VERSION,'0.8.16');
  assert.equal(speechPreferences({}).speechPreload,2);
  assert.equal(speechPreferences({}).speechCacheLimit,8);
  assert.deepEqual(
@@ -19,11 +19,12 @@ test('v0.8.5 bounds expensive Azure prefetch and cache values, including restore
  assert.equal(s.settings.speechPreload,99999,'migration must not modify the source');
 });
 
-test('mobile viewport permits accessibility pinch zoom',()=>{
+test('v0.8.16 locks browser zoom while retaining normal page and app scrolling',()=>{
  const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
- assert.match(html,/width=device-width, initial-scale=1, viewport-fit=cover/);
- assert.doesNotMatch(html,/user-scalable=no|maximum-scale=1/);
+ assert.match(html,/width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover/);
+ assert.match(html,/src="\.\/viewport-lock\.js"/);
  const css=fs.readFileSync(new URL('../styles.css',import.meta.url),'utf8');
- assert.match(css,/html,body\{touch-action:manipulation\}/);
- assert.doesNotMatch(css,/html,body\{touch-action:pan-x pan-y\}/);
+ assert.match(css,/html,body\{touch-action:pan-x pan-y\}/);
+ assert.match(css,/overflow-x:hidden/);
+ assert.doesNotMatch(css, /\.launcher-mode \.app-frame\{[^}]*overflow-y:hidden/);
 });
