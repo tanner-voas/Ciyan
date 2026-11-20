@@ -1226,7 +1226,11 @@ async function saveAndExitToLauncher(button){
   const persisted=await loadState();
   if(!persisted||persisted.revision!==state.revision)
    throw new Error('The latest local state could not be verified.');
-  location.assign(new URL('./',location.href).href);
+  // Changing the URL in-place before reloading keeps iOS in the installed
+  // PWA rather than handing a cross-document link to Safari. Reloading also
+  // fully destroys the Cíyán runtime before the Home Screen starts.
+  history.replaceState(null,'',new URL('./',location.href).href);
+  location.reload();
  }catch(error){
   toast(`Exit cancelled: ${error.message}`);
   button.disabled=false;

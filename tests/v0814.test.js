@@ -17,10 +17,10 @@ test('v0.8.14 launcher routes only registered apps without changing the website 
 });
 
 test('v0.8.14 keeps Cíyán state and supports lossless backup upgrades',()=>{
- assert.equal(APP_VERSION,'0.8.14');
+ assert.equal(APP_VERSION,'0.8.15');
  const data={appVersion:'0.8.13',state:{cards:[{id:'custom',english:'my word'}],revision:77}};
  const upgraded=prepareVersionedBackup(data);
- assert.equal(upgraded.appVersion,'0.8.14');
+ assert.equal(upgraded.appVersion,'0.8.15');
  assert.deepEqual(upgraded.state,data.state);
  assert.equal(data.appVersion,'0.8.13');
 });
@@ -32,8 +32,9 @@ test('v0.8.14 loads the launcher alone on home, and caches app entry URLs offlin
  assert.match(index,/src="\.\/launcher\.js"/);
  assert.doesNotMatch(index,/src="\.\/app\.js"/);
  assert.match(worker,/\.\/launcher\.js/);
- assert.match(worker,/request\.mode === 'navigate'/);
- assert.match(worker,/caches\.match\(index\.href\)/);
+ assert.match(worker,/request\.mode==='navigate'/);
+ assert.match(worker,/navigationResponse\(result\)/);
+ assert.match(worker,/new Response\(response\.body/);
  assert.match(app,/data-action="exit-to-launcher"/);
  assert.match(app,/await reader\.flush\(\)/);
  assert.match(app,/await loadState\(\)/);

@@ -1,4 +1,4 @@
-// v0.8.14: one installed PWA, independently loaded app runtimes.
+// v0.8.15: one installed PWA, independently loaded app runtimes.
 // Only the selected app's module is imported; going Home unloads its entire runtime.
 // Add future entries here, with their own modules and storage namespaces.
 export const APPS = Object.freeze([
@@ -16,26 +16,70 @@ export function activeAppId(current){
 }
 
 export function homeScreen(current){
-  const tiles=APPS.map(app=>`<a class="launcher-tile" href="${appLaunchUrl(current,app.id)}" aria-label="Open ${app.name}"><span class="launcher-tile-icon" aria-hidden="true">${app.glyph}</span><span class="launcher-tile-name">${app.name}</span><span class="launcher-tile-description">${app.description}</span></a>`).join('');
+  const tiles=APPS.map(app=>`<a class="launcher-tile" data-launch-app="${app.id}" href="${appLaunchUrl(current,app.id)}" aria-label="Open ${app.name}"><span class="launcher-tile-icon" aria-hidden="true">${app.glyph}</span><span class="launcher-tile-name">${app.name}</span><span class="launcher-tile-description">${app.description}</span></a>`).join('');
   return `<div class="launcher-screen"><header class="launcher-header"><span class="launcher-eyebrow">YOUR WORKSPACE</span><div class="launcher-monogram" aria-hidden="true">M</div></header>
     <h1 class="launcher-title">My Apps</h1><p class="launcher-subtitle">Your apps, in one place.</p>
     <section class="launcher-section" aria-labelledby="launcher-apps-heading"><div class="launcher-section-heading"><h2 id="launcher-apps-heading">Installed apps</h2><span>${APPS.length} ${APPS.length===1?'app':'apps'}</span></div>
     <div class="launcher-grid">${tiles}</div></section></div>`;
 }
 
+// Launch inside this document. iOS Home Screen PWAs can hand a normal <a>
+// navigation to Safari even when its destination is in the manifest scope.
+// No Cíyán code runs on the Home Screen until this explicit selection.
+let launching=false;
+export async function launchApp(id){
+  const selected=APPS.find(app=>app.id===id);
+  if(!selected||launching)return;
+  launching=true;
+  const previous=location.href;
+  try{
+    history.replaceState(null,'',appLaunchUrl(previous,id));
+    document.title='Cíyán v0.8.15';
+    document.body.classList.remove('launcher-mode');
+    document.querySelector('#app').innerHTML='<div class="loading-state"><div class="brand-mark">词</div><div class="loading-spinner"></div><p>Opening Cíyán…</p></div>';
+    // App boot is the same module as before the launcher was introduced.
+    await import(selected.module);
+  }catch(error){
+    history.replaceState(null,'',launcherUrl(previous));
+    document.body.classList.add('launcher-mode');
+    document.title='My Apps';
+    document.querySelector('#app').innerHTML=homeScreen(location.href);
+    throw error;
+  }finally{
+    launching=false;
+  }
+}
+
 export async function startLauncher(){
   const id=activeAppId(location.href);
   if(id==='ciyan'){
-    document.title='Cíyán v0.8.14';
+    document.title='Cíyán v0.8.15';
     await import('./app.js');
     return;
   }
   document.title='My Apps';
   document.body.classList.add('launcher-mode');
-  document.querySelector('#app').innerHTML=homeScreen(location.href);
-  // The launcher does not read Cíyán's IndexedDB data or initialize its app.
+  const host=document.querySelector('#app');
+  host.innerHTML=homeScreen(location.href);
+  host.addEventListener('click',event=>{
+    const tile=event.target.closest?.('[data-launch-app]');
+    if(!tile||event.defaultPrevented||event.button>0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+    event.preventDefault();
+    void launchApp(tile.dataset.launchApp).catch(error=>{
+      const message=document.createElement('p');
+      message.className='subtle launcher-error';
+      message.textContent=`Unable to open app: ${error?.message||error}`;
+      host.querySelector('.launcher-section')?.append(message);
+    });
+  });
   if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-    navigator.serviceWorker.register('./sw.js').catch(()=>{});
+    const worker=navigator.serviceWorker;
+    // On the safe Home Screen, reload once if an update assumes control so the
+    // new launcher code is loaded as well as the newly cached app files.
+    worker.addEventListener('controllerchange',()=>{
+      if(!activeAppId(location.href))location.reload();
+    },{once:true});
+    worker.register('./sw.js',{updateViaCache:'none'}).catch(()=>{});
   }
 }
 

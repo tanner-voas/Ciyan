@@ -1,12 +1,13 @@
 // Backup format and app version are distinct. The former describes JSON shape;
 // the latter selects explicitly ordered, content-aware transformations.
-export const APP_VERSION='0.8.14';
+export const APP_VERSION='0.8.15';
 
 // Add only intentional, reviewed transformations here in subsequent releases.
 // Entries are adjacent application releases, including explicit identity steps.
 // A v0.5.2 backup did not previously record appVersion, so this step is useful
 // only for fixtures and for future versioned export compatibility tests.
 const STEPS=new Map([
+ ['0.8.14',{next:'0.8.15',apply:document=>document}],
  ['0.8.13',{next:'0.8.14',apply:document=>document}],
  ['0.8.12',{next:'0.8.13',apply:document=>document}],
  ['0.8.11',{next:'0.8.12',apply:document=>document}],
