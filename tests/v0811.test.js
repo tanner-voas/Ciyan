@@ -18,9 +18,9 @@ function reader(s,records){
 function useQuota(s,b){const key=p.lexicon.vocabulary[0];assert.equal(gradeReader(s,b,key,3,Date.now()-2000),true);return key;}
 
 test('v0811: clean version migration preserves 0.8.10 backups',()=>{
- assert.equal(APP_VERSION,'0.9.4');
+ assert.equal(APP_VERSION,'0.9.5');
  const migrated=prepareVersionedBackup({format:'ciyan-backup',version:2,appVersion:'0.8.10',state:{sample:true}});
- assert.equal(migrated.appVersion,'0.9.4');assert.deepEqual(migrated.state,{sample:true});
+ assert.equal(migrated.appVersion,'0.9.5');assert.deepEqual(migrated.state,{sample:true});
 });
 
 test('v0811: reaching the vocabulary quota blocks new terms and grammar across all reader scopes',async()=>{

@@ -64,6 +64,12 @@ for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/
         if asset["sourceDigest"] != entry["digest"]:
             raise ValueError(f"Stale graded asset: {graded}")
         entry["gradedFile"] = graded
+        if chapter["editionVersion"] == 46:
+            hsk5 = f"graded-v095-hsk5/{chapter['number']}.js"
+            hsk5_asset = json.loads((dest / hsk5).read_text().removeprefix("export default ").strip().removesuffix(";"))
+            if hsk5_asset["sourceDigest"] != entry["digest"]:
+                raise ValueError(f"Stale HSK5 graded asset: {hsk5}")
+            entry["gradedHsk5File"] = hsk5
     original_entry = old_catalog.get((chapter["novel"], chapter["number"]), {})
     prior = [original_entry.get("digest"), original_entry.get("previousDigest"),
              *(original_entry.get("previousDigests") or [])]

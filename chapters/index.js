@@ -12,6 +12,7 @@ export default [
     "digest": "28a85ecfbcac24efe916ba0d67dd9d1167e33b278414beff886a8a4cc6a2c90f",
     "size": 220838,
     "gradedFile": "graded-v094/1.js",
+    "gradedHsk5File": "graded-v095-hsk5/1.js",
     "previousDigest": "d79e4e256e7c49f6d4a0244b96fcd9ee6030b2a3f13a62c4007c6fb531af7e32",
     "previousDigests": [
       "958524b9cf0740b341aeea173f0456eee1b36b2fbe7b357ff69344fdc2cc718a",
@@ -34,6 +35,7 @@ export default [
     "digest": "1899ed6ebb3823943e5cd2c8556eb48124af878d21fa2dbc67f30da7927915df",
     "size": 114161,
     "gradedFile": "graded-v094/2.js",
+    "gradedHsk5File": "graded-v095-hsk5/2.js",
     "previousDigest": "0edb668025d7dd3398330eb1372bc1c3d5b49b9738cc78f1f5003cc58d4cf4fa",
     "previousDigests": [
       "0ed9fe3ae48e432f32a8b09bbe1feb011a4dc76c364e4d0369794e2acc506076",
@@ -56,6 +58,7 @@ export default [
     "digest": "a05948f5c71cac2d62e0556a4a615925c6de911b6979eea1d3f3ee9eab809d02",
     "size": 102473,
     "gradedFile": "graded-v094/3.js",
+    "gradedHsk5File": "graded-v095-hsk5/3.js",
     "previousDigest": "e3b35d3905e4ad35f26e1798e0eb634853bab94777abc73dce5c30adbc29986c",
     "previousDigests": [
       "1efe968dd7748f2fa047928ad702806304574ae98ef00cd8a7b74cec6c913b5d",
@@ -78,6 +81,7 @@ export default [
     "digest": "6ffd533c515bd3677f0bc3d234ae56ba63d9f225f1da299526425f496509a193",
     "size": 108877,
     "gradedFile": "graded-v094/4.js",
+    "gradedHsk5File": "graded-v095-hsk5/4.js",
     "previousDigest": "ab8aecbef86b04d4b8e265794d4cbece27c4240c9c7b2e6c2ae46dfa5d83c0e9",
     "previousDigests": [
       "2a1baaa1e37922e021f8be00a10bfe6cf520af2cc5d0fa888c12261f778c28c9",
@@ -101,6 +105,7 @@ export default [
     "digest": "be84f283d5d05d528975453f09b6de1864bec2cfedb6e21ce9098d8aed175f37",
     "size": 85178,
     "gradedFile": "graded-v094/5.js",
+    "gradedHsk5File": "graded-v095-hsk5/5.js",
     "previousDigest": "1b121ed5916a3efb9e8ec35bea951f5c28163085a1ae5deac8df90939f1bae60",
     "previousDigests": [
       "e75a2d9ff7d22e73f49ab7bc0888316c3e1d133469bf667752a838d826668f06",
@@ -124,6 +129,7 @@ export default [
     "digest": "8685d3f326fae7fcfa839b0d264cac6dd3cbbddd2712cfda6b65cfddfa69f235",
     "size": 84969,
     "gradedFile": "graded-v094/6.js",
+    "gradedHsk5File": "graded-v095-hsk5/6.js",
     "previousDigest": "1a25a98fc6b65b55bb093debce07c551c6a7ed28db4557625842dc2f8c0fcc21",
     "previousDigests": [
       "d69f8f181a04431ba842a49239508d78371b0043c9da844459d521f17b802dd4",
@@ -147,6 +153,7 @@ export default [
     "digest": "4a3b2883693b681f59a5284e1ac4425c7f258fc043833d97e0e8e3c7ff628125",
     "size": 82991,
     "gradedFile": "graded-v094/7.js",
+    "gradedHsk5File": "graded-v095-hsk5/7.js",
     "previousDigest": "30d4788a28ca991b53bae916e4e66303079e203da8aa71a0b99b56ab9ef97f25",
     "previousDigests": [
       "969ea9ae741160bab54e404e47d52ff986b1f094a77e7a04cb117764108fa766",
@@ -170,6 +177,7 @@ export default [
     "digest": "385f787f972abd6e88e3156d5385a5ccd53d865a1b016327895a13161251e147",
     "size": 87890,
     "gradedFile": "graded-v094/8.js",
+    "gradedHsk5File": "graded-v095-hsk5/8.js",
     "previousDigest": "e858749ef2fd4669acee2fcd229d891e742d40aadfd38bfcd4662e11bb0d066a",
     "previousDigests": [
       "4c91e413d8ce4c22891d70c5889015d22ce85b8871f7abc57c852d2ae2410a12",
@@ -193,6 +201,7 @@ export default [
     "digest": "26eef71b0c7446b21f6deb553449a7b48424057633837150380f8a045f80069f",
     "size": 90236,
     "gradedFile": "graded-v094/9.js",
+    "gradedHsk5File": "graded-v095-hsk5/9.js",
     "previousDigest": "a8bfbf3308c7b4d6014b05ec40ca33e63b87bd0b92750c71e0044943730d7e52",
     "previousDigests": [
       "d7afa4c7999f992fd42eeb893aca07cb1eb764b13602d397866619af45f08d3a",
@@ -216,6 +225,7 @@ export default [
     "digest": "29f52d9b125b48093fb436430f2d73a6b21b427ae40c353469d7ddab77c09742",
     "size": 84603,
     "gradedFile": "graded-v094/10.js",
+    "gradedHsk5File": "graded-v095-hsk5/10.js",
     "previousDigest": "6ab7b4ac15aa10050649b434e12adf6595f81da1b1ef79135efdf9a957f5a2bb",
     "previousDigests": [
       "8f96e6e32afcce91b4164c28163c712cdc7059a1906d13f22d108df005a9ab92",
@@ -239,6 +249,7 @@ export default [
     "digest": "24df9fcf81b64cc1bf3be37a50e1529c0634a021c244cd6fd41d2722762b42ce",
     "size": 96180,
     "gradedFile": "graded-v094/11.js",
+    "gradedHsk5File": "graded-v095-hsk5/11.js",
     "previousDigest": "93648ca1f717d7fcb8a2832598fab61ea779e5a6d83ca6c55456483a43694795",
     "previousDigests": [
       "ed8c7bd9e02e4fc9bca317bf22fcd1e8bbe1d269d64ab41118f55a3ba88b7c8f",
@@ -262,6 +273,7 @@ export default [
     "digest": "b24e595d37a27fca7e62e604c0aaf8994f84ba66b9b38958d831a528a9a7738d",
     "size": 88788,
     "gradedFile": "graded-v094/12.js",
+    "gradedHsk5File": "graded-v095-hsk5/12.js",
     "previousDigest": "d9866af0f542cf489c1341ac6ac29ccef85d169460075490c7d1a3767d067558",
     "previousDigests": [
       "13ec2bac66d2e9543a970a2f6b197a8e3ad7b58a8bc9ae5aa3644e14fcdebf74",
@@ -283,6 +295,7 @@ export default [
     "digest": "32f317728075433d92346173c02a2d642c31f4094c6f52f4a8aa290f8c68d571",
     "size": 91846,
     "gradedFile": "graded-v094/13.js",
+    "gradedHsk5File": "graded-v095-hsk5/13.js",
     "previousDigest": "d4d80304cf8e24e1f1c9681d13c2f6a4d25a675e5f73695097beff7a2844894b",
     "previousDigests": [
       "67e325ad212d1e3209f4190f5f741748ea217b63bbc94634b35acda075bce507",
@@ -304,6 +317,7 @@ export default [
     "digest": "3340af64ca51125602e4567625a6dafa144269a38c3fcbc9be9ff34bf3cda433",
     "size": 95228,
     "gradedFile": "graded-v094/14.js",
+    "gradedHsk5File": "graded-v095-hsk5/14.js",
     "previousDigest": "69c0e3ebb4464a50e029cde45a552198b6b223eb3a4e6d75367a1b28d02f8714",
     "previousDigests": [
       "93690fab7c344141fe855bb0e0616a66b502de00de71019f943d892eedd26ed5",
@@ -325,6 +339,7 @@ export default [
     "digest": "63f167a270b8fe2fa9f351dd88b27104fed7405ea77f26c6174c0eafccc87562",
     "size": 85693,
     "gradedFile": "graded-v094/15.js",
+    "gradedHsk5File": "graded-v095-hsk5/15.js",
     "previousDigest": "f9605b22612dadd1da90e19a615e5461ad6c6f99de075389cfd6159230456f7f",
     "previousDigests": [
       "1f25135c81c97f268d99704e79d1a09db73a1babada2d73ea9600c954cce980f",
@@ -346,6 +361,7 @@ export default [
     "digest": "12b9b6cc69271127e347451abd020ad0f0bafa7225f147bbeef3e34f1c0d2213",
     "size": 91735,
     "gradedFile": "graded-v094/16.js",
+    "gradedHsk5File": "graded-v095-hsk5/16.js",
     "previousDigest": "5fec1be4ccd529e1fa78c45da715139fbc8fc0e9a0645ab9e0fd6f716b32669c",
     "previousDigests": [
       "5499010612d37f1a1dcc8029e70515d035f215a955ec393a7804223bb56d08d2",
@@ -367,6 +383,7 @@ export default [
     "digest": "d4675a98cab471b7a4e3adbb1aeef7398767dc37c6158bd1984c33ce902f1bc4",
     "size": 88401,
     "gradedFile": "graded-v094/17.js",
+    "gradedHsk5File": "graded-v095-hsk5/17.js",
     "previousDigest": "0c96e8963197958a5c93526982c4e09d7de7b0687a34975e946eeae7256a9bcb",
     "previousDigests": [
       "bdffd8b71dbc51b83c9e8d076589f3d724aadb5abd50d937ff694b5d637e400b",
@@ -388,6 +405,7 @@ export default [
     "digest": "657ac85f5c5807292e41ddb9e724374e9cc10347573fee8c3479899305f8002a",
     "size": 98412,
     "gradedFile": "graded-v094/18.js",
+    "gradedHsk5File": "graded-v095-hsk5/18.js",
     "previousDigest": "c70464255485f8eb42d46c2bbe6d4dbbe03bea26077a5555303e5f1614fd015b",
     "previousDigests": [
       "3161323254918c563e143cf6c1a0369ddbb3bbcab7f2a6737630e7a2f17350b8",
@@ -409,6 +427,7 @@ export default [
     "digest": "b08f831ceec2f9fe5d55ab278167413e327df32b8d190ffc9ada8545b0b4bf2a",
     "size": 84851,
     "gradedFile": "graded-v094/19.js",
+    "gradedHsk5File": "graded-v095-hsk5/19.js",
     "previousDigest": "a6565d56565742ecb253d4b72025c2be974fc7d9d9741af484764690b108b4a0",
     "previousDigests": [
       "5f961496ffae59a62e5eed44cd485ee6946338fba2762c4312e753b014171b0a",
@@ -430,6 +449,7 @@ export default [
     "digest": "c0c60ff21471e8452b259215b545e8bbb275a1198be06797640be7c490aa8ceb",
     "size": 89065,
     "gradedFile": "graded-v094/20.js",
+    "gradedHsk5File": "graded-v095-hsk5/20.js",
     "previousDigest": "abc3b722e30c43d864bb62dd4893c0ae619cf18d002a3518037b0bc045630cdf",
     "previousDigests": [
       "2945ab4823d1e145393f94142d12fe8d0fb0adb145b9b730b2e1213566c7b261",
@@ -451,6 +471,7 @@ export default [
     "digest": "1480b55b959af7eacd294cf137e390479a145886ec27ad0d446d7bc933d3d106",
     "size": 85201,
     "gradedFile": "graded-v094/21.js",
+    "gradedHsk5File": "graded-v095-hsk5/21.js",
     "previousDigest": "9aa20c045585affefe0c0dfc8e13f6e065f279ab8f7abd0c9c03f816b72d65c8",
     "previousDigests": [
       "cb48ec3b47a44c8e27f2d371468d2626cf723594e3d8ef81b547fd1777b3e2c3",
@@ -472,6 +493,7 @@ export default [
     "digest": "ac421be52711a50ca010efbde6f889461c371200bbf3d4b278fca76414f2bb7e",
     "size": 90221,
     "gradedFile": "graded-v094/22.js",
+    "gradedHsk5File": "graded-v095-hsk5/22.js",
     "previousDigest": "d9e2ccbed77b55a8a18b0c3bbaa5934eec34cbccadf21aaa3055b47f51c66e84",
     "previousDigests": [
       "21f1353c592c20da0093b9b344882d105b5a6e9e439cdef80a9c056a9d97079a",
@@ -493,6 +515,7 @@ export default [
     "digest": "ef5763a28856f480a8502a9e57149e7e31759bc6fbd85cd25094225a2187e6eb",
     "size": 106153,
     "gradedFile": "graded-v094/23.js",
+    "gradedHsk5File": "graded-v095-hsk5/23.js",
     "previousDigest": "e7b18978d32171ac43372c634e672c819d265864c3d6d6ff261c3c861e9383b1",
     "previousDigests": [
       "74692f2c94bd3a0c7927fca8a0864018b099c5716d4e9e30d4350ded8612b4d3",

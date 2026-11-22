@@ -57,8 +57,8 @@ test('v0.8.12: grammar uses constituent vocabulary tag union for all three modes
 });
 
 test('v0.8.12: v0.8.11 backups migrate without modifying user data',()=>{
- assert.equal(APP_VERSION,'0.9.4');
+ assert.equal(APP_VERSION,'0.9.5');
  const prior={format:'ciyan-backup',version:2,appVersion:'0.8.11',state:{history:[{id:1}],filters:{tags:{Food:1}}}};
  const result=prepareVersionedBackup(prior);
- assert.equal(result.appVersion,'0.9.4');assert.deepEqual(result.state,prior.state);
+ assert.equal(result.appVersion,'0.9.5');assert.deepEqual(result.state,prior.state);
 });

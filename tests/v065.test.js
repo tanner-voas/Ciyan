@@ -7,7 +7,7 @@ import {defaultState,resetConfirmationValid,makeBackup,parseBackup,migrateState,
 import {MASTER} from '../master-data.js';
 
 test('v0.6.5 preserves content and supports identity migration from the v0.6.4 release',()=>{
- assert.equal(APP_VERSION,'0.9.4');assert.equal(MASTER.cards.length,12505);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.9.5');assert.equal(MASTER.cards.length,12505);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.3',state:{appVersion:'0.6.3',schemaVersion:2}};
  const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,APP_VERSION);
  assert.deepEqual(migrated.state,old.state);

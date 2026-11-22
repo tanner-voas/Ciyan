@@ -77,7 +77,7 @@ def main() -> None:
     for file in shell:
         digest.update(file.relative_to(STANDALONE).as_posix().encode() + b"\0")
         digest.update(hashlib.sha256(file.read_bytes()).digest())
-    cache = f"ciyan-shell-v0.9.4-{digest.hexdigest()[:16]}"
+    cache = f"ciyan-shell-v0.9.5-{digest.hexdigest()[:16]}"
     paths = ["./" + file.relative_to(STANDALONE).as_posix() for file in shell]
     template = (ROOT / "sw.standalone.template.js").read_text(encoding="utf-8")
     worker = template.replace("__SHELL_CACHE_NAME__", cache).replace(

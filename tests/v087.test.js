@@ -12,7 +12,7 @@ const load=n=>JSON.parse(read(`chapters/${String(n).padStart(3,'0')}.json`));
 const digest=data=>createHash('sha256').update(data).digest('hex');
 
 test('v0.8.9 retains all Panlong chapter text with upgraded lexicon and grammar metadata',()=>{
- assert.equal(APP_VERSION,'0.9.4');
+ assert.equal(APP_VERSION,'0.9.5');
  assert.equal(catalog.length,26);
  assert.deepEqual(catalog.filter(x=>x.novel==='panlong').map(x=>x.number),Array.from({length:23},(_,i)=>i+1));
  for(let n=12;n<=23;n++){
@@ -90,7 +90,7 @@ test('all new ZIP packages inflate to the exact integrity-checked original JSON'
 test('old v0.8.6 backups migrate through an identity step without changing progress',()=>{
  const previous={format:'ciyan-backup',version:2,appVersion:'0.8.6',state:{reader:{panlong:{current:11,chapters:[],history:[{key:'term-林雷',grade:3}],progress:{}}}}};
  const upgraded=prepareVersionedBackup(previous);
- assert.equal(upgraded.appVersion,'0.9.4');assert.deepEqual(upgraded.state,previous.state);
+ assert.equal(upgraded.appVersion,'0.9.5');assert.deepEqual(upgraded.state,previous.state);
 });
 test('chapter study prompt has independent length-aware typography and safe wrapping',()=>{
  const reader=fs.readFileSync(new URL('../reader-ui.js',import.meta.url),'utf8');

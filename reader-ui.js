@@ -40,6 +40,9 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const gradedAssets=new Map();
  let activeView=null,preview=null;
  const prefs=()=>chapter()?.editionPrefs||{};
+ // A legacy graded=true preference means HSK6. Explicit HSK5 selection is
+ // opt-in and survives switching away to Original, without resetting progress.
+ const selectedEdition=p=>!p?.graded?'original':p.level==='hsk5'?'hsk5':'graded';
  const gradedEntry=()=>catalog.find(e=>e.novel===novel&&e.number===number&&e.gradedFile&&knownMasterDigest(e,chapter()?.digest));
  const needsChapterUpdate=()=>{const e=libraryChapter(novel,number),c=chapter();return !!(e?.source==='master'&&c&&e.digest!==c.digest&&knownMasterDigest(e,c.digest));};
  let selectionLoading=false;
@@ -53,28 +56,31 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const studyChapter=()=>{const c=chapter(),v=projection();return c&&v?{...c,all:v.all,focus:v.p.focus??c.focus}:c;};
  function editionSelector(){
   if(!hasGraded())return '';
-  const graded=!!prefs().graded&&!needsChapterUpdate();
-  return `<label>Edition<select id="reader-edition"><option value="original" ${graded?'':'selected'}>Original</option><option value="graded" ${graded?'selected':''}>HSK6 + TSK12</option></select></label>${needsChapterUpdate()?`<p class="subtle">A newer chapter edition is available. ${btn('open','Update chapter')}</p>`:''}`;
+  const current=needsChapterUpdate()?'original':selectedEdition(prefs());
+  return `<label>Edition<select id="reader-edition"><option value="original" ${current==='original'?'selected':''}>Original</option><option value="hsk5" ${current==='hsk5'?'selected':''}>HSK5 + TSK10</option><option value="graded" ${current==='graded'?'selected':''}>HSK6 + TSK12</option></select></label>${needsChapterUpdate()?`<p class="subtle">A newer chapter edition is available. ${btn('open','Update chapter')}</p>`:''}`;
  }
  function autoControl(){
   const p=prefs();return '<div class="reader-editions">'+btn('auto',p.auto?'Auto · '+Number(p.minimum??.92).toFixed(2):'Auto simplify')+'</div>';
  }
- async function baseEdition(original,graded){
-  const entry=gradedEntry();if(!graded)return original;
+ async function baseEdition(original,selection){
+  if(selection==='original')return original;
+  const entry=gradedEntry();
   if(!entry||entry.digest!==chapter()?.digest)throw Error('Update this chapter before opening its graded edition.');
-  const digest=chapter().digest;
-  if(!gradedAssets.has(digest)){
-   const {default:asset}=await import('./chapters/'+entry.gradedFile);
+  const file=selection==='hsk5'?entry.gradedHsk5File:entry.gradedFile;
+  if(!file)throw Error('This chapter has no matching graded edition.');
+  const digest=chapter().digest,key=digest+':'+selection;
+  if(!gradedAssets.has(key)){
+   const {default:asset}=await import('./chapters/'+file);
    if(asset.sourceDigest!==digest||asset.paragraphs.length!==original.paragraphs.length||
     !asset.paragraphs.every((r,i)=>r.id===original.paragraphs[i].id))throw Error('This edition requires its matching original.');
    validateChapter({...original,...asset});
-   gradedAssets.set(digest,asset);
+   gradedAssets.set(key,asset);
   }
-  const asset=gradedAssets.get(digest);
-  return {...original,...asset,graded:true};
+  return {...original,...gradedAssets.get(key),graded:true};
  }
  function compute(base,index,minimum,restored){
-  const permit=w=>!base.graded||base.extras.includes(w)||index.words.get(w)?.tags?.some(t=>/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/.test(t));
+  const allowed=base.gradeTarget==='hsk5'?/^HSK\/HSK[1-5]$|^TSK\/TSK(0[1-9]|10)$/:/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/;
+  const permit=w=>!base.graded||base.extras.includes(w)||index.words.get(w)?.tags?.some(t=>allowed.test(t));
   return deriveEdition(base,index,minimum,{restore:new Set(restored),permit,termScore:key=>sourceBook()?.progress[key]?.score||0});
  }
  function installView(p,result,digest){
@@ -87,7 +93,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  async function reopenView(){
   activeView=null;const c=chapter(),pref=prefs(),original=memory.get(c?.digest);
   if(!original||(!pref.graded&&!pref.auto))return;
-  const base=await baseEdition(original,pref.graded&&!needsChapterUpdate());
+  const base=await baseEdition(original,needsChapterUpdate()?'original':selectedEdition(pref));
   if(c.digest!==chapter()?.digest)return;
   if(base.graded&&Object.keys(base.items).some(k=>!sourceBook().items[k])){
    if(!await change(d=>{importChapterLexicon(d,base);const b=d.reader[novel];b.items={...b.items,...base.items};},false,true))throw Error('Could not save graded vocabulary. Reopen this chapter to retry.');
@@ -105,7 +111,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    '<details><summary>Remaining words and skipped alternatives</summary><p lang="zh-Hans">'+[...s.unresolved].sort((a,b)=>b[1]-a[1]).map(([w,n])=>esc(w)+' ×'+n).join('、')+'</p><p>Missing edge '+s.denied.missing+' · context '+s.denied.context+' · score '+s.denied.threshold+' · learning evidence '+s.denied.unfamiliar+'.</p></details>';
  }
  async function openAuto(original){
-  const c=chapter(),pref=prefs(),base=await baseEdition(original,pref.graded&&!needsChapterUpdate()),index=learnerIndex(state());
+  const c=chapter(),pref=prefs(),base=await baseEdition(original,needsChapterUpdate()?'original':selectedEdition(pref)),index=learnerIndex(state());
   const minimum=pref.minimum??.92,restore=pref.restored||[];
   const result=compute(base,index,minimum,restore);
   preview={digest:c.digest,base,index,restore,result,minimum};
@@ -452,12 +458,15 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      await saveEdition({...pref,minimum:preview.minimum,auto:true},preview.base,preview.result,digest);return;
     }
     if(name==='edition'){
-     if(!hasGraded()||!['original','graded'].includes(el.dataset.edition))return;
-     pref.graded=el.dataset.edition==='graded';pref.restored=[];
+     if(!hasGraded()||!['original','graded','hsk5'].includes(el.dataset.edition))return;
+     pref.graded=el.dataset.edition!=='original';
+     if(el.dataset.edition==='hsk5')pref.level='hsk5';
+     else if(el.dataset.edition==='graded')delete pref.level;
+     pref.restored=[];
     }
     if(name==='auto-off')pref.auto=false;
     if(name==='restore-word')pref.restored=[...new Set([...(pref.restored||[]),el.dataset.loc])];
-    const base=await baseEdition(original,pref.graded&&!needsChapterUpdate());
+    const base=await baseEdition(original,needsChapterUpdate()?'original':selectedEdition(pref));
     await saveEdition(pref,base,pref.auto?compute(base,learnerIndex(state()),pref.minimum??.92,pref.restored):null,digest);return;
    }
    if(name==='vocab-group'||name==='vocab-prev'||name==='vocab-next'){
