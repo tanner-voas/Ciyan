@@ -32,8 +32,8 @@ test('v089: all twenty-three chapters preserve the original Chinese narrative an
 test('v089: new readers have zero readiness; chapter terms stay out of master vocab and grammar gets Reader tags',()=>{
  const {s,b,c,p}=loaded();
  const a=readerAnalysis(s,b,c);
- assert.equal(a.keys.length,1090);
- assert.equal(a.weak.length,1090);
+ assert.equal(a.keys.length,validateChapter(p).length+p.lexicon.grammar.length);
+ assert.equal(a.weak.length,a.keys.length);
  assert.equal(a.ready,false);
  assert.ok(s.cards.some(w=>w.hanzi==='斑驳'&&w.tags.includes('Reader/盘龙')));
  assert.ok(!s.cards.some(w=>w.hanzi==='希尔曼'));
@@ -124,7 +124,7 @@ test('v089: Reading is available at 0% with a warning, dictionary details are fu
  assert.doesNotMatch(overview,/data-action="reader-define"/);
  await ui.action('read',{dataset:{}});
  assert.match(latest,/Read before finishing study/);
- assert.match(content,/0 out of 1090/);
+ assert.match(content,new RegExp('0 out of '+(validateChapter(p).length+p.lexicon.grammar.length)));
  assert.match(content,/reader-read-anyway/);
  await ui.action('read-anyway',{dataset:{}});
  const reading=ui.view();

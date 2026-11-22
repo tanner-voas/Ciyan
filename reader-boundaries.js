@@ -4,6 +4,8 @@ import {MASTER} from './master-data.js';
 import panlong from './chapters/panlong-lexicon.js';
 
 export function normalizeBoundaries(p,state={}){
+ // Pass 45 hosted chapter spans are curated and digest-bound to the graded edition.
+ if(p.editionVersion===45&&p.boundaries==='pass45-original')return p;
  const dictionary=new Map(), items={...p.items};
  const joiners=new Set();
  let longest=1;

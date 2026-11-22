@@ -55,6 +55,12 @@ for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/
     entry["file"] = f"{entry['novel']}-{entry['number']}.zip"
     entry["digest"] = hashlib.sha256(data).hexdigest()
     entry["size"] = len(data)
+    if chapter["novel"] == "panlong" and chapter.get("editionVersion") == 45:
+        graded = f"graded-v091/{chapter['number']}.js"
+        asset = json.loads((dest / graded).read_text().removeprefix("export default ").strip().removesuffix(";"))
+        if asset["sourceDigest"] != entry["digest"]:
+            raise ValueError(f"Stale graded asset: {graded}")
+        entry["gradedFile"] = graded
     original_entry = old_catalog.get((chapter["novel"], chapter["number"]), {})
     prior = [original_entry.get("digest"), original_entry.get("previousDigest"),
              *(original_entry.get("previousDigests") or [])]

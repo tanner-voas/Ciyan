@@ -9,9 +9,9 @@ import {MASTER} from '../master-data.js';
 import {retrievability} from '../fsrs.js';
 
 test('v0.6.4 preserves the v0.6.3 master and upgrades historical backups by identity',()=>{
- assert.equal(APP_VERSION,'0.9.0');assert.equal(MASTER.cards.length,12505);assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.9.1');assert.equal(MASTER.cards.length,12505);assert.equal(MASTER.grammar.length,3444);
  const old={format:'ciyan-backup',version:2,appVersion:'0.6.3',state:{appVersion:'0.6.3',schemaVersion:2}};
- const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,'0.9.0');
+ const migrated=prepareVersionedBackup(old);assert.equal(migrated.appVersion,'0.9.1');
  assert.deepEqual(migrated.state,old.state);assert.equal(old.appVersion,'0.6.3');
 });
 

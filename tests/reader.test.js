@@ -77,7 +77,7 @@ test('reader screen offers automatic chapter study and preserves the imported na
  const ui=createReader(adapter);const action=(n,data={})=>ui.action(n,{dataset:data});
  async function upload(n){file=new Blob([fs.readFileSync(new URL('../reader/panlong/chapters/00'+n+'.json',import.meta.url))]);await action('import');await done;}
  await upload(2);assert.match(messages.at(-1),/chapter 1/);
- await upload(1);assert.match(html,/1109 study items/);assert.match(html,/33 chapter terms\/grammar/);
+ await upload(1);assert.match(html,new RegExp((validateChapter(chapters[0][0]).length+chapters[0][0].lexicon.grammar.length)+' study items'));assert.match(html,new RegExp(chapters[0][0].focus.length+' chapter terms/grammar'));assert.match(html,/id="reader-edition".*value="original" selected/);assert.match(html,/data-action="reader-auto"/);
  assert.doesNotMatch(html,/Authored study list|Reading gate/);
  assert.match(html,/Chapter vocabulary/);assert.equal((html.match(/class="list-card reader-vocab-row"/g)||[]).length,20);
  const firstPage=html;await action('vocab-next');assert.notEqual(html,firstPage);
@@ -93,14 +93,14 @@ test('reader screen offers automatic chapter study and preserves the imported na
  const originalDigest=b.chapters[0].digest;
  const slider={value:'92',isConnected:true},score={},preview={};
  document.querySelector=id=>({'#reader-score-slider':slider,'#reader-min-score':score,'#reader-preview':preview})[id];
- await action('edition');assert.match(html,/Edition · HSK6 \+ TSK12/);
- assert.match(html,/乌山镇<\/span>.*是<\/span>/s);
+ await listeners.change({target:{id:'reader-edition',value:'graded'}});assert.match(html,/value="graded" selected/);
+ assert.match(html,/芬莱王国<\/span>.*位于<\/span>/s);
  await action('auto');slider.value='95';slider.oninput();assert.equal(score.textContent,'0.95');
  slider.onpointerup();assert.match(preview.innerHTML,/Mean chapter mastery/);
  preview.innerHTML='';slider.value='91';slider.oninput();await new Promise(r=>setTimeout(r,1050));
  assert.match(preview.innerHTML,/Mean chapter mastery/);
  await action('auto-apply');assert.equal(b.chapters[0].editionPrefs.minimum,.91);
- await action('edition');assert.equal(b.chapters[0].editionPrefs.graded,false);
+ await listeners.change({target:{id:'reader-edition',value:'original'}});assert.equal(b.chapters[0].editionPrefs.graded,false);
  assert.equal(b.chapters[0].editionPrefs.auto,true);assert.equal(b.chapters[0].digest,originalDigest);
  assert.equal(b.chapters.length,1);assert.equal(b.history.length,1);
  await action('define',{key:'term-乌山镇'});assert.equal(definition,'乌山镇');

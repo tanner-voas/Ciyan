@@ -9,10 +9,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-1.zip",
-    "digest": "96a866e511384102546231004e5438f131e224fe8f296b1b5c355955e66f06db",
-    "size": 216641,
-    "previousDigest": "cf28634ec970ce31127985f99abd5b8a4321c9ec6f1760229351e5c951347695",
+    "digest": "d79e4e256e7c49f6d4a0244b96fcd9ee6030b2a3f13a62c4007c6fb531af7e32",
+    "size": 220838,
+    "gradedFile": "graded-v091/1.js",
+    "previousDigest": "958524b9cf0740b341aeea173f0456eee1b36b2fbe7b357ff69344fdc2cc718a",
     "previousDigests": [
+      "c35db4efcd9b671b5639c90e7b984dfe836767821517e0ffd91ad3e47568bb68",
+      "96a866e511384102546231004e5438f131e224fe8f296b1b5c355955e66f06db",
+      "cf28634ec970ce31127985f99abd5b8a4321c9ec6f1760229351e5c951347695",
       "adf543c915356f94e96968182122b751613ab833f2899bab7b477198772ccb03"
     ]
   },
@@ -26,10 +30,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-2.zip",
-    "digest": "f146cfb9382577d2a73d9a5b3a0b596358bef37a55946e3aa5f21000c4b6aa45",
-    "size": 113648,
-    "previousDigest": "3234086b1f56c8a71270f6982a43e72f22a5290154b615d39d3e2b4cb4b075e6",
+    "digest": "0edb668025d7dd3398330eb1372bc1c3d5b49b9738cc78f1f5003cc58d4cf4fa",
+    "size": 114161,
+    "gradedFile": "graded-v091/2.js",
+    "previousDigest": "0ed9fe3ae48e432f32a8b09bbe1feb011a4dc76c364e4d0369794e2acc506076",
     "previousDigests": [
+      "57410dafacebf61fb5e4cbb10038d98b12d28c226cc1f365e30d037e48ed2119",
+      "f146cfb9382577d2a73d9a5b3a0b596358bef37a55946e3aa5f21000c4b6aa45",
+      "3234086b1f56c8a71270f6982a43e72f22a5290154b615d39d3e2b4cb4b075e6",
       "3f55cdbe9546326fd162ee0488f59911752285d0e56e8d50f687246e914ab333"
     ]
   },
@@ -43,10 +51,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-3.zip",
-    "digest": "32d352fd28f33264b361efb3416104770107e33c7917a157c9a44f7118e036aa",
-    "size": 101658,
-    "previousDigest": "f7a1a1c4e4dd58447d68f6ad3b109674c5ca067c2b1824c8814a49e71ff3b5d5",
+    "digest": "e3b35d3905e4ad35f26e1798e0eb634853bab94777abc73dce5c30adbc29986c",
+    "size": 102473,
+    "gradedFile": "graded-v091/3.js",
+    "previousDigest": "1efe968dd7748f2fa047928ad702806304574ae98ef00cd8a7b74cec6c913b5d",
     "previousDigests": [
+      "18adcfe733349db09bb77f469901c714ea02fbb6138b91651ff01a053864945a",
+      "32d352fd28f33264b361efb3416104770107e33c7917a157c9a44f7118e036aa",
+      "f7a1a1c4e4dd58447d68f6ad3b109674c5ca067c2b1824c8814a49e71ff3b5d5",
       "351696f3e4f993ee4360e6cc329ff856c92f0dac83580877aa6aedaa2056d2cc"
     ]
   },
@@ -60,10 +72,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-4.zip",
-    "digest": "4b3ebfbe3709c55d250c0dc3b802bc5048ccc12d2134d4191936e58b142f4f87",
-    "size": 108969,
-    "previousDigest": "88bfb15902cd6cccd68f6cb6d7b9ab3dbe3a0c15434e7e407844189e667f8735",
+    "digest": "ab8aecbef86b04d4b8e265794d4cbece27c4240c9c7b2e6c2ae46dfa5d83c0e9",
+    "size": 108877,
+    "gradedFile": "graded-v091/4.js",
+    "previousDigest": "2a1baaa1e37922e021f8be00a10bfe6cf520af2cc5d0fa888c12261f778c28c9",
     "previousDigests": [
+      "3b582ef9fef360708e89c786a8b1fb2d4bae5476bc7ff67aeeb26111c56aaade",
+      "4b3ebfbe3709c55d250c0dc3b802bc5048ccc12d2134d4191936e58b142f4f87",
+      "88bfb15902cd6cccd68f6cb6d7b9ab3dbe3a0c15434e7e407844189e667f8735",
       "7f4783717afa43b9ab9e5d8031dedb19823f3672eedb5aa24608ca2448b8dcbc",
       "d275a7ba6a76c7a8ed910602cdf8bdda822881009ce423c02d5c58115c7b7bc0"
     ]
@@ -78,10 +94,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-5.zip",
-    "digest": "3df4930f9a033df2f2d11c34b2e304ed94985273465b0ba0b973607bc755c8e7",
-    "size": 84656,
-    "previousDigest": "015fbd02f802bd3166b3b7d377388a1f8c38457d018c9aa7b51c7974d84b61a8",
+    "digest": "1b121ed5916a3efb9e8ec35bea951f5c28163085a1ae5deac8df90939f1bae60",
+    "size": 85178,
+    "gradedFile": "graded-v091/5.js",
+    "previousDigest": "e75a2d9ff7d22e73f49ab7bc0888316c3e1d133469bf667752a838d826668f06",
     "previousDigests": [
+      "1cc4b9541f042ac2de9f2588bff11700289adbcf152beca1980eb362494bef62",
+      "3df4930f9a033df2f2d11c34b2e304ed94985273465b0ba0b973607bc755c8e7",
+      "015fbd02f802bd3166b3b7d377388a1f8c38457d018c9aa7b51c7974d84b61a8",
       "7196daf6536d6e19028655d88393f858f0c2ad54d94cd6eeeb752e66afae2727",
       "143c88f2c4f6477ad75846b9afddd22b7d881413260475bac4e88eb6abe94466"
     ]
@@ -96,10 +116,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-6.zip",
-    "digest": "db94a14134c680d2d0b129b289f0ac550c5fd55a6c5985f0a55a8b655d86c483",
-    "size": 84635,
-    "previousDigest": "6aebb9b46065e67d1b03dace080b968f86fcb20e7a6d0ca69f6f6ef4dd83596b",
+    "digest": "1a25a98fc6b65b55bb093debce07c551c6a7ed28db4557625842dc2f8c0fcc21",
+    "size": 84969,
+    "gradedFile": "graded-v091/6.js",
+    "previousDigest": "d69f8f181a04431ba842a49239508d78371b0043c9da844459d521f17b802dd4",
     "previousDigests": [
+      "d210e4db1699f4f6608d27fb48c5799e9dc8bb8f3a5b15a2d90a45b40c0fd943",
+      "db94a14134c680d2d0b129b289f0ac550c5fd55a6c5985f0a55a8b655d86c483",
+      "6aebb9b46065e67d1b03dace080b968f86fcb20e7a6d0ca69f6f6ef4dd83596b",
       "76c10ab689cd4408299e74a486a270352eebf85f4e2377fe257120a5a66c9a8d",
       "d3a3d3f05ca016cfa40524ac337d7e507480d0efde0525b3ef70486f2dda89a2"
     ]
@@ -114,10 +138,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-7.zip",
-    "digest": "1eb069ad0f308e572f360d52b96dd73e4cc8e9f01ffeb5159729a0beac36302a",
-    "size": 82706,
-    "previousDigest": "10a86c2e005c97557dd65518dde4f84f7ebe22e09cc4bd4e58434a06c296f3da",
+    "digest": "30d4788a28ca991b53bae916e4e66303079e203da8aa71a0b99b56ab9ef97f25",
+    "size": 82991,
+    "gradedFile": "graded-v091/7.js",
+    "previousDigest": "969ea9ae741160bab54e404e47d52ff986b1f094a77e7a04cb117764108fa766",
     "previousDigests": [
+      "2d14ea81e5eba6182674d812cab6ad447bef773eb92108b98ca42c4ea9d68e3a",
+      "1eb069ad0f308e572f360d52b96dd73e4cc8e9f01ffeb5159729a0beac36302a",
+      "10a86c2e005c97557dd65518dde4f84f7ebe22e09cc4bd4e58434a06c296f3da",
       "580a6ecedfc30ea73767ba1899df3e83b237a992a71ea7ebb1f2740f2a622593",
       "a8ba650fded060e67df6c504651a9fd35059bad20f96c52397312f833580495a"
     ]
@@ -132,10 +160,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-8.zip",
-    "digest": "43cff4b04903a95770332631e9ec2f78efe925c3d6f3b888c99ce4680e6d0901",
-    "size": 88189,
-    "previousDigest": "80589f9604c97962deb46bbd33c3999eefb9b39811a86f3285b4b97413f21d75",
+    "digest": "e858749ef2fd4669acee2fcd229d891e742d40aadfd38bfcd4662e11bb0d066a",
+    "size": 87890,
+    "gradedFile": "graded-v091/8.js",
+    "previousDigest": "4c91e413d8ce4c22891d70c5889015d22ce85b8871f7abc57c852d2ae2410a12",
     "previousDigests": [
+      "b35e8f296de7e98b1b98cf3bdfcd8577cc5ced9ce648d2c587683f30314876f2",
+      "43cff4b04903a95770332631e9ec2f78efe925c3d6f3b888c99ce4680e6d0901",
+      "80589f9604c97962deb46bbd33c3999eefb9b39811a86f3285b4b97413f21d75",
       "edc409e23bdb3dd45b1ae42b479b04c6c167d5ab199f061a41092de6480806db",
       "e78c80f4c9622cd9738d8a52b37ed32b4d6f30e920abbef46fc7b3f70b005144"
     ]
@@ -150,10 +182,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-9.zip",
-    "digest": "8c594dcec6773406039fcb3a50d75fe6dd2caa02284ffaa8c2f795f7d5fa1b26",
-    "size": 89472,
-    "previousDigest": "39488fafce2263fe7973f11de31b939b6f8f1dfc4f553abb0faa2d9883e062f3",
+    "digest": "a8bfbf3308c7b4d6014b05ec40ca33e63b87bd0b92750c71e0044943730d7e52",
+    "size": 90236,
+    "gradedFile": "graded-v091/9.js",
+    "previousDigest": "d7afa4c7999f992fd42eeb893aca07cb1eb764b13602d397866619af45f08d3a",
     "previousDigests": [
+      "12c8eea1f2e168c2adfdd4c595860171136103dea3ebdc2f294619c6a561c519",
+      "8c594dcec6773406039fcb3a50d75fe6dd2caa02284ffaa8c2f795f7d5fa1b26",
+      "39488fafce2263fe7973f11de31b939b6f8f1dfc4f553abb0faa2d9883e062f3",
       "81223f959526b21ef5ffc69354d5f47eb404854fb43d19ca4eaaadeb3c0bb67c",
       "56b85ce0b8912a71e649c2267be33e42eb8dce7a6814b707fd11b73792c55da0"
     ]
@@ -168,10 +204,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-10.zip",
-    "digest": "4fcca4cb528c9a3219c076611b0ca415907b76976968b07f1714d2309a5391db",
-    "size": 83422,
-    "previousDigest": "864d8c1c9beff90fc714e84b32adc3bec039ff6ded5b0cec90a37578e1a35f03",
+    "digest": "6ab7b4ac15aa10050649b434e12adf6595f81da1b1ef79135efdf9a957f5a2bb",
+    "size": 84603,
+    "gradedFile": "graded-v091/10.js",
+    "previousDigest": "8f96e6e32afcce91b4164c28163c712cdc7059a1906d13f22d108df005a9ab92",
     "previousDigests": [
+      "cecd8ddcad1e66b8902a9cb59a42ca9bb1770748a7b56a5d44cda18edaaebdaa",
+      "4fcca4cb528c9a3219c076611b0ca415907b76976968b07f1714d2309a5391db",
+      "864d8c1c9beff90fc714e84b32adc3bec039ff6ded5b0cec90a37578e1a35f03",
       "ddf4079ad167c05b2e050df78059c795b7afa5ace7f59e4ddbef9fec589f3832",
       "c2d06adcd783139f4e4d23cf46a7ccb5b480147f36cd888c4ebb0c1ab794f1b8"
     ]
@@ -186,10 +226,14 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-11.zip",
-    "digest": "8f7deeb5a4b3697952500db184214d9abc0738b8170800ecb520a68f1056577b",
-    "size": 95529,
-    "previousDigest": "016e4ccf43bc110d41e0148840921aff8b80922650eb1d2c72ee3c69b65f6d8a",
+    "digest": "93648ca1f717d7fcb8a2832598fab61ea779e5a6d83ca6c55456483a43694795",
+    "size": 96180,
+    "gradedFile": "graded-v091/11.js",
+    "previousDigest": "ed8c7bd9e02e4fc9bca317bf22fcd1e8bbe1d269d64ab41118f55a3ba88b7c8f",
     "previousDigests": [
+      "543c72617deaf6bdd8dd865349cd790d604a8a39d6f8db3b8d5bc819a7608b26",
+      "8f7deeb5a4b3697952500db184214d9abc0738b8170800ecb520a68f1056577b",
+      "016e4ccf43bc110d41e0148840921aff8b80922650eb1d2c72ee3c69b65f6d8a",
       "73288b095e66d7e76d17485a4179a3c7d57b3e364a394b3c91e15ab9e214f740",
       "6433e07d57027eaa049d760805c50ade3ccf8c81bc37eed788c360aeab8023cd"
     ]
@@ -204,9 +248,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-12.zip",
-    "digest": "ad31534567f5daf5981a9856483e49727794414c8dd4be2e8d203e3d5469f8ec",
-    "size": 87831,
-    "previousDigest": "a572b2f746e7a7dae9132de5b1ea5cbc4606328ee52d7c8bdb5374c4f79d26e5"
+    "digest": "d9866af0f542cf489c1341ac6ac29ccef85d169460075490c7d1a3767d067558",
+    "size": 88788,
+    "gradedFile": "graded-v091/12.js",
+    "previousDigest": "13ec2bac66d2e9543a970a2f6b197a8e3ad7b58a8bc9ae5aa3644e14fcdebf74",
+    "previousDigests": [
+      "8f5dd20f3c16423b07e624deec89903782c93a2680c730c6af0ddb9375c84c08",
+      "ad31534567f5daf5981a9856483e49727794414c8dd4be2e8d203e3d5469f8ec",
+      "a572b2f746e7a7dae9132de5b1ea5cbc4606328ee52d7c8bdb5374c4f79d26e5"
+    ]
   },
   {
     "book": "盘龙",
@@ -218,9 +268,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-13.zip",
-    "digest": "5f1f91a837c2b88fa5f6f51ef7232347ba31fd344a95b8e87335160c93145b25",
-    "size": 90988,
-    "previousDigest": "468d634d453b57c8d5fbe459ef18b7489e4c2cc44f18c58f5912d390cfc12897"
+    "digest": "d4d80304cf8e24e1f1c9681d13c2f6a4d25a675e5f73695097beff7a2844894b",
+    "size": 91846,
+    "gradedFile": "graded-v091/13.js",
+    "previousDigest": "67e325ad212d1e3209f4190f5f741748ea217b63bbc94634b35acda075bce507",
+    "previousDigests": [
+      "a6f86a53ad276572c843c434d3b717e7d45b8e9a010e4912a5404fe18c769ee9",
+      "5f1f91a837c2b88fa5f6f51ef7232347ba31fd344a95b8e87335160c93145b25",
+      "468d634d453b57c8d5fbe459ef18b7489e4c2cc44f18c58f5912d390cfc12897"
+    ]
   },
   {
     "book": "盘龙",
@@ -232,9 +288,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-14.zip",
-    "digest": "57cb43b0908200493dd28330e7bb913a7620191c809dbaa93ccd2e4c6623442c",
-    "size": 96138,
-    "previousDigest": "27ad4c25e2b6790bbdaa1eb070c1f455979b81ca7f137a6e2929345350f7b214"
+    "digest": "69c0e3ebb4464a50e029cde45a552198b6b223eb3a4e6d75367a1b28d02f8714",
+    "size": 95228,
+    "gradedFile": "graded-v091/14.js",
+    "previousDigest": "93690fab7c344141fe855bb0e0616a66b502de00de71019f943d892eedd26ed5",
+    "previousDigests": [
+      "c24988e7d6c3d0fdaa5750042e49758ae2bc706b499ab2921cda469c7b0f7c11",
+      "57cb43b0908200493dd28330e7bb913a7620191c809dbaa93ccd2e4c6623442c",
+      "27ad4c25e2b6790bbdaa1eb070c1f455979b81ca7f137a6e2929345350f7b214"
+    ]
   },
   {
     "book": "盘龙",
@@ -246,9 +308,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-15.zip",
-    "digest": "5e312d0172b0a1833ed084a9d14903496534777e2e618a53c5400e5b523a9ad3",
-    "size": 86064,
-    "previousDigest": "202070ef902b593af467e0e95056767815f7ccbf61511fb874bbbbf3eac7fd9e"
+    "digest": "f9605b22612dadd1da90e19a615e5461ad6c6f99de075389cfd6159230456f7f",
+    "size": 85693,
+    "gradedFile": "graded-v091/15.js",
+    "previousDigest": "1f25135c81c97f268d99704e79d1a09db73a1babada2d73ea9600c954cce980f",
+    "previousDigests": [
+      "dc9635ff5d89cf15f8dc04c0c189aead159bea5d77982f12de584c8d1fd9efa8",
+      "5e312d0172b0a1833ed084a9d14903496534777e2e618a53c5400e5b523a9ad3",
+      "202070ef902b593af467e0e95056767815f7ccbf61511fb874bbbbf3eac7fd9e"
+    ]
   },
   {
     "book": "盘龙",
@@ -260,9 +328,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-16.zip",
-    "digest": "4ace35953b108b16acebe4e353167119db3a1fb6a6d0a782ccc0a2debda5b4b8",
-    "size": 91998,
-    "previousDigest": "85788c82a2057f2470bf5c4894d754a93a1e9c09282614bad7a0006350980fd2"
+    "digest": "5fec1be4ccd529e1fa78c45da715139fbc8fc0e9a0645ab9e0fd6f716b32669c",
+    "size": 91735,
+    "gradedFile": "graded-v091/16.js",
+    "previousDigest": "5499010612d37f1a1dcc8029e70515d035f215a955ec393a7804223bb56d08d2",
+    "previousDigests": [
+      "7a97779667c96222dfbcf26bd032d883f061ea20b09f582717a17b5383bc326c",
+      "4ace35953b108b16acebe4e353167119db3a1fb6a6d0a782ccc0a2debda5b4b8",
+      "85788c82a2057f2470bf5c4894d754a93a1e9c09282614bad7a0006350980fd2"
+    ]
   },
   {
     "book": "盘龙",
@@ -274,9 +348,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-17.zip",
-    "digest": "fe24d9c9e301c8e2ec8c5991bfd62e33541d79a3884ce564b250f87a1f73adfa",
-    "size": 87662,
-    "previousDigest": "8f981077bb6d968eb5f51aa4805300ed9e2bcb9850ca8d9a864ea76e6cf70ed3"
+    "digest": "0c96e8963197958a5c93526982c4e09d7de7b0687a34975e946eeae7256a9bcb",
+    "size": 88401,
+    "gradedFile": "graded-v091/17.js",
+    "previousDigest": "bdffd8b71dbc51b83c9e8d076589f3d724aadb5abd50d937ff694b5d637e400b",
+    "previousDigests": [
+      "d41ee7578a8accd1eb858a3d5044c2623d82703883b83a24229667a005aa161a",
+      "fe24d9c9e301c8e2ec8c5991bfd62e33541d79a3884ce564b250f87a1f73adfa",
+      "8f981077bb6d968eb5f51aa4805300ed9e2bcb9850ca8d9a864ea76e6cf70ed3"
+    ]
   },
   {
     "book": "盘龙",
@@ -288,9 +368,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-18.zip",
-    "digest": "fef91047eaacb91c7b8e6cb7562ad8465586e7f6e0c0f51c25cdc197d7c301d2",
-    "size": 98786,
-    "previousDigest": "340db19399a45cacf7f494e1cbf5231dd53d9fd1b7032a0d7cc6991a5f123955"
+    "digest": "c70464255485f8eb42d46c2bbe6d4dbbe03bea26077a5555303e5f1614fd015b",
+    "size": 98412,
+    "gradedFile": "graded-v091/18.js",
+    "previousDigest": "3161323254918c563e143cf6c1a0369ddbb3bbcab7f2a6737630e7a2f17350b8",
+    "previousDigests": [
+      "c03b32db33d5f9afab739302520f33f2f26ee1970a0502a94416fe722ce43e01",
+      "fef91047eaacb91c7b8e6cb7562ad8465586e7f6e0c0f51c25cdc197d7c301d2",
+      "340db19399a45cacf7f494e1cbf5231dd53d9fd1b7032a0d7cc6991a5f123955"
+    ]
   },
   {
     "book": "盘龙",
@@ -302,9 +388,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-19.zip",
-    "digest": "86b332f776f83dd1d352bfa6885252394b69ce056628252fcaa6bc672e080b9e",
-    "size": 83703,
-    "previousDigest": "0610ec0fc448efa1b72cfff4b7cdec05fdffdbea86718c0278c12d8a40f9a846"
+    "digest": "a6565d56565742ecb253d4b72025c2be974fc7d9d9741af484764690b108b4a0",
+    "size": 84851,
+    "gradedFile": "graded-v091/19.js",
+    "previousDigest": "5f961496ffae59a62e5eed44cd485ee6946338fba2762c4312e753b014171b0a",
+    "previousDigests": [
+      "713d2b1756ce9b02cba7eaf2fae6b95e7139c38ece81e9e24efa802ce32c711c",
+      "86b332f776f83dd1d352bfa6885252394b69ce056628252fcaa6bc672e080b9e",
+      "0610ec0fc448efa1b72cfff4b7cdec05fdffdbea86718c0278c12d8a40f9a846"
+    ]
   },
   {
     "book": "盘龙",
@@ -316,9 +408,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-20.zip",
-    "digest": "ba9eb88952583e6ac89b067af32117f55d410caae120389d08d2cce74a43f3ab",
-    "size": 89090,
-    "previousDigest": "0f45bf473bd310b73c234012e877fae8c8d079826f846475f365e764571e4c24"
+    "digest": "abc3b722e30c43d864bb62dd4893c0ae619cf18d002a3518037b0bc045630cdf",
+    "size": 89065,
+    "gradedFile": "graded-v091/20.js",
+    "previousDigest": "2945ab4823d1e145393f94142d12fe8d0fb0adb145b9b730b2e1213566c7b261",
+    "previousDigests": [
+      "6257599b9f6ead83322f2f9dea7001403d695e39ad4f2ef05d1434274f78e385",
+      "ba9eb88952583e6ac89b067af32117f55d410caae120389d08d2cce74a43f3ab",
+      "0f45bf473bd310b73c234012e877fae8c8d079826f846475f365e764571e4c24"
+    ]
   },
   {
     "book": "盘龙",
@@ -330,9 +428,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-21.zip",
-    "digest": "495518e87c2f02474497a32a54ad4a8e0efb9bd0eef5c22f2362805b0e54170b",
-    "size": 84286,
-    "previousDigest": "6cb10de065a35e1131dd81297861970daac1a0df5e8516282701c3325e987ea0"
+    "digest": "9aa20c045585affefe0c0dfc8e13f6e065f279ab8f7abd0c9c03f816b72d65c8",
+    "size": 85201,
+    "gradedFile": "graded-v091/21.js",
+    "previousDigest": "cb48ec3b47a44c8e27f2d371468d2626cf723594e3d8ef81b547fd1777b3e2c3",
+    "previousDigests": [
+      "af7d7f0d8f6961bd53ecc23d15fd0d21d5d90ec46cf225bf07accdf8d4a57f1e",
+      "495518e87c2f02474497a32a54ad4a8e0efb9bd0eef5c22f2362805b0e54170b",
+      "6cb10de065a35e1131dd81297861970daac1a0df5e8516282701c3325e987ea0"
+    ]
   },
   {
     "book": "盘龙",
@@ -344,9 +448,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-22.zip",
-    "digest": "2e5cde90cff052e9ccd0cdd2154c10cfca5de03388150549e7e099d3212554b3",
-    "size": 90966,
-    "previousDigest": "2762d5fcb6b1e6ab9263d1707d80af1f131a2f757dc3fe769ad892c8d84b4324"
+    "digest": "d9e2ccbed77b55a8a18b0c3bbaa5934eec34cbccadf21aaa3055b47f51c66e84",
+    "size": 90221,
+    "gradedFile": "graded-v091/22.js",
+    "previousDigest": "21f1353c592c20da0093b9b344882d105b5a6e9e439cdef80a9c056a9d97079a",
+    "previousDigests": [
+      "1c9173aec6ef219f1c67fbd7585005fb5304278cc66b850576b325c4440444e0",
+      "2e5cde90cff052e9ccd0cdd2154c10cfca5de03388150549e7e099d3212554b3",
+      "2762d5fcb6b1e6ab9263d1707d80af1f131a2f757dc3fe769ad892c8d84b4324"
+    ]
   },
   {
     "book": "盘龙",
@@ -358,9 +468,15 @@ export default [
     "volume": 1,
     "volumeTitle": "盘龙之戒",
     "file": "panlong-23.zip",
-    "digest": "2444287a63654d1dcef26dbe5715b70c0ed86db7bead8638301b8c141423fc67",
-    "size": 106499,
-    "previousDigest": "b588538c7f8151acfe62aa09f396f3e720d88966c251c3d13b611fac0fec9f9e"
+    "digest": "e7b18978d32171ac43372c634e672c819d265864c3d6d6ff261c3c861e9383b1",
+    "size": 106153,
+    "gradedFile": "graded-v091/23.js",
+    "previousDigest": "74692f2c94bd3a0c7927fca8a0864018b099c5716d4e9e30d4350ded8612b4d3",
+    "previousDigests": [
+      "afacf69b2020cfa14a771cf47e8deeb1ef9d54e7adb86b7fd9202b9a65c10e5d",
+      "2444287a63654d1dcef26dbe5715b70c0ed86db7bead8638301b8c141423fc67",
+      "b588538c7f8151acfe62aa09f396f3e720d88966c251c3d13b611fac0fec9f9e"
+    ]
   },
   {
     "book": "TSK3 samples",

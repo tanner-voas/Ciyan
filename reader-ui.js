@@ -4,7 +4,7 @@ import {voiceTuning} from './reader-speech.js';
 import {catalog,downloadChapter} from './chapter-download.js';
 import {novelLibrary,registerCustomChapter,matchesRequestedChapter,volumeList,chaptersInVolume,volumeLabel} from './reader-library.js';
 import {mountReadingGuide} from './reader-guide.js';
-import {acceptChapter,validateChapter,readerAnalysis,pickReaderItem,gradeReader,recordPractice,readerGradePreview} from './reader-core.js';
+import {acceptChapter,validateChapter,importChapterLexicon,readerAnalysis,pickReaderItem,gradeReader,recordPractice,readerGradePreview} from './reader-core.js';
 import {newVocabRemaining} from './study-engine.js';
 import {intervalText} from './review-scheduler.js';
 import {dueCompletion,studyProgressForState} from './study-progress.js';
@@ -40,30 +40,35 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const gradedAssets=new Map();
  let activeView=null,preview=null;
  const prefs=()=>chapter()?.editionPrefs||{};
- const hasGraded=()=>novel==='panlong'&&catalog.some(e=>e.novel===novel&&e.number===number&&e.digest===chapter()?.digest);
+ const gradedEntry=()=>catalog.find(e=>e.novel===novel&&e.number===number&&e.digest===chapter()?.digest&&e.gradedFile);
+ const hasGraded=()=>!!gradedEntry();
  const sourceBook=()=>state().reader?.[novel];
  const chapter=()=>sourceBook()?.chapters[number-1];
  const projection=()=>activeView?.digest===chapter()?.digest?activeView:null;
  const book=()=>{
   const b=sourceBook(),v=projection();return b&&v?{...b,items:{...b.items,...v.p.items}}:b;
  };
- const studyChapter=()=>{const c=chapter(),v=projection();return c&&v?{...c,all:v.all}:c;};
- function editionControls(){
-  const p=prefs();
-  return '<div class="reader-editions">'+(hasGraded()?btn('edition',p.graded?'Edition · HSK6 + TSK12':'Edition · Original'):'')+
-   btn('auto',p.auto?'Auto · '+Number(p.minimum??.92).toFixed(2):'Auto simplify')+'</div>';
+ const studyChapter=()=>{const c=chapter(),v=projection();return c&&v?{...c,all:v.all,focus:v.p.focus??c.focus}:c;};
+ function editionSelector(){
+  if(!hasGraded())return '';
+  const graded=!!prefs().graded;
+  return `<label>Edition<select id="reader-edition"><option value="original" ${graded?'':'selected'}>Original</option><option value="graded" ${graded?'selected':''}>HSK6 + TSK12</option></select></label>`;
+ }
+ function autoControl(){
+  const p=prefs();return '<div class="reader-editions">'+btn('auto',p.auto?'Auto · '+Number(p.minimum??.92).toFixed(2):'Auto simplify')+'</div>';
  }
  async function baseEdition(original,graded){
-  if(!graded||!hasGraded())return original;
+  const entry=gradedEntry();if(!graded||!entry)return original;
   const digest=chapter().digest;
   if(!gradedAssets.has(digest)){
-   const {default:asset}=await import('./chapters/graded-v090/'+number+'.js');
+   const {default:asset}=await import('./chapters/'+entry.gradedFile);
    if(asset.sourceDigest!==digest||asset.paragraphs.length!==original.paragraphs.length||
     !asset.paragraphs.every((r,i)=>r.id===original.paragraphs[i].id))throw Error('This edition requires its matching original.');
+   validateChapter({...original,...asset});
    gradedAssets.set(digest,asset);
   }
   const asset=gradedAssets.get(digest);
-  return {...original,paragraphs:asset.paragraphs,items:{...original.items,...asset.items},extras:asset.extras,graded:true};
+  return {...original,...asset,graded:true};
  }
  function compute(base,index,minimum,restored){
   const permit=w=>!base.graded||base.extras.includes(w)||index.words.get(w)?.tags?.some(t=>/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/.test(t));
@@ -73,7 +78,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const text=result?.p||p;
   const changed=new Map();
   for(const [loc,c] of result?.changes||[])for(let i=c.start;i<c.end;i++)changed.set(c.row+':'+i,loc);
-  activeView={p:text,digest,result,changed,all:[...new Set(text.paragraphs.flatMap(r=>r.tokens.filter(Array.isArray).map(t=>t[0])))]};
+  activeView={p:text,digest,result,changed,all:[...new Set([...text.paragraphs.flatMap(r=>r.tokens.filter(Array.isArray).map(t=>t[0])),...(text.nestedTerms||[])])]};
   shown='';revealed=false;vocabPage=0;chapterDueSnapshots.clear();
  }
  async function reopenView(){
@@ -81,6 +86,9 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(!original||(!pref.graded&&!pref.auto))return;
   const base=await baseEdition(original,pref.graded);
   if(c.digest!==chapter()?.digest)return;
+  if(base.graded&&Object.keys(base.items).some(k=>!sourceBook().items[k])){
+   if(!await change(d=>{importChapterLexicon(d,base);const b=d.reader[novel];b.items={...b.items,...base.items};},false,true))return;
+  }
   installView(base,pref.auto?compute(base,learnerIndex(state()),pref.minimum??.92,pref.restored):null,c.digest);
  }
  const fmt=v=>v==null?'—':v.toFixed(2);
@@ -114,7 +122,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  async function saveEdition(pref,base,result,digest){
   await flush();
   if(chapter()?.digest!==digest)return;
-  if(!await change(d=>{d.reader[novel].chapters[number-1].editionPrefs=pref;},false))return;
+  if(!await change(d=>{
+   const b=d.reader[novel];
+   // The projected edition can contain new vocabulary and grammar not in the original.
+   if(base.graded){importChapterLexicon(d,base);b.items={...b.items,...base.items};}
+   b.chapters[number-1].editionPrefs=pref;
+  },false,!!base.graded)){render();return;}
   installView(base,result,digest);preview=null;closeModal?.();render();
  }
 
@@ -274,7 +287,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const entries=libraryBook(novel)?.chapters||[];
   return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(chapterTitle(c))}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
   <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-selected="${esc(state().settings.speechVoice||'')}" data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
-  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div>${editionControls()}<button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
+  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div>${hasGraded()?`<div class="reader-choices">${editionSelector()}</div>`:''}${autoControl()}<button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
  }
  function view(){
   selectBook();
@@ -285,7 +298,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   // Volume is solely a chapter picker filter. No volume-specific progress or
   // unlock state is created; chapters remain globally numbered and linear.
   const chapterChoices=volumes.length?chaptersInVolume(lib,currentVolume):lib?.chapters||[];
-  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length>1?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label></div>`;
+  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length>1?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label>${editionSelector()}</div>`;
   if(!entry)return `${chooser}<div class="panel stack"><h2>No chapters yet</h2>${importBtn}</div>`;
   if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(chapterLabel(entry))}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
@@ -293,7 +306,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const p=projection()?.p||memory.get(c.digest);
   const body=mode==='study'?study(b,c,a):mode==='read'?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${state().settings.readerTermsHighlight!==false?'show-terms':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
   if(isReading())return body;
-  return `${chooser}${editionControls()}<div class="reader-tabs">${tabs}</div>${body}`;
+  return `${chooser}${autoControl()}<div class="reader-tabs">${tabs}</div>${body}`;
  }
  async function cached(c,refresh=false){
   if(!refresh&&memory.has(c.digest))return memory.get(c.digest);
@@ -429,7 +442,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      if(!preview||preview.digest!==digest)return;preview.update();
      await saveEdition({...pref,minimum:preview.minimum,auto:true},preview.base,preview.result,digest);return;
     }
-    if(name==='edition'){pref.graded=!pref.graded;pref.restored=[];}
+    if(name==='edition'){
+     if(!hasGraded()||!['original','graded'].includes(el.dataset.edition))return;
+     pref.graded=el.dataset.edition==='graded';pref.restored=[];
+    }
     if(name==='auto-off')pref.auto=false;
     if(name==='restore-word')pref.restored=[...new Set([...(pref.restored||[]),el.dataset.loc])];
     const base=await baseEdition(original,pref.graded);
@@ -498,7 +514,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    else if(['study','review','weak','earlier'].includes(name)){closeModal?.();chapterDueSnapshots.clear();scope=['weak','earlier'].includes(name)?name:'gate';mode=name==='review'?'review':'study';shown='';revealed=false;}
    render();
    notifyQuotaExhaustion();
-  }catch(e){toast(e.message);}finally{busy=false;}
+  }catch(e){toast(e.message);if(name==='edition')render();}finally{busy=false;}
  }
  document.addEventListener('change',async e=>{
   if(e.target.id==='reader-highlight-in-book'){
@@ -516,6 +532,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    const destination=chaptersInVolume(libraryBook(novel),Number(e.target.value))[0];
    if(destination)void choose(novel,destination.number);
   }
+  if(e.target.id==='reader-edition'){await action('edition',{dataset:{edition:e.target.value}});return;}
   if(e.target.id==='reader-chapter')void choose(novel,+e.target.value);
   if(e.target.id==='reader-novel'){
    const id=e.target.value,stored=state().reader?.[id]?.current;

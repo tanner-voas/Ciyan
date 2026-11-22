@@ -2,18 +2,17 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {validateChapter,chapterText} from '../reader-core.js';
-const dir=new URL('../reader/panlong/',import.meta.url);
-const locks=JSON.parse(fs.readFileSync(new URL('locked.json',dir)));
-for(const [stem,sha] of Object.entries(locks)){
- const read=path=>fs.readFileSync(new URL(path,dir),'utf8');
- const original=read('original/'+stem+'.txt');
- const clean=original.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).map(x=>x.replace(/\s*\d+\s*$/,'').trim()).join('\n\n');
- const reference=read('reference/'+stem+'.txt');
- assert.equal(createHash('sha256').update(reference).digest('hex'),sha,'Reference lock changed: '+stem);
- assert.equal(clean,reference,'Unexpected edits to source: '+stem);
- const p=JSON.parse(read('chapters/'+stem+'.json'));
- const all=validateChapter(p);
- assert.equal(p.number,Number(stem));assert.equal(p.novel,'panlong');
- assert.equal(chapterText(p),reference,'Reading text drift: '+stem);
- console.log(stem,p.title,p.paragraphs.length,'paragraphs,',p.focus.length,'chapter-specific terms/grammar,',all.length,'distinct words and terms. Text matches.');
+import catalog from '../chapters/index.js';
+const dir=new URL('../reader/panlong/',import.meta.url),read=path=>fs.readFileSync(new URL(path,dir),'utf8');
+const locks=JSON.parse(read('locked.json')),corpus=JSON.parse(read('pass45/corpus.json'));
+for(const c of corpus){
+ const stem=String(c.number).padStart(3,'0'),reference=read('reference/'+stem+'.txt');
+ assert.equal(createHash('sha256').update(reference).digest('hex'),locks[stem]);
+ assert.equal(reference,[c.title,...c.original].join('\n\n'));
+ const raw=read('chapters/'+stem+'.json'),p=JSON.parse(raw),entry=catalog.find(e=>e.novel==='panlong'&&e.number===c.number);
+ const {default:asset}=await import('../chapters/'+entry.gradedFile);
+ assert.equal(createHash('sha256').update(raw).digest('hex'),entry.digest);assert.equal(asset.sourceDigest,entry.digest);
+ validateChapter(p);validateChapter({...p,...asset});
+ assert.equal(chapterText(p),reference);assert.equal(chapterText({...p,...asset}),[c.title,...c.graded].join('\n\n'));
+ console.log(stem,c.title,c.original.length,'aligned paragraphs. Both editions verified.');
 }

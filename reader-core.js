@@ -62,6 +62,18 @@ export function validateChapter(p){
   }
  }
  check(used.size,'This chapter has no annotated Chinese');
+ // A registered short term may occur only inside a longer name (e.g. 瑞恩
+ // inside 瑞恩·巴鲁克). Preserve the full reading span but teach the short
+ // registered form as well. Require a real literal occurrence in the text.
+ if(p.nestedTerms!==undefined){
+  check(p.editionVersion===45,'Unsupported nested term list');
+  checkIds(p.nestedTerms,p.items);
+  const texts=p.paragraphs.map(row=>paragraphText(p,row));
+  for(const id of p.nestedTerms){
+   check(p.items[id].kind==='term'&&!used.has(id)&&texts.some(t=>t.includes(p.items[id].hanzi)),'Invalid nested term');
+   used.add(id);
+  }
+ }
  check(focus.every(id=>p.items[id].kind==='grammar'||used.has(id)),'Focused term is not present in the chapter');
  for(const id of Object.keys(p.items))check(used.has(id)||p.items[id].kind==='grammar','Unused vocabulary');
  return [...used];
@@ -133,13 +145,16 @@ export function acceptChapter(s,p,digest){
   b.items[key]={kind:c.kind,hanzi:c.hanzi,pinyin:c.pinyin,english:c.english};
  }
  let position=old?.position;
+ // Saved source anchors survive switching editions; any old token-specific
+ // Auto overrides must be discarded after a content revision.
+ const editionPrefs=old?.editionPrefs?{...old.editionPrefs,...(old.digest!==digest?{restored:[]}:{})}:undefined;
  if(position&&(old.digest!==digest||old.boundaries!==p.boundaries)){
   const row=p.paragraphs.find(r=>r.id===position.id);
   if(row){
    let offset=0,wordIndex=-1,restored=null;
    for(const token of row.tokens){
     const text=typeof token==='string'?token:token[1]??p.items[token[0]].hanzi;
-    if(Array.isArray(token)&&(!restored||offset<=position.offset))restored={wordIndex:++wordIndex,offset};
+    if(Array.isArray(token)&&(!restored||offset<=(position.sourceOffset??position.offset)))restored={wordIndex:++wordIndex,offset,sourceOffset:offset};
     offset+=text.length;
    }
    if(restored)position={...position,...restored};
@@ -149,7 +164,7 @@ export function acceptChapter(s,p,digest){
   const index=Math.min(position.index||0,p.paragraphs.length-1);
   position={id:p.paragraphs[index].id,index,offset:0};
  }
- b.chapters[p.number-1]={...(p.boundaries?{boundaries:p.boundaries}:{}),number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null};
+ b.chapters[p.number-1]={...(p.boundaries?{boundaries:p.boundaries}:{}),number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null,...(editionPrefs?{editionPrefs}:{})};
  b.current=p.number;s.reader[p.novel]=b;
 }
 export function validateReader(books={}){

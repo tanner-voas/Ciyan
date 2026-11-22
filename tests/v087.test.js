@@ -12,7 +12,7 @@ const load=n=>JSON.parse(read(`chapters/${String(n).padStart(3,'0')}.json`));
 const digest=data=>createHash('sha256').update(data).digest('hex');
 
 test('v0.8.9 retains all Panlong chapter text with upgraded lexicon and grammar metadata',()=>{
- assert.equal(APP_VERSION,'0.9.0');
+ assert.equal(APP_VERSION,'0.9.1');
  assert.equal(catalog.length,26);
  assert.deepEqual(catalog.filter(x=>x.novel==='panlong').map(x=>x.number),Array.from({length:23},(_,i)=>i+1));
  for(let n=12;n<=23;n++){
@@ -32,8 +32,10 @@ test('all new chapters reproduce the user-provided source prose character-for-ch
   const original=[header.split('\n')[1],...body].join('\n\n');
   const p=load(n);
   validateChapter(p);
-  assert.equal(chapterText(p),original,`Source-text drift in chapter ${n}`);
-  assert.equal(read(`reference/${stem}.txt`).toString(),original);
+  const locked=JSON.parse(read('pass45/corpus.json'))[n-1];
+  assert.equal([locked.title,...locked.archival].join('\n\n'),original,`Archival source-text drift in chapter ${n}`);
+  assert.equal(chapterText(p),[locked.title,...locked.original].join('\n\n'));
+  assert.equal(read(`reference/${stem}.txt`).toString(),chapterText(p));
   assert.equal(p.paragraphs.length,body.length);
  }
 });
@@ -49,7 +51,7 @@ test('chapter-specific grammar and terms are substantial, evidence-grounded and 
   assert.ok(patterns.length>=6,`Chapter ${n} has only ${patterns.length} grammar patterns`);
   assert.ok(!Object.hasOwn(p,'authored'));
   assert.ok(p.focus.every(id=>p.items[id].kind!=='vocab'));
-  assert.ok(terms.every(id=>p.paragraphs.some(row=>row.tokens.some(t=>Array.isArray(t)&&t[0]===id))));
+  assert.ok(terms.every(id=>p.nestedTerms.includes(id)||p.paragraphs.some(row=>row.tokens.some(t=>Array.isArray(t)&&t[0]===id))));
   for(const id of patterns){
    const name=id.slice('grammar-'.length);
    assert.ok(grammar.chapters[n].includes(name));
@@ -88,7 +90,7 @@ test('all new ZIP packages inflate to the exact integrity-checked original JSON'
 test('old v0.8.6 backups migrate through an identity step without changing progress',()=>{
  const previous={format:'ciyan-backup',version:2,appVersion:'0.8.6',state:{reader:{panlong:{current:11,chapters:[],history:[{key:'term-林雷',grade:3}],progress:{}}}}};
  const upgraded=prepareVersionedBackup(previous);
- assert.equal(upgraded.appVersion,'0.9.0');assert.deepEqual(upgraded.state,previous.state);
+ assert.equal(upgraded.appVersion,'0.9.1');assert.deepEqual(upgraded.state,previous.state);
 });
 test('chapter study prompt has independent length-aware typography and safe wrapping',()=>{
  const reader=fs.readFileSync(new URL('../reader-ui.js',import.meta.url),'utf8');

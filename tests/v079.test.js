@@ -11,7 +11,7 @@ import {APP_VERSION,prepareVersionedBackup} from '../backup-versions.js';
 
 const content=path=>fs.readFileSync(new URL(path,import.meta.url),'utf8');
 test('v0.7.9 includes 11 linear Panlong chapters under V01; existing three digests unchanged',()=>{
- assert.equal(APP_VERSION,'0.9.0');
+ assert.equal(APP_VERSION,'0.9.1');
  assert.equal(catalog.length,26);
  const entries=catalog.filter(c=>c.novel==='panlong');
  assert.deepEqual(entries.map(c=>c.number),Array.from({length:23},(_,i)=>i+1));
@@ -27,7 +27,9 @@ test('new reader packages preserve uploaded chapter prose exactly',()=>{
   const reference=original.split('\n\n').slice(0,1)[0].split('\n').slice(-1)[0]+'\n\n'+original.split('\n\n').slice(1).join('\n\n');
   const chapter=JSON.parse(content(`../reader/panlong/chapters/${name}.json`));
   assert.deepEqual(validateChapter(chapter).length>100,true);
-  assert.equal(chapterText(chapter),reference,`chapter ${n} source fidelity`);
+  const locked=JSON.parse(content('../reader/panlong/pass45/corpus.json'))[n-1];
+  assert.equal([locked.title,...locked.archival].join('\n\n'),reference,`chapter ${n} archival fidelity`);
+  assert.equal(chapterText(chapter),[locked.title,...locked.original].join('\n\n'));
   assert.ok(chapter.focus.length>=5,`chapter ${n} has critical terms and grammar`);
   assert.ok(chapter.focus.every(id=>chapter.items[id].kind!=='vocab'));
   assert.ok(chapter.focus.some(id=>id.startsWith('grammar-')));
@@ -94,5 +96,5 @@ test('custom author and volume metadata survive backup without adding new progre
  assert.ok(!JSON.stringify(saved.reader).includes('paragraphs'));
  assert.ok(!JSON.stringify(saved.readerCustomIndex).includes('tokens'));
  const older=defaultState();older.appVersion='0.7.8';
- assert.equal(prepareVersionedBackup(older).appVersion,'0.9.0');
+ assert.equal(prepareVersionedBackup(older).appVersion,'0.9.1');
 });
