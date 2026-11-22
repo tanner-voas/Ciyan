@@ -1,0 +1,574 @@
+﻿chapter,paragraph,start_char,before,after,reason
+2,67,70,的话 | 语,的 | 话语,"Possessive particle followed by noun, not conditional 的话."
+11,7,56,毛 | 发烧 | 焦,毛发 | 烧焦,"Burned hair, not fever; reconstruct the two correct lexical units."
+21,34,0,各系魔法 | 师,各 | 系 | 魔法师,Practitioners of each magic system; restore registered mage term.
+22,38,65,对手 | 下,对 | 手下,"Preposition 对 and subordinates 手下, not opponent 对手."
+1,17,27,先 | 辈,先辈,Reconstruct reviewed lexical unit from aligned fragments.
+1,21,28,松 | 松 | 垮 | 垮,松松垮垮,Reconstruct reviewed lexical unit from aligned fragments.
+1,25,24,金 | 发,金发,Reconstruct reviewed lexical unit from aligned fragments.
+1,28,12,冷 | 哼,冷哼,Reconstruct reviewed lexical unit from aligned fragments.
+1,32,3,剑 | 痕,剑痕,Reconstruct reviewed lexical unit from aligned fragments.
+1,37,81,乱 | 石,乱石,Reconstruct reviewed lexical unit from aligned fragments.
+1,39,32,青 | 色,青色,Reconstruct reviewed lexical unit from aligned fragments.
+1,64,4,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+1,66,10,虎 | 牙,虎牙,Reconstruct reviewed lexical unit from aligned fragments.
+1,72,10,三 | 角 | 形,三角形,Reconstruct reviewed lexical unit from aligned fragments.
+1,72,57,三 | 角 | 形,三角形,Reconstruct reviewed lexical unit from aligned fragments.
+1,85,34,鬼 | 主意,鬼主意,Reconstruct reviewed lexical unit from aligned fragments.
+1,96,21,发 | 麻,发麻,Reconstruct reviewed lexical unit from aligned fragments.
+1,111,62,大 | 军,大军,Reconstruct reviewed lexical unit from aligned fragments.
+1,111,69,敌 | 军,敌军,Reconstruct reviewed lexical unit from aligned fragments.
+1,117,17,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+1,118,20,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+1,118,47,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+1,119,1,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+1,128,67,大 | 军,大军,Reconstruct reviewed lexical unit from aligned fragments.
+1,128,70,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+1,135,21,爬山 | 虎,爬山虎,Reconstruct reviewed lexical unit from aligned fragments.
+2,5,2,农 | 忙,农忙,Reconstruct reviewed lexical unit from aligned fragments.
+2,36,44,柔 | 嫩,柔嫩,Reconstruct reviewed lexical unit from aligned fragments.
+2,45,33,鼻 | 头,鼻头,Reconstruct reviewed lexical unit from aligned fragments.
+2,48,19,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+2,49,0,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+2,57,30,石 | 路,石路,Reconstruct reviewed lexical unit from aligned fragments.
+2,61,42,先 | 辈,先辈,Reconstruct reviewed lexical unit from aligned fragments.
+3,8,58,名 | 震 | 天下,名震天下,Reconstruct reviewed lexical unit from aligned fragments.
+3,8,118,斩 | 杀,斩杀,Reconstruct reviewed lexical unit from aligned fragments.
+3,10,35,出 | 战,出战,Reconstruct reviewed lexical unit from aligned fragments.
+3,10,68,名 | 震 | 天下,名震天下,Reconstruct reviewed lexical unit from aligned fragments.
+3,28,66,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+3,46,12,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+4,12,0,金 | 发,金发,Reconstruct reviewed lexical unit from aligned fragments.
+4,22,5,低 | 吼,低吼,Reconstruct reviewed lexical unit from aligned fragments.
+4,27,30,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+4,27,48,颤 | 动,颤动,Reconstruct reviewed lexical unit from aligned fragments.
+4,37,0,虎 | 头 | 虎 | 脑,虎头虎脑,Reconstruct reviewed lexical unit from aligned fragments.
+4,55,105,毁 | 天 | 灭 | 地,毁天灭地,Reconstruct reviewed lexical unit from aligned fragments.
+4,67,16,荆 | 条,荆条,Reconstruct reviewed lexical unit from aligned fragments.
+4,67,49,血 | 痕,血痕,Reconstruct reviewed lexical unit from aligned fragments.
+5,1,11,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+5,12,57,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+5,12,71,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+5,13,6,金 | 色,金色,Reconstruct reviewed lexical unit from aligned fragments.
+5,13,41,金 | 发,金发,Reconstruct reviewed lexical unit from aligned fragments.
+5,35,19,铜 | 币,铜币,Reconstruct reviewed lexical unit from aligned fragments.
+5,38,52,呵 | 呵,呵呵,Reconstruct reviewed lexical unit from aligned fragments.
+5,39,18,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+5,39,37,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+5,43,14,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+6,4,41,座 | 钟,座钟,Reconstruct reviewed lexical unit from aligned fragments.
+6,21,10,寻 | 宝,寻宝,Reconstruct reviewed lexical unit from aligned fragments.
+6,22,18,先 | 辈,先辈,Reconstruct reviewed lexical unit from aligned fragments.
+6,46,2,环 | 视,环视,Reconstruct reviewed lexical unit from aligned fragments.
+6,48,44,怒 | 气,怒气,Reconstruct reviewed lexical unit from aligned fragments.
+6,50,2,结 | 结实 | 实,结结实实,Reconstruct reviewed lexical unit from aligned fragments.
+6,51,48,嘎 | 吱,嘎吱,Reconstruct reviewed lexical unit from aligned fragments.
+6,51,50,嘎 | 吱,嘎吱,Reconstruct reviewed lexical unit from aligned fragments.
+7,3,32,木 | 块,木块,Reconstruct reviewed lexical unit from aligned fragments.
+7,16,40,一 | 钱 | 不值,一钱不值,Reconstruct reviewed lexical unit from aligned fragments.
+7,17,44,寻 | 宝,寻宝,Reconstruct reviewed lexical unit from aligned fragments.
+7,30,1,哗 | 哗,哗哗,Reconstruct reviewed lexical unit from aligned fragments.
+7,31,14,小麦 | 色,小麦色,Reconstruct reviewed lexical unit from aligned fragments.
+7,33,30,麻布 | 衣,麻布衣,Reconstruct reviewed lexical unit from aligned fragments.
+8,10,59,粗 | 壮,粗壮,Reconstruct reviewed lexical unit from aligned fragments.
+8,11,28,鞭 | 子,鞭子,Reconstruct reviewed lexical unit from aligned fragments.
+8,14,1,噗 | 哧,噗哧,Reconstruct reviewed lexical unit from aligned fragments.
+8,14,4,噗 | 哧,噗哧,Reconstruct reviewed lexical unit from aligned fragments.
+8,15,31,白 | 森 | 森,白森森,Reconstruct reviewed lexical unit from aligned fragments.
+8,25,75,紫 | 袍,紫袍,Reconstruct reviewed lexical unit from aligned fragments.
+8,27,0,紫 | 袍,紫袍,Reconstruct reviewed lexical unit from aligned fragments.
+8,28,6,紫 | 袍,紫袍,Reconstruct reviewed lexical unit from aligned fragments.
+8,36,55,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+8,43,37,紫 | 袍,紫袍,Reconstruct reviewed lexical unit from aligned fragments.
+8,57,33,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+9,22,5,冷 | 哼,冷哼,Reconstruct reviewed lexical unit from aligned fragments.
+9,25,21,低 | 吼,低吼,Reconstruct reviewed lexical unit from aligned fragments.
+9,27,2,黑 | 袍,黑袍,Reconstruct reviewed lexical unit from aligned fragments.
+9,33,44,长 | 弓,长弓,Reconstruct reviewed lexical unit from aligned fragments.
+9,39,8,巨 | 剑,巨剑,Reconstruct reviewed lexical unit from aligned fragments.
+9,47,23,石 | 块,石块,Reconstruct reviewed lexical unit from aligned fragments.
+9,50,7,人 | 形,人形,Reconstruct reviewed lexical unit from aligned fragments.
+9,58,36,石 | 墙,石墙,Reconstruct reviewed lexical unit from aligned fragments.
+9,58,39,泥 | 巴,泥巴,Reconstruct reviewed lexical unit from aligned fragments.
+9,62,57,战 | 甲,战甲,Reconstruct reviewed lexical unit from aligned fragments.
+10,8,32,利 | 箭,利箭,Reconstruct reviewed lexical unit from aligned fragments.
+10,18,68,嘎 | 吱,嘎吱,Reconstruct reviewed lexical unit from aligned fragments.
+10,19,6,锯 | 子,锯子,Reconstruct reviewed lexical unit from aligned fragments.
+10,19,57,腿 | 骨,腿骨,Reconstruct reviewed lexical unit from aligned fragments.
+10,50,72,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+10,59,11,洗 | 礼,洗礼,Reconstruct reviewed lexical unit from aligned fragments.
+11,1,62,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+11,2,25,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+11,9,7,惨 | 叫,惨叫,Reconstruct reviewed lexical unit from aligned fragments.
+11,10,29,低 | 吼,低吼,Reconstruct reviewed lexical unit from aligned fragments.
+11,29,69,烧 | 毁,烧毁,Reconstruct reviewed lexical unit from aligned fragments.
+11,30,31,生死 | 未 | 卜,生死未卜,Reconstruct reviewed lexical unit from aligned fragments.
+11,38,10,紫 | 袍,紫袍,Reconstruct reviewed lexical unit from aligned fragments.
+11,47,20,无缘 | 无故,无缘无故,Reconstruct reviewed lexical unit from aligned fragments.
+11,68,11,响 | 鼻,响鼻,Reconstruct reviewed lexical unit from aligned fragments.
+12,2,42,金 | 块,金块,Reconstruct reviewed lexical unit from aligned fragments.
+12,6,77,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+12,13,12,应 | 命,应命,Reconstruct reviewed lexical unit from aligned fragments.
+12,16,36,心 | 不 | 在 | 焉,心不在焉,Reconstruct reviewed lexical unit from aligned fragments.
+12,21,30,水 | 缸,水缸,Reconstruct reviewed lexical unit from aligned fragments.
+12,21,43,火 | 浪,火浪,Reconstruct reviewed lexical unit from aligned fragments.
+12,21,45,席 | 卷,席卷,Reconstruct reviewed lexical unit from aligned fragments.
+12,26,19,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+12,26,42,战 | 车,战车,Reconstruct reviewed lexical unit from aligned fragments.
+12,33,22,不 | 愧,不愧,Reconstruct reviewed lexical unit from aligned fragments.
+12,33,34,男 | 儿,男儿,Reconstruct reviewed lexical unit from aligned fragments.
+12,36,65,清 | 清楚 | 楚,清清楚楚,Reconstruct reviewed lexical unit from aligned fragments.
+12,38,35,嗜 | 血,嗜血,Reconstruct reviewed lexical unit from aligned fragments.
+12,41,1,咕 | 噜,咕噜,Reconstruct reviewed lexical unit from aligned fragments.
+12,47,6,喜 | 色,喜色,Reconstruct reviewed lexical unit from aligned fragments.
+12,52,25,王 | 都,王都,Reconstruct reviewed lexical unit from aligned fragments.
+13,1,32,饭 | 桌,饭桌,Reconstruct reviewed lexical unit from aligned fragments.
+13,12,44,大 | 军,大军,Reconstruct reviewed lexical unit from aligned fragments.
+13,12,94,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+13,12,106,大 | 军,大军,Reconstruct reviewed lexical unit from aligned fragments.
+13,12,112,大 | 军,大军,Reconstruct reviewed lexical unit from aligned fragments.
+13,38,28,魔法 | 盾,魔法盾,Reconstruct reviewed lexical unit from aligned fragments.
+13,38,66,还 | 击,还击,Reconstruct reviewed lexical unit from aligned fragments.
+14,3,64,蹄 | 爪,蹄爪,Reconstruct reviewed lexical unit from aligned fragments.
+14,4,28,手 | 舞 | 足 | 蹈,手舞足蹈,Reconstruct reviewed lexical unit from aligned fragments.
+14,10,55,小 | 鬼,小鬼,Reconstruct reviewed lexical unit from aligned fragments.
+14,12,29,小 | 鬼,小鬼,Reconstruct reviewed lexical unit from aligned fragments.
+14,31,28,山 | 丘,山丘,Reconstruct reviewed lexical unit from aligned fragments.
+14,51,62,俯卧 | 撑,俯卧撑,Reconstruct reviewed lexical unit from aligned fragments.
+14,52,4,俯卧 | 撑,俯卧撑,Reconstruct reviewed lexical unit from aligned fragments.
+14,63,54,惊 | 呆,惊呆,Reconstruct reviewed lexical unit from aligned fragments.
+14,66,60,龙 | 鳞,龙鳞,Reconstruct reviewed lexical unit from aligned fragments.
+14,66,90,肉 | 翅,肉翅,Reconstruct reviewed lexical unit from aligned fragments.
+15,8,81,惊 | 呆,惊呆,Reconstruct reviewed lexical unit from aligned fragments.
+15,9,30,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+15,10,80,辈 | 子,辈子,Reconstruct reviewed lexical unit from aligned fragments.
+15,18,20,怒 | 喝,怒喝,Reconstruct reviewed lexical unit from aligned fragments.
+15,18,64,清 | 清楚 | 楚,清清楚楚,Reconstruct reviewed lexical unit from aligned fragments.
+15,19,2,暴 | 喝,暴喝,Reconstruct reviewed lexical unit from aligned fragments.
+15,21,61,凶 | 狠,凶狠,Reconstruct reviewed lexical unit from aligned fragments.
+15,24,74,毁 | 天 | 灭 | 地,毁天灭地,Reconstruct reviewed lexical unit from aligned fragments.
+15,25,4,毁 | 天 | 灭 | 地,毁天灭地,Reconstruct reviewed lexical unit from aligned fragments.
+15,25,15,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+15,25,22,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+15,27,53,威 | 严,威严,Reconstruct reviewed lexical unit from aligned fragments.
+15,37,9,威 | 望,威望,Reconstruct reviewed lexical unit from aligned fragments.
+15,41,30,绿 | 衣,绿衣,Reconstruct reviewed lexical unit from aligned fragments.
+15,42,9,低 | 吼,低吼,Reconstruct reviewed lexical unit from aligned fragments.
+15,43,46,吼 | 声,吼声,Reconstruct reviewed lexical unit from aligned fragments.
+16,2,47,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+16,2,79,剑 | 鸣,剑鸣,Reconstruct reviewed lexical unit from aligned fragments.
+16,3,5,长 | 鸣,长鸣,Reconstruct reviewed lexical unit from aligned fragments.
+16,3,10,龙 | 吼,龙吼,Reconstruct reviewed lexical unit from aligned fragments.
+16,3,16,响 | 彻,响彻,Reconstruct reviewed lexical unit from aligned fragments.
+16,8,9,任 | 由,任由,Reconstruct reviewed lexical unit from aligned fragments.
+16,9,7,战 | 甲,战甲,Reconstruct reviewed lexical unit from aligned fragments.
+16,11,4,惊 | 呆,惊呆,Reconstruct reviewed lexical unit from aligned fragments.
+16,12,47,战 | 甲,战甲,Reconstruct reviewed lexical unit from aligned fragments.
+16,17,1,轰 | 隆 | 隆,轰隆隆,Reconstruct reviewed lexical unit from aligned fragments.
+16,21,27,流 | 星,流星,Reconstruct reviewed lexical unit from aligned fragments.
+16,23,62,惊 | 呆,惊呆,Reconstruct reviewed lexical unit from aligned fragments.
+16,25,17,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+16,25,54,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+16,26,8,潮 | 水,潮水,Reconstruct reviewed lexical unit from aligned fragments.
+16,27,30,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+16,29,20,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+16,29,27,爆 | 裂,爆裂,Reconstruct reviewed lexical unit from aligned fragments.
+16,46,39,惨 | 叫,惨叫,Reconstruct reviewed lexical unit from aligned fragments.
+16,55,2,怒 | 喝,怒喝,Reconstruct reviewed lexical unit from aligned fragments.
+16,61,30,一 | 清 | 二 | 楚,一清二楚,Reconstruct reviewed lexical unit from aligned fragments.
+16,64,19,豹 | 子,豹子,Reconstruct reviewed lexical unit from aligned fragments.
+16,66,2,怒 | 喝,怒喝,Reconstruct reviewed lexical unit from aligned fragments.
+16,72,49,护 | 体 | 气 | 罩,护体气罩,Reconstruct reviewed lexical unit from aligned fragments.
+16,73,1,轰 | 隆 | 隆,轰隆隆,Reconstruct reviewed lexical unit from aligned fragments.
+16,74,76,惊 | 呆,惊呆,Reconstruct reviewed lexical unit from aligned fragments.
+17,13,7,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+17,13,35,血 | 色,血色,Reconstruct reviewed lexical unit from aligned fragments.
+17,17,23,严 | 严 | 实 | 实,严严实实,Reconstruct reviewed lexical unit from aligned fragments.
+17,21,8,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+17,24,8,沙 | 哑,沙哑,Reconstruct reviewed lexical unit from aligned fragments.
+17,35,76,雷 | 鸣,雷鸣,Reconstruct reviewed lexical unit from aligned fragments.
+17,43,15,丝 | 布,丝布,Reconstruct reviewed lexical unit from aligned fragments.
+17,53,34,毁 | 掉,毁掉,Reconstruct reviewed lexical unit from aligned fragments.
+17,59,18,毁 | 天 | 灭 | 地,毁天灭地,Reconstruct reviewed lexical unit from aligned fragments.
+17,59,51,王 | 都,王都,Reconstruct reviewed lexical unit from aligned fragments.
+18,4,13,爆 | 裂,爆裂,Reconstruct reviewed lexical unit from aligned fragments.
+18,11,18,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+18,13,18,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+18,17,14,碧绿 | 色,碧绿色,Reconstruct reviewed lexical unit from aligned fragments.
+18,21,5,自 | 语,自语,Reconstruct reviewed lexical unit from aligned fragments.
+18,23,29,呻 | 吟,呻吟,Reconstruct reviewed lexical unit from aligned fragments.
+18,23,36,咒 | 骂,咒骂,Reconstruct reviewed lexical unit from aligned fragments.
+18,23,43,悲 | 呼声,悲呼声,Reconstruct reviewed lexical unit from aligned fragments.
+18,35,46,盾 | 牌,盾牌,Reconstruct reviewed lexical unit from aligned fragments.
+18,42,40,惨 | 重,惨重,Reconstruct reviewed lexical unit from aligned fragments.
+18,47,2,长 | 叹,长叹,Reconstruct reviewed lexical unit from aligned fragments.
+18,52,15,王 | 都,王都,Reconstruct reviewed lexical unit from aligned fragments.
+18,60,10,颤 | 鸣,颤鸣,Reconstruct reviewed lexical unit from aligned fragments.
+18,60,46,睡 | 衣,睡衣,Reconstruct reviewed lexical unit from aligned fragments.
+18,61,0,颤 | 鸣,颤鸣,Reconstruct reviewed lexical unit from aligned fragments.
+18,62,25,惊 | 呆,惊呆,Reconstruct reviewed lexical unit from aligned fragments.
+19,12,29,先 | 辈,先辈,Reconstruct reviewed lexical unit from aligned fragments.
+19,27,76,折 | 磨,折磨,Reconstruct reviewed lexical unit from aligned fragments.
+19,33,29,枯 | 败,枯败,Reconstruct reviewed lexical unit from aligned fragments.
+19,34,65,堪 | 比,堪比,Reconstruct reviewed lexical unit from aligned fragments.
+19,45,2,皱 | 眉,皱眉,Reconstruct reviewed lexical unit from aligned fragments.
+19,58,11,亡 | 灵,亡灵,Reconstruct reviewed lexical unit from aligned fragments.
+19,62,1,呵 | 呵,呵呵,Reconstruct reviewed lexical unit from aligned fragments.
+19,73,53,人 | 影,人影,Reconstruct reviewed lexical unit from aligned fragments.
+20,26,34,笑 | 眯 | 眯,笑眯眯,Reconstruct reviewed lexical unit from aligned fragments.
+20,37,6,滴 | 血 | 认 | 主,滴血认主,Reconstruct reviewed lexical unit from aligned fragments.
+20,73,38,饱 | 嗝,饱嗝,Reconstruct reviewed lexical unit from aligned fragments.
+20,73,43,餐 | 巾,餐巾,Reconstruct reviewed lexical unit from aligned fragments.
+20,79,0,虎 | 头 | 虎 | 脑,虎头虎脑,Reconstruct reviewed lexical unit from aligned fragments.
+21,4,4,迷 | 蒙,迷蒙,Reconstruct reviewed lexical unit from aligned fragments.
+21,16,135,长 | 叹,长叹,Reconstruct reviewed lexical unit from aligned fragments.
+21,17,5,发 | 颤,发颤,Reconstruct reviewed lexical unit from aligned fragments.
+21,18,55,毁 | 天 | 灭 | 地,毁天灭地,Reconstruct reviewed lexical unit from aligned fragments.
+21,37,47,脉 | 动,脉动,Reconstruct reviewed lexical unit from aligned fragments.
+21,42,72,进 | 阶,进阶,Reconstruct reviewed lexical unit from aligned fragments.
+21,43,20,圣 | 铠,圣铠,Reconstruct reviewed lexical unit from aligned fragments.
+21,43,37,圣 | 铠,圣铠,Reconstruct reviewed lexical unit from aligned fragments.
+21,43,42,玉 | 石,玉石,Reconstruct reviewed lexical unit from aligned fragments.
+21,43,74,白 | 金,白金,Reconstruct reviewed lexical unit from aligned fragments.
+21,45,56,圣 | 铠,圣铠,Reconstruct reviewed lexical unit from aligned fragments.
+21,47,64,战 | 铠,战铠,Reconstruct reviewed lexical unit from aligned fragments.
+21,48,22,圣 | 铠,圣铠,Reconstruct reviewed lexical unit from aligned fragments.
+22,19,3,瞬 | 发,瞬发,Reconstruct reviewed lexical unit from aligned fragments.
+22,20,63,面 | 纱,面纱,Reconstruct reviewed lexical unit from aligned fragments.
+22,38,26,擒 | 敌 | 先 | 擒 | 王,擒敌先擒王,Reconstruct reviewed lexical unit from aligned fragments.
+22,47,5,长 | 叹,长叹,Reconstruct reviewed lexical unit from aligned fragments.
+23,63,32,蜕 | 变,蜕变,Reconstruct reviewed lexical unit from aligned fragments.
+23,64,69,昏 | 倒,昏倒,Reconstruct reviewed lexical unit from aligned fragments.
+23,67,54,沉 | 稳,沉稳,Reconstruct reviewed lexical unit from aligned fragments.
+23,68,0,春 | 去 | 秋 | 来,春去秋来,Reconstruct reviewed lexical unit from aligned fragments.
+23,82,62,滴 | 溜 | 溜,滴溜溜,Reconstruct reviewed lexical unit from aligned fragments.
+23,83,21,蹦 | 蹦 | 跳 | 跳,蹦蹦跳跳,Reconstruct reviewed lexical unit from aligned fragments.
+23,89,60,幼 | 鼠,幼鼠,Reconstruct reviewed lexical unit from aligned fragments.
+1,4,22,分成,分 | 成,Known-component grammatical or productive expression; all components in actual baseline.
+1,6,30,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+1,16,65,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+1,20,30,做到,做 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+1,30,22,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+1,31,20,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+1,33,24,多次,多 | 次,Known-component grammatical or productive expression; all components in actual baseline.
+1,33,26,生死,生 | 死,Known-component grammatical or productive expression; all components in actual baseline.
+1,33,56,更是,更 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+1,39,67,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+1,42,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+1,45,5,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+1,51,0,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+1,54,31,咬牙,咬 | 牙,Known-component grammatical or productive expression; all components in actual baseline.
+1,59,25,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+1,60,53,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+1,63,58,剩下,剩 | 下,Known-component grammatical or productive expression; all components in actual baseline.
+1,71,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+1,72,21,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+1,72,23,指着,指 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+1,80,2,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+1,84,60,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+1,99,19,酒杯,酒 | 杯,Known-component grammatical or productive expression; all components in actual baseline.
+1,99,29,酒杯,酒 | 杯,Known-component grammatical or productive expression; all components in actual baseline.
+1,99,39,酒杯,酒 | 杯,Known-component grammatical or productive expression; all components in actual baseline.
+1,100,19,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+1,101,42,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+1,111,28,年前,年 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+1,116,49,眼里,眼 | 里,Known-component grammatical or productive expression; all components in actual baseline.
+1,135,28,沿着,沿 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+1,135,95,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+1,136,39,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+1,136,63,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+1,136,77,不再,不 | 再,Known-component grammatical or productive expression; all components in actual baseline.
+1,142,50,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+2,6,2,之下,之 | 下,Known-component grammatical or productive expression; all components in actual baseline.
+2,13,47,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+2,24,42,一番,一 | 番,Known-component grammatical or productive expression; all components in actual baseline.
+2,36,17,摔倒,摔 | 倒,Known-component grammatical or productive expression; all components in actual baseline.
+2,38,14,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+2,49,55,传出,传 | 出,Known-component grammatical or productive expression; all components in actual baseline.
+2,51,2,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+2,55,58,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+2,57,21,沿着,沿 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+3,17,80,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+3,17,87,再也,再 | 也,Known-component grammatical or productive expression; all components in actual baseline.
+3,18,2,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+3,18,30,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+3,18,44,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+3,19,2,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+3,34,0,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+3,37,2,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+3,37,25,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+3,39,21,睡着,睡 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+3,42,4,见到,见 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+3,44,13,从没,从 | 没,Known-component grammatical or productive expression; all components in actual baseline.
+3,45,69,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+3,48,5,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+3,48,80,别说,别 | 说,Known-component grammatical or productive expression; all components in actual baseline.
+3,62,3,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+3,62,25,剩下,剩 | 下,Known-component grammatical or productive expression; all components in actual baseline.
+3,62,40,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+3,62,76,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+4,4,42,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+4,4,69,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+4,4,87,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+4,18,9,年前,年 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+4,24,39,年前,年 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+4,27,51,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+4,34,20,回到,回 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+4,38,8,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+4,41,31,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+4,56,32,分成,分 | 成,Known-component grammatical or productive expression; all components in actual baseline.
+4,67,56,咬牙,咬 | 牙,Known-component grammatical or productive expression; all components in actual baseline.
+4,69,34,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+5,6,18,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+5,12,17,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+5,13,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+5,17,7,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+5,21,6,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+5,37,4,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+5,43,4,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+5,50,8,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+5,58,6,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+5,64,15,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+6,7,18,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+6,10,36,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+6,11,0,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+6,12,6,找到,找 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+6,13,41,手里,手 | 里,Known-component grammatical or productive expression; all components in actual baseline.
+6,13,66,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+6,17,7,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+6,18,15,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+6,21,27,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+6,21,59,想不到,想 | 不 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+6,23,36,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+6,26,34,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+6,30,13,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+6,37,61,不再,不 | 再,Known-component grammatical or productive expression; all components in actual baseline.
+6,41,13,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+6,45,7,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+6,48,10,手里,手 | 里,Known-component grammatical or productive expression; all components in actual baseline.
+6,51,15,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+6,52,0,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+6,58,9,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+7,7,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+7,18,34,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+7,26,41,找到,找 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+7,28,19,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+7,31,3,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+7,31,37,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+7,35,18,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+7,46,24,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+7,60,7,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+8,4,16,更是,更 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+8,6,3,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+8,11,49,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+8,13,63,转向,转 | 向,Known-component grammatical or productive expression; all components in actual baseline.
+8,17,6,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+8,22,20,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+8,25,13,找到,找 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+8,28,12,不再,不 | 再,Known-component grammatical or productive expression; all components in actual baseline.
+8,28,53,向前,向 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+8,36,22,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+8,45,11,没想到,没 | 想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+8,45,23,来到,来 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+8,67,8,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+8,70,35,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+9,6,23,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+9,7,8,更是,更 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+9,9,48,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+9,11,35,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+9,16,12,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+9,23,2,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+9,29,28,眼里,眼 | 里,Known-component grammatical or productive expression; all components in actual baseline.
+9,39,6,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+9,48,18,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+9,51,12,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+9,62,39,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+9,62,45,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+10,8,14,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+10,11,20,而是,而 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+10,13,58,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+10,19,53,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+10,22,21,见到,见 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+10,28,22,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+10,28,53,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+10,34,14,生死,生 | 死,Known-component grammatical or productive expression; all components in actual baseline.
+10,34,41,生死,生 | 死,Known-component grammatical or productive expression; all components in actual baseline.
+10,45,69,剩下,剩 | 下,Known-component grammatical or productive expression; all components in actual baseline.
+10,50,15,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+10,50,53,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+10,58,4,剩下,剩 | 下,Known-component grammatical or productive expression; all components in actual baseline.
+11,4,5,再也,再 | 也,Known-component grammatical or productive expression; all components in actual baseline.
+11,7,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+11,16,10,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+11,16,28,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+11,26,3,之外,之 | 外,Known-component grammatical or productive expression; all components in actual baseline.
+11,29,26,从没,从 | 没,Known-component grammatical or productive expression; all components in actual baseline.
+11,35,22,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+11,43,1,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+11,52,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+11,53,30,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+11,54,16,没想到,没 | 想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+11,54,103,笑声,笑 | 声,Known-component grammatical or productive expression; all components in actual baseline.
+11,60,12,向前,向 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+11,62,57,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+11,62,59,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+11,63,2,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+12,6,95,别说,别 | 说,Known-component grammatical or productive expression; all components in actual baseline.
+12,9,7,见到,见 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+12,9,25,而是,而 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+12,15,17,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+12,23,65,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+12,33,58,生死,生 | 死,Known-component grammatical or productive expression; all components in actual baseline.
+12,44,20,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+12,48,91,万分,万 | 分,Known-component grammatical or productive expression; all components in actual baseline.
+12,48,93,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+12,49,3,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+12,52,46,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+13,1,45,笑声,笑 | 声,Known-component grammatical or productive expression; all components in actual baseline.
+13,4,14,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+13,7,103,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+13,14,1,别说,别 | 说,Known-component grammatical or productive expression; all components in actual baseline.
+13,35,4,摇头,摇 | 头,Known-component grammatical or productive expression; all components in actual baseline.
+13,35,29,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+13,40,0,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+13,61,5,看起来,看 | 起来,Known-component grammatical or productive expression; all components in actual baseline.
+13,63,4,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+13,65,15,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+13,66,5,万分,万 | 分,Known-component grammatical or productive expression; all components in actual baseline.
+13,66,7,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+14,10,41,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+14,15,76,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+14,15,89,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+14,18,33,另一方面,另 | 一方面,Known-component grammatical or productive expression; all components in actual baseline.
+14,22,10,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+14,25,54,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+14,32,1,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+14,40,0,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+14,51,50,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+14,55,18,紧紧,紧 | 紧,Known-component grammatical or productive expression; all components in actual baseline.
+14,63,44,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+14,66,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+15,1,12,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+15,3,27,头顶,头 | 顶,Known-component grammatical or productive expression; all components in actual baseline.
+15,3,78,背着,背 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+15,4,9,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+15,4,20,背着,背 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+15,6,42,背着,背 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+15,8,9,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+15,8,61,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+15,10,5,多次,多 | 次,Known-component grammatical or productive expression; all components in actual baseline.
+15,10,9,生死,生 | 死,Known-component grammatical or productive expression; all components in actual baseline.
+15,10,83,从没,从 | 没,Known-component grammatical or productive expression; all components in actual baseline.
+15,33,23,一路上,一 | 路 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+15,33,58,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+15,37,18,见到,见 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+15,41,21,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+16,2,38,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+16,8,27,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+16,11,2,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+16,17,62,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+16,25,14,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+16,33,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+16,33,64,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+16,38,8,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+16,38,14,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+16,46,29,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+16,51,21,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+16,68,17,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+16,72,90,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+17,4,21,再也,再 | 也,Known-component grammatical or productive expression; all components in actual baseline.
+17,14,8,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+17,32,56,没想到,没 | 想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+17,35,15,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+17,36,42,远远,远 | 远,Known-component grammatical or productive expression; all components in actual baseline.
+17,44,2,深深,深 | 深,Known-component grammatical or productive expression; all components in actual baseline.
+17,47,22,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+17,47,29,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+17,50,29,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+17,57,26,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+17,59,28,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+17,59,64,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+17,65,33,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+18,1,21,头顶,头 | 顶,Known-component grammatical or productive expression; all components in actual baseline.
+18,4,49,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+18,11,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+18,11,8,双手,双 | 手,Known-component grammatical or productive expression; all components in actual baseline.
+18,11,28,头顶,头 | 顶,Known-component grammatical or productive expression; all components in actual baseline.
+18,15,6,指着,指 | 着,Known-component grammatical or productive expression; all components in actual baseline.
+18,23,47,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+18,38,12,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+18,42,18,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+18,60,17,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+18,62,17,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+18,71,19,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,1,8,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,4,3,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,5,51,没想到,没 | 想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+19,5,77,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,7,32,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,7,51,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+19,10,24,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+19,12,19,胸前,胸 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+19,26,0,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+19,27,35,没想到,没 | 想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+19,27,38,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+19,34,13,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,40,56,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+19,58,47,就是说,就是 | 说,Known-component grammatical or productive expression; all components in actual baseline.
+19,72,25,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+19,73,28,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+19,73,50,头顶,头 | 顶,Known-component grammatical or productive expression; all components in actual baseline.
+19,74,18,头顶,头 | 顶,Known-component grammatical or productive expression; all components in actual baseline.
+20,2,7,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+20,5,17,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+20,7,60,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+20,10,69,做到,做 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+20,11,3,做到,做 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+20,18,63,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+20,19,6,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+20,24,31,没想到,没 | 想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+20,34,32,穿上,穿 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+20,43,2,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+20,48,41,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+20,49,15,递给,递 | 给,Known-component grammatical or productive expression; all components in actual baseline.
+20,52,19,有人,有 | 人,Known-component grammatical or productive expression; all components in actual baseline.
+20,52,24,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+20,70,9,手里,手 | 里,Known-component grammatical or productive expression; all components in actual baseline.
+20,73,23,完了,完 | 了,Known-component grammatical or productive expression; all components in actual baseline.
+20,73,68,完了,完 | 了,Known-component grammatical or productive expression; all components in actual baseline.
+20,73,72,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+20,75,3,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+21,4,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+21,5,41,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+21,16,95,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+21,21,58,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+21,23,5,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+21,38,72,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+21,45,70,而是,而 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+22,1,60,一番,一 | 番,Known-component grammatical or productive expression; all components in actual baseline.
+22,2,17,有没有,有 | 没有,Known-component grammatical or productive expression; all components in actual baseline.
+22,6,27,多年,多 | 年,Known-component grammatical or productive expression; all components in actual baseline.
+22,7,18,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+22,7,27,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+22,18,61,做到,做 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+22,24,75,之一,之 | 一,Known-component grammatical or productive expression; all components in actual baseline.
+22,74,22,从没,从 | 没,Known-component grammatical or productive expression; all components in actual baseline.
+22,74,24,想到,想 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+22,74,35,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+23,5,5,听到,听 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+23,7,41,不再,不 | 再,Known-component grammatical or productive expression; all components in actual baseline.
+23,18,28,找到,找 | 到,Known-component grammatical or productive expression; all components in actual baseline.
+23,18,45,真的,真 | 的,Known-component grammatical or productive expression; all components in actual baseline.
+23,23,14,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+23,32,33,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+23,36,4,强弱,强 | 弱,Known-component grammatical or productive expression; all components in actual baseline.
+23,52,17,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+23,56,23,身上,身 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+23,64,72,还有,还 | 有,Known-component grammatical or productive expression; all components in actual baseline.
+23,66,15,年前,年 | 前,Known-component grammatical or productive expression; all components in actual baseline.
+23,69,11,剩下,剩 | 下,Known-component grammatical or productive expression; all components in actual baseline.
+23,78,32,更是,更 | 是,Known-component grammatical or productive expression; all components in actual baseline.
+23,82,0,只见,只 | 见,Known-component grammatical or productive expression; all components in actual baseline.
+23,87,18,赶不上,赶 | 不 | 上,Known-component grammatical or productive expression; all components in actual baseline.
+23,92,24,从没,从 | 没,Known-component grammatical or productive expression; all components in actual baseline.
+23,92,39,看起来,看 | 起来,Known-component grammatical or productive expression; all components in actual baseline.

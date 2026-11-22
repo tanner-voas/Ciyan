@@ -60,7 +60,8 @@ def main() -> None:
     for name in STATIC_FILES:
         shutil.copy2(ROOT / name, TARGET / name)
     for name in STATIC_DIRS:
-        shutil.copytree(ROOT / name, TARGET / name)
+        shutil.copytree(ROOT / name, TARGET / name,
+                        ignore=shutil.ignore_patterns("graded-v091") if name == "chapters" else None)
 
     # The standalone build consumes the exact same application asset bytes,
     # then layers on only its own entry point and PWA infrastructure.
@@ -76,7 +77,7 @@ def main() -> None:
     for file in shell:
         digest.update(file.relative_to(STANDALONE).as_posix().encode() + b"\0")
         digest.update(hashlib.sha256(file.read_bytes()).digest())
-    cache = f"ciyan-shell-v0.9.1-{digest.hexdigest()[:16]}"
+    cache = f"ciyan-shell-v0.9.2-{digest.hexdigest()[:16]}"
     paths = ["./" + file.relative_to(STANDALONE).as_posix() for file in shell]
     template = (ROOT / "sw.standalone.template.js").read_text(encoding="utf-8")
     worker = template.replace("__SHELL_CACHE_NAME__", cache).replace(

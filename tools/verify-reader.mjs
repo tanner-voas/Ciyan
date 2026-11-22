@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {validateChapter,chapterText} from '../reader-core.js';
 import catalog from '../chapters/index.js';
 const dir=new URL('../reader/panlong/',import.meta.url),read=path=>fs.readFileSync(new URL(path,dir),'utf8');
-const locks=JSON.parse(read('locked.json')),corpus=JSON.parse(read('pass45/corpus.json'));
+const locks=JSON.parse(read('locked.json')),corpus=JSON.parse(read('pass46/corpus.json'));
 for(const c of corpus){
  const stem=String(c.number).padStart(3,'0'),reference=read('reference/'+stem+'.txt');
  assert.equal(createHash('sha256').update(reference).digest('hex'),locks[stem]);

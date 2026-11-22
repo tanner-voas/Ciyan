@@ -66,7 +66,7 @@ export function validateChapter(p){
  // inside 瑞恩·巴鲁克). Preserve the full reading span but teach the short
  // registered form as well. Require a real literal occurrence in the text.
  if(p.nestedTerms!==undefined){
-  check(p.editionVersion===45,'Unsupported nested term list');
+  check([45,46].includes(p.editionVersion),'Unsupported nested term list');
   checkIds(p.nestedTerms,p.items);
   const texts=p.paragraphs.map(row=>paragraphText(p,row));
   for(const id of p.nestedTerms){
