@@ -1,6 +1,6 @@
 {
   "name": "ciyan-mandarin-pwa",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "private": true,
   "type": "module",
   "description": "Offline-first Mandarin learning PWA: standalone and AppLauncher module builds.",

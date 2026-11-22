@@ -27,7 +27,7 @@ test('catalog opens later chapters in order and recovers a saved bookmark after 
  const ui=createReader({state:()=>state,esc:String,render(){},toast:m=>errors.push(m),change:async fn=>{fn(state);return true;}});
  assert.match(ui.view(),/id="reader-novel"/);
  assert.doesNotMatch(ui.view(),/Chapter catalog/);
- await ui.action('catalog',{dataset:{file:'panlong-3.zip'}});
+ await ui.action('catalog',{dataset:{file:'panlong-pass46-3.zip'}});
  const b=state.reader.panlong;
  assert.equal(b.current,3);assert.equal(b.chapters.length,3);
  const last=b.chapters[2];last.unlocked=true;last.position={id:'p1',index:0,wordIndex:2,offset:3,guided:true};
@@ -36,4 +36,39 @@ test('catalog opens later chapters in order and recovers a saved bookmark after 
  assert.match(ui.view(),/id="reader-pages"/);
  assert.equal(last.position.wordIndex,2);
  assert.deepEqual(errors,[]);
+});
+
+test('saved v0.9.1 chapter keeps edition selector if download fails, then upgrades to Pass 46 through the selector',async t=>{
+ const {createReader}=await import('../reader-ui.js');
+ const {acceptChapter,importChapterLexicon,chapterText}=await import('../reader-core.js');
+ const {createHash}=await import('node:crypto');
+ const e=catalog.find(x=>x.novel==='panlong'&&x.number===1);
+ const bytes=await fs.readFile(new URL('../reader/panlong/chapters/001.json',import.meta.url));
+ const next=JSON.parse(bytes),old={...next,revision:45,editionVersion:45,boundaries:'pass45-original'};
+ const oldBytes=Buffer.from(JSON.stringify(old)+'\n');
+ assert.equal(createHash('sha256').update(oldBytes).digest('hex'),e.previousDigest);
+ const s=defaultState();acceptChapter(s,old,e.previousDigest);
+ const oldAsset=(await import('../chapters/graded-v091/1.js')).default;
+ const oldGraded={...old,...oldAsset};importChapterLexicon(s,oldGraded);Object.assign(s.reader.panlong.items,oldGraded.items);
+ const c=s.reader.panlong.chapters[0];c.editionPrefs={graded:true,auto:false,minimum:.94,restored:['p1:1']};c.position={id:'p1',index:0,offset:0,sourceOffset:0,wordIndex:0};c.unlocked=true;
+ const term=next.lexicon.terms[0];s.reader.panlong.progress[term]={score:2,dueAt:'2027-01-01T00:00:00.000Z'};
+ const cache=new Map(),errors=[];let online=false,requests=[];
+ t.mock.method(globalThis,'fetch',async(url,options)=>{requests.push([String(url),options]);if(!online)throw Error('Network unavailable');return new Response(await fs.readFile(url));});
+ globalThis.document={addEventListener(){}};globalThis.location={href:'https://example.test/'};
+ cache.set(new URL('./reader-content/'+e.previousDigest,location.href).href,new Response(oldBytes));
+ globalThis.caches={open:async()=>({put:(k,v)=>cache.set(k,v),match:k=>cache.get(k)?.clone()})};
+ const ui=createReader({state:()=>s,esc:String,render(){},toast:m=>errors.push(m),change:async fn=>{fn(s);return true;}});
+ assert.match(ui.view(),/id="reader-edition"/);assert.match(ui.view(),/Update chapter/);
+ await ui.action('open',{dataset:{}});
+ assert.match(ui.view(),/Update chapter/);assert.equal(s.reader.panlong.chapters[0].digest,e.previousDigest);assert.equal(c.editionPrefs.graded,true);
+ online=true;
+ await ui.action('edition',{dataset:{edition:'graded'}});
+ const updated=s.reader.panlong.chapters[0];assert.equal(updated.digest,e.digest);assert.ok(updated.unlocked);
+ assert.deepEqual(updated.editionPrefs,{graded:true,auto:false,minimum:.94,restored:[]});assert.equal(updated.position.id,'p1');
+ assert.deepEqual(s.reader.panlong.progress[term],{score:2,dueAt:'2027-01-01T00:00:00.000Z'});
+ assert.match(ui.view(),/value="graded" selected/);assert.doesNotMatch(ui.view(),/Update chapter/);
+ await ui.action('read-anyway',{dataset:{}});
+ assert.match(ui.view(),/id="reader-pages"/);
+ assert.ok(requests.every(([url,opts])=>url.endsWith('panlong-pass46-1.zip')&&opts.cache==='no-store'));
+ assert.ok(errors.some(m=>m.includes('saved chapter')));
 });

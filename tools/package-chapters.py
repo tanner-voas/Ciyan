@@ -53,6 +53,8 @@ for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/
         if chapter.get("volumeTitle"):
             entry["volumeTitle"] = chapter["volumeTitle"]
     entry["file"] = f"{entry['novel']}-{entry['number']}.zip"
+    if chapter["novel"] == "panlong" and chapter.get("editionVersion") == 46:
+        entry["file"] = f"panlong-pass46-{entry['number']}.zip"
     entry["digest"] = hashlib.sha256(data).hexdigest()
     entry["size"] = len(data)
     if chapter["novel"] == "panlong" and chapter.get("editionVersion") in (45, 46):

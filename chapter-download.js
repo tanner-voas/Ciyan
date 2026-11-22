@@ -4,7 +4,7 @@ export {catalog};
 // Our build writes one deflated chapter.json, without encryption or data descriptors.
 export async function downloadChapter(entry){
  const url=new URL('./chapters/'+entry.file,import.meta.url);
- const response=await fetch(url);
+ const response=await fetch(url,{cache:'no-store'});
  if(!response.ok)throw Error('Chapter download failed ('+response.status+'). Try again when online.');
  const bytes=new Uint8Array(await response.arrayBuffer());
  const view=new DataView(bytes.buffer);

@@ -34,13 +34,15 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const cacheName='ciyan-reader-text-v1';
  const cacheKey=d=>new URL('./reader-content/'+d,location.href).href;
  const books=()=>novelLibrary(state());
- const knownMasterDigest=(entry,digest)=>entry?.digest===digest||entry?.previousDigest===digest||entry?.previousDigests?.includes(digest);
+ const knownMasterDigest=(entry,digest)=>!!digest&&(entry?.digest===digest||entry?.previousDigest===digest||entry?.previousDigests?.includes(digest));
  const libraryBook=id=>books().find(b=>b.novel===id);
  const libraryChapter=(id,n)=>libraryBook(id)?.chapters.find(c=>c.number===n);
  const gradedAssets=new Map();
  let activeView=null,preview=null;
  const prefs=()=>chapter()?.editionPrefs||{};
- const gradedEntry=()=>catalog.find(e=>e.novel===novel&&e.number===number&&e.digest===chapter()?.digest&&e.gradedFile);
+ const gradedEntry=()=>catalog.find(e=>e.novel===novel&&e.number===number&&e.gradedFile&&knownMasterDigest(e,chapter()?.digest));
+ const needsChapterUpdate=()=>{const e=libraryChapter(novel,number),c=chapter();return !!(e?.source==='master'&&c&&e.digest!==c.digest&&knownMasterDigest(e,c.digest));};
+ let selectionLoading=false;
  const hasGraded=()=>!!gradedEntry();
  const sourceBook=()=>state().reader?.[novel];
  const chapter=()=>sourceBook()?.chapters[number-1];
@@ -51,14 +53,15 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const studyChapter=()=>{const c=chapter(),v=projection();return c&&v?{...c,all:v.all,focus:v.p.focus??c.focus}:c;};
  function editionSelector(){
   if(!hasGraded())return '';
-  const graded=!!prefs().graded;
-  return `<label>Edition<select id="reader-edition"><option value="original" ${graded?'':'selected'}>Original</option><option value="graded" ${graded?'selected':''}>HSK6 + TSK12</option></select></label>`;
+  const graded=!!prefs().graded&&!needsChapterUpdate();
+  return `<label>Edition<select id="reader-edition"><option value="original" ${graded?'':'selected'}>Original</option><option value="graded" ${graded?'selected':''}>HSK6 + TSK12</option></select></label>${needsChapterUpdate()?`<p class="subtle">A newer chapter edition is available. ${btn('open','Update chapter')}</p>`:''}`;
  }
  function autoControl(){
   const p=prefs();return '<div class="reader-editions">'+btn('auto',p.auto?'Auto · '+Number(p.minimum??.92).toFixed(2):'Auto simplify')+'</div>';
  }
  async function baseEdition(original,graded){
-  const entry=gradedEntry();if(!graded||!entry)return original;
+  const entry=gradedEntry();if(!graded)return original;
+  if(!entry||entry.digest!==chapter()?.digest)throw Error('Update this chapter before opening its graded edition.');
   const digest=chapter().digest;
   if(!gradedAssets.has(digest)){
    const {default:asset}=await import('./chapters/'+entry.gradedFile);
@@ -84,10 +87,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  async function reopenView(){
   activeView=null;const c=chapter(),pref=prefs(),original=memory.get(c?.digest);
   if(!original||(!pref.graded&&!pref.auto))return;
-  const base=await baseEdition(original,pref.graded);
+  const base=await baseEdition(original,pref.graded&&!needsChapterUpdate());
   if(c.digest!==chapter()?.digest)return;
   if(base.graded&&Object.keys(base.items).some(k=>!sourceBook().items[k])){
-   if(!await change(d=>{importChapterLexicon(d,base);const b=d.reader[novel];b.items={...b.items,...base.items};},false,true))return;
+   if(!await change(d=>{importChapterLexicon(d,base);const b=d.reader[novel];b.items={...b.items,...base.items};},false,true))throw Error('Could not save graded vocabulary. Reopen this chapter to retry.');
   }
   installView(base,pref.auto?compute(base,learnerIndex(state()),pref.minimum??.92,pref.restored):null,c.digest);
  }
@@ -102,7 +105,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    '<details><summary>Remaining words and skipped alternatives</summary><p lang="zh-Hans">'+[...s.unresolved].sort((a,b)=>b[1]-a[1]).map(([w,n])=>esc(w)+' ×'+n).join('、')+'</p><p>Missing edge '+s.denied.missing+' · context '+s.denied.context+' · score '+s.denied.threshold+' · learning evidence '+s.denied.unfamiliar+'.</p></details>';
  }
  async function openAuto(original){
-  const c=chapter(),pref=prefs(),base=await baseEdition(original,pref.graded),index=learnerIndex(state());
+  const c=chapter(),pref=prefs(),base=await baseEdition(original,pref.graded&&!needsChapterUpdate()),index=learnerIndex(state());
   const minimum=pref.minimum??.92,restore=pref.restored||[];
   const result=compute(base,index,minimum,restore);
   preview={digest:c.digest,base,index,restore,result,minimum};
@@ -161,17 +164,19 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   modal('Chapter file needed',`<p>The custom chapter <strong>${esc(chapterLabel(entry))}</strong> from <strong>${esc(libraryBook(entry.novel)?.title||entry.novel)}</strong> (Chapter ${entry.number}) is no longer stored on this device.</p><p class="subtle">Your chapter index, bookmark and study progress are saved in the backup. Reupload the matching Cíyán chapter JSON to restore its reading text.</p><button class="btn btn-primary btn-full" data-action="reader-reupload">Select chapter JSON</button>`);
  }
  async function loadSelection(id,n,{reading=false,automatic=false}={}){
-  if(!libraryBook(id))return;
+  if(selectionLoading||!libraryBook(id))return false;
+  selectionLoading=true;
+  try{
   await flush();activeView=null;preview=null;novel=id;number=n;shown='';revealed=false;quotaDialogShownFor='';
   const entry=libraryChapter(id,n);
-  if(!entry)return;
+  if(!entry)return false;
   try{
    if(entry.source==='master'){
     if(!state().reader?.[id]?.chapters[n-1]||entry.digest!==state().reader[id].chapters[n-1].digest&&knownMasterDigest(entry,state().reader[id].chapters[n-1].digest)){
-     try{if(!await openHosted(entry))return;}
+     try{if(!await openHosted(entry))throw Error('Could not save chapter update. Please retry.');}
      catch(error){const previous=state().reader?.[id]?.chapters[n-1];
       if(!previous||!(await cached(previous)))throw error;
-      toast('Using the saved chapter. The update will retry when online.');
+      toast('Using the saved chapter. Select Update chapter to retry. '+error.message);
      }
     }
     const ch=state().reader?.[id]?.chapters[n-1];
@@ -185,8 +190,9 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    const ch=state().reader?.[id]?.chapters[n-1];
    if(ch){await reopenView();await change(d=>{d.reader[id].current=n;},false);mode=reading?'read':'review';}
    else mode='review';
-   chromeVisible=true;render();
-  }catch(e){toast(e.message);mode='review';render();}
+   chromeVisible=true;render();return !!ch&&!needsChapterUpdate();
+  }catch(e){toast(e.message);mode='review';render();return false;}
+  }finally{selectionLoading=false;}
  }
  let vocabGroup='practice',vocabPage=0,vocabChapter='';
  function vocabulary(b,c,a){
@@ -364,8 +370,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const el=document.querySelector('#reader-pages');
   if(!el){
    // First visit uses the shipped master index without requiring manual import.
-   const entry=libraryChapter(novel,number),token=`${novel}:${number}`;
-   if(entry&&token!==attemptedInitial&&(!chapter()||!memory.has(chapter().digest))){
+   const entry=libraryChapter(novel,number),token=`${novel}:${number}:${entry?.digest}:${chapter()?.digest}`;
+   if(!selectionLoading&&entry&&token!==attemptedInitial&&(!chapter()||needsChapterUpdate()||!memory.has(chapter().digest))){
     attemptedInitial=token;
     if(entry.source==='master')void loadSelection(novel,number,{automatic:true});
     else void (async()=>{try{if(!chapter()||!(await cached(chapter())))showMissing(entry);}catch(error){toast(error.message);showMissing(entry);}})();
@@ -435,8 +441,11 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    }
    const b=book(),c=studyChapter();if(!c)return;
    if(name==='edition'||name==='auto'||name==='auto-apply'||name==='auto-off'||name==='restore-word'){
+    if(name==='edition'&&needsChapterUpdate()){
+     if(!await loadSelection(novel,number,{reading:mode==='read'})){toast('Chapter update is required for the graded edition. Retry when online.');render();return;}
+    }
     const original=await cached(chapter());if(!original)return;
-    const pref={...prefs()},digest=c.digest;
+    const pref={...prefs()},digest=chapter().digest;
     if(name==='auto'){await openAuto(original);return;}
     if(name==='auto-apply'){
      if(!preview||preview.digest!==digest)return;preview.update();
@@ -448,7 +457,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     }
     if(name==='auto-off')pref.auto=false;
     if(name==='restore-word')pref.restored=[...new Set([...(pref.restored||[]),el.dataset.loc])];
-    const base=await baseEdition(original,pref.graded);
+    const base=await baseEdition(original,pref.graded&&!needsChapterUpdate());
     await saveEdition(pref,base,pref.auto?compute(base,learnerIndex(state()),pref.minimum??.92,pref.restored):null,digest);return;
    }
    if(name==='vocab-group'||name==='vocab-prev'||name==='vocab-next'){
