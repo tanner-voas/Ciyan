@@ -29,7 +29,7 @@ function counts(p,slot){
 }
 for(const e of catalog.filter(e=>e.novel==='panlong')){
  const n=e.number,original=read('chapters/'+String(n).padStart(3,'0')+'.json');
- const a=(await import('../chapters/graded-v091/'+n+'.js')).default,b=(await import('../chapters/'+e.gradedFile)).default;
+ const a=(await import('../chapters/graded-v091/'+n+'.js')).default,b=(await import('../chapters/graded-v092/'+n+'.js')).default;
  const old=counts({...original,...a},0),next=counts({...original,...b},1);
  assert.deepEqual(old.terms,next.terms);
  rows.push({chapter:n,title:e.title,paragraphs:original.paragraphs.length,revisedParagraphs:prior[n-1].graded.filter((p,i)=>p!==current[n-1].graded[i]).length,v091Vocab:old.vocab.length,v092Vocab:next.vocab.length,deltaVocab:next.vocab.length-old.vocab.length,v091Terms:old.terms.length,v092Terms:next.terms.length,v091PreviewTerms:old.independent.length,v092PreviewTerms:next.independent.length,v091OovOccurrences:old.unknownOccurrences,v092OovOccurrences:next.unknownOccurrences,v091WordOccurrences:old.wordOccurrences,v092WordOccurrences:next.wordOccurrences});

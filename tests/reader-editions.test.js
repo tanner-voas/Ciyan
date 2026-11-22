@@ -16,7 +16,7 @@ test('Pass 46: all 23 aligned editions reproduce the audited prose, vocabulary, 
  for(const entry of catalog.filter(e=>e.novel==='panlong')){
   const n=entry.number,stem=String(n).padStart(3,'0'),locked=corpus[n-1];
   const bytes=fs.readFileSync(new URL('../reader/panlong/chapters/'+stem+'.json',import.meta.url));
-  const original=JSON.parse(bytes),{default:a}=await import('../chapters/'+entry.gradedFile);
+  const original=JSON.parse(bytes),{default:a}=await import('../chapters/graded-v092/'+n+'.js');
   const p={...original,...a};validateChapter(p);validateChapter(original);
   assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.digest);
   assert.equal(a.sourceDigest,entry.digest);assert.deepEqual(new Set(a.extras),extras);

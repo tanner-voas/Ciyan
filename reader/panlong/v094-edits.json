@@ -1,0 +1,5691 @@
+{
+  "base": "Ciyan v0.9.3 / Pass 46 HSK6+TSK12",
+  "purpose": "Source-aligned literary/fidelity corrections only; NOT HSK5 vocabulary adaptation. Original chapter source bytes remain immutable.",
+  "glossaryCorrection": {
+    "说道": {
+      "kind": "vocab",
+      "hanzi": "说道",
+      "pinyin": "shuō dao",
+      "english": "to say; said (especially when introducing or following dialogue)"
+    }
+  },
+  "wordGlosses": {
+    "大概": {
+      "kind": "vocab",
+      "hanzi": "大概",
+      "pinyin": "dà gài",
+      "english": "General; rough; generally; briefly; probably; most likely; general idea; broad outline"
+    },
+    "特别": {
+      "kind": "vocab",
+      "hanzi": "特别",
+      "pinyin": "tè bié",
+      "english": "Particularly; special"
+    },
+    "不但": {
+      "kind": "vocab",
+      "hanzi": "不但",
+      "pinyin": "bù dàn",
+      "english": "Not only (paired with 而且)"
+    },
+    "抬": {
+      "kind": "vocab",
+      "hanzi": "抬",
+      "pinyin": "tái",
+      "english": "To lift; raise; (by two or more persons) carry; shoulder"
+    },
+    "心": {
+      "kind": "vocab",
+      "hanzi": "心",
+      "pinyin": "xīn",
+      "english": "Heart; mind"
+    },
+    "抽": {
+      "kind": "vocab",
+      "hanzi": "抽",
+      "pinyin": "chōu",
+      "english": "Draw out; pull out; smoke (cigarettes)"
+    },
+    "粉": {
+      "kind": "vocab",
+      "hanzi": "粉",
+      "pinyin": "fěn",
+      "english": "Powder; cosmetics in powder form; become powder; whitewash; white; pink"
+    },
+    "磐石": {
+      "kind": "vocab",
+      "hanzi": "磐石",
+      "pinyin": "pánshí",
+      "english": "great solid rock; boulder"
+    },
+    "猛地": {
+      "kind": "vocab",
+      "hanzi": "猛地",
+      "pinyin": "měngde",
+      "english": "suddenly; with a sudden forceful movement"
+    },
+    "便": {
+      "kind": "vocab",
+      "hanzi": "便",
+      "pinyin": "biàn",
+      "english": "Urine or excrement; piss or shit; convenient situation or time; to relieve oneself; convenient; handy; plain; ordinary"
+    },
+    "开": {
+      "kind": "vocab",
+      "hanzi": "开",
+      "pinyin": "kāi",
+      "english": "Open; turn on; drive"
+    },
+    "临": {
+      "kind": "vocab",
+      "hanzi": "临",
+      "pinyin": "lín",
+      "english": "To face; overlook; arrive; be present; on the point of; just before"
+    },
+    "幕": {
+      "kind": "vocab",
+      "hanzi": "幕",
+      "pinyin": "mù",
+      "english": "Tent; curtain; screen"
+    },
+    "龙尾": {
+      "kind": "vocab",
+      "hanzi": "龙尾",
+      "pinyin": "lóngwěi",
+      "english": "dragon tail"
+    },
+    "应付": {
+      "kind": "vocab",
+      "hanzi": "应付",
+      "pinyin": "yīng fù",
+      "english": "Payable"
+    },
+    "围": {
+      "kind": "vocab",
+      "hanzi": "围",
+      "pinyin": "wéi",
+      "english": "To enclose; surround; all round; around; classifier for arm span"
+    },
+    "攻": {
+      "kind": "vocab",
+      "hanzi": "攻",
+      "pinyin": "gōng",
+      "english": "To attack; take the offensive; accuse; charge"
+    },
+    "伤": {
+      "kind": "vocab",
+      "hanzi": "伤",
+      "pinyin": "shāng",
+      "english": "to injure; injury; wound"
+    },
+    "头顶": {
+      "kind": "vocab",
+      "hanzi": "头顶",
+      "pinyin": "tóu dǐng",
+      "english": "Top (or crown) of the head"
+    },
+    "与": {
+      "kind": "vocab",
+      "hanzi": "与",
+      "pinyin": "yǔ",
+      "english": "To give; offer; get along with; be on good terms with; with; and; together with"
+    },
+    "骤然": {
+      "kind": "vocab",
+      "hanzi": "骤然",
+      "pinyin": "zhòu rán",
+      "english": "Suddenly; abruptly"
+    },
+    "四面八方": {
+      "kind": "vocab",
+      "hanzi": "四面八方",
+      "pinyin": "sì miàn-bā fāng",
+      "english": "All directions; all quarters"
+    },
+    "急切": {
+      "kind": "vocab",
+      "hanzi": "急切",
+      "pinyin": "jíqiè",
+      "english": "Urgent; eager"
+    },
+    "个人": {
+      "kind": "vocab",
+      "hanzi": "个人",
+      "pinyin": "gè rén",
+      "english": "Individual; personal"
+    },
+    "飞快": {
+      "kind": "vocab",
+      "hanzi": "飞快",
+      "pinyin": "fēikuài",
+      "english": "very fast; rapidly"
+    },
+    "直奔": {
+      "kind": "vocab",
+      "hanzi": "直奔",
+      "pinyin": "zhí bèn",
+      "english": "To go straight to; to make a beeline for"
+    },
+    "极其": {
+      "kind": "vocab",
+      "hanzi": "极其",
+      "pinyin": "jí qí",
+      "english": "Most; extremely"
+    },
+    "躲避": {
+      "kind": "vocab",
+      "hanzi": "躲避",
+      "pinyin": "duǒ bì",
+      "english": "To hide (oneself); avoid; elude"
+    },
+    "只顾": {
+      "kind": "vocab",
+      "hanzi": "只顾",
+      "pinyin": "zhǐ gù",
+      "english": "Be only concerned with; just think of; (do something) single-mindedly; just (do something)"
+    },
+    "速": {
+      "kind": "vocab",
+      "hanzi": "速",
+      "pinyin": "sù",
+      "english": "Character from this passage; consult its surrounding word and sentence"
+    },
+    "只见": {
+      "kind": "vocab",
+      "hanzi": "只见",
+      "pinyin": "zhǐ jiàn",
+      "english": "To see (the same thing) over and over again; to see, to one's surprise, (sth happen suddenly)"
+    },
+    "鲜": {
+      "kind": "vocab",
+      "hanzi": "鲜",
+      "pinyin": "xiān",
+      "english": "Fresh; bright-coloured; bright; delicacy; seafood; aquatic foods"
+    },
+    "一下子": {
+      "kind": "vocab",
+      "hanzi": "一下子",
+      "pinyin": "yī xià zi",
+      "english": "One time; once; in a short while; all at once"
+    },
+    "部": {
+      "kind": "vocab",
+      "hanzi": "部",
+      "pinyin": "bù",
+      "english": "Department; part; classifier for films or machines"
+    },
+    "似": {
+      "kind": "vocab",
+      "hanzi": "似",
+      "pinyin": "shì",
+      "english": "Character from this passage; consult its surrounding word and sentence"
+    },
+    "木": {
+      "kind": "vocab",
+      "hanzi": "木",
+      "pinyin": "mù",
+      "english": "Character from this passage; consult its surrounding word and sentence"
+    },
+    "石": {
+      "kind": "vocab",
+      "hanzi": "石",
+      "pinyin": "shí",
+      "english": "stone"
+    },
+    "竟": {
+      "kind": "vocab",
+      "hanzi": "竟",
+      "pinyin": "jìng",
+      "english": "Literary; to finish; complete; throughout; whole"
+    },
+    "渗": {
+      "kind": "vocab",
+      "hanzi": "渗",
+      "pinyin": "shèn",
+      "english": "To ooze; permeate"
+    },
+    "奇特": {
+      "kind": "vocab",
+      "hanzi": "奇特",
+      "pinyin": "qí tè",
+      "english": "Peculiar; queer"
+    },
+    "材质": {
+      "kind": "vocab",
+      "hanzi": "材质",
+      "pinyin": "cáizhì",
+      "english": "Material; what an object is made of"
+    },
+    "缓缓": {
+      "kind": "vocab",
+      "hanzi": "缓缓",
+      "pinyin": "huǎn huǎn",
+      "english": "Slowly; gradually"
+    },
+    "拥有": {
+      "kind": "vocab",
+      "hanzi": "拥有",
+      "pinyin": "yōng yǒu",
+      "english": "To possess; have"
+    },
+    "昂": {
+      "kind": "vocab",
+      "hanzi": "昂",
+      "pinyin": "áng",
+      "english": "raise high"
+    },
+    "显得": {
+      "kind": "vocab",
+      "hanzi": "显得",
+      "pinyin": "xiǎn de",
+      "english": "To look; seem"
+    },
+    "默默": {
+      "kind": "vocab",
+      "hanzi": "默默",
+      "pinyin": "mò mò",
+      "english": "Quiet; silent"
+    },
+    "期盼": {
+      "kind": "vocab",
+      "hanzi": "期盼",
+      "pinyin": "qī pàn",
+      "english": "To expect; await"
+    },
+    "神情": {
+      "kind": "vocab",
+      "hanzi": "神情",
+      "pinyin": "shén qíng",
+      "english": "Expression; look"
+    },
+    "慈祥": {
+      "kind": "vocab",
+      "hanzi": "慈祥",
+      "pinyin": "cí xiáng",
+      "english": "Kindly"
+    },
+    "反而": {
+      "kind": "vocab",
+      "hanzi": "反而",
+      "pinyin": "fǎn ér",
+      "english": "Instead; on the contrary"
+    },
+    "检测": {
+      "kind": "vocab",
+      "hanzi": "检测",
+      "pinyin": "jiǎn cè",
+      "english": "To test; examine"
+    },
+    "清朗": {
+      "kind": "vocab",
+      "hanzi": "清朗",
+      "pinyin": "qīnglǎng",
+      "english": "clear and bright (of a voice)"
+    },
+    "原": {
+      "kind": "vocab",
+      "hanzi": "原",
+      "pinyin": "yuán",
+      "english": "Source; origin; (Yuán) a surname; primary; original; primitive; initial; originally"
+    },
+    "以为": {
+      "kind": "vocab",
+      "hanzi": "以为",
+      "pinyin": "yǐ wéi",
+      "english": "Think or assume, often mistakenly"
+    },
+    "才能": {
+      "kind": "vocab",
+      "hanzi": "才能",
+      "pinyin": "cái néng",
+      "english": "Ability; capability"
+    },
+    "结果": {
+      "kind": "vocab",
+      "hanzi": "结果",
+      "pinyin": "jié guǒ",
+      "english": "Result"
+    },
+    "翼": {
+      "kind": "vocab",
+      "hanzi": "翼",
+      "pinyin": "yì",
+      "english": "wing"
+    },
+    "摇摇欲坠": {
+      "kind": "vocab",
+      "hanzi": "摇摇欲坠",
+      "pinyin": "yáo yáo-yù zhuì",
+      "english": "Tottering; crumbling"
+    },
+    "而且": {
+      "kind": "vocab",
+      "hanzi": "而且",
+      "pinyin": "ér qiě",
+      "english": "(not only ...) but also; moreover; in addition"
+    },
+    "掌": {
+      "kind": "vocab",
+      "hanzi": "掌",
+      "pinyin": "zhǎng",
+      "english": "palm of the hand"
+    },
+    "陡然": {
+      "kind": "vocab",
+      "hanzi": "陡然",
+      "pinyin": "dǒurán",
+      "english": "suddenly"
+    },
+    "伴": {
+      "kind": "vocab",
+      "hanzi": "伴",
+      "pinyin": "bàn",
+      "english": "Companion; partner; to accompany well-known phrase"
+    },
+    "剧烈": {
+      "kind": "vocab",
+      "hanzi": "剧烈",
+      "pinyin": "jù liè",
+      "english": "Violent; acute"
+    },
+    "片刻": {
+      "kind": "vocab",
+      "hanzi": "片刻",
+      "pinyin": "piànkè",
+      "english": "A moment; a short while"
+    },
+    "之后": {
+      "kind": "vocab",
+      "hanzi": "之后",
+      "pinyin": "zhī hòu",
+      "english": "After"
+    },
+    "上去": {
+      "kind": "vocab",
+      "hanzi": "上去",
+      "pinyin": "shàng qù",
+      "english": "Go up"
+    },
+    "不堪": {
+      "kind": "vocab",
+      "hanzi": "不堪",
+      "pinyin": "bù kān",
+      "english": "Unable to bear; intolerable; extremely (with a negative expression)"
+    },
+    "设想": {
+      "kind": "vocab",
+      "hanzi": "设想",
+      "pinyin": "shè xiǎng",
+      "english": "To imagine; envisage; have consideration for; tentative plan (or idea)"
+    },
+    "最后": {
+      "kind": "vocab",
+      "hanzi": "最后",
+      "pinyin": "zuì hòu",
+      "english": "final; last; finally"
+    },
+    "生活": {
+      "kind": "vocab",
+      "hanzi": "生活",
+      "pinyin": "shēng huó",
+      "english": "to live; life; livelihood"
+    },
+    "成问题": {
+      "kind": "vocab",
+      "hanzi": "成问题",
+      "pinyin": "chéng wèn tí",
+      "english": "Be a problem; be open to question (or doubt, objection)"
+    },
+    "流逝": {
+      "kind": "vocab",
+      "hanzi": "流逝",
+      "pinyin": "liúshì",
+      "english": "to pass by; elapse (of time)"
+    },
+    "镇定": {
+      "kind": "vocab",
+      "hanzi": "镇定",
+      "pinyin": "zhèn dìng",
+      "english": "Calm; cool"
+    },
+    "渐渐": {
+      "kind": "vocab",
+      "hanzi": "渐渐",
+      "pinyin": "jiàn jiàn",
+      "english": "Gradually; by degrees"
+    },
+    "安": {
+      "kind": "vocab",
+      "hanzi": "安",
+      "pinyin": "ān",
+      "english": "Security; safety; (Ān) a surname; to set (someone's mind) at ease; calm; rest content; be satisfied; peaceful; quiet; safe; secure"
+    },
+    "重新": {
+      "kind": "vocab",
+      "hanzi": "重新",
+      "pinyin": "chóng xīn",
+      "english": "again; once more; re-"
+    },
+    "展现": {
+      "kind": "vocab",
+      "hanzi": "展现",
+      "pinyin": "zhǎn xiàn",
+      "english": "To unfold before one's eyes; emerge"
+    },
+    "入": {
+      "kind": "vocab",
+      "hanzi": "入",
+      "pinyin": "rù",
+      "english": "Go into; enter; join; be admitted into; income; entering tone"
+    },
+    "体内": {
+      "kind": "vocab",
+      "hanzi": "体内",
+      "pinyin": "tǐnèi",
+      "english": "inside the body"
+    },
+    "曾": {
+      "kind": "vocab",
+      "hanzi": "曾",
+      "pinyin": "céng",
+      "english": "Once; formerly; at some time in the past"
+    },
+    "过度": {
+      "kind": "vocab",
+      "hanzi": "过度",
+      "pinyin": "guò dù",
+      "english": "Excessive; undue"
+    },
+    "更是": {
+      "kind": "vocab",
+      "hanzi": "更是",
+      "pinyin": "gèng shì",
+      "english": "Even more (so)"
+    },
+    "不已": {
+      "kind": "vocab",
+      "hanzi": "不已",
+      "pinyin": "bù yǐ",
+      "english": "To endlessly; incessantly"
+    },
+    "心潮澎湃": {
+      "kind": "vocab",
+      "hanzi": "心潮澎湃",
+      "pinyin": "xīn cháo péng pài",
+      "english": "to feel a surge of excitement; deeply stirred"
+    },
+    "酒糟鼻": {
+      "kind": "vocab",
+      "hanzi": "酒糟鼻",
+      "pinyin": "jiǔ zāo bí",
+      "english": "a red, bulbous nose (rosacea nose)"
+    },
+    "嚎叫": {
+      "kind": "vocab",
+      "hanzi": "嚎叫",
+      "pinyin": "háo jiào",
+      "english": "to howl; to cry out in anguish"
+    }
+  },
+  "edits": [
+    {
+      "chapter": 1,
+      "paragraph": 6,
+      "before": "双手背在身后，抬着头冷冷地说，目光扫向最北边的团队，那些六七岁的孩子都闭紧嘴巴",
+      "after": "双手背在身后，昂着头冷冷地说。他的目光扫向最北边的团队，那些六七岁的孩子都抿紧嘴巴",
+      "reason": "Separates a run-on narrator clause; restores the source’s 抿着嘴 rather than closed mouth.",
+      "audit": "Pass04",
+      "tokenStart": 22,
+      "tokenEnd": 55,
+      "oldWindow": "双手背在身后，抬着头冷冷地说，目光扫向最北边的团队，那些六七岁的孩子都闭紧嘴巴",
+      "newTokens": [
+        {
+          "text": "双",
+          "annotated": true
+        },
+        {
+          "text": "手",
+          "annotated": true
+        },
+        {
+          "text": "背",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "身",
+          "annotated": true
+        },
+        {
+          "text": "后",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "昂",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        },
+        {
+          "text": "头",
+          "annotated": true
+        },
+        {
+          "text": "冷",
+          "annotated": true
+        },
+        {
+          "text": "冷",
+          "annotated": true
+        },
+        {
+          "text": "地",
+          "annotated": true
+        },
+        {
+          "text": "说",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "目光",
+          "annotated": true
+        },
+        {
+          "text": "扫",
+          "annotated": true
+        },
+        {
+          "text": "向",
+          "annotated": true
+        },
+        {
+          "text": "最",
+          "annotated": true
+        },
+        {
+          "text": "北边",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "团队",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "那些",
+          "annotated": true
+        },
+        {
+          "text": "六",
+          "annotated": true
+        },
+        {
+          "text": "七",
+          "annotated": true
+        },
+        {
+          "text": "岁",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "孩子",
+          "annotated": true
+        },
+        {
+          "text": "都",
+          "annotated": true
+        },
+        {
+          "text": "抿",
+          "annotated": true
+        },
+        {
+          "text": "紧",
+          "annotated": true
+        },
+        {
+          "text": "嘴巴",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 1,
+      "paragraph": 7,
+      "before": "是管理乌山镇的巴鲁克家族护卫队队长",
+      "after": "是拥有乌山镇的巴鲁克家族护卫队队长",
+      "reason": "The original explicitly says the Baruch family owns the town, not merely administers it.",
+      "audit": "Pass04",
+      "tokenStart": 8,
+      "tokenEnd": 14,
+      "oldWindow": "是管理乌山镇的巴鲁克家族护卫队队长",
+      "newTokens": [
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "拥有",
+          "annotated": true
+        },
+        {
+          "text": "乌山镇",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "巴鲁克家族护卫队",
+          "annotated": true
+        },
+        {
+          "text": "队长",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 1,
+      "paragraph": 21,
+      "before": "两条腿松松垮垮，明显没有力气，站得也不稳",
+      "after": "两条腿松松垮垮，显得没什么力气，站得也不稳",
+      "reason": "Removes mechanical 明显 judgement while keeping stance description.",
+      "audit": "Pass04",
+      "tokenStart": 20,
+      "tokenEnd": 34,
+      "oldWindow": "两条腿松松垮垮，明显没有力气，站得也不稳",
+      "newTokens": [
+        {
+          "text": "两",
+          "annotated": true
+        },
+        {
+          "text": "条",
+          "annotated": true
+        },
+        {
+          "text": "腿",
+          "annotated": true
+        },
+        {
+          "text": "松松垮垮",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "显得",
+          "annotated": true
+        },
+        {
+          "text": "没什么",
+          "annotated": true
+        },
+        {
+          "text": "力气",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "站",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "不",
+          "annotated": true
+        },
+        {
+          "text": "稳",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 1,
+      "paragraph": 63,
+      "before": "是管理乌山镇的巴鲁克家族的长子",
+      "after": "是拥有乌山镇的巴鲁克家族的长子",
+      "reason": "Keep the ownership relation consistent with Chapter 1’s earlier introduction and source.",
+      "audit": "Pass04",
+      "tokenStart": 6,
+      "tokenEnd": 14,
+      "oldWindow": "是管理乌山镇的巴鲁克家族的长子",
+      "newTokens": [
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "拥有",
+          "annotated": true
+        },
+        {
+          "text": "乌山镇",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "巴鲁克家族",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "长",
+          "annotated": true
+        },
+        {
+          "text": "子",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 1,
+      "paragraph": 75,
+      "before": "林雷今天是第一次做这个动作，头和脚分别放在两块平整的石头上。可是这时，他已经感到腰又热又酸了",
+      "after": "林雷今天是第一次做这个动作。才撑了一会儿，他就感到腰又热又酸",
+      "reason": "Avoids a redundant repeat of the exact posture from four paragraphs earlier; preserves early fatigue.",
+      "audit": "Pass04",
+      "tokenStart": 10,
+      "tokenEnd": 46,
+      "oldWindow": "林雷今天是第一次做这个动作，头和脚分别放在两块平整的石头上。可是这时，他已经感到腰又热又酸了",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "今天",
+          "annotated": true
+        },
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "第",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "次",
+          "annotated": true
+        },
+        {
+          "text": "做",
+          "annotated": true
+        },
+        {
+          "text": "这个",
+          "annotated": true
+        },
+        {
+          "text": "动作",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "才",
+          "annotated": true
+        },
+        {
+          "text": "撑",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "一会儿",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "就",
+          "annotated": true
+        },
+        {
+          "text": "感到",
+          "annotated": true
+        },
+        {
+          "text": "腰",
+          "annotated": true
+        },
+        {
+          "text": "又",
+          "annotated": true
+        },
+        {
+          "text": "热",
+          "annotated": true
+        },
+        {
+          "text": "又",
+          "annotated": true
+        },
+        {
+          "text": "酸",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 1,
+      "paragraph": 99,
+      "before": "成为不了厉害的战士",
+      "after": "成不了厉害的战士",
+      "reason": "Corrects nonidiomatic potential-complement placement.",
+      "audit": "Pass04",
+      "tokenStart": 79,
+      "tokenEnd": 85,
+      "oldWindow": "成为不了厉害的战士",
+      "newTokens": [
+        {
+          "text": "成",
+          "annotated": true
+        },
+        {
+          "text": "不",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "厉害",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "战士",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 1,
+      "paragraph": 125,
+      "before": "罗瑞忽然好奇问道",
+      "after": "罗瑞忽然好奇地问道",
+      "reason": "Adds missing adverbial particle 地.",
+      "audit": "Pass04",
+      "tokenStart": 17,
+      "tokenEnd": 22,
+      "oldWindow": "罗瑞忽然好奇问道",
+      "newTokens": [
+        {
+          "text": "罗瑞",
+          "annotated": true
+        },
+        {
+          "text": "忽然",
+          "annotated": true
+        },
+        {
+          "text": "好奇",
+          "annotated": true
+        },
+        {
+          "text": "地",
+          "annotated": true
+        },
+        {
+          "text": "问",
+          "annotated": true
+        },
+        {
+          "text": "道",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "paragraph": 11,
+      "before": "希尔曼心里期待",
+      "after": "希尔曼心里默默期盼",
+      "reason": "The hope concerns survival after ten years of warfare; 期盼 is more apt than simple anticipation.",
+      "audit": "Pass04",
+      "tokenStart": 18,
+      "tokenEnd": 21,
+      "oldWindow": "希尔曼心里期待",
+      "newTokens": [
+        {
+          "text": "希尔曼",
+          "annotated": true
+        },
+        {
+          "text": "心里",
+          "annotated": true
+        },
+        {
+          "text": "默默",
+          "annotated": true
+        },
+        {
+          "text": "期盼",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "paragraph": 45,
+      "before": "一位看起来很亲切、鼻头又红又粗糙的老人走了过来",
+      "after": "一位神情慈祥、长着酒糟鼻的老人走了过来",
+      "reason": "Restores the source’s distinctive kindly demeanor and 酒渣鼻 description.",
+      "audit": "Pass04",
+      "tokenStart": 19,
+      "tokenEnd": 36,
+      "oldWindow": "一位看起来很亲切、鼻头又红又粗糙的老人走了过来",
+      "newTokens": [
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "位",
+          "annotated": true
+        },
+        {
+          "text": "神情",
+          "annotated": true
+        },
+        {
+          "text": "慈祥",
+          "annotated": true
+        },
+        {
+          "text": "、",
+          "annotated": false
+        },
+        {
+          "text": "长",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        },
+        {
+          "text": "酒糟鼻",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "老人",
+          "annotated": true
+        },
+        {
+          "text": "走",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "过来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "paragraph": 16,
+      "before": "不过……不是绝对，因为随着一代代传递下去，有时候也可能出现某个后代的龙血战士血脉浓度比较高",
+      "after": "不过……这也不是绝对的，因为有时候某个后代的龙血战士血脉浓度反而会比较高",
+      "reason": "Eliminates doubled generational preface but preserves rare atavistic high bloodline concentration.",
+      "audit": "Pass04",
+      "tokenStart": 42,
+      "tokenEnd": 67,
+      "oldWindow": "不过……不是绝对，因为随着一代代传递下去，有时候也可能出现某个后代的龙血战士血脉浓度比较高",
+      "newTokens": [
+        {
+          "text": "不过",
+          "annotated": true
+        },
+        {
+          "text": "…",
+          "annotated": false
+        },
+        {
+          "text": "…",
+          "annotated": false
+        },
+        {
+          "text": "这",
+          "annotated": true
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "不是",
+          "annotated": true
+        },
+        {
+          "text": "绝对",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "因为",
+          "annotated": true
+        },
+        {
+          "text": "有时候",
+          "annotated": true
+        },
+        {
+          "text": "某",
+          "annotated": true
+        },
+        {
+          "text": "个",
+          "annotated": true
+        },
+        {
+          "text": "后代",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "龙血战士血脉",
+          "annotated": true
+        },
+        {
+          "text": "浓度",
+          "annotated": true
+        },
+        {
+          "text": "反而",
+          "annotated": true
+        },
+        {
+          "text": "会",
+          "annotated": true
+        },
+        {
+          "text": "比较",
+          "annotated": true
+        },
+        {
+          "text": "高",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "paragraph": 25,
+      "before": "只是身体里龙血战士血脉浓度，不是他所能决定的",
+      "after": "只是身体里的龙血战士血脉浓度，不是他所能决定的",
+      "reason": "Repairs missing structural 的.",
+      "audit": "Pass04",
+      "tokenStart": 40,
+      "tokenEnd": 52,
+      "oldWindow": "只是身体里龙血战士血脉浓度，不是他所能决定的",
+      "newTokens": [
+        {
+          "text": "只是",
+          "annotated": true
+        },
+        {
+          "text": "身体",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "龙血战士血脉",
+          "annotated": true
+        },
+        {
+          "text": "浓度",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "不是",
+          "annotated": true
+        },
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "所",
+          "annotated": true
+        },
+        {
+          "text": "能",
+          "annotated": true
+        },
+        {
+          "text": "决定",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "paragraph": 55,
+      "before": "我会将我们家传承之宝给带回来的",
+      "after": "我会把我们家族的传承之宝带回来的",
+      "reason": "Removes cumbersome 给 construction while keeping the vow.",
+      "audit": "Pass04",
+      "tokenStart": 21,
+      "tokenEnd": 31,
+      "oldWindow": "我会将我们家传承之宝给带回来的",
+      "newTokens": [
+        {
+          "text": "我",
+          "annotated": true
+        },
+        {
+          "text": "会",
+          "annotated": true
+        },
+        {
+          "text": "把",
+          "annotated": true
+        },
+        {
+          "text": "我们",
+          "annotated": true
+        },
+        {
+          "text": "家",
+          "annotated": true
+        },
+        {
+          "text": "族",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "传承之宝",
+          "annotated": true
+        },
+        {
+          "text": "带",
+          "annotated": true
+        },
+        {
+          "text": "回来",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "paragraph": 1,
+      "before": "距离上次检查身体里的龙血战士血脉",
+      "after": "距离上次检测身体里的龙血战士血脉",
+      "reason": "Restores the established 检测 terminology without adding a registered term occurrence.",
+      "audit": "Pass04",
+      "tokenStart": 24,
+      "tokenEnd": 31,
+      "oldWindow": "距离上次检查身体里的龙血战士血脉",
+      "newTokens": [
+        {
+          "text": "距离",
+          "annotated": true
+        },
+        {
+          "text": "上次",
+          "annotated": true
+        },
+        {
+          "text": "检测",
+          "annotated": true
+        },
+        {
+          "text": "身体",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "龙血战士血脉",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "paragraph": 33,
+      "before": "别给一个八岁孩子比下去",
+      "after": "别让一个八岁的孩子比下去",
+      "reason": "Corrects an unnatural passive-like comparison.",
+      "audit": "Pass04",
+      "tokenStart": 39,
+      "tokenEnd": 48,
+      "oldWindow": "别给一个八岁孩子比下去",
+      "newTokens": [
+        {
+          "text": "别",
+          "annotated": true
+        },
+        {
+          "text": "让",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "个",
+          "annotated": true
+        },
+        {
+          "text": "八",
+          "annotated": true
+        },
+        {
+          "text": "岁",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "孩子",
+          "annotated": true
+        },
+        {
+          "text": "比",
+          "annotated": true
+        },
+        {
+          "text": "下去",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "paragraph": 3,
+      "before": "一个清楚的声音传来",
+      "after": "一道清朗的声音传来",
+      "reason": "Restores source 清朗, a quality of the voice rather than the intelligibility of words.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 6,
+      "oldWindow": "一个清楚的声音传来",
+      "newTokens": [
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "道",
+          "annotated": true
+        },
+        {
+          "text": "清朗",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "声音",
+          "annotated": true
+        },
+        {
+          "text": "传来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "paragraph": 58,
+      "before": "林雷心里如此想到",
+      "after": "林雷心里这样想着",
+      "reason": "Naturalizes an awkward narrative reporting formula.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 5,
+      "oldWindow": "林雷心里如此想到",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "心里",
+          "annotated": true
+        },
+        {
+          "text": "这样",
+          "annotated": true
+        },
+        {
+          "text": "想",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "paragraph": 71,
+      "before": "学了十年，作品却没有一点价值",
+      "after": "学了十年，作品却根本卖不上价钱",
+      "reason": "The issue is market price, not an assertion that the sculpture has no value whatsoever.",
+      "audit": "Pass04",
+      "tokenStart": 7,
+      "tokenEnd": 18,
+      "oldWindow": "学了十年，作品却没有一点价值",
+      "newTokens": [
+        {
+          "text": "学",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "十",
+          "annotated": true
+        },
+        {
+          "text": "年",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "作品",
+          "annotated": true
+        },
+        {
+          "text": "却",
+          "annotated": true
+        },
+        {
+          "text": "根本",
+          "annotated": true
+        },
+        {
+          "text": "卖",
+          "annotated": true
+        },
+        {
+          "text": "不",
+          "annotated": true
+        },
+        {
+          "text": "上",
+          "annotated": true
+        },
+        {
+          "text": "价钱",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "paragraph": 3,
+      "before": "自己准备过于充足了，本来准备用一个小时干的活，仅仅十五分钟就做好了",
+      "after": "原以为要花一个小时才能干完的活，结果只用了十五分钟",
+      "reason": "Avoids stilted prepared-too-fully idiom; keeps the full 60-to-15-minute contrast.",
+      "audit": "Pass04",
+      "tokenStart": 8,
+      "tokenEnd": 32,
+      "oldWindow": "自己准备过于充足了，本来准备用一个小时干的活，仅仅十五分钟就做好了",
+      "newTokens": [
+        {
+          "text": "原",
+          "annotated": true
+        },
+        {
+          "text": "以为",
+          "annotated": true
+        },
+        {
+          "text": "要",
+          "annotated": true
+        },
+        {
+          "text": "花",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "个",
+          "annotated": true
+        },
+        {
+          "text": "小时",
+          "annotated": true
+        },
+        {
+          "text": "才能",
+          "annotated": true
+        },
+        {
+          "text": "干",
+          "annotated": true
+        },
+        {
+          "text": "完",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "活",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "结果",
+          "annotated": true
+        },
+        {
+          "text": "只",
+          "annotated": true
+        },
+        {
+          "text": "用",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "十",
+          "annotated": true
+        },
+        {
+          "text": "五",
+          "annotated": true
+        },
+        {
+          "text": "分钟",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "paragraph": 13,
+      "before": "立刻开始朝宗堂旁边的又老又破的屋子走了过去，一步步十分小心地走着",
+      "after": "立刻朝宗堂旁边那间破旧的屋子走去，每一步都小心翼翼",
+      "reason": "Removes redundant motion verbs; preserves cautious approach to the decayed building.",
+      "audit": "Pass04",
+      "tokenStart": 5,
+      "tokenEnd": 29,
+      "oldWindow": "立刻开始朝宗堂旁边的又老又破的屋子走了过去，一步步十分小心地走着",
+      "newTokens": [
+        {
+          "text": "立刻",
+          "annotated": true
+        },
+        {
+          "text": "朝",
+          "annotated": true
+        },
+        {
+          "text": "宗堂",
+          "annotated": true
+        },
+        {
+          "text": "旁边",
+          "annotated": true
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "间",
+          "annotated": true
+        },
+        {
+          "text": "破",
+          "annotated": true
+        },
+        {
+          "text": "旧",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "屋子",
+          "annotated": true
+        },
+        {
+          "text": "走",
+          "annotated": true
+        },
+        {
+          "text": "去",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "每",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "步",
+          "annotated": true
+        },
+        {
+          "text": "都",
+          "annotated": true
+        },
+        {
+          "text": "小心",
+          "annotated": true
+        },
+        {
+          "text": "翼",
+          "annotated": true
+        },
+        {
+          "text": "翼",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "paragraph": 51,
+      "before": "木架早已不结实，承受不住重量，被木杆重重一砸",
+      "after": "木架早已摇摇欲坠，被木杆重重一砸",
+      "reason": "Old frame is rotten and near collapse, rather than a specific unsupported weight load.",
+      "audit": "Pass04",
+      "tokenStart": 17,
+      "tokenEnd": 33,
+      "oldWindow": "木架早已不结实，承受不住重量，被木杆重重一砸",
+      "newTokens": [
+        {
+          "text": "木架",
+          "annotated": true
+        },
+        {
+          "text": "早已",
+          "annotated": true
+        },
+        {
+          "text": "摇摇欲坠",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "木杆",
+          "annotated": true
+        },
+        {
+          "text": "重",
+          "annotated": true
+        },
+        {
+          "text": "重",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "砸",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "paragraph": 29,
+      "before": "立即迅速地跑出了古屋",
+      "after": "立即跑出了古屋",
+      "reason": "Removes synonymous immediately/quickly stacking.",
+      "audit": "Pass04",
+      "tokenStart": 5,
+      "tokenEnd": 12,
+      "oldWindow": "立即迅速地跑出了古屋",
+      "newTokens": [
+        {
+          "text": "立即",
+          "annotated": true
+        },
+        {
+          "text": "跑",
+          "annotated": true
+        },
+        {
+          "text": "出",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "古屋",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "paragraph": 35,
+      "before": "他很快把丝线穿过盘龙戒指",
+      "after": "他很快把麻布线穿过盘龙戒指",
+      "reason": "Line is pulled from the hemp garment in the immediately preceding paragraphs, not a separate silk thread.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 8,
+      "oldWindow": "他很快把丝线穿过盘龙戒指",
+      "newTokens": [
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "很",
+          "annotated": true
+        },
+        {
+          "text": "快",
+          "annotated": true
+        },
+        {
+          "text": "把",
+          "annotated": true
+        },
+        {
+          "text": "麻布",
+          "annotated": true
+        },
+        {
+          "text": "线",
+          "annotated": true
+        },
+        {
+          "text": "穿",
+          "annotated": true
+        },
+        {
+          "text": "过",
+          "annotated": true
+        },
+        {
+          "text": "盘龙戒指",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "paragraph": 33,
+      "before": "对，是魔兽。不过是一只非常厉害的魔兽，七级魔兽",
+      "after": "对，是魔兽。而且是一只非常厉害的魔兽，七级魔兽",
+      "reason": "不过 falsely suggests a minor exception where the speaker is emphasizing danger.",
+      "audit": "Pass04",
+      "tokenStart": 21,
+      "tokenEnd": 36,
+      "oldWindow": "对，是魔兽。不过是一只非常厉害的魔兽，七级魔兽",
+      "newTokens": [
+        {
+          "text": "对",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "魔兽",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "而且",
+          "annotated": true
+        },
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "只",
+          "annotated": true
+        },
+        {
+          "text": "非常",
+          "annotated": true
+        },
+        {
+          "text": "厉害",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "魔兽",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "七级魔兽",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 8,
+      "paragraph": 38,
+      "before": "才能真正穿过鳞甲伤害迅猛龙",
+      "after": "才可能穿过鳞甲，伤到迅猛龙",
+      "reason": "More natural causal description of penetrating scales and injuring the dragon.",
+      "audit": "Pass04",
+      "tokenStart": 48,
+      "tokenEnd": 55,
+      "oldWindow": "才能真正穿过鳞甲伤害迅猛龙",
+      "newTokens": [
+        {
+          "text": "才",
+          "annotated": true
+        },
+        {
+          "text": "可",
+          "annotated": true
+        },
+        {
+          "text": "能",
+          "annotated": true
+        },
+        {
+          "text": "穿",
+          "annotated": true
+        },
+        {
+          "text": "过",
+          "annotated": true
+        },
+        {
+          "text": "鳞甲",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "伤",
+          "annotated": true
+        },
+        {
+          "text": "到",
+          "annotated": true
+        },
+        {
+          "text": "迅猛龙",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "paragraph": 16,
+      "before": "远处站在希尔曼身边的林雷听到后这才完全明白。",
+      "after": "远处的林雷站在希尔曼身边，听到这里才完全明白。",
+      "reason": "Fixes the heavy modifier and the awkward 听到后这才 combination.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 15,
+      "oldWindow": "远处站在希尔曼身边的林雷听到后这才完全明白。",
+      "newTokens": [
+        {
+          "text": "远处",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "站",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "希尔曼",
+          "annotated": true
+        },
+        {
+          "text": "身边",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "听",
+          "annotated": true
+        },
+        {
+          "text": "到",
+          "annotated": true
+        },
+        {
+          "text": "这",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "才",
+          "annotated": true
+        },
+        {
+          "text": "完全",
+          "annotated": true
+        },
+        {
+          "text": "明白",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "paragraph": 19,
+      "before": "德佩洛影钻估计有什么重要的地方",
+      "after": "这颗德佩洛影钻大概有什么特别之处",
+      "reason": "Idiomatic speculation about the jewel’s unusual significance; avoids 地方 as literal place.",
+      "audit": "Pass03",
+      "tokenStart": 12,
+      "tokenEnd": 19,
+      "oldWindow": "德佩洛影钻估计有什么重要的地方",
+      "newTokens": [
+        {
+          "text": "这",
+          "annotated": true
+        },
+        {
+          "text": "颗",
+          "annotated": true
+        },
+        {
+          "text": "德佩洛影钻",
+          "annotated": true
+        },
+        {
+          "text": "大概",
+          "annotated": true
+        },
+        {
+          "text": "有",
+          "annotated": true
+        },
+        {
+          "text": "什么",
+          "annotated": true
+        },
+        {
+          "text": "特别",
+          "annotated": true
+        },
+        {
+          "text": "之",
+          "annotated": true
+        },
+        {
+          "text": "处",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "paragraph": 23,
+      "before": "那不仅一个金币也拿不到",
+      "after": "那你们不但一个金币也拿不到",
+      "reason": "Restores the direct threat to the mercenaries.",
+      "audit": "Pass03",
+      "tokenStart": 26,
+      "tokenEnd": 35,
+      "oldWindow": "那不仅一个金币也拿不到",
+      "newTokens": [
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "你们",
+          "annotated": true
+        },
+        {
+          "text": "不但",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "个",
+          "annotated": true
+        },
+        {
+          "text": "金币",
+          "annotated": true
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "拿",
+          "annotated": true
+        },
+        {
+          "text": "不",
+          "annotated": true
+        },
+        {
+          "text": "到",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "paragraph": 42,
+      "before": "红发壮汉右脚突然踢出，狠狠朝一块直径足有半米的石头踢去。",
+      "after": "红发壮汉突然抬起右脚，狠狠踢向一块直径足有半米的石头。",
+      "reason": "Eliminates two near-adjacent uses of 踢 while retaining force and direction.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 23,
+      "oldWindow": "红发壮汉右脚突然踢出，狠狠朝一块直径足有半米的石头踢去。",
+      "newTokens": [
+        {
+          "text": "红",
+          "annotated": true
+        },
+        {
+          "text": "发",
+          "annotated": true
+        },
+        {
+          "text": "壮汉",
+          "annotated": true
+        },
+        {
+          "text": "突然",
+          "annotated": true
+        },
+        {
+          "text": "抬",
+          "annotated": true
+        },
+        {
+          "text": "起",
+          "annotated": true
+        },
+        {
+          "text": "右",
+          "annotated": true
+        },
+        {
+          "text": "脚",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "狠狠",
+          "annotated": true
+        },
+        {
+          "text": "踢",
+          "annotated": true
+        },
+        {
+          "text": "向",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "块",
+          "annotated": true
+        },
+        {
+          "text": "直径",
+          "annotated": true
+        },
+        {
+          "text": "足",
+          "annotated": true
+        },
+        {
+          "text": "有",
+          "annotated": true
+        },
+        {
+          "text": "半",
+          "annotated": true
+        },
+        {
+          "text": "米",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "石头",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "paragraph": 48,
+      "before": "远处的林雷看得心里十分痛快",
+      "after": "远处的林雷看得心潮澎湃",
+      "reason": "Restores excited awe rather than suggesting relief or satisfaction.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 8,
+      "oldWindow": "远处的林雷看得心里十分痛快",
+      "newTokens": [
+        {
+          "text": "远处",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "看",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "心潮澎湃",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 9,
+      "paragraph": 56,
+      "before": "被那条尾巴直接打得全碎了",
+      "after": "被那条尾巴直接抽得粉碎",
+      "reason": "Restores the tail’s whipping action and natural Chinese phrasing.",
+      "audit": "Pass03",
+      "tokenStart": 5,
+      "tokenEnd": 15,
+      "oldWindow": "被那条尾巴直接打得全碎了",
+      "newTokens": [
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "条",
+          "annotated": true
+        },
+        {
+          "text": "尾巴",
+          "annotated": true
+        },
+        {
+          "text": "直接",
+          "annotated": true
+        },
+        {
+          "text": "抽",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "粉",
+          "annotated": true
+        },
+        {
+          "text": "碎",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 8,
+      "before": "双手很稳，一点儿也不动",
+      "after": "双手稳得像磐石一样",
+      "reason": "Restores the stable-as-rock simile in the original bow description.",
+      "audit": "Pass03",
+      "tokenStart": 9,
+      "tokenEnd": 18,
+      "oldWindow": "双手很稳，一点儿也不动",
+      "newTokens": [
+        {
+          "text": "双",
+          "annotated": true
+        },
+        {
+          "text": "手",
+          "annotated": true
+        },
+        {
+          "text": "稳",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "像",
+          "annotated": true
+        },
+        {
+          "text": "磐石",
+          "annotated": true
+        },
+        {
+          "text": "一样",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 18,
+      "before": "那头巨大的迅猛龙的尾巴猛地一甩，被卷住的‘路加’就直接飞入了迅猛龙的口中，迅猛龙张开血盆大口直接将‘路加’给一口咬住",
+      "after": "迅猛龙猛地一甩尾巴，被卷住的“路加”便飞进了迅猛龙张开的血盆大口。迅猛龙一口咬住了“路加”",
+      "reason": "Preserves swallow/attack sequence but removes three repeated 迅猛龙 mentions in one sentence.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 42,
+      "oldWindow": "那头巨大的迅猛龙的尾巴猛地一甩，被卷住的‘路加’就直接飞入了迅猛龙的口中，迅猛龙张开血盆大口直接将‘路加’给一口咬住",
+      "newTokens": [
+        {
+          "text": "迅猛龙",
+          "annotated": true
+        },
+        {
+          "text": "猛地",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "甩",
+          "annotated": true
+        },
+        {
+          "text": "尾巴",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "卷",
+          "annotated": true
+        },
+        {
+          "text": "住",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "路加",
+          "annotated": true
+        },
+        {
+          "text": "”",
+          "annotated": false
+        },
+        {
+          "text": "便",
+          "annotated": true
+        },
+        {
+          "text": "飞",
+          "annotated": true
+        },
+        {
+          "text": "进",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "迅猛龙",
+          "annotated": true
+        },
+        {
+          "text": "张",
+          "annotated": true
+        },
+        {
+          "text": "开",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "血盆大口",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "迅猛龙",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "口",
+          "annotated": true
+        },
+        {
+          "text": "咬",
+          "annotated": true
+        },
+        {
+          "text": "住",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "路加",
+          "annotated": true
+        },
+        {
+          "text": "”",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 18,
+      "before": "只听得令人牙酸的“嘎吱”一声以及路加死前一声痛苦的大叫。",
+      "after": "只听得令人牙酸的“嘎吱”声，以及路加临死前痛苦的嚎叫。",
+      "reason": "Fixes broken coordination of two sounds and restores a dying cry.",
+      "audit": "Pass03",
+      "tokenStart": 43,
+      "tokenEnd": 67,
+      "oldWindow": "只听得令人牙酸的“嘎吱”一声以及路加死前一声痛苦的大叫。",
+      "newTokens": [
+        {
+          "text": "只",
+          "annotated": true
+        },
+        {
+          "text": "听",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "令",
+          "annotated": true
+        },
+        {
+          "text": "人",
+          "annotated": true
+        },
+        {
+          "text": "牙",
+          "annotated": true
+        },
+        {
+          "text": "酸",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "嘎吱",
+          "annotated": true
+        },
+        {
+          "text": "”",
+          "annotated": false
+        },
+        {
+          "text": "声",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "以及",
+          "annotated": true
+        },
+        {
+          "text": "路加",
+          "annotated": true
+        },
+        {
+          "text": "临",
+          "annotated": true
+        },
+        {
+          "text": "死",
+          "annotated": true
+        },
+        {
+          "text": "前",
+          "annotated": true
+        },
+        {
+          "text": "痛苦",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "嚎叫",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 28,
+      "before": "尤其是那半截掉落的大腿，那时的情景深深地刻在了林雷的脑海中。",
+      "after": "尤其是那半截掉落的大腿，那一幕深深地刻在了林雷的脑海中。",
+      "reason": "Replaces generic temporal phrase 那时的情景 with an immediate concrete visual referent.",
+      "audit": "Pass03",
+      "tokenStart": 26,
+      "tokenEnd": 50,
+      "oldWindow": "尤其是那半截掉落的大腿，那时的情景深深地刻在了林雷的脑海中。",
+      "newTokens": [
+        {
+          "text": "尤其",
+          "annotated": true
+        },
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "半截",
+          "annotated": true
+        },
+        {
+          "text": "掉",
+          "annotated": true
+        },
+        {
+          "text": "落",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "大腿",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "幕",
+          "annotated": true
+        },
+        {
+          "text": "深",
+          "annotated": true
+        },
+        {
+          "text": "深",
+          "annotated": true
+        },
+        {
+          "text": "地",
+          "annotated": true
+        },
+        {
+          "text": "刻",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "脑海",
+          "annotated": true
+        },
+        {
+          "text": "中",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 30,
+      "before": "怎么承受得了？",
+      "after": "能承受得了吗？",
+      "reason": "Returns to the source’s open question about the child’s ability to endure.",
+      "audit": "Pass03",
+      "tokenStart": 17,
+      "tokenEnd": 21,
+      "oldWindow": "怎么承受得了？",
+      "newTokens": [
+        {
+          "text": "能",
+          "annotated": true
+        },
+        {
+          "text": "承受",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "吗",
+          "annotated": true
+        },
+        {
+          "text": "？",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 46,
+      "before": "那像闪电一样快的‘尾巴’",
+      "after": "那闪电般的‘龙尾’",
+      "reason": "Restores precise dragon-tail combat reference.",
+      "audit": "Pass03",
+      "tokenStart": 41,
+      "tokenEnd": 50,
+      "oldWindow": "那像闪电一样快的‘尾巴’",
+      "newTokens": [
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "闪电",
+          "annotated": true
+        },
+        {
+          "text": "般",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "‘",
+          "annotated": false
+        },
+        {
+          "text": "龙尾",
+          "annotated": true
+        },
+        {
+          "text": "’",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 48,
+      "before": "只是让迅猛龙独自面对",
+      "after": "仍让迅猛龙独自应付战士们",
+      "reason": "Clarifies that the mount handles the assailants while mage chants.",
+      "audit": "Pass03",
+      "tokenStart": 18,
+      "tokenEnd": 23,
+      "oldWindow": "只是让迅猛龙独自面对",
+      "newTokens": [
+        {
+          "text": "仍",
+          "annotated": true
+        },
+        {
+          "text": "让",
+          "annotated": true
+        },
+        {
+          "text": "迅猛龙",
+          "annotated": true
+        },
+        {
+          "text": "独自",
+          "annotated": true
+        },
+        {
+          "text": "应付",
+          "annotated": true
+        },
+        {
+          "text": "战士",
+          "annotated": true
+        },
+        {
+          "text": "们",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 10,
+      "paragraph": 53,
+      "before": "被七条火蛇一起攻击时，即使不死也会受重伤",
+      "after": "如果被七条火蛇围攻，即使不死也会受重伤",
+      "reason": "Removes the cumbersome conditional structure while keeping the defensive power comparison.",
+      "audit": "Pass03",
+      "tokenStart": 44,
+      "tokenEnd": 60,
+      "oldWindow": "被七条火蛇一起攻击时，即使不死也会受重伤",
+      "newTokens": [
+        {
+          "text": "如果",
+          "annotated": true
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "七",
+          "annotated": true
+        },
+        {
+          "text": "条",
+          "annotated": true
+        },
+        {
+          "text": "火蛇",
+          "annotated": true
+        },
+        {
+          "text": "围",
+          "annotated": true
+        },
+        {
+          "text": "攻",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "即使",
+          "annotated": true
+        },
+        {
+          "text": "不",
+          "annotated": true
+        },
+        {
+          "text": "死",
+          "annotated": true
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "会",
+          "annotated": true
+        },
+        {
+          "text": "受",
+          "annotated": true
+        },
+        {
+          "text": "重",
+          "annotated": true
+        },
+        {
+          "text": "伤",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "paragraph": 2,
+      "before": "面对七条巨大的火蛇，一间间石屋就像玩具一样，轻易被毁掉",
+      "after": "在七条巨大的火蛇面前，一间间石屋就像玩具一样，被轻易毁掉",
+      "reason": "Restores the source’s intuitive visual simile and avoids loose fronting.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 19,
+      "oldWindow": "面对七条巨大的火蛇，一间间石屋就像玩具一样，轻易被毁掉",
+      "newTokens": [
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "七",
+          "annotated": true
+        },
+        {
+          "text": "条",
+          "annotated": true
+        },
+        {
+          "text": "巨大",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "火蛇",
+          "annotated": true
+        },
+        {
+          "text": "面前",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "间",
+          "annotated": true
+        },
+        {
+          "text": "间",
+          "annotated": true
+        },
+        {
+          "text": "石屋",
+          "annotated": true
+        },
+        {
+          "text": "就",
+          "annotated": true
+        },
+        {
+          "text": "像",
+          "annotated": true
+        },
+        {
+          "text": "玩具",
+          "annotated": true
+        },
+        {
+          "text": "一样",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "轻易",
+          "annotated": true
+        },
+        {
+          "text": "毁掉",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 14,
+      "paragraph": 36,
+      "before": "所有的孩子们、少年们顿时都安静了下来",
+      "after": "所有孩子和少年顿时都安静了下来",
+      "reason": "Removes stacked plural particles and duplicated quantifier.",
+      "audit": "Pass03",
+      "tokenStart": 18,
+      "tokenEnd": 30,
+      "oldWindow": "所有的孩子们、少年们顿时都安静了下来",
+      "newTokens": [
+        {
+          "text": "所有",
+          "annotated": true
+        },
+        {
+          "text": "孩子",
+          "annotated": true
+        },
+        {
+          "text": "和",
+          "annotated": true
+        },
+        {
+          "text": "少年",
+          "annotated": true
+        },
+        {
+          "text": "顿时",
+          "annotated": true
+        },
+        {
+          "text": "都",
+          "annotated": true
+        },
+        {
+          "text": "安静",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "下来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 15,
+      "paragraph": 4,
+      "before": "此刻，这位站在黑龙身上的灰袍人，正跟这位背着长剑的绿衣中年人对峙着。",
+      "after": "此刻，站在黑龙头顶的灰袍人，正与背着长剑的绿衣中年人对峙。",
+      "reason": "Removes repeated 这位 and preserves the precise staging established one paragraph earlier.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 25,
+      "oldWindow": "此刻，这位站在黑龙身上的灰袍人，正跟这位背着长剑的绿衣中年人对峙着。",
+      "newTokens": [
+        {
+          "text": "此刻",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "站",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "黑龙",
+          "annotated": true
+        },
+        {
+          "text": "头顶",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "灰袍人",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "正",
+          "annotated": true
+        },
+        {
+          "text": "与",
+          "annotated": true
+        },
+        {
+          "text": "背",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        },
+        {
+          "text": "长",
+          "annotated": true
+        },
+        {
+          "text": "剑",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "绿衣中年人",
+          "annotated": true
+        },
+        {
+          "text": "对峙",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 32,
+      "before": "霍格脸色突然惨白，此刻还在乌山镇街道上的希尔曼，看到这个场面脸色也顿时就白了。",
+      "after": "霍格脸色骤然惨白。此刻还在乌山镇街道上的希尔曼看到这一幕，也瞬间变了脸色。",
+      "reason": "Unwinds duplicated 脸色白 and restores fluid parallel reaction.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 24,
+      "oldWindow": "霍格脸色突然惨白，此刻还在乌山镇街道上的希尔曼，看到这个场面脸色也顿时就白了。",
+      "newTokens": [
+        {
+          "text": "霍格",
+          "annotated": true
+        },
+        {
+          "text": "脸色",
+          "annotated": true
+        },
+        {
+          "text": "骤然",
+          "annotated": true
+        },
+        {
+          "text": "惨白",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "此刻",
+          "annotated": true
+        },
+        {
+          "text": "还",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "乌山镇",
+          "annotated": true
+        },
+        {
+          "text": "街道",
+          "annotated": true
+        },
+        {
+          "text": "上",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "希尔曼",
+          "annotated": true
+        },
+        {
+          "text": "看到",
+          "annotated": true
+        },
+        {
+          "text": "这",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "幕",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "瞬间",
+          "annotated": true
+        },
+        {
+          "text": "变",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "脸色",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 33,
+      "before": "从几百米高的空中向各个方向乱飞",
+      "after": "从几百米高的空中向四面八方飞射",
+      "reason": "Restores dangerous explosive momentum of shrapnel rather than merely flying randomly.",
+      "audit": "Pass03",
+      "tokenStart": 21,
+      "tokenEnd": 33,
+      "oldWindow": "从几百米高的空中向各个方向乱飞",
+      "newTokens": [
+        {
+          "text": "从",
+          "annotated": true
+        },
+        {
+          "text": "几",
+          "annotated": true
+        },
+        {
+          "text": "百",
+          "annotated": true
+        },
+        {
+          "text": "米",
+          "annotated": true
+        },
+        {
+          "text": "高",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "空中",
+          "annotated": true
+        },
+        {
+          "text": "向",
+          "annotated": true
+        },
+        {
+          "text": "四面八方",
+          "annotated": true
+        },
+        {
+          "text": "飞",
+          "annotated": true
+        },
+        {
+          "text": "射",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 38,
+      "before": "听到父亲着急地大声喊",
+      "after": "听见父亲急切的喊声",
+      "reason": "Replaces awkward adverb stack; father’s alarm remains clear.",
+      "audit": "Pass03",
+      "tokenStart": 10,
+      "tokenEnd": 17,
+      "oldWindow": "听到父亲着急地大声喊",
+      "newTokens": [
+        {
+          "text": "听",
+          "annotated": true
+        },
+        {
+          "text": "见",
+          "annotated": true
+        },
+        {
+          "text": "父亲",
+          "annotated": true
+        },
+        {
+          "text": "急切",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "喊",
+          "annotated": true
+        },
+        {
+          "text": "声",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 48,
+      "before": "林雷立刻迅速地后退躲开",
+      "after": "林雷连忙后退躲开",
+      "reason": "Eliminates redundant temporal adverbs while keeping urgency.",
+      "audit": "Pass03",
+      "tokenStart": 12,
+      "tokenEnd": 20,
+      "oldWindow": "林雷立刻迅速地后退躲开",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "连忙",
+          "annotated": true
+        },
+        {
+          "text": "后",
+          "annotated": true
+        },
+        {
+          "text": "退",
+          "annotated": true
+        },
+        {
+          "text": "躲",
+          "annotated": true
+        },
+        {
+          "text": "开",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 51,
+      "before": "仓库中迅速地冲出来一人，正是希里爷爷。希里身上的斗气护罩正闪着火红色的光，希里直接朝林雷跑来。",
+      "after": "一个人从仓库里飞快地冲出来，正是希里爷爷。希里身上闪着火红色的斗气护罩，希里直奔林雷而来。",
+      "reason": "Retains Hiri’s shielding aura and urgency, removing repeated name/approach verbs.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 32,
+      "oldWindow": "仓库中迅速地冲出来一人，正是希里爷爷。希里身上的斗气护罩正闪着火红色的光，希里直接朝林雷跑来。",
+      "newTokens": [
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "个人",
+          "annotated": true
+        },
+        {
+          "text": "从",
+          "annotated": true
+        },
+        {
+          "text": "仓库",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "飞快",
+          "annotated": true
+        },
+        {
+          "text": "地",
+          "annotated": true
+        },
+        {
+          "text": "冲",
+          "annotated": true
+        },
+        {
+          "text": "出来",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "正是",
+          "annotated": true
+        },
+        {
+          "text": "希里",
+          "annotated": true
+        },
+        {
+          "text": "爷爷",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "希里",
+          "annotated": true
+        },
+        {
+          "text": "身",
+          "annotated": true
+        },
+        {
+          "text": "上",
+          "annotated": true
+        },
+        {
+          "text": "闪",
+          "annotated": true
+        },
+        {
+          "text": "着火",
+          "annotated": true
+        },
+        {
+          "text": "红色",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "斗气护罩",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "希里",
+          "annotated": true
+        },
+        {
+          "text": "直奔",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "而",
+          "annotated": true
+        },
+        {
+          "text": "来",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 57,
+      "before": "一块大得少见的巨石，足有将近两米长",
+      "after": "一块极其少见的巨石，长近两米",
+      "reason": "Improves scalar description without changing dimensions.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 15,
+      "oldWindow": "一块大得少见的巨石，足有将近两米长",
+      "newTokens": [
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "块",
+          "annotated": true
+        },
+        {
+          "text": "极其",
+          "annotated": true
+        },
+        {
+          "text": "少",
+          "annotated": true
+        },
+        {
+          "text": "见",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "巨石",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "长",
+          "annotated": true
+        },
+        {
+          "text": "近",
+          "annotated": true
+        },
+        {
+          "text": "两",
+          "annotated": true
+        },
+        {
+          "text": "米",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 60,
+      "before": "已经顾不上天空中落下的石头，也不躲开，林雷直接朝沃顿以最快速度冲去。",
+      "after": "林雷顾不上躲避天空中落下的石头，只顾以最快的速度冲向沃顿。",
+      "reason": "Makes deliberate refusal to dodge unambiguous.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 24,
+      "oldWindow": "已经顾不上天空中落下的石头，也不躲开，林雷直接朝沃顿以最快速度冲去。",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "顾不上",
+          "annotated": true
+        },
+        {
+          "text": "躲避",
+          "annotated": true
+        },
+        {
+          "text": "天空",
+          "annotated": true
+        },
+        {
+          "text": "中",
+          "annotated": true
+        },
+        {
+          "text": "落下",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "石头",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "只顾",
+          "annotated": true
+        },
+        {
+          "text": "以",
+          "annotated": true
+        },
+        {
+          "text": "最",
+          "annotated": true
+        },
+        {
+          "text": "快",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "速",
+          "annotated": true
+        },
+        {
+          "text": "度",
+          "annotated": true
+        },
+        {
+          "text": "冲",
+          "annotated": true
+        },
+        {
+          "text": "向",
+          "annotated": true
+        },
+        {
+          "text": "沃顿",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 61,
+      "before": "仓库里的碎石一旦落下来",
+      "after": "仓库屋顶的碎石一旦落下来",
+      "reason": "Makes origin of falling rubble match roof impact depicted in adjacent paragraphs.",
+      "audit": "Pass03",
+      "tokenStart": 26,
+      "tokenEnd": 33,
+      "oldWindow": "仓库里的碎石一旦落下来",
+      "newTokens": [
+        {
+          "text": "仓库",
+          "annotated": true
+        },
+        {
+          "text": "屋顶",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "碎石",
+          "annotated": true
+        },
+        {
+          "text": "一旦",
+          "annotated": true
+        },
+        {
+          "text": "落下",
+          "annotated": true
+        },
+        {
+          "text": "来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 73,
+      "before": "被倒塌的墙壁完全给埋住了",
+      "after": "被倒塌的墙壁完全埋住了",
+      "reason": "Remove redundant 给 in the rubble sequence without changing who was buried.",
+      "audit": "Pass02",
+      "tokenStart": 17,
+      "tokenEnd": 26,
+      "oldWindow": "被倒塌的墙壁完全给埋住了",
+      "newTokens": [
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "倒塌",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "墙壁",
+          "annotated": true
+        },
+        {
+          "text": "完全",
+          "annotated": true
+        },
+        {
+          "text": "埋",
+          "annotated": true
+        },
+        {
+          "text": "住",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 16,
+      "paragraph": 74,
+      "before": "可是当转头看向林雷方向的时候，看到林雷不顾一切地扑向沃顿，管家希里又紧接着飞扑过去保护他们时，顿时惊呆了。",
+      "after": "可他转头望向林雷时，只见林雷不顾一切地扑向沃顿，管家希里又紧接着飞扑过去保护他们，顿时惊呆了。",
+      "reason": "Removes two repeated 看见 structures while keeping Hogg’s point of view.",
+      "audit": "Pass03",
+      "tokenStart": 23,
+      "tokenEnd": 58,
+      "oldWindow": "可是当转头看向林雷方向的时候，看到林雷不顾一切地扑向沃顿，管家希里又紧接着飞扑过去保护他们时，顿时惊呆了。",
+      "newTokens": [
+        {
+          "text": "可",
+          "annotated": true
+        },
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "转",
+          "annotated": true
+        },
+        {
+          "text": "头",
+          "annotated": true
+        },
+        {
+          "text": "望",
+          "annotated": true
+        },
+        {
+          "text": "向",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "时",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "只见",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "不顾",
+          "annotated": true
+        },
+        {
+          "text": "一切",
+          "annotated": true
+        },
+        {
+          "text": "地",
+          "annotated": true
+        },
+        {
+          "text": "扑",
+          "annotated": true
+        },
+        {
+          "text": "向",
+          "annotated": true
+        },
+        {
+          "text": "沃顿",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "管家",
+          "annotated": true
+        },
+        {
+          "text": "希里",
+          "annotated": true
+        },
+        {
+          "text": "又",
+          "annotated": true
+        },
+        {
+          "text": "紧",
+          "annotated": true
+        },
+        {
+          "text": "接着",
+          "annotated": true
+        },
+        {
+          "text": "飞",
+          "annotated": true
+        },
+        {
+          "text": "扑",
+          "annotated": true
+        },
+        {
+          "text": "过去",
+          "annotated": true
+        },
+        {
+          "text": "保护",
+          "annotated": true
+        },
+        {
+          "text": "他们",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "顿时",
+          "annotated": true
+        },
+        {
+          "text": "惊呆",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "paragraph": 10,
+      "before": "碎石堆就被人推开了",
+      "after": "碎石堆就被破开了",
+      "reason": "The original merely says the rubble was breached before the steward rises. Removing 人 avoids specifying an agent prematurely.",
+      "audit": "Pass05",
+      "tokenStart": 16,
+      "tokenEnd": 23,
+      "oldWindow": "碎石堆就被人推开了",
+      "newTokens": [
+        {
+          "text": "碎石",
+          "annotated": true
+        },
+        {
+          "text": "堆",
+          "annotated": true
+        },
+        {
+          "text": "就",
+          "annotated": true
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "破",
+          "annotated": true
+        },
+        {
+          "text": "开",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "paragraph": 13,
+      "before": "一眼就看见林雷头上大片的血",
+      "after": "一眼就看见林雷头上一大片鲜血",
+      "reason": "Uses normal quantity phrase 一大片 to convey visible blood.",
+      "audit": "Pass03",
+      "tokenStart": 15,
+      "tokenEnd": 26,
+      "oldWindow": "一眼就看见林雷头上大片的血",
+      "newTokens": [
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "眼",
+          "annotated": true
+        },
+        {
+          "text": "就",
+          "annotated": true
+        },
+        {
+          "text": "看见",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "头",
+          "annotated": true
+        },
+        {
+          "text": "上",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "大",
+          "annotated": true
+        },
+        {
+          "text": "片",
+          "annotated": true
+        },
+        {
+          "text": "鲜",
+          "annotated": true
+        },
+        {
+          "text": "血",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "paragraph": 25,
+      "before": "霍格的眼泪，直接流了下来。",
+      "after": "霍格的眼泪一下子流了下来。",
+      "reason": "Removes intrusive comma and gives the same sudden emotional release.",
+      "audit": "Pass03",
+      "tokenStart": 9,
+      "tokenEnd": 18,
+      "oldWindow": "霍格的眼泪，直接流了下来。",
+      "newTokens": [
+        {
+          "text": "霍格",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "眼泪",
+          "annotated": true
+        },
+        {
+          "text": "一下子",
+          "annotated": true
+        },
+        {
+          "text": "流",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "下来",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "paragraph": 64,
+      "before": "林雷这个小子，就是受伤，还是想看圣域强者战斗。",
+      "after": "林雷这个小子，即使受伤了，还是想看圣域强者战斗。",
+      "reason": "Fixes grammatical mismatch while preserving father’s affectionate observation.",
+      "audit": "Pass03",
+      "tokenStart": 22,
+      "tokenEnd": 35,
+      "oldWindow": "林雷这个小子，就是受伤，还是想看圣域强者战斗。",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "这个",
+          "annotated": true
+        },
+        {
+          "text": "小子",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "即使",
+          "annotated": true
+        },
+        {
+          "text": "受伤",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "还是",
+          "annotated": true
+        },
+        {
+          "text": "想",
+          "annotated": true
+        },
+        {
+          "text": "看",
+          "annotated": true
+        },
+        {
+          "text": "圣域强者",
+          "annotated": true
+        },
+        {
+          "text": "战斗",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 17,
+      "paragraph": 65,
+      "before": "林雷此刻正双眼放光地看着天空中那场惊天动地的战斗，根本没注意到挂在胸前的吊坠——由于头被石头砸中，藏在他衣服里面、被他当作吊坠的“盘龙之戒”也染上了血，血落在戒指那黝黑、像木头又像石头的表面上，像水滴落进海绵一样，竟然被这种特别的材料慢慢吸收了。",
+      "after": "林雷此刻正双眼放光地看着天空中那场惊天动地的战斗，根本没注意到挂在胸前的吊坠。刚才头部受伤流出的血，已经染上了藏在衣服里的“盘龙之戒”。鲜血落在戒指黝黑、似木似石的表面，竟像水滴渗进海绵一样，被那奇特的材质缓缓吸收了。",
+      "reason": "Splits long run-on while preserving concealed ring, blood contact, material appearance and absorption mechanism.",
+      "audit": "Pass03",
+      "tokenStart": 0,
+      "tokenEnd": 92,
+      "oldWindow": "林雷此刻正双眼放光地看着天空中那场惊天动地的战斗，根本没注意到挂在胸前的吊坠——由于头被石头砸中，藏在他衣服里面、被他当作吊坠的“盘龙之戒”也染上了血，血落在戒指那黝黑、像木头又像石头的表面上，像水滴落进海绵一样，竟然被这种特别的材料慢慢吸收了。",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "此刻",
+          "annotated": true
+        },
+        {
+          "text": "正",
+          "annotated": true
+        },
+        {
+          "text": "双",
+          "annotated": true
+        },
+        {
+          "text": "眼",
+          "annotated": true
+        },
+        {
+          "text": "放",
+          "annotated": true
+        },
+        {
+          "text": "光",
+          "annotated": true
+        },
+        {
+          "text": "地",
+          "annotated": true
+        },
+        {
+          "text": "看",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        },
+        {
+          "text": "天空",
+          "annotated": true
+        },
+        {
+          "text": "中",
+          "annotated": true
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "场",
+          "annotated": true
+        },
+        {
+          "text": "惊天动地",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "战斗",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "根本",
+          "annotated": true
+        },
+        {
+          "text": "没",
+          "annotated": true
+        },
+        {
+          "text": "注意",
+          "annotated": true
+        },
+        {
+          "text": "到",
+          "annotated": true
+        },
+        {
+          "text": "挂",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "胸",
+          "annotated": true
+        },
+        {
+          "text": "前",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "吊坠",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "刚才",
+          "annotated": true
+        },
+        {
+          "text": "头",
+          "annotated": true
+        },
+        {
+          "text": "部",
+          "annotated": true
+        },
+        {
+          "text": "受伤",
+          "annotated": true
+        },
+        {
+          "text": "流",
+          "annotated": true
+        },
+        {
+          "text": "出",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "血",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "已经",
+          "annotated": true
+        },
+        {
+          "text": "染",
+          "annotated": true
+        },
+        {
+          "text": "上",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "藏",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "衣服",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "盘龙之戒",
+          "annotated": true
+        },
+        {
+          "text": "”",
+          "annotated": false
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "鲜",
+          "annotated": true
+        },
+        {
+          "text": "血",
+          "annotated": true
+        },
+        {
+          "text": "落",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "戒指",
+          "annotated": true
+        },
+        {
+          "text": "黝黑",
+          "annotated": true
+        },
+        {
+          "text": "、",
+          "annotated": false
+        },
+        {
+          "text": "似",
+          "annotated": true
+        },
+        {
+          "text": "木",
+          "annotated": true
+        },
+        {
+          "text": "似",
+          "annotated": true
+        },
+        {
+          "text": "石",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "表面",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "竟",
+          "annotated": true
+        },
+        {
+          "text": "像",
+          "annotated": true
+        },
+        {
+          "text": "水",
+          "annotated": true
+        },
+        {
+          "text": "滴",
+          "annotated": true
+        },
+        {
+          "text": "渗",
+          "annotated": true
+        },
+        {
+          "text": "进",
+          "annotated": true
+        },
+        {
+          "text": "海绵",
+          "annotated": true
+        },
+        {
+          "text": "一样",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "奇特",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "材质",
+          "annotated": true
+        },
+        {
+          "text": "缓缓",
+          "annotated": true
+        },
+        {
+          "text": "吸收",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "paragraph": 7,
+      "before": "又重新凝聚起来",
+      "after": "重新凝聚起来",
+      "reason": "Remove redundant 又重新 in the Earth Giant regeneration scene.",
+      "audit": "Final",
+      "tokenStart": 8,
+      "tokenEnd": 12,
+      "oldWindow": "又重新凝聚起来",
+      "newTokens": [
+        {
+          "text": "重新",
+          "annotated": true
+        },
+        {
+          "text": "凝聚",
+          "annotated": true
+        },
+        {
+          "text": "起来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "paragraph": 13,
+      "before": "一声巨大的响声，绿衣中年人双手掌心的碧绿色光芒突然变得像太阳一样亮，随着巨大的爆炸声，过了一会儿又消散了",
+      "after": "绿衣中年人掌心的碧绿色光芒陡然亮得像太阳一样，伴随着剧烈的爆炸声，片刻之后又消散了",
+      "reason": "Eliminates duplicated explosion sounds after standalone 轰 and preserves burst, flash and decay.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 33,
+      "oldWindow": "一声巨大的响声，绿衣中年人双手掌心的碧绿色光芒突然变得像太阳一样亮，随着巨大的爆炸声，过了一会儿又消散了",
+      "newTokens": [
+        {
+          "text": "绿衣中年人",
+          "annotated": true
+        },
+        {
+          "text": "掌",
+          "annotated": true
+        },
+        {
+          "text": "心",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "碧绿色",
+          "annotated": true
+        },
+        {
+          "text": "光芒",
+          "annotated": true
+        },
+        {
+          "text": "陡然",
+          "annotated": true
+        },
+        {
+          "text": "亮",
+          "annotated": true
+        },
+        {
+          "text": "得",
+          "annotated": true
+        },
+        {
+          "text": "像",
+          "annotated": true
+        },
+        {
+          "text": "太阳",
+          "annotated": true
+        },
+        {
+          "text": "一样",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "伴",
+          "annotated": true
+        },
+        {
+          "text": "随着",
+          "annotated": true
+        },
+        {
+          "text": "剧烈",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "爆炸",
+          "annotated": true
+        },
+        {
+          "text": "声",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "片刻",
+          "annotated": true
+        },
+        {
+          "text": "之后",
+          "annotated": true
+        },
+        {
+          "text": "又",
+          "annotated": true
+        },
+        {
+          "text": "消散",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "paragraph": 18,
+      "before": "只是眉头皱起并没有追",
+      "after": "却只是皱着眉头，没有追上去",
+      "reason": "Corrects an awkward clause while keeping the pursuer’s restraint.",
+      "audit": "Pass04",
+      "tokenStart": 10,
+      "tokenEnd": 17,
+      "oldWindow": "只是眉头皱起并没有追",
+      "newTokens": [
+        {
+          "text": "却",
+          "annotated": true
+        },
+        {
+          "text": "只是",
+          "annotated": true
+        },
+        {
+          "text": "皱",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        },
+        {
+          "text": "眉头",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "没有",
+          "annotated": true
+        },
+        {
+          "text": "追",
+          "annotated": true
+        },
+        {
+          "text": "上去",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "paragraph": 35,
+      "before": "否则一旦被砸中，后果……“现在只能等希尔曼他们统计的结果了。”",
+      "after": "否则一旦被砸中，后果就不堪设想。他最后只能说：“现在只能等希尔曼他们统计的结果了。”",
+      "reason": "Separates narrator’s incomplete hypothetical from his spoken conclusion.",
+      "audit": "Pass04",
+      "tokenStart": 37,
+      "tokenEnd": 58,
+      "oldWindow": "否则一旦被砸中，后果……“现在只能等希尔曼他们统计的结果了。”",
+      "newTokens": [
+        {
+          "text": "否则",
+          "annotated": true
+        },
+        {
+          "text": "一旦",
+          "annotated": true
+        },
+        {
+          "text": "被",
+          "annotated": true
+        },
+        {
+          "text": "砸",
+          "annotated": true
+        },
+        {
+          "text": "中",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "后果",
+          "annotated": true
+        },
+        {
+          "text": "就",
+          "annotated": true
+        },
+        {
+          "text": "不堪",
+          "annotated": true
+        },
+        {
+          "text": "设想",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "最后",
+          "annotated": true
+        },
+        {
+          "text": "只能",
+          "annotated": true
+        },
+        {
+          "text": "说",
+          "annotated": true
+        },
+        {
+          "text": "：",
+          "annotated": false
+        },
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "现在",
+          "annotated": true
+        },
+        {
+          "text": "只能",
+          "annotated": true
+        },
+        {
+          "text": "等",
+          "annotated": true
+        },
+        {
+          "text": "希尔曼",
+          "annotated": true
+        },
+        {
+          "text": "他们",
+          "annotated": true
+        },
+        {
+          "text": "统计",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "结果",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "”",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 18,
+      "paragraph": 48,
+      "before": "如今连自己家族的维持都有困难了",
+      "after": "如今连维持自己家族的生活都成问题了",
+      "reason": "Fixes nominalization while preserving household hardship.",
+      "audit": "Pass04",
+      "tokenStart": 16,
+      "tokenEnd": 26,
+      "oldWindow": "如今连自己家族的维持都有困难了",
+      "newTokens": [
+        {
+          "text": "如今",
+          "annotated": true
+        },
+        {
+          "text": "连",
+          "annotated": true
+        },
+        {
+          "text": "维持",
+          "annotated": true
+        },
+        {
+          "text": "自己",
+          "annotated": true
+        },
+        {
+          "text": "家族",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "生活",
+          "annotated": true
+        },
+        {
+          "text": "都",
+          "annotated": true
+        },
+        {
+          "text": "成问题",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 19,
+      "paragraph": 5,
+      "before": "在大地之戒里无法准确感觉时间过去了多久",
+      "after": "在大地之戒里无法准确感受时间流逝",
+      "reason": "Restores compact expression for time passing inside ring and melancholy tone.",
+      "audit": "Pass04",
+      "tokenStart": 23,
+      "tokenEnd": 33,
+      "oldWindow": "在大地之戒里无法准确感觉时间过去了多久",
+      "newTokens": [
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "大地之戒",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "无法",
+          "annotated": true
+        },
+        {
+          "text": "准确",
+          "annotated": true
+        },
+        {
+          "text": "感受",
+          "annotated": true
+        },
+        {
+          "text": "时间",
+          "annotated": true
+        },
+        {
+          "text": "流逝",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 20,
+      "paragraph": 14,
+      "before": "德林爷爷的冷静，也令林雷心定了下来",
+      "after": "德林爷爷的镇定，也让林雷的心渐渐安定下来",
+      "reason": "Corrects cumbersome 心定了下来 and restores source 镇定.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 11,
+      "oldWindow": "德林爷爷的冷静，也令林雷心定了下来",
+      "newTokens": [
+        {
+          "text": "德林爷爷",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "镇定",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "让",
+          "annotated": true
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "心",
+          "annotated": true
+        },
+        {
+          "text": "渐渐",
+          "annotated": true
+        },
+        {
+          "text": "安",
+          "annotated": true
+        },
+        {
+          "text": "定",
+          "annotated": true
+        },
+        {
+          "text": "下来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 20,
+      "paragraph": 45,
+      "before": "没有注意脚下，脚被门槛绊了一下",
+      "after": "没有注意脚下，一脚绊在了门槛上",
+      "reason": "Avoids two repetitive 脚 and follows the original’s momentary stumble.",
+      "audit": "Pass04",
+      "tokenStart": 12,
+      "tokenEnd": 23,
+      "oldWindow": "没有注意脚下，脚被门槛绊了一下",
+      "newTokens": [
+        {
+          "text": "没",
+          "annotated": true
+        },
+        {
+          "text": "有",
+          "annotated": true
+        },
+        {
+          "text": "注意",
+          "annotated": true
+        },
+        {
+          "text": "脚",
+          "annotated": true
+        },
+        {
+          "text": "下",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "脚",
+          "annotated": true
+        },
+        {
+          "text": "绊",
+          "annotated": true
+        },
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "门槛",
+          "annotated": true
+        },
+        {
+          "text": "上",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 21,
+      "paragraph": 6,
+      "before": "只能测试关于地系魔法的天赋",
+      "after": "只能测试地系魔法的天赋",
+      "reason": "Eliminates unidiomatic 关于 in the direct question.",
+      "audit": "Pass04",
+      "tokenStart": 1,
+      "tokenEnd": 7,
+      "oldWindow": "只能测试关于地系魔法的天赋",
+      "newTokens": [
+        {
+          "text": "只能",
+          "annotated": true
+        },
+        {
+          "text": "测试",
+          "annotated": true
+        },
+        {
+          "text": "地系魔法",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "天赋",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 22,
+      "paragraph": 7,
+      "before": "“魔法天赋，分为对天地元素的亲和力的强弱，以及精神力的强弱这两个方面。”",
+      "after": "“魔法天赋主要看两个方面：对天地元素的亲和力，以及精神力的强弱。”",
+      "reason": "Clarifies the two independent aptitude measures without changing the magic rules.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 23,
+      "oldWindow": "“魔法天赋，分为对天地元素的亲和力的强弱，以及精神力的强弱这两个方面。”",
+      "newTokens": [
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "魔法天赋",
+          "annotated": true
+        },
+        {
+          "text": "主要",
+          "annotated": true
+        },
+        {
+          "text": "看",
+          "annotated": true
+        },
+        {
+          "text": "两",
+          "annotated": true
+        },
+        {
+          "text": "个",
+          "annotated": true
+        },
+        {
+          "text": "方面",
+          "annotated": true
+        },
+        {
+          "text": "：",
+          "annotated": false
+        },
+        {
+          "text": "对",
+          "annotated": true
+        },
+        {
+          "text": "天地元素",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "亲和力",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "以及",
+          "annotated": true
+        },
+        {
+          "text": "精神力",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "强",
+          "annotated": true
+        },
+        {
+          "text": "弱",
+          "annotated": true
+        },
+        {
+          "text": "。",
+          "annotated": false
+        },
+        {
+          "text": "”",
+          "annotated": false
+        }
+      ]
+    },
+    {
+      "chapter": 22,
+      "paragraph": 14,
+      "before": "都是先低声的念着魔法咒语的",
+      "after": "都是先低声念着魔法咒语的",
+      "reason": "Removes incorrect adverbial 的.",
+      "audit": "Pass04",
+      "tokenStart": 14,
+      "tokenEnd": 24,
+      "oldWindow": "都是先低声的念着魔法咒语的",
+      "newTokens": [
+        {
+          "text": "都",
+          "annotated": true
+        },
+        {
+          "text": "是",
+          "annotated": true
+        },
+        {
+          "text": "先",
+          "annotated": true
+        },
+        {
+          "text": "低",
+          "annotated": true
+        },
+        {
+          "text": "声",
+          "annotated": true
+        },
+        {
+          "text": "念",
+          "annotated": true
+        },
+        {
+          "text": "着",
+          "annotated": true
+        },
+        {
+          "text": "魔法咒语",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 22,
+      "paragraph": 44,
+      "before": "林雷突然觉得，自己顿时明白了这些大型魔法的基本原理",
+      "after": "林雷觉得，自己一下子明白了这些大型魔法的基本原理",
+      "reason": "Removes redundant suddenness markers.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 14,
+      "oldWindow": "林雷突然觉得，自己顿时明白了这些大型魔法的基本原理",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "觉得",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "自己",
+          "annotated": true
+        },
+        {
+          "text": "一下子",
+          "annotated": true
+        },
+        {
+          "text": "明白",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "这些",
+          "annotated": true
+        },
+        {
+          "text": "大型",
+          "annotated": true
+        },
+        {
+          "text": "魔法",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "基本",
+          "annotated": true
+        },
+        {
+          "text": "原理",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 23,
+      "paragraph": 19,
+      "before": "林雷只感到心脏顿时跳了起来",
+      "after": "林雷只感到心脏猛地跳了起来",
+      "reason": "Naturalizes sudden heartbeat described by source.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 8,
+      "oldWindow": "林雷只感到心脏顿时跳了起来",
+      "newTokens": [
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "只",
+          "annotated": true
+        },
+        {
+          "text": "感到",
+          "annotated": true
+        },
+        {
+          "text": "心脏",
+          "annotated": true
+        },
+        {
+          "text": "猛地",
+          "annotated": true
+        },
+        {
+          "text": "跳",
+          "annotated": true
+        },
+        {
+          "text": "了",
+          "annotated": true
+        },
+        {
+          "text": "起来",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 23,
+      "paragraph": 56,
+      "before": "德林柯沃特身上又再次有了圣域魔导师的自信",
+      "after": "德林柯沃特重新展现出圣域魔导师的自信",
+      "reason": "Eliminates 又再次 redundancy while preserving regained bearing.",
+      "audit": "Pass04",
+      "tokenStart": 12,
+      "tokenEnd": 22,
+      "oldWindow": "德林柯沃特身上又再次有了圣域魔导师的自信",
+      "newTokens": [
+        {
+          "text": "德林柯沃特",
+          "annotated": true
+        },
+        {
+          "text": "重新",
+          "annotated": true
+        },
+        {
+          "text": "展现",
+          "annotated": true
+        },
+        {
+          "text": "出",
+          "annotated": true
+        },
+        {
+          "text": "圣域魔导师",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "自信",
+          "annotated": true
+        }
+      ]
+    },
+    {
+      "chapter": 23,
+      "paragraph": 64,
+      "before": "在这些刻苦修炼的日子里——林雷第一次把地系元素吸收到身体里，并在身体里炼化出魔法力时，心里充满惊喜；第一次冥想太久时，精神力消耗过多，差点昏倒；还有第一次真正施展地系魔法时的激动，虽然那时他只让地面长出一根二十厘米长的小小“地突刺”；……",
+      "after": "在这些刻苦修炼的日子里——第一次把地系元素吸入体内、炼化出魔法力时，林雷心里充满惊喜；也曾因为冥想过度，精神力消耗太多，差点昏倒；第一次真正施展地系魔法时，他更是激动不已，虽然那时只让地面长出一根二十厘米长的小小“地突刺”……",
+      "reason": "Parallelizes the three first-time experiences and removes dangling semicolon before ellipsis.",
+      "audit": "Pass04",
+      "tokenStart": 0,
+      "tokenEnd": 86,
+      "oldWindow": "在这些刻苦修炼的日子里——林雷第一次把地系元素吸收到身体里，并在身体里炼化出魔法力时，心里充满惊喜；第一次冥想太久时，精神力消耗过多，差点昏倒；还有第一次真正施展地系魔法时的激动，虽然那时他只让地面长出一根二十厘米长的小小“地突刺”；……",
+      "newTokens": [
+        {
+          "text": "在",
+          "annotated": true
+        },
+        {
+          "text": "这些",
+          "annotated": true
+        },
+        {
+          "text": "刻苦",
+          "annotated": true
+        },
+        {
+          "text": "修炼",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "日子",
+          "annotated": true
+        },
+        {
+          "text": "里",
+          "annotated": true
+        },
+        {
+          "text": "—",
+          "annotated": false
+        },
+        {
+          "text": "—",
+          "annotated": false
+        },
+        {
+          "text": "第",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "次",
+          "annotated": true
+        },
+        {
+          "text": "把",
+          "annotated": true
+        },
+        {
+          "text": "地系元素",
+          "annotated": true
+        },
+        {
+          "text": "吸",
+          "annotated": true
+        },
+        {
+          "text": "入",
+          "annotated": true
+        },
+        {
+          "text": "体内",
+          "annotated": true
+        },
+        {
+          "text": "、",
+          "annotated": false
+        },
+        {
+          "text": "炼化",
+          "annotated": true
+        },
+        {
+          "text": "出",
+          "annotated": true
+        },
+        {
+          "text": "魔法力",
+          "annotated": true
+        },
+        {
+          "text": "时",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "林雷",
+          "annotated": true
+        },
+        {
+          "text": "心里",
+          "annotated": true
+        },
+        {
+          "text": "充满",
+          "annotated": true
+        },
+        {
+          "text": "惊喜",
+          "annotated": true
+        },
+        {
+          "text": "；",
+          "annotated": false
+        },
+        {
+          "text": "也",
+          "annotated": true
+        },
+        {
+          "text": "曾",
+          "annotated": true
+        },
+        {
+          "text": "因为",
+          "annotated": true
+        },
+        {
+          "text": "冥想",
+          "annotated": true
+        },
+        {
+          "text": "过度",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "精神力",
+          "annotated": true
+        },
+        {
+          "text": "消耗",
+          "annotated": true
+        },
+        {
+          "text": "太",
+          "annotated": true
+        },
+        {
+          "text": "多",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "差",
+          "annotated": true
+        },
+        {
+          "text": "点",
+          "annotated": true
+        },
+        {
+          "text": "昏倒",
+          "annotated": true
+        },
+        {
+          "text": "；",
+          "annotated": false
+        },
+        {
+          "text": "第",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "次",
+          "annotated": true
+        },
+        {
+          "text": "真正",
+          "annotated": true
+        },
+        {
+          "text": "施展",
+          "annotated": true
+        },
+        {
+          "text": "地系魔法",
+          "annotated": true
+        },
+        {
+          "text": "时",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "他",
+          "annotated": true
+        },
+        {
+          "text": "更是",
+          "annotated": true
+        },
+        {
+          "text": "激动",
+          "annotated": true
+        },
+        {
+          "text": "不已",
+          "annotated": true
+        },
+        {
+          "text": "，",
+          "annotated": false
+        },
+        {
+          "text": "虽然",
+          "annotated": true
+        },
+        {
+          "text": "那",
+          "annotated": true
+        },
+        {
+          "text": "时",
+          "annotated": true
+        },
+        {
+          "text": "只",
+          "annotated": true
+        },
+        {
+          "text": "让",
+          "annotated": true
+        },
+        {
+          "text": "地面",
+          "annotated": true
+        },
+        {
+          "text": "长",
+          "annotated": true
+        },
+        {
+          "text": "出",
+          "annotated": true
+        },
+        {
+          "text": "一",
+          "annotated": true
+        },
+        {
+          "text": "根",
+          "annotated": true
+        },
+        {
+          "text": "二",
+          "annotated": true
+        },
+        {
+          "text": "十",
+          "annotated": true
+        },
+        {
+          "text": "厘米",
+          "annotated": true
+        },
+        {
+          "text": "长",
+          "annotated": true
+        },
+        {
+          "text": "的",
+          "annotated": true
+        },
+        {
+          "text": "小",
+          "annotated": true
+        },
+        {
+          "text": "小",
+          "annotated": true
+        },
+        {
+          "text": "“",
+          "annotated": false
+        },
+        {
+          "text": "地突刺",
+          "annotated": true
+        },
+        {
+          "text": "”",
+          "annotated": false
+        },
+        {
+          "text": "…",
+          "annotated": false
+        },
+        {
+          "text": "…",
+          "annotated": false
+        }
+      ]
+    }
+  ]
+}

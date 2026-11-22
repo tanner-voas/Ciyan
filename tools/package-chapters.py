@@ -58,7 +58,7 @@ for path in sorted([*(root / "reader/samples").glob("*.json"), *(root / "reader/
     entry["digest"] = hashlib.sha256(data).hexdigest()
     entry["size"] = len(data)
     if chapter["novel"] == "panlong" and chapter.get("editionVersion") in (45, 46):
-        edition_folder = "graded-v092" if chapter["editionVersion"] == 46 else "graded-v091"
+        edition_folder = ("graded-v094" if chapter["editionVersion"] == 46 else "graded-v091")
         graded = f"{edition_folder}/{chapter['number']}.js"
         asset = json.loads((dest / graded).read_text().removeprefix("export default ").strip().removesuffix(";"))
         if asset["sourceDigest"] != entry["digest"]:
