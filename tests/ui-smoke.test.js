@@ -145,7 +145,7 @@ test('bundled master is available without importing; filters and focused study w
  const mock=mockBrowser();await import('../app.js?smoke=master041');await delay(25);
  assert.match(mock.shell.innerHTML,/STUDY · YOUR HOME/);assert.doesNotMatch(mock.shell.innerHTML,/Explore optional decks/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),12505);
+ await click('navigate',{page:'browse'});assert.equal(parseInt(mock.browseNodes['#browse-count'].textContent),13391);
  assert.equal((mock.browseNodes['#collection-list'].innerHTML.match(/class="list-card"/g)||[]).length,20);
  await click('cycle-tag',{kind:'words',tag:'Activities/climbing'});await click('study-filtered');
  const saved=mock.data.get('main');assert.ok(saved.activePractice.allowedWords.every(id=>saved.cards.find(c=>c.id===id).tags.includes('Activities/climbing')));
@@ -306,10 +306,10 @@ test('v0.5.1 tag-weight settings apply only on submit, show exact odds, and pers
 test('v0.5.1 Settings odds reflect a newly introduced word when returning to Settings',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=odds051');await delay(25);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
- await click('navigate',{page:'settings'});assert.match(mock.shell.innerHTML,/12505 unstudied words/);
+ await click('navigate',{page:'settings'});assert.match(mock.shell.innerHTML,/13391 unstudied words/);
  await click('navigate',{page:'study'});await click('practice-start',{mode:'words'});await click('practice-reveal');await click('practice-grade',{grade:'3'});
  await click('practice-finish');await click('navigate',{page:'settings'});
- assert.match(mock.shell.innerHTML,/12504 unstudied words/);
+ assert.match(mock.shell.innerHTML,/13390 unstudied words/);
 });
 
 test('v0.5.3 current state does not automatically rewrite old retry settings or review dates',async()=>{
@@ -325,9 +325,9 @@ test('v0.5.2 Study landing displays daily-capped vocabulary counts, not the mast
  const s=defaultState();s.settings.newWordsPerDay=5;mock.data.set('main',s);
  await import('../app.js?smoke=counts052');await delay(25);
  assert.match(mock.shell.innerHTML,/<strong>5<\/strong><small>Available to study<\/small>/);
- assert.match(mock.shell.innerHTML,/5 new available of 12505 unstarted matching words/);
+ assert.match(mock.shell.innerHTML,/5 new available of 13391 unstarted matching words/);
  assert.match(mock.shell.innerHTML,/5 new available across enabled modes/);
- assert.doesNotMatch(mock.shell.innerHTML,/>12505<\/strong><small>Available to study/);
+ assert.doesNotMatch(mock.shell.innerHTML,/>13391<\/strong><small>Available to study/);
  const click=async(action,extra={})=>{const el={dataset:{action,...extra}};await mock.listeners.click({target:{closest:q=>q==='[data-action]'?el:null}});await delay();};
  await click('study-pool',{pool:'due'});
  assert.match(mock.shell.innerHTML,/<strong>0<\/strong><small>Available to study<\/small>/);
@@ -368,7 +368,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.9.8');
+ assert.equal(reconciled.bundledMasterVersion,'0.9.9');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -385,7 +385,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.9.8');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.9.9');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -399,8 +399,8 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.8');
- assert.equal(saved.cards.length,12505);assert.equal(saved.grammar.length,3444);
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.9');
+ assert.equal(saved.cards.length,13391);assert.equal(saved.grammar.length,3449);
  assert.equal(saved.history.length,0);
 });
 
@@ -436,7 +436,7 @@ test('v0.6.4 pagination shows 20 rows, navigates in both collections, and resets
  await click('collection-page',{kind:'words',dir:'next'});
  assert.equal(count(),20);assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>2<\/strong>/);
  assert.notEqual(mock.browseNodes['#collection-list'].innerHTML.match(/data-id="([^"]+)"/)?.[1],first);
- await click('collection-page',{kind:'words',dir:'last'});assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>626<\/strong>/);
+ await click('collection-page',{kind:'words',dir:'last'});assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>670<\/strong>/);
  mock.listeners.input({target:{id:'collection-search',value:'米饭'}});
  assert.equal(count(),1);assert.match(mock.browseNodes['#collection-list'].innerHTML,/Page <strong>1<\/strong>/);
  await click('navigate',{page:'grammar'});assert.equal(count(),20);

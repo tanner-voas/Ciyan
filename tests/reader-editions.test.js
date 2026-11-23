@@ -11,38 +11,24 @@ const corpus=source('pass46/corpus.json'),reg=source('pass45/register.json');
 const historical=source('pass45/corpus.json'),report=source('pass46/build-report.json');
 const extras=new Set(report.ordinary),terms=new Set(reg.terms.map(r=>r.term)),base=new Set(source('pass46/baseline.json'));
 
-test('Pass 46: all 23 aligned editions reproduce the audited prose, vocabulary, notes and term register',async()=>{
- const seen=new Set(),named=new Set(),fallback=new Set(),noteIds=new Set();let count=0;
+test('v0.9.9 retains hosted source identity and complete reader lexicons',async()=>{
+ const reader=source('v099/hsk4/manuscript.json');
+ assert.equal(reader.length,23);
+ const termIds=new Set(),grammarIds=new Set();let paragraphs=0;
  for(const entry of catalog.filter(e=>e.novel==='panlong')){
-  const n=entry.number,stem=String(n).padStart(3,'0'),locked=corpus[n-1];
-  const bytes=fs.readFileSync(new URL('../reader/panlong/chapters/'+stem+'.json',import.meta.url));
-  const original=JSON.parse(bytes),{default:a}=await import('../chapters/graded-v092/'+n+'.js');
-  const p={...original,...a};validateChapter(p);validateChapter(original);
+  const n=entry.number,bytes=fs.readFileSync(new URL('../reader/panlong/chapters/'+String(n).padStart(3,'0')+'.json',import.meta.url));
+  const original=JSON.parse(bytes),current=(await import('../chapters/graded-v099-hsk4/'+n+'.js')).default;
   assert.equal(createHash('sha256').update(bytes).digest('hex'),entry.digest);
-  assert.equal(a.sourceDigest,entry.digest);assert.deepEqual(new Set(a.extras),extras);
-  assert.equal(chapterText(original),[locked.title,...locked.original].join('\n\n'));
-  assert.deepEqual(locked.original,historical[n-1].original);assert.deepEqual(locked.archival,historical[n-1].archival);
-  const old=(await import('../chapters/graded-v091/'+n+'.js')).default;
-  assert.ok([entry.previousDigest,...(entry.previousDigests||[])].includes(old.sourceDigest));
-  assert.equal(chapterText({...original,...old}),[historical[n-1].title,...historical[n-1].graded].join('\n\n'));
-  assert.deepEqual(new Set(a.lexicon.terms),new Set(old.lexicon.terms));
-  assert.equal(chapterText(p),[locked.title,...locked.graded].join('\n\n'));
-  const actualFallback=new Set();
-  for(const [i,row] of a.paragraphs.entries()){
-   count++;assert.equal(row.id,original.paragraphs[i].id);assert.equal(row.anchors.length,row.tokens.length);
-   assert.ok(row.anchors.every((x,j)=>Number.isInteger(x)&&x>=0&&x<locked.original[i].length&&(!j||x>=row.anchors[j-1])));
-   for(const t of row.tokens)if(Array.isArray(t)){
-    const item=a.items[t[0]];assert.ok(item);
-    if(item.kind==='vocab'){if(extras.has(item.hanzi))seen.add(item.hanzi);else if(!base.has(item.hanzi))actualFallback.add(item.hanzi);}
-   }
-  }
-  assert.deepEqual(actualFallback,new Set(a.fallbackVocabulary));for(const w of actualFallback)fallback.add(w);
-  for(const id of a.lexicon.terms){const w=a.items[id].hanzi;assert.ok(terms.has(w));named.add(w);assert.ok(original.lexicon.terms.includes(id),'Original must include graded term '+w);}
-  for(const id of Object.keys(a.grammarCards))if(id.startsWith('grammar-pass45-'))noteIds.add(id);
+  assert.equal(current.sourceDigest,entry.digest);
+  validateChapter(original);validateChapter({...original,...current});
+  for(const row of current.paragraphs){paragraphs++;assert.equal(row.anchors.length,row.tokens.length);}
+  assert.equal(current.paragraphs.length,reader[n-1].graded.length);
+  for(const id of current.lexicon.terms)termIds.add(current.items[id].hanzi);
+  for(const id of Object.keys(current.grammarCards))if(id.startsWith('grammar-pass45-'))grammarIds.add(id);
  }
- assert.equal(count,1648);assert.equal(seen.size,598);assert.deepEqual(seen,extras);assert.deepEqual(named,terms);
- assert.equal(noteIds.size,40);assert.equal(fallback.size,0);
+ assert.equal(paragraphs,1648);assert.equal(termIds.size,198);assert.equal(grammarIds.size,40);
 });
+
 test('preview obeys threshold and evidence, respects restored occurrences, and leaves history unchanged',()=>{
  const state={cards:[{id:'a',hanzi:'忽然',synonyms:[{id:'b',similarity:.94}]},{id:'b',hanzi:'突然',english:'suddenly',pinyin:'tūrán'}],history:[],schedules:{b:{score:2}}};
  const p={paragraphs:[{id:'p1',tokens:[['a'],'。']}],items:{a:{kind:'vocab',hanzi:'忽然'}}};

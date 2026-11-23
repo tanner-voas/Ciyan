@@ -26,7 +26,7 @@ import {mergeRestoredContent} from './backup-restore.js';
 import {FONT_LEVELS,FONT_IDS,fontChoices,selectedFonts,normalizeFontSettings,applyFontToRoot,verifyFontSelection,FONT_CATALOG,requiredFonts,normalizeFontSizing,normalizeTypographySettings,FONT_SCALE_MIN,FONT_SCALE_MAX,MASTER_SCALE_MIN,MASTER_SCALE_MAX} from './fonts.js';
 import {initializeFontLibrary,importFontFile,removeFontFile,getImportedFonts,fontLibraryError} from './font-library.js';
 import {MASTER} from './master-data.js';
-import {replaceMaster,reconcileBundledMaster,syncBundledClassification} from './master.js';
+import {replaceMaster,reconcileBundledMaster,reconcileBundledEditorial,syncBundledClassification} from './master.js';
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
@@ -1047,7 +1047,7 @@ async function restoreBackup(content){if(saving)return;const parsed=parseBackup(
   if(!await confirmRemoval('Restore full backup',`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
   try{
    if(!parsed.speechVault&&state.speechVault){parsed.speechVault=state.speechVault;parsed.settings.azureRegion ||= state.settings.azureRegion;}
-   ensureStudy(parsed);if(!parsed.explicitDictionary)mergeRestoredContent(parsed,state,MASTER);syncBundledClassification(parsed,MASTER);upgradeTskDefaults(parsed.settings);ensureStudy(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;if(!unlocked())speechSession=null;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!unlocked()?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
+   ensureStudy(parsed);if(!parsed.explicitDictionary){mergeRestoredContent(parsed,state,MASTER);reconcileBundledMaster(parsed,MASTER);reconcileBundledEditorial(parsed,MASTER);}syncBundledClassification(parsed,MASTER);upgradeTskDefaults(parsed.settings);ensureStudy(parsed);parsed.bundledMasterVersion=APP_VERSION;const fontChoice=normalizeFontSettings(parsed.settings);const restoredFontCheck=await verifyFontSelection(fontChoice);if(!restoredFontCheck.ok)Object.assign(parsed.settings,cloneFont(lastAcceptedFont));else Object.assign(parsed.settings,fontChoice);delete parsed.settings.fontDifficulty;delete parsed.settings.fontChoice;parsed.revision=state.revision+1;parsed.backedUpRevision=Math.min(Number(parsed.backedUpRevision)||0,parsed.revision-1);parsed.lastBackupAt=null;await saveState(parsed,state.revision);state=parsed;if(!unlocked())speechSession=null;clearSpeechCache();stopStudyAudio();setListeningAuto(false);reader.reset();invalidateTagOdds();page='study';revealed=false;grammarFeedback=null;lastFinished=null;closeModal();render();if(!restoredFontCheck.ok)fontUnavailableDialog(fontChoice,restoredFontCheck);else lastAcceptedFont=cloneFont(parsed.settings);pendingFont=cloneFont(lastAcceptedFont);toast(parsed.speechVault&&!unlocked()?'Progress restored. Unlock Azure credentials in Speech settings.':'Full backup restored.');}
   catch(e){toast(`Restore failed: ${e.message}`);}
 }
 async function importDeck(content){
@@ -1354,7 +1354,8 @@ async function boot(){try{
     // drop locally imported cards, custom sentences, IDs or score records.
     if(!state.explicitDictionary&&state.bundledMasterVersion!==APP_VERSION){
       const merge=reconcileBundledMaster(state,MASTER);
-      changedContent=merge.changed;
+      const editorial=reconcileBundledEditorial(state,MASTER);
+      changedContent=merge.changed||editorial.changed;
       state.bundledMasterVersion=APP_VERSION;
     }
   }

@@ -1,3 +1,4 @@
+import {PANLONG_V099_EDITORIAL_UPDATES} from './master-v099-editorial.js';
 import {normalizeCard} from './storage.js';
 import {normalizeGrammar} from './grammar.js';
 export function replaceMaster(state,file){
@@ -43,6 +44,18 @@ export function reconcileBundledMaster(state,source){
   const entry=normalizeGrammar({...original,id:safeId(original.id,usedGrammarIds)});
   grammarByMarkup.set(entry.markup,entry);incomingGrammar.push(entry);
  }
+ // Imported words may receive a fresh ID when a user-created card already
+ // owns the bundled one. Their synonym targets must follow local identities.
+ const sourceWordsById=new Map(source.cards.map(card=>[card.id,card.hanzi]));
+ for(const card of incomingCards){
+  const resolved=new Map();
+  for(const edge of card.synonyms||[]){
+   const word=sourceWordsById.get(edge.id);
+   const target=cardsByHanzi.get(word);
+   if(target&&target.id!==card.id&&!resolved.has(target.id))resolved.set(target.id,edge.similarity);
+  }
+  if(card.synonyms)card.synonyms=[...resolved].map(([id,similarity])=>({id,similarity}));
+ }
  if(incomingCards.length)state.cards=[...state.cards,...incomingCards];
  if(incomingGrammar.length)state.grammar=[...state.grammar,...incomingGrammar];
  if(state.cards.length>20000||state.grammar.length>20000)throw new Error('Reconciled master is too large; restore an earlier backup.');
@@ -71,4 +84,55 @@ export function syncBundledClassification(state,source){
   return {...card,tags:next};
  });
  return updated;
+}
+
+// v0.9.9: enrich an older local bundled collection without replacing user
+// cards, stable IDs, scores, schedules, tags or manually edited definitions.
+// Called only during an implicit bundled-master update, not for imported
+// explicit dictionaries. Repeated calls are idempotent.
+export function reconcileBundledEditorial(state,source){
+ const byHanzi=new Map(state.cards.map(card=>[card.hanzi,card]));
+ const sourceByHanzi=new Map(source.cards.map(card=>[card.hanzi,card]));
+ const sourceIdToHanzi=new Map(source.cards.map(card=>[card.id,card.hanzi]));
+ let fields=0,tags=0,links=0;
+ const visitedPairs=new Set();
+ for(const correction of PANLONG_V099_EDITORIAL_UPDATES){
+  const card=byHanzi.get(correction.hanzi);
+  if(card?.[correction.field]===correction.previous){
+   card[correction.field]=correction.next;fields++;
+  }
+ }
+ // Only additive editorial/reader classification; do not replace a custom
+ // tag list or overwrite existing synonym scores for that user.
+ for(const [hanzi,bundled] of sourceByHanzi){
+  const local=byHanzi.get(hanzi);if(!local)continue;
+  const extras=(bundled.tags||[]).filter(tag=>
+   tag.startsWith('Reader/盘龙/')||tag.startsWith('Source/Reader-')||
+   tag.startsWith('Topic/')||tag.startsWith('Register/'));
+  const seen=new Set(local.tags||[]);
+  for(const tag of extras)if(!seen.has(tag)){local.tags??=[];local.tags.push(tag);seen.add(tag);tags++;}
+  // Visit each undirected relationship once. Preserve user-set similarity
+  // scores, and when only one direction exists mirror that existing score.
+  for(const edge of bundled.synonyms||[]){
+   const otherWord=sourceIdToHanzi.get(edge.id);
+   const other=byHanzi.get(otherWord);
+   if(!other||other.id===local.id)continue;
+   const pair=[hanzi,otherWord].sort().join('\u0000');
+   if(visitedPairs.has(pair))continue;
+   visitedPairs.add(pair);
+   const direct=(local.synonyms||[]).find(link=>link.id===other.id);
+   const reverse=(other.synonyms||[]).find(link=>link.id===local.id);
+   if(!direct){
+    local.synonyms??=[];
+    local.synonyms.push({id:other.id,similarity:reverse?.similarity??edge.similarity});
+    links++;
+   }
+   if(!reverse){
+    other.synonyms??=[];
+    other.synonyms.push({id:local.id,similarity:direct?.similarity??edge.similarity});
+    links++;
+   }
+  }
+ }
+ return {changed:!!(fields||tags||links),fields,tags,links};
 }

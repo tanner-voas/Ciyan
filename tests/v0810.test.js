@@ -13,9 +13,9 @@ const hsk=(c)=>c.tags.some(t=>t.startsWith('HSK/'));
 const tag=(i)=>`TSK/TSK${String(i).padStart(2,'0')}`;
 
 test('v0.8.10 supplies exactly twelve exclusive TSK tiers with 100 HSK and 100 outside HSK per tier',()=>{
- assert.equal(APP_VERSION,'0.9.8');
- assert.equal(MASTER.cards.length,12505);
- assert.equal(MASTER.grammar.length,3444);
+ assert.equal(APP_VERSION,'0.9.9');
+ assert.equal(MASTER.cards.length,13391);
+ assert.equal(MASTER.grammar.length,3449);
  const used=new Set();
  for(let i=1;i<=12;i++){
   const key=`TSK${String(i).padStart(2,'0')}`;
@@ -30,7 +30,7 @@ test('v0.8.10 supplies exactly twelve exclusive TSK tiers with 100 HSK and 100 o
  assert.equal(used.size,2400);
  assert.ok(MASTER.cards.every(c=>c.tags.filter(t=>t.startsWith('TSK/')).length<=1));
  assert.ok(MASTER.cards.every(c=>!c.tags.some(t=>/^TSK\/TSK[1-9]$/.test(t))));
- assert.equal(MASTER.cards.filter(c=>!hsk(c)).length,2559);
+ assert.equal(MASTER.cards.filter(c=>!hsk(c)).length,3396);
  // This directly guarantees the intended learning milestones, even when some
  // TSK HSK words come from levels beyond the separately selected HSK band.
  for(const [level,extras] of [[8,800],[10,1000],[12,1200]]){
@@ -61,7 +61,7 @@ test('classification sync replaces old HSK/TSK without changing card identities,
  s.history=[{cardId:known.id,at:'2026-11-20T00:00:00.000Z',grade:3}];
  s.settings.tagWeights={'HSK/HSK1':12,'TSK/TSK1':777,'TSK/TSK9':3.5,'Food/food':-2};
  const saved=makeBackup(s);saved.appVersion='0.8.9';saved.state.appVersion='0.8.9';
- assert.equal(prepareVersionedBackup(saved).appVersion,'0.9.8');
+ assert.equal(prepareVersionedBackup(saved).appVersion,'0.9.9');
  const restored=parseBackup(saved);
  const beforeHistory=structuredClone(restored.history),beforeSchedule=structuredClone(restored.schedules[known.id]);
  reconcileBundledMaster(restored,MASTER);

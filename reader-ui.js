@@ -42,7 +42,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const prefs=()=>chapter()?.editionPrefs||{};
  // A legacy graded=true preference means HSK6. Explicit HSK5 selection is
  // opt-in and survives switching away to Original, without resetting progress.
- const selectedEdition=p=>!p?.graded?'original':p.level==='hsk5'?'hsk5':'graded';
+ const selectedEdition=p=>!p?.graded?'original':p.level==='hsk4'?'hsk4':p.level==='hsk5'?'hsk5':'graded';
  const gradedEntry=()=>catalog.find(e=>e.novel===novel&&e.number===number&&e.gradedFile&&knownMasterDigest(e,chapter()?.digest));
  const needsChapterUpdate=()=>{const e=libraryChapter(novel,number),c=chapter();return !!(e?.source==='master'&&c&&e.digest!==c.digest&&knownMasterDigest(e,c.digest));};
  let selectionLoading=false;
@@ -57,7 +57,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  function editionSelector(){
   if(!hasGraded())return '';
   const current=needsChapterUpdate()?'original':selectedEdition(prefs());
-  return `<label>Edition<select id="reader-edition"><option value="original" ${current==='original'?'selected':''}>Original</option><option value="hsk5" ${current==='hsk5'?'selected':''}>HSK5 + TSK10</option><option value="graded" ${current==='graded'?'selected':''}>HSK6 + TSK12</option></select></label>${needsChapterUpdate()?`<p class="subtle">A newer chapter edition is available. ${btn('open','Update chapter')}</p>`:''}`;
+  return `<label>Edition<select id="reader-edition"><option value="original" ${current==='original'?'selected':''}>Original</option><option value="hsk4" ${current==='hsk4'?'selected':''}>HSK4 + TSK8</option><option value="hsk5" ${current==='hsk5'?'selected':''}>HSK5 + TSK10</option><option value="graded" ${current==='graded'?'selected':''}>HSK6 + TSK12</option></select></label>${needsChapterUpdate()?`<p class="subtle">A newer chapter edition is available. ${btn('open','Update chapter')}</p>`:''}`;
  }
  function autoControl(){
   const p=prefs();return '<div class="reader-editions">'+btn('auto',p.auto?'Auto · '+Number(p.minimum??.92).toFixed(2):'Auto simplify')+'</div>';
@@ -66,7 +66,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(selection==='original')return original;
   const entry=gradedEntry();
   if(!entry||entry.digest!==chapter()?.digest)throw Error('Update this chapter before opening its graded edition.');
-  const file=selection==='hsk5'?entry.gradedHsk5File:entry.gradedFile;
+  const file=selection==='hsk4'?entry.gradedHsk4File:selection==='hsk5'?entry.gradedHsk5File:entry.gradedFile;
   if(!file)throw Error('This chapter has no matching graded edition.');
   const digest=chapter().digest,key=digest+':'+selection;
   if(!gradedAssets.has(key)){
@@ -79,7 +79,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   return {...original,...gradedAssets.get(key),graded:true};
  }
  function compute(base,index,minimum,restored){
-  const allowed=base.gradeTarget==='hsk5'?/^HSK\/HSK[1-5]$|^TSK\/TSK(0[1-9]|10)$/:/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/;
+  const allowed=base.gradeTarget==='hsk4'?/^HSK\/HSK[1-4]$|^TSK\/TSK0[1-8]$/:base.gradeTarget==='hsk5'?/^HSK\/HSK[1-5]$|^TSK\/TSK(0[1-9]|10)$/:/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/;
   const permit=w=>!base.graded||base.extras.includes(w)||index.words.get(w)?.tags?.some(t=>allowed.test(t));
   return deriveEdition(base,index,minimum,{restore:new Set(restored),permit,termScore:key=>sourceBook()?.progress[key]?.score||0});
  }
@@ -458,9 +458,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      await saveEdition({...pref,minimum:preview.minimum,auto:true},preview.base,preview.result,digest);return;
     }
     if(name==='edition'){
-     if(!hasGraded()||!['original','graded','hsk5'].includes(el.dataset.edition))return;
+     if(!hasGraded()||!['original','graded','hsk5','hsk4'].includes(el.dataset.edition))return;
      pref.graded=el.dataset.edition!=='original';
-     if(el.dataset.edition==='hsk5')pref.level='hsk5';
+     if(el.dataset.edition==='hsk4')pref.level='hsk4';
+     else if(el.dataset.edition==='hsk5')pref.level='hsk5';
      else if(el.dataset.edition==='graded')delete pref.level;
      pref.restored=[];
     }
