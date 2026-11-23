@@ -94,7 +94,7 @@ test('UI renders, reviews persist, session finishes with backup reminder',async(
   assert.match(mock.shell.innerHTML,/Vocab reviews/);
   assert.match(mock.shell.innerHTML,/>12</);
   await click('navigate',{page:'settings'});
-  assert.match(mock.shell.innerHTML,/Restore full backup/);
+  assert.match(mock.shell.innerHTML,/Reset dictionary to master/);
   assert.match(mock.shell.innerHTML,/New vocabulary words per day/);
   await click('navigate',{page:'browse'});
   assert.match(mock.shell.innerHTML,/Every word/);
@@ -368,7 +368,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.9.7');
+ assert.equal(reconciled.bundledMasterVersion,'0.9.8');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -385,7 +385,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.9.7');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.9.8');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -399,7 +399,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.7');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.8');
  assert.equal(saved.cards.length,12505);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -455,8 +455,8 @@ test('v0.6.5 puts session filters after study controls and restores readable set
  assert.match(mock.shell.innerHTML,/data-font-id="print"/);
  assert.match(mock.shell.innerHTML,/data-font-id="mashan"/);
  assert.doesNotMatch(mock.shell.innerHTML,/data-setting="fontDifficulty"/);
- assert.match(mock.shell.innerHTML,/file-action-icon/);
- assert.equal((mock.shell.innerHTML.match(/class="file-action-icon"/g)||[]).length,4);
+ assert.match(mock.shell.innerHTML,/Reset records/);
+ assert.doesNotMatch(mock.shell.innerHTML,/Restore full backup/);
  const select=async(id,checked)=>{
   await mock.listeners.change({target:{dataset:{fontId:id},type:'checkbox',checked,closest:()=>null}});await delay();
  };

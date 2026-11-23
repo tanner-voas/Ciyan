@@ -1,7 +1,9 @@
 import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
 import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
-import {currentProfile} from './shared/google-drive/src/profiles.js';
-import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,isUploading,isSynced,cloudCurrentRevision} from './cloud-profiles.js';
+import {currentProfile,readRegistry,upsertProfile,selectProfile} from './shared/google-drive/src/profiles.js';
+import {ciyanDatabaseName,cloneCiyanData} from './shared/google-drive/src/local-data.js';
+import {importedProfileState,resetProfileState} from './profile-data.js';
+import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,isUploading,isSynced,cloudCurrentRevision,pushCiyanProfile} from './cloud-profiles.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
@@ -28,7 +30,7 @@ import {replaceMaster,reconcileBundledMaster,syncBundledClassification} from './
 import {rememberAnswer,undoAnswer,skipItem,postponeItem,availability,itemKey} from './session-controls.js';
 import {MODEL,retrievability} from './fsrs.js';
 import {scheduleReview,previewIntervals,previewOutcomes,DEFAULT_RETRY,UNITS,retrySeconds,rescheduleExisting,dueHistogram,intervalText,interpolatedSeconds,timingImpact,upgradeScores} from './review-scheduler.js';
-import {loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords,resetConfirmationValid} from './storage.js';
+import {chooseCiyanDatabase,loadState,saveState,cloneProgressState,defaultState,normalizeCard,makeBackup,parseBackup,migrateState,mergeDeck,makeDeck,clearLearningRecords,resetConfirmationValid} from './storage.js';
 import {normalizeGrammar,parseSegments,plainSentence,grammarTags,linkedWords,requiredWords,grammarScores,wordKnowledge,toneTargets,grammarMistakes} from './grammar.js';
 
 const $=selector=>document.querySelector(selector);
@@ -158,7 +160,7 @@ const isDue=(id,now=Date.now())=>!!state.schedules[id]&&Date.parse(state.schedul
 const countDue=()=>state.cards.filter(c=>isDue(c.id)).length;
 const countLearned=()=>state.cards.filter(c=>state.schedules[c.id]?.reps>0).length;
 const countNew=()=>state.cards.length-countLearned();
-const backupNeeded=()=>state.revision>state.backedUpRevision&&state.revision!==cloudCurrentRevision();
+const backupNeeded=()=>currentProfile().remote?(!isSynced()||state.revision!==cloudCurrentRevision()):state.revision>state.backedUpRevision;
 const countReadyGrammar=()=>modeCounts(state,'grammar').available;
 const recall=s=>s?(retrievability(s)??0):0;
 const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.id]));
@@ -330,7 +332,7 @@ function renderWordStudy(){
       <p class="study-captions">Again: forgot · Hard: struggled · Good: recalled · Easy: effortless</p>`:
       `<button class="btn btn-primary btn-full" data-action="reveal">Reveal answer ${icon('right')}</button>`}
     <div class="study-actions"><span class="subtle">${countDue()} due in your collection</span><button class="text-link" data-action="finish-prompt">Finish early</button></div>
-    <p class="study-captions">Each answer is saved automatically · Export at session end</p>`;
+    <p class="study-captions">Each answer is saved automatically · Cloud sync runs while connected</p>`;
 }
 function shuffledBank(grammar,session){
   const words=parseSegments(grammar.markup).filter(s=>s.type==='token').map(s=>({id:`t${s.index}`,word:s.text}));
@@ -391,7 +393,7 @@ function renderComplete(){
       <div><strong>${grammar?countReadyGrammar():s.newWords}</strong><span>${grammar?'Unlocked':'New words'}</span></div>
       <div><strong>${s.total?Math.round(100*s.correct/s.total):0}%</strong><span>${grammar?'Correct':'Good / Easy'}</span></div></div>
     ${state.lastPracticeUndo?'<button class="btn btn-secondary btn-full" data-action="undo-completed">Undo last answer</button>':''}<div class="panel stack"><div class="row"><strong>${icon('shield')} Protect your progress</strong><span class="tag alt">Important</span></div>
-      <p class="lead" style="font-size:13px">Your reviews are saved locally, but only a separate JSON file in Files protects against browser storage loss.</p>
+      <p class="lead" style="font-size:13px">Your reviews are saved locally. A verified cloud revision or separate JSON file protects against browser storage loss.</p>
       <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Save progress to Files</button>
       ${backupNeeded()?'<div class="notice warning">Your latest reviews have not been confirmed as backed up.</div>':'<div class="notice">Your current changes are marked as backed up.</div>'}
       <button class="btn btn-secondary btn-full" data-action="navigate" data-page="study">Study again</button>
@@ -736,21 +738,13 @@ ${group('Appearance',`<label class="settings-row">Theme<select data-setting="the
      <div class="font-sample"><div class="eyebrow">CURRENT APPLIED FONTS</div><div class="font-sample-chinese" lang="zh-Hans">子子子 春风又绿江南岸，明月何时照我还？</div><p class="subtle">样式测试 · 春天的雨，山中的路，朋友的信。</p></div>
      <p class="subtle">When you apply, each checked custom font is downloaded if necessary, validated, and cached for offline use. If one is unavailable, an error offers to keep the previous fonts or upload the missing file. Font files are separate from learning backups.</p></div>
    `)}${group('Master collection',`<div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences are provided by default. Your imported and edited entries persist across restarts.</p><p class="subtle">New bundled content is merged on the first launch after an app update, without overwriting your own entries. Keep exporting full progress backups regularly; browser storage is not a permanent independent backup.</p></div>
-   `)}${group('Files & backups',`<div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in a backup.':'Your current progress is marked as backed up.'}</div>
-     <button class="btn btn-primary btn-full file-action-btn" data-action="backup"><span class="file-action-icon">${icon('download')}</span><span class="file-action-label">Export full progress backup</span></button>
-     <button class="btn btn-secondary btn-full file-action-btn" data-action="restore"><span class="file-action-icon">${icon('upload')}</span><span class="file-action-label">Restore full backup (preserve master content)</span></button>
-     <button class="btn btn-secondary btn-full file-action-btn" data-action="import-deck"><span class="file-action-icon">${icon('plus')}</span><span class="file-action-label">Load complete master file</span></button>
-     <button class="btn btn-secondary btn-full file-action-btn" data-action="export-deck"><span class="file-action-icon">${icon('archive')}</span><span class="file-action-label">Export complete master (no review records)</span></button>
-
-     <p class="subtle">Loading a master explicitly replaces your current content; the replacement persists after restarting. Matching words retain their learning records. Full backups contain content and progress; a master export contains only content.</p>
-     <p class="subtle">Last confirmed export: ${esc(labelDate(state.lastBackupAt))}</p></div>
-   `)}${group('Reset & recovery',`<div class="panel stack"><p class="lead" style="font-size:13px">Clear review records and progress while retaining every vocabulary and grammar entry. Type <strong>confirm</strong> for destructive actions.</p>
-     <button class="btn btn-danger" data-action="clear-data">${icon('trash')}Clear learning records</button>
-     <button class="btn btn-secondary" data-action="speech-change-pin" ${state.speechVault?'':'disabled'}>Change PIN</button>
-     <button class="btn btn-danger" data-action="speech-reset" ${state.speechVault?'':'disabled'}>Reset secrets</button>
-     <button class="btn btn-danger" data-action="clear-settings">Clear settings</button>
-     <button class="btn btn-danger" data-action="clear-dictionary">Clear dictionary</button>
-     <button class="btn btn-danger" data-action="reload-cards">Reload cards from default master</button></div>`)}
+   `)}${group('Reset & recovery',`<div class="panel stack"><p class="lead" style="font-size:13px">Each reset requires typing <strong>confirm</strong>. Cloud profiles are preserved: a reset creates a separate local copy instead of changing cloud history.</p>
+     <button class="btn btn-danger" data-action="profile-reset" data-reset="records">Reset records</button>
+     <button class="btn btn-danger" data-action="profile-reset" data-reset="secrets">Reset secrets</button>
+     <button class="btn btn-danger" data-action="profile-reset" data-reset="settings">Reset settings (including secrets)</button>
+     <button class="btn btn-danger" data-action="profile-reset" data-reset="master">Reset dictionary to master</button>
+     <button class="btn btn-danger" data-action="profile-reset" data-reset="clear">Clear dictionary completely</button>
+     <button class="btn btn-danger" data-action="profile-reset" data-reset="all">Reset all (new local profile)</button></div>`)}
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
    <div class="panel stack"><button class="btn btn-secondary" data-action="reload-app">Check for updates and reload</button><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, independent skill schedules. Google Drive profiles synchronize while the app is active and connected; local data remains available offline.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
@@ -940,16 +934,23 @@ async function clearData(){
   if(done){reader.reset();closeModal();lastFinished=null;grammarFeedback=null;revealed=false;page='study';render();toast('Learning records cleared; cards retained. Export your new backup.');}
 }
 function backupModal(){pendingBackupRevision=null;
-  modal('Protect your progress',`<p class="lead" style="font-size:14px;margin-bottom:14px">This backup contains every word, grammar card, learning record, and setting. Save the JSON to your iPhone Files app or iCloud Drive.</p>
-    <div class="notice warning" style="margin-bottom:13px">The app cannot verify you saved a manual export. Only confirm after you can find it in Files.</div>
-    <div class="stack">${currentProfile().remote?`<button class="btn btn-primary btn-full" data-action="sync-cloud-now">${icon('refresh')}Sync to Google Drive now</button><button class="btn btn-secondary btn-full" data-action="cloud-history">${icon('clock')}Browse cloud version history</button>`:''}<button class="btn btn-primary btn-full" data-action="share-backup">${icon('upload')}Save to Files (share sheet)</button>
-      <button class="btn btn-secondary btn-full" data-action="download-backup">${icon('download')}Download JSON instead</button>
-      <div id="backup-confirm-area"></div><p class="subtle">After sharing, choose Save to Files. If you use Download, find the JSON under Files → Downloads.</p></div>`);
+ const cloud=currentProfile().remote;
+ modal('Backups & data',`<p class="lead" style="font-size:14px;margin-bottom:14px"><strong>${esc(currentProfile().name)}</strong> · ${cloud?'Cloud-backed profile':'Local-only profile'}<br>${esc(cloud?syncLabel():'Changes stay on this device until you export or push.')}</p>
+   <div class="stack">${cloud?
+     `<button class="btn btn-primary btn-full" data-action="sync-cloud-now">${icon('refresh')}Sync now</button><button class="btn btn-secondary btn-full" data-action="cloud-history">${icon('clock')}Version history</button>`:
+     `<button class="btn btn-primary btn-full" data-action="push-local-profile">${icon('upload')}Push profile to Google Drive</button>`}
+    <button class="btn btn-secondary btn-full" data-action="share-backup">${icon('download')}Save local JSON (share sheet)</button>
+    <button class="btn btn-secondary btn-full" data-action="download-backup">Download local JSON</button>
+    ${cloud?'':`<button class="btn btn-secondary btn-full" data-action="upload-local-profile">${icon('upload')}Load new local profile</button><button class="btn btn-danger btn-full" data-action="start-fresh">Start fresh</button>`}
+    <div id="backup-confirm-area"></div>
+    <p class="subtle">A manual export is only confirmed when you find its JSON file in Files. Google Drive synchronization reports success only after a verified cloud revision.</p></div>`);
 }
 function downloadFile(file,name){const url=URL.createObjectURL(file),anchor=document.createElement('a');anchor.href=url;anchor.download=name;anchor.style.display='none';
   document.body.appendChild(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
-function backupFile(){const {json:content}=prepareVerifiedBackup(state);
-  return new File([content],`ciyan-progress-v${APP_VERSION}-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
+function backupFile(){const {json}=prepareVerifiedBackup(state),content=JSON.parse(json);
+   content.profile={name:currentProfile().name,id:currentProfile().id};
+   const fileName=currentProfile().name.replace(/[^A-Za-z0-9_-]+/g,'_').slice(0,42)||'profile';
+   return new File([JSON.stringify(content)],`ciyan-${fileName}-v${APP_VERSION}-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
 async function exportBackup(mode){
   try{
     if(keyEdited()&&!await saveSpeechDraft())return;
@@ -969,9 +970,79 @@ async function confirmBackup(){if(pendingBackupRevision===null||saving)return;
 async function readJsonFile(file){if(!file)return null;if(file.size>128*1024*1024)throw new Error('JSON file exceeds 128 MiB');
   try{return JSON.parse(await file.text());}catch{throw new Error('The file is not valid JSON');}}
 function requestFile(kind){const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.className='fileinput';document.body.append(input);
-  input.addEventListener('change',async()=>{try{const content=await readJsonFile(input.files?.[0]);if(content){if(kind==='restore')await restoreBackup(content);else await importDeck(content);}}
+  input.addEventListener('change',async()=>{try{const content=await readJsonFile(input.files?.[0]);if(content){if(kind==='local-profile')await loadLocalBackup(content,input.files?.[0]?.name||'');else if(kind==='restore')await restoreBackup(content);else await importDeck(content);}}
     catch(error){toast(error.message);}finally{input.remove();}},{once:true});input.click();}
 
+/** New local imports never replace a cloud profile or inherit the prior vault. */
+async function createLocalProfile(name,data){
+ name=String(name||'').trim().slice(0,64);if(!name)throw Error('Profile name is required');
+ if(saving)throw Error('Finish saving the current study record first');
+ if(!await reader.flush())throw Error('Could not save reader progress');
+ const original=currentProfile().id,id=crypto.randomUUID();
+ const oldDatabase=ciyanDatabaseName(original,readRegistry());
+ chooseCiyanDatabase(ciyanDatabaseName(id,readRegistry()));
+ try{
+  const prepared=structuredClone(data);
+  prepared.revision=1;prepared.backedUpRevision=-1;prepared.lastBackupAt=null;
+  await saveState(prepared);
+  upsertProfile({id,name,remote:false});selectProfile(id);
+  disconnectCiyanSync();location.reload();
+ }catch(e){chooseCiyanDatabase(oldDatabase);throw e;}
+}
+function backupSuggestedName(content,fileName){
+ if(typeof content.profile?.name==='string'&&content.profile.name.trim())return content.profile.name.trim().slice(0,64);
+ const match=/HSK[_\s-]?(\d+)(?:[_\s-]?TSK[_\s-]?(\d+))?/i.exec(fileName);
+ if(match)return `HSK${match[1]}`;
+ return 'Imported profile';
+}
+async function loadLocalBackup(content,fileName){
+ const parsed=parseBackup(content),suggested=backupSuggestedName(content,fileName);
+ const choice=await askDialog('Load local profile',`<p><strong>${parsed.cards.length}</strong> vocabulary cards · <strong>${parsed.grammar.length}</strong> grammar entries · <strong>${Object.keys(parsed.schedules||{}).length}</strong> scheduled words.</p>
+  <p>Creates a separate local profile. No settings or secrets are inherited from the current profile.</p>
+  <label>Profile name<input name="profileName" maxlength="64" required value="${esc(suggested)}"></label>
+  <label>Dictionary content<select name="dictionaryPolicy"><option value="keep">Include missing entries from current dictionary</option><option value="master">Reset to bundled master</option><option value="strict">Only the uploaded backup</option></select></label>${confirmationField}`,
+  'Create local profile',data=>({name:String(data.get('profileName')||'').trim(),policy:data.get('dictionaryPolicy')}));
+ if(!choice)return;
+ try{
+  const prepared=importedProfileState(parsed,state,MASTER,choice.policy);
+  await createLocalProfile(choice.name,prepared);
+ }catch(e){toast(`Import failed: ${e.message}`);}
+}
+async function startFresh(alwaysConfirm=false){
+ const needsConfirm=alwaysConfirm||!currentProfile().remote||backupNeeded();
+ const choice=await askDialog('Start a new local profile',`<p>The new profile starts with the master dictionary, default settings, no learning records, and no secrets. The current profile will remain intact.</p>
+  <label>New profile name<input name="profileName" maxlength="64" value="Default" required></label>
+  ${needsConfirm?confirmationField:''}`,
+  'Create fresh local profile',data=>String(data.get('profileName')||'').trim(),{danger:needsConfirm});
+ if(!choice)return;
+ try{const empty=defaultState();replaceMaster(empty,MASTER);empty.explicitDictionary=true;await createLocalProfile(choice,empty);}
+ catch(e){toast(`Could not create profile: ${e.message}`);}
+}
+async function applyProfileReset(kind){
+ if(kind==='all')return startFresh(true);
+ const desc={records:'Remove learning records and schedules',secrets:'Erase encrypted credentials',settings:'Reset settings and erase encrypted credentials',master:'Restore bundled master dictionary',clear:'Empty all active vocabulary and grammar'}[kind];
+ if(!desc)return;
+ if(!await confirmRemoval(desc,`Type confirm to ${desc.toLowerCase()}. ${currentProfile().remote?'The cloud original will be preserved and a separate local profile will be created.':'Your current local profile will be changed.'}`))return;
+ try{
+  if(!currentProfile().remote){
+   const done=await change(d=>resetProfileState(d,kind,MASTER),true,kind==='master'||kind==='clear');
+   if(done){if(kind==='secrets'||kind==='settings')speechSession=null;clearSpeechCache();reader.reset();invalidateTagOdds();toast('Reset saved locally.');}
+   return;
+  }
+  if(!await reader.flush())throw Error('Reader progress is not saved');
+  const original=currentProfile(),id=crypto.randomUUID();
+  await cloneCiyanData(original.id,id);
+  const previous=ciyanDatabaseName(original.id,readRegistry());
+  chooseCiyanDatabase(ciyanDatabaseName(id,readRegistry()));
+  try{
+   const loaded=await loadState();if(!loaded)throw Error('Cloned state was not found');
+   resetProfileState(loaded,kind,MASTER);loaded.revision++;loaded.backedUpRevision=-1;loaded.lastBackupAt=null;
+   await saveState(loaded,loaded.revision-1);
+   upsertProfile({id,name:`${original.name} (local reset)`,remote:false});selectProfile(id);
+   disconnectCiyanSync();location.reload();
+  }catch(e){chooseCiyanDatabase(previous);throw e;}
+ }catch(e){toast(`Reset failed: ${e.message}`);}
+}
 async function restoreBackup(content){if(saving)return;const parsed=parseBackup(content);
   if(!await confirmRemoval('Restore full backup',`Restore records and settings from this backup? ${parsed.explicitDictionary?'Its saved dictionary will replace this device’s collection.':'Existing and current master vocabulary/grammar entries will be retained.'} Current learning history will be replaced. It contains ${parsed.cards.length} words, ${parsed.grammar.length} sentences, ${parsed.history.length} word reviews. Export your current progress first if needed.`))return;
   try{
@@ -1112,13 +1183,17 @@ document.addEventListener('click',async event=>{
     case 'delete-card':await deleteWord(element.dataset.id);break;
     case 'delete-grammar':await deleteGrammar(element.dataset.id);break;
     case 'backup':backupModal();break;
-    case 'sync-cloud-now':try{await syncNow();toast('Cloud synchronization requested. Check profile status for confirmation.');}catch(e){toast(e.message);}break;
+    case 'sync-cloud-now':try{element.disabled=true;element.textContent='Syncing…';await syncNow();toast('Cloud revision verified.');}catch(e){toast(`Sync failed: ${e.message}`);}finally{backupModal();}break;
     case 'cloud-history':modal('Cloud version history','<div id="ciyan-cloud-history">Loading…</div>');try{await cloudHistory($('#ciyan-cloud-history'));}catch(e){toast(`Could not read history: ${e.message}`);}break;
     case 'close-modal':closeModal();break;
     case 'share-backup':await exportBackup('share');break;
     case 'download-backup':await exportBackup('download');break;
     case 'confirm-backup':await confirmBackup();break;
-    case 'restore':requestFile('restore');break;
+    case 'restore':requestFile('local-profile');break;
+    case 'upload-local-profile':requestFile('local-profile');break;
+    case 'push-local-profile':closeModal();document.querySelector('[data-pwa-profile-button]')?.click();break;
+    case 'start-fresh':await startFresh();break;
+    case 'profile-reset':await applyProfileReset(element.dataset.reset);break;
     case 'import-font-file':case 'upload-missing-font':{uploadingFontSlot=element.dataset.fontId;let input=$('#ciyan-font-file-input');if(!input){input=document.createElement('input');input.type='file';input.id='ciyan-font-file-input';input.accept='.ttf,.otf,.woff,.woff2,font/*';input.style.cssText='position:absolute;left:-10000px;width:1px;height:1px';document.body.append(input);}input.value='';input.click();break;}
     case 'remove-font-file':{const id=element.dataset.fontId;try{if(requiredFonts(lastAcceptedFont).includes(id)){
       const fallback={enabledFonts:FONT_IDS.filter(x=>lastAcceptedFont.enabledFonts.includes(x)&&x!==id)};
@@ -1238,6 +1313,7 @@ async function saveAndExitToLauncher(button){
   const persisted=await loadState();
   if(!persisted||persisted.revision!==state.revision)
    throw new Error('The latest local state could not be verified.');
+  if(currentProfile().remote){try{await syncNow();}catch(e){if(!confirm(`Google Drive sync failed: ${e.message}. Latest changes remain saved on this device. Exit anyway?`))throw e;}}
   // Changing the URL in-place before reloading keeps iOS in the installed
   // PWA rather than handing a cross-document link to Safari. Reloading also
   // fully destroys the Cíyán runtime before the Home Screen starts.
@@ -1253,7 +1329,8 @@ async function saveAndExitToLauncher(button){
 }
 
 async function updateAndReload(button){
- // The same bounded update behavior is used by My Workspace and Cíyán.
+ if(saving){toast('Finish the current local save before refreshing.');return;}
+ if(currentProfile().remote){try{if(!await reader.flush())throw Error('Reader bookmark not saved');await syncNow();}catch(e){if(!confirm(`Google Drive sync failed: ${e.message}. Changes remain saved locally. Refresh anyway?`))return;}}
  await runUpdateButton(button,{onError:message=>toast(`Update failed: ${message}`)});
 }
 async function boot(){try{
@@ -1664,4 +1741,13 @@ function feedbackStats(){
  return `<section class="panel stack"><h2>Character recall</h2><p class="subtle">Weakest characters first, using the last 20 explicit grades with greater weight on recent attempts. Scores accumulate gradually across words. Unrated characters are unknown; no drawings are retained.</p>${chars.length?chars.map(x=>`<div class="stat-feedback-row"><strong>${esc(x.character)}</strong><span>${x.score==null?'Unscored':x.score.toFixed(2)} · ${(x.weakness*100).toFixed(0)}% weakness · ${x.total} ratings · ${x.words} words</span></div>`).join(''):'<p>No character feedback yet. Mark characters after revealing a drawing.</p>'}</section><section class="panel stack"><h2>Grammar families</h2><p class="subtle">Last 20 checked Particle Zoo answers per family. Errors modestly increase selection weight among eligible exercises; due cards still come first.</p>${families.length?families.map(([name,x])=>`<div class="stat-feedback-row"><strong>${esc(name)}</strong><span>${x.errors} errors / ${x.total} checked · ${Object.entries(x.types).map(([k,n])=>esc(k)+': '+n).join(' · ')}</span></div>`).join(''):'<p>Complete Particle Zoo exercises to see family feedback.</p>'}</section>`;
 }
 
-window.addEventListener('ciyan-cloud-status',()=>{if(state&&page!=='reader')render();});
+// Never rerender the whole study screen just because a cloud upload progressed.
+// That would interrupt text entry, reader controls, and handwriting gestures.
+window.addEventListener('ciyan-cloud-status',()=>{
+ if(!state)return;
+ const button=document.querySelector('.topbar [data-action="backup"]');if(!button)return;
+ const mode=isUploading()?'saving':backupNeeded()?'unsaved':'saved';
+ button.classList.remove('backup-saving','backup-unsaved','backup-saved');button.classList.add('backup-'+mode);
+ button.setAttribute('aria-label',mode==='saving'?'Syncing cloud backup':mode==='unsaved'?'Changes not backed up':'Backup confirmed');
+ button.title=syncLabel();
+});
