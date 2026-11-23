@@ -3,6 +3,7 @@ import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
 import {currentProfile,readRegistry,upsertProfile,selectProfile} from './shared/google-drive/src/profiles.js';
 import {ciyanDatabaseName,cloneCiyanData} from './shared/google-drive/src/local-data.js';
 import {importedProfileState,resetProfileState} from './profile-data.js';
+import {createCiyanProfileActions} from './profile-menu-actions.js';
 import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,isUploading,isSynced,cloudCurrentRevision,pushCiyanProfile} from './cloud-profiles.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
@@ -142,6 +143,7 @@ const ratingMeaning=['New','Forgot / incorrect','Recalled with difficulty','Reca
 const opText=['>','>=','=','<=','<'];
 let state=null,page='study',studyMode='words',revealed=false,toneSelections=[],lastFinished=null,grammarFeedback=null;
 let currentModal=null,pendingBackupRevision=null,saving=false,exitInProgress=false,toastTimer;
+let profileManager=null;
 // Reserved for future cloud snapshots; local writes do not show an uploading state.
 let backupUploading=false;
 // One shared tag selection across Words, Grammar and Study. Search/score controls stay independent.
@@ -1191,7 +1193,7 @@ document.addEventListener('click',async event=>{
     case 'confirm-backup':await confirmBackup();break;
     case 'restore':requestFile('local-profile');break;
     case 'upload-local-profile':requestFile('local-profile');break;
-    case 'push-local-profile':closeModal();document.querySelector('[data-pwa-profile-button]')?.click();break;
+    case 'push-local-profile':closeModal();if(profileManager)await profileManager.open('push');else toast('Profile manager is still loading. Try again.');break;
     case 'start-fresh':await startFresh();break;
     case 'profile-reset':await applyProfileReset(element.dataset.reset);break;
     case 'import-font-file':case 'upload-missing-font':{uploadingFontSlot=element.dataset.fontId;let input=$('#ciyan-font-file-input');if(!input){input=document.createElement('input');input.type='file';input.id='ciyan-font-file-input';input.accept='.ttf,.otf,.woff,.woff2,font/*';input.style.cssText='position:absolute;left:-10000px;width:1px;height:1px';document.body.append(input);}input.value='';input.click();break;}
@@ -1377,19 +1379,20 @@ async function boot(){try{
     await saveState(state,loaded?Number(loaded.revision)||0:null);
   }
   studyMode=state.activeGrammarSession?'grammar':'words';render();
-  if(typeof document.body?.appendChild==='function')installProfileUI({adapter:{
-    statusText:()=>syncLabel(),
-    beforeSwitch:async()=>{
-      if(saving)throw Error('A local save is still running');
-      if(!await reader.flush())throw Error('Reader progress could not be saved');
-      if(saving)throw Error('Pending writes are not complete');
-      const persisted=await loadState();if(persisted?.revision!==state.revision)throw Error('Local progress was not verified');
-      disconnectCiyanSync();
-    },
-    beforeDisconnect:async()=>{if(saving)throw Error('A local save is still running');},
-    onDisconnected:()=>disconnectCiyanSync(),
-    onCloudProfile:()=>startCiyanSync(()=>state)
-  }});
+  // A full profile upload must flush and verify local data first. These
+  // callbacks are required by the shared manager to expose Push, Sync and Fork.
+  const flushProfileData=async()=>{
+    if(saving)throw Error('A local save is still running');
+    if(!await reader.flush())throw Error('Reader progress could not be saved');
+    if(saving)throw Error('Pending writes are not complete');
+    const persisted=await loadState();
+    if(!persisted||persisted.revision!==state.revision)throw Error('Local progress was not verified');
+  };
+  if(typeof document.body?.appendChild==='function')profileManager=installProfileUI({adapter:createCiyanProfileActions({
+    statusText:()=>syncLabel(),readState:()=>state,flush:flushProfileData,
+    disconnectSync:disconnectCiyanSync,pushProfile:pushCiyanProfile,
+    syncProfile:syncNow,cloneProfile:cloneCiyanData
+  })});
   await startCiyanSync(()=>state);
   if(fontError)fontUnavailableDialog(fontError.selected,fontError.validation);
   if(state.activePractice&&!state.activePractice.current)void settlePractice();

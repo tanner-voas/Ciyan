@@ -4,10 +4,10 @@ import {readFileSync} from 'node:fs';
 import {APP_VERSION,prepareVersionedBackup} from '../backup-versions.js';
 
 test('Ciyan v0.9.2 retains lossless earlier backup upgrades',()=>{
- assert.equal(APP_VERSION,'0.9.9');
+ assert.equal(APP_VERSION,'0.9.10');
  const data={appVersion:'0.8.13',state:{cards:[{id:'custom',english:'my word'}],revision:77}};
  const upgraded=prepareVersionedBackup(data);
- assert.equal(upgraded.appVersion,'0.9.9');
+ assert.equal(upgraded.appVersion,'0.9.10');
  assert.deepEqual(upgraded.state,data.state);
 });
 

@@ -13,7 +13,7 @@ const fixture=JSON.parse(fs.readFileSync(new URL('../reader/panlong/chapters/001
 const digest=createHash('sha256').update(fs.readFileSync(new URL('../reader/panlong/chapters/001.json',import.meta.url))).digest('hex');
 
 test('twelve zero-padded TSK defaults; old personalized weights migrate intact',()=>{
- assert.equal(APP_VERSION,'0.9.9');
+ assert.equal(APP_VERSION,'0.9.10');
  assert.deepEqual(Object.values(TSK_DEFAULTS),[2560,1280,640,320,160,80,40,20,10,5,2.5,1.25]);
  assert.equal(defaultTagWeight('TSK/TSK05'),160);
  assert.equal(defaultTagWeight('Topics/anything'),0);
