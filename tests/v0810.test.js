@@ -13,7 +13,7 @@ const hsk=(c)=>c.tags.some(t=>t.startsWith('HSK/'));
 const tag=(i)=>`TSK/TSK${String(i).padStart(2,'0')}`;
 
 test('v0.8.10 supplies exactly twelve exclusive TSK tiers with 100 HSK and 100 outside HSK per tier',()=>{
- assert.equal(APP_VERSION,'0.9.10');
+ assert.equal(APP_VERSION,'0.9.11');
  assert.equal(MASTER.cards.length,13391);
  assert.equal(MASTER.grammar.length,3449);
  const used=new Set();
@@ -61,7 +61,7 @@ test('classification sync replaces old HSK/TSK without changing card identities,
  s.history=[{cardId:known.id,at:'2026-11-20T00:00:00.000Z',grade:3}];
  s.settings.tagWeights={'HSK/HSK1':12,'TSK/TSK1':777,'TSK/TSK9':3.5,'Food/food':-2};
  const saved=makeBackup(s);saved.appVersion='0.8.9';saved.state.appVersion='0.8.9';
- assert.equal(prepareVersionedBackup(saved).appVersion,'0.9.10');
+ assert.equal(prepareVersionedBackup(saved).appVersion,'0.9.11');
  const restored=parseBackup(saved);
  const beforeHistory=structuredClone(restored.history),beforeSchedule=structuredClone(restored.schedules[known.id]);
  reconcileBundledMaster(restored,MASTER);

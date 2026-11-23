@@ -10,7 +10,7 @@ export function createCiyanProfileActions({readState,statusText,flush,disconnect
   onDisconnected:disconnectSync,
   // Push is a full first backup, not merely creation of Drive metadata.
   onPush:({targetId=null,name})=>pushProfile({targetId,name,readState,beforeUpload:flush}),
-  onSync:async()=>{await flush();return syncProfile();},
+  onSync:async()=>{await flush();return syncProfile({force:true});},
   // The shared manager owns the new profile ID; only Ciyan copies its data.
   onFork:({sourceId,id})=>cloneProfile(sourceId,id)
  };

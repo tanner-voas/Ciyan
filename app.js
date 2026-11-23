@@ -4,7 +4,8 @@ import {currentProfile,readRegistry,upsertProfile,selectProfile} from './shared/
 import {ciyanDatabaseName,cloneCiyanData} from './shared/google-drive/src/local-data.js';
 import {importedProfileState,resetProfileState} from './profile-data.js';
 import {createCiyanProfileActions} from './profile-menu-actions.js';
-import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,isUploading,isSynced,cloudCurrentRevision,pushCiyanProfile} from './cloud-profiles.js';
+import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,cloudCurrentRevision,backupActivity,pushCiyanProfile} from './cloud-profiles.js';
+import {backupIndicator} from './backup-indicator.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
@@ -144,8 +145,6 @@ const opText=['>','>=','=','<=','<'];
 let state=null,page='study',studyMode='words',revealed=false,toneSelections=[],lastFinished=null,grammarFeedback=null;
 let currentModal=null,pendingBackupRevision=null,saving=false,exitInProgress=false,toastTimer;
 let profileManager=null;
-// Reserved for future cloud snapshots; local writes do not show an uploading state.
-let backupUploading=false;
 // One shared tag selection across Words, Grammar and Study. Search/score controls stay independent.
 const sharedTagFilters={};
 const filters={words:{search:'',tags:sharedTagFilters,op:'>=',rating:'any'},grammar:{search:'',tags:sharedTagFilters,knowledgeOp:'>=',knowledgeValue:0,usageOp:'>=',usageValue:0}};
@@ -162,7 +161,10 @@ const isDue=(id,now=Date.now())=>!!state.schedules[id]&&Date.parse(state.schedul
 const countDue=()=>state.cards.filter(c=>isDue(c.id)).length;
 const countLearned=()=>state.cards.filter(c=>state.schedules[c.id]?.reps>0).length;
 const countNew=()=>state.cards.length-countLearned();
-const backupNeeded=()=>currentProfile().remote?(!isSynced()||state.revision!==cloudCurrentRevision()):state.revision>state.backedUpRevision;
+const backupNeeded=()=>currentBackupIndicator().mode!=='saved';
+const currentBackupIndicator=()=>backupIndicator({remote:currentProfile().remote,revision:state.revision,backedUpRevision:state.backedUpRevision,cloudRevision:cloudCurrentRevision(),...backupActivity()});
+const backupButtonContents=indicator=>`<span class="backup-wheel" aria-hidden="true" style="--backup-percent:${indicator.percent}%"></span><span class="backup-icon">${icon('archive')}</span>`;
+
 const countReadyGrammar=()=>modeCounts(state,'grammar').available;
 const recall=s=>s?(retrievability(s)??0):0;
 const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.id]));
@@ -202,10 +204,10 @@ function shell(content){
   if(page==='reader'&&reader.isReading())return '<main id="main" class="immersive-reader">'+content+'</main>';
   const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['reader','book','Reader'],['stats','chart','Stats']];
   const hideNav=page==='complete'||!!state.activePractice||(page==='study'&&(state.activeSession||state.activeGrammarSession));
-  const backupStatus=backupUploading||isUploading()?'saving':backupNeeded()?'unsaved':'saved';
+  const backupStatus=currentBackupIndicator();
   const hosted=hasLauncherHost();
   return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span class="brand-title"><span class="brand-name">Cíyán <span class="brand-version">v${APP_VERSION}</span></span><small>Words that stay</small></span></div><div class="header-actions">
-      <button class="icon-btn backup-${backupStatus}" data-action="backup" aria-label="${backupStatus==='saved'?'Current revision backed up':backupStatus==='saving'?'Backup uploading':'Backup needed — export progress'}" title="${backupStatus==='saved'?'Current revision has a confirmed backup':backupStatus==='saving'?'Backup uploading':'New changes since last exported backup'}">${icon('archive')}</button>
+      <button class="icon-btn backup-${backupStatus.mode}" data-action="backup" aria-label="${esc(backupStatus.label)}" title="${esc(backupStatus.label)}">${backupButtonContents(backupStatus)}</button>
       <button class="icon-btn ${page==='settings'?'header-selected':''}" data-action="navigate" data-page="settings" aria-label="${page==='settings'?'Close settings':'Open settings'}" aria-pressed="${page==='settings'}">${icon('settings')}</button>
       ${profileButton}
       <button class="icon-btn header-home" data-action="${hosted?'exit-to-launcher':'reload-app'}" aria-label="${hosted?'Return to My Apps':'Check updates and reload Cíyán'}" title="${hosted?'My Apps':'Refresh Cíyán'}">${icon(hosted?'home':'refresh')}</button></div></header>
@@ -1185,7 +1187,7 @@ document.addEventListener('click',async event=>{
     case 'delete-card':await deleteWord(element.dataset.id);break;
     case 'delete-grammar':await deleteGrammar(element.dataset.id);break;
     case 'backup':backupModal();break;
-    case 'sync-cloud-now':try{element.disabled=true;element.textContent='Syncing…';await syncNow();toast('Cloud revision verified.');}catch(e){toast(`Sync failed: ${e.message}`);}finally{backupModal();}break;
+    case 'sync-cloud-now':try{element.disabled=true;element.textContent='Syncing…';await syncNow({force:true});toast('Cloud revision verified.');}catch(e){toast(`Sync failed: ${e.message}`);}finally{backupModal();}break;
     case 'cloud-history':modal('Cloud version history','<div id="ciyan-cloud-history">Loading…</div>');try{await cloudHistory($('#ciyan-cloud-history'));}catch(e){toast(`Could not read history: ${e.message}`);}break;
     case 'close-modal':closeModal();break;
     case 'share-backup':await exportBackup('share');break;
@@ -1750,8 +1752,11 @@ function feedbackStats(){
 window.addEventListener('ciyan-cloud-status',()=>{
  if(!state)return;
  const button=document.querySelector('.topbar [data-action="backup"]');if(!button)return;
- const mode=isUploading()?'saving':backupNeeded()?'unsaved':'saved';
- button.classList.remove('backup-saving','backup-unsaved','backup-saved');button.classList.add('backup-'+mode);
- button.setAttribute('aria-label',mode==='saving'?'Syncing cloud backup':mode==='unsaved'?'Changes not backed up':'Backup confirmed');
- button.title=syncLabel();
+ const indicator=currentBackupIndicator();
+ button.classList.remove('backup-saving','backup-unsaved','backup-saved','backup-error','backup-pending','backup-uploading');
+ button.classList.add('backup-'+indicator.mode);
+ button.style.setProperty('--backup-percent',indicator.percent+'%');
+ const wheel=button.querySelector('.backup-wheel');if(wheel)wheel.style.setProperty('--backup-percent',indicator.percent+'%');
+ button.setAttribute('aria-label',indicator.label);
+ button.title=indicator.label;
 });

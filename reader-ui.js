@@ -343,6 +343,15 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   while(writingPosition)previousOk=(await writingPosition)!==false&&previousOk;
   clearTimeout(timer);const pos=pending,cpm=pendingRate;const playback=pendingPlayback;
   if(!pos&&cpm===null&&!playback)return previousOk;
+  // Gesture and chapter-open callbacks sometimes report the same bookmark.
+  // Avoid a needless IndexedDB revision (and therefore cloud backup) if the
+  // stored position and playback settings are already identical.
+  const saved=pos&&state().reader?.[pos.novel]?.chapters?.[pos.number-1];
+  const samePosition=!pos||(saved?.digest===pos.digest&&JSON.stringify(saved.position)===JSON.stringify(pos.position));
+  const samePlayback=!playback||Object.entries(playback).every(([k,v])=>state().settings[k]===v);
+  const sameRate=cpm===null||(state().settings.speechVoice===cpm.voice&&voiceTuning(state().settings,cpm.voice).readerCpm===cpm.rate);
+  if(samePosition&&samePlayback&&sameRate){pending=null;pendingPlayback=null;pendingRate=null;return previousOk;}
+
   pendingPlayback=null;
   pendingRate=null;
   pending=null;

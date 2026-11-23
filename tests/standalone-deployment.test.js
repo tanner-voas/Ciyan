@@ -63,7 +63,7 @@ test('standalone updater uses its own SW, but launcher API remains authoritative
 
 test('offline standalone cache refreshes on build changes without deleting reader content',()=>{
   const code=read(standalonePath,'sw.js');
-  assert.match(code,/ciyan-shell-v0\.9\.10-[a-f0-9]{16}/);
+  assert.match(code,new RegExp(`ciyan-shell-v${JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version.replaceAll('.','\\.')}-[a-f0-9]{16}`));
   assert.match(code,/"\.\/index\.html"/);
   assert.match(code,/"\.\/app\.js"/);
   assert.match(code,/"\.\/chapters\/index\.js"/);

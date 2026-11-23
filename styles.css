@@ -748,9 +748,20 @@ html,body{touch-action:pan-x pan-y}
 .topbar .brand-mark{flex:0 0 38px}
 .topbar .header-actions{gap:7px;flex:0 0 auto}
 .topbar .icon-btn{width:41px;height:41px;flex:0 0 41px}
-.topbar .backup-unsaved{color:#b54b40;background:#fff0eb;border-color:#edc2b9}
-.topbar .backup-saving{color:#976311;background:#fff2d5;border-color:#edd19a}
-.topbar .backup-saved{color:#26754d;background:#e7f5e8;border-color:#b9dfc3}
+.topbar .backup-pending{color:#98600d;background:#fff5d9;border-color:#e1b14c}
+.topbar .backup-error{color:#a82727;background:#ffebe9;border-color:#d35d55}
+.topbar .backup-uploading{color:#865512;background:#fff5d9;border-color:#e1b14c}
+.topbar .backup-saved{color:#26754d;background:#e7f5e8;border-color:#49a36c}
+/* The inner disc is a circular progress wheel: yellow fills green as chunks
+   are acknowledged. Its outer rim stays yellow until the revision commits. */
+.topbar .icon-btn[data-action=backup]{position:relative;overflow:hidden;isolation:isolate}
+.topbar .backup-wheel{position:absolute;inset:3px;border-radius:50%;pointer-events:none}
+.topbar .backup-icon{position:relative;z-index:1;display:flex;align-items:center;justify-content:center}
+.topbar .backup-uploading .backup-wheel{background:conic-gradient(#3a9e63 var(--backup-percent,0%),#f5d574 0);border:1px solid #e1b14c}
+.topbar .backup-uploading .backup-icon{background:#fff9edb8;border-radius:50%;padding:4px}
+.topbar .backup-saved .backup-wheel{border:1px solid #49a36c}
+.topbar .backup-error .backup-wheel{border:1px solid #d35d55}
+
 .topbar .header-selected{border-color:#86ae99;background:#e1ede4}
 .topbar .pwa-updating svg{animation:ciyan-header-spin .85s linear infinite;transform-origin:center}
 @keyframes ciyan-header-spin{to{transform:rotate(360deg)}}

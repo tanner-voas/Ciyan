@@ -15,6 +15,7 @@ function cloudBackup(state){
 const mark=(next,error='',detail=null)=>{phase=next;lastError=error;progress=detail;window.dispatchEvent?.(new Event('ciyan-cloud-status'));};
 export const syncLabel=()=>phase==='synced'?'Cloud backed up':phase==='syncing'?(progress?.stage==='committing'?'Finalizing cloud revision…':progress?.stage==='verifying'?`Verifying ${progress.completed}/${progress.total} sections…`:progress?.total?`Uploading ${progress.completed}/${progress.total} sections…`:'Preparing cloud backup…'):phase==='pending'?'Cloud backup pending':phase==='error'?`Sync failed: ${lastError}`:phase==='offline'?'Offline: changes remain local':phase==='conflict'?'Cloud revision conflict':'Local only';
 export const isUploading=()=>phase==='syncing';
+export const backupActivity=()=>({phase,error:lastError,progress});
 export const isSynced=()=>phase==='synced';
 export const cloudCurrentRevision=()=>currentProfile().remote?getSyncCursor(currentProfile().id,'ciyan')?.localRevision??-1:-1;
 
@@ -142,7 +143,7 @@ export async function pushCiyanProfile({targetId=null,name,readState,beforeUploa
  }catch(e){mark('error',e.message);throw e;}
 }
 export const changedCiyanData=()=>scheduler?.changed();
-export const syncNow=async()=>{if(!scheduler)throw Error('Connect and select a verified Google Drive profile first');return scheduler.now();};
+export const syncNow=async({force=false}={})=>{if(!scheduler)throw Error('Connect and select a verified Google Drive profile first');return scheduler.now({force});};
 export const disconnectCiyanSync=()=>{scheduler?.stop();scheduler=null;mark('offline');};
 export async function cloudHistory(container){
  if(!container)return;const profile=currentProfile();if(!profile.remote){container.textContent='This is a local profile.';return;}
