@@ -72,12 +72,14 @@ export async function checkForUpdatesAndReload({
 export async function runUpdateButton(button,{onError=()=>{},...options}={}){
   if(button.disabled)return false;
   const previous=button.innerHTML;
+  const originalLabel=button.getAttribute?.('aria-label');
   button.disabled=true;
   button.setAttribute?.('aria-busy','true');
+  button.classList?.add('pwa-updating');
   try{
     await checkForUpdatesAndReload({
       ...options,
-      onStatus:label=>{button.textContent=label;options.onStatus?.(label);}
+      onStatus:label=>{button.setAttribute?.('aria-label',label);options.onStatus?.(label);}
     });
     return true;
   }catch(error){
@@ -86,6 +88,9 @@ export async function runUpdateButton(button,{onError=()=>{},...options}={}){
   }finally{
     button.disabled=false;
     button.removeAttribute?.('aria-busy');
+    button.classList?.remove('pwa-updating');
+    if(originalLabel===null||originalLabel===undefined)button.removeAttribute?.('aria-label');
+    else button.setAttribute?.('aria-label',originalLabel);
     button.innerHTML=previous;
   }
 }

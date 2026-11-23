@@ -737,3 +737,22 @@ html,body{touch-action:pan-x pan-y}
 .exit-action-panel .btn{font-weight:780}
 .exit-action-panel .subtle{line-height:1.55;margin:0}
 .app-frame.exit-saving{pointer-events:none}
+
+/* v0.9.6 — safe-area-aware, single-row persistent application header. */
+.topbar{position:sticky;top:0;z-index:22;padding:calc(17px + env(safe-area-inset-top)) 0 15px;background:var(--cream);min-width:0}
+.topbar .brand{min-width:0;flex:1 1 auto;font-size:clamp(17px,5.2vw,23px);letter-spacing:-.7px}
+.topbar .brand-title{min-width:0;display:block;overflow:hidden}
+.topbar .brand-name{display:flex;align-items:baseline;gap:5px;min-width:0;white-space:nowrap}
+.topbar .brand-version{font-size:10px;font-weight:600;color:var(--muted);letter-spacing:0;white-space:nowrap}
+.topbar .brand small{white-space:nowrap;letter-spacing:clamp(.7px,.6vw,2px);font-size:clamp(8px,2vw,10px)}
+.topbar .brand-mark{flex:0 0 38px}
+.topbar .header-actions{gap:7px;flex:0 0 auto}
+.topbar .icon-btn{width:41px;height:41px;flex:0 0 41px}
+.topbar .backup-unsaved{color:#b54b40;background:#fff0eb;border-color:#edc2b9}
+.topbar .backup-saving{color:#976311;background:#fff2d5;border-color:#edd19a}
+.topbar .backup-saved{color:#26754d;background:#e7f5e8;border-color:#b9dfc3}
+.topbar .header-selected{border-color:#86ae99;background:#e1ede4}
+.topbar .pwa-updating svg{animation:ciyan-header-spin .85s linear infinite;transform-origin:center}
+@keyframes ciyan-header-spin{to{transform:rotate(360deg)}}
+@media(max-width:390px){.topbar .brand{gap:7px}.topbar .header-actions{gap:5px}.topbar .icon-btn{width:37px;height:40px;flex-basis:37px}.topbar .brand-version{font-size:9px}}
+@media(prefers-reduced-motion:reduce){.topbar .pwa-updating svg{animation-duration:2s}}

@@ -137,6 +137,8 @@ const ratingMeaning=['New','Forgot / incorrect','Recalled with difficulty','Reca
 const opText=['>','>=','=','<=','<'];
 let state=null,page='study',studyMode='words',revealed=false,toneSelections=[],lastFinished=null,grammarFeedback=null;
 let currentModal=null,pendingBackupRevision=null,saving=false,exitInProgress=false,toastTimer;
+// Reserved for future cloud snapshots; local writes do not show an uploading state.
+let backupUploading=false;
 // One shared tag selection across Words, Grammar and Study. Search/score controls stay independent.
 const sharedTagFilters={};
 const filters={words:{search:'',tags:sharedTagFilters,op:'>=',rating:'any'},grammar:{search:'',tags:sharedTagFilters,knowledgeOp:'>=',knowledgeValue:0,usageOp:'>=',usageValue:0}};
@@ -193,9 +195,12 @@ function shell(content){
   if(page==='reader'&&reader.isReading())return '<main id="main" class="immersive-reader">'+content+'</main>';
   const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['reader','book','Reader'],['stats','chart','Stats']];
   const hideNav=page==='complete'||!!state.activePractice||(page==='study'&&(state.activeSession||state.activeGrammarSession));
-  return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span>Cíyán<small>Words that stay</small></span></div><div class="header-actions">${page==='settings'?`<button class="icon-btn" data-action="navigate" data-page="${settingsOrigin}" aria-label="${settingsOrigin==='study'&& (state.activePractice||state.activeSession||state.activeGrammarSession)?'Return to study session':'Back'}">←</button>`:''}
-      <button class="icon-btn" data-action="backup" aria-label="Backup progress">${icon('archive')}${backupNeeded()?'<span class="dot"></span>':''}</button>
-      <button class="icon-btn" data-action="navigate" data-page="settings" aria-label="Settings">${icon('settings')}</button></div></header>
+  const backupStatus=backupUploading?'saving':backupNeeded()?'unsaved':'saved';
+  const hosted=hasLauncherHost();
+  return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span class="brand-title"><span class="brand-name">Cíyán <span class="brand-version">v${APP_VERSION}</span></span><small>Words that stay</small></span></div><div class="header-actions">
+      <button class="icon-btn backup-${backupStatus}" data-action="backup" aria-label="${backupStatus==='saved'?'Backup current (already exported)':backupStatus==='saving'?'Backup uploading':'Backup needed — export progress'}" title="${backupStatus==='saved'?'Last exported state is current':backupStatus==='saving'?'Backup uploading':'New changes since last exported backup'}">${icon('archive')}</button>
+      <button class="icon-btn ${page==='settings'?'header-selected':''}" data-action="navigate" data-page="settings" aria-label="${page==='settings'?'Close settings':'Open settings'}" aria-pressed="${page==='settings'}">${icon('settings')}</button>
+      <button class="icon-btn header-home" data-action="${hosted?'exit-to-launcher':'reload-app'}" aria-label="${hosted?'Return to My Apps':'Check updates and reload Cíyán'}" title="${hosted?'My Apps':'Refresh Cíyán'}">${icon(hosted?'home':'refresh')}</button></div></header>
       <main id="main">${content}</main>${hideNav?'':`<nav class="bottom-nav" aria-label="Main navigation">${nav.map(([dest,ico,title])=>
       `<button class="nav-item ${page===dest?'active':''}" data-action="navigate" data-page="${dest}" aria-label="${title}" ${page===dest?'aria-current="page"':''}>${icon(ico)}<span>${title}</span></button>`).join('')}</nav>`}`;
 }
@@ -713,7 +718,7 @@ async function speechAction(action,el){
 function renderSettings(){const s=state.settings,draft=pendingFont||lastAcceptedFont;
  const group=(title,content)=>`<details class="settings-section"><summary><span>${title}</span><span class="settings-chevron" aria-hidden="true">⌄</span></summary><div class="settings-section-body">${content}</div></details>`;
   return `<div class="page-heading"><div class="eyebrow">PREFERENCES</div><h1 class="h1">Settings</h1></div>
-${hasLauncherHost()?`<div class="panel stack exit-action-panel"><button type="button" class="btn btn-secondary btn-full" data-action="exit-to-launcher">← Save &amp; Exit to My Apps</button><p class="subtle">Save any pending reader position and return to your apps. Your study progress and unfinished sessions are preserved locally.</p></div>`:''}
+
 ${group('Appearance',`<label class="settings-row">Theme<select data-setting="theme">${options([['system','System'],['light','Light'],['dark','Dark']],s.theme||'system')}</select></label>`)}${group('Speech',speechSettings())}${group('Review timing',schedulerSettings())}${group('New-word weights',tagWeightSettings())}${group('Study',`
    <div class="panel"><div class="settings-row"><div><strong>New vocabulary words per day</strong><small>Leave empty for unlimited. Zero blocks new words but not due reviews. Resets each local calendar day.</small></div><input type="number" min="0" max="20000" placeholder="Unlimited" data-setting="newWordsPerDay" value="${s.newWordsPerDay??''}" aria-label="New vocabulary words per day"></div>
     <div class="settings-row"><div><strong>Target retention</strong><small>FSRS retention target and Auto urgency; score intervals are set above</small></div><select data-setting="desiredRetention">${options([[.85,'85%'],[.9,'90%'],[.95,'95%']],s.desiredRetention)}</select></div>

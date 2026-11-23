@@ -1,4 +1,6 @@
-# Cíyán (词言) v0.8.18
+# Cíyán (词言) v0.9.6
+
+**v0.9.6:** Unified header, backup status indicator, Settings toggle and hosted Home/standalone Refresh. See `RELEASE_v0.9.6.md`.
 
 Cíyán remains an offline-first Mandarin learning PWA with vocabulary review,
 grammar, graded reader, drawing practice and typography settings. It has two

@@ -365,7 +365,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.9.5');
+ assert.equal(reconciled.bundledMasterVersion,'0.9.6');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -382,7 +382,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.9.5');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.9.6');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -396,7 +396,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.5');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.6');
  assert.equal(saved.cards.length,12505);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });
@@ -668,7 +668,7 @@ test('listening settings open on speed and return to the same exercise',async()=
  const before=structuredClone(mock.data.get('main').activePractice);
  assert.match(mock.shell.innerHTML,/Listen to the sentence/);
  await click('navigate',{page:'settings'});assert.equal(section.open,true);
- assert.match(mock.shell.innerHTML,/Return to study session/);
+ assert.match(mock.shell.innerHTML,/aria-label="Close settings"/);
  await click('navigate',{page:'study'});assert.match(mock.shell.innerHTML,/Listen to the sentence/);
  assert.deepEqual(mock.data.get('main').activePractice,before);
 });
@@ -727,7 +727,8 @@ test('v0.8.15 Save & Exit retains an unfinished study session and reloads in the
  const revision=mock.data.get('main').revision;
  assert.ok(mock.data.get('main').activePractice||mock.data.get('main').activeSession);
  await click('navigate',{page:'settings'});
- assert.match(mock.shell.innerHTML,/Save &amp; Exit to My Apps/);
+ assert.match(mock.shell.innerHTML,/data-action="exit-to-launcher"/);
+ assert.doesNotMatch(mock.shell.innerHTML,/Save &amp; Exit to My Apps/);
  await click('exit-to-launcher');
  assert.equal(globalThis.location.href,'https://example.net/ciyan/');
  assert.equal(globalThis.location.reloaded,true);

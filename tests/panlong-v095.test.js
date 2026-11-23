@@ -70,7 +70,7 @@ test('v0.9.5 ships both frozen HSK5 and polished HSK6 graded editions aligned to
 test('v0.9.5 identity migration preserves existing reader preferences, bookmarks and study records',()=>{
  const sample={appVersion:'0.9.4',reader:{panlong:{chapters:[{editionPrefs:{graded:true,auto:true,minimum:.94},position:{id:'p1',offset:10}}],history:[{key:'term-林雷',grade:4}]}}};
  const result=prepareVersionedBackup(sample);
- assert.equal(result.appVersion,'0.9.5');
+ assert.equal(result.appVersion,'0.9.6');
  assert.deepEqual(result.reader,sample.reader);
  assert.equal(sample.appVersion,'0.9.4');
 });
