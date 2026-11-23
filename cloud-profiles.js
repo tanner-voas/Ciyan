@@ -2,14 +2,16 @@ import {readRegistry,currentProfile,forkProfile,selectProfile,upsertProfile,setP
 import {ciyanDatabaseName,cloneCiyanData,ciyanHasData} from './shared/google-drive/src/local-data.js';
 import {getSyncCursor,setSyncCursor,createSyncScheduler,fetchRevision,downloadBackup,splitBackup,uploadBackup} from './shared/google-drive/src/sync.js';
 import {chooseCiyanDatabase,loadState,saveState,makeBackup,parseBackup} from './storage.js';
+import {collectCustomReaderText,restoreCustomReaderText} from './reader-portability.js';
 
 let scheduler=null,phase='local',lastError='',progress=null;
-function cloudBackup(state){
+async function cloudBackup(state){
  const backup=makeBackup(state);
  // Manual export status is not study data. Never hash moving wall-clock timestamps
  // into cloud chunks; that would upload a new version for every no-op sync.
  delete backup.state.lastBackupAt;
  delete backup.state.backedUpRevision;
+ if(state.settings?.cloudIncludeCustomText)backup.state.readerContent=await collectCustomReaderText(state);
  return backup;
 }
 const mark=(next,error='',detail=null)=>{phase=next;lastError=error;progress=detail;window.dispatchEvent?.(new Event('ciyan-cloud-status'));};
@@ -24,6 +26,7 @@ async function replaceLocal(backup,expectedRevision=null){
  // Unlike a standard import, profile replacement never merges current data or
  // carries Azure credentials from a previous profile.
  delete parsed.deviceKey;
+ await restoreCustomReaderText(parsed,backup.state.readerContent);
  await saveState(parsed,expectedRevision);
  return parsed;
 }
@@ -60,24 +63,26 @@ export async function prepareCiyanProfile(){
  }
  if(!current){
   const snapshot=await downloadBackup(profile.id,'ciyan',remote.head);
-  const parsed=await replaceLocal(snapshot);setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:parsed.revision,pendingOperationId:null});mark('synced');return;
+  const parsed=await replaceLocal(snapshot);setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:parsed.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;
  }
  if(cursor?.head===remote.head.id){mark('pending');return;}
  if(cursor?.head&&cursor.head!==remote.head.id){
   if(cursor.localRevision===current.revision){
    const snapshot=await downloadBackup(profile.id,'ciyan',remote.head),parsed=await replaceLocal(snapshot,current.revision);
-   setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:parsed.revision,pendingOperationId:null});mark('synced');return;
+   setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:parsed.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;
   }
   await verifiedFork(profile.id,'Your existing cloud copy was not overwritten.');return;
  }
  // A lost cursor is not proof of a conflict. Verify content before deciding.
- const local=await splitBackup(cloudBackup(current));
+ const local=await splitBackup(await cloudBackup(current));
  if(JSON.stringify(local.sections)===JSON.stringify(remote.head.sections)){
-  setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:current.revision,pendingOperationId:null});mark('synced');return;
+  setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:current.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;
  }
  // Never fork only because connection/cursor state was lost; require the user
  // to choose explicitly when two independently established roots are found.
- throw Error('This profile has local and cloud data but no common sync revision. Export a backup, then select which profile to keep. Nothing was changed.');
+ const problem=Error('Local and cloud versions differ, and their common synchronization cursor is missing. Choose a safe recovery action.');
+ problem.code='CIYAN_CLOUD_RECOVERY';problem.cloudHead=remote.head.id;
+ throw problem;
 }
 
 export async function startCiyanSync(readState){
@@ -88,7 +93,7 @@ export async function startCiyanSync(readState){
  const clouds=(await remoteProfiles()).profiles;
  if(!clouds.some(p=>p.id===profile.id)){mark('error','The cloud profile was not found');return;}
  scheduler=createSyncScheduler({profileId:profile.id,appId:'ciyan',
-  readBackup:async()=>{const state=readState();return {backup:cloudBackup(state),revision:state.revision};},
+  readBackup:async()=>{const state=readState();return {backup:await cloudBackup(state),revision:state.revision};},
   onStatus:x=>{mark(x.phase,x.error?.message||'',x);},
   onDivergence:async(result,input,cursor)=>{
    // Re-fetch, and only fork if a different committed head is confirmed.
@@ -96,11 +101,11 @@ export async function startCiyanSync(readState){
    if(!checked.head||checked.head.id===cursor.head){mark('pending');return;}
    // Content equality is not a fork even when another session updated metadata.
    const equal=JSON.stringify((await splitBackup(input.backup)).sections)===JSON.stringify(checked.head.sections);
-   if(equal){setSyncCursor(profile.id,'ciyan',{head:checked.head.id,localRevision:input.revision,pendingOperationId:null});mark('synced');return;}
+   if(equal){setSyncCursor(profile.id,'ciyan',{head:checked.head.id,localRevision:input.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;}
    if(cursor.localRevision===input.revision&&readState().revision===input.revision){
     const snapshot=await downloadBackup(profile.id,'ciyan',checked.head);
     await replaceLocal(snapshot,input.revision);
-    setSyncCursor(profile.id,'ciyan',{head:checked.head.id,localRevision:parseBackup(snapshot).revision,pendingOperationId:null});location.reload();return;
+    setSyncCursor(profile.id,'ciyan',{head:checked.head.id,localRevision:parseBackup(snapshot).revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});location.reload();return;
    }
    await verifiedFork(profile.id,'You can later select the original cloud profile to retrieve its data.');
   }
@@ -116,7 +121,7 @@ export async function pushCiyanProfile({targetId=null,name,readState,beforeUploa
  if(targetId===original.id)throw Error('Cannot overwrite the current local profile');
  await beforeUpload();
  const snapshot=readState(),revision=snapshot.revision;
- const backup=cloudBackup(snapshot);parseBackup(backup);
+ const backup=await cloudBackup(snapshot);parseBackup(backup);
  mark('syncing','',{completed:0,total:0,stage:'preparing'});
  try{
   // A prior Push may have committed before its response was lost. Probe the
@@ -124,7 +129,14 @@ export async function pushCiyanProfile({targetId=null,name,readState,beforeUploa
   const existing=(await fetchRevision(id,'ciyan')).head;
   if(targetId&&!existing)throw Error('The target cloud profile has no verified backup. Rename your local profile or select another target.');
   await createRemoteProfile(id,name);
-  const result=await uploadBackup(id,'ciyan',backup,{head:existing?.id||null,pendingOperationId:crypto.randomUUID()},
+  const expected=existing?.id||null;
+  const prior=getSyncCursor(id,'ciyan');
+  const attempt=prior?.head===expected&&prior.pendingOperationId&&prior.pendingRevisionId&&prior.pendingLocalRevision===revision
+   ?prior:{head:expected,localRevision:-1,pendingOperationId:crypto.randomUUID(),pendingRevisionId:crypto.randomUUID(),pendingLocalRevision:revision};
+  // Persist the operation AND revision IDs before making any network writes.
+  // Re-entering Push after a lost acknowledgement resumes the same commit.
+  setSyncCursor(id,'ciyan',attempt);
+  const result=await uploadBackup(id,'ciyan',backup,attempt,
    {onProgress:detail=>mark('syncing','',detail)});
   if(result.status==='divergent')throw Error('The cloud changed during Push. Local profile is intact; retry after checking the cloud copy.');
   const checked=(await fetchRevision(id,'ciyan')).head;
@@ -135,7 +147,7 @@ export async function pushCiyanProfile({targetId=null,name,readState,beforeUploa
   const hashes=await splitBackup(recovered);
   if(JSON.stringify(hashes.sections)!==JSON.stringify(checked.sections))throw Error('Uploaded backup failed round-trip verification');
   if(id!==original.id)await cloneCiyanData(original.id,id);
-  setSyncCursor(id,'ciyan',{head:checked.id,localRevision:readState().revision===revision?revision:-1,pendingOperationId:null});
+  setSyncCursor(id,'ciyan',{head:checked.id,localRevision:readState().revision===revision?revision:-1,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});
   mark('synced');
   // New updates made while verification was in progress are sent by the scheduler.
   if(id===original.id){upsertProfile({id,name,remote:true});await startCiyanSync(readState);}
@@ -160,7 +172,7 @@ export async function cloudHistory(container){
     const safetyId=forkProfile(oldId,`${currentProfile().name} (before restore)`);
     await cloneCiyanData(oldId,safetyId);
     const old=await loadState();const cloudHead=await fetchRevision(oldId,'ciyan');await replaceLocal(backup,old?.revision??null);
-    setSyncCursor(oldId,'ciyan',{head:cloudHead.head?.id||null,localRevision:-1,pendingOperationId:null});location.reload();
+    setSyncCursor(oldId,'ciyan',{head:cloudHead.head?.id||null,localRevision:-1,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});location.reload();
    }catch(e){alert(`Restore cancelled: ${e.message}`);}
   });container.append(button);
  }

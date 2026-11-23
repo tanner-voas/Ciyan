@@ -1,5 +1,8 @@
 import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
 import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
+import {showRegistryRecovery} from './shared/google-drive/src/registry-recovery.js';
+import {collectCustomReaderText,restoreCustomReaderText,customReaderEntries} from './reader-portability.js';
+import {showCloudRecovery} from './cloud-recovery.js';
 import {currentProfile,readRegistry,upsertProfile,selectProfile} from './shared/google-drive/src/profiles.js';
 import {ciyanDatabaseName,cloneCiyanData} from './shared/google-drive/src/local-data.js';
 import {importedProfileState,resetProfileState} from './profile-data.js';
@@ -945,22 +948,27 @@ function backupModal(){pendingBackupRevision=null;
      `<button class="btn btn-primary btn-full" data-action="push-local-profile">${icon('upload')}Push profile to Google Drive</button>`}
     <button class="btn btn-secondary btn-full" data-action="share-backup">${icon('download')}Save local JSON (share sheet)</button>
     <button class="btn btn-secondary btn-full" data-action="download-backup">Download local JSON</button>
+    <button class="btn btn-secondary btn-full" data-action="portable-backup">Save portable JSON including imported reader texts</button>
+    <label style="display:block;font-size:13px"><input type="checkbox" data-action="toggle-cloud-reader-text" ${state.settings.cloudIncludeCustomText?'checked':''}> Include imported reader text in Google Drive backups (${customReaderEntries(state).length} custom chapters)</label>
+    <p class="subtle">Imported chapter text is stored separately on this device. Cloud backups include it only with the option above; a portable JSON export can include it regardless of that setting. Hosted chapter packs and installed font files remain separate.</p>
     ${cloud?'':`<button class="btn btn-secondary btn-full" data-action="upload-local-profile">${icon('upload')}Load new local profile</button><button class="btn btn-danger btn-full" data-action="start-fresh">Start fresh</button>`}
     <div id="backup-confirm-area"></div>
     <p class="subtle">A manual export is only confirmed when you find its JSON file in Files. Google Drive synchronization reports success only after a verified cloud revision.</p></div>`);
 }
 function downloadFile(file,name){const url=URL.createObjectURL(file),anchor=document.createElement('a');anchor.href=url;anchor.download=name;anchor.style.display='none';
   document.body.appendChild(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
-function backupFile(){const {json}=prepareVerifiedBackup(state),content=JSON.parse(json);
+async function backupFile(portable=false){const {json}=prepareVerifiedBackup(state),content=JSON.parse(json);
+   if(portable)content.state.readerContent=await collectCustomReaderText(state);
    content.profile={name:currentProfile().name,id:currentProfile().id};
    const fileName=currentProfile().name.replace(/[^A-Za-z0-9_-]+/g,'_').slice(0,42)||'profile';
-   return new File([JSON.stringify(content)],`ciyan-${fileName}-v${APP_VERSION}-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
+   const text=JSON.stringify(content);if(new Blob([text]).size>128*1024*1024)throw Error('Portable backup exceeds 128 MiB; export reader chapters separately.');
+   return new File([text],`ciyan-${fileName}-v${APP_VERSION}-${new Date().toISOString().replace(/[:.]/g,'-')}.json`,{type:'application/json'});}
 async function exportBackup(mode){
   try{
     if(keyEdited()&&!await saveSpeechDraft())return;
-    const file=backupFile(),revision=state.revision;
-    if(mode==='share'&&navigator.share&&navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'Cíyán complete backup'});
-    else{downloadFile(file,file.name);if(mode==='share')toast('Share is unavailable; a JSON download was started');}
+    const file=await backupFile(mode==='portable'),revision=state.revision;
+    if((mode==='share'||mode==='portable')&&navigator.share&&navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'Cíyán complete backup'});
+    else{downloadFile(file,file.name);if(mode!=='download')toast('Share is unavailable; a JSON download was started');}
     pendingBackupRevision=revision;
     const area=$('#backup-confirm-area');if(area)area.innerHTML=`<div class="notice" style="margin-top:8px">File prepared: <strong>${esc(file.name)}</strong></div>
       <button class="btn btn-soft btn-full" style="margin-top:10px" data-action="confirm-backup">${icon('check')}I saved this file in Files</button>`;
@@ -1009,6 +1017,7 @@ async function loadLocalBackup(content,fileName){
  if(!choice)return;
  try{
   const prepared=importedProfileState(parsed,state,MASTER,choice.policy);
+  await restoreCustomReaderText(prepared,content.state?.readerContent);
   await createLocalProfile(choice.name,prepared);
  }catch(e){toast(`Import failed: ${e.message}`);}
 }
@@ -1192,6 +1201,8 @@ document.addEventListener('click',async event=>{
     case 'close-modal':closeModal();break;
     case 'share-backup':await exportBackup('share');break;
     case 'download-backup':await exportBackup('download');break;
+    case 'portable-backup':await exportBackup('portable');break;
+    case 'toggle-cloud-reader-text':{const enabled=element.checked;try{await change(d=>{d.settings.cloudIncludeCustomText=enabled;},false);backupModal();}catch(e){toast(`Reader backup option failed: ${e.message}`);}break;}
     case 'confirm-backup':await confirmBackup();break;
     case 'restore':requestFile('local-profile');break;
     case 'upload-local-profile':requestFile('local-profile');break;
@@ -1399,7 +1410,7 @@ async function boot(){try{
   if(fontError)fontUnavailableDialog(fontError.selected,fontError.validation);
   if(state.activePractice&&!state.activePractice.current)void settlePractice();
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
-}catch(error){app.innerHTML=`<div class="loading-state" style="text-align:center"><div class="brand-mark">!</div>
+}catch(error){if(await showRegistryRecovery(app,error)||await showCloudRecovery(app,error))return;app.innerHTML=`<div class="loading-state" style="text-align:center"><div class="brand-mark">!</div>
   <h2>Local storage unavailable</h2><p>${esc(error.message)}</p><p>Use Safari or the installed Home Screen app, not a private tab or file preview. No data was reset.</p>
   <button class="btn btn-secondary" onclick="location.reload()">Try again</button></div>`;}}
 boot();

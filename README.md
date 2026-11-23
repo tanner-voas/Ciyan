@@ -333,3 +333,26 @@ See `RELEASE_v0.6.9.md` for font-size controls and `RELEASE_v0.6.8.md` for the o
 ## My Apps launcher (v0.8.14)
 
 The site's root now shows **My Apps**, containing Cíyán. Click Cíyán to open the same Study screen that previously opened at launch. In Cíyán Settings, select **Save & Exit to My Apps** to commit pending reader preferences/bookmarks, verify the local state and return to the launcher. The current study session is preserved. The underlying IndexedDB, Cache Storage, PWA manifest ID, and URL origin have not changed. Visit `/?app=ciyan` to launch Cíyán directly; future apps can be registered in `launcher.js` with separate storage namespaces.
+
+## Portable profile recovery (v0.9.12)
+
+Existing profile registries are never overwritten if their metadata is
+malformed. A recovery screen can download the original metadata and propose
+recoverable local IndexedDB identities. It requires typed confirmation.
+
+**Profile-state backups** include vocabulary, grammar, schedules, records,
+reader positions, settings and encrypted speech vaults. Imported chapter
+**text bytes** live separately in CacheStorage. The archive menu now offers
+**Save portable JSON including imported reader texts**. There is also a
+separate explicit opt-in to include imported chapter text in Google Drive
+backups; leaving it disabled means a cold-device cloud restore will need
+those imported chapter files supplied again. Imported chapters that have
+vanished locally must be reimported before a complete portable export or
+opted-in cloud upload can succeed. Downloadable hosted chapters and custom
+font files are device assets, not portable profile state.
+
+When local and cloud data disagree after the sync cursor disappears, Ciyan
+refuses automatic replacement and presents a guided recovery path. Make a
+manual JSON export before experimenting with recovery. For privacy, switching
+off reader-text cloud uploads does not immediately delete text that was
+already included in retained historical revisions.
