@@ -1,4 +1,7 @@
 import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
+import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
+import {currentProfile} from './shared/google-drive/src/profiles.js';
+import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,isUploading,isSynced,cloudCurrentRevision} from './cloud-profiles.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
 import {sealSpeechKey,unlockSpeech} from './speech-vault.js';
@@ -155,7 +158,7 @@ const isDue=(id,now=Date.now())=>!!state.schedules[id]&&Date.parse(state.schedul
 const countDue=()=>state.cards.filter(c=>isDue(c.id)).length;
 const countLearned=()=>state.cards.filter(c=>state.schedules[c.id]?.reps>0).length;
 const countNew=()=>state.cards.length-countLearned();
-const backupNeeded=()=>state.revision>state.backedUpRevision;
+const backupNeeded=()=>state.revision>state.backedUpRevision&&state.revision!==cloudCurrentRevision();
 const countReadyGrammar=()=>modeCounts(state,'grammar').available;
 const recall=s=>s?(retrievability(s)??0):0;
 const scoreWord=c=>wordKnowledge(state.schedules[c.id],recall(state.schedules[c.id]));
@@ -187,7 +190,7 @@ async function change(mutator,shouldRender=true,contentChange=false){
   // Only copy learning records for a study action. Full dictionary data is
   // immutable unless an explicit add/edit/delete/master operation requests it.
   const draft=cloneProgressState(state,contentChange);
-  try{mutator(draft);draft.appVersion=APP_VERSION;draft.revision=(draft.revision||0)+1;await saveState(draft,state.revision);state=draft;if(shouldRender)render();return true;}
+  try{mutator(draft);draft.appVersion=APP_VERSION;draft.revision=(draft.revision||0)+1;await saveState(draft,state.revision);state=draft;changedCiyanData();if(shouldRender)render();return true;}
   catch(error){toast(`Not saved: ${error.message}`);return false;}
   finally{saving=false;}
 }
@@ -195,16 +198,17 @@ function shell(content){
   if(page==='reader'&&reader.isReading())return '<main id="main" class="immersive-reader">'+content+'</main>';
   const nav=[['study','cards','Study'],['browse','book','Words'],['grammar','layers','Grammar'],['reader','book','Reader'],['stats','chart','Stats']];
   const hideNav=page==='complete'||!!state.activePractice||(page==='study'&&(state.activeSession||state.activeGrammarSession));
-  const backupStatus=backupUploading?'saving':backupNeeded()?'unsaved':'saved';
+  const backupStatus=backupUploading||isUploading()?'saving':backupNeeded()?'unsaved':'saved';
   const hosted=hasLauncherHost();
   return `<header class="topbar"><div class="brand"><span class="brand-mark">词</span><span class="brand-title"><span class="brand-name">Cíyán <span class="brand-version">v${APP_VERSION}</span></span><small>Words that stay</small></span></div><div class="header-actions">
-      <button class="icon-btn backup-${backupStatus}" data-action="backup" aria-label="${backupStatus==='saved'?'Backup current (already exported)':backupStatus==='saving'?'Backup uploading':'Backup needed — export progress'}" title="${backupStatus==='saved'?'Last exported state is current':backupStatus==='saving'?'Backup uploading':'New changes since last exported backup'}">${icon('archive')}</button>
+      <button class="icon-btn backup-${backupStatus}" data-action="backup" aria-label="${backupStatus==='saved'?'Current revision backed up':backupStatus==='saving'?'Backup uploading':'Backup needed — export progress'}" title="${backupStatus==='saved'?'Current revision has a confirmed backup':backupStatus==='saving'?'Backup uploading':'New changes since last exported backup'}">${icon('archive')}</button>
       <button class="icon-btn ${page==='settings'?'header-selected':''}" data-action="navigate" data-page="settings" aria-label="${page==='settings'?'Close settings':'Open settings'}" aria-pressed="${page==='settings'}">${icon('settings')}</button>
+      ${profileButton}
       <button class="icon-btn header-home" data-action="${hosted?'exit-to-launcher':'reload-app'}" aria-label="${hosted?'Return to My Apps':'Check updates and reload Cíyán'}" title="${hosted?'My Apps':'Refresh Cíyán'}">${icon(hosted?'home':'refresh')}</button></div></header>
       <main id="main">${content}</main>${hideNav?'':`<nav class="bottom-nav" aria-label="Main navigation">${nav.map(([dest,ico,title])=>
       `<button class="nav-item ${page===dest?'active':''}" data-action="navigate" data-page="${dest}" aria-label="${title}" ${page===dest?'aria-current="page"':''}>${icon(ico)}<span>${title}</span></button>`).join('')}</nav>`}`;
 }
-function backupBanner(){return backupNeeded()?`<div class="backup-banner">${icon('shield')}<p><strong>Changes not backed up.</strong> Your study data is saved locally. Export it to Files to protect it.</p><button data-action="backup">Backup</button></div>`:'';}
+function backupBanner(){return backupNeeded()?`<div class="backup-banner">${icon('shield')}<p><strong>Changes not backed up.</strong> Your study data is saved locally. Export to Files or synchronize with Google Drive to protect it.</p><button data-action="backup">Backup</button></div>`:'';}
 function availableWordQueue(){
   const due=state.cards.filter(c=>isDue(c.id)).sort((a,b)=>Date.parse(state.schedules[a.id].dueAt)-Date.parse(state.schedules[b.id].dueAt));
   const fresh=state.cards.filter(c=>!state.schedules[c.id]);
@@ -732,7 +736,7 @@ ${group('Appearance',`<label class="settings-row">Theme<select data-setting="the
      <div class="font-sample"><div class="eyebrow">CURRENT APPLIED FONTS</div><div class="font-sample-chinese" lang="zh-Hans">子子子 春风又绿江南岸，明月何时照我还？</div><p class="subtle">样式测试 · 春天的雨，山中的路，朋友的信。</p></div>
      <p class="subtle">When you apply, each checked custom font is downloaded if necessary, validated, and cached for offline use. If one is unavailable, an error offers to keep the previous fonts or upload the missing file. Font files are separate from learning backups.</p></div>
    `)}${group('Master collection',`<div class="panel stack"><p>All ${MASTER.cards.length} bundled words and ${MASTER.grammar.length} sentences are provided by default. Your imported and edited entries persist across restarts.</p><p class="subtle">New bundled content is merged on the first launch after an app update, without overwriting your own entries. Keep exporting full progress backups regularly; browser storage is not a permanent independent backup.</p></div>
-   `)}${group('Files & backups',`<div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in an exported backup.':'Your current progress is marked as backed up.'}</div>
+   `)}${group('Files & backups',`<div class="panel stack"><div class="notice ${backupNeeded()?'warning':''}">${backupNeeded()?'Changes are not confirmed in a backup.':'Your current progress is marked as backed up.'}</div>
      <button class="btn btn-primary btn-full file-action-btn" data-action="backup"><span class="file-action-icon">${icon('download')}</span><span class="file-action-label">Export full progress backup</span></button>
      <button class="btn btn-secondary btn-full file-action-btn" data-action="restore"><span class="file-action-icon">${icon('upload')}</span><span class="file-action-label">Restore full backup (preserve master content)</span></button>
      <button class="btn btn-secondary btn-full file-action-btn" data-action="import-deck"><span class="file-action-icon">${icon('plus')}</span><span class="file-action-label">Load complete master file</span></button>
@@ -748,7 +752,7 @@ ${group('Appearance',`<label class="settings-row">Theme<select data-setting="the
      <button class="btn btn-danger" data-action="clear-dictionary">Clear dictionary</button>
      <button class="btn btn-danger" data-action="reload-cards">Reload cards from default master</button></div>`)}
    <div class="section-row"><h2 class="section-title">About Cíyán</h2></div>
-   <div class="panel stack"><button class="btn btn-secondary" data-action="reload-app">Check for updates and reload</button><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, local-only, independent skill schedules. No accounts, cloud sync, or background uploads.</p>
+   <div class="panel stack"><button class="btn btn-secondary" data-action="reload-app">Check for updates and reload</button><p class="lead" style="font-size:13px">Cíyán v${APP_VERSION} · Offline-first, independent skill schedules. Google Drive profiles synchronize while the app is active and connected; local data remains available offline.</p>
      <p class="subtle">Browser data may be removed by iOS. Export after each session and keep the JSON in Files or iCloud Drive. Grammar usage risk reflects checked sentence attempts, with sample counts shown in sentence details.</p></div>`;
 }
 let lastStudyFocus='',lastScreen='';
@@ -937,8 +941,8 @@ async function clearData(){
 }
 function backupModal(){pendingBackupRevision=null;
   modal('Protect your progress',`<p class="lead" style="font-size:14px;margin-bottom:14px">This backup contains every word, grammar card, learning record, and setting. Save the JSON to your iPhone Files app or iCloud Drive.</p>
-    <div class="notice warning" style="margin-bottom:13px">The app cannot verify you saved the file. Only confirm after you can find it in Files.</div>
-    <div class="stack"><button class="btn btn-primary btn-full" data-action="share-backup">${icon('upload')}Save to Files (share sheet)</button>
+    <div class="notice warning" style="margin-bottom:13px">The app cannot verify you saved a manual export. Only confirm after you can find it in Files.</div>
+    <div class="stack">${currentProfile().remote?`<button class="btn btn-primary btn-full" data-action="sync-cloud-now">${icon('refresh')}Sync to Google Drive now</button><button class="btn btn-secondary btn-full" data-action="cloud-history">${icon('clock')}Browse cloud version history</button>`:''}<button class="btn btn-primary btn-full" data-action="share-backup">${icon('upload')}Save to Files (share sheet)</button>
       <button class="btn btn-secondary btn-full" data-action="download-backup">${icon('download')}Download JSON instead</button>
       <div id="backup-confirm-area"></div><p class="subtle">After sharing, choose Save to Files. If you use Download, find the JSON under Files → Downloads.</p></div>`);
 }
@@ -1108,6 +1112,8 @@ document.addEventListener('click',async event=>{
     case 'delete-card':await deleteWord(element.dataset.id);break;
     case 'delete-grammar':await deleteGrammar(element.dataset.id);break;
     case 'backup':backupModal();break;
+    case 'sync-cloud-now':try{await syncNow();toast('Cloud synchronization requested. Check profile status for confirmation.');}catch(e){toast(e.message);}break;
+    case 'cloud-history':modal('Cloud version history','<div id="ciyan-cloud-history">Loading…</div>');try{await cloudHistory($('#ciyan-cloud-history'));}catch(e){toast(`Could not read history: ${e.message}`);}break;
     case 'close-modal':closeModal();break;
     case 'share-backup':await exportBackup('share');break;
     case 'download-backup':await exportBackup('download');break;
@@ -1254,6 +1260,7 @@ async function boot(){try{
   // Load automatically downloaded or user-imported font bytes before verifying saved typography.
   // A missing font library does not interfere with the independent study database.
   try{await initializeFontLibrary();}catch(e){console.warn('Private font library unavailable:',e);}
+  await prepareCiyanProfile();
   const loaded=await loadState();
   // Existing local data must never be discarded because the app version changed.
   // Creating a fresh state is valid only when no saved state exists. The user
@@ -1292,6 +1299,20 @@ async function boot(){try{
     await saveState(state,loaded?Number(loaded.revision)||0:null);
   }
   studyMode=state.activeGrammarSession?'grammar':'words';render();
+  if(typeof document.body?.appendChild==='function')installProfileUI({adapter:{
+    statusText:()=>syncLabel(),
+    beforeSwitch:async()=>{
+      if(saving)throw Error('A local save is still running');
+      if(!await reader.flush())throw Error('Reader progress could not be saved');
+      if(saving)throw Error('Pending writes are not complete');
+      const persisted=await loadState();if(persisted?.revision!==state.revision)throw Error('Local progress was not verified');
+      disconnectCiyanSync();
+    },
+    beforeDisconnect:async()=>{if(saving)throw Error('A local save is still running');},
+    onDisconnected:()=>disconnectCiyanSync(),
+    onCloudProfile:()=>startCiyanSync(()=>state)
+  }});
+  await startCiyanSync(()=>state);
   if(fontError)fontUnavailableDialog(fontError.selected,fontError.validation);
   if(state.activePractice&&!state.activePractice.current)void settlePractice();
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
@@ -1642,3 +1663,5 @@ function feedbackStats(){
  const chars=characterEvidence(state).slice(0,20),families=[...familyEvidence(state)].sort((a,b)=>b[1].errors-a[1].errors);
  return `<section class="panel stack"><h2>Character recall</h2><p class="subtle">Weakest characters first, using the last 20 explicit grades with greater weight on recent attempts. Scores accumulate gradually across words. Unrated characters are unknown; no drawings are retained.</p>${chars.length?chars.map(x=>`<div class="stat-feedback-row"><strong>${esc(x.character)}</strong><span>${x.score==null?'Unscored':x.score.toFixed(2)} · ${(x.weakness*100).toFixed(0)}% weakness · ${x.total} ratings · ${x.words} words</span></div>`).join(''):'<p>No character feedback yet. Mark characters after revealing a drawing.</p>'}</section><section class="panel stack"><h2>Grammar families</h2><p class="subtle">Last 20 checked Particle Zoo answers per family. Errors modestly increase selection weight among eligible exercises; due cards still come first.</p>${families.length?families.map(([name,x])=>`<div class="stat-feedback-row"><strong>${esc(name)}</strong><span>${x.errors} errors / ${x.total} checked · ${Object.entries(x.types).map(([k,n])=>esc(k)+': '+n).join(' · ')}</span></div>`).join(''):'<p>Complete Particle Zoo exercises to see family feedback.</p>'}</section>`;
 }
+
+window.addEventListener('ciyan-cloud-status',()=>{if(state&&page!=='reader')render();});

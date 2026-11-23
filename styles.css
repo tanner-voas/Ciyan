@@ -756,3 +756,6 @@ html,body{touch-action:pan-x pan-y}
 @keyframes ciyan-header-spin{to{transform:rotate(360deg)}}
 @media(max-width:390px){.topbar .brand{gap:7px}.topbar .header-actions{gap:5px}.topbar .icon-btn{width:37px;height:40px;flex-basis:37px}.topbar .brand-version{font-size:9px}}
 @media(prefers-reduced-motion:reduce){.topbar .pwa-updating svg{animation-duration:2s}}
+/* v0.9.7: profile control matches the fixed-width header actions. */
+.topbar .pwa-profile-button{border:1px solid var(--stroke);background:var(--paper);color:var(--ink);width:41px;height:41px;flex:0 0 41px;border-radius:15px}
+@media(max-width:390px){.topbar .pwa-profile-button{width:37px;height:40px;flex-basis:37px;border-radius:13px}}

@@ -23,11 +23,17 @@ export function canonicalHSKTags(hanzi,tags){
 }
 export const DB_NAME='ciyan-mandarin';
 const DB_VERSION=1, STORE='state';
+let activeDbName=DB_NAME;
 let databasePromise;
+export function chooseCiyanDatabase(name){
+ if(typeof name!=='string'||!/^ciyan-mandarin(?:-profile-[A-Za-z0-9_-]{1,80})?$/.test(name))throw Error('Invalid profile database name');
+ if(activeDbName===name)return;
+ activeDbName=name;databasePromise=null;savedContent=null;savedHistory=null;savedReaderCatalog=new Map();
+}
 function database(){
   if(!('indexedDB' in globalThis))return Promise.reject(new Error('IndexedDB is not supported in this browser.'));
   if(!databasePromise)databasePromise=new Promise((resolve,reject)=>{
-    const request=indexedDB.open(DB_NAME,DB_VERSION);
+    const request=indexedDB.open(activeDbName,DB_VERSION);
     request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains(STORE))request.result.createObjectStore(STORE);};
     request.onsuccess=()=>resolve(request.result);
     request.onerror=()=>reject(request.error||new Error('Cannot open local database'));

@@ -29,6 +29,8 @@ self.addEventListener('fetch',event=>{
   if(event.request.method!=='GET')return;
   const url=new URL(event.request.url);
   if(url.origin!==self.location.origin)return;
+  // OAuth navigation and Drive API must ALWAYS reach the same-origin Worker.
+  if(url.pathname.startsWith('/_profiles/'))return;
   if(event.request.mode==='navigate'){
     const scope=new URL(self.registration.scope);
     const index=new URL('./index.html',scope);

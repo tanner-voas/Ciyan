@@ -1,0 +1,3 @@
+[submodule "shared/google-drive"]
+	path = shared/google-drive
+	url = https://github.com/tanner-voas/PWA-GoogleDrive.git

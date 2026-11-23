@@ -23,7 +23,10 @@ function mockBrowser() {
   const shell={innerHTML:'',classList:{add(){},remove(){}}};
   const toast={textContent:'',classList:{add(){},remove(){}}};
   const browseNodes=Object.fromEntries(['#tag-filter','#active-tag-filter','#collection-list','#browse-count'].map(k=>[k,{innerHTML:'',textContent:''}]));
-  const body={append(){}};
+  const body={append(){},style:{removeProperty(){}}};
+  const local=new Map(),session=new Map();
+  globalThis.localStorage={getItem:k=>local.get(k)||null,setItem:(k,v)=>local.set(k,String(v)),removeItem:k=>local.delete(k)};
+  globalThis.sessionStorage={getItem:k=>session.get(k)||null,setItem:(k,v)=>session.set(k,String(v)),removeItem:k=>session.delete(k)};
   const fontStyles=new Map();
   const fakeDb={
     objectStoreNames:{contains:()=>true},
@@ -49,7 +52,7 @@ function mockBrowser() {
   globalThis.FontFace=class {constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}async load(){this.status='loaded';return this;}};
   globalThis.fetch=async url=>String(url).endsWith('mixed-fonts.css')?{ok:true,async text(){return fs.readFileSync(new URL('../mixed-fonts.css',import.meta.url),'utf8');}}:{ok:true,headers:{get(){return null;}},async arrayBuffer(){return new Uint8Array([0,1,0,0,65,66]).buffer;}};
   Object.defineProperty(globalThis,'navigator',{value:{},configurable:true});
-  globalThis.window={scrollTo(){},confirm:()=>true};
+  globalThis.window={scrollTo(){},confirm:()=>true,dispatchEvent(){},addEventListener(){}};
   globalThis.location={protocol:'file:',href:'https://example.net/ciyan/?app=ciyan',assigned:null,reloaded:false,assign(url){this.assigned=url;},reload(){this.reloaded=true;}};
   globalThis.history={replaceState(_data,_title,url){globalThis.location.href=String(url);}};
   globalThis.__APP_LAUNCHER__={
@@ -365,7 +368,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  // Upgrading may do one atomic content reconciliation, but must not touch
  // old learning scores, history, user settings, custom IDs or definitions.
  const reconciled=mock.data.get('main');
- assert.equal(reconciled.bundledMasterVersion,'0.9.6');
+ assert.equal(reconciled.bundledMasterVersion,'0.9.7');
  assert.deepEqual(reconciled.history,before.history);
  assert.deepEqual(reconciled.grammarHistory,before.grammarHistory);
  assert.deepEqual(reconciled.skillHistory,before.skillHistory);
@@ -382,7 +385,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
  const target={type:'number',value:'3',dataset:{setting:'newWordsPerDay'}};
  await mock.listeners.change({target});await delay();
  const saved=mock.data.get('main');
- assert.equal(saved.appVersion,'0.9.6');assert.equal(saved.settings.newWordsPerDay,3);
+ assert.equal(saved.appVersion,'0.9.7');assert.equal(saved.settings.newWordsPerDay,3);
  assert.equal(saved.settings.tagWeights['HSK/HSK1'],7);
  assert.deepEqual(saved.settings.retryIntervals[2],before.settings.retryIntervals[2]);
  assert.deepEqual(saved.schedules,before.schedules);
@@ -396,7 +399,7 @@ test('v0.5.4 preserves all local results and preferences when upgrading from v0.
 
 test('v0.5.4 creates clean defaults only when no saved state exists',async()=>{
  const mock=mockBrowser();await import('../app.js?smoke=newInstallation054');await delay(35);
- const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.6');
+ const saved=mock.data.get('main');assert.equal(saved.appVersion,'0.9.7');
  assert.equal(saved.cards.length,12505);assert.equal(saved.grammar.length,3444);
  assert.equal(saved.history.length,0);
 });

@@ -4,5 +4,7 @@
   "name": "ciyan",
   "compatibility_date": "2026-11-19",
   "workers_dev": true,
-  "assets": { "directory": "./dist/standalone" }
+  "main": "./worker.js",
+  "services": [{ "binding": "PROFILES", "service": "pwa-profiles-api" }],
+  "assets": { "directory": "./dist/standalone", "binding": "ASSETS" }
 }

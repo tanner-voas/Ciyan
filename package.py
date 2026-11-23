@@ -22,7 +22,7 @@ STANDALONE_SHELL = (
 STATIC_FILES = (
     "styles.css", "app-host-bridge.js",
     "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-editions.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
-    "backup-versions.js",
+    "backup-versions.js", "cloud-profiles.js",
     "study-engine.js", "study-progress.js",
     "tag-weights.js",
     "grammar-context.js",
@@ -45,6 +45,7 @@ STATIC_FILES = (
     "hsk-tag-map.js",
 )
 STATIC_DIRS = ("icons", "chapters")
+PROFILE_SOURCE = ROOT / "shared" / "google-drive" / "src"
 
 
 def main() -> None:
@@ -63,6 +64,10 @@ def main() -> None:
         shutil.copytree(ROOT / name, TARGET / name,
                         ignore=shutil.ignore_patterns("graded-v091") if name == "chapters" else None)
 
+    if not PROFILE_SOURCE.is_dir():
+        raise FileNotFoundError("Missing PWA-GoogleDrive submodule; run git submodule update --init --recursive")
+    shutil.copytree(PROFILE_SOURCE, TARGET / "shared" / "google-drive" / "src", ignore=shutil.ignore_patterns("*.test.js"))
+
     # The standalone build consumes the exact same application asset bytes,
     # then layers on only its own entry point and PWA infrastructure.
     if STANDALONE.exists():
@@ -77,7 +82,7 @@ def main() -> None:
     for file in shell:
         digest.update(file.relative_to(STANDALONE).as_posix().encode() + b"\0")
         digest.update(hashlib.sha256(file.read_bytes()).digest())
-    cache = f"ciyan-shell-v0.9.6-{digest.hexdigest()[:16]}"
+    cache = f"ciyan-shell-v0.9.7-{digest.hexdigest()[:16]}"
     paths = ["./" + file.relative_to(STANDALONE).as_posix() for file in shell]
     template = (ROOT / "sw.standalone.template.js").read_text(encoding="utf-8")
     worker = template.replace("__SHELL_CACHE_NAME__", cache).replace(
