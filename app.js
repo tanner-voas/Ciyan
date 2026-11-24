@@ -7,7 +7,7 @@ import {currentProfile,readRegistry,upsertProfile,selectProfile} from './shared/
 import {ciyanDatabaseName,cloneCiyanData} from './shared/google-drive/src/local-data.js';
 import {importedProfileState,resetProfileState} from './profile-data.js';
 import {createCiyanProfileActions} from './profile-menu-actions.js';
-import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,syncNow,syncLabel,cloudCurrentRevision,backupActivity,pushCiyanProfile} from './cloud-profiles.js';
+import {prepareCiyanProfile,startCiyanSync,changedCiyanData,disconnectCiyanSync,cloudHistory,cloudDiagnostics,syncNow,syncLabel,cloudCurrentRevision,backupActivity,pushCiyanProfile} from './cloud-profiles.js';
 import {backupIndicator} from './backup-indicator.js';
 import {voiceTuning,createNarrator,mandarinVoices,voiceDescription} from './reader-speech.js';
 import {createCloudNarrator,cloudVoices,speechCacheCount,setSpeechCacheLimit,clearSpeechCache} from './reader-cloud-speech.js';
@@ -940,12 +940,33 @@ async function clearData(){
   const done=await change(d=>clearLearningRecords(d),false);
   if(done){reader.reset();closeModal();lastFinished=null;grammarFeedback=null;revealed=false;page='study';render();toast('Learning records cleared; cards retained. Export your new backup.');}
 }
+function backupDiagnosticsMarkup(){
+ const attempts=cloudDiagnostics();
+ if(!attempts.length)return '<p class="subtle">No synchronization attempts recorded on this device yet.</p>';
+ const number=value=>Number.isFinite(value)&&value>=0?Math.round(value).toLocaleString():'Not reported';
+ const bytes=value=>!Number.isFinite(value)||value<0?'Not reported':value<1024?`${number(value)} B`:value<1048576?`${(value/1024).toFixed(1)} KiB`:`${(value/1048576).toFixed(2)} MiB`;
+ const status=value=>({committed:'Backed up',unchanged:'Already current',divergent:'Conflict',error:'Failed'}[value]||'Unknown');
+ const time=value=>Number.isFinite(Date.parse(value))?new Date(value).toLocaleString():'Unknown time';
+ const latest=attempts[0];
+ return `<div class="panel stack"><p class="subtle"><strong>${esc(status(latest.status))}</strong> · ${esc(time(latest.at))}</p>
+   <div>Payload sent: <strong>${esc(bytes(latest.payloadBytes))}</strong> · ${esc(number(latest.objectsSent))} objects</div>
+   <div>Sections reused from parent: ${esc(number(latest.reused))} / ${esc(number(latest.sections))}</div>
+   <div>Additional existing objects reused: ${esc(number(latest.preflightReused))}</div>
+   <div>New Drive objects: ${esc(number(latest.objectsCreated))}</div>
+   <div>Section hashes calculated: ${esc(number(latest.hashed))} · cached: ${esc(number(latest.hashesReused))}</div>
+   <div>Drive calls reported: ${esc(number(latest.driveCalls))} · full object scans: ${esc(number(latest.objectScans))}</div>
+   <div>Index hits: ${esc(number(latest.indexHits))} · misses: ${esc(number(latest.indexMisses))}</div>
+   <div>API requests: ${esc(number(latest.requests))} · retries reported: ${esc(number(latest.driveRetries))} · ${esc(number(latest.durationMs))} ms</div>
+   <p class="subtle">Payload bytes exclude protocol overhead. Worker counters cover reported foreground requests, not background maintenance. Older Workers may not report counts. These local diagnostics contain no learning text or credentials.</p>
+   ${attempts.length>1?`<details><summary>Recent attempts (${attempts.length})</summary>${attempts.map(a=>`<p class="subtle">${esc(time(a.at))} · ${esc(status(a.status))} · ${esc(bytes(a.payloadBytes))} · ${esc(number(a.durationMs))} ms</p>`).join('')}</details>`:''}</div>`;
+}
 function backupModal(){pendingBackupRevision=null;
  const cloud=currentProfile().remote;
  modal('Backups & data',`<p class="lead" style="font-size:14px;margin-bottom:14px"><strong>${esc(currentProfile().name)}</strong> · ${cloud?'Cloud-backed profile':'Local-only profile'}<br>${esc(cloud?syncLabel():'Changes stay on this device until you export or push.')}</p>
    <div class="stack">${cloud?
      `<button class="btn btn-primary btn-full" data-action="sync-cloud-now">${icon('refresh')}Sync now</button><button class="btn btn-secondary btn-full" data-action="cloud-history">${icon('clock')}Version history</button>`:
      `<button class="btn btn-primary btn-full" data-action="push-local-profile">${icon('upload')}Push profile to Google Drive</button>`}
+    ${cloud?`<details><summary>Synchronization details</summary>${backupDiagnosticsMarkup()}</details>`:''}
     <button class="btn btn-secondary btn-full" data-action="share-backup">${icon('download')}Save local JSON (share sheet)</button>
     <button class="btn btn-secondary btn-full" data-action="download-backup">Download local JSON</button>
     <button class="btn btn-secondary btn-full" data-action="portable-backup">Save portable JSON including imported reader texts</button>

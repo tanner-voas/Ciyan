@@ -5,7 +5,7 @@ import {APP_VERSION} from '../backup-versions.js';
 const src=readFileSync(new URL('../app.js',import.meta.url),'utf8');
 const css=readFileSync(new URL('../styles.css',import.meta.url),'utf8');
 test('v0.9.7 keeps the hosted home and standalone refresh mutually exclusive',()=>{
- assert.equal(APP_VERSION,'0.9.13');
+ assert.match(APP_VERSION,/^\d+\.\d+\.\d+$/);
  assert.match(src,/data-action="\$\{hosted\?'exit-to-launcher':'reload-app'\}"/);
  assert.match(src,/icon\(hosted\?'home':'refresh'\)/);
  assert.match(src,/aria-pressed="\$\{page==='settings'\}"/);

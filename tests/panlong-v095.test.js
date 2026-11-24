@@ -1,3 +1,4 @@
+import {APP_VERSION} from '../backup-versions.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -51,7 +52,7 @@ test('v0.9.9 includes all three audited graded levels, aligned to 23 source chap
 test('v0.9.5 identity migration preserves existing reader preferences, bookmarks and study records',()=>{
  const sample={appVersion:'0.9.4',reader:{panlong:{chapters:[{editionPrefs:{graded:true,auto:true,minimum:.94},position:{id:'p1',offset:10}}],history:[{key:'term-林雷',grade:4}]}}};
  const result=prepareVersionedBackup(sample);
- assert.equal(result.appVersion,'0.9.13');
+ assert.equal(result.appVersion,APP_VERSION);
  assert.deepEqual(result.reader,sample.reader);
  assert.equal(sample.appVersion,'0.9.4');
 });

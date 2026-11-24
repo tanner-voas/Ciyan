@@ -1,6 +1,6 @@
 import {readRegistry,currentProfile,forkProfile,selectProfile,upsertProfile,setProfileRemote,status,remoteProfiles,createRemoteProfile,displayStatus} from './shared/google-drive/src/profiles.js';
 import {ciyanDatabaseName,cloneCiyanData,ciyanHasData} from './shared/google-drive/src/local-data.js';
-import {getSyncCursor,setSyncCursor,createSyncScheduler,fetchRevision,downloadBackup,splitBackup,uploadBackup} from './shared/google-drive/src/sync.js';
+import {getSyncCursor,setSyncCursor,createSyncScheduler,fetchRevision,downloadBackup,splitBackup,uploadBackup,syncDiagnostics} from './shared/google-drive/src/sync.js';
 import {chooseCiyanDatabase,loadState,saveState,makeBackup,parseBackup} from './storage.js';
 import {collectCustomReaderText,restoreCustomReaderText} from './reader-portability.js';
 
@@ -16,6 +16,7 @@ async function cloudBackup(state){
 }
 const mark=(next,error='',detail=null)=>{phase=next;lastError=error;progress=detail;window.dispatchEvent?.(new Event('ciyan-cloud-status'));};
 export const syncLabel=()=>phase==='synced'?'Cloud backed up':phase==='syncing'?(progress?.stage==='committing'?'Finalizing cloud revision…':progress?.stage==='verifying'?`Verifying ${progress.completed}/${progress.total} sections…`:progress?.total?`Uploading ${progress.completed}/${progress.total} sections…`:'Preparing cloud backup…'):phase==='pending'?'Cloud backup pending':phase==='error'?`Sync failed: ${lastError}`:phase==='offline'?'Offline: changes remain local':phase==='conflict'?'Cloud revision conflict':'Local only';
+export const cloudDiagnostics=()=>syncDiagnostics(currentProfile().id,'ciyan');
 export const isUploading=()=>phase==='syncing';
 export const backupActivity=()=>({phase,error:lastError,progress});
 export const isSynced=()=>phase==='synced';
@@ -93,6 +94,9 @@ export async function startCiyanSync(readState){
  const clouds=(await remoteProfiles()).profiles;
  if(!clouds.some(p=>p.id===profile.id)){mark('error','The cloud profile was not found');return;}
  scheduler=createSyncScheduler({profileId:profile.id,appId:'ciyan',
+  // The local IndexedDB writer uses the same copy-on-write dictionary contract.
+  // All edits/imports replace the array; ordinary reviews preserve its identity.
+  immutableFields:['cards','grammar'],
   readBackup:async()=>{const state=readState();return {backup:await cloudBackup(state),revision:state.revision};},
   onStatus:x=>{mark(x.phase,x.error?.message||'',x);},
   onDivergence:async(result,input,cursor)=>{
