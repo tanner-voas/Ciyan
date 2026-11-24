@@ -23,6 +23,10 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
     assert.ok(fs.existsSync(new URL(asset,modPath)),`missing launcher module ${asset}`);
   for(const shell of ['index.html','sw.js','manifest.webmanifest','standalone-boot.js','pwa-update.js'])
     assert.equal(fs.existsSync(new URL(shell,modPath)),false,`host shell leaked into module: ${shell}`);
+  const core=new URL('../shared/pwa-core/src/',import.meta.url);
+  assert.equal(read(standalonePath,'pwa-update.js'),read(core,'pwa-update.js'));
+  assert.equal(read(modPath,'reader-offline.js'),read(core,'offline-request.js'));
+  assert.equal(read(standalonePath,'reader-offline.js'),read(core,'offline-request.js'));
   const html=read(standalonePath,'index.html');
   assert.ok(html.includes('Cíyán v'+JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version));
   assert.match(html,/src="\.\/standalone-boot\.js"/);
@@ -77,7 +81,9 @@ test('offline standalone cache refreshes on build changes without deleting reade
   assert.match(code,/"\.\/chapters\/index\.js"/);
   assert.match(code,/"\.\/pwa-update\.js"/);
   assert.match(code,/new Response\(response\.body/);
-  assert.match(code,/k\.startsWith\('ciyan-shell-'\)/);
+  assert.match(code,/const CACHE_PREFIXES=\["ciyan-shell-","app-launcher-shell-"\]/);
+  assert.match(code,/const EXCLUDED_PATH_PREFIXES=\["\/_profiles\/"\]/);
+  assert.match(code,/CACHE_PREFIXES.some\(prefix=>k.startsWith\(prefix\)\)/);
   assert.doesNotMatch(code,/k\.startsWith\('ciyan-reader-text/);
   assert.doesNotMatch(code,/k\.startsWith\('ciyan-user-fonts/);
   const handlers={},lookups=[];

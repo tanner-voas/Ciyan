@@ -8,9 +8,10 @@ Usage: python3 package.py (also npm run build)
 """
 
 from pathlib import Path
-import hashlib
 import json
 import shutil
+import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parent
 TARGET = ROOT / "dist" / "ciyan"
@@ -48,6 +49,27 @@ STATIC_DIRS = ("icons", "chapters")
 PROFILE_SOURCE = ROOT / "shared" / "google-drive" / "src"
 
 
+CORE = ROOT / 'shared' / 'pwa-core'
+
+
+def load_offline_core():
+    # The caller initializes submodules explicitly (CI uses recursive checkout).
+    # Never silently substitute another library revision or fetch browser code.
+    if not (CORE / 'build/offline.py').is_file():
+        raise FileNotFoundError('Missing PWA-Core; run git submodule update --init --recursive')
+    if (ROOT / '.git').exists():
+        status = subprocess.check_output(
+            ['git', 'submodule', 'status', '--', 'shared/pwa-core'], cwd=ROOT, text=True)
+        if not status.startswith(' '):
+            raise RuntimeError('PWA-Core checkout does not match its pinned gitlink')
+        if subprocess.check_output(['git', 'status', '--porcelain', '--untracked-files=no'],
+                                   cwd=CORE, text=True).strip():
+            raise RuntimeError('PWA-Core contains uncommitted tracked changes')
+    sys.path.insert(0, str(CORE / 'build'))
+    from offline import asset_record, generate_worker
+    return asset_record, generate_worker
+
+
 def reader_groups(path):
     # The original archives are also prerequisites of each graded edition.
     if path.startswith('chapters/') and path.endswith('.zip'):
@@ -59,6 +81,7 @@ def reader_groups(path):
     return None
 
 def main() -> None:
+    asset_record, generate_worker = load_offline_core()
     sources = [ROOT / name for name in (*STATIC_FILES, *STATIC_DIRS)]
     missing = [str(source.relative_to(ROOT)) for source in sources if not source.exists()]
     if missing:
@@ -70,6 +93,8 @@ def main() -> None:
 
     for name in STATIC_FILES:
         shutil.copy2(ROOT / name, TARGET / name)
+    # Keep the legacy reader-offline.js URL, with no extra runtime request.
+    shutil.copy2(CORE / "src/offline-request.js", TARGET / "reader-offline.js")
     for name in STATIC_DIRS:
         shutil.copytree(ROOT / name, TARGET / name,
                         ignore=shutil.ignore_patterns("graded-v091", "graded-v092") if name == "chapters" else None)
@@ -85,19 +110,16 @@ def main() -> None:
     shutil.copytree(TARGET, STANDALONE)
     for name in STANDALONE_SHELL:
         shutil.copy2(ROOT / name, STANDALONE / name)
+    shutil.copy2(CORE / "src/pwa-update.js", STANDALONE / "pwa-update.js")
     assets = []
     for file in sorted(STANDALONE.rglob("*")):
         if not file.is_file() or file.name == '_headers': continue
         path = file.relative_to(STANDALONE).as_posix()
-        data = file.read_bytes()
-        assets.append(dict(path='./'+path, size=len(data), sha256=hashlib.sha256(data).hexdigest(), groups=reader_groups(path) or ['shell']))
-    inventory = json.dumps(assets, ensure_ascii=False, separators=(',', ':'))
-    digest = hashlib.sha256(inventory.encode() + (ROOT / 'sw.standalone.template.js').read_bytes())
+        assets.append(asset_record(STANDALONE, file, reader_groups(path) or ['shell']))
     package_version = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
-    cache = f"ciyan-shell-v{package_version}-{digest.hexdigest()[:16]}"
-    template = (ROOT / "sw.standalone.template.js").read_text(encoding="utf-8")
-    worker = template.replace("__SHELL_CACHE_NAME__", cache).replace(
-        "__PRECACHE_ASSETS__", inventory)
+    cache, worker, inventory = generate_worker(
+        assets, cache_prefix='ciyan-shell-', version=package_version,
+        legacy_prefixes=('app-launcher-shell-',), excluded_path_prefixes=('/_profiles/',))
     (STANDALONE / "sw.js").write_text(worker, encoding="utf-8")
     (STANDALONE / 'offline-inventory.json').write_text(inventory+'\n', encoding='utf-8')
     print('Required offline bytes:', sum(a['size'] for a in assets if 'shell' in a['groups']))

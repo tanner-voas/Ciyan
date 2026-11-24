@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import {createHash,webcrypto} from 'node:crypto';
 import vm from 'node:vm';
 const root=new URL('../',import.meta.url);
-const template=readFileSync(new URL('sw.standalone.template.js',root),'utf8');
+const template=readFileSync(new URL('shared/pwa-core/build/sw.template.js',root),'utf8').replace('__CACHE_PREFIXES__',JSON.stringify(['ciyan-shell-','app-launcher-shell-'])).replace('__EXCLUDED_PATH_PREFIXES__',JSON.stringify(['/_profiles/']));
 const base='https://offline.test/';
 const key=x=>typeof x==='string'?x:x.url;
 const cacheStore=()=>{
