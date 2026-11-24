@@ -356,3 +356,6 @@ refuses automatic replacement and presents a guided recovery path. Make a
 manual JSON export before experimenting with recovery. For privacy, switching
 off reader-text cloud uploads does not immediately delete text that was
 already included in retained historical revisions.
+
+### v0.9.16: cloud finalization diagnostics
+Backup details show separate preparation, head-check, lookup, upload and finalization timings. A restart recognizes an exact pending commit receipt before treating the cloud head as a separate device's edit. Full verification on first Push remains unchanged. Requires PWA-GoogleDrive v0.1.9 or newer.

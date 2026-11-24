@@ -27,3 +27,9 @@ test('current version agrees with packaging and backup diagnostics stay in archi
  const cloud=readFileSync(new URL('../cloud-profiles.js',import.meta.url),'utf8');
  assert.match(cloud,/immutableFields:\['cards','grammar'\]/);
 });
+test('restart checks pending commit receipt before declaring divergence and diagnostics report phase timings',()=>{
+ const cloud=readFileSync(new URL('../cloud-profiles.js',import.meta.url),'utf8');
+ assert(cloud.indexOf('reconcilePendingCommit(cursor,remote.head)')<cloud.indexOf('if(cursor?.head&&cursor.head!==remote.head.id)'));
+ const source=readFileSync(new URL('../app.js',import.meta.url),'utf8');
+ for(const metric of ['prepareMs','headMs','preflightMs','uploadMs','commitMs'])assert(source.includes('latest.'+metric));
+});

@@ -1,6 +1,6 @@
 import {readRegistry,currentProfile,forkProfile,selectProfile,upsertProfile,setProfileRemote,status,remoteProfiles,createRemoteProfile,displayStatus} from './shared/google-drive/src/profiles.js';
 import {ciyanDatabaseName,cloneCiyanData,ciyanHasData} from './shared/google-drive/src/local-data.js';
-import {getSyncCursor,setSyncCursor,createSyncScheduler,fetchRevision,downloadBackup,splitBackup,uploadBackup,syncDiagnostics} from './shared/google-drive/src/sync.js';
+import {getSyncCursor,setSyncCursor,createSyncScheduler,fetchRevision,downloadBackup,splitBackup,uploadBackup,syncDiagnostics,reconcilePendingCommit,sameMap} from './shared/google-drive/src/sync.js';
 import {chooseCiyanDatabase,loadState,saveState,makeBackup,parseBackup} from './storage.js';
 import {collectCustomReaderText,restoreCustomReaderText} from './reader-portability.js';
 
@@ -66,6 +66,12 @@ export async function prepareCiyanProfile(){
   const snapshot=await downloadBackup(profile.id,'ciyan',remote.head);
   const parsed=await replaceLocal(snapshot);setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:parsed.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;
  }
+ // The previous session may have completed the commit but lost the response.
+ // Adopt only our exact pending receipt, then queue any newer local revision.
+ const confirmed=reconcilePendingCommit(cursor,remote.head);
+ if(confirmed&&current.revision>=confirmed.localRevision){
+  setSyncCursor(profile.id,'ciyan',confirmed);mark(current.revision===confirmed.localRevision?'synced':'pending');return;
+ }
  if(cursor?.head===remote.head.id){mark('pending');return;}
  if(cursor?.head&&cursor.head!==remote.head.id){
   if(cursor.localRevision===current.revision){
@@ -76,7 +82,7 @@ export async function prepareCiyanProfile(){
  }
  // A lost cursor is not proof of a conflict. Verify content before deciding.
  const local=await splitBackup(await cloudBackup(current));
- if(JSON.stringify(local.sections)===JSON.stringify(remote.head.sections)){
+ if(sameMap(local.sections,remote.head.sections)){
   setSyncCursor(profile.id,'ciyan',{head:remote.head.id,localRevision:current.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;
  }
  // Never fork only because connection/cursor state was lost; require the user
@@ -102,10 +108,10 @@ export async function startCiyanSync(readState){
   onDivergence:async(result,input,cursor)=>{
    // Re-fetch, and only fork if a different committed head is confirmed.
    const checked=await fetchRevision(profile.id,'ciyan');
-   if(!checked.head||checked.head.id===cursor.head){mark('pending');return;}
+   if(!checked.head||checked.head.id===cursor.head){mark('pending');return {retry:true};}
    // Content equality is not a fork even when another session updated metadata.
-   const equal=JSON.stringify((await splitBackup(input.backup)).sections)===JSON.stringify(checked.head.sections);
-   if(equal){setSyncCursor(profile.id,'ciyan',{head:checked.head.id,localRevision:input.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null});mark('synced');return;}
+   const equal=sameMap((await splitBackup(input.backup)).sections,checked.head.sections);
+   if(equal)return {cursor:{head:checked.head.id,localRevision:input.revision,pendingOperationId:null,pendingRevisionId:null,pendingLocalRevision:null}};
    if(cursor.localRevision===input.revision&&readState().revision===input.revision){
     const snapshot=await downloadBackup(profile.id,'ciyan',checked.head);
     await replaceLocal(snapshot,input.revision);

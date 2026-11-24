@@ -957,7 +957,9 @@ function backupDiagnosticsMarkup(){
    <div>Drive calls reported: ${esc(number(latest.driveCalls))} · full object scans: ${esc(number(latest.objectScans))}</div>
    <div>Index hits: ${esc(number(latest.indexHits))} · misses: ${esc(number(latest.indexMisses))}</div>
    <div>API requests: ${esc(number(latest.requests))} · retries reported: ${esc(number(latest.driveRetries))} · ${esc(number(latest.durationMs))} ms</div>
-   <p class="subtle">Payload bytes exclude protocol overhead. Worker counters cover reported foreground requests, not background maintenance. Older Workers may not report counts. These local diagnostics contain no learning text or credentials.</p>
+   <div>Preparing: ${esc(number(latest.prepareMs))} ms · head check: ${esc(number(latest.headMs))} ms</div>
+   <div>Object lookup: ${esc(number(latest.preflightMs))} ms · upload: ${esc(number(latest.uploadMs))} ms · finalizing: ${esc(number(latest.commitMs))} ms</div>
+   <p class="subtle">Finalizing includes Worker queue time and publishing the cloud revision. Payload bytes exclude protocol overhead. Worker counters cover reported foreground requests, not background maintenance. Older Workers may not report counts. These local diagnostics contain no learning text or credentials.</p>
    ${attempts.length>1?`<details><summary>Recent attempts (${attempts.length})</summary>${attempts.map(a=>`<p class="subtle">${esc(time(a.at))} · ${esc(status(a.status))} · ${esc(bytes(a.payloadBytes))} · ${esc(number(a.durationMs))} ms</p>`).join('')}</details>`:''}</div>`;
 }
 function backupModal(){pendingBackupRevision=null;
