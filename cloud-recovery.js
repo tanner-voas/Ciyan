@@ -1,3 +1,4 @@
+import {downloadText} from './browser-files.js';
 import {currentProfile,upsertProfile,selectProfile,readRegistry} from './shared/google-drive/src/profiles.js';
 import {cloneCiyanData,ciyanDatabaseName} from './shared/google-drive/src/local-data.js';
 import {fetchRevision,downloadBackup,setSyncCursor} from './shared/google-drive/src/sync.js';
@@ -5,7 +6,7 @@ import {loadState,makeBackup,parseBackup,saveState} from './storage.js';
 import {collectCustomReaderText,restoreCustomReaderText} from './reader-portability.js';
 
 const node=(tag,label)=>{const el=document.createElement(tag);el.textContent=label;return el;};
-const download=(filename,json)=>{const url=URL.createObjectURL(new Blob([JSON.stringify(json)],{type:'application/json'}));const anchor=node('a');anchor.href=url;anchor.download=filename;document.body.append(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);};
+const download=(filename,json)=>downloadText(JSON.stringify(json),filename);
 /** Do not start Ciyan against a mismatched cloud database until the owner chooses. */
 export async function showCloudRecovery(host,error){
  if(error?.code!=='CIYAN_CLOUD_RECOVERY')return false;

@@ -1,3 +1,4 @@
+import {downloadBlob as downloadFile,shareFileOrDownload} from './browser-files.js';
 import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
 import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
 import {showRegistryRecovery} from './shared/google-drive/src/registry-recovery.js';
@@ -978,8 +979,6 @@ function backupModal(){pendingBackupRevision=null;
     <div id="backup-confirm-area"></div>
     <p class="subtle">A manual export is only confirmed when you find its JSON file in Files. Google Drive synchronization reports success only after a verified cloud revision.</p></div>`);
 }
-function downloadFile(file,name){const url=URL.createObjectURL(file),anchor=document.createElement('a');anchor.href=url;anchor.download=name;anchor.style.display='none';
-  document.body.appendChild(anchor);anchor.click();anchor.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);}
 async function backupFile(portable=false){const {json}=prepareVerifiedBackup(state),content=JSON.parse(json);
    if(portable)content.state.readerContent=await collectCustomReaderText(state);
    content.profile={name:currentProfile().name,id:currentProfile().id};
@@ -990,8 +989,8 @@ async function exportBackup(mode){
   try{
     if(keyEdited()&&!await saveSpeechDraft())return;
     const file=await backupFile(mode==='portable'),revision=state.revision;
-    if((mode==='share'||mode==='portable')&&navigator.share&&navigator.canShare?.({files:[file]}))await navigator.share({files:[file],title:'Cíyán complete backup'});
-    else{downloadFile(file,file.name);if(mode!=='download')toast('Share is unavailable; a JSON download was started');}
+    const delivery=await shareFileOrDownload(file,{preferShare:mode==='share'||mode==='portable',title:'Cíyán complete backup'});
+    if(delivery==='downloaded'&&mode!=='download')toast('Share is unavailable; a JSON download was started');
     pendingBackupRevision=revision;
     const area=$('#backup-confirm-area');if(area)area.innerHTML=`<div class="notice" style="margin-top:8px">File prepared: <strong>${esc(file.name)}</strong></div>
       <button class="btn btn-soft btn-full" style="margin-top:10px" data-action="confirm-backup">${icon('check')}I saved this file in Files</button>`;

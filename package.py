@@ -21,7 +21,7 @@ STANDALONE_SHELL = (
     "pwa-update.js", "viewport-lock.js", "_headers",
 )
 STATIC_FILES = (
-    "styles.css", "app-host-bridge.js",
+    "styles.css", "app-host-bridge.js", "browser-host.js", "browser-files.js",
     "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-editions.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js", "backup-indicator.js", "cloud-profiles.js", "profile-data.js", "profile-menu-actions.js",
     "study-engine.js", "study-progress.js",
@@ -95,6 +95,8 @@ def main() -> None:
         shutil.copy2(ROOT / name, TARGET / name)
     # Keep the legacy reader-offline.js URL, with no extra runtime request.
     shutil.copy2(CORE / "src/offline-request.js", TARGET / "reader-offline.js")
+    for name in ("browser-host.js", "browser-files.js"):
+        shutil.copy2(CORE / "src" / name, TARGET / name)
     for name in STATIC_DIRS:
         shutil.copytree(ROOT / name, TARGET / name,
                         ignore=shutil.ignore_patterns("graded-v091", "graded-v092") if name == "chapters" else None)

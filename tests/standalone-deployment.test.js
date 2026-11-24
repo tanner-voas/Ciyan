@@ -27,6 +27,10 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
   assert.equal(read(standalonePath,'pwa-update.js'),read(core,'pwa-update.js'));
   assert.equal(read(modPath,'reader-offline.js'),read(core,'offline-request.js'));
   assert.equal(read(standalonePath,'reader-offline.js'),read(core,'offline-request.js'));
+  for(const name of ['browser-host.js','browser-files.js']){
+    assert.equal(read(modPath,name),read(core,name));
+    assert.equal(read(standalonePath,name),read(core,name));
+  }
   const html=read(standalonePath,'index.html');
   assert.ok(html.includes('Cíyán v'+JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version));
   assert.match(html,/src="\.\/standalone-boot\.js"/);

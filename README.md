@@ -1,6 +1,8 @@
-# Cíyán (词言) v0.9.6
+# Cíyán (词言) v0.9.18
 
-## Shared PWA-Core (roadmap 7B, v0.9.17)
+## Shared PWA-Core (roadmap 7C, v0.9.18)
+
+Shared browser host capability, file delivery and standalone registration now use pinned Core primitives. App save policies, export formats and error/confirmation UI remain local. See `RELEASE_v0.9.18.md`.
 
 Initialize the pinned dependencies before building or testing in a development/CI checkout:
 
@@ -10,7 +12,7 @@ npm test
 python3 package.py
 ```
 
-The `shared/pwa-core` gitlink pins the independently versioned PWA-Core v0.1.0. The packager verifies the checkout against the gitlink and generates the standalone worker using the shared inventory builder. Existing cache namespaces, service-worker URL, manifest, storage and hosted/standalone behavior remain unchanged. Runtime assets are copied into their existing paths; the source adapters are not bundled. AppLauncher still owns the hosted worker. The existing coordinator recursively initializes dependencies and validates the combined release; no new dispatch secrets or automatic Core pin updates are required. Roll back by reverting the consumer migration and deploying a validated release, not by deleting browser storage.
+The `shared/pwa-core` gitlink pins the independently versioned PWA-Core v0.1.1. The packager verifies the checkout against the gitlink and generates the standalone worker using the shared inventory builder. Existing cache namespaces, service-worker URL, manifest, storage and hosted/standalone behavior remain unchanged. Runtime assets are copied into their existing paths; the source adapters are not bundled. AppLauncher still owns the hosted worker. The existing coordinator recursively initializes dependencies and validates the combined release; no new dispatch secrets or automatic Core pin updates are required. Roll back by reverting the consumer migration and deploying a validated release, not by deleting browser storage.
 
 Ciyan retains the standalone legacy cache prefix `app-launcher-shell-`, reader pack groups, cloud save-before-exit behavior and the host-owned updater. Its `reader-offline.js` runtime URL is unchanged. The backup version transition is an identity step; the backup format is unchanged.
 

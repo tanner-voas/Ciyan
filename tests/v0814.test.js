@@ -19,5 +19,6 @@ test('Ciyan delegates update and exit to host after saving reader/bookmarks',()=
  assert.match(app,/await reader\.flush\(\)/);
  assert.match(app,/await loadState\(\)/);
  assert.match(app,/await returnToLauncher\(\)/);
- assert.match(bridge,/__APP_LAUNCHER__/);
+ assert.match(bridge,/runHostedOrLocalUpdate/);
+ assert.match(bridge,/from '\.\/browser-host\.js'/);
 });
