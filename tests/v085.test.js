@@ -5,7 +5,7 @@ import {APP_VERSION} from '../backup-versions.js';
 import {defaultState,migrateState,speechPreferences} from '../storage.js';
 
 test('v0.8.5 bounds expensive Azure prefetch and cache values, including restored backups',()=>{
- assert.equal(APP_VERSION,'0.9.12');
+ assert.equal(APP_VERSION,'0.9.13');
  assert.equal(speechPreferences({}).speechPreload,2);
  assert.equal(speechPreferences({}).speechCacheLimit,8);
  assert.deepEqual(

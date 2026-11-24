@@ -13,7 +13,7 @@ function fakeDOM(){
  return {doc,host:{replaceChild(fragment){this.fragment=fragment;}}};
 }
 test('v0.6.9 has one master scaler and seven independently tuned default font sizes',()=>{
- assert.equal(APP_VERSION,'0.9.12');
+ assert.equal(APP_VERSION,'0.9.13');
  assert.equal(Object.keys(DEFAULT_FONT_SCALES).length,7);
  assert.equal(DEFAULT_FONT_SCALES.print,1);
  assert.ok(FONT_IDS.some(id=>id!=='print'&&DEFAULT_FONT_SCALES[id]!==1));
@@ -72,5 +72,5 @@ test('full backups preserve checked fonts plus both scaler layers; v0.6.8 restor
  delete older.state.settings.fontMasterScale;delete older.state.settings.fontScales;
  const migrated=parseBackup(older);assert.deepEqual(migrated.settings.enabledFonts,['print','mashan']);
  assert.equal(migrated.settings.fontMasterScale,1);assert.equal(migrated.settings.fontScales.mashan,DEFAULT_FONT_SCALES.mashan);
- assert.equal(prepareVersionedBackup(older).appVersion,'0.9.12');
+ assert.equal(prepareVersionedBackup(older).appVersion,'0.9.13');
 });

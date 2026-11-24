@@ -23,7 +23,7 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
   for(const shell of ['index.html','sw.js','manifest.webmanifest','standalone-boot.js','pwa-update.js'])
     assert.equal(fs.existsSync(new URL(shell,modPath)),false,`host shell leaked into module: ${shell}`);
   const html=read(standalonePath,'index.html');
-  assert.match(html,/Cíyán v0\.9\.10/);
+  assert.ok(html.includes('Cíyán v'+JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version));
   assert.match(html,/src="\.\/standalone-boot\.js"/);
   assert.doesNotMatch(html,/My Workspace|launcher\.js|apps-registry/);
   const manifest=JSON.parse(read(standalonePath,'manifest.webmanifest'));

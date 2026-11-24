@@ -553,8 +553,8 @@ function stopStudyAudio(){
 }
 let speechSession=null,unlockRequest=null;
 function unlocked(){return speechSession&&speechSession.envelope===state.speechVault?.data?speechSession:null;}
-const fieldPin=(name,label)=>`<label>${label}<input type="password" name="${name}" inputmode="numeric" pattern="[0-9]{4}" required maxlength="4" autocomplete="off"></label>`;
-const newPinFields=()=>fieldPin('pin','New four-digit PIN')+fieldPin('repeat','Confirm new PIN');
+const fieldPin=(name,label,pinOnly=false)=>`<label>${label}<input type="password" name="${name}" ${pinOnly?'inputmode="numeric" pattern="[0-9]{4}" maxlength="4"':'maxlength="256"'} required autocomplete="off" autocapitalize="none" spellcheck="false"></label>`;
+const newPinFields=()=>'<p>A long, unique passphrase (12–256 characters) is recommended for portable backups. A four-digit PIN is convenience protection only and can be guessed offline. Changing it does not re-encrypt older backups.</p>'+fieldPin('pin','New passphrase or four-digit PIN')+fieldPin('repeat','Confirm new credential');
 const confirmationField='<label>Type <strong>confirm</strong> to confirm<input name="confirmation" required autocomplete="off" spellcheck="false"></label>';
 // Use a native dialog above the caller so dismissing it preserves the current card or form.
 function askDialog(title,fields,submit,accept,{danger=false,reset=false,offerChange=false}={}){
@@ -564,7 +564,7 @@ function askDialog(title,fields,submit,accept,{danger=false,reset=false,offerCha
   dialog.setAttribute('aria-label',title);
   dialog.innerHTML=`<form class="stack"><h2>${esc(title)}</h2>${fields}<div role="alert" class="dialog-error"></div>
    <button type="submit" class="btn ${danger?'btn-danger':'btn-primary'}">${esc(submit)}</button>
-   ${offerChange?'<button type="submit" name="rotate" class="btn btn-secondary">Unlock and change PIN</button>':''}
+   ${offerChange?'<button type="submit" name="rotate" class="btn btn-secondary">Unlock and change protection</button>':''}
    ${reset?'<button type="button" class="btn btn-danger" name="resetSecrets">Reset secrets</button>':''}
    <button type="button" class="btn btn-secondary" name="dismiss">Cancel</button></form>`;
   const form=dialog.querySelector('form');
@@ -578,7 +578,7 @@ function askDialog(title,fields,submit,accept,{danger=false,reset=false,offerCha
    try{
     const data=new FormData(form);
     if(data.has('confirmation')&&!resetConfirmationValid(data.get('confirmation')))throw Error('Type confirm to continue.');
-    if(data.has('repeat')&&data.get('pin')!==data.get('repeat'))throw Error('The PINs must match.');
+    if(data.has('repeat')&&data.get('pin')!==data.get('repeat'))throw Error('The credentials must match.');
     finish(await accept(data,e.submitter?.name));
    }catch(error){dialog.querySelector('[role=alert]').textContent=error.message;}
    finally{busy=false;}
@@ -592,12 +592,12 @@ async function storeEnvelope(pin,key,settings={}){
  speechSession={pin,key,envelope:speechVault.data};clearSpeechCache();refreshSecret();
 }
 function resetSecrets(){
- return askDialog('Reset secrets','<p>Erase the saved speech key and replace its PIN.</p>'+confirmationField+newPinFields(),'Reset secrets',async data=>{
+ return askDialog('Reset secrets','<p>Erase the saved speech key and replace its protection.</p>'+confirmationField+newPinFields(),'Reset secrets',async data=>{
   await storeEnvelope(data.get('pin'),'');return true;
  },{danger:true});
 }
 function changePin(session){
- return askDialog('Change PIN',newPinFields(),'Change PIN',async data=>{
+ return askDialog('Change credential protection',newPinFields(),'Change protection',async data=>{
   await storeEnvelope(data.get('pin'),session.key);return true;
  });
 }
@@ -606,7 +606,7 @@ async function requireUnlock(offerChange=true){
  if(!state.speechVault)throw Error('Enter an Azure key in Speech settings.');
  if(!unlockRequest){
   const vault=state.speechVault;
-  unlockRequest=askDialog('Unlock saved secrets',fieldPin('pin','Four-digit PIN'),'Unlock',async (data,command)=>{
+  unlockRequest=askDialog('Unlock saved secrets',fieldPin('pin',vault.version===1?'Four-digit PIN':'Passphrase',vault.version===1),'Unlock',async (data,command)=>{
    const pin=data.get('pin'),opened=await unlockSpeech(vault,pin);
    if(vault.data!==state.speechVault?.data)throw Error('Saved credentials changed. Reopen this prompt.');
    if(opened.region&&!state.settings.azureRegion){
@@ -673,7 +673,7 @@ function speechSettings(){
  return `<div class="stack"><label>Mandarin voice<select id="speechVoice">${list.map(([id,label])=>`<option value="${esc(id)}" ${s.speechVoice===id?'selected':''}>${esc(label)}</option>`).join('')}</select></label>
  ${numeric('readerCpm','Characters per minute',10,1200)}${numeric('speechPitch','Pitch adjustment (%)',-50,50)}${numeric('speechPreload','Azure sentences ahead',0,12)}${numeric('speechCacheLimit','Maximum cached sentences',0,64)}${numeric('paragraphDelay','Paragraph pause (ms)',0,5000)}
  <details><summary>Azure credentials</summary><div class="stack"><label>Azure region<input id="speech-region" autocapitalize="none" autocomplete="off" placeholder="eastasia" value="${esc(s.azureRegion)}"></label>
- <div id="speech-key-area">${secretControls()}</div></div></details>
+ <div id="speech-key-area">${secretControls()}</div>${state.speechVault?`<p class="subtle">Protection: ${state.speechVault.version===2?'Passphrase':'Four-digit PIN (convenience only)'}</p><button class="btn btn-secondary" data-action="speech-change-pin">Change credential protection</button>`:''}</div></details>
  <button class="btn btn-primary" data-action="save-speech">Save speech settings</button>
  <button class="btn btn-secondary" data-action="speech-test">Test current voice</button>
  <p id="speech-cache-count">${speechCacheCount()} sentences cached</p><button class="btn btn-secondary" data-action="clear-speech">Clear audio cache</button></div>`;
@@ -706,7 +706,7 @@ async function saveSpeechDraft(){
   const key=$('#speech-key').value.trim();
   if(!key)throw Error('Use Reset secrets to erase the saved key.');
   if(state.speechVault){const session=await requireUnlock();await storeEnvelope(session.pin,key,settings);}
-  else if(!await askDialog('Set PIN',newPinFields(),'Save',async data=>{await storeEnvelope(data.get('pin'),key,settings);return true;}))return false;
+  else if(!await askDialog('Protect Azure credentials',newPinFields(),'Save',async data=>{await storeEnvelope(data.get('pin'),key,settings);return true;}))return false;
  }else if(!await change(d=>Object.assign(d.settings,settings),false))return false;
  setSpeechCacheLimit(settings.speechCacheLimit);return true;
 }
@@ -1412,7 +1412,7 @@ async function boot(){try{
   if(navigator.storage?.persist)navigator.storage.persist().catch(()=>{});
 }catch(error){if(await showRegistryRecovery(app,error)||await showCloudRecovery(app,error))return;app.innerHTML=`<div class="loading-state" style="text-align:center"><div class="brand-mark">!</div>
   <h2>Local storage unavailable</h2><p>${esc(error.message)}</p><p>Use Safari or the installed Home Screen app, not a private tab or file preview. No data was reset.</p>
-  <button class="btn btn-secondary" onclick="location.reload()">Try again</button></div>`;}}
+  <button class="btn btn-secondary" id="boot-retry">Try again</button></div>`;$('#boot-retry')?.addEventListener?.('click',()=>location.reload());}}
 boot();
 
 async function startFilteredSession(){
