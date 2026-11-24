@@ -1,3 +1,6 @@
+import {translate,clearTranslationCache} from './translation.js';
+import {AID_LABELS,aidLevel,aidSettings,updateAidDisplay} from './reader-assistance.js';
+import {editionId,editionState,writeEditionState,paragraphId,scopedPosition} from './reader-edition-state.js';
 import {offlineRequest} from './reader-offline.js';
 import {deriveEdition,learnerIndex} from './reader-editions.js';
 import {normalizeBoundaries} from './reader-boundaries.js';
@@ -20,12 +23,20 @@ export function chapterLabel(c){
 export function createReader({state,change,render,esc,modal,closeModal,toast,credentials,applyFonts}){
  let novel='',number=1,mode='review',scope='gate',revealed=false,shown='',busy=false,epoch=0,observer=null,timer=null,pending=null;
  let focusWord=null;
+ const paragraphTranslations=new Map();
+ const translationBadge='./icons/google-translate-attribution.png';
+ // TODO: Add Google's official attribution PNG and restore enforcement (true) before public use.
+ const enforceTranslationAttribution=false;
+ function showTranslation(target,text){
+  target.textContent=text;const link=document.createElement('a');link.href='https://translate.google.com/';link.target='_blank';link.rel='noopener noreferrer';const img=document.createElement('img');img.src=translationBadge;img.alt='Powered by Google Translate';img.addEventListener('error',()=>{link.textContent='Powered by Google Translate';},{once:true});link.append(img);target.append(link);target.hidden=false;
+ }
+ async function requireTranslationBadge(){const response=await fetch(translationBadge);if(!response.ok||!response.headers.get('Content-Type')?.startsWith('image/'))throw Error('Translation setup incomplete: install the official Google attribution badge.');}
  let pendingPlayback=null;
  let disposeGuide=null,pendingRate=null,writingPosition=null;
  let chromeVisible=true,requestedUpload=null,attemptedInitial='',quotaDialogShownFor='';
  const sessions=new Map(),chapterDueSnapshots=new Map();
  function evidence(){const key=`${novel}:${chapter()?.digest||number}`;if(!sessions.has(key))sessions.set(key,new Map());return sessions.get(key);}
- const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now(),evidence());
+ const analysis=(s,b,c)=>readerAnalysis(s,b,c,Date.now());
  const memory=new Map();
  function parseText(bytes){
   const raw=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));validateChapter(raw);
@@ -43,7 +54,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  const prefs=()=>chapter()?.editionPrefs||{};
  // A legacy graded=true preference means HSK6. Explicit HSK5 selection is
  // opt-in and survives switching away to Original, without resetting progress.
- const selectedEdition=p=>!p?.graded?'original':p.level==='hsk4'?'hsk4':p.level==='hsk5'?'hsk5':'graded';
+ const selectedEdition=editionId;
+ const currentEdition=()=>needsChapterUpdate()?'original':selectedEdition(prefs());
  const gradedEntry=()=>catalog.find(e=>e.novel===novel&&e.number===number&&e.gradedFile&&knownMasterDigest(e,chapter()?.digest));
  const needsChapterUpdate=()=>{const e=libraryChapter(novel,number),c=chapter();return !!(e?.source==='master'&&c&&e.digest!==c.digest&&knownMasterDigest(e,c.digest));};
  let selectionLoading=false;
@@ -136,7 +148,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    const b=d.reader[novel];
    // The projected edition can contain new vocabulary and grammar not in the original.
    if(base.graded){importChapterLexicon(d,base);b.items={...b.items,...base.items};}
-   b.chapters[number-1].editionPrefs=pref;
+   const c=b.chapters[number-1];writeEditionState(c,selectedEdition(c.editionPrefs),{});c.editionPrefs=pref;b.editionCurrent={...b.editionCurrent,[selectedEdition(pref)]:number};b.activeEdition=selectedEdition(pref);
   },false,!!base.graded)){render();return;}
   installView(base,result,digest);preview=null;closeModal?.();render();
  }
@@ -174,7 +186,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   if(selectionLoading||!libraryBook(id))return false;
   selectionLoading=true;
   try{
-  await flush();activeView=null;preview=null;novel=id;number=n;shown='';revealed=false;quotaDialogShownFor='';
+  const carry=id===novel&&n!==number&&chapter()?selectedEdition(prefs()):null;await flush();activeView=null;preview=null;novel=id;number=n;shown='';revealed=false;quotaDialogShownFor='';
   const entry=libraryChapter(id,n);
   if(!entry)return false;
   try{
@@ -195,7 +207,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     }
    }
    const ch=state().reader?.[id]?.chapters[n-1];
-   if(ch){await reopenView();await change(d=>{d.reader[id].current=n;},false);mode=reading?'read':'review';}
+   if(ch){if(carry&&hasGraded()&&carry!==selectedEdition(ch.editionPrefs)){await change(d=>{const target=d.reader[id].chapters[n-1];writeEditionState(target,selectedEdition(target.editionPrefs),{});target.editionPrefs={graded:carry!=='original',...(carry==='hsk4'||carry==='hsk5'?{level:carry}:{}),restored:[]};},false);}await reopenView();await change(d=>{const b=d.reader[id];b.current=n;b.activeEdition=selectedEdition(prefs());b.editionCurrent={...b.editionCurrent,[b.activeEdition]:n};},false);mode=reading?'read':'review';}
    else mode='review';
    chromeVisible=true;render();return !!ch&&!needsChapterUpdate();
   }catch(e){toast(e.message);mode='review';render();return false;}
@@ -261,7 +273,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   <div class="reader-study-head"><span>${a.earlier.includes(shown)?'Earlier review':'Chapter '+c.number} · ${esc(item.kind)}</span><span>Score ${a.score(shown).toFixed(2)}</span></div>
   <div class="reader-study-prompt reader-study-prompt--${size}" lang="zh-Hans">${esc(item.hanzi)}</div>
   ${revealed?`<div class="reader-study-answer"><div class="reader-study-pinyin">${esc(item.pinyin)}</div><p>${esc(item.english)}</p></div><div class="review-controls reader-study-grades">${['Again','Hard','Good','Easy'].map((x,i)=>{const due=a.group(shown)!==2;const next=readerGradePreview(state(),b,shown)[i];return `<button class="grade ${x.toLowerCase()}" data-action="reader-grade" data-key="${esc(shown)}" data-grade="${i+1}"><strong>${x}</strong><span>${due?intervalText(next.intervalMinutes*60):'Practice only'}</span><small>${due?'Score '+next.score.toFixed(2):'No score change'}</small></button>`;}).join('')}</div>`:`<div class="reader-study-reveal">${btn('reveal','Show answer')}</div>`}
-  <footer class="reader-study-footer"><span>${a.focus.has(shown)?'Priority focus · 6× weight':'Automatic vocabulary'} · ${['Due review','New','Practice'][a.group(shown)]}</span><span>${evidence().get(shown)?.goods||0}/3 Good · ${a.weak.length} left</span></footer>
+  <footer class="reader-study-footer"><span>${a.focus.has(shown)?'Priority focus · 6× weight':'Automatic vocabulary'} · ${['Due review','New','Practice'][a.group(shown)]}</span><span>${a.recent.get(shown)?.goods||0}/3 Good · ${a.weak.length} left</span></footer>
   </section>`;
  }
  // Notify only once per exhausted chapter/day, and only when there is no
@@ -280,14 +292,15 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  }
  function article(p,a){
   const later=libraryChapter(novel,p.number+1);
-  const complete=book()?.chapters[p.number-1]?.complete;
+  const dictionary=new Map([...state().archived?.cards||[],...state().cards].map(w=>[w.hanzi,w]));
+  const edition=currentEdition(),complete=editionState(book()?.chapters[p.number-1],edition).complete;
   return `<article data-reader-number="${p.number}"><h2>${esc(chapterLabel(p))}</h2>${p.paragraphs.map((row,index)=>{
    let offset=0,wordIndex=0;
-   return `<p data-pid="${esc(row.id)}" data-index="${index}">${row.tokens.map((t,i)=>{
+   return `<div class="reader-paragraph"><p data-pid="${esc(paragraphId(edition,row.id))}" data-source-pid="${esc(row.id)}" data-chinese="${esc(row.tokens.map(t=>typeof t==='string'?t:t[1]??p.items[t[0]].hanzi).join(''))}" data-index="${index}">${row.tokens.map((t,i)=>{
     if(typeof t==='string'){offset+=t.length;return esc(t);}
-    const k=t[0],surface=t[1]??p.items[k].hanzi,start=offset;offset+=surface.length;
-    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-source-offset="${row.anchors?.[i]??start}" data-change="${esc(projection()?.changed.get(row.id+':'+i)||'')}" data-offset="${start}" class="${p.items[k].kind==='term'?'reader-term':!a.qualifies(k)?'reader-weak':''}" aria-label="${esc(surface)}. Double-tap for dictionary">${esc(surface)}</span>`;
-   }).join('')}</p>`;
+    const k=t[0],item=p.items[k],definition=item.kind==='vocab'?(dictionary.get(item.hanzi)||item):item,surface=t[1]??item.hanzi,start=offset;offset+=surface.length;
+    return `<span role="button" tabindex="0" data-word-index="${wordIndex++}" data-key="${esc(k)}" data-source-offset="${row.anchors?.[i]??start}" data-change="${esc(projection()?.changed.get(row.id+':'+i)||'')}" data-offset="${start}" data-surface="${esc(surface)}" data-score="${a.score(k)}" class="reader-aid-word ${p.items[k].kind==='term'?'reader-term':''} ${a.struggle(k)?'reader-weak':''}" aria-label="${esc(surface)}. Double-tap for dictionary"><span class="reader-hanzi">${esc(surface)}</span><span class="reader-aid-pinyin">${esc(definition.pinyin)}</span><span class="reader-aid-english">${esc(definition.english.split(/[;；]/)[0])}</span></span>`;
+   }).join('')}</p><div class="reader-translation" data-reader-translation ${state().settings.readerParagraphTranslation?'':'hidden'}><button class="reader-translate-button" data-action="reader-translate" aria-label="Translate paragraph with Google">Translate with Google</button><div class="reader-translation-result" hidden role="status"></div></div></div>`;
   }).join('')}<div class="reader-end"><div class="reader-end-label">End of chapter ${p.number}</div><button class="reader-finish-next" data-action="reader-finish-next" data-number="${p.number}">${complete?'Completed · ':''}${later?'Mark complete & next chapter →':'Mark chapter complete ✓'}</button></div></article>`;
  }
  function isReading(){return mode==='read'&&!!chapter()&&memory.has(chapter().digest);}
@@ -298,9 +311,9 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  }
  function readerChrome(){
   const entries=libraryBook(novel)?.chapters||[];
-  return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(chapterTitle(c))}</span><small>Chapter ${c.number}${book()?.chapters[c.number-1]?.complete?' · Finished':''}</small></button>`).join('')}</div></aside>
+  return `${chapterNavigation()}<aside class="reader-toc-sheet" data-reader-toc hidden data-reader-ui><div class="reader-sheet-head"><strong>Table of contents</strong><button data-action="reader-toc" aria-label="Close contents">×</button></div><div class="reader-toc-list">${entries.map((c,i)=>`${c.volume&&(i===0||entries[i-1].volume!==c.volume)?`<h3 class="reader-volume-heading">${esc(volumeLabel(c.volume,c.volumeTitle))}</h3>`:''}<button data-action="reader-jump" data-number="${c.number}" ${c.number===number?'aria-current="page"':''}><span>${esc(chapterTitle(c))}</span><small>Chapter ${c.number}${editionState(book()?.chapters[c.number-1],currentEdition()).complete?' · Finished':''}</small></button>`).join('')}</div></aside>
   <div class="reader-dock" data-reader-ui><div class="reader-playback" data-guide-controls hidden><div class="reader-transport"><button data-guide="back" aria-label="Previous word">≪</button><button data-guide="play" aria-label="Play or pause guide">Play</button><button data-guide="forward" aria-label="Next word">≫</button><button data-guide="slower" aria-label="Slower">−</button><output></output><button data-guide="faster" aria-label="Faster">+</button></div><div class="reader-audio-line" data-audio-controls hidden><label class="reader-voice">Voice<select data-selected="${esc(state().settings.speechVoice||'')}" data-voice-select aria-label="Mandarin voice"></select></label><small data-speech-status role="status"></small></div></div><button class="reader-more-button" data-action="reader-options" aria-label="More reader settings" aria-expanded="false">···</button></div>
-  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div>${hasGraded()?`<div class="reader-choices">${editionSelector()}</div>`:''}${autoControl()}<button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label><label class="reader-option"><input type="checkbox" id="reader-highlight-in-book" ${state().settings.readerHighlight?'checked':''}> Underline weak words</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
+  <aside class="reader-settings-sheet" data-reader-settings-sheet hidden data-reader-ui><div class="reader-sheet-head"><strong>Reading options</strong><button data-action="reader-options" aria-label="Close reading options">×</button></div>${hasGraded()?`<div class="reader-choices">${editionSelector()}</div>`:''}${autoControl()}<button class="btn btn-secondary btn-full" data-guide="toggle" aria-pressed="false">Enable reading guide</button><label class="reader-option"><input type="checkbox" data-guide-audio> Read aloud in Mandarin</label>${aidSettings(state().settings,true)}<label class="reader-option"><input type="checkbox" id="reader-translate-in-book" ${state().settings.readerParagraphTranslation?'checked':''}> Paragraph translation</label><label class="reader-option"><input type="checkbox" id="reader-terms-in-book" ${state().settings.readerTermsHighlight!==false?'checked':''}> Mark novel-specific terms</label><div class="reader-cloud-config" data-cloud-config hidden><button class="btn btn-secondary" data-action="navigate" data-page="settings" data-section="Speech">Speech settings &amp; credentials</button></div><p class="subtle">Single tap: show/hide controls. Double-tap a word: dictionary.</p></aside>`;
  }
  function view(){
   selectBook();
@@ -318,7 +331,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const a=analysis(state(),b,c);
   const tabs=['review','study','read'].map(x=>btn(x,x[0].toUpperCase()+x.slice(1),`aria-pressed="${mode===x}"${x==='read'?` data-read-state="${a.ready?'ready':'caution'}"`:''}`)).join('');
   const p=projection()?.p||memory.get(c.digest);
-  const body=mode==='study'?study(b,c,a):mode==='read'?p?`<div id="reader-pages" class="${state().settings.readerHighlight?'show-weak':''} ${state().settings.readerTermsHighlight!==false?'show-terms':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
+  const body=mode==='study'?study(b,c,a):mode==='read'?p?`<div id="reader-pages" data-aid="${aidLevel(state().settings)}" class="${aidLevel(state().settings)>0?'show-weak':''} ${state().settings.readerTermsHighlight!==false?'show-terms':''} ${chromeVisible?'':'reader-ui-hidden'}">${readerChrome()}${article(p,a)}</div>`:`<div class="panel stack"><h2>Reload ${esc(chapterLabel(c))}</h2><p>Progress is retained but this chapter’s text is not available in the device cache.</p>${btn('open','Restore chapter')}</div>`:review(b,c,a);
   if(isReading())return body;
   return `${chooser}${autoControl()}<div class="reader-tabs">${tabs}</div>${body}`;
  }
@@ -349,7 +362,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   // Avoid a needless IndexedDB revision (and therefore cloud backup) if the
   // stored position and playback settings are already identical.
   const saved=pos&&state().reader?.[pos.novel]?.chapters?.[pos.number-1];
-  const samePosition=!pos||(saved?.digest===pos.digest&&JSON.stringify(saved.position)===JSON.stringify(pos.position));
+  const samePosition=!pos||(saved?.digest===pos.digest&&JSON.stringify(editionState(saved,pos.edition).position)===JSON.stringify(pos.position));
   const samePlayback=!playback||Object.entries(playback).every(([k,v])=>state().settings[k]===v);
   const sameRate=cpm===null||(state().settings.speechVoice===cpm.voice&&voiceTuning(state().settings,cpm.voice).readerCpm===cpm.rate);
   if(samePosition&&samePlayback&&sameRate){pending=null;pendingPlayback=null;pendingRate=null;return previousOk;}
@@ -361,7 +374,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    const s=d.settings,old=s.speechVoice||'',tuning={...voiceTuning(s,cpm.voice),readerCpm:cpm.rate};
    s.voiceProfiles={...s.voiceProfiles,[old]:voiceTuning(s,old),[cpm.voice]:tuning};
    Object.assign(s,tuning,{speechVoice:cpm.voice});
-  }if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){c.position=pos.position;b.current=pos.number;}},false);
+  }if(!pos)return;const b=d.reader?.[pos.novel],c=b?.chapters[pos.number-1];if(c?.digest===pos.digest){writeEditionState(c,pos.edition,{position:pos.position});b.current=pos.number;b.editionCurrent={...b.editionCurrent,[pos.edition]:pos.number};b.activeEdition=pos.edition;}},false);
   const ok=await writingPosition;writingPosition=null;
   if(!ok){pendingPlayback??=playback;if(pendingRate===null)pendingRate=cpm;if(!pending)pending=pos;timer=setTimeout(flush,400);}
   return ok===true;
@@ -395,8 +408,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    }
    return;
   }
+  for(const row of el.querySelectorAll('.reader-paragraph')){
+   const text=row.querySelector('[data-chinese]')?.dataset.chinese,prev=paragraphTranslations.get(text);
+   if(prev?.expanded&&prev.expires>Date.now()){const target=row.querySelector('.reader-translation-result');showTranslation(target,prev.text);row.querySelector('.reader-translate-button').textContent='Hide translation';}
+  }
   const c=chapter();
-  disposeGuide=mountReadingGuide(el,{position:pending?.digest===c.digest?pending.position:c.position,initialRate:pendingRate?.rate??state().settings.readerCpm??120,
+  disposeGuide=mountReadingGuide(el,{position:pending?.digest===c.digest&&pending.edition===currentEdition()?pending.position:scopedPosition(editionState(c,currentEdition()).position,currentEdition()),initialRate:pendingRate?.rate??state().settings.readerCpm??120,
    speechSettings:()=>state().settings,credentials:()=>credentials(),voiceChanged:voice=>{pendingRate={voice,rate:voiceTuning(state().settings,voice).readerCpm};return flush();},
    initialGuide:state().settings.readerGuideEnabled===true,initialAudio:state().settings.readerTtsEnabled===true,
    onPlaybackChange:(guide,audio)=>{pendingPlayback={readerGuideEnabled:guide,readerTtsEnabled:audio};void flush();},
@@ -405,8 +422,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    save:(n,position)=>{
     position.guided=el.classList.contains('guided');
     const ch=book()?.chapters[n-1];if(!ch)return;
-    if(!pending&&JSON.stringify(ch.position)===JSON.stringify(position))return;
-    const hadPending=!!pending;pending={novel,number:n,digest:ch.digest,position};
+    if(!pending&&JSON.stringify(editionState(ch,currentEdition()).position)===JSON.stringify(position))return;
+    const hadPending=!!pending;pending={novel,number:n,digest:ch.digest,edition:currentEdition(),position};
     if(!hadPending)timer=setTimeout(flush,350);
    }});
  }
@@ -442,6 +459,18 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   modal('Offline reader packs',`<p>Download a published edition for reading offline. Graded packs include the matching original archives. Shared files are kept when other complete packs need them. Imported chapter text and study progress are not changed.</p>${groups.map(g=>`<div class="panel stack"><strong>${esc(names[g.group]||g.group)}</strong><small>${g.complete?'Ready offline':`${g.count}/${g.total} files`} · ${mib(g.bytes)} / ${mib(g.totalBytes)}</small><button class="btn btn-secondary" data-action="reader-offline-download" data-group="${esc(g.group)}" ${g.complete?'disabled':''}>Download</button>${g.count?`<button class="btn btn-secondary" data-action="reader-offline-remove" data-group="${esc(g.group)}">Remove unused pack files</button>`:''}</div>`).join('')}<p class="subtle" aria-live="polite" data-offline-status></p>`);
  }
  async function action(name,el){
+  if(name==='translate'){
+   const row=el.closest('.reader-paragraph'),target=row?.querySelector('.reader-translation-result'),text=row?.querySelector('[data-chinese]')?.dataset.chinese;
+   if(!text||!target||el.disabled)return;
+   const prev=paragraphTranslations.get(text);
+   if(!target.hidden&&prev?.expanded){prev.expanded=false;target.hidden=true;el.textContent='Translate with Google';return;}
+   el.disabled=true;el.textContent='Translating…';target.hidden=true;
+   try{if(enforceTranslationAttribution)await requireTranslationBadge();const value=await translate(text);if(!row.isConnected||row.querySelector('[data-chinese]')?.dataset.chinese!==text)return;
+    paragraphTranslations.set(text,{text:value,expanded:true,expires:Date.now()+7*86400000});if(paragraphTranslations.size>2000)paragraphTranslations.delete(paragraphTranslations.keys().next().value);showTranslation(target,value);el.textContent='Hide translation';
+   }catch(error){if(row.isConnected){target.textContent=error.message;target.hidden=false;el.textContent='Retry translation';}}
+   finally{el.disabled=false;}return;
+  }
+  if(name==='clear-translation-cache'){await clearTranslationCache();paragraphTranslations.clear();toast('Translation cache cleared.');return;}
   if(busy)return;busy=true;
   try{
    if(name==='offline-packs'){await showOfflinePacks();return;}
@@ -508,7 +537,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     const item=b.items[el.dataset.key];if(!item)return;
     const match=state().cards.find(card=>card.hanzi===item.hanzi);
     const replacement=projection()?.result?.changes.get(el.dataset.change);
-    const source=el.closest?.('p')?.dataset.pid;
+    const source=el.closest?.('p')?.dataset.sourcePid;
     const raw=source&&memory.get(c.digest),row=raw?.paragraphs?.find(r=>r.id===source);
     const sourceText=row?.tokens.map(t=>typeof t==='string'?t:t[1]??raw.items[t[0]].hanzi).join('');
     modal(item.hanzi,`<div class="reader-definition"><p class="review-pinyin">${esc(item.pinyin)}</p><p>${esc(item.english)}</p><small>${esc(item.kind)}</small>${replacement?`<p>Before Auto · ${esc(replacement.src)} → ${esc(replacement.targets.join(''))} · ${replacement.similarity??'reviewed phrase'}</p>${btn('restore-word','Restore this occurrence','data-loc="'+esc(el.dataset.change)+'"')}`:''}${sourceText&&projection()?`<details><summary>Original paragraph</summary><p>${esc(sourceText)}</p></details>`:''}<div class="reader-definition-actions">${focusWord?btn('focus',state().settings.readerTtsEnabled?'Read from here':'Guide from here'):''}<button class="btn btn-secondary" data-action="say-text" data-text="${esc(item.hanzi)}">Listen</button>${match?`<button class="btn btn-secondary" data-action="card-detail" data-id="${esc(match.id)}">View full entry</button>`:''}</div></div>`);return;
@@ -517,7 +546,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    if(name==='exit'){mode='review';chromeVisible=true;render();globalThis.scrollTo?.(0,0);return;}
    if(name==='finish-next'||name==='finish'){
     const index=Number(el.dataset.number)-1;
-    if(await change(d=>{d.reader[novel].chapters[index].complete=true;},false))toast('Chapter marked complete.');
+    if(await change(d=>{writeEditionState(d.reader[novel].chapters[index],currentEdition(),{complete:true});},false))toast('Chapter marked complete.');
     if(name==='finish-next'){
      const later=libraryBook(novel)?.chapters.find(x=>x.number===index+2);
      if(later){await choose(novel,later.number,{reading:true});return;}
@@ -550,6 +579,10 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
      const ok=await change(d=>{const saved=d.reader[novel];if(!saved.items[shown])saved.items={...saved.items,[shown]:learningItem};applied=gradeReader(d,saved,shown,grade,now);},false,contentChange);
      if(!ok||!applied){toast('Daily new-vocabulary limit reached, or review is not due yet.');shown='';revealed=false;render();notifyQuotaExhaustion();return;}
     }
+    if(early){
+     const key=shown,at=new Date(now).toISOString();
+     if(!await change(d=>{const saved=d.reader[novel];if(!saved.items[key])saved.items={...saved.items,[key]:b.items[key]};saved.practiceHistory=[...(saved.practiceHistory||[]).filter(h=>Date.parse(h.at)>now-86400000),{key,grade,at,id:crypto.randomUUID()}];},false))return;
+    }
     recordPractice(session,shown,grade);
     shown='';revealed=false;
    }else if(name==='reveal'){revealed=true;}
@@ -558,11 +591,23 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    notifyQuotaExhaustion();
   }catch(e){toast(e.message);if(name==='edition')render();}finally{busy=false;}
  }
+ document.addEventListener('input',e=>{
+  const key=e.target.dataset?.readerAid;if(!key)return;
+  const settings={...state().settings,[key]:Number(e.target.value)};
+  const output=e.target.parentElement.querySelector('output');if(output)output.textContent=key==='readerAidLevel'?AID_LABELS[aidLevel(settings)]:Number(e.target.value).toFixed(1);
+  const root=document.querySelector('#reader-pages');if(!root)return;
+  const anchor=root.querySelector('.reader-current')||[...root.querySelectorAll('[data-pid]')].find(r=>r.getBoundingClientRect().bottom>0);
+  const before=anchor?.getBoundingClientRect().top;updateAidDisplay(root,settings);
+  if(anchor&&Number.isFinite(before))globalThis.scrollBy?.(0,anchor.getBoundingClientRect().top-before);
+ });
  document.addEventListener('change',async e=>{
-  if(e.target.id==='reader-highlight-in-book'){
-   const checked=e.target.checked;await flush();
-   if(await change(d=>{d.settings.readerHighlight=checked;},false))document.querySelector('#reader-pages')?.classList.toggle('show-weak',checked);
-   else e.target.checked=state().settings.readerHighlight;
+  if(e.target.dataset?.readerAid){
+   const key=e.target.dataset.readerAid,value=Number(e.target.value);await flush();
+   await change(d=>{d.settings[key]=value;},false);updateAidDisplay(document.querySelector('#reader-pages'),state().settings);return;
+  }
+  if(e.target.id==='reader-translate-in-book'){
+   const checked=e.target.checked;await change(d=>{d.settings.readerParagraphTranslation=checked;},false);
+   for(const el of document.querySelectorAll('.reader-translation'))el.hidden=!state().settings.readerParagraphTranslation;return;
   }
   if(e.target.id==='reader-terms-in-book'){
    const checked=e.target.checked;await flush();
@@ -584,5 +629,5 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  });
  globalThis.addEventListener?.('pagehide',()=>void flush());
  document.addEventListener('visibilitychange',()=>{if(document.hidden)void flush();});
- return {view,isReading,mount,unmount,action,flush,reset(){unmount();activeView=null;preview=null;gradedAssets.clear();pendingPlayback=null;pendingRate=null;sessions.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';quotaDialogShownFor='';}};
+ return {view,isReading,mount,unmount,action,flush,reset(){unmount();activeView=null;preview=null;gradedAssets.clear();pendingPlayback=null;pendingRate=null;sessions.clear();paragraphTranslations.clear();clearTimeout(timer);pending=null;memory.clear();novel='';number=1;shown='';mode='review';attemptedInitial='';quotaDialogShownFor='';}};
 }

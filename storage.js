@@ -1,3 +1,4 @@
+import {aidLevel,struggleThreshold} from './reader-assistance.js';
 import {validVault} from './speech-vault.js';
 import {chapterFocus,validateReader,resetReaderProgress} from './reader-core.js';
 import {validateReaderCustomIndex} from './reader-library.js';
@@ -50,7 +51,7 @@ export function speechPreferences(s={}){
 export function defaultState(){return ensureStudy({
   appVersion:APP_VERSION,schemaVersion:2,cards:[...initialCards(),...extraWords()].map(c=>({...c,tags:canonicalHSKTags(c.hanzi,c.tags)})),grammar:initialGrammar(),schedules:{},history:[],sessions:[],activeSession:null,
   grammarHistory:[],grammarSessions:[],activeGrammarSession:null,
-  reader:{},readerCustomIndex:{},settings:{...speechPreferences(),readerGuideEnabled:false,readerTtsEnabled:false,cloudIncludeCustomText:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerHighlight:false,readerTermsHighlight:true,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
+  reader:{},readerCustomIndex:{},settings:{...speechPreferences(),readerGuideEnabled:false,readerTtsEnabled:false,cloudIncludeCustomText:false,continuous:true,retryDefaultsVersion:"v0.5",modeSeconds:{},readerAidLevel:0,readerStruggleThreshold:1.5,readerParagraphTranslation:false,readerHighlight:false,readerTermsHighlight:true,readerCpm:120,sessionSize:12,newWordsPerDay:null,desiredRetention:.90,showPinyinPrompt:false,toneTest:false,enforceTones:false,enabledFonts:['print'],...normalizeTypographySettings({enabledFonts:['print']})},
   revision:0,backedUpRevision:0,lastBackupAt:null,createdAt:new Date().toISOString()
 });}
 // v0.6.4: content and progress live in the SAME IndexedDB store but in separate
@@ -62,7 +63,7 @@ export function cloneProgressState(state,includeContent=false){
  const {reader={},cards,grammar,history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions,...progress}=state;
  const copy=structuredClone(progress);
  // Definitions and membership arrays are immutable after import. A review changes only progress.
- copy.reader=Object.fromEntries(Object.entries(reader).map(([id,b])=>[id,{...b,chapters:b.chapters.map(c=>({...c})),progress:{...b.progress},history:b.history.slice()}]));
+ copy.reader=Object.fromEntries(Object.entries(reader).map(([id,b])=>[id,{...b,chapters:b.chapters.map(c=>({...c,...(c.editionStates?{editionStates:structuredClone(c.editionStates)}:{})})),progress:{...b.progress},history:b.history.slice()}]));
  // Existing log entries are immutable. Shallow-copy the arrays so push, undo,
  // truncation and deletion cannot mutate the previous committed state.
  for(const [key,array] of Object.entries({history,grammarHistory,skillHistory,sessions,grammarSessions,mixedSessions}))
@@ -224,6 +225,7 @@ export function migrateState(input){
     });
     const same=normalizedCards.every((c,i)=>c===input.cards[i]);
     const migratedSettings={...input.settings,tagWeights:{...input.settings?.tagWeights}};
+    migratedSettings.readerAidLevel=aidLevel(input.settings);migratedSettings.readerStruggleThreshold=struggleThreshold(input.settings);
     delete migratedSettings.readerGate; // Obsolete authored/auto switch.
     upgradeTskDefaults(migratedSettings,input.appVersion);
     // Bound restored cloud prefetch/cache settings as well as newly edited ones.
@@ -275,7 +277,7 @@ export function parseBackup(data){
   const grammarHistory=source.grammarHistory.filter(h=>h&&grammarIds.has(h.grammarId)&&validDate(h.at)).slice(-500000);
   const grammarSessions=source.grammarSessions.filter(s=>s&&validDate(s.endedAt)).slice(-50000);
   const s=source.settings||{};
-  const settings={...speechPreferences(s),readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,cloudIncludeCustomText:s.cloudIncludeCustomText===true,readerHighlight:s.readerHighlight===true,readerTermsHighlight:s.readerTermsHighlight!==false,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
+  const settings={...speechPreferences(s),readerGuideEnabled:s.readerGuideEnabled===true,readerTtsEnabled:s.readerTtsEnabled===true,cloudIncludeCustomText:s.cloudIncludeCustomText===true,readerAidLevel:aidLevel(s),readerStruggleThreshold:struggleThreshold(s),readerParagraphTranslation:s.readerParagraphTranslation===true,readerHighlight:s.readerHighlight===true,readerTermsHighlight:s.readerTermsHighlight!==false,readerCpm:Number.isInteger(s.readerCpm)&&s.readerCpm>=10&&s.readerCpm<=1200?s.readerCpm:120,sessionSize:Math.max(1,Math.min(500,Number(s.sessionSize)||12)),
     tagWeights:validatedTagWeights(s.tagWeights),
     newWordsPerDay:s.newWordsPerDay===null||s.newWordsPerDay===undefined||s.newWordsPerDay===''?null:Math.max(0,Math.min(20000,Math.floor(Number(s.newWordsPerDay)||0))),
     desiredRetention:Math.max(.7,Math.min(.97,Number(s.desiredRetention)||.9)),

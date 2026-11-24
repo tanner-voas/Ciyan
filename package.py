@@ -22,7 +22,7 @@ STANDALONE_SHELL = (
 )
 STATIC_FILES = (
     "styles.css", "app-host-bridge.js", "browser-host.js", "browser-files.js",
-    "app.js", "reader-core.js", "reader-boundaries.js", "reader-ui.js", "reader-editions.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
+    "app.js", "reader-core.js", "reader-assistance.js", "reader-edition-state.js", "reader-boundaries.js", "reader-ui.js", "reader-editions.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js", "backup-indicator.js", "cloud-profiles.js", "profile-data.js", "profile-menu-actions.js",
     "study-engine.js", "study-progress.js",
     "tag-weights.js",
@@ -95,7 +95,7 @@ def main() -> None:
         shutil.copy2(ROOT / name, TARGET / name)
     # Keep the legacy reader-offline.js URL, with no extra runtime request.
     shutil.copy2(CORE / "src/offline-request.js", TARGET / "reader-offline.js")
-    for name in ("browser-host.js", "browser-files.js"):
+    for name in ("browser-host.js", "browser-files.js", "translation.js"):
         shutil.copy2(CORE / "src" / name, TARGET / name)
     for name in STATIC_DIRS:
         shutil.copytree(ROOT / name, TARGET / name,
@@ -121,7 +121,7 @@ def main() -> None:
     package_version = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
     cache, worker, inventory = generate_worker(
         assets, cache_prefix='ciyan-shell-', version=package_version,
-        legacy_prefixes=('app-launcher-shell-',), excluded_path_prefixes=('/_profiles/',))
+        legacy_prefixes=('app-launcher-shell-',), excluded_path_prefixes=('/_profiles/','/_translation/'))
     (STANDALONE / "sw.js").write_text(worker, encoding="utf-8")
     (STANDALONE / 'offline-inventory.json').write_text(inventory+'\n', encoding='utf-8')
     print('Required offline bytes:', sum(a['size'] for a in assets if 'shell' in a['groups']))

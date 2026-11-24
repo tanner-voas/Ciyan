@@ -1,3 +1,4 @@
+import {isStruggle} from './reader-assistance.js';
 import {defaultTagWeight} from './tag-weights.js';
 import {hskTagFor} from './hsk-tag-map.js';
 import {newVocabRemaining} from './study-engine.js';
@@ -164,7 +165,9 @@ export function acceptChapter(s,p,digest){
   const index=Math.min(position.index||0,p.paragraphs.length-1);
   position={id:p.paragraphs[index].id,index,offset:0};
  }
- b.chapters[p.number-1]={...(p.boundaries?{boundaries:p.boundaries}:{}),number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null,...(editionPrefs?{editionPrefs}:{})};
+ let editionStates=old?.editionStates;
+ if(editionStates&&old.digest!==digest){editionStates=structuredClone(editionStates);for(const [id,e] of Object.entries(editionStates)){if(!e.position)continue;const index=Math.min(e.position.index||0,p.paragraphs.length-1);const row=p.paragraphs[index];e.position={...e.position,id:id+':'+row.id,index,offset:0,sourceOffset:0,wordIndex:0};}}
+ b.chapters[p.number-1]={...(p.boundaries?{boundaries:p.boundaries}:{}),number:p.number,title:p.title,revision:p.revision,digest,focus:chapterFocus(p,p.items),all,unlocked:old?.unlocked||false,complete:old?.complete||false,position:position||null,...(editionPrefs?{editionPrefs}:{}),...(editionStates?{editionStates}:{})};
  b.current=p.number;s.reader[p.novel]=b;
 }
 export function validateReader(books={}){
@@ -181,12 +184,20 @@ export function validateReader(books={}){
    delete c.authored;
    checkIds(c.focus??[],b.items);
    check((c.focus??[]).every(id=>['term','grammar'].includes(b.items[id].kind)),'Invalid reader focus');
+   if(c.editionStates!==undefined){
+    check(object(c.editionStates),'Invalid edition state');
+    for(const [edition,e] of Object.entries(c.editionStates)){
+     check(['original','graded','hsk5','hsk4'].includes(edition)&&object(e)&&typeof e.complete==='boolean'&&typeof e.unlocked==='boolean','Invalid edition progress');
+     if(e.position)check(safeKey(e.position.id)&&Number.isInteger(e.position.index)&&e.position.index>=0&&Number.isInteger(e.position.offset)&&e.position.offset>=0,'Invalid edition bookmark');
+    }
+   }
    if(c.position)check(safeKey(c.position.id)&&Number.isInteger(c.position.index)&&c.position.index>=0&&Number.isInteger(c.position.offset)&&c.position.offset>=0&&
     (c.position.wordIndex===undefined||Number.isSafeInteger(c.position.wordIndex)&&c.position.wordIndex>=0)&&
     (c.position.guided===undefined||typeof c.position.guided==='boolean'),'Invalid bookmark');
   }
   for(const [key,r] of Object.entries(b.progress))check(Object.hasOwn(b.items,key)&&Number.isFinite(r.score)&&Number.isFinite(Date.parse(r.dueAt)),'Invalid reader schedule');
-  for(const h of b.history)check(Object.hasOwn(b.items,h.key)&&integer(h.grade)&&h.grade<=4&&Number.isFinite(Date.parse(h.at)),'Invalid reader review');
+  check(b.practiceHistory===undefined||Array.isArray(b.practiceHistory),'Invalid reader practice history');
+  for(const h of [...b.history,...(b.practiceHistory||[])])check(Object.hasOwn(b.items,h.key)&&integer(h.grade)&&h.grade<=4&&Number.isFinite(Date.parse(h.at)),'Invalid reader review');
  }
  return books;
 }
@@ -204,7 +215,13 @@ export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const keys=[...new Set([...c.all,...focused])];
  // No inferred HSK proficiency: only actual learning records or this session's
  // provisional chapter evidence can make an item ready.
- const qualifies=k=>score(k)>=1.5||evidence.get(k)?.goods>=3||evidence.get(k)?.easy;
+ const recent=new Map(),seenReviews=new Set();
+ for(const h of [...b.history,...(b.practiceHistory||[])]){
+  const at=Date.parse(h.at);if(at<=now-86400000||at>now||h.id&&seenReviews.has(h.id))continue;
+  if(h.id)seenReviews.add(h.id);
+  recordPractice(recent,h.key,h.grade);
+ }
+ const qualifies=k=>Boolean(!isStruggle(score(k),s.settings)||recent.get(k)?.goods>=3||recent.get(k)?.easy||evidence.get(k)?.goods>=3||evidence.get(k)?.easy);
  const due=k=>schedule(k)&&Date.parse(schedule(k).dueAt)<=now;
  const group=k=>due(k)?0:schedule(k)?2:1;
  const order=(a,b)=>group(a)-group(b)||(evidence.get(a)?.turn||0)-(evidence.get(b)?.turn||0)||
@@ -220,7 +237,7 @@ export function readerAnalysis(s,b,c,now=Date.now(),evidence=new Map()){
  const queue=[...new Set([...earlier,...keys.filter(k=>!quotaBlocked(k)&&(due(k)||!qualifies(k)) )])].sort(order);
  const blocked=keys.filter(k=>quotaBlocked(k)&&!qualifies(k));
  const focus=new Set([...focused,...b.chapters.slice(0,c.number-1).flatMap(ch=>chapterFocus(ch,b.items))]);
- return {weak,ready:weak.length===0,keys,earlier,queue,blocked,score,schedule,group,qualifies,focus};
+ return {recent,struggle:k=>isStruggle(score(k),s.settings),weak,ready:weak.length===0,keys,earlier,queue,blocked,score,schedule,group,qualifies,focus};
 }
 // Chapter-specific terms and grammar receive 6x selection weight. Due cards
 // still receive a modest boost, without permanently starving other vocabulary.
@@ -265,7 +282,7 @@ export function gradeReader(s,b,key,grade,now=Date.now()){
   b.progress[key]=after;
   s.grammarHistory.push({id:crypto.randomUUID(),grammarId:grammar.id,mode:'grammar',grade,score:after.score,at,nextDueAt:after.dueAt,correct:grade>=3,source:'Reader'});
  }else b.progress[key]=scheduleReview(previous,grade,now,s.settings);
- b.history.push({key,grade,at});
+ b.history.push({key,grade,at,id:crypto.randomUUID()});
  return true;
 }
 export function readerGradePreview(s,b,key,now=Date.now()){
@@ -277,7 +294,7 @@ export function readerGradePreview(s,b,key,now=Date.now()){
 }
 export function resetReaderProgress(s){
  for(const b of Object.values(s.reader||{})){
-  b.progress={};b.history=[];b.current=1;
-  for(const c of b.chapters){c.unlocked=false;c.complete=false;c.position=null;}
+  b.progress={};b.history=[];b.practiceHistory=[];b.current=1;delete b.editionCurrent;delete b.activeEdition;
+  for(const c of b.chapters){c.unlocked=false;c.complete=false;c.position=null;delete c.editionStates;}
  }
 }

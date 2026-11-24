@@ -148,7 +148,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
    }
    const speak=()=>narrator.speak(current,voices.find(v=>v.voiceURI===voiceSelect.value)||systemFallback||voices.find(v=>v.localService)||voices[0],rate,voiceTuning(speechSettings(),voiceSelect.value).speechPitch);
    if(deadline>performance.now())tick=setTimeout(speak,deadline-performance.now());else speak();return;}
-  if(playing&&current)tick=setTimeout(()=>void step(1,true),60000*[...current.textContent].length/rate);
+  if(playing&&current)tick=setTimeout(()=>void step(1,true),60000*[...(current.dataset.surface??current.textContent)].length/rate);
  }
  async function step(direction,natural=false){
   const ended=performance.now();
@@ -204,7 +204,7 @@ export function mountReadingGuide(pages,{position,save,define,rateChanged,initia
    rate=Math.max(10,Math.min(1200,rate+(action==='slower'?-10:10)));
    rateLabel.textContent=rate+' CPM';rateChanged(rate,voiceSelect.value||'');schedule();return;
   }
-  if(e.target.closest?.('[data-reader-ui],button,input,select,label,a'))return;
+  if(e.target.closest?.('[data-reader-ui],[data-reader-translation],button,input,select,label,a'))return;
   const word=e.target.closest?.('[data-word-index]');
   if(word){
    const now=Date.now();

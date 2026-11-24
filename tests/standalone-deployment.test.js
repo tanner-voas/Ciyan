@@ -27,7 +27,7 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
   assert.equal(read(standalonePath,'pwa-update.js'),read(core,'pwa-update.js'));
   assert.equal(read(modPath,'reader-offline.js'),read(core,'offline-request.js'));
   assert.equal(read(standalonePath,'reader-offline.js'),read(core,'offline-request.js'));
-  for(const name of ['browser-host.js','browser-files.js']){
+  for(const name of ['browser-host.js','browser-files.js','translation.js']){
     assert.equal(read(modPath,name),read(core,name));
     assert.equal(read(standalonePath,name),read(core,name));
   }
@@ -86,7 +86,7 @@ test('offline standalone cache refreshes on build changes without deleting reade
   assert.match(code,/"\.\/pwa-update\.js"/);
   assert.match(code,/new Response\(response\.body/);
   assert.match(code,/const CACHE_PREFIXES=\["ciyan-shell-","app-launcher-shell-"\]/);
-  assert.match(code,/const EXCLUDED_PATH_PREFIXES=\["\/_profiles\/"\]/);
+  assert.match(code,/const EXCLUDED_PATH_PREFIXES=\["\/_profiles\/","\/_translation\/"\]/);
   assert.match(code,/CACHE_PREFIXES.some\(prefix=>k.startsWith\(prefix\)\)/);
   assert.doesNotMatch(code,/k\.startsWith\('ciyan-reader-text/);
   assert.doesNotMatch(code,/k\.startsWith\('ciyan-user-fonts/);

@@ -5,6 +5,6 @@
   "compatibility_date": "2026-11-19",
   "workers_dev": true,
   "main": "./worker.js",
-  "services": [{ "binding": "PROFILES", "service": "pwa-profiles-api" }],
+  "services": [{ "binding": "PROFILES", "service": "pwa-profiles-api" }, { "binding": "COMMON", "service": "pwa-core-api" }],
   "assets": { "directory": "./dist/standalone", "binding": "ASSETS" }
 }

@@ -29,11 +29,12 @@ export function mandarinVoices(voices){
 
 export function speechPassage(word){
  const row=word.closest('[data-pid]'),start=+word.dataset.offset;
- const rest=row.textContent.slice(start);
+ const text=row.dataset?.chinese??row.textContent;
+ const rest=text.slice(start);
  const stop=rest.match(/[。！？!?……]+[”’」』）]*/u);
  const end=start+(stop?stop.index+stop[0].length:rest.length);
  const words=Array.from(row.querySelectorAll('[data-word-index]')).filter(w=>+w.dataset.offset>=start&&+w.dataset.offset<end);
- return {text:row.textContent.slice(start,end),start,words};
+ return {text:text.slice(start,end),start,words};
 }
 
 const SILENT_WAV='UklGRmQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YUAAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA';

@@ -73,7 +73,7 @@ test('reader screen offers automatic chapter study and preserves the imported na
  globalThis.document={addEventListener:(t,fn)=>listeners[t]=fn,createElement:()=>({files:[file],click(){done=this.onchange();}})};
  globalThis.location={href:'https://example.test/app/'};
  globalThis.caches={open:async()=>({put:async(k,v)=>cached.set(k,v),match:async k=>cached.get(k)?.clone()})};
- const adapter={state:()=>s,change:async(fn)=>{try{fn(s);return true;}catch(e){messages.push(e.message);return false;}},esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;'),modal:(title)=>definition=title,toast:m=>messages.push(m),applyFonts:()=>{},render:()=>html=ui.view()};
+ const adapter={state:()=>s,change:async(fn)=>{try{fn(s);return true;}catch(e){messages.push(e.message);return false;}},esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),modal:(title)=>definition=title,toast:m=>messages.push(m),applyFonts:()=>{},render:()=>html=ui.view()};
  const ui=createReader(adapter);const action=(n,data={})=>ui.action(n,{dataset:data});
  async function upload(n){file=new Blob([fs.readFileSync(new URL('../reader/panlong/chapters/00'+n+'.json',import.meta.url))]);await action('import');await done;}
  await upload(2);assert.match(messages.at(-1),/chapter 1/);
@@ -87,7 +87,7 @@ test('reader screen offers automatic chapter study and preserves the imported na
  await action('grade',{key,grade:'4'});assert.equal(s.reader.panlong.history.length,1);
  const b=s.reader.panlong;b.chapters[0].unlocked=true;
  await action('read-anyway');assert.match(html,/id="reader-pages"/);
- const text=[...html.matchAll(/<p data-pid="[^"]+" data-index="\d+">(.*?)<\/p>/gs)].map(x=>x[1].replace(/<[^>]+>/g,'').replaceAll('&amp;','&'));
+ const text=[...html.matchAll(/<p data-pid="[^"]+"[^>]* data-chinese="([^"]*)" data-index="\d+">/gs)].map(x=>x[1].replaceAll('&quot;','"').replaceAll('&lt;','<').replaceAll('&amp;','&'));
  const ref=fs.readFileSync(new URL('../reader/panlong/reference/001.txt',import.meta.url),'utf8');
  assert.equal([b.chapters[0].title,...text].join('\n\n'),ref);
  const originalDigest=b.chapters[0].digest;

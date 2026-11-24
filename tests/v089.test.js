@@ -108,7 +108,7 @@ test('v089: Reader data never imports a generic grammar description as an unanno
 
 test('v089: Reading is available at 0% with a warning, dictionary details are full, and term highlighting is separate',async()=>{
  const {s,p,bytes,digest}=loaded();
- s.settings.readerHighlight=true;
+ s.settings.readerAidLevel=1;
  let latest='',content='';
  globalThis.location={href:'https://ciyan-local.test/'};
  globalThis.caches={open:async()=>({match:async()=>new Response(bytes),put:async()=>{}})};
@@ -133,7 +133,7 @@ test('v089: Reading is available at 0% with a warning, dictionary details are fu
  assert.match(reading,/show-terms/);
  assert.match(reading,/reader-term/);
  assert.match(reading,/reader-weak/);
- assert.doesNotMatch(reading,/reader-weak reader-term/);
+ assert.match(reading,/reader-term reader-weak/);
  assert.match(reading,/reader-terms-in-book/);
 });
 
