@@ -1,0 +1,5 @@
+# Ciyan v0.9.20 — edition resumption and translation diagnostics
+
+Each edition resumes its own last-read chapter (or its first available chapter if unread), in addition to its independent paragraph bookmark and completion. Merely browsing a chapter for study does not change its last-read cursor. Existing v0.9.19 edition cursors are retained. Shared vocabulary, novel term learning and reader word spacing are unchanged.
+
+PWA-Core v0.1.3 fixes the versioned Google Drive session endpoint. The Google Translation key stays only in `pwa-core-api`. Reader translation errors now expose a fixed error code, HTTP status, upstream status where available, and a request ID. Settings > Reader and the hidden reader menu offer Export translation diagnostics (device-local, up to 100 content-free events); Settings also offers Clear translation diagnostics. This is separate from Google Drive's telemetry export. Cloudflare Worker Observability logs correlate request IDs. No text, translations, user identities, tokens or keys are logged in application diagnostics. Attribution remains temporarily unenforced for private testing; restore the official graphic before public use.

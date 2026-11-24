@@ -149,3 +149,28 @@ test('global reading speed survives verified full backup and defaults to 120 in 
  const old=JSON.parse(prepareVerifiedBackup(s).json);delete old.state.settings.readerCpm;
  assert.equal(parseBackup(old).settings.readerCpm,120);
 });
+
+test('edition switches resume distinct last-read chapters, survive restore, and do not advance when browsing study',async t=>{
+ const {createReader}=await import('../reader-ui.js');
+ const {editionState,writeEditionState}=await import('../reader-edition-state.js');
+ let s=defaultState(),html='';const cached=new Map(),messages=[];
+ const old={document:globalThis.document,location:globalThis.location,caches:globalThis.caches};t.after(()=>Object.assign(globalThis,old));
+ globalThis.document={addEventListener(){}};globalThis.location={href:'https://example.test/app/'};
+ globalThis.caches={open:async()=>({put:async(k,v)=>cached.set(k,v),match:async k=>cached.get(k)?.clone()})};
+ for(const [i,[p,digest]] of chapters.entries()){
+  acceptChapter(s,p,digest);const bytes=fs.readFileSync(new URL('../reader/panlong/chapters/00'+(i+1)+'.json',import.meta.url));
+  cached.set(new URL('./reader-content/'+digest,location.href).href,new Response(bytes));
+ }
+ const b=s.reader.panlong;b.current=1;b.activeEdition='original';b.editionCurrent={original:1};
+ let ui;const adapter={state:()=>s,change:async fn=>{fn(s);return true;},esc:v=>String(v).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;'),modal(){},toast:m=>messages.push(m),render:()=>html=ui.view()};
+ ui=createReader(adapter);ui.view();const action=(n,data={})=>ui.action(n,{dataset:data});
+ await action('open');await action('read-anyway');await action('jump',{number:'3'});assert.equal(b.editionCurrent.original,3);
+ writeEditionState(b.chapters[2],'original',{position:{id:'original:p1',index:0,offset:1},complete:true});
+ await action('edition',{edition:'hsk5'});assert.equal(b.current,1);assert.equal(b.activeEdition,'hsk5');assert.equal(b.editionCurrent.original,3);assert.match(html,/CH0001/);
+ await action('jump',{number:'2'});assert.equal(b.editionCurrent.hsk5,2);writeEditionState(b.chapters[1],'hsk5',{position:{id:'hsk5:p1',index:0,offset:2}});
+ await action('edition',{edition:'original'});assert.equal(b.current,3);assert.match(html,/CH0003/);assert.equal(editionState(b.chapters[2],'original').position.offset,1);assert.equal(editionState(b.chapters[2],'hsk5').complete,false);
+ await action('edition',{edition:'hsk5'});assert.equal(b.current,2);assert.match(html,/CH0002/);assert.equal(editionState(b.chapters[1],'hsk5').position.offset,2);
+ await action('exit');await action('edition',{edition:'original'});assert.equal(b.current,3);assert.equal(b.editionCurrent.hsk5,2);
+ s=restored(s);ui.reset();html=ui.view();assert.equal(s.reader.panlong.editionCurrent.original,3);assert.match(html,/value="3" selected/);
+ await action('open');await action('edition',{edition:'hsk5'});assert.equal(s.reader.panlong.current,2);assert.equal(s.reader.panlong.editionCurrent.original,3);assert.deepEqual(messages,[]);
+});
