@@ -13,7 +13,7 @@ test('v0.8.6 backup migration retains v0.8.5 data without modifications',()=>{
 });
 test('Ciyan keeps drawing touch gestures isolated from browser scroll',()=>{
  const css=fs.readFileSync(new URL('../styles.css',import.meta.url),'utf8');
- assert.match(css,/html,body\{touch-action:pan-x pan-y\}/);
+ assert.match(css,/html,body\{touch-action:pan-x pan-y pinch-zoom\}/);
  assert.match(css,/#drawing-pad\{[^}]*touch-action:none/);
 });
 test('word/grammar topic filters stay available, but collapse by default',()=>{

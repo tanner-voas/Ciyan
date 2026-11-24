@@ -1,0 +1,3 @@
+# Ciyan v0.9.15 — offline reader packs
+
+Standalone requires only the core study assets at first install. Hosted mode uses AppLauncher's matching worker. Reader → Offline reader packs downloads original chapter archives or a graded edition with its original dependencies. Previously opened hosted chapters retain their existing validated reader-text cache. Pack removal affects only service-worker published assets, never imported reader text, fonts, or study records. Current graded editions remain packaged; retired v091/v092 material remains in source, excluded from distribution. Changed optional files are downloaded on demand, not required for an update. Browser zoom is enabled outside custom drawing gestures. Existing backup schemas are unchanged.

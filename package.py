@@ -33,7 +33,7 @@ STATIC_FILES = (
     "drawing.js",
     "drawing-grades.js",
     "fonts.js", "font-library.js", "font-sources.js",
-    "backup-integrity.js", "reader-portability.js", "cloud-recovery.js",
+    "backup-integrity.js", "reader-portability.js", "cloud-recovery.js", "reader-offline.js",
     "backup-restore.js",
     "fsrs.js",
     "storage.js",
@@ -47,6 +47,16 @@ STATIC_FILES = (
 STATIC_DIRS = ("icons", "chapters")
 PROFILE_SOURCE = ROOT / "shared" / "google-drive" / "src"
 
+
+def reader_groups(path):
+    # The original archives are also prerequisites of each graded edition.
+    if path.startswith('chapters/') and path.endswith('.zip'):
+        return ['reader:original', 'reader:hsk4', 'reader:hsk5', 'reader:hsk6']
+    for prefix, group in [('chapters/graded-v099-hsk4/', 'reader:hsk4'),
+                          ('chapters/graded-v095-hsk5/', 'reader:hsk5'),
+                          ('chapters/graded-v094/', 'reader:hsk6')]:
+        if path.startswith(prefix): return [group]
+    return None
 
 def main() -> None:
     sources = [ROOT / name for name in (*STATIC_FILES, *STATIC_DIRS)]
@@ -62,7 +72,7 @@ def main() -> None:
         shutil.copy2(ROOT / name, TARGET / name)
     for name in STATIC_DIRS:
         shutil.copytree(ROOT / name, TARGET / name,
-                        ignore=shutil.ignore_patterns("graded-v091") if name == "chapters" else None)
+                        ignore=shutil.ignore_patterns("graded-v091", "graded-v092") if name == "chapters" else None)
 
     if not PROFILE_SOURCE.is_dir():
         raise FileNotFoundError("Missing PWA-GoogleDrive submodule; run git submodule update --init --recursive")
@@ -75,20 +85,22 @@ def main() -> None:
     shutil.copytree(TARGET, STANDALONE)
     for name in STANDALONE_SHELL:
         shutil.copy2(ROOT / name, STANDALONE / name)
-    shell = [file for file in sorted(STANDALONE.rglob("*"))
-             if file.is_file() and file.suffix.lower() in
-             {".html", ".css", ".js", ".webmanifest", ".png", ".svg", ".woff", ".woff2", ".ttf", ".otf"}]
-    digest = hashlib.sha256()
-    for file in shell:
-        digest.update(file.relative_to(STANDALONE).as_posix().encode() + b"\0")
-        digest.update(hashlib.sha256(file.read_bytes()).digest())
+    assets = []
+    for file in sorted(STANDALONE.rglob("*")):
+        if not file.is_file() or file.name == '_headers': continue
+        path = file.relative_to(STANDALONE).as_posix()
+        data = file.read_bytes()
+        assets.append(dict(path='./'+path, size=len(data), sha256=hashlib.sha256(data).hexdigest(), groups=reader_groups(path) or ['shell']))
+    inventory = json.dumps(assets, ensure_ascii=False, separators=(',', ':'))
+    digest = hashlib.sha256(inventory.encode() + (ROOT / 'sw.standalone.template.js').read_bytes())
     package_version = json.loads((ROOT / "package.json").read_text(encoding="utf-8"))["version"]
     cache = f"ciyan-shell-v{package_version}-{digest.hexdigest()[:16]}"
-    paths = ["./" + file.relative_to(STANDALONE).as_posix() for file in shell]
     template = (ROOT / "sw.standalone.template.js").read_text(encoding="utf-8")
     worker = template.replace("__SHELL_CACHE_NAME__", cache).replace(
-        "__PRECACHE_ASSETS__", json.dumps(paths, ensure_ascii=False, separators=(",", ":")))
+        "__PRECACHE_ASSETS__", inventory)
     (STANDALONE / "sw.js").write_text(worker, encoding="utf-8")
+    (STANDALONE / 'offline-inventory.json').write_text(inventory+'\n', encoding='utf-8')
+    print('Required offline bytes:', sum(a['size'] for a in assets if 'shell' in a['groups']))
     print(f"Ciyan app module build: {TARGET}")
     print(f"Ciyan standalone PWA build: {STANDALONE} (offline cache {cache})")
 

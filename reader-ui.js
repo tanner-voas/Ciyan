@@ -1,3 +1,4 @@
+import {offlineRequest} from './reader-offline.js';
 import {deriveEdition,learnerIndex} from './reader-editions.js';
 import {normalizeBoundaries} from './reader-boundaries.js';
 import {voiceTuning} from './reader-speech.js';
@@ -306,11 +307,12 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const available=books(),lib=libraryBook(novel),entry=libraryChapter(novel,number);
   const b=book(),c=studyChapter();
   const importBtn=btn('import','Import chapter JSON');
+  const offlineBtn=btn('offline-packs','Offline reader packs');
   const volumes=volumeList(lib),currentVolume=lib?.chapters.find(c=>c.number===number)?.volume??volumes[0]?.number;
   // Volume is solely a chapter picker filter. No volume-specific progress or
   // unlock state is created; chapters remain globally numbered and linear.
   const chapterChoices=volumes.length?chaptersInVolume(lib,currentVolume):lib?.chapters||[];
-  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div><div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length>1?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label>${editionSelector()}</div>`;
+  const chooser=`<div class="reader-heading"><h1 class="h1">Reader</h1>${importBtn}</div>${offlineBtn}<div class="reader-choices"><label>Novel<select id="reader-novel">${available.map(x=>`<option value="${esc(x.novel)}" ${x.novel===novel?'selected':''}>${esc(x.author)} • ${esc(x.title)}</option>`).join('')}</select></label>${volumes.length>1?`<label>Volume<select id="reader-volume">${volumes.map(v=>`<option value="${v.number}" ${v.number===currentVolume?'selected':''}>${esc(v.label)}</option>`).join('')}</select></label>`:''}<label>Chapter<select id="reader-chapter">${chapterChoices.map(x=>`<option value="${x.number}" ${x.number===number?'selected':''}>${esc(chapterLabel(x))}</option>`).join('')}</select></label>${editionSelector()}</div>`;
   if(!entry)return `${chooser}<div class="panel stack"><h2>No chapters yet</h2>${importBtn}</div>`;
   if(!b||!c){return `${chooser}<div class="panel stack"><h2>${esc(chapterLabel(entry))}</h2><p>${entry.source==='master'?'Hosted chapter: select it to download and prepare for study.':'Custom chapter: upload its JSON to read it again.'}</p>${btn('open','Open selected chapter')}</div>`;}
   const a=analysis(state(),b,c);
@@ -433,9 +435,21 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    }catch(e){toast(e.message);}finally{input.remove?.();}
   };input.click();
  }
+ async function showOfflinePacks(){
+  const groups=(await offlineRequest('status')).filter(g=>g.group.startsWith('reader:'));
+  const names={'reader:original':'Original chapters','reader:hsk4':'HSK4 + TSK8','reader:hsk5':'HSK5 + TSK10','reader:hsk6':'HSK6 + TSK12'};
+  const mib=n=>(n/1048576).toFixed(2)+' MiB';
+  modal('Offline reader packs',`<p>Download a published edition for reading offline. Graded packs include the matching original archives. Shared files are kept when other complete packs need them. Imported chapter text and study progress are not changed.</p>${groups.map(g=>`<div class="panel stack"><strong>${esc(names[g.group]||g.group)}</strong><small>${g.complete?'Ready offline':`${g.count}/${g.total} files`} · ${mib(g.bytes)} / ${mib(g.totalBytes)}</small><button class="btn btn-secondary" data-action="reader-offline-download" data-group="${esc(g.group)}" ${g.complete?'disabled':''}>Download</button>${g.count?`<button class="btn btn-secondary" data-action="reader-offline-remove" data-group="${esc(g.group)}">Remove unused pack files</button>`:''}</div>`).join('')}<p class="subtle" aria-live="polite" data-offline-status></p>`);
+ }
  async function action(name,el){
   if(busy)return;busy=true;
   try{
+   if(name==='offline-packs'){await showOfflinePacks();return;}
+   if(name==='offline-download'||name==='offline-remove'){
+    const status=document.querySelector('[data-offline-status]');el.disabled=true;
+    try{await offlineRequest(name==='offline-download'?'download':'remove',el.dataset.group,(done,total)=>{if(status)status.textContent=`Downloading ${done}/${total} files…`;});await showOfflinePacks();}
+    finally{el.disabled=false;}return;
+   }
    if(name==='catalog'){
     const file=el.dataset.file||document.querySelector('#reader-catalog-choice')?.value;
     const entry=catalog.find(e=>e.file===file);

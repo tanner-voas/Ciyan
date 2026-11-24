@@ -494,7 +494,7 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 #reader-pages [data-word-index]{touch-action:manipulation;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 #reader-pages .reader-current{outline:2px solid #b88700;outline-offset:0;border-radius:.2em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 .app-frame:has(#reader-pages){padding-bottom:calc(174px + env(safe-area-inset-bottom,0px))}
-html,body{touch-action:pan-x pan-y}
+html,body{touch-action:pan-x pan-y pinch-zoom}
 @media(max-width:700px){input:not([type=checkbox]):not([type=range]),select,textarea{font-size:max(16px,1em)!important}}
 .immersive-reader{padding-top:calc(8px + env(safe-area-inset-top,0px))}
 .app-frame:has(.immersive-reader){padding:0 max(8px,env(safe-area-inset-right)) calc(54px + env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}

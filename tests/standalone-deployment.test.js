@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -25,6 +26,7 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
   const html=read(standalonePath,'index.html');
   assert.ok(html.includes('Cíyán v'+JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version));
   assert.match(html,/src="\.\/standalone-boot\.js"/);
+  assert.doesNotMatch(html,/maximum-scale|user-scalable=no/);
   assert.doesNotMatch(html,/My Workspace|launcher\.js|apps-registry/);
   const manifest=JSON.parse(read(standalonePath,'manifest.webmanifest'));
   assert.equal(manifest.name,'Cíyán — Mandarin flashcards');
@@ -63,6 +65,12 @@ test('standalone updater uses its own SW, but launcher API remains authoritative
 
 test('offline standalone cache refreshes on build changes without deleting reader content',()=>{
   const code=read(standalonePath,'sw.js');
+  const assets=JSON.parse(read(standalonePath,'offline-inventory.json'));
+  assert.ok(assets.some(a=>a.path.endsWith('master-data.js')&&a.groups.includes('shell')));
+  assert.ok(assets.some(a=>a.path.endsWith('.zip')&&a.groups.includes('reader:original')));
+  assert.ok(assets.some(a=>a.path.includes('graded-v094/')&&a.groups.includes('reader:hsk6')));
+  assert.ok(!assets.some(a=>a.path.includes('graded-v092/')||a.path.includes('graded-v091/')));
+  for(const a of assets){const bytes=fs.readFileSync(new URL(a.path,standalonePath));assert.equal(a.size,bytes.length);assert.equal(a.sha256,createHash('sha256').update(bytes).digest('hex'));}
   assert.match(code,new RegExp(`ciyan-shell-v${JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version.replaceAll('.','\\.')}-[a-f0-9]{16}`));
   assert.match(code,/"\.\/index\.html"/);
   assert.match(code,/"\.\/app\.js"/);
@@ -76,7 +84,7 @@ test('offline standalone cache refreshes on build changes without deleting reade
   const redirected={status:200,statusText:'OK',headers:{},body:'<html>ok</html>',redirected:true};
   vm.runInNewContext(code,{
     URL, Request:class{constructor(url){this.url=url}},Response:class{constructor(body,options){this.body=body;this.status=options.status;this.redirected=false}},
-    caches:{match:async key=>{lookups.push(String(key));return redirected}},fetch:async()=>{throw new Error('offline')},
+    caches:{open:async()=>({match:async key=>{if(String(key).endsWith('__offline_release_metadata__'))return undefined;lookups.push(String(key));return redirected;}})},fetch:async()=>{throw new Error('offline')},
     self:{location:{origin:'https://ciyan.example'},registration:{scope:'https://ciyan.example/'},addEventListener:(name,fn)=>handlers[name]=fn}
   });
   return Promise.all(['https://ciyan.example/','https://ciyan.example/?old=1'].map(async url=>{
