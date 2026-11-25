@@ -25,9 +25,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
  let novel='',number=1,mode='review',scope='gate',revealed=false,shown='',busy=false,epoch=0,observer=null,timer=null,pending=null;
  let focusWord=null;
  const paragraphTranslations=new Map();
- const translationBadge='./icons/google-translate-attribution.png';
- // TODO: Add Google's official attribution PNG and restore enforcement (true) before public use.
- const enforceTranslationAttribution=false;
+ const translationBadge='./reader-assets/google-translate-attribution.png';
+ const enforceTranslationAttribution=true;
  function showTranslation(target,text){
   target.textContent=text;const link=document.createElement('a');link.href='https://translate.google.com/';link.target='_blank';link.rel='noopener noreferrer';const img=document.createElement('img');img.src=translationBadge;img.alt='Powered by Google Translate';img.addEventListener('error',()=>{link.textContent='Powered by Google Translate';},{once:true});link.append(img);target.append(link);target.hidden=false;
  }

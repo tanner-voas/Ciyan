@@ -45,7 +45,7 @@ STATIC_FILES = (
     "session-controls.js",
     "hsk-tag-map.js",
 )
-STATIC_DIRS = ("icons", "chapters")
+STATIC_DIRS = ("icons", "chapters", "reader-assets")
 PROFILE_SOURCE = ROOT / "shared" / "google-drive" / "src"
 
 
