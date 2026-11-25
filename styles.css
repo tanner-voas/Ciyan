@@ -788,3 +788,10 @@ html,body{touch-action:manipulation}
 /* Browser page lock; custom canvas/map touch-action rules remain intact. */
 html,body{touch-action:manipulation}
 input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea{font-size:16px}
+
+/* Save-and-exit progress occupies the top layer, not the Home control. */
+.exit-progress-dialog{width:min(340px,calc(100vw - 32px));max-height:calc(100dvh - 32px);padding:26px 22px;margin:auto;border:1px solid var(--stroke);border-radius:20px;background:var(--paper);color:var(--ink);text-align:center;box-shadow:var(--shadow)}
+.exit-progress-dialog::backdrop{background:#14292180;backdrop-filter:blur(3px)}
+.exit-progress-dialog h2{font-size:19px;margin:16px 0 8px}.exit-progress-dialog p{font-size:14px;line-height:1.5;margin:0;color:var(--muted)}
+.exit-progress-spinner{width:34px;height:34px;border:3px solid var(--stroke);border-top-color:var(--forest);border-radius:50%;margin:auto;animation:exit-progress-spin .85s linear infinite}
+@keyframes exit-progress-spin{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.exit-progress-spinner{animation:none}}

@@ -48,7 +48,10 @@ function mockBrowser() {
     head:{append(n){if(n.id)fontStyles.set(n.id,n);}},getElementById:id=>fontStyles.get(id)||null,
     querySelector:sel=>sel==='#app'?shell:sel==='#toast'?toast:(browseNodes[sel]||null),
     addEventListener:(type,fn)=>listeners[type]=fn,
-    createElement:()=>({className:'',innerHTML:'',textContent:'',id:'',style:{setProperty(){}},dataset:{},remove(){},querySelector:()=>null})
+    createElement:tag=>({tag,children:[],attributes:{},open:false,
+      setAttribute(key,value){this.attributes[key]=value;},append(...nodes){this.children.push(...nodes);},
+      addEventListener(){},showModal(){this.open=true;},close(){this.open=false;},
+      className:'',innerHTML:'',textContent:'',id:'',style:{setProperty(){}},dataset:{},remove(){this.wasRemoved=true;},querySelector:()=>null})
   };
   globalThis.FontFace=class {constructor(family,src){this.family=family;this.src=src;this.status='unloaded';}async load(){this.status='loaded';return this;}};
   globalThis.fetch=async url=>String(url).endsWith('mixed-fonts.css')?{ok:true,async text(){return fs.readFileSync(new URL('../mixed-fonts.css',import.meta.url),'utf8');}}:{ok:true,headers:{get(){return null;}},async arrayBuffer(){return new Uint8Array([0,1,0,0,65,66]).buffer;}};
@@ -721,6 +724,8 @@ test('v0.8.12 shared AND/OR/NOT tags remain visible across Words, Grammar and St
 
 test('v0.8.15 Save & Exit retains an unfinished study session and reloads in the launcher',async()=>{
  const mock=mockBrowser();
+ let progress;
+ document.body.append=node=>{if(node.tag==='dialog')progress=node;};
  await import('../app.js?smoke=exit814');await delay(25);
  const click=async(action,extra={})=>{
   const el={dataset:{action,...extra},disabled:false,innerHTML:'Save & Exit to My Apps',textContent:''};
@@ -734,6 +739,8 @@ test('v0.8.15 Save & Exit retains an unfinished study session and reloads in the
  assert.match(mock.shell.innerHTML,/data-action="exit-to-launcher"/);
  assert.doesNotMatch(mock.shell.innerHTML,/Save &amp; Exit to My Apps/);
  await click('exit-to-launcher');
+ assert.equal(progress.children[2].textContent,'Returning to My Apps…');
+ assert.equal(progress.wasRemoved,true);
  assert.equal(globalThis.location.href,'https://example.net/ciyan/');
  assert.equal(globalThis.location.reloaded,true);
  assert.equal(globalThis.location.assigned,null);

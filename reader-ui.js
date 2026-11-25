@@ -1,5 +1,5 @@
 import {translate,clearTranslationCache,getTranslationDiagnostics,clearTranslationDiagnostics} from './translation.js';
-import {shareFileOrDownload} from './browser-files.js';
+import {shareFile} from './share-files.js';
 import {AID_LABELS,aidLevel,aidSettings,updateAidDisplay} from './reader-assistance.js';
 import {editionId,editionState,writeEditionState,paragraphId,scopedPosition,resumeEditionChapter,rememberEditionChapter,preserveLegacyEditionCursor,selectEditionPrefs,EDITIONS} from './reader-edition-state.js';
 import {offlineRequest} from './reader-offline.js';
@@ -487,7 +487,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   }
   if(name==='translation-diagnostics'){
    const report=getTranslationDiagnostics();
-   try{await shareFileOrDownload(new File([JSON.stringify(report,null,2)],'translation-diagnostics-'+new Date().toISOString().slice(0,10)+'.json',{type:'application/json'}),{preferShare:true,title:'Translation diagnostics'});}catch(e){if(e.name!=='AbortError')toast('Could not export translation diagnostics.');}return;
+   try{await shareFile(new File([JSON.stringify(report,null,2)],'translation-diagnostics-'+new Date().toISOString().slice(0,10)+'.json',{type:'application/json'}));}catch(e){if(e.name!=='AbortError')toast('Could not export translation diagnostics.');}return;
   }
   if(name==='clear-translation-diagnostics'){clearTranslationDiagnostics();toast('Translation diagnostics cleared.');return;}
   if(name==='clear-translation-cache'){await clearTranslationCache();paragraphTranslations.clear();toast('Translation cache cleared.');return;}

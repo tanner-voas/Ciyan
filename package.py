@@ -21,7 +21,7 @@ STANDALONE_SHELL = (
     "pwa-update.js", "viewport-lock.js", "_headers",
 )
 STATIC_FILES = (
-    "styles.css", "share-files.js", "app-host-bridge.js", "browser-host.js", "browser-files.js",
+    "styles.css", "share-files.js", "exit-progress.js", "app-host-bridge.js", "browser-host.js", "browser-files.js",
     "app.js", "reader-core.js", "reader-assistance.js", "reader-edition-state.js", "reader-boundaries.js", "reader-ui.js", "reader-editions.js", "reader-library.js", "speech-vault.js", "reader-guide.js", "reader-speech.js", "reader-cloud-speech.js", "chapter-download.js", "collection-reset.js",
     "backup-versions.js", "backup-indicator.js", "cloud-profiles.js", "profile-data.js", "profile-menu-actions.js",
     "study-engine.js", "study-progress.js",

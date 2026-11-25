@@ -1,5 +1,6 @@
 import {aidSettings} from './reader-assistance.js';
 import {shareBlob,shareFile} from './share-files.js';
+import {showExitProgress} from './exit-progress.js';
 import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
 import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
 import {showRegistryRecovery} from './shared/google-drive/src/registry-recovery.js';
@@ -1334,10 +1335,10 @@ async function saveAndExitToLauncher(button){
  }
  exitInProgress=true;
  button.disabled=true;
- const previousLabel=button.innerHTML;
- button.textContent='Saving and exiting…';
+ let progress;
  app.classList.add('exit-saving');
  try{
+  progress=showExitProgress(document);
   // Regular study changes are committed immediately. Wait for any in-flight
   // IndexedDB transaction, then flush reader bookmark/playback preferences.
   const waitForWrites=async()=>{
@@ -1348,23 +1349,26 @@ async function saveAndExitToLauncher(button){
    }
   };
   await waitForWrites();
+  progress.update('Saving reading position…');
   if(!await reader.flush())throw new Error('The reader could not save its latest position.');
   await waitForWrites();
   // Verify the committed version before navigating away. This does NOT export a
   // backup; the existing backup/share feature remains a separate user action.
+  progress.update('Verifying local save…');
   const persisted=await loadState();
   if(!persisted||persisted.revision!==state.revision)
    throw new Error('The latest local state could not be verified.');
-  if(currentProfile().remote){try{await syncNow();}catch(e){if(!confirm(`Google Drive sync failed: ${e.message}. Latest changes remain saved on this device. Exit anyway?`))throw e;}}
+  if(currentProfile().remote){progress.update('Syncing with Google Drive…');try{await syncNow();}catch(e){if(!confirm(`Google Drive sync failed: ${e.message}. Latest changes remain saved on this device. Exit anyway?`))throw e;}}
+  progress.update('Returning to My Apps…');
   // Changing the URL in-place before reloading keeps iOS in the installed
   // PWA rather than handing a cross-document link to Safari. Reloading also
   // fully destroys the Cíyán runtime before the Home Screen starts.
   await returnToLauncher();
  }catch(error){
   toast(`Exit cancelled: ${error.message}`);
-  button.disabled=false;
-  button.innerHTML=previousLabel;
  }finally{
+  progress?.close();
+  button.disabled=false;
   app.classList.remove('exit-saving');
   exitInProgress=false;
  }
