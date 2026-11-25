@@ -7,8 +7,8 @@
   -webkit-font-smoothing:antialiased;
 }
 * {box-sizing:border-box}
-html{background:var(--cream);min-height:100%;scroll-behavior:auto;overflow-x:hidden}
-body{margin:0;min-height:100dvh;max-width:100%;overflow-x:hidden;color:var(--ink);overscroll-behavior-y:contain}
+html{background:var(--cream);min-height:100%;scroll-behavior:auto;overflow-x:clip}
+body{margin:0;min-height:100dvh;max-width:100%;overflow-x:clip;color:var(--ink);overscroll-behavior-y:contain}
 button,input,select,textarea{font:inherit}
 button{cursor:pointer;-webkit-tap-highlight-color:transparent}
 button:disabled{opacity:.45;cursor:not-allowed}
@@ -487,7 +487,7 @@ svg.ico{width:20px;height:20px;stroke:currentColor;stroke-width:1.8;fill:none;st
 @media(max-width:360px){.reader-study-card{padding:14px}.reader-study-prompt--extended{font-size:22px}.reader-study-head{font-size:10px}}
 
 
-.study-scroll-anchor{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 12px)}
+.study-scroll-anchor{scroll-margin-top:calc(var(--ciyan-header-height, calc(74px + env(safe-area-inset-top,0px))) + 12px)}
 #main:has(.study-scroll-anchor){padding-bottom:32vh}
 #reader-pages{padding-bottom:1rem;overflow-anchor:none}
 .reader-guide-bar button{min-height:40px;padding:5px 9px;border-radius:10px;color:var(--forest);background:#f0f5ef;font-weight:650}
@@ -738,7 +738,8 @@ html,body{touch-action:manipulation}
 .exit-action-panel .subtle{line-height:1.55;margin:0}
 .app-frame.exit-saving{pointer-events:none}
 
-/* v0.9.6 — safe-area-aware, single-row persistent application header. */
+/* Safe-area-aware sticky header. Document overflow-x:clip keeps the viewport
+   as its scroll container; hidden would create a non-scrolling body ancestor. */
 .topbar{position:sticky;top:0;z-index:22;padding:calc(17px + env(safe-area-inset-top)) 0 15px;background:var(--cream);min-width:0}
 .topbar .brand{min-width:0;flex:1 1 auto;font-size:clamp(17px,5.2vw,23px);letter-spacing:-.7px}
 .topbar .brand-title{min-width:0;display:block;overflow:hidden}

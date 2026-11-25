@@ -1,4 +1,4 @@
-# Cíyán (词言) v0.9.22
+# Cíyán (词言) v0.9.23
 
 ## Shared PWA-Core (roadmap 7C, v0.9.18)
 

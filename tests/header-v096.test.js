@@ -21,3 +21,15 @@ test('cloud indicator distinguishes errors, pending work, upload progress, and c
  assert.match(css,/\.topbar \.backup-saved/);
  assert.match(css,/conic-gradient/);
 });
+
+test('viewport scroll remains the sticky header scroll container',()=>{
+ for(const selector of ['html','body']){
+  const rule=css.match(new RegExp(`(?:^|\\n)${selector}\\{([^}]+)\\}`))?.[1]||'';
+  assert.match(rule,/overflow-x:clip/);
+  assert.doesNotMatch(rule,/overflow-x:hidden/);
+ }
+ assert.match(css,/\.study-scroll-anchor\{scroll-margin-top:calc\(var\(--ciyan-header-height/);
+ assert.match(src,/header\?\.getBoundingClientRect\(\)\.height/);
+ assert.match(src,/target\.style\.setProperty\('--ciyan-header-height'/);
+ assert.match(src,/if\(page==='reader'&&reader\.isReading\(\)\)return '<main id="main" class="immersive-reader">/);
+});

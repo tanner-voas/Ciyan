@@ -770,7 +770,12 @@ function positionStudyScreen(){
  }else if(readerCard){
   target=readerCard.previousElementSibling?.classList.contains('study-mini-progress')?readerCard.previousElementSibling:readerCard;key=page+':'+readerCard.dataset.studyKey+':'+!!readerCard.querySelector('[data-action="reader-grade"]');
  }
- if(target)target.classList.add('study-scroll-anchor');
+ if(target){
+  target.classList.add('study-scroll-anchor');
+  // Use the actual floating header height, including the device safe area.
+  const header=app.querySelector('.topbar');
+  target.style.setProperty('--ciyan-header-height',`${header?.getBoundingClientRect().height||0}px`);
+ }
  if(target&&key!==lastStudyFocus){
   globalThis.requestAnimationFrame?.(()=>{if(target.isConnected)target.scrollIntoView({block:'start',behavior:'instant'});});
  }else if(!target&&(lastScreen!==page||lastStudyFocus)&&!document.querySelector('#reader-pages')){
