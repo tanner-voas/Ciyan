@@ -1,5 +1,5 @@
 import {aidSettings} from './reader-assistance.js';
-import {downloadBlob as downloadFile,shareFileOrDownload} from './browser-files.js';
+import {shareBlob,shareFile} from './share-files.js';
 import {runUpdateButton,returnToLauncher,hasLauncherHost} from './app-host-bridge.js';
 import {profileButton,installProfileUI} from './shared/google-drive/src/ui.js';
 import {showRegistryRecovery} from './shared/google-drive/src/registry-recovery.js';
@@ -403,7 +403,7 @@ function renderComplete(){
       <div><strong>${s.total?Math.round(100*s.correct/s.total):0}%</strong><span>${grammar?'Correct':'Good / Easy'}</span></div></div>
     ${state.lastPracticeUndo?'<button class="btn btn-secondary btn-full" data-action="undo-completed">Undo last answer</button>':''}<div class="panel stack"><div class="row"><strong>${icon('shield')} Protect your progress</strong><span class="tag alt">Important</span></div>
       <p class="lead" style="font-size:13px">Your reviews are saved locally. A verified cloud revision or separate JSON file protects against browser storage loss.</p>
-      <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Save progress to Files</button>
+      <button class="btn btn-primary btn-full" data-action="backup">${icon('download')}Share progress backup</button>
       ${backupNeeded()?'<div class="notice warning">Your latest reviews have not been confirmed as backed up.</div>':'<div class="notice">Your current changes are marked as backed up.</div>'}
       <button class="btn btn-secondary btn-full" data-action="navigate" data-page="study">Study again</button>
       <button class="text-link" data-action="navigate" data-page="study" style="text-align:center">Back to Study</button></div>`;
@@ -971,8 +971,8 @@ function backupModal(){pendingBackupRevision=null;
      `<button class="btn btn-primary btn-full" data-action="sync-cloud-now">${icon('refresh')}Sync now</button><button class="btn btn-secondary btn-full" data-action="cloud-history">${icon('clock')}Version history</button>`:
      `<button class="btn btn-primary btn-full" data-action="push-local-profile">${icon('upload')}Push profile to Google Drive</button>`}
     ${cloud?`<details><summary>Synchronization details</summary>${backupDiagnosticsMarkup()}</details>`:''}
-    <button class="btn btn-secondary btn-full" data-action="share-backup">${icon('download')}Save local JSON (share sheet)</button>
-    <button class="btn btn-secondary btn-full" data-action="download-backup">Download local JSON</button>
+    <button class="btn btn-secondary btn-full" data-action="share-backup">${icon('download')}Share local JSON</button>
+
     <button class="btn btn-secondary btn-full" data-action="portable-backup">Save portable JSON including imported reader texts</button>
     <label style="display:block;font-size:13px"><input type="checkbox" data-action="toggle-cloud-reader-text" ${state.settings.cloudIncludeCustomText?'checked':''}> Include imported reader text in Google Drive backups (${customReaderEntries(state).length} custom chapters)</label>
     <p class="subtle">Imported chapter text is stored separately on this device. Cloud backups include it only with the option above; a portable JSON export can include it regardless of that setting. Hosted chapter packs and installed font files remain separate.</p>
@@ -990,8 +990,7 @@ async function exportBackup(mode){
   try{
     if(keyEdited()&&!await saveSpeechDraft())return;
     const file=await backupFile(mode==='portable'),revision=state.revision;
-    const delivery=await shareFileOrDownload(file,{preferShare:mode==='share'||mode==='portable',title:'Cíyán complete backup'});
-    if(delivery==='downloaded'&&mode!=='download')toast('Share is unavailable; a JSON download was started');
+    await shareFile(file,{title:'Cíyán complete backup'});
     pendingBackupRevision=revision;
     const area=$('#backup-confirm-area');if(area)area.innerHTML=`<div class="notice" style="margin-top:8px">File prepared: <strong>${esc(file.name)}</strong></div>
       <button class="btn btn-soft btn-full" style="margin-top:10px" data-action="confirm-backup">${icon('check')}I saved this file in Files</button>`;
@@ -1091,12 +1090,12 @@ async function importDeck(content){
  if(!await confirmRemoval('Replace dictionary',`Load this complete master: ${draft.cards.length} words and ${draft.grammar.length} sentences? It replaces this visit's content. Learning records remain. The imported master persists after restarting the app.`))return;
  if(await change(d=>{d.cards=draft.cards;d.grammar=draft.grammar;d.archived=draft.archived;d.explicitDictionary=true;d.bundledMasterVersion=APP_VERSION;d.activePractice=null;d.lastPracticeUndo=null;d.activeSession=null;d.activeGrammarSession=null;ensureStudy(d);},true,true)){invalidateTagOdds();closeModal();toast('Master collection saved locally.');}
 }
-function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
- downloadFile(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),`ciyan-master-v${APP_VERSION}.json`);toast('Complete master file prepared');}
-function downloadTemplate(){const sample={format:'ciyan-deck',version:2,records:false,
+async function exportDeck(){const data=makeDeck(state);data.title='Cíyán master collection';
+ await shareBlob(new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),`ciyan-master-v${APP_VERSION}.json`);toast('Complete master file prepared');}
+async function downloadTemplate(){const sample={format:'ciyan-deck',version:2,records:false,
   cards:[{id:'deck-coffee',hanzi:'咖啡',pinyin:'kāfēi',english:'Coffee',tags:['food']}],
   grammar:[{id:'deck-sentence-001',markup:'{我}{想}{喝}{咖啡}。',pinyin:'Wǒ xiǎng hē kāfēi.',english:'I want to drink coffee.',distractors:[{index:2,word:'要'}]}]};
-  downloadFile(new Blob([JSON.stringify(sample,null,2)],{type:'application/json'}),'ciyan-deck-template-v0.3.json');}
+  await shareBlob(new Blob([JSON.stringify(sample,null,2)],{type:'application/json'}),'ciyan-deck-template-v0.3.json');}
 function finishPrompt(){modal('Finish this session?',`<p class="lead" style="font-size:14px;margin-bottom:20px">Answered cards are already stored locally. Finish and back up your progress, or keep studying.</p>
   <div class="stack"><button class="btn btn-primary btn-full" data-action="end-session">Finish and see summary</button>
     <button class="btn btn-secondary btn-full" data-action="close-modal">Continue studying</button></div>`);}
@@ -1249,8 +1248,8 @@ document.addEventListener('click',async event=>{
     }
     case 'study-filtered':await startFilteredSession();break;
     case 'import-deck':requestFile('deck');break;
-    case 'export-deck':exportDeck();break;
-    case 'template':downloadTemplate();break;
+    case 'export-deck':await exportDeck();break;
+    case 'template':await downloadTemplate();break;
     case 'reload-app':await updateAndReload(element);break;
     case 'exit-to-launcher':await saveAndExitToLauncher(element);break;
     case 'clear-settings':

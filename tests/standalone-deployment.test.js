@@ -34,7 +34,7 @@ test('one build provides a standalone Worker bundle and a separate AppLauncher m
   const html=read(standalonePath,'index.html');
   assert.ok(html.includes('Cíyán v'+JSON.parse(fs.readFileSync(new URL('../package.json',import.meta.url),'utf8')).version));
   assert.match(html,/src="\.\/standalone-boot\.js"/);
-  assert.doesNotMatch(html,/maximum-scale|user-scalable=no/);
+  assert.match(html,/maximum-scale=1, user-scalable=no/);
   assert.doesNotMatch(html,/My Workspace|launcher\.js|apps-registry/);
   const manifest=JSON.parse(read(standalonePath,'manifest.webmanifest'));
   assert.equal(manifest.name,'Cíyán — Mandarin flashcards');

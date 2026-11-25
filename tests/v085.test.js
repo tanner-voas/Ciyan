@@ -21,6 +21,6 @@ test('v0.8.5 bounds expensive Azure prefetch and cache values, including restore
 
 test('Ciyan styles preserve viewport overflow and reader-specific scrolling',()=>{
  const css=fs.readFileSync(new URL('../styles.css',import.meta.url),'utf8');
- assert.match(css,/html,body\{touch-action:pan-x pan-y pinch-zoom\}/);
+ assert.match(css,/html,body\{touch-action:manipulation\}/);
  assert.match(css,/overflow-x:hidden/);
 });
