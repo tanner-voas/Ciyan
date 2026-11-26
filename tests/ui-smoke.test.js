@@ -125,6 +125,9 @@ test('tone enforcement prevents Easy and records an incorrect tone answer',async
   const mock=mockBrowser();
   const {defaultState}=await import('../storage.js');
   const source=defaultState();source.settings.toneTest=true;source.settings.enforceTones=true;
+  const {toneTargets}=await import('../grammar.js');
+  const known=source.cards.find(c=>toneTargets(c.hanzi,c.pinyin)?.some(t=>t>0));
+  assert.ok(known);source.cards=[known];source.explicitDictionary=true;
   mock.data.set('main',source);
   await import('../app.js?smoke=tones');await delay(25);
   const click=async(action,extra={})=>{
@@ -134,6 +137,7 @@ test('tone enforcement prevents Easy and records an incorrect tone answer',async
   };
   await click('start',{mode:'words'});
   assert.match(mock.shell.innerHTML,/tone-grid/);
+  assert.equal(mock.data.get('main').activePractice.current.id,known.id);
   assert.doesNotMatch(mock.shell.innerHTML,/review-english/);
   await click('reveal');
   assert.match(mock.shell.innerHTML,/disabled/);
