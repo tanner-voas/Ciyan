@@ -22,24 +22,31 @@ export function clearSpeechCache(){
  pending.clear();clips.clear();
 }
 export const speechCacheCount=()=>clips.size;
-async function loadClip(win,context,text,voice,cpm,region,key,pitch,useCache){
+// Observational only: do not delay playback or send SSML, text, voice, region
+// or subscription credentials to the usage endpoint. No retries or extra Azure calls.
+function reportUsage(win,operation,outcome,characters,durationMs,status){
+ if(!win.location||!win.crypto?.randomUUID)return;try{const sample={id:win.crypto.randomUUID(),operation,outcome,characters,durationMs,...(status===undefined?{}:{status})};void win.fetch('/_profiles/v1/usage/azure-speech',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-PWA-CSRF':'1'},body:JSON.stringify(sample),cache:'no-store',keepalive:true,signal:AbortSignal.timeout(10000)}).catch(()=>{});}catch{}
+}
+async function loadClip(win,context,text,voice,cpm,region,key,pitch,useCache,prefetch=false){
  const rate=Math.round(Math.max(.5,Math.min(2,cpm/240))*100)-100;
  const id=useCache?JSON.stringify([voice,rate,pitch,text,region]):Symbol();
- if(clips.has(id)){const clip=clips.get(id);clips.delete(id);clips.set(id,clip);return clip;}
+ if(clips.has(id)){if(!prefetch)reportUsage(win,'cache_hit','cache_hit',[...text].length,0);const clip=clips.get(id);clips.delete(id);clips.set(id,clip);return clip;}
  if(pending.has(id))return pending.get(id).promise;
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
  const entry={controller};
+ const started=Date.now(),operation=prefetch?'prefetch':'synthesis',characters=[...text].length;
  entry.promise=(async()=>{
-  const response=await win.fetch('https://'+region+'.tts.speech.microsoft.com/cognitiveservices/v1',{
+  let status,outcome='error';try{const response=await win.fetch('https://'+region+'.tts.speech.microsoft.com/cognitiveservices/v1',{
    method:'POST',signal:controller.signal,credentials:'omit',referrerPolicy:'no-referrer',
    headers:{'Ocp-Apim-Subscription-Key':key,'Content-Type':'application/ssml+xml','X-Microsoft-OutputFormat':'audio-24khz-48kbitrate-mono-mp3'},
    body:'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN"><voice name="'+voice+'"><prosody rate="'+rate+'%" pitch="'+pitch+'%">'+xml(text)+'</prosody></voice></speak>'
   });
-  if(!response.ok)throw Error('Azure Speech returned '+response.status+'. Check credentials and quota.');
-  const clip=await context.decodeAudioData(await response.arrayBuffer());
+  status=response.status;if(!response.ok)throw Error('Azure Speech returned '+response.status+'. Check credentials and quota.');
+  const audio=await response.arrayBuffer();outcome='success';const clip=await context.decodeAudioData(audio);
   if(useCache&&cacheLimit&&!controller.signal.aborted){if(clips.size>=cacheLimit)clips.delete(clips.keys().next().value);clips.set(id,clip);}
   return clip;
+  }catch(err){if(controller.signal.aborted&&outcome!=='success')outcome='cancelled';throw err;}finally{reportUsage(win,operation,outcome,characters,Date.now()-started,status);}
  })().finally(()=>{clearTimeout(timeout);if(pending.get(id)===entry)pending.delete(id);});
  pending.set(id,entry);return entry.promise;
 }
@@ -57,7 +64,7 @@ export function createCloudNarrator(win,select,advance,failed){
   cancel();const token=generation,cacheToken=cacheGeneration;
   if(!cloudVoices.has(voice)||!/^[a-z0-9]+$/.test(region)||!key){failed('Unlock Azure speech credentials in Speech settings.');return;}
   const {text,words,start}=typeof word==='string'?{text:word,words:[],start:0}:speechPassage(word);
-  const load=text=>loadClip(win,context,text,voice,cpm,region,key,pitch,useCache);
+  const load=(text,prefetch=false)=>loadClip(win,context,text,voice,cpm,region,key,pitch,useCache,prefetch);
   try{
    await prepare();
    if(token!==generation)return;
@@ -76,7 +83,7 @@ export function createCloudNarrator(win,select,advance,failed){
    source.onended=()=>{if(token!==generation)return;win.cancelAnimationFrame(frame);source.disconnect();source=null;
     if(i<words.length-1)select(words.at(-1));advance();};
    source.start(began);track();
-   for(const passage of ahead){if(token!==generation||cacheToken!==cacheGeneration)break;try{await load(passage);}catch{break;}}
+   for(const passage of ahead){if(token!==generation||cacheToken!==cacheGeneration)break;try{await load(passage,true);}catch{break;}}
   }catch(error){if(token===generation)failed(error.message);}
  }
  function dispose(){cancel();if(context)void context.close().catch(()=>{});}
