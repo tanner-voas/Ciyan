@@ -1,9 +1,9 @@
 import {translate,clearTranslationCache,getTranslationDiagnostics,clearTranslationDiagnostics} from './translation.js';
 import {shareFile} from './share-files.js';
-import {AID_LABELS,aidLevel,aidSettings,updateAidDisplay} from './reader-assistance.js';
+import {AID_LABELS,aidLevel,aidSettings,updateAidDisplay,struggleThreshold} from './reader-assistance.js';
 import {editionId,editionState,writeEditionState,paragraphId,scopedPosition,resumeEditionChapter,rememberEditionChapter,preserveLegacyEditionCursor,selectEditionPrefs,EDITIONS} from './reader-edition-state.js';
 import {offlineRequest} from './reader-offline.js';
-import {deriveEdition,learnerIndex} from './reader-editions.js';
+import {deriveEdition,learnerIndex,synonymRange} from './reader-editions.js';
 import {normalizeBoundaries} from './reader-boundaries.js';
 import {voiceTuning} from './reader-speech.js';
 import {catalog,downloadChapter} from './chapter-download.js';
@@ -94,10 +94,8 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   }
   return {...original,...gradedAssets.get(key),graded:true};
  }
- function compute(base,index,minimum,restored){
-  const allowed=base.gradeTarget==='hsk4'?/^HSK\/HSK[1-4]$|^TSK\/TSK0[1-8]$/:base.gradeTarget==='hsk5'?/^HSK\/HSK[1-5]$|^TSK\/TSK(0[1-9]|10)$/:/^HSK\/HSK[1-6]$|^TSK\/TSK(0[1-9]|1[0-2])$/;
-  const permit=w=>!base.graded||base.extras.includes(w)||index.words.get(w)?.tags?.some(t=>allowed.test(t));
-  return deriveEdition(base,index,minimum,{restore:new Set(restored),permit,termScore:key=>sourceBook()?.progress[key]?.score||0});
+ function compute(base,index,minimum,restored,threshold=struggleThreshold(state().settings)){
+  return deriveEdition(base,index,minimum,{restore:new Set(restored),threshold,termScore:key=>sourceBook()?.progress[key]?.score||0});
  }
  function installView(p,result,digest){
   const text=result?.p||p;
@@ -122,33 +120,38 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
   const s=result.stats,changed=result.changes.size;
   return '<p><strong>'+['Ready','Some study may help','Frequent lookups or looser wording','Substantial difficulty or meaning risk'][s.tier]+'</strong></p>'+
    '<p>Replaced '+changed+' / '+s.total+' word occurrences ('+ratio(changed,s.total)+'), including '+changed+' / '+s.eligible+' unfamiliar occurrences ('+ratio(changed,s.eligible)+').</p>'+
-   '<p>Mean chapter mastery '+fmt(s.before)+' → <strong>'+fmt(s.after)+'</strong>. Mean synonym score '+fmt(s.strength)+' ('+s.count+' replacements). Minimum '+fmt(s.min)+' · distinct-pair mean '+fmt(s.pairMean)+' · below 0.90 '+ratio(s.low,s.count)+'. Reviewed phrases '+s.phrases+'.</p>'+
+   '<p>Mean chapter mastery '+fmt(s.before)+' → <strong>'+fmt(s.after)+'</strong>. Mean synonym score '+fmt(s.strength)+' ('+s.count+' replacements). Minimum '+fmt(s.min)+' · distinct-pair mean '+fmt(s.pairMean)+' · below 0.90 '+ratio(s.low,s.count)+'.</p>'+
    '<p>Unfamiliar vocabulary '+s.unresolved.size+' distinct · '+s.unknown+' / '+s.displayed+' occurrences ('+ratio(s.unknown,s.displayed)+'). Unfamiliar terms '+s.terms.size+'.</p>'+
-   '<details><summary>Remaining words and skipped alternatives</summary><p lang="zh-Hans">'+[...s.unresolved].sort((a,b)=>b[1]-a[1]).map(([w,n])=>esc(w)+' ×'+n).join('、')+'</p><p>Missing edge '+s.denied.missing+' · context '+s.denied.context+' · score '+s.denied.threshold+' · learning evidence '+s.denied.unfamiliar+'.</p></details>';
+   '<details><summary>Remaining words and skipped alternatives</summary><p lang="zh-Hans">'+[...s.unresolved].sort((a,b)=>b[1]-a[1]).map(([w,n])=>esc(w)+' ×'+n).join('、')+'</p><p>Missing edge '+s.denied.missing+' · context '+s.denied.context+' · score '+s.denied.threshold+' · below mastery threshold '+s.denied.unfamiliar+'.</p></details>';
  }
  async function openAuto(original){
   const c=chapter(),pref=prefs(),base=await baseEdition(original,needsChapterUpdate()?'original':selectedEdition(pref)),index=learnerIndex(state());
-  const minimum=pref.minimum??.92,restore=pref.restored||[];
-  const result=compute(base,index,minimum,restore);
-  preview={digest:c.digest,base,index,restore,result,minimum};
-  modal('Auto simplify',`<label>Minimum synonym score <output id="reader-min-score">${minimum.toFixed(2)}</output><input aria-label="Minimum synonym score" style="width:100%" id="reader-score-slider" type="range" min="85" max="100" step="1" value="${Math.round(100*minimum)}"></label><div id="reader-preview" aria-live="polite">${previewStats(result)}</div><div class="row">${btn('auto-apply',pref.auto?'Refresh and apply':'Apply to this edition')}${pref.auto?btn('auto-off','Turn Auto off'):''}</div>`);
-  const slider=document.querySelector('#reader-score-slider');
-  let timeout;
+  const restore=pref.restored||[];
+  let threshold=struggleThreshold(state().settings),range=synonymRange(base,index,threshold,new Set(restore));
+  const clamp=(v,r)=>Math.max(r.min,Math.min(r.max,v));
+  let preferred=pref.minimum??(range.available?range.max:1),minimum=clamp(preferred,range);
+  preview={digest:c.digest,base,index,restore,minimum,threshold,result:compute(base,index,minimum,restore,threshold)};
+  modal('Auto simplify',`<label>Minimum synonym score <output id="reader-min-score">${minimum.toFixed(2)}</output><input aria-label="Minimum synonym score" style="width:100%" id="reader-score-slider" type="range" min="${range.min}" max="${range.max}" step="any" value="${minimum}" ${range.min===range.max?'disabled':''}></label><small id="reader-score-range"></small><label>Struggle threshold (global) <output id="reader-auto-threshold">${threshold.toFixed(1)}</output><input aria-label="Struggle threshold" style="width:100%" id="reader-threshold-slider" type="range" min="0" max="3" step="0.1" value="${threshold}"></label><p class="subtle">Dictionary synonyms may change meaning in context. Apply saves both settings.</p><div id="reader-preview" aria-live="polite">${previewStats(preview.result)}</div><div class="row">${btn('auto-apply',pref.auto?'Refresh and apply':'Apply to this edition')}${pref.auto?btn('auto-off','Turn Auto off'):''}</div>`);
+  const slider=document.querySelector('#reader-score-slider'),struggle=document.querySelector('#reader-threshold-slider');
   const update=()=>{
-   clearTimeout(timeout);if(!slider.isConnected||preview?.digest!==c.digest)return;
-   const min=Number(slider.value)/100;if(preview.minimum===min)return;
-   preview.minimum=min;preview.result=compute(base,index,min,restore);
+   if(!slider.isConnected||preview?.digest!==c.digest)return;
+   const next=Number(struggle.value);
+   if(next!==threshold){threshold=next;range=synonymRange(base,index,threshold,new Set(restore));slider.min=range.min;slider.max=range.max;slider.disabled=range.min===range.max;slider.value=clamp(preferred,range);}
+   minimum=Number(slider.value);preview.minimum=minimum;preview.threshold=threshold;
+   preview.result=compute(base,index,minimum,restore,threshold);
+   document.querySelector('#reader-min-score').textContent=minimum.toFixed(2);
+   document.querySelector('#reader-auto-threshold').textContent=threshold.toFixed(1);
+   document.querySelector('#reader-score-range').textContent=range.available?`${range.min.toFixed(2)} – ${range.max.toFixed(2)}`:'No known alternatives at this threshold';
    document.querySelector('#reader-preview').innerHTML=previewStats(preview.result);
   };
-  slider.oninput=()=>{document.querySelector('#reader-min-score').textContent=(Number(slider.value)/100).toFixed(2);clearTimeout(timeout);timeout=setTimeout(update,1000);};
-  slider.onpointerup=slider.onchange=slider.ontouchend=update;
-  preview.update=update;
+  slider.oninput=()=>{preferred=Number(slider.value);update();};struggle.oninput=update;preview.update=update;update();
  }
- async function saveEdition(pref,base,result,digest){
+ async function saveEdition(pref,base,result,digest,threshold){
   if(!await flush())return;
   if(chapter()?.digest!==digest)return;
   unmount();
   if(!await change(d=>{
+   if(threshold!==undefined)d.settings.readerStruggleThreshold=threshold;
    const b=d.reader[novel];
    // The projected edition can contain new vocabulary and grammar not in the original.
    if(base.graded){importChapterLexicon(d,base);b.items={...b.items,...base.items};}
@@ -533,7 +536,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
     if(name==='auto'){await openAuto(original);return;}
     if(name==='auto-apply'){
      if(!preview||preview.digest!==digest)return;preview.update();
-     await saveEdition({...pref,minimum:preview.minimum,auto:true},preview.base,preview.result,digest);return;
+     await saveEdition({...pref,minimum:preview.minimum,auto:true},preview.base,preview.result,digest,preview.threshold);return;
     }
     if(name==='edition'){
      if(!hasGraded()||!EDITIONS.includes(el.dataset.edition))return;

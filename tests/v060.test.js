@@ -11,8 +11,8 @@ const byWord=new Map(MASTER.cards.map(c=>[c.hanzi,c]));
 const now=Date.parse('2026-11-17T00:00:00Z');
 function state(){const s=defaultState();replaceMaster(s,MASTER);return s;}
 
-test('all 72 particle exercises validate, retain unique IDs and have real prerequisites',()=>{
- assert.equal(PARTICLES.length,72);assert.equal(new Set(PARTICLES.map(p=>p.id)).size,72);
+test('all 96 particle exercises validate, retain unique IDs and have real prerequisites',()=>{
+ assert.equal(PARTICLES.length,96);assert.equal(new Set(PARTICLES.map(p=>p.id)).size,96);
  for(const p of PARTICLES){normalizeParticle(p);for(const w of particleWords(p))assert.ok(byWord.has(w),`${p.id}: ${w}`);for(const a of p.accepted)assert.ok(particleCorrect(p,a.choice,a.slot));}
 });
 test('omission does not require a slot, changes no sentence and distinguishes four error types',()=>{

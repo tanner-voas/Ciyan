@@ -91,8 +91,8 @@ test('reader screen offers automatic chapter study and preserves the imported na
  const ref=fs.readFileSync(new URL('../reader/panlong/reference/001.txt',import.meta.url),'utf8');
  assert.equal([b.chapters[0].title,...text].join('\n\n'),ref);
  const originalDigest=b.chapters[0].digest;
- const slider={value:'92',isConnected:true},score={},preview={};
- document.querySelector=id=>({'#reader-score-slider':slider,'#reader-min-score':score,'#reader-preview':preview})[id];
+ const slider={value:'0',isConnected:true},score={},preview={},threshold={value:'1.5'},thresholdOutput={},rangeOutput={};
+ document.querySelector=id=>({'#reader-score-slider':slider,'#reader-min-score':score,'#reader-preview':preview,'#reader-threshold-slider':threshold,'#reader-auto-threshold':thresholdOutput,'#reader-score-range':rangeOutput})[id];
  await listeners.change({target:{id:'reader-edition',value:'graded'}});assert.match(html,/value="graded" selected/);
  assert.match(html,/芬莱王国<\/span>.*位于<\/span>/s);
  await listeners.change({target:{id:'reader-edition',value:'hsk5'}});
@@ -102,11 +102,9 @@ test('reader screen offers automatic chapter study and preserves the imported na
  await listeners.change({target:{id:'reader-edition',value:'graded'}});
  assert.equal(b.chapters[0].editionPrefs.level,undefined);
  assert.match(html,/value="graded" selected/);
- await action('auto');slider.value='95';slider.oninput();assert.equal(score.textContent,'0.95');
- slider.onpointerup();assert.match(preview.innerHTML,/Mean chapter mastery/);
- preview.innerHTML='';slider.value='91';slider.oninput();await new Promise(r=>setTimeout(r,1050));
- assert.match(preview.innerHTML,/Mean chapter mastery/);
- await action('auto-apply');assert.equal(b.chapters[0].editionPrefs.minimum,.91);
+ await action('auto');assert.match(preview.innerHTML,/Mean chapter mastery/);
+ threshold.value='2.1';threshold.oninput();assert.equal(thresholdOutput.textContent,'2.1');
+ await action('auto-apply');assert.equal(b.chapters[0].editionPrefs.minimum,Number(slider.value));assert.equal(s.settings.readerStruggleThreshold,2.1);
  await listeners.change({target:{id:'reader-edition',value:'original'}});assert.equal(b.chapters[0].editionPrefs.graded,false);
  assert.equal(b.chapters[0].editionPrefs.auto,true);assert.equal(b.chapters[0].digest,originalDigest);
  assert.equal(b.chapters.length,1);assert.equal(b.history.length,1);
