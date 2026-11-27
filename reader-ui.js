@@ -1,3 +1,4 @@
+import {captureUsage,profileTranslationFetch} from './shared/google-drive/src/profile-usage.js';
 import {translate,clearTranslationCache,getTranslationDiagnostics,clearTranslationDiagnostics} from './translation.js';
 import {shareFile} from './share-files.js';
 import {AID_LABELS,aidLevel,aidSettings,updateAidDisplay,struggleThreshold} from './reader-assistance.js';
@@ -483,7 +484,7 @@ export function createReader({state,change,render,esc,modal,closeModal,toast,cre
    const prev=paragraphTranslations.get(text);
    if(!target.hidden&&prev?.expanded){prev.expanded=false;target.hidden=true;el.textContent='Translate with Google';return;}
    el.disabled=true;el.textContent='Translating…';target.hidden=true;
-   try{if(enforceTranslationAttribution)await requireTranslationBadge();const value=await translate(text);if(!row.isConnected||row.querySelector('[data-chinese]')?.dataset.chinese!==text)return;
+   try{if(enforceTranslationAttribution)await requireTranslationBadge();const value=await translate(text,{fetcher:profileTranslationFetch(captureUsage())});if(!row.isConnected||row.querySelector('[data-chinese]')?.dataset.chinese!==text)return;
     paragraphTranslations.set(text,{text:value,expanded:true,expires:Date.now()+7*86400000});if(paragraphTranslations.size>2000)paragraphTranslations.delete(paragraphTranslations.keys().next().value);showTranslation(target,value);el.textContent='Hide translation';
    }catch(error){if(row.isConnected){target.textContent=error.message;target.hidden=false;el.textContent='Retry translation';}}
    finally{el.disabled=false;}return;

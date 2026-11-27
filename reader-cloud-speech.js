@@ -1,3 +1,4 @@
+import {captureUsage,recordProfileUsage} from './shared/google-drive/src/profile-usage.js';
 import {speechPassage} from './reader-speech.js';
 
 export const cloudVoices=new Map([
@@ -28,9 +29,10 @@ function reportUsage(win,operation,outcome,characters,durationMs,status){
  if(!win.location||!win.crypto?.randomUUID)return;try{const sample={id:win.crypto.randomUUID(),operation,outcome,characters,durationMs,...(status===undefined?{}:{status})};void win.fetch('/_profiles/v1/usage/azure-speech',{method:'POST',credentials:'same-origin',headers:{'Content-Type':'application/json','X-PWA-CSRF':'1'},body:JSON.stringify(sample),cache:'no-store',keepalive:true,signal:AbortSignal.timeout(10000)}).catch(()=>{});}catch{}
 }
 async function loadClip(win,context,text,voice,cpm,region,key,pitch,useCache,prefetch=false){
+ const usage=captureUsage();
  const rate=Math.round(Math.max(.5,Math.min(2,cpm/240))*100)-100;
  const id=useCache?JSON.stringify([voice,rate,pitch,text,region]):Symbol();
- if(clips.has(id)){if(!prefetch)reportUsage(win,'cache_hit','cache_hit',[...text].length,0);const clip=clips.get(id);clips.delete(id);clips.set(id,clip);return clip;}
+ if(clips.has(id)){if(!prefetch){reportUsage(win,'cache_hit','cache_hit',[...text].length,0);void recordProfileUsage(usage,{speechCacheHits:1});}const clip=clips.get(id);clips.delete(id);clips.set(id,clip);return clip;}
  if(pending.has(id))return pending.get(id).promise;
  const controller=new AbortController();
  const timeout=setTimeout(()=>controller.abort(),30000);
@@ -46,7 +48,7 @@ async function loadClip(win,context,text,voice,cpm,region,key,pitch,useCache,pre
   const audio=await response.arrayBuffer();outcome='success';const clip=await context.decodeAudioData(audio);
   if(useCache&&cacheLimit&&!controller.signal.aborted){if(clips.size>=cacheLimit)clips.delete(clips.keys().next().value);clips.set(id,clip);}
   return clip;
-  }catch(err){if(controller.signal.aborted&&outcome!=='success')outcome='cancelled';throw err;}finally{reportUsage(win,operation,outcome,characters,Date.now()-started,status);}
+  }catch(err){if(controller.signal.aborted&&outcome!=='success')outcome='cancelled';throw err;}finally{reportUsage(win,operation,outcome,characters,Date.now()-started,status);void recordProfileUsage(usage,{speechRequests:1,speechCharacters:characters});}
  })().finally(()=>{clearTimeout(timeout);if(pending.get(id)===entry)pending.delete(id);});
  pending.set(id,entry);return entry.promise;
 }
